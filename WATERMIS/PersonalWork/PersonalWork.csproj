@@ -1,0 +1,448 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{806ADAB7-BC8D-4AB2-8B79-CE0B1EEF0A21}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PersonalWork</RootNamespace>
+    <AssemblyName>PersonalWork</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkSubset>
+    </TargetFrameworkSubset>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BASEFUNCTION, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WATERMIS\bin\x86\Debug\BASEFUNCTION.dll</HintPath>
+    </Reference>
+    <Reference Include="FastReport, Version=2014.4.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WATERMIS\bin\x86\Debug\FastReport.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.9.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WATERMIS\bin\x86\Debug\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApproveDispose.cs" />
+    <Compile Include="FrmApprove_ChargeAbate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprove_ChargeAbate.Designer.cs">
+      <DependentUpon>FrmApprove_ChargeAbate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmApprove_Group.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprove_Group.Designer.cs">
+      <DependentUpon>FrmApprove_Group.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmApprove_Group_Boss.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprove_Group_Boss.Designer.cs">
+      <DependentUpon>FrmApprove_Group_Boss.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmApprove_Group_Budget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprove_Group_Budget.Designer.cs">
+      <DependentUpon>FrmApprove_Group_Budget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmApprove_Group_Final.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprove_Group_Final.Designer.cs">
+      <DependentUpon>FrmApprove_Group_Final.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmApprove_Group_User.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprove_Group_User.Designer.cs">
+      <DependentUpon>FrmApprove_Group_User.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmApprove_MeterSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprove_MeterSelect.Designer.cs">
+      <DependentUpon>FrmApprove_MeterSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmApprove_Refund.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprove_Refund.Designer.cs">
+      <DependentUpon>FrmApprove_Refund.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmApprove_Single.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprove_Single.Designer.cs">
+      <DependentUpon>FrmApprove_Single.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmApprove_Single_Attr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprove_Single_Attr.Designer.cs">
+      <DependentUpon>FrmApprove_Single_Attr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmApprove_Single_Boss.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprove_Single_Boss.Designer.cs">
+      <DependentUpon>FrmApprove_Single_Boss.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmApprove_Single_Budget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprove_Single_Budget.Designer.cs">
+      <DependentUpon>FrmApprove_Single_Budget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmApprove_Single_Default.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprove_Single_Default.Designer.cs">
+      <DependentUpon>FrmApprove_Single_Default.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmApprove_Single_Final.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprove_Single_Final.Designer.cs">
+      <DependentUpon>FrmApprove_Single_Final.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmApprove_Single_Finance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprove_Single_Finance.Designer.cs">
+      <DependentUpon>FrmApprove_Single_Finance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmApprove_Single_Meter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprove_Single_Meter.Designer.cs">
+      <DependentUpon>FrmApprove_Single_Meter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmApprove_Single_User.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprove_Single_User.Designer.cs">
+      <DependentUpon>FrmApprove_Single_User.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmApprove_WaterPrice_Default.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprove_WaterPrice_Default.Designer.cs">
+      <DependentUpon>FrmApprove_WaterPrice_Default.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmChargePoint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmChargePoint.Designer.cs">
+      <DependentUpon>FrmChargePoint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDisuse_Approve.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDisuse_Approve.Designer.cs">
+      <DependentUpon>FrmDisuse_Approve.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDisuse_Default.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDisuse_Default.Designer.cs">
+      <DependentUpon>FrmDisuse_Default.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDisUse_MeterIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDisUse_MeterIn.Designer.cs">
+      <DependentUpon>FrmDisUse_MeterIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDisUse_StopUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDisUse_StopUser.Designer.cs">
+      <DependentUpon>FrmDisUse_StopUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMaintain_Approve.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMaintain_Approve.Designer.cs">
+      <DependentUpon>FrmMaintain_Approve.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMaintain_Default.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMaintain_Default.Designer.cs">
+      <DependentUpon>FrmMaintain_Default.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPersonalCenter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPersonalCenter.Designer.cs">
+      <DependentUpon>FrmPersonalCenter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPerson_Approve.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPerson_Approve.Designer.cs">
+      <DependentUpon>FrmPerson_Approve.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPerson_Approve_Over.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPerson_Approve_Over.Designer.cs">
+      <DependentUpon>FrmPerson_Approve_Over.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPerson_Approve_Scrap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPerson_Approve_Scrap.Designer.cs">
+      <DependentUpon>FrmPerson_Approve_Scrap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPerson_WorkFlow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPerson_WorkFlow.Designer.cs">
+      <DependentUpon>FrmPerson_WorkFlow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmShowFlowPicture.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmShowFlowPicture.Designer.cs">
+      <DependentUpon>FrmShowFlowPicture.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTEST.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTEST.Designer.cs">
+      <DependentUpon>frmTEST.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUnsubscribe_Approve.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUnsubscribe_Approve.Designer.cs">
+      <DependentUpon>FrmUnsubscribe_Approve.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUnsubscribe_Default.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUnsubscribe_Default.Designer.cs">
+      <DependentUpon>FrmUnsubscribe_Default.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmApprove_ChargeAbate.resx">
+      <DependentUpon>FrmApprove_ChargeAbate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmApprove_Group.resx">
+      <DependentUpon>FrmApprove_Group.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmApprove_Group_Boss.resx">
+      <DependentUpon>FrmApprove_Group_Boss.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmApprove_Group_Budget.resx">
+      <DependentUpon>FrmApprove_Group_Budget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmApprove_Group_Final.resx">
+      <DependentUpon>FrmApprove_Group_Final.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmApprove_Group_User.resx">
+      <DependentUpon>FrmApprove_Group_User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmApprove_MeterSelect.resx">
+      <DependentUpon>FrmApprove_MeterSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmApprove_Refund.resx">
+      <DependentUpon>FrmApprove_Refund.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmApprove_Single.resx">
+      <DependentUpon>FrmApprove_Single.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmApprove_Single_Attr.resx">
+      <DependentUpon>FrmApprove_Single_Attr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmApprove_Single_Boss.resx">
+      <DependentUpon>FrmApprove_Single_Boss.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmApprove_Single_Budget.resx">
+      <DependentUpon>FrmApprove_Single_Budget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmApprove_Single_Default.resx">
+      <DependentUpon>FrmApprove_Single_Default.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmApprove_Single_Final.resx">
+      <DependentUpon>FrmApprove_Single_Final.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmApprove_Single_Finance.resx">
+      <DependentUpon>FrmApprove_Single_Finance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmApprove_Single_Meter.resx">
+      <DependentUpon>FrmApprove_Single_Meter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmApprove_Single_User.resx">
+      <DependentUpon>FrmApprove_Single_User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmApprove_WaterPrice_Default.resx">
+      <DependentUpon>FrmApprove_WaterPrice_Default.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmChargePoint.resx">
+      <DependentUpon>FrmChargePoint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDisuse_Approve.resx">
+      <DependentUpon>FrmDisuse_Approve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDisuse_Default.resx">
+      <DependentUpon>FrmDisuse_Default.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDisUse_MeterIn.resx">
+      <DependentUpon>FrmDisUse_MeterIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDisUse_StopUser.resx">
+      <DependentUpon>FrmDisUse_StopUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMaintain_Approve.resx">
+      <DependentUpon>FrmMaintain_Approve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMaintain_Default.resx">
+      <DependentUpon>FrmMaintain_Default.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPersonalCenter.resx">
+      <DependentUpon>FrmPersonalCenter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPerson_Approve.resx">
+      <DependentUpon>FrmPerson_Approve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPerson_Approve_Over.resx">
+      <DependentUpon>FrmPerson_Approve_Over.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPerson_Approve_Scrap.resx">
+      <DependentUpon>FrmPerson_Approve_Scrap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPerson_WorkFlow.resx">
+      <DependentUpon>FrmPerson_WorkFlow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmShowFlowPicture.resx">
+      <DependentUpon>FrmShowFlowPicture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUnsubscribe_Approve.resx">
+      <DependentUpon>FrmUnsubscribe_Approve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUnsubscribe_Default.resx">
+      <DependentUpon>FrmUnsubscribe_Default.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmApprove_Group_Default.resx">
+      <DependentUpon>FrmApprove_Group_Default.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmApprove_Single_Prospect.resx">
+      <DependentUpon>FrmApprove_Single_Prospect.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="FrmApprove_Group_Default.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprove_Group_Default.Designer.cs">
+      <DependentUpon>FrmApprove_Group_Default.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmApprove_Single_Prospect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprove_Single_Prospect.Designer.cs">
+      <DependentUpon>FrmApprove_Single_Prospect.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{1A522A59-6899-4106-88C9-A6E9D50DC363}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{F1DAC157-5CF0-4ABE-AB30-E1B0EADA5354}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBinterface\DBinterface.csproj">
+      <Project>{1D1E2E75-6B84-446F-A446-0D7BE7A3502D}</Project>
+      <Name>DBinterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBUtility\DBUtility.csproj">
+      <Project>{80D145CD-0A7C-49FB-BEF5-45DC8D5892A1}</Project>
+      <Name>DBUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SysControl\SysControl.csproj">
+      <Project>{10BDADD7-D8EA-4D19-AD9D-A7678BBB5CD8}</Project>
+      <Name>SysControl</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5C49C081-CEED-41BE-9230-1ED058E2D5EF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MeterBusiness</RootNamespace>
+    <AssemblyName>MeterBusiness</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <StartupObject>
+    </StartupObject>
+    <TargetFrameworkSubset>
+    </TargetFrameworkSubset>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BASEFUNCTION, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WATERMIS\bin\x86\Debug\BASEFUNCTION.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.9.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WATERMIS\bin\x86\Debug\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FrmMeterBusiness.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMeterBusiness.Designer.cs">
+      <DependentUpon>FrmMeterBusiness.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEntering.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEntering.Designer.cs">
+      <DependentUpon>FrmEntering.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMeterBusinessMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMeterBusinessMain.Designer.cs">
+      <DependentUpon>FrmMeterBusinessMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMeterImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMeterImport.Designer.cs">
+      <DependentUpon>FrmMeterImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMeterManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMeterManage.Designer.cs">
+      <DependentUpon>FrmMeterManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmMeterBusiness.resx">
+      <DependentUpon>FrmMeterBusiness.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEntering.resx">
+      <DependentUpon>FrmEntering.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMeterBusinessMain.resx">
+      <DependentUpon>FrmMeterBusinessMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMeterImport.resx">
+      <DependentUpon>FrmMeterImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMeterManage.resx">
+      <DependentUpon>FrmMeterManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{F1DAC157-5CF0-4ABE-AB30-E1B0EADA5354}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBinterface\DBinterface.csproj">
+      <Project>{1D1E2E75-6B84-446F-A446-0D7BE7A3502D}</Project>
+      <Name>DBinterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SysControl\SysControl.csproj">
+      <Project>{10BDADD7-D8EA-4D19-AD9D-A7678BBB5CD8}</Project>
+      <Name>SysControl</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

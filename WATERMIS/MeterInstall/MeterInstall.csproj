@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8EC524FB-6478-4E22-AEE8-62D95CBDEFD8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MeterInstall</RootNamespace>
+    <AssemblyName>MeterInstall</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkSubset>
+    </TargetFrameworkSubset>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BASEFUNCTION, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WATERMIS\bin\x86\Debug\BASEFUNCTION.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.9.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WATERMIS\bin\x86\Debug\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FrmCharge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCharge.Designer.cs">
+      <DependentUpon>FrmCharge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEntering.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEntering.Designer.cs">
+      <DependentUpon>FrmEntering.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGroup.Designer.cs">
+      <DependentUpon>FrmGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGroupPeople.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGroupPeople.Designer.cs">
+      <DependentUpon>FrmGroupPeople.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMeterImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMeterImport.Designer.cs">
+      <DependentUpon>FrmMeterImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMeterManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMeterManage.Designer.cs">
+      <DependentUpon>FrmMeterManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRecords.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRecords.Designer.cs">
+      <DependentUpon>FrmRecords.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRecordsGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRecordsGroup.Designer.cs">
+      <DependentUpon>FrmRecordsGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSingle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSingle.Designer.cs">
+      <DependentUpon>FrmSingle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmWaterUserList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmWaterUserList.Designer.cs">
+      <DependentUpon>FrmWaterUserList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmWorkPoint_Show.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmWorkPoint_Show.Designer.cs">
+      <DependentUpon>FrmWorkPoint_Show.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FrmCharge.resx">
+      <DependentUpon>FrmCharge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEntering.resx">
+      <DependentUpon>FrmEntering.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGroup.resx">
+      <DependentUpon>FrmGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGroupPeople.resx">
+      <DependentUpon>FrmGroupPeople.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMeterImport.resx">
+      <DependentUpon>FrmMeterImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMeterManage.resx">
+      <DependentUpon>FrmMeterManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRecords.resx">
+      <DependentUpon>FrmRecords.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRecordsGroup.resx">
+      <DependentUpon>FrmRecordsGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSingle.resx">
+      <DependentUpon>FrmSingle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmWaterUserList.resx">
+      <DependentUpon>FrmWaterUserList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmWorkPoint_Show.resx">
+      <DependentUpon>FrmWorkPoint_Show.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="TemPlates\水表导入模板.xls">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MeterInstallPages\FlowFAQ.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MeterInstallPages\FlowTransition.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MeterInstallPages\FlowImages\Meter_Change.JPG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MeterInstallPages\FlowImages\Meter_Desterilize.JPG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MeterInstallPages\FlowImages\Meter_Disuse.JPG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MeterInstallPages\FlowImages\Meter_Install_Group.JPG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MeterInstallPages\FlowImages\Meter_Install_Peccant.JPG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MeterInstallPages\FlowImages\Meter_Install_Single.JPG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MeterInstallPages\FlowImages\Meter_Install_Transition.JPG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MeterInstallPages\FlowImages\Meter_Maintain.JPG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MeterInstallPages\FlowImages\User_Peccant.JPG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MeterInstallPages\FlowImages\User_Unsubscribe.JPG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MeterInstallPages\FlowInstall.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MeterInstallPages\UserIntro.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{F1DAC157-5CF0-4ABE-AB30-E1B0EADA5354}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBinterface\DBinterface.csproj">
+      <Project>{1D1E2E75-6B84-446F-A446-0D7BE7A3502D}</Project>
+      <Name>DBinterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SysControl\SysControl.csproj">
+      <Project>{10BDADD7-D8EA-4D19-AD9D-A7678BBB5CD8}</Project>
+      <Name>SysControl</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MeterInstallPages\Images\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

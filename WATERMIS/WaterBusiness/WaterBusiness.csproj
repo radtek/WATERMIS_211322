@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9E3D1DD3-FDDC-4D1E-8178-9AD87B8E9093}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WaterBusiness</RootNamespace>
+    <AssemblyName>WaterBusiness</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <StartupObject>
+    </StartupObject>
+    <TargetFrameworkSubset>
+    </TargetFrameworkSubset>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BASEFUNCTION, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WATERMIS\bin\x86\Debug\BASEFUNCTION.dll</HintPath>
+    </Reference>
+    <Reference Include="FastReport, Version=2014.4.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WATERMIS\bin\x86\Debug\FastReport.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.9.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WATERMIS\bin\x86\Debug\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FrmBusiness.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBusiness.Designer.cs">
+      <DependentUpon>FrmBusiness.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMeter_Change.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMeter_Change.Designer.cs">
+      <DependentUpon>FrmMeter_Change.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMeter_Change_Add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMeter_Change_Add.Designer.cs">
+      <DependentUpon>FrmMeter_Change_Add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMeter_Maintain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMeter_Maintain.Designer.cs">
+      <DependentUpon>FrmMeter_Maintain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMeter_Maintain_Add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMeter_Maintain_Add.Designer.cs">
+      <DependentUpon>FrmMeter_Maintain_Add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Meter_Desterilize.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Meter_Desterilize.Designer.cs">
+      <DependentUpon>Frm_Meter_Desterilize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Meter_Desterilize_Add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Meter_Desterilize_Add.Designer.cs">
+      <DependentUpon>Frm_Meter_Desterilize_Add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Meter_Desterilize_Add2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Meter_Desterilize_Add2.Designer.cs">
+      <DependentUpon>Frm_Meter_Desterilize_Add2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Meter_Disuse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Meter_Disuse.Designer.cs">
+      <DependentUpon>Frm_Meter_Disuse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Meter_Disuse_Add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Meter_Disuse_Add.Designer.cs">
+      <DependentUpon>Frm_Meter_Disuse_Add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Meter_Disuse_Add2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Meter_Disuse_Add2.Designer.cs">
+      <DependentUpon>Frm_Meter_Disuse_Add2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_User_Peccant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_User_Peccant.Designer.cs">
+      <DependentUpon>Frm_User_Peccant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_User_Peccant_Add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_User_Peccant_Add.Designer.cs">
+      <DependentUpon>Frm_User_Peccant_Add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_User_Unsubscribe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_User_Unsubscribe.Designer.cs">
+      <DependentUpon>Frm_User_Unsubscribe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_User_Unsubscribe_Add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_User_Unsubscribe_Add.Designer.cs">
+      <DependentUpon>Frm_User_Unsubscribe_Add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmBusiness.resx">
+      <DependentUpon>FrmBusiness.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMeter_Change.resx">
+      <DependentUpon>FrmMeter_Change.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMeter_Change_Add.resx">
+      <DependentUpon>FrmMeter_Change_Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMeter_Maintain.resx">
+      <DependentUpon>FrmMeter_Maintain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMeter_Maintain_Add.resx">
+      <DependentUpon>FrmMeter_Maintain_Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Meter_Desterilize.resx">
+      <DependentUpon>Frm_Meter_Desterilize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Meter_Desterilize_Add.resx">
+      <DependentUpon>Frm_Meter_Desterilize_Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Meter_Desterilize_Add2.resx">
+      <DependentUpon>Frm_Meter_Desterilize_Add2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Meter_Disuse.resx">
+      <DependentUpon>Frm_Meter_Disuse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Meter_Disuse_Add.resx">
+      <DependentUpon>Frm_Meter_Disuse_Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Meter_Disuse_Add2.resx">
+      <DependentUpon>Frm_Meter_Disuse_Add2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_User_Peccant.resx">
+      <DependentUpon>Frm_User_Peccant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_User_Peccant_Add.resx">
+      <DependentUpon>Frm_User_Peccant_Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_User_Unsubscribe.resx">
+      <DependentUpon>Frm_User_Unsubscribe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_User_Unsubscribe_Add.resx">
+      <DependentUpon>Frm_User_Unsubscribe_Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{F1DAC157-5CF0-4ABE-AB30-E1B0EADA5354}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBinterface\DBinterface.csproj">
+      <Project>{1D1E2E75-6B84-446F-A446-0D7BE7A3502D}</Project>
+      <Name>DBinterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBUtility\DBUtility.csproj">
+      <Project>{80D145CD-0A7C-49FB-BEF5-45DC8D5892A1}</Project>
+      <Name>DBUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MeterInstall\MeterInstall.csproj">
+      <Project>{8EC524FB-6478-4E22-AEE8-62D95CBDEFD8}</Project>
+      <Name>MeterInstall</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SysControl\SysControl.csproj">
+      <Project>{10BDADD7-D8EA-4D19-AD9D-A7678BBB5CD8}</Project>
+      <Name>SysControl</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

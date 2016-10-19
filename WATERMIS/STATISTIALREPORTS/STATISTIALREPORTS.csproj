@@ -1,0 +1,542 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E853B284-A79B-443F-91C6-7FA57D66F62C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>STATISTIALREPORTS</RootNamespace>
+    <AssemblyName>STATISTIALREPORTS</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkSubset>
+    </TargetFrameworkSubset>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BASEFUNCTION, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WATERMIS\bin\x86\Debug\BASEFUNCTION.dll</HintPath>
+    </Reference>
+    <Reference Include="FastReport, Version=2014.4.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WATERMIS\bin\x86\Debug\FastReport.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.9.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WATERMIS\bin\x86\Debug\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="SEARCH\台账一户式查询\frmSingleChargeSelectWaterUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SEARCH\台账一户式查询\frmSingleChargeSelectWaterUser.Designer.cs">
+      <DependentUpon>frmSingleChargeSelectWaterUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SEARCH\台账一户式查询\frmWaterUserReadMeterRecordSearchAll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SEARCH\台账一户式查询\frmWaterUserReadMeterRecordSearchAll.Designer.cs">
+      <DependentUpon>frmWaterUserReadMeterRecordSearchAll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SEARCH\台账一户式查询\frmWaterUserSearchAll_CanModify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SEARCH\台账一户式查询\frmWaterUserSearchAll_CanModify.Designer.cs">
+      <DependentUpon>frmWaterUserSearchAll_CanModify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="STATISTICS\frmWaterFeeSummaryPreview_Year.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="STATISTICS\frmWaterFeeSummaryPreview_Year.Designer.cs">
+      <DependentUpon>frmWaterFeeSummaryPreview_Year.cs</DependentUpon>
+    </Compile>
+    <Compile Include="STATISTICS\用水用户统计\frmWaterUserStatisticsSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="STATISTICS\用水用户统计\frmWaterUserStatisticsSearch.Designer.cs">
+      <DependentUpon>frmWaterUserStatisticsSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWaterUserSeniorSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWaterUserSeniorSearch.Designer.cs">
+      <DependentUpon>frmWaterUserSeniorSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="STATISTICS\实收陈欠\frmWaterMeterChargedOldStatisticsSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="STATISTICS\实收陈欠\frmWaterMeterChargedOldStatisticsSearch.Designer.cs">
+      <DependentUpon>frmWaterMeterChargedOldStatisticsSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="STATISTICS\欠费统计\frmWaterMeterYSDebtStatics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="STATISTICS\欠费统计\frmWaterMeterYSDebtStatics.Designer.cs">
+      <DependentUpon>frmWaterMeterYSDebtStatics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="STATISTICS\实收陈欠\frmWaterMeterChargedOldStatics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="STATISTICS\实收陈欠\frmWaterMeterChargedOldStatics.Designer.cs">
+      <DependentUpon>frmWaterMeterChargedOldStatics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="STATISTICS\财务报表\实收统计\frmWaterMeterChargedStatics_ALLYear.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="STATISTICS\财务报表\实收统计\frmWaterMeterChargedStatics_ALLYear.Designer.cs">
+      <DependentUpon>frmWaterMeterChargedStatics_ALLYear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="STATISTICS\财务报表\应收统计\frmWaterMeterYSStaticsSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="STATISTICS\财务报表\应收统计\frmWaterMeterYSStaticsSearch.Designer.cs">
+      <DependentUpon>frmWaterMeterYSStaticsSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="STATISTICS\财务报表\应收统计\frmWaterMeterYSStatics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="STATISTICS\财务报表\应收统计\frmWaterMeterYSStatics.Designer.cs">
+      <DependentUpon>frmWaterMeterYSStatics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="STATISTICS\财务报表\实收统计\frmWaterMeterChargedStatisticsSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="STATISTICS\财务报表\实收统计\frmWaterMeterChargedStatisticsSearch.Designer.cs">
+      <DependentUpon>frmWaterMeterChargedStatisticsSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="STATISTICS\财务报表\实收统计\frmWaterMeterChargedStatics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="STATISTICS\财务报表\实收统计\frmWaterMeterChargedStatics.Designer.cs">
+      <DependentUpon>frmWaterMeterChargedStatics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SEARCH\frmWaterMeterChargedSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SEARCH\frmWaterMeterChargedSearch.Designer.cs">
+      <DependentUpon>frmWaterMeterChargedSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SEARCH\历史台账查询\frmReadMeterRecordOldSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SEARCH\历史台账查询\frmReadMeterRecordOldSearch.Designer.cs">
+      <DependentUpon>frmReadMeterRecordOldSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SEARCH\frmWaterUserSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SEARCH\frmWaterUserSearch.Designer.cs">
+      <DependentUpon>frmWaterUserSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SEARCH\frmWaterMeterSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SEARCH\frmWaterMeterSearch.Designer.cs">
+      <DependentUpon>frmWaterMeterSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SEARCH\frmWaterMeterYSMXSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SEARCH\frmWaterMeterYSMXSearch.Designer.cs">
+      <DependentUpon>frmWaterMeterYSMXSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SEARCH\frmWaterUserYSMXSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SEARCH\frmWaterUserYSMXSearch.Designer.cs">
+      <DependentUpon>frmWaterUserYSMXSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SEARCH\frmWaterMeterChargeSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SEARCH\frmWaterMeterChargeSearch.Designer.cs">
+      <DependentUpon>frmWaterMeterChargeSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SEARCH\frmReadMeterRecordSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SEARCH\frmReadMeterRecordSearch.Designer.cs">
+      <DependentUpon>frmReadMeterRecordSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SEARCH\frmChargeInvoicePrintSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SEARCH\frmChargeInvoicePrintSearch.Designer.cs">
+      <DependentUpon>frmChargeInvoicePrintSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SEARCH\frmPrestoreChargeCancelSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SEARCH\frmPrestoreChargeCancelSearch.Designer.cs">
+      <DependentUpon>frmPrestoreChargeCancelSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SEARCH\frmPrestoreChargeSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SEARCH\frmPrestoreChargeSearch.Designer.cs">
+      <DependentUpon>frmPrestoreChargeSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SEARCH\frmWaterMeterChargeCancelSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SEARCH\frmWaterMeterChargeCancelSearch.Designer.cs">
+      <DependentUpon>frmWaterMeterChargeCancelSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SEARCH\frmWaterFeeRemitSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SEARCH\frmWaterFeeRemitSearch.Designer.cs">
+      <DependentUpon>frmWaterFeeRemitSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SEARCH\frmWaterMeterSeniorSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SEARCH\frmWaterMeterSeniorSearch.Designer.cs">
+      <DependentUpon>frmWaterMeterSeniorSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SEARCH\frmWaterMeterDebtSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SEARCH\frmWaterMeterDebtSearch.Designer.cs">
+      <DependentUpon>frmWaterMeterDebtSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SEARCH\历史台账查询\frmReadMeterRecordOldSearchSingleWaterUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SEARCH\历史台账查询\frmReadMeterRecordOldSearchSingleWaterUser.Designer.cs">
+      <DependentUpon>frmReadMeterRecordOldSearchSingleWaterUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="STATISTICS\frmWaterMeterDebtStatisc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="STATISTICS\frmWaterMeterDebtStatisc.Designer.cs">
+      <DependentUpon>frmWaterMeterDebtStatisc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="STATISTICS\frmChargeInvoicePrintStatistisc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="STATISTICS\frmChargeInvoicePrintStatistisc.Designer.cs">
+      <DependentUpon>frmChargeInvoicePrintStatistisc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="STATISTICS\frmReadMeterRecordPecent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="STATISTICS\frmReadMeterRecordPecent.Designer.cs">
+      <DependentUpon>frmReadMeterRecordPecent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="STATISTICS\frmSeniorSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="STATISTICS\frmSeniorSearch.Designer.cs">
+      <DependentUpon>frmSeniorSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="STATISTICS\frmWaterMeterChargePercent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="STATISTICS\frmWaterMeterChargePercent.Designer.cs">
+      <DependentUpon>frmWaterMeterChargePercent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="STATISTICS\frmReadMeterExceptionSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="STATISTICS\frmReadMeterExceptionSearch.Designer.cs">
+      <DependentUpon>frmReadMeterExceptionSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="STATISTICS\用水用户统计\frmWaterUserStatistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="STATISTICS\用水用户统计\frmWaterUserStatistics.Designer.cs">
+      <DependentUpon>frmWaterUserStatistics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="STATISTICS\frmWaterMeterStatistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="STATISTICS\frmWaterMeterStatistics.Designer.cs">
+      <DependentUpon>frmWaterMeterStatistics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="STATISTICS\frmWaterChargeStatistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="STATISTICS\frmWaterChargeStatistics.Designer.cs">
+      <DependentUpon>frmWaterChargeStatistics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="STATISTICS\frmWaterPrestoreChargeStatistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="STATISTICS\frmWaterPrestoreChargeStatistics.Designer.cs">
+      <DependentUpon>frmWaterPrestoreChargeStatistics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="STATISTICS\frmWaterChargeStatisticsNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="STATISTICS\frmWaterChargeStatisticsNew.Designer.cs">
+      <DependentUpon>frmWaterChargeStatisticsNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="STATISTICS\frmInformStatistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="STATISTICS\frmInformStatistics.Designer.cs">
+      <DependentUpon>frmInformStatistics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="STATISTICS\frmChargeStatistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="STATISTICS\frmChargeStatistics.Designer.cs">
+      <DependentUpon>frmChargeStatistics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="STATISTICS\frmChargeStatisticsAll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="STATISTICS\frmChargeStatisticsAll.Designer.cs">
+      <DependentUpon>frmChargeStatisticsAll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="STATISTICS\财务报表\应收统计\frmWaterMeterYSStatics_AllYear.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="STATISTICS\财务报表\应收统计\frmWaterMeterYSStatics_AllYear.Designer.cs">
+      <DependentUpon>frmWaterMeterYSStatics_AllYear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SEARCH\台账一户式查询\frmWaterUserSearchAll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SEARCH\台账一户式查询\frmWaterUserSearchAll.Designer.cs">
+      <DependentUpon>frmWaterUserSearchAll.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{1A522A59-6899-4106-88C9-A6E9D50DC363}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MODEL\MODEL.csproj">
+      <Project>{714F4432-3D0F-4FEA-B6E8-B2A110427451}</Project>
+      <Name>MODEL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SEARCH\台账一户式查询\frmSingleChargeSelectWaterUser.resx">
+      <DependentUpon>frmSingleChargeSelectWaterUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SEARCH\台账一户式查询\frmWaterUserReadMeterRecordSearchAll.resx">
+      <DependentUpon>frmWaterUserReadMeterRecordSearchAll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SEARCH\台账一户式查询\frmWaterUserSearchAll_CanModify.resx">
+      <DependentUpon>frmWaterUserSearchAll_CanModify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="STATISTICS\frmWaterFeeSummaryPreview_Year.resx">
+      <DependentUpon>frmWaterFeeSummaryPreview_Year.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="STATISTICS\用水用户统计\frmWaterUserStatisticsSearch.resx">
+      <DependentUpon>frmWaterUserStatisticsSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWaterUserSeniorSearch.resx">
+      <DependentUpon>frmWaterUserSeniorSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="STATISTICS\实收陈欠\frmWaterMeterChargedOldStatisticsSearch.resx">
+      <DependentUpon>frmWaterMeterChargedOldStatisticsSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="STATISTICS\欠费统计\frmWaterMeterYSDebtStatics.resx">
+      <DependentUpon>frmWaterMeterYSDebtStatics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="STATISTICS\实收陈欠\frmWaterMeterChargedOldStatics.resx">
+      <DependentUpon>frmWaterMeterChargedOldStatics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="STATISTICS\财务报表\实收统计\frmWaterMeterChargedStatics_ALLYear.resx">
+      <DependentUpon>frmWaterMeterChargedStatics_ALLYear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="STATISTICS\财务报表\应收统计\frmWaterMeterYSStaticsSearch.resx">
+      <DependentUpon>frmWaterMeterYSStaticsSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="STATISTICS\财务报表\应收统计\frmWaterMeterYSStatics.resx">
+      <DependentUpon>frmWaterMeterYSStatics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="STATISTICS\财务报表\实收统计\frmWaterMeterChargedStatisticsSearch.resx">
+      <DependentUpon>frmWaterMeterChargedStatisticsSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="STATISTICS\财务报表\实收统计\frmWaterMeterChargedStatics.resx">
+      <DependentUpon>frmWaterMeterChargedStatics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SEARCH\frmWaterMeterChargedSearch.resx">
+      <DependentUpon>frmWaterMeterChargedSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SEARCH\历史台账查询\frmReadMeterRecordOldSearch.resx">
+      <DependentUpon>frmReadMeterRecordOldSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SEARCH\frmWaterUserSearch.resx">
+      <DependentUpon>frmWaterUserSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SEARCH\frmWaterMeterSearch.resx">
+      <DependentUpon>frmWaterMeterSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SEARCH\frmWaterMeterYSMXSearch.resx">
+      <DependentUpon>frmWaterMeterYSMXSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SEARCH\frmWaterUserYSMXSearch.resx">
+      <DependentUpon>frmWaterUserYSMXSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SEARCH\frmWaterMeterChargeSearch.resx">
+      <DependentUpon>frmWaterMeterChargeSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SEARCH\frmReadMeterRecordSearch.resx">
+      <DependentUpon>frmReadMeterRecordSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SEARCH\frmChargeInvoicePrintSearch.resx">
+      <DependentUpon>frmChargeInvoicePrintSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SEARCH\frmPrestoreChargeCancelSearch.resx">
+      <DependentUpon>frmPrestoreChargeCancelSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SEARCH\frmPrestoreChargeSearch.resx">
+      <DependentUpon>frmPrestoreChargeSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SEARCH\frmWaterMeterChargeCancelSearch.resx">
+      <DependentUpon>frmWaterMeterChargeCancelSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SEARCH\frmWaterFeeRemitSearch.resx">
+      <DependentUpon>frmWaterFeeRemitSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SEARCH\frmWaterMeterSeniorSearch.resx">
+      <DependentUpon>frmWaterMeterSeniorSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SEARCH\frmWaterMeterDebtSearch.resx">
+      <DependentUpon>frmWaterMeterDebtSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SEARCH\历史台账查询\frmReadMeterRecordOldSearchSingleWaterUser.resx">
+      <DependentUpon>frmReadMeterRecordOldSearchSingleWaterUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="STATISTICS\frmWaterMeterDebtStatisc.resx">
+      <DependentUpon>frmWaterMeterDebtStatisc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="STATISTICS\frmChargeInvoicePrintStatistisc.resx">
+      <DependentUpon>frmChargeInvoicePrintStatistisc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="STATISTICS\frmReadMeterRecordPecent.resx">
+      <DependentUpon>frmReadMeterRecordPecent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="STATISTICS\frmSeniorSearch.resx">
+      <DependentUpon>frmSeniorSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="STATISTICS\frmWaterMeterChargePercent.resx">
+      <DependentUpon>frmWaterMeterChargePercent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="STATISTICS\frmReadMeterExceptionSearch.resx">
+      <DependentUpon>frmReadMeterExceptionSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="STATISTICS\用水用户统计\frmWaterUserStatistics.resx">
+      <DependentUpon>frmWaterUserStatistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="STATISTICS\frmWaterMeterStatistics.resx">
+      <DependentUpon>frmWaterMeterStatistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="STATISTICS\frmWaterChargeStatistics.resx">
+      <DependentUpon>frmWaterChargeStatistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="STATISTICS\frmWaterPrestoreChargeStatistics.resx">
+      <DependentUpon>frmWaterPrestoreChargeStatistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="STATISTICS\frmWaterChargeStatisticsNew.resx">
+      <DependentUpon>frmWaterChargeStatisticsNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="STATISTICS\frmInformStatistics.resx">
+      <DependentUpon>frmInformStatistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="STATISTICS\frmChargeStatistics.resx">
+      <DependentUpon>frmChargeStatistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="STATISTICS\frmChargeStatisticsAll.resx">
+      <DependentUpon>frmChargeStatisticsAll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="STATISTICS\财务报表\应收统计\frmWaterMeterYSStatics_AllYear.resx">
+      <DependentUpon>frmWaterMeterYSStatics_AllYear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SEARCH\台账一户式查询\frmWaterUserSearchAll.resx">
+      <DependentUpon>frmWaterUserSearchAll.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\onebit_02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Resources\打印.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\print-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\preview.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\print-preview1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\snap_undo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\onebit_20.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

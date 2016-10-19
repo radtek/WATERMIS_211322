@@ -1,0 +1,558 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{629B66AB-079D-4AF2-B2E7-F8730130FF42}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WATERFEEMANAGE</RootNamespace>
+    <AssemblyName>WATERFEEMANAGE</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkSubset>
+    </TargetFrameworkSubset>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BASEFUNCTION, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WATERMIS\bin\x86\Debug\BASEFUNCTION.dll</HintPath>
+    </Reference>
+    <Reference Include="FastReport, Version=2014.4.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WATERMIS\bin\x86\Debug\FastReport.dll</HintPath>
+    </Reference>
+    <Reference Include="FastReport.Bars, Version=2014.4.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WATERMIS\bin\x86\Debug\FastReport.Bars.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.9.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WATERMIS\bin\x86\Debug\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrestoreTransfer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrestoreTransfer.Designer.cs">
+      <DependentUpon>frmPrestoreTransfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="发票预打\frmSelectFeeType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="发票预打\frmSelectFeeType.Designer.cs">
+      <DependentUpon>frmSelectFeeType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="抄表管理\frmChangeEndNumber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="抄表管理\frmChangeEndNumber.Designer.cs">
+      <DependentUpon>frmChangeEndNumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmChangeWaterUserMesApply.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChangeWaterUserMesApply.Designer.cs">
+      <DependentUpon>frmChangeWaterUserMesApply.cs</DependentUpon>
+    </Compile>
+    <Compile Include="抄表管理\frmReadMeterRecordNullSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="抄表管理\frmReadMeterRecordNullSearch.Designer.cs">
+      <DependentUpon>frmReadMeterRecordNullSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="日结\frmChargeEveryDay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="日结\frmChargeEveryDay.Designer.cs">
+      <DependentUpon>frmChargeEveryDay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrestoreCharge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrestoreCharge.Designer.cs">
+      <DependentUpon>frmPrestoreCharge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrintInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrintInvoice.Designer.cs">
+      <DependentUpon>frmPrintInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="日结\frmWaterFeeCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="日结\frmWaterFeeCheck.Designer.cs">
+      <DependentUpon>frmWaterFeeCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWaterMeterReadUnInitialSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWaterMeterReadUnInitialSearch.Designer.cs">
+      <DependentUpon>frmWaterMeterReadUnInitialSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSeniorSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSeniorSearch.Designer.cs">
+      <DependentUpon>frmSeniorSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWaterUserSeniorSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWaterUserSeniorSearch.Designer.cs">
+      <DependentUpon>frmWaterUserSeniorSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="红字冲销\frmRedCancelCharge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="红字冲销\frmRedCancelCharge.Designer.cs">
+      <DependentUpon>frmRedCancelCharge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="红字冲销\frmRedCancelSelectItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="红字冲销\frmRedCancelSelectItem.Designer.cs">
+      <DependentUpon>frmRedCancelSelectItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRestoreChargeCancel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRestoreChargeCancel.Designer.cs">
+      <DependentUpon>frmRestoreChargeCancel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSingleChargeSelectWaterUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSingleChargeSelectWaterUser.Designer.cs">
+      <DependentUpon>frmSingleChargeSelectWaterUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWait.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWait.Designer.cs">
+      <DependentUpon>frmWait.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWaterFeeRemitCancel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWaterFeeRemitCancel.Designer.cs">
+      <DependentUpon>frmWaterFeeRemitCancel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWaterMeterChargeCancel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWaterMeterChargeCancel.Designer.cs">
+      <DependentUpon>frmWaterMeterChargeCancel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="抄表管理\frmWaterMeterReadInitial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="抄表管理\frmWaterMeterReadInitial.Designer.cs">
+      <DependentUpon>frmWaterMeterReadInitial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrestoreWaterUserManualCharge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrestoreWaterUserManualCharge.Designer.cs">
+      <DependentUpon>frmPrestoreWaterUserManualCharge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="抄表管理\frmWaterMeterRead.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="抄表管理\frmWaterMeterRead.Designer.cs">
+      <DependentUpon>frmWaterMeterRead.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="抄表管理\frmWaterMeterReadCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="抄表管理\frmWaterMeterReadCheck.Designer.cs">
+      <DependentUpon>frmWaterMeterReadCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="抄表管理\frmWaterMeterReadUnCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="抄表管理\frmWaterMeterReadUnCheck.Designer.cs">
+      <DependentUpon>frmWaterMeterReadUnCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWaterMeterReadBatchCharge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWaterMeterReadBatchCharge.Designer.cs">
+      <DependentUpon>frmWaterMeterReadBatchCharge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWaterMeterReadRemitCharge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWaterMeterReadRemitCharge.Designer.cs">
+      <DependentUpon>frmWaterMeterReadRemitCharge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="抄表管理\frmWaterMeterReadInitialSencond.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="抄表管理\frmWaterMeterReadInitialSencond.Designer.cs">
+      <DependentUpon>frmWaterMeterReadInitialSencond.cs</DependentUpon>
+    </Compile>
+    <Compile Include="抄表管理\frmChangeWaterUserName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="抄表管理\frmChangeWaterUserName.Designer.cs">
+      <DependentUpon>frmChangeWaterUserName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInformRePrintAndCancel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInformRePrintAndCancel.Designer.cs">
+      <DependentUpon>frmInformRePrintAndCancel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="红字冲销\frmRedCancelPrestoreCharge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="红字冲销\frmRedCancelPrestoreCharge.Designer.cs">
+      <DependentUpon>frmRedCancelPrestoreCharge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWaterMeterChargeInvoicePrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWaterMeterChargeInvoicePrint.Designer.cs">
+      <DependentUpon>frmWaterMeterChargeInvoicePrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWaterMeterReadSingleCharge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWaterMeterReadSingleCharge.Designer.cs">
+      <DependentUpon>frmWaterMeterReadSingleCharge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWaterMeterReadSingleChargeAll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWaterMeterReadSingleChargeAll.Designer.cs">
+      <DependentUpon>frmWaterMeterReadSingleChargeAll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrintInvoiceCancel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrintInvoiceCancel.Designer.cs">
+      <DependentUpon>frmPrintInvoiceCancel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrestoreReturnBack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrestoreReturnBack.Designer.cs">
+      <DependentUpon>frmPrestoreReturnBack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWaterFeeInformPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWaterFeeInformPrint.Designer.cs">
+      <DependentUpon>frmWaterFeeInformPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="日结\frmChargeEveryDayAll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="日结\frmChargeEveryDayAll.Designer.cs">
+      <DependentUpon>frmChargeEveryDayAll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="抄表管理\frmWaterMeterReadCanModify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="抄表管理\frmWaterMeterReadCanModify.Designer.cs">
+      <DependentUpon>frmWaterMeterReadCanModify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWaterFeeDayCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWaterFeeDayCheck.Designer.cs">
+      <DependentUpon>frmWaterFeeDayCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="发票预打\frmWaterMeterChargeValueAddedPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="发票预打\frmWaterMeterChargeValueAddedPrint.Designer.cs">
+      <DependentUpon>frmWaterMeterChargeValueAddedPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="发票预打\frmWaterMeterChargeValueAddedrRePrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="发票预打\frmWaterMeterChargeValueAddedrRePrint.Designer.cs">
+      <DependentUpon>frmWaterMeterChargeValueAddedrRePrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="发票预打\frmWaterMeterChargeOnAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="发票预打\frmWaterMeterChargeOnAccount.Designer.cs">
+      <DependentUpon>frmWaterMeterChargeOnAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWaterMeterChargeInvoiceRePrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWaterMeterChargeInvoiceRePrint.Designer.cs">
+      <DependentUpon>frmWaterMeterChargeInvoiceRePrint.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{1A522A59-6899-4106-88C9-A6E9D50DC363}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MODEL\MODEL.csproj">
+      <Project>{714F4432-3D0F-4FEA-B6E8-B2A110427451}</Project>
+      <Name>MODEL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrestoreTransfer.resx">
+      <DependentUpon>frmPrestoreTransfer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="发票预打\frmSelectFeeType.resx">
+      <DependentUpon>frmSelectFeeType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="抄表管理\frmChangeEndNumber.resx">
+      <DependentUpon>frmChangeEndNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChangeWaterUserMesApply.resx">
+      <DependentUpon>frmChangeWaterUserMesApply.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="抄表管理\frmReadMeterRecordNullSearch.resx">
+      <DependentUpon>frmReadMeterRecordNullSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="日结\frmChargeEveryDay.resx">
+      <DependentUpon>frmChargeEveryDay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrestoreCharge.resx">
+      <DependentUpon>frmPrestoreCharge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrintInvoice.resx">
+      <DependentUpon>frmPrintInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="日结\frmWaterFeeCheck.resx">
+      <DependentUpon>frmWaterFeeCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWaterMeterReadUnInitialSearch.resx">
+      <DependentUpon>frmWaterMeterReadUnInitialSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSeniorSearch.resx">
+      <DependentUpon>frmSeniorSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWaterUserSeniorSearch.resx">
+      <DependentUpon>frmWaterUserSeniorSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="红字冲销\frmRedCancelCharge.resx">
+      <DependentUpon>frmRedCancelCharge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="红字冲销\frmRedCancelSelectItem.resx">
+      <DependentUpon>frmRedCancelSelectItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRestoreChargeCancel.resx">
+      <DependentUpon>frmRestoreChargeCancel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSingleChargeSelectWaterUser.resx">
+      <DependentUpon>frmSingleChargeSelectWaterUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWait.resx">
+      <DependentUpon>frmWait.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWaterFeeRemitCancel.resx">
+      <DependentUpon>frmWaterFeeRemitCancel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWaterMeterChargeCancel.resx">
+      <DependentUpon>frmWaterMeterChargeCancel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="抄表管理\frmWaterMeterRead.resx">
+      <DependentUpon>frmWaterMeterRead.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="抄表管理\frmWaterMeterReadInitial.resx">
+      <DependentUpon>frmWaterMeterReadInitial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrestoreWaterUserManualCharge.resx">
+      <DependentUpon>frmPrestoreWaterUserManualCharge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="抄表管理\frmWaterMeterReadCheck.resx">
+      <DependentUpon>frmWaterMeterReadCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="抄表管理\frmWaterMeterReadUnCheck.resx">
+      <DependentUpon>frmWaterMeterReadUnCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWaterMeterReadBatchCharge.resx">
+      <DependentUpon>frmWaterMeterReadBatchCharge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWaterMeterReadRemitCharge.resx">
+      <DependentUpon>frmWaterMeterReadRemitCharge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="抄表管理\frmWaterMeterReadInitialSencond.resx">
+      <DependentUpon>frmWaterMeterReadInitialSencond.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="抄表管理\frmChangeWaterUserName.resx">
+      <DependentUpon>frmChangeWaterUserName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInformRePrintAndCancel.resx">
+      <DependentUpon>frmInformRePrintAndCancel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="红字冲销\frmRedCancelPrestoreCharge.resx">
+      <DependentUpon>frmRedCancelPrestoreCharge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWaterMeterChargeInvoicePrint.resx">
+      <DependentUpon>frmWaterMeterChargeInvoicePrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWaterMeterReadSingleCharge.resx">
+      <DependentUpon>frmWaterMeterReadSingleCharge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWaterMeterReadSingleChargeAll.resx">
+      <DependentUpon>frmWaterMeterReadSingleChargeAll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrintInvoiceCancel.resx">
+      <DependentUpon>frmPrintInvoiceCancel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrestoreReturnBack.resx">
+      <DependentUpon>frmPrestoreReturnBack.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWaterFeeInformPrint.resx">
+      <DependentUpon>frmWaterFeeInformPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="日结\frmChargeEveryDayAll.resx">
+      <DependentUpon>frmChargeEveryDayAll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="抄表管理\frmWaterMeterReadCanModify.resx">
+      <DependentUpon>frmWaterMeterReadCanModify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWaterFeeDayCheck.resx">
+      <DependentUpon>frmWaterFeeDayCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="发票预打\frmWaterMeterChargeValueAddedPrint.resx">
+      <DependentUpon>frmWaterMeterChargeValueAddedPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="发票预打\frmWaterMeterChargeValueAddedrRePrint.resx">
+      <DependentUpon>frmWaterMeterChargeValueAddedrRePrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="发票预打\frmWaterMeterChargeOnAccount.resx">
+      <DependentUpon>frmWaterMeterChargeOnAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWaterMeterChargeInvoiceRePrint.resx">
+      <DependentUpon>frmWaterMeterChargeInvoiceRePrint.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\action_add.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\action_delete.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reply.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Resources\search.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2897814_144722712129_2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\反审核.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\审核.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\onebit_20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\打印.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\onebit_34.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\redcancelguid.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\numberinformation.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\peple.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\onebit_02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flow.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="增值税发票开具\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

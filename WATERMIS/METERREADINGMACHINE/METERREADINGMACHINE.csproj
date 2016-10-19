@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{800B62BF-C3B6-40BA-BF97-48A7EE3CBDBE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>METERREADINGMACHINE</RootNamespace>
+    <AssemblyName>METERREADINGMACHINE</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkSubset>
+    </TargetFrameworkSubset>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BASEFUNCTION, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WATERMIS\bin\x86\Debug\BASEFUNCTION.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmConnectMachine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConnectMachine.Designer.cs">
+      <DependentUpon>frmConnectMachine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFromMachineManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFromMachineManage.Designer.cs">
+      <DependentUpon>frmFromMachineManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSeniorSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSeniorSearch.Designer.cs">
+      <DependentUpon>frmSeniorSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWaterMeterCharge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWaterMeterCharge.Designer.cs">
+      <DependentUpon>frmWaterMeterCharge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="frmToMachineManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmToMachineManage.Designer.cs">
+      <DependentUpon>frmToMachineManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMeterReadingMachineManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMeterReadingMachineManage.Designer.cs">
+      <DependentUpon>frmMeterReadingMachineManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWaterUserCharge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWaterUserCharge.Designer.cs">
+      <DependentUpon>frmWaterUserCharge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmToMachineManageCustomData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmToMachineManageCustomData.Designer.cs">
+      <DependentUpon>frmToMachineManageCustomData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="振中抄表机\frmToMachineManage_ZhenZhong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="振中抄表机\frmToMachineManage_ZhenZhong.Designer.cs">
+      <DependentUpon>frmToMachineManage_ZhenZhong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="振中抄表机\frmFromMachineManage_ZhenZhong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="振中抄表机\frmFromMachineManage_ZhenZhong.Designer.cs">
+      <DependentUpon>frmFromMachineManage_ZhenZhong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="振中抄表机\frmMeterReadingMachineManage_ZhenZhong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="振中抄表机\frmMeterReadingMachineManage_ZhenZhong.Designer.cs">
+      <DependentUpon>frmMeterReadingMachineManage_ZhenZhong.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmConnectMachine.resx">
+      <DependentUpon>frmConnectMachine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFromMachineManage.resx">
+      <DependentUpon>frmFromMachineManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSeniorSearch.resx">
+      <DependentUpon>frmSeniorSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmToMachineManage.resx">
+      <DependentUpon>frmToMachineManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMeterReadingMachineManage.resx">
+      <DependentUpon>frmMeterReadingMachineManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWaterMeterCharge.resx">
+      <DependentUpon>frmWaterMeterCharge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWaterUserCharge.resx">
+      <DependentUpon>frmWaterUserCharge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmToMachineManageCustomData.resx">
+      <DependentUpon>frmToMachineManageCustomData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="振中抄表机\frmToMachineManage_ZhenZhong.resx">
+      <DependentUpon>frmToMachineManage_ZhenZhong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="振中抄表机\frmFromMachineManage_ZhenZhong.resx">
+      <DependentUpon>frmFromMachineManage_ZhenZhong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="振中抄表机\frmMeterReadingMachineManage_ZhenZhong.resx">
+      <DependentUpon>frmMeterReadingMachineManage_ZhenZhong.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{1A522A59-6899-4106-88C9-A6E9D50DC363}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MODEL\MODEL.csproj">
+      <Project>{714F4432-3D0F-4FEA-B6E8-B2A110427451}</Project>
+      <Name>MODEL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

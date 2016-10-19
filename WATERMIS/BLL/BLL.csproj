@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1A522A59-6899-4106-88C9-A6E9D50DC363}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BLL</RootNamespace>
+    <AssemblyName>BLL</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkSubset>
+    </TargetFrameworkSubset>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLLAREA.cs" />
+    <Compile Include="BLLBASE_AUTHORITY.cs" />
+    <Compile Include="BLLBASE_BANK.cs" />
+    <Compile Include="BLLBASE_DEPARTMENT.cs" />
+    <Compile Include="BLLBASE_LOGIN.cs" />
+    <Compile Include="BLLBASE_POST.cs" />
+    <Compile Include="BLLCHARGETYPE.cs" />
+    <Compile Include="BLLFILEUPLOAD.cs" />
+    <Compile Include="BLLINFORMCANCELRECORD.cs" />
+    <Compile Include="BLLreadMeterReord.cs" />
+    <Compile Include="BLLSYSTEMARGUMENTS.cs" />
+    <Compile Include="BLLwaterMeterPosition.cs" />
+    <Compile Include="BLLwaterMeterSize.cs" />
+    <Compile Include="BLLwaterUserType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="BLLloginGroup.cs" />
+    <Compile Include="BLLEXTRACHARGE.cs" />
+    <Compile Include="BLLWATERMETERTYPE.cs" />
+    <Compile Include="BLLmeterReading.cs" />
+    <Compile Include="BLLwaterUser.cs" />
+    <Compile Include="BLLwaterMeter.cs" />
+    <Compile Include="BLLWATERFEECHARGE.cs" />
+    <Compile Include="BLLCHARGEINVOICEPRINT.cs" />
+    <Compile Include="BLLreadMeterRecordCancel.cs" />
+    <Compile Include="BLLPRESTORERUNNINGACCOUNT.cs" />
+    <Compile Include="BLLWATERFEEREMIT.cs" />
+    <Compile Include="BLLINVOICESTOCKS.cs" />
+    <Compile Include="BLLINVOICEBATCH.cs" />
+    <Compile Include="BLLINVOICEFETCH.cs" />
+    <Compile Include="BLLOPERATORLOG.cs" />
+    <Compile Include="BLLMESSAGESEND.cs" />
+    <Compile Include="BLLMESSAGERECEIVE.cs" />
+    <Compile Include="BLLBASE_PIAN.cs" />
+    <Compile Include="BLLBASE_DUAN.cs" />
+    <Compile Include="BLLBASE_COMMUNITY.cs" />
+    <Compile Include="BLLWATERMETERTYPECLASS.cs" />
+    <Compile Include="BLLDAYCHECKPERSONAL.cs" />
+    <Compile Include="BLLACCOUNTSRUNNING.cs" />
+    <Compile Include="BLLSETTLEACCOUNTYS.cs" />
+    <Compile Include="BLLSETTLEACCOUNTSS.cs" />
+    <Compile Include="BLLRECEIPTFETCH.cs" />
+    <Compile Include="BLLNullReadReasonMemo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DBUtility\DBUtility.csproj">
+      <Project>{80D145CD-0A7C-49FB-BEF5-45DC8D5892A1}</Project>
+      <Name>DBUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MODEL\MODEL.csproj">
+      <Project>{714F4432-3D0F-4FEA-B6E8-B2A110427451}</Project>
+      <Name>MODEL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

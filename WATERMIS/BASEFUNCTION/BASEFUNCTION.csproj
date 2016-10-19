@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{ACBD9B62-1323-4264-A4D6-B600705D9228}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BASEFUNCTION</RootNamespace>
+    <AssemblyName>BASEFUNCTION</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkSubset>
+    </TargetFrameworkSubset>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FastReport, Version=2014.4.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WATERMIS\bin\x86\Debug\FastReport.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.9.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WATERMIS\bin\x86\Debug\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DockContentEx.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="moveControl.cs" />
+    <Compile Include="ReadConfig.cs" />
+    <Compile Include="ExportExcel.cs" />
+    <Compile Include="frmConnectConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConnectConfig.Designer.cs">
+      <DependentUpon>frmConnectConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQuestionDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQuestionDialog.Designer.cs">
+      <DependentUpon>frmQuestionDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportDesigner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportDesigner.Designer.cs">
+      <DependentUpon>frmReportDesigner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWaiting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWaiting.Designer.cs">
+      <DependentUpon>frmWaiting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWaitSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWaitSearch.Designer.cs">
+      <DependentUpon>frmWaitSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GetID.cs" />
+    <Compile Include="GETTABLEID.cs" />
+    <Compile Include="ListItem.cs" />
+    <Compile Include="Log.cs" />
+    <Compile Include="Messages.cs" />
+    <Compile Include="PinYinConvert.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RMBLowerToUpper.cs" />
+    <Compile Include="RMBToCapMoney.cs" />
+    <Compile Include="ucPageSetUp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucPageSetUp.Designer.cs">
+      <DependentUpon>ucPageSetUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWaitSearchCanCancel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWaitSearchCanCancel.Designer.cs">
+      <DependentUpon>frmWaitSearchCanCancel.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DockContentEx.resx">
+      <DependentUpon>DockContentEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConnectConfig.resx">
+      <DependentUpon>frmConnectConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQuestionDialog.resx">
+      <DependentUpon>frmQuestionDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportDesigner.resx">
+      <DependentUpon>frmReportDesigner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWaiting.resx">
+      <DependentUpon>frmWaiting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWaitSearch.resx">
+      <DependentUpon>frmWaitSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucPageSetUp.resx">
+      <DependentUpon>ucPageSetUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWaitSearchCanCancel.resx">
+      <DependentUpon>frmWaitSearchCanCancel.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\登录界面.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\onebit_34.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\onebit_341.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\onebit_02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\onebit_31.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\onebit_18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>4</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2897814_144722712129_2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\process.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DBUtility\DBUtility.csproj">
+      <Project>{80D145CD-0A7C-49FB-BEF5-45DC8D5892A1}</Project>
+      <Name>DBUtility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

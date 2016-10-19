@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{471368F3-06F3-42B1-B851-B19EF964B493}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BASEMANAGE</RootNamespace>
+    <AssemblyName>BASEMANAGE</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkSubset>
+    </TargetFrameworkSubset>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BASEFUNCTION, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WATERMIS\bin\x86\Debug\BASEFUNCTION.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.9.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WATERMIS\bin\x86\Debug\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmAreaManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAreaManage.Designer.cs">
+      <DependentUpon>frmAreaManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBankManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBankManage.Designer.cs">
+      <DependentUpon>frmBankManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCompanyMes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCompanyMes.Designer.cs">
+      <DependentUpon>frmCompanyMes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDepartment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDepartment.Designer.cs">
+      <DependentUpon>FrmDepartment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogAuthority.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogAuthority.designer.cs">
+      <DependentUpon>frmLogAuthority.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPost.Designer.cs">
+      <DependentUpon>frmPost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWaterMeTerPosition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWaterMeTerPosition.Designer.cs">
+      <DependentUpon>frmWaterMeTerPosition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWaterMeterSize.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWaterMeterSize.Designer.cs">
+      <DependentUpon>frmWaterMeterSize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWaterUserType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWaterUserType.Designer.cs">
+      <DependentUpon>frmWaterUserType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="frmExtraChargeManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmExtraChargeManage.Designer.cs">
+      <DependentUpon>frmExtraChargeManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWaterMeterType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWaterMeterType.Designer.cs">
+      <DependentUpon>frmWaterMeterType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPianManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPianManage.Designer.cs">
+      <DependentUpon>frmPianManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDuanManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDuanManage.Designer.cs">
+      <DependentUpon>frmDuanManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCommunityManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCommunityManage.Designer.cs">
+      <DependentUpon>frmCommunityManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNullReadReason.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNullReadReason.Designer.cs">
+      <DependentUpon>frmNullReadReason.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmAreaManage.resx">
+      <DependentUpon>frmAreaManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBankManage.resx">
+      <DependentUpon>frmBankManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCompanyMes.resx">
+      <DependentUpon>frmCompanyMes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDepartment.resx">
+      <DependentUpon>FrmDepartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogAuthority.resx">
+      <DependentUpon>frmLogAuthority.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPost.resx">
+      <DependentUpon>frmPost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWaterMeTerPosition.resx">
+      <DependentUpon>frmWaterMeTerPosition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWaterMeterSize.resx">
+      <DependentUpon>frmWaterMeterSize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWaterUserType.resx">
+      <DependentUpon>frmWaterUserType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExtraChargeManage.resx">
+      <DependentUpon>frmExtraChargeManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWaterMeterType.resx">
+      <DependentUpon>frmWaterMeterType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPianManage.resx">
+      <DependentUpon>frmPianManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDuanManage.resx">
+      <DependentUpon>frmDuanManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCommunityManage.resx">
+      <DependentUpon>frmCommunityManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNullReadReason.resx">
+      <DependentUpon>frmNullReadReason.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\onebit_33.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\onebit_34.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\onebit_02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\onebit_20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Resources\onebit_31.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{1A522A59-6899-4106-88C9-A6E9D50DC363}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBUtility\DBUtility.csproj">
+      <Project>{80D145CD-0A7C-49FB-BEF5-45DC8D5892A1}</Project>
+      <Name>DBUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MODEL\MODEL.csproj">
+      <Project>{714F4432-3D0F-4FEA-B6E8-B2A110427451}</Project>
+      <Name>MODEL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\登录界面.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\onebit_15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\print.gif" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

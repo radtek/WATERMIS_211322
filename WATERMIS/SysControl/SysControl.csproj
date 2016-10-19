@@ -1,0 +1,412 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{10BDADD7-D8EA-4D19-AD9D-A7678BBB5CD8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SysControl</RootNamespace>
+    <AssemblyName>SysControl</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkSubset>
+    </TargetFrameworkSubset>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CreateForm.cs" />
+    <Compile Include="FrmGroupPeople_Show.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGroupPeople_Show.Designer.cs">
+      <DependentUpon>FrmGroupPeople_Show.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmWorkPoint_Show.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmWorkPoint_Show.Designer.cs">
+      <DependentUpon>FrmWorkPoint_Show.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="SysEquipment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SysEquipment.Designer.cs">
+      <DependentUpon>SysEquipment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_ApproveList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_ApproveList.Designer.cs">
+      <DependentUpon>UC_ApproveList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Approve_Infos.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Approve_Infos.Designer.cs">
+      <DependentUpon>UC_Approve_Infos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_ChargeInput.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_ChargeInput.Designer.cs">
+      <DependentUpon>UC_ChargeInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_ChargeItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_ChargeItem.Designer.cs">
+      <DependentUpon>UC_ChargeItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_ChargePoint.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_ChargePoint.Designer.cs">
+      <DependentUpon>UC_ChargePoint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_DataGridView_Page.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_DataGridView_Page.Designer.cs">
+      <DependentUpon>UC_DataGridView_Page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_DepartmentFee.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_DepartmentFee.Designer.cs">
+      <DependentUpon>UC_DepartmentFee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_FlowList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_FlowList.Designer.cs">
+      <DependentUpon>UC_FlowList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_FlowModule.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_FlowModule.Designer.cs">
+      <DependentUpon>UC_FlowModule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_GroupUserList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_GroupUserList.Designer.cs">
+      <DependentUpon>UC_GroupUserList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Menu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Menu.Designer.cs">
+      <DependentUpon>UC_Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_MeterInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_MeterInfo.Designer.cs">
+      <DependentUpon>UC_MeterInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_PageControlBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_PageControlBar.Designer.cs">
+      <DependentUpon>UC_PageControlBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_SearchApprove.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_SearchApprove.Designer.cs">
+      <DependentUpon>UC_SearchApprove.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_SearchCharge.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_SearchCharge.Designer.cs">
+      <DependentUpon>UC_SearchCharge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_SearchModule.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_SearchModule.Designer.cs">
+      <DependentUpon>UC_SearchModule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_SearchSimple.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_SearchSimple.Designer.cs">
+      <DependentUpon>UC_SearchSimple.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_UserDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_UserDetails.Designer.cs">
+      <DependentUpon>UC_UserDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_UserInfos.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_UserInfos.Designer.cs">
+      <DependentUpon>UC_UserInfos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Approve_GroupInfos.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Approve_GroupInfos.Designer.cs">
+      <DependentUpon>UC_Approve_GroupInfos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_UserMeterDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_UserMeterDetails.Designer.cs">
+      <DependentUpon>UC_UserMeterDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_UserSearch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_UserSearch.Designer.cs">
+      <DependentUpon>UC_UserSearch.cs</DependentUpon>
+    </Compile>
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FrmGroupPeople_Show.resx">
+      <DependentUpon>FrmGroupPeople_Show.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmWorkPoint_Show.resx">
+      <DependentUpon>FrmWorkPoint_Show.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SysEquipment.resx">
+      <DependentUpon>SysEquipment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_ApproveList.resx">
+      <DependentUpon>UC_ApproveList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Approve_Infos.resx">
+      <DependentUpon>UC_Approve_Infos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_ChargeInput.resx">
+      <DependentUpon>UC_ChargeInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_ChargeItem.resx">
+      <DependentUpon>UC_ChargeItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_ChargePoint.resx">
+      <DependentUpon>UC_ChargePoint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_DataGridView_Page.resx">
+      <DependentUpon>UC_DataGridView_Page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_DepartmentFee.resx">
+      <DependentUpon>UC_DepartmentFee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_FlowList.resx">
+      <DependentUpon>UC_FlowList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_FlowModule.resx">
+      <DependentUpon>UC_FlowModule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_GroupUserList.resx">
+      <DependentUpon>UC_GroupUserList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Menu.resx">
+      <DependentUpon>UC_Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_MeterInfo.resx">
+      <DependentUpon>UC_MeterInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_PageControlBar.resx">
+      <DependentUpon>UC_PageControlBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_SearchApprove.resx">
+      <DependentUpon>UC_SearchApprove.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_SearchCharge.resx">
+      <DependentUpon>UC_SearchCharge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_SearchModule.resx">
+      <DependentUpon>UC_SearchModule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_SearchSimple.resx">
+      <DependentUpon>UC_SearchSimple.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_UserDetails.resx">
+      <DependentUpon>UC_UserDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_UserInfos.resx">
+      <DependentUpon>UC_UserInfos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Approve_GroupInfos.resx">
+      <DependentUpon>UC_Approve_GroupInfos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_UserMeterDetails.resx">
+      <DependentUpon>UC_UserMeterDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_UserSearch.resx">
+      <DependentUpon>UC_UserSearch.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{F1DAC157-5CF0-4ABE-AB30-E1B0EADA5354}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBinterface\DBinterface.csproj">
+      <Project>{1D1E2E75-6B84-446F-A446-0D7BE7A3502D}</Project>
+      <Name>DBinterface</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\17.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\19.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\25.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\27.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\31.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\36.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\38.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\39.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\41.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\42.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\47.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\49.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\54.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\55.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\56.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\58.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\59.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
