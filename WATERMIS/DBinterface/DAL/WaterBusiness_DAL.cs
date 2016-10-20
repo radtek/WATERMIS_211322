@@ -72,5 +72,11 @@ SELECT @IsExit";
             return _Price;
         }
 
+        public DataTable GetWaterUserFee(string waterUserId)
+        {
+            string sqlstr = "SELECT prestore-TOTALFEE AS FEE,TOTALNUMBER  FROM V_WATERUSERAREARAGE WHERE waterUserId=@waterUserId";
+            return new SqlServerHelper().GetDateTableBySql(sqlstr, new SqlParameter[] { new SqlParameter("@waterUserId", waterUserId) });
+        }
+
     }
 }

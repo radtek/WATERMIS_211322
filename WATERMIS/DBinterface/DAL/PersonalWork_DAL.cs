@@ -901,5 +901,17 @@ COMMIT TRAN", ht["TableName"].ToString());
             string sqlstr = "SELECT MD.WaterUserNO,VM.waterMeterNo FROM V_WATERMETER VM,Meter_Disuse MD WHERE VM.waterUserId=MD.WaterUserNO AND MD.TaskID=@TaskID";
             return new SqlServerHelper().GetDateTableBySql(sqlstr, new SqlParameter[] { new SqlParameter("@TaskID", TaskID) });
         }
+
+        public bool SetTaskOver(string TableName, string TaskID)
+        {
+            string sqlstr = string.Format(@"SET XACT_ABORT ON
+BEGIN TRAN
+UPDATE Meter_WorkTask SET [State]=5 WHERE TaskID=@TaskID
+UPDATE Meter_Disuse SET [State]=5 WHERE TaskID=@TaskID
+COMMIT TRAN", TableName);
+
+            int count = new SqlServerHelper().UpdateByHashtable(sqlstr, new SqlParameter[] { new SqlParameter("@TaskID", TaskID) });
+            return count>0?true:false;
+        }
     }
 }

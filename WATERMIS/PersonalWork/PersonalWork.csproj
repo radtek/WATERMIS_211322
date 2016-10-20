@@ -193,6 +193,12 @@
     <Compile Include="FrmDisuse_Approve.Designer.cs">
       <DependentUpon>FrmDisuse_Approve.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmDisuse_Approve_Y.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDisuse_Approve_Y.Designer.cs">
+      <DependentUpon>FrmDisuse_Approve_Y.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDisuse_Default.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,6 +210,12 @@
     </Compile>
     <Compile Include="FrmDisUse_MeterIn.Designer.cs">
       <DependentUpon>FrmDisUse_MeterIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDisuse_Over.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDisuse_Over.Designer.cs">
+      <DependentUpon>FrmDisuse_Over.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmDisUse_StopUser.cs">
       <SubType>Form</SubType>
@@ -338,11 +350,17 @@
     <EmbeddedResource Include="FrmDisuse_Approve.resx">
       <DependentUpon>FrmDisuse_Approve.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmDisuse_Approve_Y.resx">
+      <DependentUpon>FrmDisuse_Approve_Y.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmDisuse_Default.resx">
       <DependentUpon>FrmDisuse_Default.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmDisUse_MeterIn.resx">
       <DependentUpon>FrmDisUse_MeterIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDisuse_Over.resx">
+      <DependentUpon>FrmDisuse_Over.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmDisUse_StopUser.resx">
       <DependentUpon>FrmDisUse_StopUser.cs</DependentUpon>

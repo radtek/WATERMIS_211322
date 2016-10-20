@@ -31,6 +31,7 @@ namespace PersonalWork
 
         private string _waterUserId;
         private string _waterMeterId;
+        private int _DisuserType = 0;
 
         public FrmDisUse_StopUser()
         {
@@ -73,9 +74,12 @@ namespace PersonalWork
             Hm["WATERMETERSTATE"] = 6;
             if (new SqlServerHelper().Submit_AddOrEdit("waterMeter", "waterUserId", _waterUserId, Hm))
             {
+                Hm = new SqlServerHelper().GetHashtableById("Meter_Disuse", "TaskID", TaskID);
+                _DisuserType = int.Parse(Hm["DISUSERTYPE"].ToString());
+                //_DisuserType //0-欠费；1-违章
                 Hashtable HL = new Hashtable();
                 HL["LOGTYPE"] = 2; //2-水表日志
-                HL["LOGCONTENT"] = string.Format("违章报停-停户-用户号：{0}；水表编号：{1}", _waterUserId, _waterMeterId);
+                HL["LOGCONTENT"] = string.Format("{2}报停-水表入库-用户号：{0}；水表编号：{1}", _waterUserId, _waterMeterId, _DisuserType == 0 ? "欠费" : _DisuserType == 1 ? "违章" : "其它");
                 HL["LOGDATETIME"] = DateTime.Now.ToString();
                 HL["OPERATORID"] = AppDomain.CurrentDomain.GetData("LOGINID").ToString();
                 HL["OPERATORNAME"] = AppDomain.CurrentDomain.GetData("USERNAME").ToString();

@@ -135,5 +135,7 @@ namespace DBinterface.IDAL
        DataTable GetApproveCenterSub(int MenuID);
 
        DataTable GetUserMeterInfoByTaskId(string TaskID);
+
+       bool SetTaskOver(string TableName, string TaskID);
     }
 }
