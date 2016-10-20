@@ -31,6 +31,8 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.DisuseDescribe = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
             this.LB_Num = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.LB_Fee = new System.Windows.Forms.Label();
@@ -41,8 +43,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.Btn_Submit = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.DisuseDescribe = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
             this.uC_UserMeterDetails1 = new SysControl.UC_UserMeterDetails();
             this.uC_UserSearch1 = new SysControl.UC_UserSearch();
             this.tableLayoutPanel1.SuspendLayout();
@@ -100,10 +100,36 @@
             this.panel1.Size = new System.Drawing.Size(520, 243);
             this.panel1.TabIndex = 11;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Firebrick;
+            this.label1.Location = new System.Drawing.Point(20, 105);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(269, 12);
+            this.label1.TabIndex = 89;
+            this.label1.Tag = "9999";
+            this.label1.Text = "说明：如果欠费金额是正数，该用户不存在欠费。";
+            // 
+            // DisuseDescribe
+            // 
+            this.DisuseDescribe.AllowEmpty = false;
+            this.DisuseDescribe.EmptyMessage = "";
+            this.DisuseDescribe.ErrorMessage = "";
+            this.DisuseDescribe.InputType = Common.WinControl.Ryan.RegTextbox.RyanTextBox.EMInputTypes.文本;
+            this.DisuseDescribe.Location = new System.Drawing.Point(94, 12);
+            this.DisuseDescribe.Multiline = true;
+            this.DisuseDescribe.Name = "DisuseDescribe";
+            this.DisuseDescribe.RegexExpression = "";
+            this.DisuseDescribe.RemoveSpace = false;
+            this.DisuseDescribe.Size = new System.Drawing.Size(407, 48);
+            this.DisuseDescribe.TabIndex = 88;
+            this.DisuseDescribe.ValidateState = false;
+            // 
             // LB_Num
             // 
             this.LB_Num.AutoSize = true;
-            this.LB_Num.Location = new System.Drawing.Point(276, 76);
+            this.LB_Num.Location = new System.Drawing.Point(257, 76);
             this.LB_Num.Name = "LB_Num";
             this.LB_Num.Size = new System.Drawing.Size(0, 12);
             this.LB_Num.TabIndex = 87;
@@ -111,7 +137,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(186, 75);
+            this.label8.Location = new System.Drawing.Point(186, 76);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 12);
             this.label8.TabIndex = 86;
@@ -120,7 +146,7 @@
             // LB_Fee
             // 
             this.LB_Fee.AutoSize = true;
-            this.LB_Fee.Location = new System.Drawing.Point(92, 75);
+            this.LB_Fee.Location = new System.Drawing.Point(92, 76);
             this.LB_Fee.Name = "LB_Fee";
             this.LB_Fee.Size = new System.Drawing.Size(0, 12);
             this.LB_Fee.TabIndex = 85;
@@ -128,7 +154,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(20, 75);
+            this.label10.Location = new System.Drawing.Point(20, 76);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(65, 12);
             this.label10.TabIndex = 84;
@@ -188,32 +214,6 @@
             this.Btn_Submit.Text = "提  交";
             this.Btn_Submit.UseVisualStyleBackColor = false;
             this.Btn_Submit.Click += new System.EventHandler(this.Btn_Submit_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Firebrick;
-            this.label1.Location = new System.Drawing.Point(20, 105);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(269, 12);
-            this.label1.TabIndex = 89;
-            this.label1.Tag = "9999";
-            this.label1.Text = "说明：如果欠费金额是正数，该用户不存在欠费。";
-            // 
-            // DisuseDescribe
-            // 
-            this.DisuseDescribe.AllowEmpty = false;
-            this.DisuseDescribe.EmptyMessage = "";
-            this.DisuseDescribe.ErrorMessage = "";
-            this.DisuseDescribe.InputType = Common.WinControl.Ryan.RegTextbox.RyanTextBox.EMInputTypes.文本;
-            this.DisuseDescribe.Location = new System.Drawing.Point(94, 12);
-            this.DisuseDescribe.Multiline = true;
-            this.DisuseDescribe.Name = "DisuseDescribe";
-            this.DisuseDescribe.RegexExpression = "";
-            this.DisuseDescribe.RemoveSpace = false;
-            this.DisuseDescribe.Size = new System.Drawing.Size(407, 48);
-            this.DisuseDescribe.TabIndex = 88;
-            this.DisuseDescribe.ValidateState = false;
             // 
             // uC_UserMeterDetails1
             // 

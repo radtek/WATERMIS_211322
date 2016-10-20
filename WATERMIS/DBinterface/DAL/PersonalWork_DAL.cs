@@ -159,6 +159,7 @@ COMMIT TRAN", tableName);
 
             return DbHelperSQL.ExecuteSql(sqlstr, cmdParms);
         }
+
         public int UpdateApprove_defalut(string tableName, string ResolveID, bool IsPass, string UserOpinion, string PointSort, string TaskID)
         {
             string ComputerName = new Computer().ComputerName;
@@ -166,6 +167,7 @@ COMMIT TRAN", tableName);
             return UpdateApprove_defalut(tableName, ResolveID, IsPass, UserOpinion, ip, ComputerName, PointSort, TaskID);
          
         }
+
         public int UpdateApprove_Single_defalut(string ResolveID, bool IsPass, string UserOpinion, string ip, string ComputerName, string PointSort, string TaskID)
         {
             return UpdateApprove_defalut("Meter_Install_Single", ResolveID, IsPass, UserOpinion, ip, ComputerName, PointSort, TaskID);

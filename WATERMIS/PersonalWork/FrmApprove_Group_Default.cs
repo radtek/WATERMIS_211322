@@ -152,9 +152,7 @@ namespace PersonalWork
         private void Btn_Submit_Click(object sender, EventArgs e)
         {
             Btn_Submit.Enabled = false;
-            ComputerName = new Computer().ComputerName;
-            ip = new Computer().IpAddress;
-            int count = sysidal.UpdateApprove_Single_defalut(ResolveID, IsPass.Checked, UserOpinion.Text.Trim(), ip, ComputerName, PointSort, TaskID);
+            int count = sysidal.UpdateApprove_defalut("Meter_Install_Group", ResolveID, IsPass.Checked, UserOpinion.Text.Trim(), PointSort, TaskID);
 
             if (count > 0)
             {

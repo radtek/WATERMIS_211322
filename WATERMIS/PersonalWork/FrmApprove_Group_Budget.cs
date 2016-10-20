@@ -23,8 +23,8 @@ namespace PersonalWork
         public string TaskID = string.Empty;
         public bool IsCharge = false;
 
-        private string ComputerName = "";
-        private string ip = "";
+        //private string ComputerName = "";
+        //private string ip = "";
         private string strLogID;
         private string strName;
         private string strRealName;
@@ -197,7 +197,8 @@ namespace PersonalWork
             {
                 MessageBox.Show("收费完成！");
                 Btn_Submit.Enabled = false;
-                sysidal.UpdateApprove_Single_defalut(ResolveID, true, "已收费", ip, ComputerName, PointSort, TaskID);
+                sysidal.UpdateApprove_defalut("Meter_Install_Group", ResolveID, true, "已收费", PointSort, TaskID);
+
             }
             else
             {

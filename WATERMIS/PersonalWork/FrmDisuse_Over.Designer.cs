@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDisuse_Over));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Btn_Over = new System.Windows.Forms.Button();
             this.Btn_Voided = new System.Windows.Forms.Button();
             this.Btn_Submit = new System.Windows.Forms.Button();
             this.LB_GoPointID = new System.Windows.Forms.Label();
@@ -38,7 +39,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.UserOpinion = new System.Windows.Forms.TextBox();
             this.IsPass = new System.Windows.Forms.CheckBox();
-            this.Btn_Over = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,9 +60,21 @@
             this.panel1.Size = new System.Drawing.Size(500, 370);
             this.panel1.TabIndex = 4;
             // 
+            // Btn_Over
+            // 
+            this.Btn_Over.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Btn_Over.ForeColor = System.Drawing.Color.Maroon;
+            this.Btn_Over.Location = new System.Drawing.Point(417, 302);
+            this.Btn_Over.Name = "Btn_Over";
+            this.Btn_Over.Size = new System.Drawing.Size(71, 29);
+            this.Btn_Over.TabIndex = 9;
+            this.Btn_Over.Text = "结束审批";
+            this.Btn_Over.UseVisualStyleBackColor = true;
+            this.Btn_Over.Click += new System.EventHandler(this.Btn_Over_Click);
+            // 
             // Btn_Voided
             // 
-            this.Btn_Voided.Location = new System.Drawing.Point(30, 317);
+            this.Btn_Voided.Location = new System.Drawing.Point(30, 290);
             this.Btn_Voided.Name = "Btn_Voided";
             this.Btn_Voided.Size = new System.Drawing.Size(129, 41);
             this.Btn_Voided.TabIndex = 8;
@@ -78,7 +90,7 @@
             this.Btn_Submit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Submit.Font = new System.Drawing.Font("微软雅黑 Light", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Btn_Submit.ForeColor = System.Drawing.Color.White;
-            this.Btn_Submit.Location = new System.Drawing.Point(165, 317);
+            this.Btn_Submit.Location = new System.Drawing.Point(165, 290);
             this.Btn_Submit.Name = "Btn_Submit";
             this.Btn_Submit.Size = new System.Drawing.Size(129, 41);
             this.Btn_Submit.TabIndex = 6;
@@ -151,16 +163,6 @@
             this.IsPass.Text = "同意";
             this.IsPass.UseVisualStyleBackColor = false;
             this.IsPass.CheckedChanged += new System.EventHandler(this.IsPass_CheckedChanged);
-            // 
-            // Btn_Over
-            // 
-            this.Btn_Over.Location = new System.Drawing.Point(300, 317);
-            this.Btn_Over.Name = "Btn_Over";
-            this.Btn_Over.Size = new System.Drawing.Size(129, 41);
-            this.Btn_Over.TabIndex = 9;
-            this.Btn_Over.Text = "结束审批";
-            this.Btn_Over.UseVisualStyleBackColor = true;
-            this.Btn_Over.Click += new System.EventHandler(this.Btn_Over_Click);
             // 
             // FrmDisuse_Over
             // 

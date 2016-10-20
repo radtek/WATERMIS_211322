@@ -21,12 +21,8 @@ namespace PersonalWork
         public string ResolveID = string.Empty;
         public string PointSort = string.Empty;
         public string TaskID = string.Empty;
-        //public bool IsCharge = false;
 
-        // private bool skip = false;
-        private string ComputerName = "";
         private string ip = "";
-        //private string DepartementID = "0";
 
         private string _waterUserId;
         private string _waterMeterId;
@@ -41,8 +37,6 @@ namespace PersonalWork
         private void Btn_Submit_Click(object sender, EventArgs e)
         {
             Btn_Submit.Enabled = false;
-            ComputerName = new Computer().ComputerName;
-            ip = new Computer().IpAddress;
 
             //水表入库：1、如果表中有记录，则更改状态；2、如果表中没有记录，则增加一条记录
             bool IsOk = false;
@@ -88,7 +82,7 @@ FROM waterMeter WHERE waterMeterId=@waterMeterId";
                 HL["MEMO"] = TaskID;
                 new SqlServerHelper().Submit_AddOrEdit("OPERATORLOG", "LOGID", "", HL);
 
-                int count = sysidal.UpdateApprove_Single_defalut(ResolveID, true, UserOpinion.Text.Trim(), ip, ComputerName, PointSort, TaskID);
+                int count = sysidal.UpdateApprove_defalut("Meter_Disuse", ResolveID, true, UserOpinion.Text.Trim(), PointSort, TaskID);
 
                 if (count > 0)
                 {

@@ -39,6 +39,21 @@ public class SqlServerHelper
         return DataTableHelper.DataTableToHashtable(dt);
     }
 
+    public Hashtable GetHashtableById(string tableName, string pkName, string pkVal, string strWhere)
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.Append("Select * From ").Append(tableName).Append(" Where ").Append(pkName).Append("=@ID");
+        if (!string.IsNullOrEmpty(strWhere))
+        {
+            sb.Append(" AND " + strWhere );
+        }
+        DataTable dt = DbHelperSQL.Query(sb.ToString(), new SqlParameter[]
+            {
+                new SqlParameter("@ID", pkVal)
+            }).Tables[0];
+        return DataTableHelper.DataTableToHashtable(dt);
+    }
+
     public int IsExist(string tableName, string pkName, string pkVal)
     {
         StringBuilder strSql = new StringBuilder();
@@ -64,7 +79,6 @@ public class SqlServerHelper
         DataTable dt = GetDateTableBySql(strSql.ToString(), param);
         return int.Parse(dt.Rows[0][0].ToString()) > 0 ? true : false;
     }
-
 
     public virtual int InsertByHashtable(string tableName, Hashtable ht)
     {
@@ -148,6 +162,7 @@ public class SqlServerHelper
     {
         return DbHelperSQL.ExecuteSql(sqlstr, cmdParms);
     }
+    
     public int UpdateByHashtable(string sqlstr)
     {
         return DbHelperSQL.ExecuteSql(sqlstr);

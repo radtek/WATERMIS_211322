@@ -23,8 +23,6 @@ namespace PersonalWork
         public bool IsCharge = false;
 
         private bool skip = false;
-        private string ComputerName = "";
-        private string ip = "";
         private string DepartementID = "0";
 
         public FrmMaintain_Default()
@@ -134,9 +132,7 @@ namespace PersonalWork
         private void Btn_Submit_Click(object sender, EventArgs e)
         {
             Btn_Submit.Enabled = false;
-            ComputerName = new Computer().ComputerName;
-            ip = new Computer().IpAddress;
-            int count = sysidal.UpdateApprove_Single_defalut(ResolveID, IsPass.Checked, UserOpinion.Text.Trim(), ip, ComputerName, PointSort, TaskID);
+            int count = sysidal.UpdateApprove_defalut("Meter_Maintain", ResolveID, IsPass.Checked, UserOpinion.Text.Trim(), PointSort, TaskID);
 
             if (count > 0)
             {
@@ -187,8 +183,8 @@ namespace PersonalWork
         {
             Btn_Submit.Enabled = false;
             Btn_Voided.Enabled = false;
-            ComputerName = new Computer().ComputerName;
-            ip = new Computer().IpAddress;
+            string ComputerName = new Computer().ComputerName;
+            string ip = new Computer().IpAddress;
             int count = sysidal.UpdateApprove_Voided(ResolveID, UserOpinion.Text.Trim(), ip, ComputerName, TaskID);
 
             if (count > 0)

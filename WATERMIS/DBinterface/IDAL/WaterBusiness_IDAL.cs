@@ -17,6 +17,8 @@ namespace DBinterface.IDAL
 
         bool IsDisabledUser(string waterUserId);
 
+        bool IsDisabledUser(string TableName, string waterUserId);
+
         float GetUserWaterPrice(string waterUserId);
 
         DataTable GetWaterUserFee(string waterUserId);

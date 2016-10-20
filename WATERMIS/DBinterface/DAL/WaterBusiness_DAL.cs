@@ -41,17 +41,32 @@ namespace DBinterface.DAL
            return new SqlServerHelper().GetHashtableById("V_WATERUSERAREARAGE", "waterUserId", waterUserId);
         }
 
-        public bool IsDisabledUser(string waterUserId)
+        public bool IsDisabledUser(string TableName, string waterUserId)
         {
-            string sqlstr = @"DECLARE @IsExit int =0
+            string sqlstr =string.Format(@"DECLARE @IsExit int =0
 SELECT @IsExit=COUNT(1) FROM V_WATERMETER where waterMeterState IN (2,5,6) AND waterUserId=@waterUserId
 if(@IsExit=0)
 begin
-SELECT @IsExit=COUNT(1) FROM Meter_Disuse WHERE [State] IN (0,1,2) AND WaterUserNO=@waterUserId
+SELECT @IsExit=COUNT(1) FROM {0} WHERE [State] IN (0,1,2) AND WaterUserNO=@waterUserId
 end
-SELECT @IsExit";
+SELECT @IsExit", TableName);
             DataTable dt = new SqlServerHelper().GetDateTableBySql(sqlstr, new SqlParameter[] { new SqlParameter("@waterUserId", waterUserId) });
             return int.Parse(dt.Rows[0][0].ToString()) > 0 ? true : false;
+        }
+
+        public bool IsDisabledUser(string waterUserId)
+        {
+//            string sqlstr = @"DECLARE @IsExit int =0
+//SELECT @IsExit=COUNT(1) FROM V_WATERMETER where waterMeterState IN (2,5,6) AND waterUserId=@waterUserId
+//if(@IsExit=0)
+//begin
+//SELECT @IsExit=COUNT(1) FROM Meter_Disuse WHERE [State] IN (0,1,2) AND WaterUserNO=@waterUserId
+//end
+//SELECT @IsExit";
+//            DataTable dt = new SqlServerHelper().GetDateTableBySql(sqlstr, new SqlParameter[] { new SqlParameter("@waterUserId", waterUserId) });
+//            return int.Parse(dt.Rows[0][0].ToString()) > 0 ? true : false;
+
+            return IsDisabledUser("Meter_Disuse", waterUserId);
         }
 
         public float GetUserWaterPrice(string waterUserId)

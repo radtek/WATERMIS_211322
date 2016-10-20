@@ -73,7 +73,7 @@ namespace WaterBusiness
                 string _TableName = "Meter_Disuse";
                 string _TablePkName = "DisuseID";
                 string _FlowCode = "Meter_Disuse2";
-                string _TaskName = "水表报停流程-监察";
+                string _TaskName = "水表报停-监察";
 
                 ht[_TablePkName] = Guid.NewGuid().ToString();
                 string SDNO = new SqlServerHelper().GetSDByTable(_TableName);
