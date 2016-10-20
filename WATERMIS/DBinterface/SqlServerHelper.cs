@@ -51,6 +51,21 @@ public class SqlServerHelper
         return DbHelperSQL.ExecuteSql(strSql.ToString(), param);
     }
 
+    public bool IsExist(string tableName, string pkName, string pkVal, string strWhere)
+    {
+        StringBuilder strSql = new StringBuilder();
+        strSql.Append("Select Count(1) from " + tableName);
+        strSql.Append(" where " + pkName + " = @" + pkName);
+        strSql.Append(" AND "+strWhere);
+        SqlParameter[] param = new SqlParameter[]
+            {
+                new SqlParameter("@" + pkName, pkVal)
+            };
+        DataTable dt = GetDateTableBySql(strSql.ToString(), param);
+        return int.Parse(dt.Rows[0][0].ToString()) > 0 ? true : false;
+    }
+
+
     public virtual int InsertByHashtable(string tableName, Hashtable ht)
     {
         StringBuilder sb = new StringBuilder();
@@ -127,6 +142,15 @@ public class SqlServerHelper
         ht[pkName] = pkVal;
         SqlParameter[] _params = this.GetParameter(ht);
         return DbHelperSQL.ExecuteSql(sb.ToString(), _params);
+    }
+
+    public int UpdateByHashtable(string sqlstr, params SqlParameter[] cmdParms)
+    {
+        return DbHelperSQL.ExecuteSql(sqlstr, cmdParms);
+    }
+    public int UpdateByHashtable(string sqlstr)
+    {
+        return DbHelperSQL.ExecuteSql(sqlstr);
     }
 
     public int DeleteData(string tableName, string pkName, string pkVal)

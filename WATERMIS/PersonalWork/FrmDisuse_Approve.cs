@@ -69,5 +69,10 @@ namespace PersonalWork
             this.DialogResult = DialogResult.OK;
         }
 
+        private void ChargeState_CheckedChanged(object sender, EventArgs e)
+        {
+            ChargeState.Text=ChargeState.Checked?"已缴费":"未缴费";
+        }
+
     }
 }

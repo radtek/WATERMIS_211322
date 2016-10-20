@@ -42,16 +42,39 @@ namespace PersonalWork
             ComputerName = new Computer().ComputerName;
             ip = new Computer().IpAddress;
 
-            Hashtable Hm = new Hashtable();
-
             //水表入库：1、如果表中有记录，则更改状态；2、如果表中没有记录，则增加一条记录
+            bool IsOk = false;
+            string sqlstr = "";
+            Hashtable Hm = new Hashtable();
+            if (new SqlServerHelper().IsExist("Meter","waterMeterId",_waterMeterId,"MeterState IN (0,1,3)"))
+            {
+                sqlstr = "UPDATE Meter SET MeterState=2 WHERE waterMeterId =@waterMeterId";
+            }
+            else
+            {
+                sqlstr = @"INSERT INTO Meter (MeterID,waterMeterId,waterMeterStartNumber,MeterState,waterUserId,waterMeterNo,
+waterMeterPositionName,waterMeterPositionId,waterMeterSizeId,waterMeterTypeId,waterMeterProduct,
+waterMeterSerialNumber,waterMeterMode,isSummaryMeter,waterMeterParentId,waterMeterMagnification,
+waterMeterMaxRange,WATERMETERLOCKNO,IsReverse,waterMeterProofreadingDate,waterMeteProofreadingPeriod)
+SELECT NEWID(),waterMeterId,0,0,waterUserId,waterMeterNo,
+waterMeterPositionName,waterMeterPositionId,waterMeterSizeId,waterMeterTypeId,waterMeterProduct,
+CASE WHEN waterMeterSerialNumber IS NULL THEN waterMeterId ELSE waterMeterSerialNumber END AS waterMeterSerialNumber,
+waterMeterMode,isSummaryMeter,waterMeterParentId,waterMeterMagnification,
+waterMeterMaxRange,WATERMETERLOCKNO,IsReverse,waterMeterProofreadingDate,waterMeteProofreadingPeriod
+FROM waterMeter WHERE waterMeterId=@waterMeterId";
+              
+            }
 
+            if (new SqlServerHelper().UpdateByHashtable(sqlstr, new SqlParameter[] { new SqlParameter("@waterMeterId", _waterMeterId) }) > 0)
+            {
+                IsOk = true;
+            }
 
-            if (new SqlServerHelper().Submit_AddOrEdit("Meter", "waterUserId", _waterUserId, Hm))
+            if (IsOk)
             {
                 Hashtable HL = new Hashtable();
                 HL["LOGTYPE"] = 2; //2-水表日志
-                HL["LOGCONTENT"] = string.Format("违章报停-用户号：{0}；水表编号：{1}", _waterUserId, _waterMeterId);
+                HL["LOGCONTENT"] = string.Format("违章报停-水表入库-用户号：{0}；水表编号：{1}", _waterUserId, _waterMeterId);
                 HL["LOGDATETIME"] = DateTime.Now.ToString();
                 HL["OPERATORID"] = AppDomain.CurrentDomain.GetData("LOGINID").ToString();
                 HL["OPERATORNAME"] = AppDomain.CurrentDomain.GetData("USERNAME").ToString();

@@ -75,7 +75,7 @@ namespace PersonalWork
             {
                 Hashtable HL = new Hashtable();
                 HL["LOGTYPE"] = 2; //2-水表日志
-                HL["LOGCONTENT"] = string.Format("违章报停-用户号：{0}；水表编号：{1}", _waterUserId, _waterMeterId);
+                HL["LOGCONTENT"] = string.Format("违章报停-停户-用户号：{0}；水表编号：{1}", _waterUserId, _waterMeterId);
                 HL["LOGDATETIME"] = DateTime.Now.ToString();
                 HL["OPERATORID"] = AppDomain.CurrentDomain.GetData("LOGINID").ToString();
                 HL["OPERATORNAME"] = AppDomain.CurrentDomain.GetData("USERNAME").ToString();

@@ -41,6 +41,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.uC_UserInfos1 = new SysControl.UC_UserInfos();
             this.uC_ApproveList1 = new SysControl.UC_ApproveList();
+            this.label2 = new System.Windows.Forms.Label();
+            this.ChargeState = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -69,13 +71,13 @@
             this.tableLayoutPanel2.Controls.Add(this.panel1, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.uC_UserInfos1, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(662, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(663, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(511, 678);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(510, 678);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // PL_Proc
@@ -84,13 +86,15 @@
             this.PL_Proc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PL_Proc.Location = new System.Drawing.Point(3, 303);
             this.PL_Proc.Name = "PL_Proc";
-            this.PL_Proc.Size = new System.Drawing.Size(505, 372);
+            this.PL_Proc.Size = new System.Drawing.Size(504, 372);
             this.PL_Proc.TabIndex = 2;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
+            this.panel1.Controls.Add(this.ChargeState);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.WaterFee);
             this.panel1.Controls.Add(this.ReportDate);
             this.panel1.Controls.Add(this.label5);
@@ -100,7 +104,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 203);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(505, 94);
+            this.panel1.Size = new System.Drawing.Size(504, 94);
             this.panel1.TabIndex = 3;
             // 
             // WaterFee
@@ -109,22 +113,22 @@
             this.WaterFee.Location = new System.Drawing.Point(83, 61);
             this.WaterFee.Name = "WaterFee";
             this.WaterFee.ReadOnly = true;
-            this.WaterFee.Size = new System.Drawing.Size(141, 21);
+            this.WaterFee.Size = new System.Drawing.Size(80, 21);
             this.WaterFee.TabIndex = 84;
             // 
             // ReportDate
             // 
             this.ReportDate.Enabled = false;
-            this.ReportDate.Location = new System.Drawing.Point(349, 61);
+            this.ReportDate.Location = new System.Drawing.Point(370, 61);
             this.ReportDate.Name = "ReportDate";
             this.ReportDate.ReadOnly = true;
-            this.ReportDate.Size = new System.Drawing.Size(141, 21);
+            this.ReportDate.Size = new System.Drawing.Size(120, 21);
             this.ReportDate.TabIndex = 83;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(280, 66);
+            this.label5.Location = new System.Drawing.Point(302, 66);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 12);
             this.label5.TabIndex = 82;
@@ -163,7 +167,7 @@
             this.uC_UserInfos1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uC_UserInfos1.Location = new System.Drawing.Point(3, 3);
             this.uC_UserInfos1.Name = "uC_UserInfos1";
-            this.uC_UserInfos1.Size = new System.Drawing.Size(505, 194);
+            this.uC_UserInfos1.Size = new System.Drawing.Size(504, 194);
             this.uC_UserInfos1.TabIndex = 4;
             // 
             // uC_ApproveList1
@@ -171,8 +175,28 @@
             this.uC_ApproveList1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uC_ApproveList1.Location = new System.Drawing.Point(3, 3);
             this.uC_ApproveList1.Name = "uC_ApproveList1";
-            this.uC_ApproveList1.Size = new System.Drawing.Size(653, 678);
+            this.uC_ApproveList1.Size = new System.Drawing.Size(654, 678);
             this.uC_ApproveList1.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(166, 66);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 12);
+            this.label2.TabIndex = 85;
+            this.label2.Text = "缴费状态：";
+            // 
+            // ChargeState
+            // 
+            this.ChargeState.AutoSize = true;
+            this.ChargeState.Location = new System.Drawing.Point(237, 64);
+            this.ChargeState.Name = "ChargeState";
+            this.ChargeState.Size = new System.Drawing.Size(60, 16);
+            this.ChargeState.TabIndex = 86;
+            this.ChargeState.Text = "未缴费";
+            this.ChargeState.UseVisualStyleBackColor = true;
+            this.ChargeState.CheckedChanged += new System.EventHandler(this.ChargeState_CheckedChanged);
             // 
             // FrmDisuse_Approve
             // 
@@ -208,5 +232,7 @@
         private SysControl.UC_UserInfos uC_UserInfos1;
         private SysControl.UC_ApproveList uC_ApproveList1;
         private System.Windows.Forms.TextBox WaterFee;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox ChargeState;
     }
 }
