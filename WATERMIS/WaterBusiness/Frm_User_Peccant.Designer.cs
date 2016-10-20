@@ -30,8 +30,8 @@
         {
             this.tb1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.uC_SearchModule1 = new SysControl.UC_SearchModule();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.uC_DataGridView_Page1 = new SysControl.UC_DataGridView_Page();
             this.uC_FlowList1 = new SysControl.UC_FlowList();
             this.tb1.SuspendLayout();
@@ -69,17 +69,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "查询条件";
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.uC_DataGridView_Page1);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(3, 99);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1076, 555);
-            this.groupBox2.TabIndex = 902;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "用户列表";
-            // 
             // uC_SearchModule1
             // 
             this.uC_SearchModule1.AutoSize = true;
@@ -95,6 +84,17 @@
             this.uC_SearchModule1.Tag = "9999";
             this.uC_SearchModule1.Load += new System.EventHandler(this.uC_SearchModule1_Load);
             this.uC_SearchModule1.BtnEvent += new System.EventHandler(this.uC_SearchModule1_BtnEvent);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.uC_DataGridView_Page1);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(3, 99);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1076, 555);
+            this.groupBox2.TabIndex = 902;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "用户列表";
             // 
             // uC_DataGridView_Page1
             // 
