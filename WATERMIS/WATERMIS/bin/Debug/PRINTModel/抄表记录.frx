@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="04/26/2015 14:44:37" ReportInfo.Modified="04/26/2015 22:02:58" ReportInfo.CreatorVersion="2014.4.8.0">
+  <Styles Name="Standard">
+    <Style Name="Title" Font="宋体, 12pt, style=Bold"/>
+    <Style Name="Header" Font="宋体, 10pt, style=Bold"/>
+    <Style Name="Group" Font="宋体, 10pt, style=Bold"/>
+    <Style Name="Data"/>
+    <Style Name="Footer"/>
+    <Style Name="EvenRows" Fill.Color="WhiteSmoke"/>
+  </Styles>
+  <Dictionary>
+    <MsSqlDataConnection Name="Connection" ConnectionString="rijcmlqq8kTaCagDxO6zlhwUlmn0X/GcdzL3BA7OjOtM4lzFQ4RtzQa0IzUcXA4nl49mccp0/ZeDpHVL93xcNr5MYYHsUoS1BkcLXngxTvbGTj+c1U62BpaNgnFqe+18/vFZTNmTCgLmRGUm553Nqx0PzC5ivv5kuDws0WVOVryScYTlNujrqMADxZUOjH1Q1SxW5yJu8tQaCruvNbp1QoTYyXDyg==">
+      <TableDataSource Name="readMeterRecord" DataType="System.Int32" Enabled="true" TableName="readMeterRecord">
+        <Column Name="readMeterRecordId" DataType="System.String"/>
+        <Column Name="readMeterRecordNo" DataType="System.String"/>
+        <Column Name="waterMeterId" DataType="System.String"/>
+        <Column Name="waterMeterNo" DataType="System.String"/>
+        <Column Name="waterMeterLastNumber" DataType="System.Int32"/>
+        <Column Name="waterMeterEndNumber" DataType="System.Int32"/>
+        <Column Name="totalNumber" DataType="System.Int32"/>
+        <Column Name="totalNumberDescribe" DataType="System.String"/>
+        <Column Name="avePrice" DataType="System.Double"/>
+        <Column Name="avePriceDescribe" DataType="System.String"/>
+        <Column Name="waterTotalCharge" DataType="System.Double"/>
+        <Column Name="extraChargePrice1" DataType="System.Double"/>
+        <Column Name="extraCharge1" DataType="System.Double"/>
+        <Column Name="extraChargePrice2" DataType="System.Double"/>
+        <Column Name="extraCharge2" DataType="System.Double"/>
+        <Column Name="extraChargePrice3" DataType="System.Double"/>
+        <Column Name="extraCharge3" DataType="System.Double"/>
+        <Column Name="extraChargePrice4" DataType="System.Double"/>
+        <Column Name="extraCharge4" DataType="System.Double"/>
+        <Column Name="extraChargePrice5" DataType="System.Double"/>
+        <Column Name="extraCharge5" DataType="System.Double"/>
+        <Column Name="extraChargePrice6" DataType="System.Double"/>
+        <Column Name="extraCharge6" DataType="System.Double"/>
+        <Column Name="extraChargePrice7" DataType="System.Double"/>
+        <Column Name="extraCharge7" DataType="System.Double"/>
+        <Column Name="extraChargePrice8" DataType="System.Double"/>
+        <Column Name="extraCharge8" DataType="System.Double"/>
+        <Column Name="extraTotalCharge" DataType="System.Double"/>
+        <Column Name="trapezoidPrice" DataType="System.String"/>
+        <Column Name="totalCharge" DataType="System.Double"/>
+        <Column Name="WATERFIXVALUE" DataType="System.Int32"/>
+        <Column Name="readMeterRecordYear" DataType="System.Int32"/>
+        <Column Name="readMeterRecordMonth" DataType="System.Int32"/>
+        <Column Name="readMeterRecordDate" DataType="System.DateTime"/>
+        <Column Name="waterMeterPositionName" DataType="System.String"/>
+        <Column Name="waterMeterSizeValue" DataType="System.Int32"/>
+        <Column Name="waterMeterTypeName" DataType="System.String"/>
+        <Column Name="waterMeterProduct" DataType="System.String"/>
+        <Column Name="waterMeterSerialNumber" DataType="System.String"/>
+        <Column Name="waterMeterMode" DataType="System.String"/>
+        <Column Name="waterMeterMagnification" DataType="System.Double"/>
+        <Column Name="waterMeterMaxRange" DataType="System.Int32"/>
+        <Column Name="areaId" DataType="System.String"/>
+        <Column Name="areaName" DataType="System.String"/>
+        <Column Name="loginId" DataType="System.String"/>
+        <Column Name="USERNAME" DataType="System.String"/>
+        <Column Name="checkState" DataType="System.String"/>
+        <Column Name="checkDateTime" DataType="System.DateTime"/>
+        <Column Name="checker" DataType="System.String"/>
+        <Column Name="chargeState" DataType="System.String"/>
+        <Column Name="chargeID" DataType="System.String"/>
+        <Column Name="waterUserId" DataType="System.String"/>
+        <Column Name="waterUserNO" DataType="System.String"/>
+        <Column Name="waterUserName" DataType="System.String"/>
+        <Column Name="waterPhone" DataType="System.String"/>
+        <Column Name="waterUserAddress" DataType="System.String"/>
+        <Column Name="waterUserPeopleCount" DataType="System.Int32"/>
+        <Column Name="meterReadingID" DataType="System.String"/>
+        <Column Name="meterReadingNO" DataType="System.String"/>
+        <Column Name="meterReadingPageNo" DataType="System.Int32"/>
+        <Column Name="waterUserTypeId" DataType="System.String"/>
+        <Column Name="waterUserTypeName" DataType="System.String"/>
+        <Column Name="waterUserCreateDate" DataType="System.DateTime"/>
+        <Column Name="agentsign" DataType="System.String"/>
+        <Column Name="bankId" DataType="System.String"/>
+        <Column Name="bankName" DataType="System.String"/>
+        <Column Name="BankAcountNumber" DataType="System.String"/>
+        <Column Name="waterMeterParentId" DataType="System.String"/>
+        <Column Name="memo" DataType="System.String"/>
+      </TableDataSource>
+    </MsSqlDataConnection>
+  </Dictionary>
+  <ReportPage Name="Page1" Landscape="true" PaperWidth="297" PaperHeight="210">
+    <ReportTitleBand Name="ReportTitle1" Width="1047.06" Height="37.8">
+      <TextObject Name="Text1" Width="1047.06" Height="37.8" Dock="Fill" Text="readMeterRecord" HorzAlign="Center" VertAlign="Center" Font="宋体, 12pt, style=Bold" Style="Title"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="41.8" Width="1047.06" Height="28.35">
+      <TextObject Name="Text3" Width="132.3" Height="18.9" Text="readMeterRecordId" Font="宋体, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text7" Left="264.6" Width="132.3" Height="18.9" Text="waterMeterId" Font="宋体, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text9" Left="396.9" Width="132.3" Height="18.9" Text="waterMeterNo" Font="宋体, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text11" Left="529.2" Width="132.3" Height="18.9" Text="waterMeterLastNumber" Font="宋体, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text13" Left="661.5" Width="132.3" Height="18.9" Text="waterMeterEndNumber" Font="宋体, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text15" Left="793.8" Width="122.85" Height="18.9" Text="totalNumber" Font="宋体, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text17" Left="916.65" Width="122.85" Height="18.9" Text="totalNumberDescribe" Font="宋体, 10pt, style=Bold" Style="Header"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="74.15" Width="1047.06" Height="18.9" EvenStyle="EvenRows" DataSource="readMeterRecord">
+      <TextObject Name="Text2" Width="132.3" Height="18.9" Text="[readMeterRecord.readMeterRecordId]" Font="宋体, 9pt" Style="Data"/>
+      <TextObject Name="Text6" Left="264.6" Width="132.3" Height="18.9" Text="[readMeterRecord.waterMeterId]" Font="宋体, 9pt" Style="Data"/>
+      <TextObject Name="Text8" Left="396.9" Width="132.3" Height="18.9" Text="[readMeterRecord.waterMeterNo]" Font="宋体, 9pt" Style="Data"/>
+      <TextObject Name="Text10" Left="529.2" Width="132.3" Height="18.9" Text="[readMeterRecord.waterMeterLastNumber]" Font="宋体, 9pt" Style="Data"/>
+      <TextObject Name="Text12" Left="661.5" Width="132.3" Height="18.9" Text="[readMeterRecord.waterMeterEndNumber]" Font="宋体, 9pt" Style="Data"/>
+      <TextObject Name="Text14" Left="793.8" Width="122.85" Height="18.9" Text="[readMeterRecord.totalNumber]" Font="宋体, 9pt" Style="Data"/>
+      <TextObject Name="Text16" Left="916.65" Width="122.85" Height="18.9" Text="[readMeterRecord.totalNumberDescribe]" Font="宋体, 9pt" Style="Data"/>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="97.05" Width="1047.06" Height="18.9">
+      <TextObject Name="Text18" Width="1047.06" Height="18.9" Dock="Fill" Text="[PageN]" HorzAlign="Right" Font="宋体, 9pt" Style="Footer"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>

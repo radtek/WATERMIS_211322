@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dictionary>
+  <TableDataSource Name="水表未收情况统计(按水表)" ReferenceName="Data.水表未收情况统计(按水表)" DataType="System.Int32" Enabled="true">
+    <Column Name="水表编号" DataType="System.String" PropName="Column"/>
+    <Column Name="用户名" DataType="System.String" PropName="Column"/>
+    <Column Name="未收期数" DataType="System.String" PropName="Column"/>
+    <Column Name="水表数量" DataType="System.String" PropName="Column"/>
+  </TableDataSource>
+</Dictionary>

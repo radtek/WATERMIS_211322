@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="05/19/2015 08:27:05" ReportInfo.Modified="05/19/2015 09:05:02" ReportInfo.CreatorVersion="2014.4.8.0">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+
+namespace FastReport
+{
+  public class ReportScript
+  {
+
+    private void Table1_ManualBuild(object sender, EventArgs e)
+    {   
+      DataSourceBase data1 = Report.GetDataSource(&quot;水表应收明细表&quot;); // 获取DataSet中表名为Table1的数据源
+      data1.Init(); // 初始化 
+    
+      Table1.PrintRow(0); // 控件Table1打印第0行
+      Table1.PrintColumns(); // 每打印一行，都要调用 PrintColumn或PrintColumns
+     
+      while(data1.HasMoreRows) // 打印重复循环的行
+      {
+        Table1.PrintRow(1);
+        Table1.PrintColumns();
+        data1.Next(); // 读取下一行
+      }
+    }
+  }
+}
+</ScriptText>
+  <Dictionary>
+    <TableDataSource Name="水表应收明细表" ReferenceName="Data.水表应收明细表" DataType="System.Int32" Enabled="true">
+      <Column Name="waterUserNO" DataType="System.String" PropName="Column"/>
+      <Column Name="waterUserName" DataType="System.String" PropName="Column"/>
+      <Column Name="waterPhone" DataType="System.String" PropName="Column"/>
+      <Column Name="waterUserAddress" DataType="System.String" PropName="Column"/>
+      <Column Name="areaName" DataType="System.String" PropName="Column"/>
+      <Column Name="meterReadingNO" DataType="System.String" PropName="Column"/>
+      <Column Name="USERNAME" DataType="System.String" PropName="Column"/>
+      <Column Name="meterReadingPageNo" DataType="System.String" PropName="Column"/>
+      <Column Name="waterUserHouseTypeS" DataType="System.String" PropName="Column"/>
+      <Column Name="waterMeterNo" DataType="System.String" PropName="Column"/>
+      <Column Name="waterMeterPositionName" DataType="System.String" PropName="Column"/>
+      <Column Name="readMeterRecordYear" DataType="System.String" PropName="Column"/>
+      <Column Name="readMeterRecordMonth" DataType="System.String" PropName="Column"/>
+      <Column Name="waterMeterLastNumber" DataType="System.String" PropName="Column"/>
+      <Column Name="waterMeterEndNumber" DataType="System.String" PropName="Column"/>
+      <Column Name="totalNumber" DataType="System.String" PropName="Column"/>
+      <Column Name="avePrice" DataType="System.String" PropName="Column"/>
+      <Column Name="waterTotalChargeEND" DataType="System.String" PropName="Column"/>
+      <Column Name="extraTotalChargeEND" DataType="System.String" PropName="Column"/>
+      <Column Name="OVERDUEEND" DataType="System.String" PropName="Column"/>
+      <Column Name="totalChargeEND" DataType="System.String" PropName="Column"/>
+    </TableDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1" RawPaperSize="9" LeftMargin="0" TopMargin="5" RightMargin="0" BottomMargin="5" FirstPageSource="15" OtherPagesSource="15">
+    <ReportTitleBand Name="ReportTitle1" Width="793.8" Height="37.8">
+      <TextObject Name="Text1" Left="316.58" Top="9.45" Width="160.65" Height="18.9" Text="水表应收明细表" Font="宋体, 14pt, style=Bold"/>
+      <LineObject Name="Line1" Left="250.42" Top="32.35" Width="292.95" Border.Width="2"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="41.8" Width="793.8" Height="207.9">
+      <TableObject Name="Table1" Left="23.62" Top="4.45" Width="746.55" Height="56.7" ManualBuildEvent="Table1_ManualBuild">
+        <TableColumn Name="Column1"/>
+        <TableColumn Name="Column2" Width="75.6"/>
+        <TableColumn Name="Column3"/>
+        <TableColumn Name="Column13" Width="37.8"/>
+        <TableColumn Name="Column12" Width="28.35"/>
+        <TableColumn Name="Column4"/>
+        <TableColumn Name="Column5"/>
+        <TableColumn Name="Column6" Width="47.25"/>
+        <TableColumn Name="Column7" Width="47.25"/>
+        <TableColumn Name="Column8"/>
+        <TableColumn Name="Column9" Width="47.25"/>
+        <TableColumn Name="Column10" Width="47.25"/>
+        <TableColumn Name="Column11" Width="85.05"/>
+        <TableRow Name="Row1" Height="37.8">
+          <TableCell Name="Cell1" Border.Lines="All" Text="用户号" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell2" Border.Lines="All" Text="水表号" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell3" Border.Lines="All" Text="用户名" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell61" Border.Lines="All" Text="年度" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell56" Border.Lines="All" Text="月份" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell4" Border.Lines="All" Text="上月指数	" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell5" Border.Lines="All" Text="本月指数" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell26" Border.Lines="All" Text="用水量" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell31" Border.Lines="All" Text="平均&#13;&#10;单价" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell36" Border.Lines="All" Text="水费小计" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell41" Border.Lines="All" Text="附加费" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell46" Border.Lines="All" Text="滞纳金" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell51" Border.Lines="All" Text="应收总计" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+        </TableRow>
+        <TableRow Name="Row2">
+          <TableCell Name="Cell6" Border.Lines="All" Text="[水表应收明细表.waterUserNO]" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell7" Border.Lines="All" Text="[水表应收明细表.waterMeterNo]" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell8" Border.Lines="All" Text="[水表应收明细表.waterUserName]" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell62" Border.Lines="All" Text="[水表应收明细表.readMeterRecordYear]" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell57" Border.Lines="All" Text="[水表应收明细表.readMeterRecordMonth]" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell9" Border.Lines="All" Text="[水表应收明细表.waterMeterLastNumber]" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell10" Border.Lines="All" Text="[水表应收明细表.waterMeterEndNumber]" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell27" Border.Lines="All" Text="[水表应收明细表.totalNumber]" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell32" Border.Lines="All" Text="[水表应收明细表.avePrice]" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell37" Border.Lines="All" Text="[水表应收明细表.waterTotalChargeEND]" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell42" Border.Lines="All" Text="[水表应收明细表.extraTotalChargeEND]" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell47" Border.Lines="All" Text="[水表应收明细表.OVERDUEEND]" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell52" Border.Lines="All" Text="[水表应收明细表.totalChargeEND]" WordWrap="false" Font="宋体, 10pt"/>
+        </TableRow>
+      </TableObject>
+    </PageHeaderBand>
+    <PageFooterBand Name="PageFooter1" Top="253.7" Width="793.8" Height="18.9"/>
+  </ReportPage>
+</Report>

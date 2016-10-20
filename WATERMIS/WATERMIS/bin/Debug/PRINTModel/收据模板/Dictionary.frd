@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dictionary>
+  <TableDataSource Name="历史抄表台账查询" ReferenceName="Data.历史抄表台账查询" DataType="System.Int32" Enabled="true">
+    <Column Name="用户编号" DataType="System.String" PropName="Column"/>
+    <Column Name="用户名称" DataType="System.String" PropName="Column"/>
+    <Column Name="联系电话" DataType="System.String" PropName="Column"/>
+    <Column Name="地址" DataType="System.String" PropName="Column"/>
+    <Column Name="片号" DataType="System.String" PropName="Column"/>
+    <Column Name="区号" DataType="System.String" PropName="Column"/>
+    <Column Name="段号" DataType="System.String" PropName="Column"/>
+    <Column Name="抄表人员姓名" DataType="System.String" PropName="Column"/>
+    <Column Name="收费人员姓名" DataType="System.String" PropName="Column"/>
+    <Column Name="收费月份" DataType="System.String" PropName="Column"/>
+    <Column Name="上月表数" DataType="System.String" PropName="Column"/>
+    <Column Name="本月表数" DataType="System.String" PropName="Column"/>
+    <Column Name="用水量" DataType="System.String" PropName="Column"/>
+    <Column Name="应收_水费" DataType="System.String" PropName="Column"/>
+    <Column Name="应收_污水费" DataType="System.String" PropName="Column"/>
+    <Column Name="应收_附加费" DataType="System.String" PropName="Column"/>
+    <Column Name="应收_滞纳金" DataType="System.String" PropName="Column"/>
+    <Column Name="应收_合计" DataType="System.String" PropName="Column"/>
+    <Column Name="预存_上次预存余额" DataType="System.String" PropName="Column"/>
+    <Column Name="预存_实缴金额" DataType="System.String" PropName="Column"/>
+    <Column Name="预存_本月预存" DataType="System.String" PropName="Column"/>
+    <Column Name="用户余额" DataType="System.String" PropName="Column"/>
+    <Column Name="收款人员姓名" DataType="System.String" PropName="Column"/>
+    <Column Name="收款日期" DataType="System.String" PropName="Column"/>
+  </TableDataSource>
+</Dictionary>

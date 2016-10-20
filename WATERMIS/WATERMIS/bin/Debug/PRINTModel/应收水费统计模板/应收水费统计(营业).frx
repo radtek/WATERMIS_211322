@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="05/19/2015 08:27:05" ReportInfo.Modified="08/22/2016 21:14:24" ReportInfo.CreatorVersion="2014.4.8.0">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+
+namespace FastReport
+{
+  public class ReportScript
+  {
+
+    private void Table1_ManualBuild(object sender, EventArgs e)
+    {   
+      DataSourceBase data1 = Report.GetDataSource(&quot;水费应收统计表(按用水性质)&quot;); // 获取DataSet中表名为Table1的数据源
+      data1.Init(); // 初始化 
+    
+      Table1.PrintRow(0); // 控件Table1打印第0行
+      Table1.PrintColumns(); // 每打印一行，都要调用 PrintColumn或PrintColumns
+     
+      while(data1.HasMoreRows) // 打印重复循环的行
+      {
+        Table1.PrintRow(1);
+        Table1.PrintColumns();
+        data1.Next(); // 读取下一行
+      }
+    }
+  }
+}
+</ScriptText>
+  <Dictionary>
+    <TableDataSource Name="水费应收统计表(按用水性质)" ReferenceName="Data.水费应收统计表(按用水性质)" DataType="System.Int32" Enabled="true">
+      <Column Name="用水性质分类" DataType="System.String" PropName="Column"/>
+      <Column Name="总户数" DataType="System.String" PropName="Column"/>
+      <Column Name="用水户数" DataType="System.String" PropName="Column"/>
+      <Column Name="用水量" DataType="System.String" PropName="Column"/>
+      <Column Name="水费" DataType="System.String" PropName="Column"/>
+      <Column Name="污水处理费" DataType="System.String" PropName="Column"/>
+      <Column Name="附加费" DataType="System.String" PropName="Column"/>
+      <Column Name="应收小计" DataType="System.String" PropName="Column"/>
+      <Column Name="应收总计" DataType="System.String" PropName="Column"/>
+      <Column Name="未收总计" DataType="System.String" PropName="Column"/>
+      <Column Name="已收总计" DataType="System.String" PropName="Column"/>
+    </TableDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1" Landscape="true" PaperWidth="297" PaperHeight="210" RawPaperSize="9" LeftMargin="5" TopMargin="0" RightMargin="5" BottomMargin="0" FirstPageSource="15" OtherPagesSource="15">
+    <ReportTitleBand Name="ReportTitle1" Width="1084.86" Height="85.05">
+      <TextObject Name="txtTitle" Left="4.73" Top="37.8" Width="1077.3" Height="22.68" Text="建平县自来水公司2014年水费应收累计汇总表" HorzAlign="Center" VertAlign="Center" Font="宋体, 16pt, style=Bold"/>
+      <LineObject Name="Line1" Left="283.5" Top="60.7" Width="529.2" Border.Width="2"/>
+      <TextObject Name="Text3" Left="890.3" Top="66.15" Width="132.3" Height="18.9" Text="单位:吨、元" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+    </ReportTitleBand>
+    <DataBand Name="Data1" Top="89.05" Width="1084.86" Height="60.48">
+      <TableObject Name="Table1" Left="59.53" Width="965.79" Height="60.48" Border.Lines="All" ManualBuildEvent="Table1_ManualBuild">
+        <TableColumn Name="Column15" Width="132.3"/>
+        <TableColumn Name="Column29" Width="94.5"/>
+        <TableColumn Name="Column14" Width="75.6"/>
+        <TableColumn Name="Column16" Width="92.61"/>
+        <TableColumn Name="Column19" Width="94.5"/>
+        <TableColumn Name="Column20" Width="88.83"/>
+        <TableColumn Name="Column17" Width="85.05"/>
+        <TableColumn Name="Column22" Width="113.4"/>
+        <TableColumn Name="Column28" Width="94.5"/>
+        <TableColumn Name="Column27" Width="94.5"/>
+        <TableRow Name="Row12" Height="30.24">
+          <TableCell Name="Cell161" Border.Lines="All" Text="用水性质" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+          <TableCell Name="Cell226" Border.Lines="All" Text="总户数" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 11pt"/>
+          <TableCell Name="Cell160" Border.Lines="All" Text="用水户数" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 11pt"/>
+          <TableCell Name="Cell162" Border.Lines="All" Text="用水量" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+          <TableCell Name="Cell163" Border.Lines="All" Text="应收水费" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+          <TableCell Name="Cell164" Border.Lines="All" Text="应收污水费" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+          <TableCell Name="Cell165" Border.Lines="All" Text="应收附加费" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+          <TableCell Name="Cell168" Border.Lines="Right, Top, Bottom" Text="应收合计" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+          <TableCell Name="Cell224" Border.Lines="All" Text="未收总计" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+          <TableCell Name="Cell216" Border.Lines="All" Text="已收总计" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+        </TableRow>
+        <TableRow Name="Row16" Height="30.24">
+          <TableCell Name="Cell201" Border.Lines="All" Text="[水费应收统计表(按用水性质).用水性质分类]" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+          <TableCell Name="Cell227" Border.Lines="All" Text="[水费应收统计表(按用水性质).总户数]" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 11pt"/>
+          <TableCell Name="Cell200" Border.Lines="All" Text="[水费应收统计表(按用水性质).用水户数]" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 11pt"/>
+          <TableCell Name="Cell202" Border.Lines="All" Text="[水费应收统计表(按用水性质).用水量]" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+          <TableCell Name="Cell203" Border.Lines="All" Text="[水费应收统计表(按用水性质).水费]" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+          <TableCell Name="Cell204" Border.Lines="All" Text="[水费应收统计表(按用水性质).污水处理费]" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+          <TableCell Name="Cell205" Border.Lines="All" Text="[水费应收统计表(按用水性质).附加费]" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+          <TableCell Name="Cell208" Border.Lines="Right, Top, Bottom" Text="[水费应收统计表(按用水性质).应收小计]" HorzAlign="Right" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+          <TableCell Name="Cell225" Border.Lines="All" Text="[水费应收统计表(按用水性质).未收总计]" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+          <TableCell Name="Cell217" Border.Lines="All" Text="[水费应收统计表(按用水性质).已收总计]" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+        </TableRow>
+      </TableObject>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="153.53" Width="1084.86" Height="47.25">
+      <TextObject Name="txtPrintDateTime" Left="66.15" Top="9.45" Width="245.7" Height="18.9" Text="打印时间:[Date]" VertAlign="Center" Font="宋体, 9pt"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>
+��计表(按用水性质).已收总计]" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+        </TableRow>
+      </TableObject>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="162.98" Width="1084.86" Height="47.25">
+      <TextObject Name="txtPrintDateTime" Left="66.15" Top="9.45" Width="245.7" Height="18.9" Text="打印时间:[Date]" VertAlign="Center" Font="宋体, 9pt"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>

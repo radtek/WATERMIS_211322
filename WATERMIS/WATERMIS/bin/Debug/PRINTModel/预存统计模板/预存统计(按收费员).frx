@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="05/19/2015 08:27:05" ReportInfo.Modified="12/16/2015 11:18:57" ReportInfo.CreatorVersion="2014.4.8.0">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+
+namespace FastReport
+{
+  public class ReportScript
+  { 
+  }  
+}
+</ScriptText>
+  <Dictionary>
+    <TableDataSource Name="预存统计(按收费员)" ReferenceName="Data.预存统计(按收费员)" DataType="System.Int32" Enabled="true">
+      <Column Name="收费员编号" DataType="System.String" PropName="Column"/>
+      <Column Name="收费员" DataType="System.String" PropName="Column"/>
+      <Column Name="单据数量" DataType="System.String" PropName="Column"/>
+      <Column Name="实收金额" DataType="System.String" PropName="Column"/>
+      <Column Name="现金收费" DataType="System.String" PropName="Column"/>
+      <Column Name="POS机收费" DataType="System.String" PropName="Column"/>
+      <Column Name="余额增减" DataType="System.String" PropName="Column"/>
+    </TableDataSource>
+    <Total Name="Total" Expression="[预存统计(按收费员).实收金额]" Evaluator="Data1" PrintOn="GroupFooter1"/>
+  </Dictionary>
+  <ReportPage Name="Page1" LeftMargin="0" TopMargin="5" RightMargin="0" BottomMargin="0" FirstPageSource="15" OtherPagesSource="15">
+    <GroupHeaderBand Name="GroupHeader1" Width="793.8" Height="168.43" Condition="[预存统计(按收费员).收费员编号]">
+      <TextObject Name="Text3" Left="141.75" Top="145.75" Width="66.15" Height="22.68" Border.Lines="All" Text="收费员" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+      <TextObject Name="Text4" Left="207.9" Top="145.75" Width="75.6" Height="22.68" Border.Lines="All" Text="单据数量" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+      <TextObject Name="Text7" Left="283.5" Top="145.75" Width="94.5" Height="22.68" Border.Lines="All" Text="实收金额" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+      <TextObject Name="Text8" Left="567" Top="145.75" Width="94.5" Height="22.68" Border.Lines="All" Text="余额增减" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+      <TextObject Name="Text2" Left="529.2" Top="113.4" Width="94.5" Height="18.9" Text="用户类型:" Font="宋体, 11pt"/>
+      <LineObject Name="Line1" Left="259.87" Top="89.05" Width="292.95" Border.Width="2"/>
+      <TextObject Name="txtTitle" Left="259.87" Top="66.15" Width="292.95" Height="18.9" Text="预存统计(按收费员)" HorzAlign="Center" Font="宋体, 14pt, style=Bold"/>
+      <TextObject Name="Text14" Left="378" Top="145.75" Width="94.5" Height="22.68" Border.Lines="All" Text="现金收费" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+      <TextObject Name="Text15" Left="472.5" Top="145.75" Width="94.5" Height="22.68" Border.Lines="All" Text="POS机收费" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+      <DataBand Name="Data1" Top="172.43" Width="793.8" Height="22.54" DataSource="预存统计(按收费员)">
+        <TableObject Name="Table1" Left="141.75" Top="-0.14" Width="519.75" Height="22.68">
+          <TableColumn Name="Column15"/>
+          <TableColumn Name="Column16" Width="75.6"/>
+          <TableColumn Name="Column10" Width="94.5"/>
+          <TableColumn Name="Column17" Width="94.5"/>
+          <TableColumn Name="Column18" Width="94.5"/>
+          <TableColumn Name="Column8" Width="94.5"/>
+          <TableRow Name="Row2" Height="22.68">
+            <TableCell Name="Cell75" Border.Lines="Left, Right, Bottom" Text="[预存统计(按收费员).收费员]" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+            <TableCell Name="Cell77" Border.Lines="Left, Right, Bottom" Text="[预存统计(按收费员).单据数量]" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+            <TableCell Name="Cell47" Border.Lines="Left, Right, Bottom" Text="[预存统计(按收费员).实收金额]" HorzAlign="Right" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+            <TableCell Name="Cell78" Border.Lines="Left, Right, Bottom" Text="[预存统计(按收费员).现金收费]" HorzAlign="Right" VertAlign="Bottom" Font="宋体, 11pt"/>
+            <TableCell Name="Cell79" Border.Lines="Left, Right, Bottom" Text="[预存统计(按收费员).POS机收费]" HorzAlign="Right" VertAlign="Bottom" Font="宋体, 11pt"/>
+            <TableCell Name="Cell37" Border.Lines="Left, Right, Bottom" Text="[预存统计(按收费员).余额增减]" HorzAlign="Right" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+          </TableRow>
+        </TableObject>
+      </DataBand>
+      <GroupFooterBand Name="GroupFooter1" Top="198.97" Width="793.8" Height="56.7">
+        <TextObject Name="Text5" Left="141.75" Width="519.75" Height="22.68" Border.Lines="All" Text="金额合计:[Total]" HorzAlign="Right" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+        <TextObject Name="Text12" Left="141.75" Top="22.9" Width="283.5" Height="32.13" Border.Lines="Left, Bottom" Text="统计时间:[Date]" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+        <TextObject Name="txtQianzi" Left="425.25" Top="23.35" Width="236.25" Height="32.13" Border.Lines="Right, Bottom" Text="收费员确认(签字):" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+      </GroupFooterBand>
+    </GroupHeaderBand>
+  </ReportPage>
+</Report>

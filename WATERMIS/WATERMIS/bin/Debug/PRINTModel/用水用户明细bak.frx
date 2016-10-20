@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="05/17/2015 10:55:34" ReportInfo.Modified="05/17/2015 14:48:25" ReportInfo.CreatorVersion="2014.4.8.0">
+  <Dictionary>
+    <MsSqlDataConnection Name="Connection" ConnectionString="rijcmlqq8kTaCagDxO6zlhwUlmn0X/GcdzL3BA7OjOtM4lzFQ4RtzQa0IzUcXA4nl49mccp0/ZeDpHVL93xcNr5MYYHsUoS1BkcLXngxTvbGTj+c1U62BpaNgnFqe+18/vFZTNmTCgLmRGUm553Nqx0PzC5ivv5kuDws0WVOVryScYTlNujrqMADxZUOjH1Q1SxW5yJniZI4HyTZQDmNGfzGFbdcw==">
+      <TableDataSource Name="V_WATERUSER_BYMETERREADING" DataType="System.Int32" Enabled="true" TableName="V_WATERUSER_BYMETERREADING">
+        <Column Name="waterUserId" DataType="System.String"/>
+        <Column Name="waterUserNO" DataType="System.String"/>
+        <Column Name="waterUserName" DataType="System.String"/>
+        <Column Name="waterPhone" DataType="System.String"/>
+        <Column Name="waterUserAddress" DataType="System.String"/>
+        <Column Name="waterUserPeopleCount" DataType="System.Int32"/>
+        <Column Name="areaId" DataType="System.String"/>
+        <Column Name="areaName" DataType="System.String"/>
+        <Column Name="meterReadingID" DataType="System.String"/>
+        <Column Name="meterReadingNO" DataType="System.String"/>
+        <Column Name="loginId" DataType="System.String"/>
+        <Column Name="USERNAME" DataType="System.String"/>
+        <Column Name="createDate" DataType="System.DateTime"/>
+        <Column Name="METERREADINGMEMO" DataType="System.String"/>
+        <Column Name="meterReadingPageNo" DataType="System.Int32"/>
+        <Column Name="waterUserTypeId" DataType="System.String"/>
+        <Column Name="waterUserTypeName" DataType="System.String"/>
+        <Column Name="waterUserCreateDate" DataType="System.DateTime"/>
+        <Column Name="waterUserHouseType" DataType="System.String"/>
+        <Column Name="waterUserHouseTypeS" DataType="System.String"/>
+        <Column Name="agentsign" DataType="System.String"/>
+        <Column Name="agentsignS" DataType="System.String"/>
+        <Column Name="waterUserState" DataType="System.String"/>
+        <Column Name="waterUserStateS" DataType="System.String"/>
+        <Column Name="bankId" DataType="System.String"/>
+        <Column Name="bankName" DataType="System.String"/>
+        <Column Name="BankAcountNumber" DataType="System.String"/>
+        <Column Name="memo" DataType="System.String"/>
+        <Column Name="isSummary" DataType="System.String"/>
+        <Column Name="isSummaryS" DataType="System.String"/>
+        <Column Name="prestore" DataType="System.Double"/>
+      </TableDataSource>
+    </MsSqlDataConnection>
+  </Dictionary>
+  <ReportPage Name="Page1" RawPaperSize="9" LeftMargin="0" TopMargin="5" RightMargin="0" BottomMargin="5" FirstPageSource="15" OtherPagesSource="15">
+    <ReportTitleBand Name="ReportTitle1" Width="793.8" Height="37.8">
+      <TextObject Left="311.85" Top="9.45" Width="132.3" Height="18.9" Text="用户用户表" Font="宋体, 14pt, style=Bold"/>
+      <LineObject Name="Line1" Left="246.7" Top="30.35" Width="236.25" Border.Width="2"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="41.8" Width="793.8" Height="29.68">
+      <TextObject Name="Text1" Left="9.45" Top="7" Width="75.6" Height="22.68" Border.Lines="All" Text="用户号" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 11pt"/>
+      <TextObject Name="Text2" Left="85.05" Top="7" Width="103.95" Height="22.68" Border.Lines="All" Text="用户名" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 11pt"/>
+      <TextObject Name="Text3" Left="189" Top="7" Width="94.5" Height="22.68" Border.Lines="All" Text="联系方式" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 11pt"/>
+      <TextObject Name="Text4" Left="283.5" Top="7" Width="141.75" Height="22.68" Border.Lines="All" Text="地址" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 11pt"/>
+      <TextObject Name="Text5" Left="425.25" Top="7" Width="66.15" Height="22.68" Border.Lines="All" Text="抄本号" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 11pt"/>
+      <TextObject Name="Text6" Left="538.65" Top="7" Width="56.7" Height="22.68" Border.Lines="All" Text="抄表员" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 11pt"/>
+      <TextObject Name="Text7" Left="491.4" Top="7" Width="47.25" Height="22.68" Border.Lines="All" Text="页号" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 11pt"/>
+      <TextObject Name="Text8" Left="595.35" Top="7" Width="94.5" Height="22.68" Border.Lines="All" Text="区域" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 11pt"/>
+      <TextObject Name="Text9" Left="689.85" Top="7" Width="75.6" Height="22.68" Border.Lines="All" Text="用户类别" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 11pt"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="75.48" Width="793.8" Height="18.9" DataSource="V_WATERUSER_BYMETERREADING">
+      <TextObject Name="Text10" Left="9.45" Width="75.6" Height="18.9" Border.Lines="All" Text="[V_WATERUSER_BYMETERREADING.waterUserNO]" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+      <TextObject Name="Text11" Left="85.05" Width="103.95" Height="18.9" Border.Lines="All" Text="[V_WATERUSER_BYMETERREADING.waterUserName]" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+      <TextObject Name="Text12" Left="189" Width="94.5" Height="18.9" Border.Lines="All" Text="[V_WATERUSER_BYMETERREADING.waterPhone]" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+      <TextObject Name="Text13" Left="283.5" Width="141.75" Height="18.9" Border.Lines="All" Text="[V_WATERUSER_BYMETERREADING.waterUserAddress]" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+      <TextObject Name="Text14" Left="425.25" Width="66.15" Height="18.9" Border.Lines="All" Text="[V_WATERUSER_BYMETERREADING.meterReadingNO]" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+      <TextObject Name="Text15" Left="538.65" Width="56.7" Height="18.9" Border.Lines="All" Text="[V_WATERUSER_BYMETERREADING.USERNAME]" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+      <TextObject Name="Text16" Left="491.4" Width="47.25" Height="18.9" Border.Lines="All" Text="[V_WATERUSER_BYMETERREADING.meterReadingPageNo]" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+      <TextObject Name="Text17" Left="595.35" Width="94.5" Height="18.9" Border.Lines="All" Text="[V_WATERUSER_BYMETERREADING.areaName]" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+      <TextObject Name="Text18" Left="689.85" Width="75.6" Height="18.9" Border.Lines="All" Text="[V_WATERUSER_BYMETERREADING.waterUserTypeName]" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="98.38" Width="793.8" Height="28.35">
+      <TextObject Name="Text19" Left="9.45" Top="9.45" Width="264.6" Height="18.9" Text="打印时间:[Date]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text20" Left="585.9" Top="9.45" Width="198.45" Height="18.9" Text="第[Page#]页,共[TotalPages#]页" HorzAlign="Right" VertAlign="Center" Font="宋体, 9pt"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>

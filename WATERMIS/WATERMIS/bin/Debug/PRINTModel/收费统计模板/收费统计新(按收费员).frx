@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="05/19/2015 08:27:05" ReportInfo.Modified="11/25/2015 21:17:31" ReportInfo.CreatorVersion="2014.4.8.0">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+
+namespace FastReport
+{
+  public class ReportScript
+  {  
+    private void GroupFooter1_BeforePrint(object sender, EventArgs e)
+    {                              
+      int intNowLine=Table1.RowCount;
+      for(;intNowLine&lt;4;intNowLine++)
+      {        
+      //  Child1.Visible=true;
+      //  Engine.ShowBand(Child1); 
+      }
+    }   
+
+    private void GroupFooter1_AfterPrint(object sender, EventArgs e)
+    { 
+       
+    }                         
+  }  
+}
+</ScriptText>
+  <Dictionary>
+    <TableDataSource Name="收费统计新(按收费员)" ReferenceName="Data.收费统计新(按收费员)" DataType="System.Int32" Enabled="true">
+      <Column Name="收费员编号" DataType="System.String" PropName="Column"/>
+      <Column Name="收费员" DataType="System.String" PropName="Column"/>
+      <Column Name="用水性质编号" DataType="System.String" PropName="Column"/>
+      <Column Name="用水性质" DataType="System.String" PropName="Column"/>
+      <Column Name="用水量" DataType="System.String" PropName="Column"/>
+      <Column Name="单据数量" DataType="System.String" PropName="Column"/>
+      <Column Name="水费" DataType="System.String" PropName="Column"/>
+      <Column Name="污水处理费" DataType="System.String" PropName="Column"/>
+      <Column Name="附加费" DataType="System.String" PropName="Column"/>
+      <Column Name="应收金额" DataType="System.String" PropName="Column"/>
+      <Column Name="实收金额" DataType="System.String" PropName="Column"/>
+      <Column Name="余额增减" DataType="System.String" PropName="Column"/>
+    </TableDataSource>
+    <Total Name="Total" Expression="Convert.ToDecimal([收费统计新(按收费员).应收金额])" Evaluator="Data1" PrintOn="GroupFooter1"/>
+  </Dictionary>
+  <ReportPage Name="Page1" LeftMargin="0" TopMargin="5" RightMargin="0" BottomMargin="0" FirstPageSource="15" OtherPagesSource="15">
+    <GroupHeaderBand Name="GroupHeader1" Width="793.8" Height="96.83" Condition="[收费统计新(按收费员).收费员编号]">
+      <TextObject Name="Text3" Left="16.9" Top="74.15" Width="66.15" Height="22.68" Border.Lines="All" Text="收费员" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+      <TextObject Name="Text4" Left="83.26" Top="74.15" Width="98.28" Height="22.68" Border.Lines="All" Text="用水性质" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+      <TextObject Name="Text6" Left="181.75" Top="74.15" Width="64.26" Height="22.68" Border.Lines="All" Text="单据数量" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+      <TextObject Name="Text7" Left="246.22" Top="74.15" Width="68.04" Height="22.68" Border.Lines="All" Text="用水量" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+      <TextObject Name="Text8" Left="314.47" Top="74.15" Width="78.25" Height="22.68" Border.Lines="All" Text="水费" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+      <TextObject Name="Text9" Left="393.06" Top="74.15" Width="75.6" Height="22.68" Border.Lines="All" Text="污水处理费" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text10" Left="468.76" Top="74.15" Width="68.04" Height="22.68" Border.Lines="All" Text="附加费" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+      <TextObject Name="Text11" Left="537.01" Top="74.15" Width="83.16" Height="22.68" Border.Lines="All" Text="应收金额" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+      <LineObject Name="Line1" Left="278.77" Top="64.7" Width="292.95" Border.Width="2"/>
+      <TextObject Name="Text1" Left="278.77" Top="41.8" Width="292.95" Height="18.9" Text="收费统计表(按收费员)" HorzAlign="Center" Font="宋体, 14pt, style=Bold"/>
+      <TextObject Name="Text14" Left="620.38" Top="74.15" Width="81.27" Height="22.68" Border.Lines="All" Text="实收金额" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+      <TextObject Name="Text15" Left="702.32" Top="74.15" Width="83.16" Height="22.68" Border.Lines="All" Text="余额增减" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+      <DataBand Name="Data1" Top="100.83" Width="793.8" Height="22.54" DataSource="收费统计新(按收费员)">
+        <TableObject Name="Table1" Left="16.9" Top="-0.14" Width="769.23" Height="22.68">
+          <TableColumn Name="Column15"/>
+          <TableColumn Name="Column16" Width="98.28"/>
+          <TableColumn Name="Column1" Width="64.26"/>
+          <TableColumn Name="Column10" Width="68.04"/>
+          <TableColumn Name="Column8" Width="79.38"/>
+          <TableColumn Name="Column9" Width="75.6"/>
+          <TableColumn Name="Column11" Width="68.04"/>
+          <TableColumn Name="Column3" Width="83.16"/>
+          <TableColumn Name="Column25" Width="83.16"/>
+          <TableColumn Name="Column26" Width="83.16"/>
+          <TableRow Name="Row2" Height="22.68">
+            <TableCell Name="Cell75" Border.Lines="Left, Right, Bottom" Text="[收费统计新(按收费员).收费员]" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+            <TableCell Name="Cell77" Border.Lines="Left, Right, Bottom" Text="[收费统计新(按收费员).用水性质]" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+            <TableCell Name="Cell6" Border.Lines="Left, Right, Bottom" Text="[收费统计新(按收费员).单据数量]" HorzAlign="Right" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+            <TableCell Name="Cell47" Border.Lines="Left, Right, Bottom" Text="[收费统计新(按收费员).用水量]" HorzAlign="Right" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+            <TableCell Name="Cell37" Border.Lines="Left, Right, Bottom" Text="[收费统计新(按收费员).水费]" HorzAlign="Right" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+            <TableCell Name="Cell42" Border.Lines="Left, Right, Bottom" Text="[收费统计新(按收费员).污水处理费]" HorzAlign="Right" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+            <TableCell Name="Cell52" Border.Lines="Left, Right, Bottom" Text="[收费统计新(按收费员).附加费]" HorzAlign="Right" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+            <TableCell Name="Cell8" Border.Lines="Left, Right, Bottom" Text="[收费统计新(按收费员).应收金额]" Format="Number" Format.UseLocale="true" HorzAlign="Right" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+            <TableCell Name="Cell86" Border.Lines="Left, Right, Bottom" Text="[收费统计新(按收费员).实收金额]" HorzAlign="Right" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+            <TableCell Name="Cell87" Border.Lines="Left, Right, Bottom" Text="[收费统计新(按收费员).余额增减]" HorzAlign="Right" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+          </TableRow>
+        </TableObject>
+        <ChildBand Name="Child1" Top="127.37" Width="793.8" Height="22.68" CompleteToNRows="5">
+          <TableObject Name="Table2" Left="16.9" Width="769.23" Height="22.68">
+            <TableColumn Name="Column17"/>
+            <TableColumn Name="Column18" Width="98.28"/>
+            <TableColumn Name="Column19" Width="64.26"/>
+            <TableColumn Name="Column20" Width="68.04"/>
+            <TableColumn Name="Column21" Width="79.38"/>
+            <TableColumn Name="Column22" Width="75.6"/>
+            <TableColumn Name="Column23" Width="68.04"/>
+            <TableColumn Name="Column24" Width="83.16"/>
+            <TableColumn Name="Column27" Width="83.16"/>
+            <TableColumn Name="Column28" Width="83.16"/>
+            <TableRow Name="Row3" Height="22.68">
+              <TableCell Name="Cell78" Border.Lines="Left, Right, Bottom" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+              <TableCell Name="Cell79" Border.Lines="Left, Right, Bottom" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+              <TableCell Name="Cell80" Border.Lines="Left, Right, Bottom" HorzAlign="Right" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+              <TableCell Name="Cell81" Border.Lines="Left, Right, Bottom" HorzAlign="Right" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+              <TableCell Name="Cell82" Border.Lines="Left, Right, Bottom" HorzAlign="Right" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+              <TableCell Name="Cell83" Border.Lines="Left, Right, Bottom" HorzAlign="Right" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+              <TableCell Name="Cell84" Border.Lines="Left, Right, Bottom" HorzAlign="Right" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+              <TableCell Name="Cell85" Border.Lines="Left, Right, Bottom" Format="Number" Format.UseLocale="true" HorzAlign="Right" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+              <TableCell Name="Cell88" Border.Lines="Left, Right, Bottom" HorzAlign="Right" VertAlign="Bottom" Font="宋体, 11pt"/>
+              <TableCell Name="Cell89" Border.Lines="Left, Right, Bottom" HorzAlign="Right" VertAlign="Bottom" Font="宋体, 11pt"/>
+            </TableRow>
+          </TableObject>
+        </ChildBand>
+      </DataBand>
+      <GroupFooterBand Name="GroupFooter1" Top="154.05" Width="793.8" Height="56.7">
+        <TextObject Name="Text5" Left="16.9" Width="769.23" Height="22.68" Border.Lines="All" Text="金额合计:[Total]" HorzAlign="Right" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+        <TextObject Name="Text12" Left="16.9" Top="22.9" Width="444.15" Height="32.13" Border.Lines="Left, Bottom" Text="统计时间:[Date]" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+        <TextObject Name="Text13" Left="461.05" Top="23.35" Width="325.08" Height="32.13" Border.Lines="Right, Bottom" Text="收费员确认(签字):" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+      </GroupFooterBand>
+    </GroupHeaderBand>
+  </ReportPage>
+</Report>

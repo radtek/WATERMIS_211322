@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="05/18/2015 14:29:53" ReportInfo.Modified="11/19/2015 12:59:24" ReportInfo.CreatorVersion="2014.4.8.0">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+
+namespace FastReport
+{
+  public class ReportScript
+  {  
+    private void Table1_ManualBuild(object sender, EventArgs e)
+    {
+      DataSourceBase data1 = Report.GetDataSource(&quot;用水用户统计表(按用户类型)&quot;); // 获取DataSet中表名为Table1的数据源
+      data1.Init(); // 初始化 
+    
+      Table1.PrintRow(0); // 控件Table1打印第0行
+      Table1.PrintColumns(); // 每打印一行，都要调用 PrintColumn或PrintColumns
+     
+      while(data1.HasMoreRows) // 打印重复循环的行
+      {
+        Table1.PrintRow(1);
+        Table1.PrintColumns();
+        data1.Next(); // 读取下一行
+      }
+    }
+  }  
+}
+</ScriptText>
+  <Dictionary>
+    <TableDataSource Name="用水用户统计表(按用户类型)" ReferenceName="Data.用水用户统计表(按用户类型)" DataType="System.Int32" Enabled="true">
+      <Column Name="用户类型" DataType="System.String" PropName="Column"/>
+      <Column Name="用户数" DataType="System.String" PropName="Column"/>
+      <Column Name="未报停" DataType="System.String" PropName="Column"/>
+      <Column Name="报停" DataType="System.String" PropName="Column"/>
+    </TableDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1" RawPaperSize="9" LeftMargin="0" TopMargin="5" RightMargin="0" BottomMargin="5" FirstPageSource="15" OtherPagesSource="15">
+    <ReportTitleBand Name="ReportTitle1" Width="793.8" Height="37.8">
+      <TextObject Name="Text1" Left="250.43" Top="9.45" Width="292.95" Height="18.9" Text="用水用户统计表(按用户类型)" HorzAlign="Center" Font="宋体, 14pt, style=Bold"/>
+      <LineObject Name="Line1" Left="259.88" Top="28.35" Width="274.05" Border.Width="2"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="41.8" Width="793.8" Height="226.8">
+      <TableObject Name="Table1" Left="274.1" Width="245.65" Height="51.03" Border.Lines="All" ManualBuildEvent="Table1_ManualBuild">
+        <TableColumn Name="Column1" Width="118.1"/>
+        <TableColumn Name="Column2" Width="127.55"/>
+        <TableRow Name="Row1" Height="28.35">
+          <TableCell Name="Cell1" Border.Lines="All" Text="用户类型" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+          <TableCell Name="Cell2" Border.Lines="All" Text="用户数" HorzAlign="Center" VertAlign="Center" Font="宋体, 11pt"/>
+        </TableRow>
+        <TableRow Name="Row2" Height="22.68">
+          <TableCell Name="Cell6" Border.Lines="All" Text="[用水用户统计表(按用户类型).用户类型]" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+          <TableCell Name="Cell7" Border.Lines="All" Text="[用水用户统计表(按用户类型).用户数]" HorzAlign="Right" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+        </TableRow>
+      </TableObject>
+    </PageHeaderBand>
+    <PageFooterBand Name="PageFooter1" Top="272.6" Width="793.8" Height="28.35">
+      <TextObject Name="Text2" Left="9.45" Top="9.45" Width="198.45" Height="18.9" Text="打印时间:[Date]" VertAlign="Bottom" Font="宋体, 9pt"/>
+      <TextObject Name="Text3" Left="585.9" Top="9.45" Width="189" Height="18.9" Text="第[Page#]页,共[TotalPages#]页" HorzAlign="Right" VertAlign="Bottom" Font="宋体, 9pt"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="11/23/2015 16:18:32" ReportInfo.Modified="11/23/2015 17:01:01" ReportInfo.CreatorVersion="2014.4.8.0">
+  <Dictionary/>
+  <ReportPage Name="Page1" RawPaperSize="9" LeftMargin="0" TopMargin="0" RightMargin="0" BottomMargin="0" FirstPageSource="15" OtherPagesSource="15">
+    <PageHeaderBand Name="PageHeader1" Width="793.8" Height="66.15">
+      <TextObject Name="Text1" Left="5" Top="23.9" Width="784.35" Height="37.8" Text="变更审批表" HorzAlign="Center" VertAlign="Center" Font="宋体, 18pt, style=Bold"/>
+    </PageHeaderBand>
+    <ColumnHeaderBand Name="ColumnHeader1" Top="70.15" Width="793.8" Height="292.95">
+      <TextObject Name="Text2" Left="30.45" Top="2" Width="75.6" Height="26.46" Border.Lines="All" Text="用户姓名" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 12pt"/>
+      <TextObject Name="txtName" Left="106.05" Top="2" Width="378" Height="26.46" Border.Lines="All" Padding="4, 0, 2, 0" VertAlign="Center" WordWrap="false" Font="宋体, 12pt"/>
+      <TextObject Name="Text4" Left="484.05" Top="2" Width="56.7" Height="26.46" Border.Lines="All" Text="用户号" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 12pt"/>
+      <TextObject Name="txtNO" Left="540.75" Top="2" Width="207.9" Height="26.46" Border.Lines="All" Padding="4, 0, 2, 0" VertAlign="Center" WordWrap="false" Font="宋体, 12pt"/>
+      <TextObject Name="Text6" Left="30.35" Top="29.35" Width="75.6" Height="26.46" Border.Lines="All" Text="用户地址" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 12pt"/>
+      <TextObject Name="txtAddress" Left="105.95" Top="29.35" Width="642.6" Height="26.46" Border.Lines="All" Padding="4, 0, 2, 0" VertAlign="Bottom" WordWrap="false" Font="宋体, 12pt"/>
+      <TextObject Name="txtReason" Left="30.35" Top="56.25" Width="718.2" Height="136.08" Border.Lines="All" Text="变更原因:" Padding="2, 8, 2, 0" WordWrap="false" Font="宋体, 12pt"/>
+      <TextObject Name="Text10" Left="30.35" Top="192" Width="75.6" Height="65.02" Border.Lines="All" Text="签&#13;&#10;&#13;&#10;字" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 12pt"/>
+      <TextObject Name="Text11" Left="105.95" Top="192" Width="75.6" Height="32.13" Border.Lines="All" Text="收费员" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 12pt"/>
+      <TextObject Name="Text12" Left="181.55" Top="192" Width="226.8" Height="32.13" Border.Lines="All" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 12pt"/>
+      <TextObject Name="Text13" Left="408.35" Top="192" Width="75.6" Height="32.13" Border.Lines="All" Text="科长" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 12pt"/>
+      <TextObject Name="Text14" Left="483.95" Top="192" Width="264.6" Height="32.13" Border.Lines="All" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 12pt"/>
+      <TextObject Name="Text15" Left="105.95" Top="224.35" Width="75.6" Height="32.13" Border.Lines="All" Text="分管经理" Padding="2, 3, 2, 0" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 12pt"/>
+      <TextObject Name="Text16" Left="181.55" Top="224.35" Width="226.8" Height="32.13" Border.Lines="All" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 12pt"/>
+      <TextObject Name="Text17" Left="408.35" Top="224.35" Width="75.6" Height="32.13" Border.Lines="All" Text="总经理" Padding="2, 3, 2, 0" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 12pt"/>
+      <TextObject Name="Text18" Left="483.95" Top="224.35" Width="264.6" Height="32.13" Border.Lines="All" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 12pt"/>
+      <TextObject Name="txtPrintDateTime" Left="28.35" Top="268.6" Width="245.7" Height="18.9" Text="审批时间:[Date]" VertAlign="Center" Font="宋体, 11pt"/>
+    </ColumnHeaderBand>
+  </ReportPage>
+</Report>

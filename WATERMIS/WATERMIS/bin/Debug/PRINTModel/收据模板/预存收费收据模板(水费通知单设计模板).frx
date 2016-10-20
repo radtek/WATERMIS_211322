@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="10/30/2015 18:25:18" ReportInfo.Modified="01/11/2016 13:10:57" ReportInfo.CreatorVersion="2014.4.8.0">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+
+namespace FastReport
+{
+  public class ReportScript
+  {   
+  }
+}
+</ScriptText>
+  <Dictionary>
+    <TableDataSource Name="营业坐收收据模板" ReferenceName="Data.营业坐收收据模板" DataType="System.Int32" Enabled="true">
+      <Column Name="waterMeterNo" DataType="System.String" PropName="Column"/>
+      <Column Name="readMeterRecordYear" DataType="System.String" PropName="Column"/>
+      <Column Name="readMeterRecordMonth" DataType="System.String" PropName="Column"/>
+      <Column Name="waterMeterLastNumber" DataType="System.String" PropName="Column"/>
+      <Column Name="waterMeterEndNumber" DataType="System.String" PropName="Column"/>
+      <Column Name="totalNumber" DataType="System.String" PropName="Column"/>
+      <Column Name="avePrice" DataType="System.String" PropName="Column"/>
+      <Column Name="waterTotalCharge" DataType="System.String" PropName="Column"/>
+      <Column Name="extraCharge1" DataType="System.String" PropName="Column"/>
+      <Column Name="extraCharge2" DataType="System.String" PropName="Column"/>
+      <Column Name="totalCharge" DataType="System.String" PropName="Column"/>
+      <Column Name="waterTotalChargeEND" DataType="System.String" PropName="Column"/>
+      <Column Name="OVERDUEEND" DataType="System.String" PropName="Column"/>
+      <Column Name="totalChargeEND" DataType="System.String" PropName="Column"/>
+    </TableDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1" PaperWidth="120" PaperHeight="140" LeftMargin="0" TopMargin="0" RightMargin="0" BottomMargin="0">
+    <DataBand Name="Data1" Width="453.6" Height="525.42">
+      <TextObject Name="Text3" Top="30.35" Width="453.6" Height="26.46" Text="通知单" HorzAlign="Center" Font="宋体, 16pt, style=Bold"/>
+      <TableObject Name="Table2" Left="35.24" Top="69.15" Width="379.89" Height="426.58" Border.Lines="All">
+        <TableColumn Name="Column10" Width="83.16"/>
+        <TableColumn Name="Column11" Width="120.96"/>
+        <TableColumn Name="Column12" Width="77.49"/>
+        <TableColumn Name="Column13" Width="37.8"/>
+        <TableColumn Name="Column14" Width="60.48"/>
+        <TableRow Name="Row3" Height="25.04">
+          <TableCell Name="Cell42" Border.Lines="All" Text="用户编号" VertAlign="Bottom" Font="宋体, 10pt"/>
+          <TableCell Name="Cell43" Border.Lines="All" VertAlign="Bottom" Font="宋体, 10pt" ColSpan="4"/>
+          <TableCell Name="Cell44" Border.Lines="All" VertAlign="Bottom" Font="宋体, 10pt"/>
+          <TableCell Name="Cell45" Border.Lines="All" VertAlign="Center" Font="宋体, 10pt"/>
+          <TableCell Name="Cell46" Border.Lines="All" VertAlign="Bottom" Font="宋体, 10pt"/>
+        </TableRow>
+        <TableRow Name="Row11" Height="25.04">
+          <TableCell Name="Cell86" Text="用户名称" VertAlign="Bottom" Font="宋体, 10pt"/>
+          <TableCell Name="Cell87" Border.Lines="All" VertAlign="Center" Font="宋体, 9pt" ColSpan="4"/>
+          <TableCell Name="Cell88" Border.Lines="All" Font="宋体, 9pt"/>
+          <TableCell Name="Cell89" Border.Lines="All" Font="宋体, 9pt"/>
+          <TableCell Name="Cell90" Border.Lines="All" Font="宋体, 9pt"/>
+        </TableRow>
+        <TableRow Name="Row4" Height="25.04">
+          <TableCell Name="Cell47" Border.Lines="All" Text="用户地址" VertAlign="Bottom" Font="宋体, 10pt"/>
+          <TableCell Name="Cell48" Border.Lines="All" VertAlign="Center" Font="宋体, 10pt" ColSpan="4"/>
+          <TableCell Name="Cell49" Border.Lines="All" VertAlign="Bottom" Font="宋体, 10pt"/>
+          <TableCell Name="Cell50" Border.Lines="All" VertAlign="Bottom" Font="宋体, 10pt"/>
+          <TableCell Name="Cell51" Border.Lines="All" VertAlign="Bottom" Font="宋体, 10pt"/>
+        </TableRow>
+        <TableRow Name="Row9" Height="37.46">
+          <TableCell Name="Cell72" Font="宋体, 9pt" ColSpan="5" RowSpan="4"/>
+          <TableCell Name="Cell73" Font="宋体, 9pt"/>
+          <TableCell Name="Cell74" Font="宋体, 9pt"/>
+          <TableCell Name="Cell75" Font="宋体, 9pt"/>
+          <TableCell Name="Cell76" Font="宋体, 9pt"/>
+        </TableRow>
+        <TableRow Name="Row8" Height="37.46">
+          <TableCell Name="Cell67" Font="宋体, 9pt"/>
+          <TableCell Name="Cell68" Font="宋体, 9pt"/>
+          <TableCell Name="Cell69" Font="宋体, 9pt"/>
+          <TableCell Name="Cell70" Font="宋体, 9pt"/>
+          <TableCell Name="Cell71" Font="宋体, 9pt"/>
+        </TableRow>
+        <TableRow Name="Row5" Height="41.24">
+          <TableCell Name="Cell52" Border.Lines="All" VertAlign="Bottom" Font="宋体, 10pt"/>
+          <TableCell Name="Cell53" Border.Lines="All" VertAlign="Bottom" Font="宋体, 10pt"/>
+          <TableCell Name="Cell54" Border.Lines="All" VertAlign="Bottom" Font="宋体, 10pt"/>
+          <TableCell Name="Cell55" Border.Lines="All" VertAlign="Bottom" Font="宋体, 10pt"/>
+          <TableCell Name="Cell56" Border.Lines="All" VertAlign="Bottom" Font="宋体, 10pt"/>
+        </TableRow>
+        <TableRow Name="Row6" Height="208.37">
+          <TableCell Name="Cell57" Border.Lines="All" VertAlign="Bottom" Font="宋体, 10pt"/>
+          <TableCell Name="Cell58" Border.Lines="All" VertAlign="Bottom" Font="宋体, 10pt"/>
+          <TableCell Name="Cell59" Border.Lines="All" VertAlign="Bottom" Font="宋体, 10pt"/>
+          <TableCell Name="Cell60" Border.Lines="All" VertAlign="Bottom" Font="宋体, 10pt"/>
+          <TableCell Name="Cell61" Border.Lines="All" VertAlign="Bottom" Font="宋体, 10pt"/>
+        </TableRow>
+        <TableRow Name="Row10" Height="26.93">
+          <TableCell Name="Cell81" Border.Lines="All" Text="抄表员" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 10pt"/>
+          <TableCell Name="Cell82" Border.Lines="All" VertAlign="Bottom" Font="宋体, 10pt"/>
+          <TableCell Name="Cell83" Border.Lines="All" Text="抄表员电话" VertAlign="Bottom" Font="宋体, 10pt"/>
+          <TableCell Name="Cell84" Border.Lines="All" VertAlign="Center" Font="宋体, 10pt" ColSpan="2"/>
+          <TableCell Name="Cell85" Border.Lines="All" Font="宋体, 10pt"/>
+        </TableRow>
+      </TableObject>
+      <TextObject Name="txtReceiptNO" Left="557.55" Top="9.45" Width="94.5" Height="18.9" HorzAlign="Right" VertAlign="Center" Font="宋体, 10pt"/>
+      <TextObject Name="Text1" Top="11" Width="453.6" Height="18.9" Text="建平县自来水公司水费" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 11pt"/>
+      <TextObject Name="Text2" Left="302.95" Top="50.25" Width="113.4" Height="18.9" Text="NO." VertAlign="Bottom" Font="宋体, 11pt"/>
+      <TextObject Name="Text4" Left="35.35" Top="50.25" Width="217.35" Height="18.9" Text="打印时间:" VertAlign="Bottom" Font="宋体, 10pt"/>
+      <TextObject Name="Text5" Left="34.35" Top="501.85" Width="378" Height="18.9" Text="欢迎您拨打7812572客服热线,自来水公司竭诚为您服务" VertAlign="Bottom" Font="宋体, 10pt"/>
+    </DataBand>
+  </ReportPage>
+</Report>

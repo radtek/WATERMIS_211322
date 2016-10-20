@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="08/13/2015 18:47:15" ReportInfo.Modified="08/21/2015 18:08:23" ReportInfo.CreatorVersion="2014.4.8.0">
+  <Dictionary>
+    <TableDataSource Name="水费收据模板" ReferenceName="Data.水费收据模板" DataType="System.Int32" Enabled="true">
+      <Column Name="waterUserName" DataType="System.String" PropName="Column"/>
+      <Column Name="waterUserNO" DataType="System.String" PropName="Column"/>
+      <Column Name="waterUserAddress" DataType="System.String" PropName="Column"/>
+      <Column Name="waterMeterNo" DataType="System.String" PropName="Column"/>
+      <Column Name="readMeterRecordYear" DataType="System.String" PropName="Column"/>
+      <Column Name="readMeterRecordMonth" DataType="System.String" PropName="Column"/>
+      <Column Name="waterMeterLastNumber" DataType="System.String" PropName="Column"/>
+      <Column Name="waterMeterEndNumber" DataType="System.String" PropName="Column"/>
+      <Column Name="totalNumber" DataType="System.String" PropName="Column"/>
+      <Column Name="waterMeterTypeName" DataType="System.String" PropName="Column"/>
+      <Column Name="avePrice" DataType="System.String" PropName="Column"/>
+      <Column Name="waterTotalCharge" DataType="System.String" PropName="Column"/>
+      <Column Name="extraCharge2" DataType="System.String" PropName="Column"/>
+      <Column Name="extraCharge1" DataType="System.String" PropName="Column"/>
+      <Column Name="totalCharge" DataType="System.String" PropName="Column"/>
+    </TableDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1" PaperWidth="190" PaperHeight="74" LeftMargin="0" TopMargin="0" RightMargin="0" BottomMargin="0" FirstPageSource="15" OtherPagesSource="15">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="53.25">
+      <TextObject Name="Text12" Left="231.52" Top="14.45" Width="255.15" Height="18.9" Text="喀左县自来水收费收据单" HorzAlign="Center" Font="宋体, 14pt, style=Bold"/>
+      <LineObject Name="Line1" Left="179.55" Top="33.35" Width="359.1" Diagonal="true"/>
+      <TextObject Name="Text16" Left="510.3" Top="34.35" Width="198.45" Height="18.9" Text="打印日期:[Date]" Format="Date" Format.Format="D" HorzAlign="Right" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+    </ReportTitleBand>
+    <DataBand Name="Data1" Top="57.25" Width="718.2" Height="219.24">
+      <ShapeObject Name="Shape1" Left="18.9" Width="689.85" Height="189" Border.Width="1.5"/>
+      <TextObject Name="Text3" Left="287.5" Top="74.04" Width="75.6" Height="18.9" Text="[水费收据模板.readMeterRecordYear]年[水费收据模板.readMeterRecordMonth]月" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text6" Left="88.83" Top="18.9" Width="548.1" Height="18.9" Text="[水费收据模板.waterUserName]" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text8" Left="88.83" Top="74.04" Width="86.94" Height="18.9" Text="[水费收据模板.waterMeterNo]" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text14" Left="287.5" Top="129.18" Width="85.05" Height="18.9" Text="[水费收据模板.waterTotalCharge]元" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text21" Left="88.83" Top="46.47" Width="544.32" Height="18.9" Text="[水费收据模板.waterUserAddress]" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text22" Left="287.5" Top="101.61" Width="75.6" Height="18.9" Text="[水费收据模板.waterMeterEndNumber]" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text23" Left="467.5" Top="129.18" Width="47.25" Height="18.9" Text="[水费收据模板.extraCharge2]元" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text24" Left="88.83" Top="101.61" Width="75.6" Height="18.9" Text="[水费收据模板.waterMeterLastNumber]" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text25" Left="614.25" Top="129.18" Width="85.05" Height="18.9" Text="[水费收据模板.extraCharge1]元" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text26" Left="467.5" Top="101.61" Width="75.6" Height="18.9" Text="[水费收据模板.totalNumber]" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text27" Left="88.83" Top="129.18" Width="75.6" Height="18.9" Text="[水费收据模板.avePrice]元" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text28" Left="88.83" Top="156.75" Width="132.3" Height="18.9" Text="[水费收据模板.totalCharge]元" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text18" Left="28.35" Top="18.9" Width="66.15" Height="18.9" Text="用 户 名:" HorzAlign="Right" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text29" Left="28.35" Top="46.47" Width="66.15" Height="18.9" Text="地    址:" HorzAlign="Right" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text30" Left="28.35" Top="74.04" Width="66.15" Height="18.9" Text="水表编号:" HorzAlign="Right" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text31" Left="226.8" Top="74.04" Width="66.15" Height="18.9" Text="水费月份:" HorzAlign="Right" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text32" Left="28.35" Top="129.18" Width="66.15" Height="18.9" Text="水    价:" HorzAlign="Right" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text33" Left="28.35" Top="101.61" Width="66.15" Height="18.9" Text="上期读数:" HorzAlign="Right" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text34" Left="226.8" Top="101.61" Width="66.15" Height="18.9" Text="本期读数:" HorzAlign="Right" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text35" Left="406.35" Top="101.61" Width="66.15" Height="18.9" Text="用水量:" HorzAlign="Right" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text36" Left="226.8" Top="129.18" Width="66.15" Height="18.9" Text="水    费:" HorzAlign="Right" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text37" Left="548.1" Top="129.18" Width="66.15" Height="18.9" Text="污水处理费:" HorzAlign="Right" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text38" Left="406.35" Top="129.18" Width="66.15" Height="18.9" Text="附加费:" HorzAlign="Right" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text39" Left="28.35" Top="156.75" Width="66.15" Height="18.9" Text="金额总计:" HorzAlign="Right" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text1" Left="66.15" Top="198.45" Width="94.5" Height="18.9" Text="收费员:" HorzAlign="Right" VertAlign="Center" Font="宋体, 10pt"/>
+      <TextObject Name="Text40" Left="396.9" Top="198.45" Width="94.5" Height="18.9" Text="开票员:" HorzAlign="Right" VertAlign="Center" Font="宋体, 10pt"/>
+    </DataBand>
+  </ReportPage>
+</Report>

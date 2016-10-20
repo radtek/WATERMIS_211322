@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dictionary>
+  <TableDataSource Name="收费统计新(按用水性质)" ReferenceName="Data.收费统计新(按用水性质)" DataType="System.Int32" Enabled="true">
+    <Column Name="用水性质编号" DataType="System.String" PropName="Column"/>
+    <Column Name="用水性质" DataType="System.String" PropName="Column"/>
+    <Column Name="用水量" DataType="System.String" PropName="Column"/>
+    <Column Name="单据数量" DataType="System.String" PropName="Column"/>
+    <Column Name="水费" DataType="System.String" PropName="Column"/>
+    <Column Name="污水处理费" DataType="System.String" PropName="Column"/>
+    <Column Name="附加费" DataType="System.String" PropName="Column"/>
+    <Column Name="应收金额" DataType="System.String" PropName="Column"/>
+    <Column Name="实收金额" DataType="System.String" PropName="Column"/>
+    <Column Name="余额增减" DataType="System.String" PropName="Column"/>
+  </TableDataSource>
+</Dictionary>

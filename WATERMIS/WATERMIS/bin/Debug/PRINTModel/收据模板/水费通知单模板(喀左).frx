@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="10/30/2015 18:25:18" ReportInfo.Modified="12/21/2015 12:13:00" ReportInfo.CreatorVersion="2014.4.8.0">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+
+namespace FastReport
+{
+  public class ReportScript
+  {
+                 }
+}
+</ScriptText>
+  <Dictionary>
+    <TableDataSource Name="水费通知单模板" ReferenceName="Data.水费通知单模板" DataType="System.Int32" Enabled="true">
+      <Column Name="waterUserId" DataType="System.String" PropName="Column"/>
+      <Column Name="waterUserName" DataType="System.String" PropName="Column"/>
+      <Column Name="waterUserAddress" DataType="System.String" PropName="Column"/>
+      <Column Name="meterReadingNO" DataType="System.String" PropName="Column"/>
+      <Column Name="waterMeterTypeName" DataType="System.String" PropName="Column"/>
+      <Column Name="readMeterRecordYear" DataType="System.String" PropName="Column"/>
+      <Column Name="readMeterRecordMonth" DataType="System.String" PropName="Column"/>
+      <Column Name="readMeterRecordDate" DataType="System.String" PropName="Column"/>
+      <Column Name="waterMeterLastNumber" DataType="System.String" PropName="Column"/>
+      <Column Name="waterMeterEndNumber" DataType="System.String" PropName="Column"/>
+      <Column Name="totalNumber" DataType="System.String" PropName="Column"/>
+      <Column Name="avePrice" DataType="System.String" PropName="Column"/>
+      <Column Name="waterTotalCharge" DataType="System.String" PropName="Column"/>
+      <Column Name="extraCharge1" DataType="System.String" PropName="Column"/>
+      <Column Name="extraCharge2" DataType="System.String" PropName="Column"/>
+      <Column Name="totalCharge" DataType="System.String" PropName="Column"/>
+      <Column Name="USERNAME" DataType="System.String" PropName="Column"/>
+      <Column Name="WATERUSERJSYE" DataType="System.String" PropName="Column"/>
+      <Column Name="PAGESUMMERY" DataType="System.String" PropName="Column"/>
+    </TableDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1" PaperWidth="119" PaperHeight="139.5" LeftMargin="0" TopMargin="0" RightMargin="0" BottomMargin="0" FirstPageSource="15" OtherPagesSource="15">
+    <DataBand Name="Data1" Width="449.82" Height="511.3">
+      <TextObject Name="Text1" Left="35.8" Top="72.82" Width="75.6" Height="18.9" Visible="false" Text="抄表日期:" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="txtJFDatetime" Left="113.4" Top="72.82" Width="236.25" Height="18.9" Text="[水费通知单模板.readMeterRecordDate]" Format="Date" Format.Format="D" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="txtWaterUserNO" Left="119.07" Top="99.28" Width="302.4" Height="18.9" Text="[水费通知单模板.waterUserId]    (表本号:[水费通知单模板.meterReadingNO])     [水费通知单模板.PAGESUMMERY]" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="txtWaterUserName" Left="119.07" Top="129.52" Width="302.4" Height="18.9" Text="[水费通知单模板.waterUserName]" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="txtWaterUserAddress" Left="119.07" Top="159.76" Width="302.4" Height="18.9" Text="[水费通知单模板.waterUserAddress]" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text6" Left="56.7" Top="99.28" Width="75.6" Height="18.9" Visible="false" Text="用户编号:" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text7" Left="56.7" Top="129.52" Width="75.6" Height="18.9" Visible="false" Text="用户名称:" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text8" Left="56.7" Top="159.76" Width="75.6" Height="18.9" Visible="false" Text="地址:" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text9" Left="56.7" Top="462.16" Width="56.7" Height="18.9" Visible="false" Text="抄表员:" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text11" Left="222.8" Top="462.16" Width="66.15" Height="18.9" Visible="false" Text="联系电话:" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text12" Left="119.07" Top="190" Width="117.18" Height="18.9" Text="[水费通知单模板.waterMeterTypeName]" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text13" Left="56.7" Top="190" Width="75.6" Height="18.9" Visible="false" Text="用水性质:" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text14" Left="236.25" Top="190" Width="75.6" Height="18.9" Visible="false" Text="水费:" HorzAlign="Right" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text15" Left="323.19" Top="190" Width="94.5" Height="18.9" Text="[水费通知单模板.waterTotalCharge]" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text16" Left="119.07" Top="220.24" Width="117.18" Height="18.9" Text="[水费通知单模板.waterMeterLastNumber]" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text17" Left="56.7" Top="220.24" Width="75.6" Height="18.9" Visible="false" Text="上月表数:" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text18" Left="236.25" Top="220.24" Width="75.6" Height="18.9" Visible="false" Text="附加费:" HorzAlign="Right" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text19" Left="323.19" Top="220.24" Width="94.5" Height="18.9" Text="[水费通知单模板.extraCharge2]" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text20" Left="119.07" Top="250.48" Width="117.18" Height="18.9" Text="[水费通知单模板.waterMeterEndNumber]" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text21" Left="56.7" Top="250.48" Width="75.6" Height="18.9" Visible="false" Text="本月表数:" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text22" Left="236.25" Top="250.48" Width="75.6" Height="18.9" Visible="false" Text="污水处理费:" HorzAlign="Right" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text23" Left="323.19" Top="250.48" Width="94.5" Height="18.9" Text="[水费通知单模板.extraCharge1]" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text24" Left="119.07" Top="280.72" Width="117.18" Height="18.9" Text="[水费通知单模板.totalNumber]" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text25" Left="56.7" Top="280.72" Width="75.6" Height="18.9" Visible="false" Text="用水量:" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text26" Left="236.25" Top="280.72" Width="75.6" Height="18.9" Visible="false" Text="合计:" HorzAlign="Right" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text27" Left="323.19" Top="280.72" Width="94.5" Height="18.9" Text="[水费通知单模板.totalCharge]" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text28" Left="119.07" Top="310.96" Width="117.18" Height="18.9" Text="[水费通知单模板.avePrice]" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text29" Left="56.7" Top="310.96" Width="75.6" Height="18.9" Visible="false" Text="单价:" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text30" Left="236.25" Top="310.96" Width="75.6" Height="18.9" Visible="false" Text="余额:" HorzAlign="Right" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text31" Left="323.19" Top="310.96" Width="94.5" Height="18.9" Text="[水费通知单模板.WATERUSERJSYE]" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text32" Left="47.25" Top="488.4" Width="122.85" Height="18.9" Visible="false" Text="维修电话:4822974" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text33" Left="109.4" Top="462.16" Width="117.18" Height="18.9" Text="[水费通知单模板.USERNAME]" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text34" Left="283.28" Top="462.16" Width="117.18" Height="18.9" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="txtQFSM" Left="52.7" Top="341.2" Width="359.1" Height="113.4" Visible="false" Text="用户您好:&#13;&#10;    您本月的水费余额已不足，为了不影响正常用水，请您及时到营业厅缴纳水费。根据《城市供水价格管理办法》规定：欠费用户接到此通知单超过15日无正当理由仍未缴纳水费的，按日加收应缴水费5‰的滞纳金或按《城市供水条例》处理。谢谢合作！" Font="宋体, 10pt"/>
+      <TextObject Name="Text2" Left="52.7" Top="434.7" Width="359.1" Height="18.9" Text="    营业厅地址:胜利路42号（大城子街道派出所对面）" Font="宋体, 9pt"/>
+      <TextObject Name="Text35" Left="170.1" Top="487.4" Width="226.8" Height="18.9" Text="打印日期:[Date]" HorzAlign="Right" WordWrap="false" Font="宋体, 10pt"/>
+    </DataBand>
+  </ReportPage>
+</Report>

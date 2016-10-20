@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="10/30/2015 18:25:18" ReportInfo.Modified="01/12/2016 10:44:15" ReportInfo.CreatorVersion="2014.4.8.0">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+
+namespace FastReport
+{
+  public class ReportScript
+  {    
+  }
+}
+</ScriptText>
+  <Dictionary/>
+  <ReportPage Name="Page1" PaperWidth="190" PaperHeight="90" LeftMargin="0" TopMargin="3" RightMargin="0" BottomMargin="0" FirstPageSource="1" OtherPagesSource="1">
+    <PageHeaderBand Name="PageHeader1" Width="718.2" Height="37.8">
+      <TextObject Name="Text2" Width="718.2" Height="37.8" Dock="Top" Text="收费日结明细单" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 16pt, style=Bold"/>
+      <LineObject Name="Line1" Left="53.25" Top="37.8" Width="619.92" Diagonal="true"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="41.8" Width="718.2" Height="247.6">
+      <TextObject Name="txtYSSF" Left="285.5" Top="3" Width="37.8" Height="18.9" Visible="false" Text="应收水费:" Font="宋体, 10pt"/>
+      <TextObject Name="txtDateTime" Left="251.49" Top="156.65" Width="425.25" Height="18.9" Text="2015-11-01 14:35:98 至 2015-11-01 14:35：34" Font="宋体, 10pt"/>
+      <TextObject Name="txtWorkerName" Left="53.04" Top="188.9" Width="179.55" Height="18.9" Text="收费员:" Font="宋体, 10pt"/>
+      <TextObject Name="txtSSSF" Left="56.7" Top="63.67" Width="141.75" Height="18.9" Text="实收金额:" Font="宋体, 10pt, style=Bold"/>
+      <TextObject Name="txtYEZJ" Left="56.7" Top="128.3" Width="292.95" Height="18.9" Visible="false" Text="余额增减:" Font="宋体, 10pt"/>
+      <LineObject Name="Line2" Left="53.25" Top="151.2" Width="619.92" Diagonal="true"/>
+      <LineObject Name="Line3" Left="370.55" Height="151.2" Diagonal="true"/>
+      <TextObject Name="txtJEZJ" Left="53.7" Top="156.65" Width="189" Height="18.9" Text="金额总计:" Font="宋体, 10pt, style=Bold"/>
+      <TextObject Name="txtQQYE" Left="521.75" Top="31.35" Width="151.2" Height="18.9" Visible="false" Text="前期余额:" Font="宋体, 10pt"/>
+      <TextObject Name="txtYCSF" Left="370.55" Top="63.67" Width="151.2" Height="18.9" Text="预存收费:" Font="宋体, 10pt, style=Bold"/>
+      <TextObject Name="txtJSYE" Left="370.55" Top="128.3" Width="302.4" Height="18.9" Visible="false" Text="结算余额:" Font="宋体, 10pt"/>
+      <TextObject Name="Text1" Left="444.15" Top="188.9" Width="160.65" Height="18.9" Text="签字确认:" VertAlign="Bottom" Font="宋体, 10pt"/>
+      <LineObject Name="Line4" Left="52.25" Height="211.68"/>
+      <LineObject Name="Line5" Left="673.95" Height="211.68"/>
+      <LineObject Name="Line6" Left="52.25" Top="210.8" Width="621.81" Diagonal="true"/>
+      <TextObject Name="txtPrintDateTime" Left="52.7" Top="219.25" Width="359.1" Height="18.9" Text="打印时间:[Date]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text3" Left="56.7" Width="311.85" Height="22.68" Text="水费收费↓" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 11pt, style=Bold"/>
+      <TextObject Name="Text4" Left="370.55" Width="302.4" Height="22.68" Text="预存收费↓" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 11pt, style=Bold"/>
+      <TextObject Name="txtSSSFXJ" Left="200.45" Top="63.67" Width="151.2" Height="18.9" Text="现金:" Font="宋体, 10pt"/>
+      <TextObject Name="txtSSSFPOS" Left="56.7" Top="95.99" Width="141.75" Height="18.9" Text="POS机:" Font="宋体, 10pt"/>
+      <TextObject Name="txtYCSFXJ" Left="521.75" Top="63.67" Width="151.2" Height="18.9" Text="现金:" Font="宋体, 10pt"/>
+      <TextObject Name="txtYCSFPOS" Left="371.55" Top="95.99" Width="151.2" Height="18.9" Text="POS机:" Font="宋体, 10pt"/>
+      <TextObject Name="txtYSCOUNT" Left="56.7" Top="31.35" Width="292.95" Height="18.9" Text="发票数量:" Font="宋体, 10pt"/>
+      <TextObject Name="txtYCCount" Left="370.55" Top="31.35" Width="151.2" Height="18.9" Text="单据数量:" Font="宋体, 10pt"/>
+      <TextObject Name="txtSSSFZHUANZHANG" Left="200.45" Top="95.99" Width="151.2" Height="18.9" Text="转账汇款:" Font="宋体, 10pt"/>
+      <TextObject Name="txtYCSFZHUANZHANG" Left="521.75" Top="95.99" Width="151.2" Height="18.9" Text="转账汇款:" Font="宋体, 10pt"/>
+    </DataBand>
+  </ReportPage>
+</Report>

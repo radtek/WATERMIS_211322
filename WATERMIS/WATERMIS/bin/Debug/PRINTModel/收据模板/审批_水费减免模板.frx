@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="10/30/2015 18:25:18" ReportInfo.Modified="09/09/2016 17:16:39" ReportInfo.CreatorVersion="2014.4.8.0">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+
+namespace FastReport
+{
+  public class ReportScript
+  {
+                              
+  }
+}
+</ScriptText>
+  <Dictionary>
+    <TableDataSource Name="水费减免收据模板" ReferenceName="Data.水费减免收据模板" DataType="System.Int32" Enabled="true">
+      <Column Name="waterUserNO" DataType="System.String" PropName="Column"/>
+      <Column Name="waterUserName" DataType="System.String" PropName="Column"/>
+      <Column Name="waterUserAddress" DataType="System.String" PropName="Column"/>
+      <Column Name="waterMeterNo" DataType="System.String" PropName="Column"/>
+      <Column Name="readMeterRecordYear" DataType="System.String" PropName="Column"/>
+      <Column Name="readMeterRecordMonth" DataType="System.String" PropName="Column"/>
+      <Column Name="waterMeterLastNumber" DataType="System.String" PropName="Column"/>
+      <Column Name="waterMeterEndNumber" DataType="System.String" PropName="Column"/>
+      <Column Name="totalNumber" DataType="System.String" PropName="Column"/>
+      <Column Name="waterMeterTypeName" DataType="System.String" PropName="Column"/>
+      <Column Name="waterTotalCharge" DataType="System.String" PropName="Column"/>
+      <Column Name="extraTotalCharge" DataType="System.String" PropName="Column"/>
+      <Column Name="OVERDUEGET" DataType="System.String" PropName="Column"/>
+      <Column Name="totalCharge" DataType="System.String" PropName="Column"/>
+      <Column Name="REMITWATERFEEEND" DataType="System.String" PropName="Column"/>
+      <Column Name="REMITEXTRAFEEEND" DataType="System.String" PropName="Column"/>
+      <Column Name="REMITOVERDUEEND" DataType="System.String" PropName="Column"/>
+      <Column Name="totalChargeRemit" DataType="System.String" PropName="Column"/>
+      <Column Name="RemitMemo" DataType="System.String" PropName="Column"/>
+    </TableDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1" PaperWidth="100" PaperHeight="90" LeftMargin="0" TopMargin="0" RightMargin="0" BottomMargin="0" FirstPageSource="15" OtherPagesSource="15">
+    <DataBand Name="Data1" Width="378" Height="321.85">
+      <TextObject Name="txtWaterUserNO" Left="71.82" Top="51.03" Width="292.95" Height="18.9" Text="[水费减免收据模板.waterUserNO]" WordWrap="false" Font="宋体, 9pt"/>
+      <TextObject Name="txtWaterUserName" Left="71.82" Top="71.82" Width="292.95" Height="18.9" Text="[水费减免收据模板.waterUserName]" WordWrap="false" Font="宋体, 9pt"/>
+      <TextObject Name="txtWaterUserAddress" Left="71.82" Top="92.61" Width="292.95" Height="18.9" Text="[水费减免收据模板.waterUserAddress]" WordWrap="false" Font="宋体, 9pt"/>
+      <TextObject Name="Text6" Left="9.45" Top="51.03" Width="66.15" Height="18.9" Text="用户编号:" WordWrap="false" Font="宋体, 9pt"/>
+      <TextObject Name="Text7" Left="9.45" Top="71.82" Width="66.15" Height="18.9" Text="用户名称:" WordWrap="false" Font="宋体, 9pt"/>
+      <TextObject Name="Text8" Left="9.45" Top="92.61" Width="66.15" Height="18.9" Text="地    址:" WordWrap="false" Font="宋体, 9pt"/>
+      <TextObject Name="Text2" Left="406.35" Top="217.35" Width="49.14" Height="18.9" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text9" Left="253.15" Top="302.95" Width="75.6" Height="18.9" Text="用户签字:" VertAlign="Bottom" Font="宋体, 9pt"/>
+      <TextObject Name="Text1" Top="9.45" Width="368.55" Height="28.35" Text="水费减免凭证" HorzAlign="Center" VertAlign="Center" Font="宋体, 16pt, style=Bold"/>
+      <LineObject Name="Line1" Top="37.8" Width="378" Diagonal="true"/>
+      <TextObject Name="Text12" Left="9.45" Top="122.85" Width="160.65" Height="18.9" Text="抄表月份：[水费减免收据模板.readMeterRecordYear][水费减免收据模板.readMeterRecordMonth]" WordWrap="false" Font="宋体, 9pt"/>
+      <TextObject Name="Text13" Left="9.45" Top="141.75" Width="160.65" Height="18.9" Text="上月读数:[水费减免收据模板.waterMeterLastNumber]" WordWrap="false" Font="宋体, 9pt"/>
+      <TextObject Name="Text14" Left="184.55" Top="141.75" Width="179.55" Height="18.9" Text="本月读数:[水费减免收据模板.waterMeterEndNumber]" WordWrap="false" Font="宋体, 9pt"/>
+      <TextObject Name="Text15" Left="9.45" Top="160.65" Width="160.65" Height="18.9" Text="用 水 量:[水费减免收据模板.totalNumber]" WordWrap="false" Font="宋体, 9pt"/>
+      <TextObject Name="Text16" Left="184.55" Top="160.65" Width="179.55" Height="18.9" Text="用水性质:[水费减免收据模板.waterMeterTypeName]" WordWrap="false" Font="宋体, 9pt"/>
+      <TextObject Name="Text17" Left="9.45" Top="179.55" Width="160.65" Height="18.9" Text="水    费:[水费减免收据模板.waterTotalCharge]" WordWrap="false" Font="宋体, 9pt"/>
+      <TextObject Name="Text18" Left="184.55" Top="179.55" Width="179.55" Height="18.9" Text="污水处理费:" WordWrap="false" Font="宋体, 9pt"/>
+      <TextObject Name="Text19" Left="9.45" Top="198.45" Width="160.65" Height="18.9" Text="附 加 费:[水费减免收据模板.extraTotalCharge]" WordWrap="false" Font="宋体, 9pt"/>
+      <TextObject Name="Text21" Left="184.55" Top="198.45" Width="179.55" Height="18.9" Text="滞 纳 金:[水费减免收据模板.OVERDUEGET]" WordWrap="false" Font="宋体, 9pt"/>
+      <TextObject Name="Text22" Left="184.55" Top="217.35" Width="179.55" Height="18.9" Text="减免后滞纳金:[水费减免收据模板.REMITOVERDUEEND]" WordWrap="false" Font="宋体, 9pt"/>
+      <TextObject Name="Text23" Left="9.45" Top="217.35" Width="160.65" Height="18.9" Text="总    计:[水费减免收据模板.totalCharge]" WordWrap="false" Font="宋体, 9pt"/>
+      <TextObject Name="Text24" Left="9.45" Top="236.25" Width="160.65" Height="18.9" Text="减免后总计:[水费减免收据模板.totalChargeRemit]" WordWrap="false" Font="宋体, 9pt"/>
+      <LineObject Name="Line2" Top="291.5" Width="378" Diagonal="true"/>
+      <LineObject Name="Line3" Top="256.6" Width="378" Diagonal="true"/>
+      <TextObject Name="Text3" Top="302.95" Width="255.15" Height="18.9" Text="打印日期:[Date]" Format="Date" Format.Format="F" VertAlign="Bottom" Font="宋体, 10pt"/>
+      <LineObject Name="Line4" Top="113.4" Width="378" Diagonal="true"/>
+      <TextObject Name="Text25" Left="9.45" Top="260.6" Width="359.1" Height="30.24" Text="备注:[水费减免收据模板.RemitMemo]" Font="宋体, 9pt"/>
+    </DataBand>
+  </ReportPage>
+</Report>

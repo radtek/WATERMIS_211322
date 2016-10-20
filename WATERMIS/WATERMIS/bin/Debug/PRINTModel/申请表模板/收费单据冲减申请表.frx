@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="10/30/2015 18:25:18" ReportInfo.Modified="01/26/2016 08:20:37" ReportInfo.CreatorVersion="2014.4.8.0">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+
+namespace FastReport
+{
+  public class ReportScript
+  {    
+  }
+}
+</ScriptText>
+  <Dictionary/>
+  <ReportPage Name="Page1" PaperHeight="140" LeftMargin="0" TopMargin="3" RightMargin="0" BottomMargin="0">
+    <PageHeaderBand Name="PageHeader1" Width="793.8" Height="49.14">
+      <LineObject Name="Line1" Left="212.62" Top="42.35" Width="368.55" Border.Width="2" Diagonal="true"/>
+      <TextObject Name="Text3" Top="6" Width="793.8" Height="37.8" Text="收费单据冲减申请表" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 18pt, style=Bold"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="53.14" Width="793.8" Height="115.29">
+      <TableObject Name="Table4" Left="23.63" Top="2.45" Width="746.55" Height="58.59" Border.Lines="All">
+        <TableColumn Name="Column32" Width="54.81"/>
+        <TableColumn Name="Column33" Width="69.93"/>
+        <TableColumn Name="Column34" Width="136.08"/>
+        <TableColumn Name="Column35" Width="62.37"/>
+        <TableColumn Name="Column37" Width="51.03"/>
+        <TableColumn Name="Column36" Width="54.81"/>
+        <TableColumn Name="Column41" Width="77.49"/>
+        <TableColumn Name="Column38" Width="113.4"/>
+        <TableColumn Name="Column39" Width="49.14"/>
+        <TableColumn Name="Column40" Width="77.49"/>
+        <TableRow Name="Row11" Height="24.57">
+          <TableCell Name="Cell123" Border.Lines="All" Text="用户号" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+          <TableCell Name="Cell124" Border.Lines="All" Text="用户名" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+          <TableCell Name="Cell125" Border.Lines="All" Text="地址" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+          <TableCell Name="Cell126" Border.Lines="All" Text="收款员" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+          <TableCell Name="Cell128" Border.Lines="All" Text="用水量" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+          <TableCell Name="Cell127" Border.Lines="All" Text="金额" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+          <TableCell Name="Cell132" Border.Lines="All" Text="单据日期" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 11pt"/>
+          <TableCell Name="Cell129" Border.Lines="All" Text="冲减原因" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+          <TableCell Name="Cell130" Border.Lines="All" Text="抄表员" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+          <TableCell Name="Cell131" Border.Lines="All" Text="申请日期" HorzAlign="Center" VertAlign="Bottom" WordWrap="false" Font="宋体, 11pt"/>
+        </TableRow>
+        <TableRow Name="Row10" Height="34.02">
+          <TableCell Name="Cell114" Border.Lines="All" VertAlign="Center" WordWrap="false" Font="宋体, 11pt"/>
+          <TableCell Name="Cell115" Border.Lines="All" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell116" Border.Lines="All" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell117" Border.Lines="All" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell119" Border.Lines="All" HorzAlign="Justify" VertAlign="Center" WordWrap="false" Font="宋体, 11pt"/>
+          <TableCell Name="Cell118" Border.Lines="All" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell133" Border.Lines="All" VertAlign="Center" Font="宋体, 10pt"/>
+          <TableCell Name="Cell120" Border.Lines="All" VertAlign="Center" Font="宋体, 10pt"/>
+          <TableCell Name="Cell121" Border.Lines="All" VertAlign="Center" WordWrap="false" Font="宋体, 11pt"/>
+          <TableCell Name="Cell122" Border.Lines="All" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+        </TableRow>
+      </TableObject>
+      <DataFooterBand Name="DataFooter1" Top="172.43" Width="793.8" Height="28.35">
+        <TextObject Name="Text4" Left="578.81" Top="9.45" Width="94.5" Height="18.9" Text="核验签字:" VertAlign="Bottom" Font="宋体, 11pt"/>
+        <TextObject Name="Text5" Left="308.7" Top="9.45" Width="113.4" Height="18.9" Text="主管股长签字:" VertAlign="Bottom" Font="宋体, 11pt"/>
+        <TextObject Name="Text6" Left="57.49" Top="9.45" Width="94.5" Height="18.9" Text="股长签字:" VertAlign="Bottom" Font="宋体, 11pt"/>
+      </DataFooterBand>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="204.78" Width="793.8" Height="45.36">
+      <TextObject Name="txtPrintDateTime" Left="18.9" Top="9.45" Width="245.7" Height="18.9" Text="打印时间:[Date]" VertAlign="Center" Font="宋体, 10pt"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>

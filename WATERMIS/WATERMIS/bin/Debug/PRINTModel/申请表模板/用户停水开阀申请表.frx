@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="10/30/2015 18:25:18" ReportInfo.Modified="01/26/2016 08:21:04" ReportInfo.CreatorVersion="2014.4.8.0">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+
+namespace FastReport
+{
+  public class ReportScript
+  {    
+  }
+}
+</ScriptText>
+  <Dictionary/>
+  <ReportPage Name="Page1" PaperHeight="140" LeftMargin="0" TopMargin="3" RightMargin="0" BottomMargin="0">
+    <PageHeaderBand Name="PageHeader1" Width="793.8" Height="52.92">
+      <LineObject Name="Line1" Left="212.62" Top="46.35" Width="368.55" Border.Width="2" Diagonal="true"/>
+      <TextObject Name="Text3" Top="6" Width="793.8" Height="37.8" Text="用户停阀开阀申请表" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 18pt, style=Bold"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="56.92" Width="793.8" Height="62.37">
+      <TableObject Name="Table2" Left="21.73" Width="750.33" Height="49.14" Border.Lines="All">
+        <TableColumn Name="Column15" Width="60.48"/>
+        <TableColumn Name="Column16" Width="86.94"/>
+        <TableColumn Name="Column17" Width="255.15"/>
+        <TableColumn Name="Column18" Width="71.82"/>
+        <TableColumn Name="Column12"/>
+        <TableColumn Name="Column21" Width="85.05"/>
+        <TableColumn Name="Column22" Width="124.74"/>
+        <TableRow Name="Row5" Height="24.57">
+          <TableCell Name="Cell68" Border.Lines="All" Text="用户号" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 11pt"/>
+          <TableCell Name="Cell69" Border.Lines="All" Text="用户名" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 11pt"/>
+          <TableCell Name="Cell70" Border.Lines="All" Text="用户地址" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 11pt"/>
+          <TableCell Name="Cell71" Border.Lines="All" Text="申请操作" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 11pt"/>
+          <TableCell Name="Cell65" Border.Lines="All" Text="抄表员" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 11pt"/>
+          <TableCell Name="Cell74" Border.Lines="All" Text="日期" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 11pt"/>
+          <TableCell Name="Cell75" Border.Lines="All" Text="备注" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 11pt"/>
+        </TableRow>
+        <TableRow Name="Row6" Height="24.57">
+          <TableCell Name="Cell79" Border.Lines="All" VertAlign="Bottom" Font="宋体, 10pt"/>
+          <TableCell Name="Cell80" Border.Lines="All" VertAlign="Bottom" Font="宋体, 10pt"/>
+          <TableCell Name="Cell81" Border.Lines="All" HorzAlign="Justify" VertAlign="Bottom" Font="宋体, 11pt"/>
+          <TableCell Name="Cell82" Border.Lines="All" VertAlign="Bottom" Font="宋体, 11pt"/>
+          <TableCell Name="Cell76" Border.Lines="All" VertAlign="Bottom" Font="宋体, 11pt"/>
+          <TableCell Name="Cell85" Border.Lines="All" VertAlign="Bottom" Font="宋体, 11pt"/>
+          <TableCell Name="Cell86" Border.Lines="All" VertAlign="Bottom" Font="宋体, 10pt"/>
+        </TableRow>
+      </TableObject>
+      <DataFooterBand Name="DataFooter1" Top="123.29" Width="793.8" Height="56.7">
+        <TextObject Name="Text4" Left="616.61" Top="28.35" Width="94.5" Height="18.9" Text="核验签字:" VertAlign="Bottom" Font="宋体, 11pt"/>
+        <TextObject Name="Text5" Left="407.93" Top="28.35" Width="113.4" Height="18.9" Text="主管股长签字:" VertAlign="Bottom" Font="宋体, 11pt"/>
+        <TextObject Name="Text6" Left="218.14" Top="28.35" Width="94.5" Height="18.9" Text="股长签字:" VertAlign="Bottom" Font="宋体, 11pt"/>
+        <TextObject Name="Text7" Left="28.35" Top="28.35" Width="94.5" Height="18.9" Text="经理签字:" VertAlign="Bottom" Font="宋体, 11pt"/>
+      </DataFooterBand>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="183.99" Width="793.8" Height="39.69">
+      <TextObject Name="txtPrintDateTime" Left="18.9" Top="9.45" Width="245.7" Height="18.9" Text="打印时间:[Date]" VertAlign="Center" Font="宋体, 10pt"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>

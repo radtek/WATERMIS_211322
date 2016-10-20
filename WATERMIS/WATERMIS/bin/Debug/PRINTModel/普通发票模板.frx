@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="08/13/2015 18:47:15" ReportInfo.Modified="09/10/2015 14:51:39" ReportInfo.CreatorVersion="2014.4.8.0">
+  <Dictionary>
+    <TableDataSource Name="普通发票模板" ReferenceName="Data.普通发票模板" DataType="System.Int32" Enabled="true">
+      <Column Name="waterUserName" DataType="System.String" PropName="Column"/>
+      <Column Name="waterUserNO" DataType="System.String" PropName="Column"/>
+      <Column Name="waterUserAddress" DataType="System.String" PropName="Column"/>
+      <Column Name="waterMeterPositionName" DataType="System.String" PropName="Column"/>
+      <Column Name="meterReadingNO" DataType="System.String" PropName="Column"/>
+      <Column Name="waterMeterNo" DataType="System.String" PropName="Column"/>
+      <Column Name="readMeterRecordYear" DataType="System.String" PropName="Column"/>
+      <Column Name="readMeterRecordMonth" DataType="System.String" PropName="Column"/>
+      <Column Name="waterMeterLastNumber" DataType="System.String" PropName="Column"/>
+      <Column Name="waterMeterEndNumber" DataType="System.String" PropName="Column"/>
+      <Column Name="TOTALNUMBERCHARGE" DataType="System.String" PropName="Column"/>
+      <Column Name="waterMeterTypeName" DataType="System.String" PropName="Column"/>
+      <Column Name="avePrice" DataType="System.String" PropName="Column"/>
+      <Column Name="WATERTOTALCHARGECHARGE" DataType="System.String" PropName="Column"/>
+      <Column Name="EXTRACHARGECHARGE2" DataType="System.String" PropName="Column"/>
+      <Column Name="EXTRACHARGECHARGE1" DataType="System.String" PropName="Column"/>
+      <Column Name="TOTALCHARGECHARGE" DataType="System.String" PropName="Column"/>
+    </TableDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1" PaperWidth="190" PaperHeight="76.2" LeftMargin="0" TopMargin="0" RightMargin="0" BottomMargin="0" FirstPageSource="15" OtherPagesSource="15">
+    <DataBand Name="Data1" Width="718.2" Height="287.28">
+      <TextObject Name="Text1" Left="6" Top="90.72" Width="37.8" Height="18.9" Text="[Year([Date])]" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text2" Left="43.8" Top="90.72" Width="28.35" Height="18.9" Text="[Month([Date])]" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text3" Left="224.24" Top="90.72" Width="37.8" Height="18.9" Text="[Year([Date])]" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text4" Left="269.6" Top="90.72" Width="28.35" Height="18.9" Text="[Month([Date])]" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text5" Left="61.7" Top="109.62" Width="102.06" Height="18.9" Text="[普通发票模板.waterUserName]" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text6" Left="273.38" Top="109.62" Width="434.7" Height="18.9" Text="[普通发票模板.waterUserName]" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text7" Left="61.7" Top="130.41" Width="102.06" Height="18.9" Text="[普通发票模板.waterMeterNo]" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text9" Left="61.7" Top="149.31" Width="102.06" Height="18.9" Text="[普通发票模板.waterMeterTypeName]" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text10" Left="273.38" Top="149.31" Width="98.28" Height="18.9" Text="[普通发票模板.waterMeterTypeName]" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text11" Left="61.7" Top="170.1" Width="64.26" Height="18.9" Text="[普通发票模板.TOTALNUMBERCHARGE]" HorzAlign="Right" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text13" Left="61.7" Top="190.89" Width="64.26" Height="18.9" Text="[普通发票模板.WATERTOTALCHARGECHARGE]" HorzAlign="Right" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text14" Left="439.7" Top="149.31" Width="132.3" Height="18.9" Text="[普通发票模板.WATERTOTALCHARGECHARGE]" HorzAlign="Right" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text15" Left="61.7" Top="211.68" Width="64.26" Height="18.9" Text="[普通发票模板.EXTRACHARGECHARGE2]" HorzAlign="Right" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text17" Left="61.7" Top="228.69" Width="64.26" Height="18.9" Text="[普通发票模板.EXTRACHARGECHARGE1]" HorzAlign="Right" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text19" Left="61.7" Top="249.48" Width="64.26" Height="18.9" Text="[普通发票模板.TOTALCHARGECHARGE]" HorzAlign="Right" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text21" Left="273.38" Top="130.41" Width="430.92" Height="18.9" Text="[普通发票模板.waterUserAddress]([普通发票模板.meterReadingNO]-[普通发票模板.waterMeterNo])" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text22" Left="273.38" Top="170.1" Width="75.6" Height="18.9" Text="[普通发票模板.waterMeterEndNumber]" HorzAlign="Right" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text23" Left="439.7" Top="170.1" Width="132.3" Height="18.9" Text="[普通发票模板.EXTRACHARGECHARGE2]" HorzAlign="Right" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text24" Left="273.38" Top="190.89" Width="75.6" Height="18.9" Text="[普通发票模板.waterMeterLastNumber]" HorzAlign="Right" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text25" Left="439.7" Top="190.89" Width="132.3" Height="18.9" Text="[普通发票模板.EXTRACHARGECHARGE1]" HorzAlign="Right" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text26" Left="273.38" Top="211.68" Width="75.6" Height="18.9" Text="[普通发票模板.TOTALNUMBERCHARGE]" HorzAlign="Right" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text27" Left="273.38" Top="228.69" Width="75.6" Height="18.9" Text="[普通发票模板.avePrice]" HorzAlign="Right" WordWrap="false" Font="宋体, 10pt"/>
+      <TextObject Name="Text28" Left="439.7" Top="228.69" Width="132.3" Height="18.9" Text="[普通发票模板.TOTALCHARGECHARGE]" HorzAlign="Right" WordWrap="false" Font="宋体, 10pt"/>
+    </DataBand>
+  </ReportPage>
+</Report>

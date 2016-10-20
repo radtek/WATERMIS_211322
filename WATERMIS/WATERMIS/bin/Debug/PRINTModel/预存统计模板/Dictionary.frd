@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dictionary>
+  <TableDataSource Name="预存统计(按用户)" ReferenceName="Data.预存统计(按用户)" DataType="System.Int32" Enabled="true">
+    <Column Name="用户号" DataType="System.String" PropName="Column"/>
+    <Column Name="用户名" DataType="System.String" PropName="Column"/>
+    <Column Name="单据数量" DataType="System.String" PropName="Column"/>
+    <Column Name="实收金额" DataType="System.String" PropName="Column"/>
+    <Column Name="现金收费" DataType="System.String" PropName="Column"/>
+    <Column Name="POS机收费" DataType="System.String" PropName="Column"/>
+    <Column Name="余额增减" DataType="System.String" PropName="Column"/>
+  </TableDataSource>
+</Dictionary>

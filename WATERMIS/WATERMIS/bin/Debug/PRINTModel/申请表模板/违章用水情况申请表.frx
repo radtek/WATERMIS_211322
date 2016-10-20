@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="10/30/2015 18:25:18" ReportInfo.Modified="01/26/2016 09:38:15" ReportInfo.CreatorVersion="2014.4.8.0">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+
+namespace FastReport
+{
+  public class ReportScript
+  {    
+  }
+}
+</ScriptText>
+  <Dictionary/>
+  <ReportPage Name="Page1" RawPaperSize="9" LeftMargin="0" RightMargin="0" BottomMargin="0">
+    <PageHeaderBand Name="PageHeader1" Width="793.8" Height="85.05">
+      <LineObject Name="Line1" Left="212.62" Top="46.35" Width="368.55" Border.Width="2" Diagonal="true"/>
+      <TextObject Name="Text3" Top="6" Width="793.8" Height="37.8" Text="违章用水情况记录表" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 18pt, style=Bold"/>
+      <TextObject Name="Text1" Left="576.45" Top="56.7" Width="170.1" Height="28.35" Text="编号:" VertAlign="Center" Font="宋体, 12pt"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="89.05" Width="793.8" Height="856.17">
+      <TableObject Name="Table1" Left="47.25" Width="699.3" Height="863.73" Border.Lines="All">
+        <TableColumn Name="Column1" Width="103.95"/>
+        <TableColumn Name="Column2" Width="245.7"/>
+        <TableColumn Name="Column4" Width="94.5"/>
+        <TableColumn Name="Column5" Width="255.15"/>
+        <TableRow Name="Row1" Height="26.46">
+          <TableCell Name="Cell1" Border.Lines="All" Text="户    号" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 12pt"/>
+          <TableCell Name="Cell2" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 12pt"/>
+          <TableCell Name="Cell4" Border.Lines="All" Text="地    址" HorzAlign="Center" VertAlign="Center" Font="宋体, 12pt" RowSpan="2"/>
+          <TableCell Name="Cell5" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 12pt" RowSpan="2"/>
+        </TableRow>
+        <TableRow Name="Row12" Height="26.46">
+          <TableCell Name="Cell50" Border.Lines="All" Text="户    名" HorzAlign="Center" VertAlign="Bottom" Font="宋体, 12pt"/>
+          <TableCell Name="Cell51" Border.Lines="All" Font="宋体, 12pt"/>
+          <TableCell Name="Cell52" Border.Lines="All" Font="宋体, 12pt"/>
+          <TableCell Name="Cell53" Border.Lines="All" Font="宋体, 12pt"/>
+        </TableRow>
+        <TableRow Name="Row2" Height="41.58">
+          <TableCell Name="Cell6" Border.Lines="All" Text="用水性质" HorzAlign="Center" VertAlign="Center" Font="宋体, 12pt"/>
+          <TableCell Name="Cell7" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 12pt"/>
+          <TableCell Name="Cell9" Border.Lines="All" Text="电    话" HorzAlign="Center" VertAlign="Center" Font="宋体, 12pt"/>
+          <TableCell Name="Cell10" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 12pt"/>
+        </TableRow>
+        <TableRow Name="Row3" Height="41.58">
+          <TableCell Name="Cell11" Border.Lines="All" Text="负 责 人" HorzAlign="Center" VertAlign="Center" Font="宋体, 12pt"/>
+          <TableCell Name="Cell12" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 12pt"/>
+          <TableCell Name="Cell14" Border.Lines="All" Text="收 费 员" HorzAlign="Center" VertAlign="Center" Font="宋体, 12pt"/>
+          <TableCell Name="Cell15" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 12pt"/>
+        </TableRow>
+        <TableRow Name="Row4" Height="141.75">
+          <TableCell Name="Cell16" Border.Lines="Left, Right, Top" Text="违章情况:" Font="宋体, 12pt" ColSpan="4"/>
+          <TableCell Name="Cell17" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 12pt"/>
+          <TableCell Name="Cell19" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 12pt"/>
+          <TableCell Name="Cell20" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 12pt"/>
+        </TableRow>
+        <TableRow Name="Row6" Height="75.6">
+          <TableCell Name="Cell26" Border.Lines="Left, Right, Bottom" Text="                                                           用户签字:&#13;&#10;                                                             &#13;&#10;                                                                    年   月   日" VertAlign="Center" Font="宋体, 12pt" ColSpan="4"/>
+          <TableCell Name="Cell27" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 12pt"/>
+          <TableCell Name="Cell28" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 12pt"/>
+          <TableCell Name="Cell29" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 12pt"/>
+        </TableRow>
+        <TableRow Name="Row7" Height="37.8">
+          <TableCell Name="Cell30" Border.Lines="Left, Top, Bottom" Text="监察人员:" VertAlign="Center" Font="宋体, 12pt"/>
+          <TableCell Name="Cell31" Border.Lines="Right, Top, Bottom" HorzAlign="Center" VertAlign="Center" Font="宋体, 12pt" ColSpan="3"/>
+          <TableCell Name="Cell32" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 12pt"/>
+          <TableCell Name="Cell33" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 12pt"/>
+        </TableRow>
+        <TableRow Name="Row8" Height="122.85">
+          <TableCell Name="Cell34" Border.Lines="Left, Right, Top" Text="处理结果:" Font="宋体, 12pt" ColSpan="4"/>
+          <TableCell Name="Cell35" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 12pt"/>
+          <TableCell Name="Cell36" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 12pt"/>
+          <TableCell Name="Cell37" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 12pt"/>
+        </TableRow>
+        <TableRow Name="Row9" Height="75.6">
+          <TableCell Name="Cell38" Border.Lines="Left, Right, Bottom" Text="                                                          负责人:&#13;&#10;&#13;&#10;                                                                    年    月    日" HorzAlign="Center" VertAlign="Center" Font="宋体, 12pt" ColSpan="4"/>
+          <TableCell Name="Cell39" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 12pt"/>
+          <TableCell Name="Cell40" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 12pt"/>
+          <TableCell Name="Cell41" Border.Lines="All" HorzAlign="Center" VertAlign="Center" Font="宋体, 12pt"/>
+        </TableRow>
+        <TableRow Name="Row10" Height="103.95">
+          <TableCell Name="Cell42" Border.Lines="Left, Right, Top" Text="监察股意见:" Font="宋体, 12pt" ColSpan="2"/>
+          <TableCell Name="Cell43" Border.Lines="All" Font="宋体, 12pt"/>
+          <TableCell Name="Cell44" Border.Lines="Left, Right, Top" Text="主管经理意见:" Font="宋体, 12pt" ColSpan="2"/>
+          <TableCell Name="Cell45" Border.Lines="All" Font="宋体, 12pt"/>
+        </TableRow>
+        <TableRow Name="Row5" Height="75.6">
+          <TableCell Name="Cell21" Border.Lines="Left, Right, Bottom" Text="                签 字:  &#13;&#10;                        &#13;&#10;                        年    月    日" HorzAlign="Center" VertAlign="Center" Font="宋体, 12pt" ColSpan="2"/>
+          <TableCell Name="Cell22" Border.Lines="Left, Right, Bottom" HorzAlign="Center" VertAlign="Center" Font="宋体, 12pt"/>
+          <TableCell Name="Cell24" Border.Lines="Left, Right, Bottom" Text="                    签 字:&#13;&#10;&#13;&#10;                      年    月    日" VertAlign="Center" Font="宋体, 12pt" ColSpan="2"/>
+          <TableCell Name="Cell25" Border.Lines="Left, Right, Bottom" HorzAlign="Center" VertAlign="Center" Font="宋体, 12pt"/>
+        </TableRow>
+        <TableRow Name="Row11" Height="94.5">
+          <TableCell Name="Cell46" Border.Lines="All" Text="备注:" Font="宋体, 12pt" ColSpan="4"/>
+          <TableCell Name="Cell47" Border.Lines="All" Font="宋体, 9pt"/>
+          <TableCell Name="Cell48" Border.Lines="All" Font="宋体, 9pt"/>
+          <TableCell Name="Cell49" Border.Lines="All" Font="宋体, 9pt"/>
+        </TableRow>
+      </TableObject>
+    </DataBand>
+  </ReportPage>
+</Report>

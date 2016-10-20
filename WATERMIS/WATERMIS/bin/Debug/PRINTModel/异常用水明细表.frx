@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="05/19/2015 08:27:05" ReportInfo.Modified="11/14/2015 10:39:37" ReportInfo.CreatorVersion="2014.4.8.0">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+
+namespace FastReport
+{
+  public class ReportScript
+  {
+
+    private void Table1_ManualBuild(object sender, EventArgs e)
+    {   
+      DataSourceBase data1 = Report.GetDataSource(&quot;异常用水明细表&quot;); // 获取DataSet中表名为Table1的数据源
+      data1.Init(); // 初始化 
+    
+      Table1.PrintRow(0); // 控件Table1打印第0行
+      Table1.PrintColumns(); // 每打印一行，都要调用 PrintColumn或PrintColumns
+     
+      while(data1.HasMoreRows) // 打印重复循环的行
+      {
+        Table1.PrintRow(1);
+        Table1.PrintColumns();
+        data1.Next(); // 读取下一行
+      }
+    }
+  }
+}
+</ScriptText>
+  <Dictionary>
+    <TableDataSource Name="异常用水明细表" ReferenceName="Data.异常用水明细表" DataType="System.Int32" Enabled="true">
+      <Column Name="waterUserNO" DataType="System.String" PropName="Column"/>
+      <Column Name="waterUserName" DataType="System.String" PropName="Column"/>
+      <Column Name="waterPhone" DataType="System.String" PropName="Column"/>
+      <Column Name="waterUserAddress" DataType="System.String" PropName="Column"/>
+      <Column Name="areaName" DataType="System.String" PropName="Column"/>
+      <Column Name="meterReadingNO" DataType="System.String" PropName="Column"/>
+      <Column Name="USERNAME" DataType="System.String" PropName="Column"/>
+      <Column Name="meterReadingPageNo" DataType="System.String" PropName="Column"/>
+      <Column Name="waterUserHouseTypeS" DataType="System.String" PropName="Column"/>
+      <Column Name="waterMeterNo" DataType="System.String" PropName="Column"/>
+      <Column Name="waterMeterPositionName" DataType="System.String" PropName="Column"/>
+      <Column Name="readMeterRecordYear" DataType="System.String" PropName="Column"/>
+      <Column Name="readMeterRecordMonth" DataType="System.String" PropName="Column"/>
+      <Column Name="waterMeterLastNumber" DataType="System.String" PropName="Column"/>
+      <Column Name="waterMeterEndNumber" DataType="System.String" PropName="Column"/>
+      <Column Name="totalNumber" DataType="System.String" PropName="Column"/>
+      <Column Name="AVGTOTALNUMBER" DataType="System.String" PropName="Column"/>
+      <Column Name="BILV" DataType="System.String" PropName="Column"/>
+    </TableDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1" RawPaperSize="9" LeftMargin="0" TopMargin="5" RightMargin="0" BottomMargin="5" FirstPageSource="15" OtherPagesSource="15">
+    <PageHeaderBand Name="PageHeader1" Width="793.8" Height="94.5">
+      <TextObject Name="Text1" Left="9.45" Top="9.45" Width="793.8" Height="37.8" Text="异常用水明细表" HorzAlign="Center" VertAlign="Center" Font="宋体, 18pt, style=Bold"/>
+      <LineObject Name="Line1" Top="39.8" Width="793.8" Diagonal="true"/>
+      <TableObject Name="Table2" Left="18.9" Top="55.7" Width="750.33" Height="37.8">
+        <TableColumn Name="Column14"/>
+        <TableColumn Name="Column15"/>
+        <TableColumn Name="Column16"/>
+        <TableColumn Name="Column17" Width="79.38"/>
+        <TableColumn Name="Column18" Width="75.6"/>
+        <TableColumn Name="Column19" Width="37.8"/>
+        <TableColumn Name="Column20" Width="37.8"/>
+        <TableColumn Name="Column21"/>
+        <TableColumn Name="Column22"/>
+        <TableColumn Name="Column23" Width="56.7"/>
+        <TableColumn Name="Column24"/>
+        <TableColumn Name="Column25"/>
+        <TableRow Name="Row5" Height="37.8">
+          <TableCell Name="Cell88" Border.Lines="Left, Right, Top" Text="用户号" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell89" Border.Lines="Left, Right, Top" Text="用户名" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell90" Border.Lines="Left, Right, Top" Text="地址" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell91" Border.Lines="Left, Right, Top" Text="联系方式" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell92" Border.Lines="Left, Right, Top" Text="水表号" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell93" Border.Lines="Left, Right, Top" Text="年份" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell94" Border.Lines="Left, Right, Top" Text="月份" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell95" Border.Lines="Left, Right, Top" Text="上期读数" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell96" Border.Lines="Left, Right, Top" Text="本期读数" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell97" Border.Lines="Left, Right, Top" Text="用水量" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell98" Border.Lines="Left, Right, Top" Text="近期平均值" HorzAlign="Center" VertAlign="Center" Font="宋体, 10pt"/>
+          <TableCell Name="Cell99" Border.Lines="Left, Right, Top" Text="波动比率" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="宋体, 10pt"/>
+        </TableRow>
+      </TableObject>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="98.5" Width="793.8" Height="18.9" Guides="0" DataSource="异常用水明细表">
+      <TableObject Name="Table1" Left="18.62" Top="-0.1" Width="750.33" Height="18.9">
+        <TableColumn Name="Column1"/>
+        <TableColumn Name="Column3"/>
+        <TableColumn Name="Column8"/>
+        <TableColumn Name="Column10" Width="79.38"/>
+        <TableColumn Name="Column2" Width="75.6"/>
+        <TableColumn Name="Column13" Width="37.8"/>
+        <TableColumn Name="Column12" Width="37.8"/>
+        <TableColumn Name="Column4"/>
+        <TableColumn Name="Column5"/>
+        <TableColumn Name="Column6" Width="56.7"/>
+        <TableColumn Name="Column7"/>
+        <TableColumn Name="Column9"/>
+        <TableRow Name="Row2">
+          <TableCell Name="Cell6" Border.Lines="All" Text="[异常用水明细表.waterUserNO]" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell8" Border.Lines="All" Text="[异常用水明细表.waterUserName]" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell37" Border.Lines="All" Text="[异常用水明细表.waterUserAddress]" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell47" Border.Lines="All" Text="[异常用水明细表.waterPhone]" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell7" Border.Lines="All" Text="[异常用水明细表.waterMeterNo]" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell62" Border.Lines="All" Text="[异常用水明细表.readMeterRecordYear]" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell57" Border.Lines="All" Text="[异常用水明细表.readMeterRecordMonth]" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell9" Border.Lines="All" Text="[异常用水明细表.waterMeterLastNumber]" HorzAlign="Right" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell10" Border.Lines="All" Text="[异常用水明细表.waterMeterEndNumber]" HorzAlign="Right" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell27" Border.Lines="All" Text="[异常用水明细表.totalNumber]" HorzAlign="Right" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell32" Border.Lines="All" Text="[异常用水明细表.AVGTOTALNUMBER]" HorzAlign="Right" WordWrap="false" Font="宋体, 10pt"/>
+          <TableCell Name="Cell42" Border.Lines="All" Text="[异常用水明细表.BILV]" HorzAlign="Right" WordWrap="false" Font="宋体, 10pt"/>
+        </TableRow>
+      </TableObject>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="121.4" Width="793.8" Height="28.35">
+      <TextObject Name="txtPrintDateTime" Left="18.9" Top="9.45" Width="245.7" Height="18.9" Text="打印时间:[Date]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text2" Left="568.9" Top="9.45" Width="198.45" Height="18.9" Text="第[Page#]页，共[TotalPages#]页" HorzAlign="Right" VertAlign="Center" Font="宋体, 9pt"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>

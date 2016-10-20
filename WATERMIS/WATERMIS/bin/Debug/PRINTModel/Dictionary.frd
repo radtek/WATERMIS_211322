@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dictionary>
+  <TableDataSource Name="未抄水表明细表" ReferenceName="Data.未抄水表明细表" DataType="System.Int32" Enabled="true">
+    <Column Name="waterUserNO" DataType="System.String" PropName="Column"/>
+    <Column Name="waterUserName" DataType="System.String" PropName="Column"/>
+    <Column Name="waterPhone" DataType="System.String" PropName="Column"/>
+    <Column Name="waterUserTelphoneNO" DataType="System.String" PropName="Column"/>
+    <Column Name="waterUserAddress" DataType="System.String" PropName="Column"/>
+    <Column Name="areaNO" DataType="System.String" PropName="Column"/>
+    <Column Name="duanNO" DataType="System.String" PropName="Column"/>
+    <Column Name="meterReaderName" DataType="System.String" PropName="Column"/>
+    <Column Name="chargerName" DataType="System.String" PropName="Column"/>
+    <Column Name="waterMeterNo" DataType="System.String" PropName="Column"/>
+    <Column Name="waterMeterPositionName" DataType="System.String" PropName="Column"/>
+    <Column Name="waterMeterProduct" DataType="System.String" PropName="Column"/>
+    <Column Name="waterMeterLastNumber" DataType="System.String" PropName="Column"/>
+    <Column Name="memo" DataType="System.String" PropName="Column"/>
+  </TableDataSource>
+</Dictionary>

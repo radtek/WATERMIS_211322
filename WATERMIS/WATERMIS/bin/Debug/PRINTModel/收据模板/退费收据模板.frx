@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="10/30/2015 18:25:18" ReportInfo.Modified="01/09/2016 03:29:31" ReportInfo.CreatorVersion="2014.4.8.0">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+
+namespace FastReport
+{
+  public class ReportScript
+  {    
+  }
+}
+</ScriptText>
+  <Dictionary>
+    <TableDataSource Name="营业坐收收据模板" ReferenceName="Data.营业坐收收据模板" DataType="System.Int32" Enabled="true">
+      <Column Name="waterMeterNo" DataType="System.String" PropName="Column"/>
+      <Column Name="readMeterRecordYear" DataType="System.String" PropName="Column"/>
+      <Column Name="readMeterRecordMonth" DataType="System.String" PropName="Column"/>
+      <Column Name="waterMeterLastNumber" DataType="System.String" PropName="Column"/>
+      <Column Name="waterMeterEndNumber" DataType="System.String" PropName="Column"/>
+      <Column Name="totalNumber" DataType="System.String" PropName="Column"/>
+      <Column Name="avePrice" DataType="System.String" PropName="Column"/>
+      <Column Name="waterTotalCharge" DataType="System.String" PropName="Column"/>
+      <Column Name="extraCharge1" DataType="System.String" PropName="Column"/>
+      <Column Name="extraCharge2" DataType="System.String" PropName="Column"/>
+      <Column Name="totalCharge" DataType="System.String" PropName="Column"/>
+    </TableDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1" PaperWidth="190" PaperHeight="93.2" LeftMargin="0" TopMargin="0" RightMargin="0" BottomMargin="0" FirstPageSource="1" OtherPagesSource="1">
+    <DataBand Name="Data1" Width="718.2" Height="340.2">
+      <TextObject Name="Text1" Left="128.3" Top="55.92" Width="75.6" Height="18.9" Text="退费日期:" Font="宋体, 10pt"/>
+      <TextObject Name="txtJFDatetime" Left="205.9" Top="55.92" Width="236.25" Height="18.9" Font="宋体, 10pt"/>
+      <TextObject Name="txtWaterUserNO" Left="221.02" Top="82.38" Width="321.3" Height="18.9" Font="宋体, 10pt"/>
+      <TextObject Name="txtWaterUserName" Left="221.02" Top="112.62" Width="321.3" Height="18.9" Font="宋体, 10pt"/>
+      <TextObject Name="txtWaterUserAddress" Left="221.02" Top="142.86" Width="321.3" Height="18.9" Font="宋体, 10pt"/>
+      <TextObject Name="Text6" Left="149.2" Top="82.38" Width="75.6" Height="18.9" Text="用户编号:" Font="宋体, 10pt"/>
+      <TextObject Name="Text7" Left="149.2" Top="112.62" Width="75.6" Height="18.9" Text="用户名称:" Font="宋体, 10pt"/>
+      <TextObject Name="Text8" Left="149.2" Top="142.86" Width="75.6" Height="18.9" Text="地    址:" Font="宋体, 10pt"/>
+      <TextObject Name="txtQQYE" Left="232.7" Top="198.45" Width="274.05" Height="18.9" Font="宋体, 10pt"/>
+      <TextObject Name="txtBCTF" Left="232.7" Top="226.8" Width="274.05" Height="18.9" Font="宋体, 10pt"/>
+      <TextObject Name="txtJSYE" Left="232.7" Top="255.15" Width="274.05" Height="18.9" Font="宋体, 10pt"/>
+      <TextObject Name="Text9" Left="56.7" Top="304.18" Width="56.7" Height="18.9" Text="操作员:" Font="宋体, 9pt"/>
+      <TextObject Name="txtWorkerName" Left="115.29" Top="304.18" Width="85.05" Height="18.9" Font="宋体, 10pt"/>
+      <TextObject Name="Text11" Left="453.6" Top="304.18" Width="94.5" Height="18.9" Text="用户签字:" Font="宋体, 9pt"/>
+      <TextObject Name="Text2" Top="9.45" Width="718.2" Height="28.35" Text="建平自来水预存退费凭证" HorzAlign="Center" VertAlign="Center" Font="宋体, 14pt, style=Bold"/>
+      <LineObject Name="Line1" Left="28.35" Top="37.8" Width="642.6" Diagonal="true"/>
+      <LineObject Name="Line2" Left="28.35" Top="292.95" Width="642.6" Diagonal="true"/>
+      <LineObject Name="Line3" Left="28.35" Top="37.8" Height="255.15" Diagonal="true"/>
+      <LineObject Name="Line4" Left="670.95" Top="37.8" Height="255.15" Diagonal="true"/>
+    </DataBand>
+  </ReportPage>
+</Report>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dictionary>
+  <TableDataSource Name="水表统计表(按抄表本)" ReferenceName="Data.水表统计表(按抄表本)" DataType="System.Int32" Enabled="true">
+    <Column Name="抄表本编号" DataType="System.String" PropName="Column"/>
+    <Column Name="抄表本" DataType="System.String" PropName="Column"/>
+    <Column Name="用户数" DataType="System.String" PropName="Column"/>
+    <Column Name="水表数" DataType="System.String" PropName="Column"/>
+    <Column Name="定量水表数" DataType="System.String" PropName="Column"/>
+    <Column Name="正常数量" DataType="System.String" PropName="Column"/>
+    <Column Name="报停数量" DataType="System.String" PropName="Column"/>
+    <Column Name="报废数量" DataType="System.String" PropName="Column"/>
+  </TableDataSource>
+</Dictionary>
