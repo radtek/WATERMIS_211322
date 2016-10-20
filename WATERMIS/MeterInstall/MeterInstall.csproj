@@ -136,6 +136,36 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="FrmPeccantYY.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPeccantYY.Designer.cs">
+      <DependentUpon>FrmPeccantYY.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmChargePeccant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmChargePeccant.Designer.cs">
+      <DependentUpon>FrmChargePeccant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRecordsPeccant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRecordsPeccant.Designer.cs">
+      <DependentUpon>FrmRecordsPeccant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmWaterUserListPeccant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmWaterUserListPeccant.Designer.cs">
+      <DependentUpon>FrmWaterUserListPeccant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPeccantJC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPeccantJC.Designer.cs">
+      <DependentUpon>FrmPeccantJC.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="FrmCharge.resx">
@@ -175,6 +205,21 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmPeccantYY.resx">
+      <DependentUpon>FrmPeccantYY.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmChargePeccant.resx">
+      <DependentUpon>FrmChargePeccant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRecordsPeccant.resx">
+      <DependentUpon>FrmRecordsPeccant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmWaterUserListPeccant.resx">
+      <DependentUpon>FrmWaterUserListPeccant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPeccantJC.resx">
+      <DependentUpon>FrmPeccantJC.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -186,6 +231,7 @@
     <Content Include="MeterInstallPages\FlowFAQ.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="MeterInstallPages\FlowImages\Meter_Install_Peccant.jpg" />
     <Content Include="MeterInstallPages\FlowTransition.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -199,9 +245,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="MeterInstallPages\FlowImages\Meter_Install_Group.JPG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="MeterInstallPages\FlowImages\Meter_Install_Peccant.JPG">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="MeterInstallPages\FlowImages\Meter_Install_Single.JPG">

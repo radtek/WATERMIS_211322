@@ -34,14 +34,10 @@ namespace MeterInstall
         }
         private void FrmSingle_Load(object sender, EventArgs e)
         {
-            Binddata();
-
             strLogID = AppDomain.CurrentDomain.GetData("LOGINID").ToString();
             strName = AppDomain.CurrentDomain.GetData("LOGINNAME").ToString();
             strRealName = AppDomain.CurrentDomain.GetData("USERNAME").ToString();
-            userName.Text = strRealName;
-
-
+            Binddata();
         }
         private void Binddata()
         {

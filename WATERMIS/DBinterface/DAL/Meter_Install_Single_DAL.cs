@@ -9,9 +9,9 @@ namespace DBinterface.DAL
     /// <summary>
     /// 数据访问类:Meter_Install_Single
     /// </summary>
-    public partial class Meter_Install_Single : IMeter_Install_Single
+    public partial class Meter_Install_Peccant : IMeter_Install_Peccant
     {
-        public Meter_Install_Single()
+        public Meter_Install_Peccant()
         { }
         #region  BasicMethod
 

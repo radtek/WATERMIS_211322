@@ -63,12 +63,14 @@
     <Compile Include="DAL\Meter_Install_Single_DAL.cs" />
     <Compile Include="DAL\PersonalWork_DAL.cs" />
     <Compile Include="DAL\WaterBusiness_DAL.cs" />
+    <Compile Include="DAL\Meter_Install_Peccant_DAL.cs" />
     <Compile Include="IDAL\EquipMent_IDAL.cs" />
     <Compile Include="IDAL\MeterInstall_IDAL.cs" />
     <Compile Include="IDAL\Meter_IDAL.cs" />
     <Compile Include="IDAL\Meter_Install_Single_IDAL.cs" />
     <Compile Include="IDAL\PersonalWork_IDAL.cs" />
     <Compile Include="IDAL\WaterBusiness_IDAL.cs" />
+    <Compile Include="IDAL\Meter_Install_Peccant_IDAL.cs" />
     <Compile Include="Model\EquipMent_Model.cs" />
     <Compile Include="Model\GroupPeople_Item.cs" />
     <Compile Include="Model\GroupPeople_Model.cs" />
