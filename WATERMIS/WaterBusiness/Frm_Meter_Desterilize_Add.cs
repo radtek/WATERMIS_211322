@@ -90,6 +90,7 @@ namespace WaterBusiness
             {
                 Hashtable ht = new Hashtable();
                 ht = new SqlServerHelper().GetHashtableById("Meter_Disuse", "SD", _DisuseNO, "DisuserType=0 AND [STATE]=5");
+                ht["DISUSEDATE"] = ht["ACCEPTDATE"];
                 new SqlServerHelper().BindHashTableToForm(ht, this.panel1.Controls);
                 if (ht.Contains("WATERUSERNO"))
                 {

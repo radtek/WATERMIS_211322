@@ -64,16 +64,21 @@ namespace PersonalWork
         {
             Btn_Submit.Enabled = false;
 
+            Hashtable Htask = new Hashtable();
+            Htask = new SqlServerHelper().GetHashtableById("Meter_Disuse", "TaskID", TaskID);
+            if (Htask.Contains("DISUSERTYPE"))
+            {
+                _DisuserType = int.Parse(Htask["DISUSERTYPE"].ToString());
+
+            }
             Hashtable Hm=new Hashtable();
-            Hm["WATERMETERSTATE"] = 6;
+            Hm["WATERMETERSTATE"] = _DisuserType == 0 ? 5 : 6; ;//5--欠费停水；6-违章停水
             if (new SqlServerHelper().Submit_AddOrEdit("waterMeter", "waterUserId", _waterUserId, Hm))
             {
-                Hm = new SqlServerHelper().GetHashtableById("Meter_Disuse", "TaskID", TaskID);
-                _DisuserType = int.Parse(Hm["DISUSERTYPE"].ToString());
                 //_DisuserType //0-欠费；1-违章
                 Hashtable HL = new Hashtable();
                 HL["LOGTYPE"] = 2; //2-水表日志
-                HL["LOGCONTENT"] = string.Format("{2}报停-水表入库-用户号：{0}；水表编号：{1}", _waterUserId, _waterMeterId, _DisuserType == 0 ? "欠费" : _DisuserType == 1 ? "违章" : "其它");
+                HL["LOGCONTENT"] = string.Format("{2}报停-水表入库-用户号：{0};水表编号：{1}", _waterUserId, _waterMeterId, _DisuserType == 0 ? "欠费" : _DisuserType == 1 ? "违章" : "其它");
                 HL["LOGDATETIME"] = DateTime.Now.ToString();
                 HL["OPERATORID"] = AppDomain.CurrentDomain.GetData("LOGINID").ToString();
                 HL["OPERATORNAME"] = AppDomain.CurrentDomain.GetData("USERNAME").ToString();

@@ -383,6 +383,18 @@
     <EmbeddedResource Include="FrmChargePoint.resx">
       <DependentUpon>FrmChargePoint.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmDesterilize_Approve.resx">
+      <DependentUpon>FrmDesterilize_Approve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDesterilize_Default.resx">
+      <DependentUpon>FrmDesterilize_Default.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDesterilize_MeterOut.resx">
+      <DependentUpon>FrmDesterilize_MeterOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDesterilize_StartUser.resx">
+      <DependentUpon>FrmDesterilize_StartUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmDisuse_Approve.resx">
       <DependentUpon>FrmDisuse_Approve.cs</DependentUpon>
     </EmbeddedResource>

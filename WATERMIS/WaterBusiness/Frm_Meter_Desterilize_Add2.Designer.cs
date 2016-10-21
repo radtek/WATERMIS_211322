@@ -28,217 +28,296 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.ryanTextBox1 = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.Btn_Search = new System.Windows.Forms.Button();
+            this.DisuseID = new System.Windows.Forms.TextBox();
+            this.waterPhone = new System.Windows.Forms.TextBox();
+            this.waterUserAddress = new System.Windows.Forms.TextBox();
+            this.waterUserTypeId = new System.Windows.Forms.TextBox();
+            this.waterUserName = new System.Windows.Forms.TextBox();
+            this.WaterUserNO = new System.Windows.Forms.TextBox();
+            this.LB_Fee = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.ApplyUser = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
+            this.DesterilizeDescribe = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
+            this.DisuseNO = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.ApplyPhone = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.Btn_Submit = new System.Windows.Forms.Button();
-            this.Memo = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.uC_UserMeterDetails1 = new SysControl.UC_UserMeterDetails();
-            this.uC_UserSearch1 = new SysControl.UC_UserSearch();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // panel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.uC_UserSearch1, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(932, 614);
-            this.tableLayoutPanel1.TabIndex = 1;
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.panel2, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.uC_UserMeterDetails1, 0, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(403, 3);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 384F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(526, 608);
-            this.tableLayoutPanel2.TabIndex = 7;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.ryanTextBox1);
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.Btn_Submit);
-            this.panel2.Controls.Add(this.Memo);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 387);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(520, 218);
-            this.panel2.TabIndex = 5;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
-            // 
-            // ryanTextBox1
-            // 
-            this.ryanTextBox1.AllowEmpty = false;
-            this.ryanTextBox1.EmptyMessage = "";
-            this.ryanTextBox1.ErrorMessage = "";
-            this.ryanTextBox1.InputType = Common.WinControl.Ryan.RegTextbox.RyanTextBox.EMInputTypes.数字;
-            this.ryanTextBox1.Location = new System.Drawing.Point(92, 79);
-            this.ryanTextBox1.Name = "ryanTextBox1";
-            this.ryanTextBox1.RegexExpression = "";
-            this.ryanTextBox1.RemoveSpace = false;
-            this.ryanTextBox1.Size = new System.Drawing.Size(70, 21);
-            this.ryanTextBox1.TabIndex = 14;
-            this.ryanTextBox1.ValidateState = false;
-            // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.Color.MistyRose;
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(318, 79);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(54, 21);
-            this.textBox2.TabIndex = 13;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(56, 154);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(54, 21);
-            this.textBox1.TabIndex = 12;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(256, 120);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 12);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "联系电话：";
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.Btn_Search);
+            this.panel1.Controls.Add(this.DisuseID);
+            this.panel1.Controls.Add(this.waterPhone);
+            this.panel1.Controls.Add(this.waterUserAddress);
+            this.panel1.Controls.Add(this.waterUserTypeId);
+            this.panel1.Controls.Add(this.waterUserName);
+            this.panel1.Controls.Add(this.WaterUserNO);
+            this.panel1.Controls.Add(this.LB_Fee);
+            this.panel1.Controls.Add(this.label10);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.ApplyUser);
+            this.panel1.Controls.Add(this.DesterilizeDescribe);
+            this.panel1.Controls.Add(this.DisuseNO);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.ApplyPhone);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.Btn_Submit);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(578, 331);
+            this.panel1.TabIndex = 7;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(25, 120);
+            this.label4.Location = new System.Drawing.Point(195, 183);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 12);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "发 现 人：";
+            this.label4.Size = new System.Drawing.Size(89, 12);
+            this.label4.TabIndex = 102;
+            this.label4.Text = "补缴水费金额：";
             // 
-            // label3
+            // Btn_Search
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(256, 85);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 12);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "水费合计：";
+            this.Btn_Search.Location = new System.Drawing.Point(327, 17);
+            this.Btn_Search.Name = "Btn_Search";
+            this.Btn_Search.Size = new System.Drawing.Size(75, 23);
+            this.Btn_Search.TabIndex = 101;
+            this.Btn_Search.Text = "查 询";
+            this.Btn_Search.UseVisualStyleBackColor = true;
+            this.Btn_Search.Click += new System.EventHandler(this.Btn_Search_Click);
+            // 
+            // DisuseID
+            // 
+            this.DisuseID.Enabled = false;
+            this.DisuseID.Location = new System.Drawing.Point(426, 253);
+            this.DisuseID.Name = "DisuseID";
+            this.DisuseID.Size = new System.Drawing.Size(100, 21);
+            this.DisuseID.TabIndex = 100;
+            this.DisuseID.Visible = false;
+            // 
+            // waterPhone
+            // 
+            this.waterPhone.Enabled = false;
+            this.waterPhone.Location = new System.Drawing.Point(426, 226);
+            this.waterPhone.Name = "waterPhone";
+            this.waterPhone.Size = new System.Drawing.Size(100, 21);
+            this.waterPhone.TabIndex = 99;
+            this.waterPhone.Visible = false;
+            // 
+            // waterUserAddress
+            // 
+            this.waterUserAddress.Enabled = false;
+            this.waterUserAddress.Location = new System.Drawing.Point(426, 199);
+            this.waterUserAddress.Name = "waterUserAddress";
+            this.waterUserAddress.Size = new System.Drawing.Size(100, 21);
+            this.waterUserAddress.TabIndex = 98;
+            this.waterUserAddress.Visible = false;
+            // 
+            // waterUserTypeId
+            // 
+            this.waterUserTypeId.Enabled = false;
+            this.waterUserTypeId.Location = new System.Drawing.Point(426, 172);
+            this.waterUserTypeId.Name = "waterUserTypeId";
+            this.waterUserTypeId.Size = new System.Drawing.Size(100, 21);
+            this.waterUserTypeId.TabIndex = 97;
+            this.waterUserTypeId.Visible = false;
+            // 
+            // waterUserName
+            // 
+            this.waterUserName.Enabled = false;
+            this.waterUserName.Location = new System.Drawing.Point(426, 145);
+            this.waterUserName.Name = "waterUserName";
+            this.waterUserName.Size = new System.Drawing.Size(100, 21);
+            this.waterUserName.TabIndex = 96;
+            this.waterUserName.Visible = false;
+            // 
+            // WaterUserNO
+            // 
+            this.WaterUserNO.Enabled = false;
+            this.WaterUserNO.Location = new System.Drawing.Point(426, 118);
+            this.WaterUserNO.Name = "WaterUserNO";
+            this.WaterUserNO.Size = new System.Drawing.Size(100, 21);
+            this.WaterUserNO.TabIndex = 95;
+            this.WaterUserNO.Visible = false;
+            // 
+            // LB_Fee
+            // 
+            this.LB_Fee.AutoSize = true;
+            this.LB_Fee.Location = new System.Drawing.Point(114, 183);
+            this.LB_Fee.Name = "LB_Fee";
+            this.LB_Fee.Size = new System.Drawing.Size(0, 12);
+            this.LB_Fee.TabIndex = 92;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(42, 183);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(65, 12);
+            this.label10.TabIndex = 91;
+            this.label10.Text = "缴费状态：";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(479, 17);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 85;
+            this.button1.Text = "查看更多";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            // 
+            // ApplyUser
+            // 
+            this.ApplyUser.AllowEmpty = false;
+            this.ApplyUser.EmptyMessage = "";
+            this.ApplyUser.ErrorMessage = "";
+            this.ApplyUser.InputType = Common.WinControl.Ryan.RegTextbox.RyanTextBox.EMInputTypes.文本;
+            this.ApplyUser.Location = new System.Drawing.Point(109, 114);
+            this.ApplyUser.Name = "ApplyUser";
+            this.ApplyUser.ReadOnly = true;
+            this.ApplyUser.RegexExpression = "";
+            this.ApplyUser.RemoveSpace = false;
+            this.ApplyUser.Size = new System.Drawing.Size(100, 21);
+            this.ApplyUser.TabIndex = 84;
+            this.ApplyUser.ValidateState = false;
+            // 
+            // DesterilizeDescribe
+            // 
+            this.DesterilizeDescribe.AllowEmpty = false;
+            this.DesterilizeDescribe.EmptyMessage = "";
+            this.DesterilizeDescribe.ErrorMessage = "";
+            this.DesterilizeDescribe.InputType = Common.WinControl.Ryan.RegTextbox.RyanTextBox.EMInputTypes.文本;
+            this.DesterilizeDescribe.Location = new System.Drawing.Point(109, 48);
+            this.DesterilizeDescribe.Multiline = true;
+            this.DesterilizeDescribe.Name = "DesterilizeDescribe";
+            this.DesterilizeDescribe.RegexExpression = "";
+            this.DesterilizeDescribe.RemoveSpace = false;
+            this.DesterilizeDescribe.Size = new System.Drawing.Size(445, 56);
+            this.DesterilizeDescribe.TabIndex = 83;
+            this.DesterilizeDescribe.ValidateState = false;
+            // 
+            // DisuseNO
+            // 
+            this.DisuseNO.AllowEmpty = false;
+            this.DisuseNO.EmptyMessage = "";
+            this.DisuseNO.ErrorMessage = "";
+            this.DisuseNO.InputType = Common.WinControl.Ryan.RegTextbox.RyanTextBox.EMInputTypes.文本;
+            this.DisuseNO.Location = new System.Drawing.Point(109, 18);
+            this.DisuseNO.Name = "DisuseNO";
+            this.DisuseNO.RegexExpression = "";
+            this.DisuseNO.RemoveSpace = false;
+            this.DisuseNO.Size = new System.Drawing.Size(215, 21);
+            this.DisuseNO.TabIndex = 82;
+            this.DisuseNO.ValidateState = false;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(19, 82);
+            this.label2.Location = new System.Drawing.Point(13, 24);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 12);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "*补缴水量：";
+            this.label2.Size = new System.Drawing.Size(95, 12);
+            this.label2.TabIndex = 81;
+            this.label2.Text = "*报停受理编号：";
+            // 
+            // ApplyPhone
+            // 
+            this.ApplyPhone.Location = new System.Drawing.Point(109, 145);
+            this.ApplyPhone.Name = "ApplyPhone";
+            this.ApplyPhone.Size = new System.Drawing.Size(167, 21);
+            this.ApplyPhone.TabIndex = 80;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(43, 150);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(65, 12);
+            this.label8.TabIndex = 78;
+            this.label8.Text = "联系电话：";
             // 
             // Btn_Submit
             // 
             this.Btn_Submit.BackColor = System.Drawing.Color.LimeGreen;
-            this.Btn_Submit.Enabled = false;
             this.Btn_Submit.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Btn_Submit.Location = new System.Drawing.Point(213, 154);
+            this.Btn_Submit.Location = new System.Drawing.Point(257, 247);
             this.Btn_Submit.Name = "Btn_Submit";
             this.Btn_Submit.Size = new System.Drawing.Size(108, 37);
-            this.Btn_Submit.TabIndex = 7;
+            this.Btn_Submit.TabIndex = 74;
             this.Btn_Submit.Tag = "9999";
             this.Btn_Submit.Text = "提  交";
             this.Btn_Submit.UseVisualStyleBackColor = false;
+            this.Btn_Submit.Click += new System.EventHandler(this.Btn_Submit_Click);
             // 
-            // Memo
+            // label3
             // 
-            this.Memo.Location = new System.Drawing.Point(92, 16);
-            this.Memo.Multiline = true;
-            this.Memo.Name = "Memo";
-            this.Memo.Size = new System.Drawing.Size(396, 49);
-            this.Memo.TabIndex = 3;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(37, 118);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(71, 12);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "*申 请 人：";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 20);
+            this.label1.Location = new System.Drawing.Point(37, 54);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 12);
             this.label1.TabIndex = 0;
-            this.label1.Text = "*违章说明：";
-            // 
-            // uC_UserMeterDetails1
-            // 
-            this.uC_UserMeterDetails1.Location = new System.Drawing.Point(3, 3);
-            this.uC_UserMeterDetails1.Name = "uC_UserMeterDetails1";
-            this.uC_UserMeterDetails1.Size = new System.Drawing.Size(520, 378);
-            this.uC_UserMeterDetails1.TabIndex = 6;
-            // 
-            // uC_UserSearch1
-            // 
-            this.uC_UserSearch1.Location = new System.Drawing.Point(3, 3);
-            this.uC_UserSearch1.Name = "uC_UserSearch1";
-            this.uC_UserSearch1.Size = new System.Drawing.Size(394, 608);
-            this.uC_UserSearch1.TabIndex = 8;
+            this.label1.Text = "*申请说明：";
             // 
             // Frm_Meter_Desterilize_Add2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(932, 614);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.ClientSize = new System.Drawing.Size(578, 331);
+            this.Controls.Add(this.panel1);
             this.Name = "Frm_Meter_Desterilize_Add2";
-            this.Text = "水表恢复申请(监察)";
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.Text = "水表恢复-监察";
+            this.Load += new System.EventHandler(this.Frm_Meter_Desterilize_Add2_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button Btn_Submit;
-        private System.Windows.Forms.TextBox Memo;
-        private System.Windows.Forms.Label label1;
-        private SysControl.UC_UserMeterDetails uC_UserMeterDetails1;
-        private SysControl.UC_UserSearch uC_UserSearch1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button Btn_Search;
+        private System.Windows.Forms.TextBox DisuseID;
+        private System.Windows.Forms.TextBox waterPhone;
+        private System.Windows.Forms.TextBox waterUserAddress;
+        private System.Windows.Forms.TextBox waterUserTypeId;
+        private System.Windows.Forms.TextBox waterUserName;
+        private System.Windows.Forms.TextBox WaterUserNO;
+        private System.Windows.Forms.Label LB_Fee;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button button1;
+        private Common.WinControl.Ryan.RegTextbox.RyanTextBox ApplyUser;
+        private Common.WinControl.Ryan.RegTextbox.RyanTextBox DesterilizeDescribe;
+        private Common.WinControl.Ryan.RegTextbox.RyanTextBox DisuseNO;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox ApplyPhone;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button Btn_Submit;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private Common.WinControl.Ryan.RegTextbox.RyanTextBox ryanTextBox1;
+
     }
 }

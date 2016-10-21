@@ -48,6 +48,7 @@
             this.Btn_Submit = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.DisuseDate = new System.Windows.Forms.TextBox();
             this.ApplyUser = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
             this.DesterilizeDescribe = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
             this.DisuseNO = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
@@ -56,6 +57,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.DisuseDate);
             this.panel1.Controls.Add(this.Btn_Search);
             this.panel1.Controls.Add(this.DisuseID);
             this.panel1.Controls.Add(this.waterPhone);
@@ -97,54 +99,54 @@
             // DisuseID
             // 
             this.DisuseID.Enabled = false;
-            this.DisuseID.Location = new System.Drawing.Point(426, 253);
+            this.DisuseID.Location = new System.Drawing.Point(505, 250);
             this.DisuseID.Name = "DisuseID";
-            this.DisuseID.Size = new System.Drawing.Size(100, 21);
+            this.DisuseID.Size = new System.Drawing.Size(49, 21);
             this.DisuseID.TabIndex = 100;
             this.DisuseID.Visible = false;
             // 
             // waterPhone
             // 
             this.waterPhone.Enabled = false;
-            this.waterPhone.Location = new System.Drawing.Point(426, 226);
+            this.waterPhone.Location = new System.Drawing.Point(505, 223);
             this.waterPhone.Name = "waterPhone";
-            this.waterPhone.Size = new System.Drawing.Size(100, 21);
+            this.waterPhone.Size = new System.Drawing.Size(49, 21);
             this.waterPhone.TabIndex = 99;
             this.waterPhone.Visible = false;
             // 
             // waterUserAddress
             // 
             this.waterUserAddress.Enabled = false;
-            this.waterUserAddress.Location = new System.Drawing.Point(426, 199);
+            this.waterUserAddress.Location = new System.Drawing.Point(505, 196);
             this.waterUserAddress.Name = "waterUserAddress";
-            this.waterUserAddress.Size = new System.Drawing.Size(100, 21);
+            this.waterUserAddress.Size = new System.Drawing.Size(49, 21);
             this.waterUserAddress.TabIndex = 98;
             this.waterUserAddress.Visible = false;
             // 
             // waterUserTypeId
             // 
             this.waterUserTypeId.Enabled = false;
-            this.waterUserTypeId.Location = new System.Drawing.Point(426, 172);
+            this.waterUserTypeId.Location = new System.Drawing.Point(505, 169);
             this.waterUserTypeId.Name = "waterUserTypeId";
-            this.waterUserTypeId.Size = new System.Drawing.Size(100, 21);
+            this.waterUserTypeId.Size = new System.Drawing.Size(49, 21);
             this.waterUserTypeId.TabIndex = 97;
             this.waterUserTypeId.Visible = false;
             // 
             // waterUserName
             // 
             this.waterUserName.Enabled = false;
-            this.waterUserName.Location = new System.Drawing.Point(426, 145);
+            this.waterUserName.Location = new System.Drawing.Point(505, 142);
             this.waterUserName.Name = "waterUserName";
-            this.waterUserName.Size = new System.Drawing.Size(100, 21);
+            this.waterUserName.Size = new System.Drawing.Size(49, 21);
             this.waterUserName.TabIndex = 96;
             this.waterUserName.Visible = false;
             // 
             // WaterUserNO
             // 
             this.WaterUserNO.Enabled = false;
-            this.WaterUserNO.Location = new System.Drawing.Point(426, 118);
+            this.WaterUserNO.Location = new System.Drawing.Point(505, 115);
             this.WaterUserNO.Name = "WaterUserNO";
-            this.WaterUserNO.Size = new System.Drawing.Size(100, 21);
+            this.WaterUserNO.Size = new System.Drawing.Size(49, 21);
             this.WaterUserNO.TabIndex = 95;
             this.WaterUserNO.Visible = false;
             // 
@@ -259,6 +261,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "*申请说明：";
             // 
+            // DisuseDate
+            // 
+            this.DisuseDate.Location = new System.Drawing.Point(505, 277);
+            this.DisuseDate.Name = "DisuseDate";
+            this.DisuseDate.Size = new System.Drawing.Size(49, 21);
+            this.DisuseDate.TabIndex = 102;
+            this.DisuseDate.Visible = false;
+            // 
             // ApplyUser
             // 
             this.ApplyUser.AllowEmpty = false;
@@ -342,6 +352,7 @@
         private System.Windows.Forms.TextBox waterPhone;
         private System.Windows.Forms.TextBox DisuseID;
         private System.Windows.Forms.Button Btn_Search;
+        private System.Windows.Forms.TextBox DisuseDate;
 
     }
 }
