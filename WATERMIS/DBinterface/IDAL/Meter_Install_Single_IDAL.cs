@@ -3,9 +3,9 @@ using System.Data;
 namespace DBinterface.IDAL
 {
 	/// <summary>
-	/// 接口层Meter_Install_Single
+    /// 接口层Meter_Install_Peccant
 	/// </summary>
-	public interface IMeter_Install_Single
+    public interface IMeter_Install_Peccant
 	{
 		#region  成员方法
 		/// <summary>

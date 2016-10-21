@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPeccantJC));
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.waterPhone = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.waterUserNO = new System.Windows.Forms.TextBox();
@@ -58,7 +59,6 @@
             this.label85 = new System.Windows.Forms.Label();
             this.label86 = new System.Windows.Forms.Label();
             this.label87 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -101,6 +101,18 @@
             this.groupBox6.TabIndex = 3;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "用户详细信息";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("微软雅黑", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(428, 19);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(145, 30);
+            this.label4.TabIndex = 84;
+            this.label4.Tag = "9999";
+            this.label4.Text = "监察提交入口";
             // 
             // waterPhone
             // 
@@ -358,17 +370,6 @@
             this.label87.Size = new System.Drawing.Size(71, 12);
             this.label87.TabIndex = 28;
             this.label87.Text = "*用户类别：";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("微软雅黑", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(428, 19);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(145, 30);
-            this.label4.TabIndex = 84;
-            this.label4.Text = "监察提交入口";
             // 
             // FrmPeccantJC
             // 

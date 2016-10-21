@@ -442,6 +442,12 @@
     <EmbeddedResource Include="FrmApprove_Single_Prospect.resx">
       <DependentUpon>FrmApprove_Single_Prospect.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmApprove_PeccantYY.resx">
+      <DependentUpon>FrmApprove_PeccantYY.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmApprove_Peccant_Default.resx">
+      <DependentUpon>FrmApprove_Peccant_Default.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -467,6 +473,18 @@
     </Compile>
     <Compile Include="FrmApprove_Single_Prospect.Designer.cs">
       <DependentUpon>FrmApprove_Single_Prospect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmApprove_PeccantYY.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprove_PeccantYY.Designer.cs">
+      <DependentUpon>FrmApprove_PeccantYY.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmApprove_Peccant_Default.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprove_Peccant_Default.Designer.cs">
+      <DependentUpon>FrmApprove_Peccant_Default.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -18,6 +18,8 @@ namespace DBinterface.IDAL
 
        Hashtable GetMeter_Install_SingleInfos(string TaskID);
 
+       Hashtable GetMeter_Install_PeccantInfos(string TaskID);
+
        bool GetAssemblyName(string ResolveID, ref string FrmAssemblyName, ref string FormName);
 
        bool GetAssemblyNameDetail(string ResolveID, ref string FrmAssemblyName, ref string FormName);
@@ -30,11 +32,35 @@ namespace DBinterface.IDAL
 
        int UpdateApprove_Single_defalut(string ResolveID, bool IsPass, string UserOpinion, string ip, string ComputerName, string PointSort, string TaskID);
 
+       /// <summary>
+       /// 违章报装审批函数
+       /// </summary>
+       /// <param name="ResolveID"></param>
+       /// <param name="IsPass"></param>
+       /// <param name="UserOpinion"></param>
+       /// <param name="ip"></param>
+       /// <param name="ComputerName"></param>
+       /// <param name="PointSort"></param>
+       /// <param name="TaskID"></param>
+       /// <returns></returns>
+       int UpdateApprove_Peccant_defalut(string ResolveID, bool IsPass, string UserOpinion, string ip, string ComputerName, string PointSort, string TaskID);
+
        int UpdateApprove_Voided_ByTableName(string tableName, string ResolveID, string UserOpinion, string ip, string ComputerName, string TaskID);
 
        int UpdateApprove_Voided_ByTableName(string tableName, string ResolveID, string UserOpinion, string TaskID);
 
        int UpdateApprove_Voided(string ResolveID, string UserOpinion, string ip, string ComputerName, string TaskID);
+
+       /// <summary>
+       /// 违章报装审批单作废函数
+       /// </summary>
+       /// <param name="ResolveID"></param>
+       /// <param name="UserOpinion"></param>
+       /// <param name="ip"></param>
+       /// <param name="ComputerName"></param>
+       /// <param name="TaskID"></param>
+       /// <returns></returns>
+       int UpdateApprove_Peccant_Voided(string ResolveID, string UserOpinion, string ip, string ComputerName, string TaskID);
 
        DataTable GetFeeItems(string ResolveID);
 

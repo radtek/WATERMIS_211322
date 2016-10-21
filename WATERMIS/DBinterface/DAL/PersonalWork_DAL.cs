@@ -62,6 +62,16 @@ namespace DBinterface.DAL
             return new SqlServerHelper().GetHashtableById("Meter_Install_Single", "TaskID", TaskID);
         }
 
+        /// <summary>
+        /// 获取违章用户报装基础信息
+        /// </summary>
+        /// <param name="TaskID"></param>
+        /// <returns></returns>
+        public Hashtable GetMeter_Install_PeccantInfos(string TaskID)
+        {
+            return new SqlServerHelper().GetHashtableById("Meter_Install_Peccant", "TaskID", TaskID);
+        }
+
         public bool GetAssemblyName(string ResolveID, ref string FrmAssemblyName, ref string FormName)
         {
             bool result = false;
@@ -206,6 +216,21 @@ COMMIT TRAN", tableName);
 
 //            return DbHelperSQL.ExecuteSql(sqlstr, cmdParms);
         }
+        /// <summary>
+        /// 违章报装提交审批
+        /// </summary>
+        /// <param name="ResolveID"></param>
+        /// <param name="IsPass"></param>
+        /// <param name="UserOpinion"></param>
+        /// <param name="ip"></param>
+        /// <param name="ComputerName"></param>
+        /// <param name="PointSort"></param>
+        /// <param name="TaskID"></param>
+        /// <returns></returns>
+        public int UpdateApprove_Peccant_defalut(string ResolveID, bool IsPass, string UserOpinion, string ip, string ComputerName, string PointSort, string TaskID)
+        {
+            return UpdateApprove_defalut("Meter_Install_Peccant", ResolveID, IsPass, UserOpinion, ip, ComputerName, PointSort, TaskID);
+        }
 
         public int UpdateApprove_Voided_ByTableName(string tableName,string ResolveID, string UserOpinion, string ip, string ComputerName, string TaskID)
         {
@@ -258,6 +283,20 @@ COMMIT TRAN",tableName);
 //            };
 
 //            return DbHelperSQL.ExecuteSql(sqlstr, cmdParms);
+        }
+
+        /// <summary>
+        /// 违章报装作废函数
+        /// </summary>
+        /// <param name="ResolveID"></param>
+        /// <param name="UserOpinion"></param>
+        /// <param name="ip"></param>
+        /// <param name="ComputerName"></param>
+        /// <param name="TaskID"></param>
+        /// <returns></returns>
+        public int UpdateApprove_Peccant_Voided(string ResolveID, string UserOpinion, string ip, string ComputerName, string TaskID)
+        {
+            return UpdateApprove_Voided_ByTableName("Meter_Install_Peccant", ResolveID, UserOpinion, ip, ComputerName, TaskID);
         }
 
         public DataTable GetFeeItems(string ResolveID)

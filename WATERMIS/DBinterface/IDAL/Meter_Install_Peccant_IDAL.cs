@@ -5,7 +5,7 @@ namespace DBinterface.IDAL
 	/// <summary>
 	/// 接口层Meter_Install_Single
 	/// </summary>
-    public interface IMeter_Install_Peccant
+	public interface IMeter_Install_Single
 	{
 		#region  成员方法
 		/// <summary>

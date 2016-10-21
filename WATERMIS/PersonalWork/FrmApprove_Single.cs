@@ -54,7 +54,6 @@ namespace PersonalWork
             {
                 CreateForm.ShowPannel(FormName, FrmAssemblyName, PL_Proc, ht);
             }
-
         }
 
         private void FrmApprove_Single_FormClosed(object sender, FormClosedEventArgs e)

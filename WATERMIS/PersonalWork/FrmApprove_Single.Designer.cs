@@ -74,7 +74,7 @@
             this.uC_Approve_Infos1.Location = new System.Drawing.Point(3, 3);
             this.uC_Approve_Infos1.Name = "uC_Approve_Infos1";
             this.uC_Approve_Infos1.Size = new System.Drawing.Size(538, 194);
-            this.uC_Approve_Infos1.TabIndex = 1;
+            this.uC_Approve_Infos1.TabIndex = 0;
             // 
             // PL_Proc
             // 
@@ -87,10 +87,10 @@
             // 
             // uC_ApproveList1
             // 
-            this.uC_ApproveList1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uC_ApproveList1.Dock = System.Windows.Forms.DockStyle.Top;
             this.uC_ApproveList1.Location = new System.Drawing.Point(3, 3);
             this.uC_ApproveList1.Name = "uC_ApproveList1";
-            this.uC_ApproveList1.Size = new System.Drawing.Size(663, 678);
+            this.uC_ApproveList1.Size = new System.Drawing.Size(663, 666);
             this.uC_ApproveList1.TabIndex = 1;
             // 
             // FrmApprove_Single
