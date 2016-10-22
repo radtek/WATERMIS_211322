@@ -959,5 +959,47 @@ COMMIT TRAN", TableName);
             int count = new SqlServerHelper().UpdateByHashtable(sqlstr, new SqlParameter[] { new SqlParameter("@TaskID", TaskID) });
             return count>0?true:false;
         }
+
+        /// <summary>
+        /// 违章报装新增用户
+        /// </summary>
+        /// <param name="TaskID"></param>
+        /// <returns></returns>
+        public bool Approve_Peccant_Append(string TaskID)
+        {
+            string strsql = @"DECLARE @waterUserId NVARCHAR(50)=''
+DECLARE @ISEXIT INT=0
+SET XACT_ABORT ON
+BEGIN TRAN
+SELECT @waterUserId=waterUserId FROM Meter_Install_Peccant WHERE TaskID=@TaskID
+SELECT @ISEXIT=COUNT(1) FROM waterUser WHERE waterUserId=@waterUserId
+IF(@ISEXIT=0)
+BEGIN
+INSERT INTO waterUser (waterUserId,waterUserNO,waterUserName,waterPhone,waterUserAddress,
+waterUserPeopleCount,meterReadingID,meterReadingPageNo,waterUserTypeId,waterUserCreateDate,waterUserHouseType,agentsign,
+bankId,BankAcountNumber,memo,ordernumber,chargeType,pianNO,areaNO,duanNO,communityID,buildingNO,unitNO,createType
+,meterReaderID,meterReaderName,chargerID,chargerName,operatorName) 
+SELECT waterUserId,waterUserNO,waterUserName,waterPhone,waterUserAddress,
+waterUserPeopleCount,meterReadingID,meterReadingPageNo,waterUserTypeId,GETDATE(),waterUserHouseType,agentsign,
+bankId,BankAcountNumber,memo,ordernumber,chargeType,pianNO,areaNO,duanNO,communityID,BuildingNO,UnitNO,CreateType
+,meterReaderID,meterReaderName,chargerID,chargerName,operatorName FROM Meter_Install_Peccant MIS WHERE TaskID=@TaskID
+END
+INSERT INTO waterMeter (waterMeterId,waterMeterNo,waterMeterStartNumber,waterMeterPositionName,waterMeterPositionId,
+waterMeterSizeId,waterMeterTypeId,ISUSECHANGE,CHANGEMONTH,waterMeterTypeIdChange,WATERFIXVALUE,waterMeterProduct,waterMeterSerialNumber,waterMeterMode,
+,waterMeterMaxRange,waterMeterProofreadingDate,waterMeteProofreadingPeriod,waterUserId,isSummaryMeter,waterMeterParentId,STARTUSEDATETIME,MEMO
+,waterMeterState,IsReverse,WATERMETERLOCKNO) 
+SELECT waterMeterId,waterMeterNo,waterMeterStartNumber,waterMeterPositionName,waterMeterPositionId,
+waterMeterSizeId,waterMeterTypeId,ISUSECHANGE,CHANGEMONTH,waterMeterTypeIdChange,WATERFIXVALUE,waterMeterProduct,waterMeterSerialNumber,waterMeterMode,
+waterMeterMagnification,waterMeterMaxRange,waterMeterProofreadingDate,waterMeteProofreadingPeriod,waterUserId,isSummaryMeter,waterMeterParentId,
+STARTUSEDATETIME,MEMO,waterMeterState,IsReverse,WATERMETERLOCKNO FROM Meter WHERE MeterID IN (SELECT MeterID FROM Meter_User WHERE TaskID=@TaskID)
+INSERT INTO User_Append (TaskID,waterUserNO,waterUserName) SELECT TaskID,waterUserNO,waterUserName FROM Meter_Install_Peccant WHERE TaskID=@TaskID
+COMMIT TRAN";
+            int count = DbHelperSQL.ExecuteSql(strsql, new SqlParameter[] { new SqlParameter("@TaskID", TaskID) });
+            return count > 0 ? true : false;
+
+        }
+
+      
+
     }
 }

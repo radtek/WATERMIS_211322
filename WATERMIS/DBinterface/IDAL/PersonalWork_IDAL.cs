@@ -165,5 +165,7 @@ namespace DBinterface.IDAL
        DataTable GetUserMeterInfoByTaskId(string tableName, string TaskID);
 
        bool SetTaskOver(string TableName, string TaskID);
+
+       bool Approve_Peccant_Append(string TaskID);
     }
 }
