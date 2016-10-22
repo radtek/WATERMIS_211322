@@ -587,7 +587,7 @@ COMMIT TRAN";
 
         }
 
-        //增加预存单号ID、地址、账户余额字段 ByRen 
+        //增加预存单号ID、地址、账户余额字段 ByRen
         public Hashtable GetUserAllowRefund(string CHARGEID)
         {
             string sqlstr = @"SELECT VV.CHARGEID,VV.CHARGEBCSS AS CHARGEBCSS_IN,VW.WATERUSERNO,VW.WATERUSERNAME AS ApplyUser,VW.waterPhone,
