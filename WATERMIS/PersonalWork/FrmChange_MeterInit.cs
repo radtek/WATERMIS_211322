@@ -10,6 +10,8 @@ using System.Collections;
 using DBinterface.IDAL;
 using Common.DotNetData;
 using System.Data.SqlClient;
+using BASEFUNCTION;
+using BLL;
 
 namespace PersonalWork
 {
@@ -27,6 +29,14 @@ namespace PersonalWork
         private string _waterMeterId;
         private int _DesterilizeType = 0;
 
+        private string strLogID="";
+        private string strName="";
+        private string strRealName="";
+
+        Messages mes = new Messages();
+        GETTABLEID GETTABLEID = new GETTABLEID();
+        BLLreadMeterRecord BLLreadMeterRecord = new BLLreadMeterRecord();
+        Log log = new Log(Application.StartupPath+@"\Logs\",LogType.Daily);
 
         public FrmChange_MeterInit()
         {
@@ -35,6 +45,18 @@ namespace PersonalWork
 
         private void FrmChange_MeterInit_Load(object sender, EventArgs e)
         {
+            if (AppDomain.CurrentDomain.GetData("LOGINID") != null && AppDomain.CurrentDomain.GetData("LOGINID") != DBNull.Value)
+            {
+                strLogID = AppDomain.CurrentDomain.GetData("LOGINID").ToString();
+                strName = AppDomain.CurrentDomain.GetData("LOGINNAME").ToString();
+                strRealName = AppDomain.CurrentDomain.GetData("USERNAME").ToString();
+            }
+            else
+            {
+                MessageBox.Show("收费员姓名获取失败!请重新打开该窗体!");
+                this.Close();
+            }
+
             ht = (Hashtable)this.Tag;
             TaskID = ht["TaskID"].ToString();
             ResolveID = ht["ResolveID"].ToString();
@@ -63,28 +85,44 @@ namespace PersonalWork
         {
             Btn_Submit.Enabled = false;
 
-            Hashtable HL = new Hashtable();
-            HL["LOGTYPE"] = 6; //6-抄表台账相关日志
-            HL["LOGCONTENT"] = string.Format("用户换表-用户号：{0}；水表编号：{1}", _waterUserId, _waterMeterId);
-            HL["LOGDATETIME"] = DateTime.Now.ToString();
-            HL["OPERATORID"] = AppDomain.CurrentDomain.GetData("LOGINID").ToString();
-            HL["OPERATORNAME"] = AppDomain.CurrentDomain.GetData("USERNAME").ToString();
-            HL["MEMO"] = TaskID;
-            new SqlServerHelper().Submit_AddOrEdit("OPERATORLOG", "LOGID", "", HL);
-            //======================================
-
-            int count = sysidal.UpdateApprove_defalut("Meter_Change", ResolveID, true, UserOpinion.Text.Trim(), PointSort, TaskID);
-
-            if (count > 0)
+            try
             {
-                MessageBox.Show("审批成功！");
+                string strReadMeterRecordID = GETTABLEID.GetTableID(strLogID, "READMETERRECORD");
+                if (BLLreadMeterRecord.ChangeWaterMeter(_waterMeterId, strReadMeterRecordID, strRealName))
+                {
+                    Hashtable HL = new Hashtable();
+                    HL["LOGTYPE"] = 6; //6-抄表台账相关日志
+                    HL["LOGCONTENT"] = string.Format("用户换表-用户号：{0}；水表编号：{1}", _waterUserId, _waterMeterId);
+                    HL["LOGDATETIME"] = DateTime.Now.ToString();
+                    HL["OPERATORID"] = AppDomain.CurrentDomain.GetData("LOGINID").ToString();
+                    HL["OPERATORNAME"] = AppDomain.CurrentDomain.GetData("USERNAME").ToString();
+                    HL["MEMO"] = TaskID;
+                    new SqlServerHelper().Submit_AddOrEdit("OPERATORLOG", "LOGID", "", HL);
+                    //======================================
+
+                    int count = sysidal.UpdateApprove_defalut("Meter_Change", ResolveID, true, UserOpinion.Text.Trim(), PointSort, TaskID);
+
+                    if (count > 0)
+                    {
+                        mes.Show("审批成功！");
+                    }
+                    else
+                    {
+                        mes.Show("审批失败！");
+                        Btn_Submit.Enabled = true;
+                    }
+                }
+                else
+                {
+                    mes.Show("变更表底数失败！");
+                    Btn_Submit.Enabled = true;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("审批失败！");
-                Btn_Submit.Enabled = true;
+                mes.Show(ex.Message);
+                log.Write(ex.ToString(),MsgType.Error);
             }
-            
         }
     }
 }

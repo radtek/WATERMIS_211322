@@ -1749,5 +1749,74 @@ namespace BLL
            //else
            //    return false;
        }
+
+       /// <summary>
+       /// 报装换表后执行变更水表底数函数
+       /// </summary>
+       /// <param name="strWaterMeterID">水表编号ID</param>
+       /// <param name="strReadMeterRecordID">抄表台账ID</param>
+       /// <param name="strCheckWorker">变更人即当前登录人员姓名</param>
+       /// <returns>成功返回true；失败返回false</returns>
+       public bool ChangeWaterMeter(string strWaterMeterID, string strReadMeterRecordID, string strCheckWorker)
+       {
+           string strSQL =string.Format(@"
+                            DECLARE @WATERMETERID VARCHAR(30)={0}  --传入参数水表ID
+                            DECLARE @readMeterRecordId VARCHAR(30)={1}  --传入参数水表抄表ID
+                            DECLARE @LoginID VARCHAR(30)={2}  --传入参数 登陆用户ID
+                            DECLARE @WATERMETERLASTNUMBER INT =0
+                            DECLARE @WATERMETERENDNUMBER INT =0
+                            DECLARE @INTREADMETERCOUNT INT =0
+                            DECLARE @ISSUCCESS INT =0
+
+                            BEGIN TRAN
+                            SELECT @INTREADMETERCOUNT=COUNT(1) FROM readMeterRecord WHERE checkState='1' AND waterMeterId=@WATERMETERID 
+
+                            IF(@INTREADMETERCOUNT=0)
+                            BEGIN
+                            UPDATE waterMeter SET waterMeterStartNumber=0 WHERE waterMeterId=@WATERMETERID
+                            END
+                            ELSE
+                            BEGIN
+                            INSERT INTO readMeterRecord(readMeterRecordId,readMeterRecordIdLast,waterMeterId,waterMeterNo,waterMeterLastNumber,waterMeterEndNumber,
+                                           totalNumber,avePrice,waterTotalCharge,extraChargePrice1,extraChargePrice2,extraChargePrice3,extraChargePrice4,extraChargePrice5,
+                                           extraChargePrice6,extraChargePrice7,extraChargePrice8,extraCharge1,extraCharge2,extraCharge3,extraCharge4,extraCharge5,extraCharge6,extraCharge7,
+                                           extraCharge8,extraTotalCharge,trapezoidPrice,totalCharge,WATERFIXVALUE,readMeterRecordYear,readMeterRecordMonth,
+                                           waterMeterPositionName,waterMeterSizeValue,
+                                           waterMeterTypeName,waterMeterProduct,waterMeterSerialNumber,waterMeterMode,waterMeterMagnification,waterMeterMaxRange,
+                                           meterReaderID,meterReaderName,chargerID,chargerName,chargeID,waterUserId,waterUserNO,waterUserName,waterPhone,waterUserAddress,
+                                           waterUserPeopleCount,meterReadingID,meterReadingPageNo,waterUserTypeId,waterUserTypeName,waterUserCreateDate,agentsign,bankId,
+                                          bankName,BankAcountNumber,memo,initialReadMeterMesDateTime,avePriceDescribe,meterReadingNO,waterMeterParentId,totalNumberDescribe,
+                                           waterUserHouseType,waterMeterTypeId,waterUserState,waterMeterSizeId,ordernumber,extraCharge,lastNumberYearMonth,isSummaryMeter,waterUserchargeType,
+                                           IsReverse,areaNO,pianNO,duanNO,communityID,COMMUNITYNAME,buildingNO,unitNO,createType,waterUserTelphoneNO,waterUserNameCode,
+                                           readMeterRecordYearAndMonth,waterMeterTypeClassID,waterMeterTypeClassName,WATERMETERNUMBERCHANGESTATE,WATERUSERQQYE,WATERUSERJSYE,WATERUSERLJQF,
+                                           NotReadMonthCount,checkState,checkDateTime,checker,memo)
+                            SELECT TOP 1 @readMeterRecordId,readMeterRecordId,waterMeterId,waterMeterNo,waterMeterEndNumber,@WATERMETERENDNUMBER,
+                                           0,0,0,0,0,0,0,0,
+                                           0,0,0,0,0,0,0,0,0,0,
+                                           0,0,trapezoidPrice,0,WATERFIXVALUE,YEAR(GETDATE()),MONTH(GETDATE()),
+                                           waterMeterPositionName,waterMeterSizeValue,
+                                           waterMeterTypeName,waterMeterProduct,waterMeterSerialNumber,waterMeterMode,waterMeterMagnification,waterMeterMaxRange,
+                                           meterReaderID,meterReaderName,chargerID,chargerName,chargeID,waterUserId,waterUserNO,waterUserName,waterPhone,waterUserAddress,
+                                           waterUserPeopleCount,meterReadingID,meterReadingPageNo,waterUserTypeId,waterUserTypeName,waterUserCreateDate,agentsign,bankId,
+                                          bankName,BankAcountNumber,memo,GETDATE(),NULL,meterReadingNO,waterMeterParentId,NULL,
+                                           waterUserHouseType,waterMeterTypeId,waterUserState,waterMeterSizeId,ordernumber,extraCharge,NULL,isSummaryMeter,waterUserchargeType,
+                                           IsReverse,areaNO,pianNO,duanNO,communityID,COMMUNITYNAME,buildingNO,unitNO,createType,waterUserTelphoneNO,waterUserNameCode,
+                                           GETDATE(),waterMeterTypeClassID,waterMeterTypeClassName,'1',0,0,0,0,'1',GETDATE(),@LoginID,'报装换表' 
+                                           FROM readMeterRecord WHERE checkState='1' AND waterMeterId=@WATERMETERID ORDER BY checkDateTime DESC
+                            END
+                            IF(@@ERROR<>0)
+                            BEGIN
+                            SET @ISSUCCESS=0
+                            ROLLBACK TRAN
+                            END
+                            ELSE
+                            BEGIN
+                            SET @ISSUCCESS=1
+                            COMMIT TRAN
+                            END
+                            ",strWaterMeterID,strReadMeterRecordID,strCheckWorker);
+           int intRet = DBUtility.DbHelperSQL.ExecuteSql(strSQL);
+           return intRet == 0 ? false : true;
+       }
     }
 }
