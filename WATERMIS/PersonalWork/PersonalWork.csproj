@@ -319,12 +319,6 @@
     <Compile Include="FrmShowFlowPicture.Designer.cs">
       <DependentUpon>FrmShowFlowPicture.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmTEST.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmTEST.Designer.cs">
-      <DependentUpon>frmTEST.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmUnsubscribe_Approve.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -484,9 +478,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmShowFlowPicture.resx">
       <DependentUpon>FrmShowFlowPicture.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmTEST.resx">
-      <DependentUpon>frmTEST.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmUnsubscribe_Approve.resx">
       <DependentUpon>FrmUnsubscribe_Approve.cs</DependentUpon>
