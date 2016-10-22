@@ -59,12 +59,14 @@
             this.label85 = new System.Windows.Forms.Label();
             this.label86 = new System.Windows.Forms.Label();
             this.label87 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox6
             // 
             this.groupBox6.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox6.Controls.Add(this.label5);
             this.groupBox6.Controls.Add(this.label4);
             this.groupBox6.Controls.Add(this.waterPhone);
             this.groupBox6.Controls.Add(this.label3);
@@ -293,11 +295,11 @@
             // label74
             // 
             this.label74.AutoSize = true;
-            this.label74.Location = new System.Drawing.Point(16, 214);
+            this.label74.Location = new System.Drawing.Point(10, 214);
             this.label74.Name = "label74";
-            this.label74.Size = new System.Drawing.Size(65, 12);
+            this.label74.Size = new System.Drawing.Size(71, 12);
             this.label74.TabIndex = 57;
-            this.label74.Text = "违章说明：";
+            this.label74.Text = "*违章说明：";
             // 
             // label78
             // 
@@ -371,6 +373,17 @@
             this.label87.TabIndex = 28;
             this.label87.Text = "*用户类别：";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(10, 235);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(71, 12);
+            this.label5.TabIndex = 85;
+            this.label5.Tag = "9999";
+            this.label5.Text = "(限200字内)";
+            // 
             // FrmPeccantJC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -420,6 +433,7 @@
         private Common.WinControl.Ryan.RegTextbox.RyanTextBox waterPhone;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
 
 
 
