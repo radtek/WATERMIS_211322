@@ -491,6 +491,12 @@
     <EmbeddedResource Include="FrmUnsubscribe_StopUser.resx">
       <DependentUpon>FrmUnsubscribe_StopUser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmUserPeccant_Approve.resx">
+      <DependentUpon>FrmUserPeccant_Approve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUserPeccant_Default.resx">
+      <DependentUpon>FrmUserPeccant_Default.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

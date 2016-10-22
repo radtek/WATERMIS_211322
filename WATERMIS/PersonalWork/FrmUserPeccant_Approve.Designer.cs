@@ -28,17 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmUserPeccant_Approve));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.PL_Proc = new System.Windows.Forms.Panel();
             this.uC_UserInfos1 = new SysControl.UC_UserInfos();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.waterPhone = new System.Windows.Forms.TextBox();
+            this.SubmitDate = new System.Windows.Forms.TextBox();
             this.label80 = new System.Windows.Forms.Label();
             this.ApplyUser = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.Memo = new System.Windows.Forms.TextBox();
+            this.PecantDescribe = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.uC_ApproveList1 = new SysControl.UC_ApproveList();
             this.tableLayoutPanel1.SuspendLayout();
@@ -80,7 +79,6 @@
             // 
             // PL_Proc
             // 
-            this.PL_Proc.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PL_Proc.BackgroundImage")));
             this.PL_Proc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PL_Proc.Location = new System.Drawing.Point(3, 280);
             this.PL_Proc.Name = "PL_Proc";
@@ -97,11 +95,11 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.waterPhone);
+            this.panel1.Controls.Add(this.SubmitDate);
             this.panel1.Controls.Add(this.label80);
             this.panel1.Controls.Add(this.ApplyUser);
             this.panel1.Controls.Add(this.label13);
-            this.panel1.Controls.Add(this.Memo);
+            this.panel1.Controls.Add(this.PecantDescribe);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 203);
@@ -110,13 +108,13 @@
             this.panel1.TabIndex = 4;
             this.panel1.Tag = "9999";
             // 
-            // waterPhone
+            // SubmitDate
             // 
-            this.waterPhone.Location = new System.Drawing.Point(320, 8);
-            this.waterPhone.Name = "waterPhone";
-            this.waterPhone.ReadOnly = true;
-            this.waterPhone.Size = new System.Drawing.Size(161, 21);
-            this.waterPhone.TabIndex = 82;
+            this.SubmitDate.Location = new System.Drawing.Point(320, 8);
+            this.SubmitDate.Name = "SubmitDate";
+            this.SubmitDate.ReadOnly = true;
+            this.SubmitDate.Size = new System.Drawing.Size(161, 21);
+            this.SubmitDate.TabIndex = 82;
             // 
             // label80
             // 
@@ -144,13 +142,13 @@
             this.label13.TabIndex = 84;
             this.label13.Text = "发 现 人：";
             // 
-            // Memo
+            // PecantDescribe
             // 
-            this.Memo.Location = new System.Drawing.Point(76, 38);
-            this.Memo.Name = "Memo";
-            this.Memo.ReadOnly = true;
-            this.Memo.Size = new System.Drawing.Size(405, 21);
-            this.Memo.TabIndex = 83;
+            this.PecantDescribe.Location = new System.Drawing.Point(76, 38);
+            this.PecantDescribe.Name = "PecantDescribe";
+            this.PecantDescribe.ReadOnly = true;
+            this.PecantDescribe.Size = new System.Drawing.Size(405, 21);
+            this.PecantDescribe.TabIndex = 83;
             // 
             // label1
             // 
@@ -163,10 +161,9 @@
             // 
             // uC_ApproveList1
             // 
-            this.uC_ApproveList1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uC_ApproveList1.Location = new System.Drawing.Point(3, 3);
             this.uC_ApproveList1.Name = "uC_ApproveList1";
-            this.uC_ApproveList1.Size = new System.Drawing.Size(619, 655);
+            this.uC_ApproveList1.Size = new System.Drawing.Size(612, 655);
             this.uC_ApproveList1.TabIndex = 1;
             // 
             // FrmUserPeccant_Approve
@@ -178,6 +175,9 @@
             this.Name = "FrmUserPeccant_Approve";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "违章处罚审批";
+            this.Load += new System.EventHandler(this.FrmUserPeccant_Approve_Load);
+            this.Shown += new System.EventHandler(this.FrmUserPeccant_Approve_Shown);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmUserPeccant_Approve_FormClosed);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -193,11 +193,11 @@
         private System.Windows.Forms.Panel PL_Proc;
         private SysControl.UC_UserInfos uC_UserInfos1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox waterPhone;
+        private System.Windows.Forms.TextBox SubmitDate;
         private System.Windows.Forms.Label label80;
         private System.Windows.Forms.TextBox ApplyUser;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox Memo;
+        private System.Windows.Forms.TextBox PecantDescribe;
         private System.Windows.Forms.Label label1;
         private SysControl.UC_ApproveList uC_ApproveList1;
     }
