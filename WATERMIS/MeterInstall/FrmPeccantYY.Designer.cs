@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPeccantYY));
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.waterPhone = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -59,7 +60,6 @@
             this.label85 = new System.Windows.Forms.Label();
             this.label86 = new System.Windows.Forms.Label();
             this.label87 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,6 +103,17 @@
             this.groupBox6.TabIndex = 3;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "用户详细信息";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(11, 236);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(71, 12);
+            this.label5.TabIndex = 84;
+            this.label5.Tag = "9999";
+            this.label5.Text = "(限200字内)";
             // 
             // label4
             // 
@@ -295,11 +306,11 @@
             // label74
             // 
             this.label74.AutoSize = true;
-            this.label74.Location = new System.Drawing.Point(16, 214);
+            this.label74.Location = new System.Drawing.Point(10, 214);
             this.label74.Name = "label74";
-            this.label74.Size = new System.Drawing.Size(65, 12);
+            this.label74.Size = new System.Drawing.Size(71, 12);
             this.label74.TabIndex = 57;
-            this.label74.Text = "违章说明：";
+            this.label74.Text = "*违章说明：";
             // 
             // label78
             // 
@@ -372,17 +383,6 @@
             this.label87.Size = new System.Drawing.Size(71, 12);
             this.label87.TabIndex = 28;
             this.label87.Text = "*用户类别：";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(11, 236);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(71, 12);
-            this.label5.TabIndex = 84;
-            this.label5.Tag = "9999";
-            this.label5.Text = "(限200字内)";
             // 
             // FrmPeccantYY
             // 

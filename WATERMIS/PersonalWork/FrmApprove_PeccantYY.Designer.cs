@@ -145,6 +145,7 @@
             this.userName.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.userName.Location = new System.Drawing.Point(282, 156);
             this.userName.Name = "userName";
+            this.userName.ReadOnly = true;
             this.userName.Size = new System.Drawing.Size(99, 21);
             this.userName.TabIndex = 88;
             // 
@@ -153,6 +154,7 @@
             this.contractNO.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.contractNO.Location = new System.Drawing.Point(282, 129);
             this.contractNO.Name = "contractNO";
+            this.contractNO.ReadOnly = true;
             this.contractNO.Size = new System.Drawing.Size(235, 21);
             this.contractNO.TabIndex = 85;
             // 
@@ -161,6 +163,7 @@
             this.waterUserName.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.waterUserName.Location = new System.Drawing.Point(282, 20);
             this.waterUserName.Name = "waterUserName";
+            this.waterUserName.ReadOnly = true;
             this.waterUserName.Size = new System.Drawing.Size(236, 21);
             this.waterUserName.TabIndex = 83;
             // 
@@ -169,6 +172,7 @@
             this.waterUserAddress.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.waterUserAddress.Location = new System.Drawing.Point(282, 47);
             this.waterUserAddress.Name = "waterUserAddress";
+            this.waterUserAddress.ReadOnly = true;
             this.waterUserAddress.Size = new System.Drawing.Size(236, 21);
             this.waterUserAddress.TabIndex = 84;
             // 
@@ -177,6 +181,7 @@
             this.QueryKey.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.QueryKey.Location = new System.Drawing.Point(282, 101);
             this.QueryKey.Name = "QueryKey";
+            this.QueryKey.ReadOnly = true;
             this.QueryKey.Size = new System.Drawing.Size(99, 21);
             this.QueryKey.TabIndex = 96;
             this.QueryKey.Text = "123456";
@@ -199,6 +204,7 @@
             this.waterPhone.InputType = Common.WinControl.Ryan.RegTextbox.RyanTextBox.EMInputTypes.文本;
             this.waterPhone.Location = new System.Drawing.Point(86, 47);
             this.waterPhone.Name = "waterPhone";
+            this.waterPhone.ReadOnly = true;
             this.waterPhone.RegexExpression = "";
             this.waterPhone.RemoveSpace = false;
             this.waterPhone.Size = new System.Drawing.Size(100, 21);
@@ -219,6 +225,7 @@
             this.waterUserPeopleCount.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.waterUserPeopleCount.Location = new System.Drawing.Point(86, 74);
             this.waterUserPeopleCount.Name = "waterUserPeopleCount";
+            this.waterUserPeopleCount.ReadOnly = true;
             this.waterUserPeopleCount.Size = new System.Drawing.Size(100, 21);
             this.waterUserPeopleCount.TabIndex = 86;
             // 
@@ -227,13 +234,13 @@
             this.ApplyUser.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.ApplyUser.Location = new System.Drawing.Point(86, 156);
             this.ApplyUser.Name = "ApplyUser";
+            this.ApplyUser.ReadOnly = true;
             this.ApplyUser.Size = new System.Drawing.Size(100, 21);
             this.ApplyUser.TabIndex = 87;
             // 
             // waterUserHouseType
             // 
             this.waterUserHouseType.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.waterUserHouseType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.waterUserHouseType.Enabled = false;
             this.waterUserHouseType.FormattingEnabled = true;
             this.waterUserHouseType.Items.AddRange(new object[] {
@@ -241,7 +248,7 @@
             "平房"});
             this.waterUserHouseType.Location = new System.Drawing.Point(86, 128);
             this.waterUserHouseType.Name = "waterUserHouseType";
-            this.waterUserHouseType.Size = new System.Drawing.Size(100, 21);
+            this.waterUserHouseType.Size = new System.Drawing.Size(100, 20);
             this.waterUserHouseType.TabIndex = 90;
             // 
             // PeccantMemo
@@ -257,13 +264,12 @@
             // waterUserTypeId
             // 
             this.waterUserTypeId.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.waterUserTypeId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.waterUserTypeId.DropDownWidth = 150;
             this.waterUserTypeId.Enabled = false;
             this.waterUserTypeId.FormattingEnabled = true;
             this.waterUserTypeId.Location = new System.Drawing.Point(86, 101);
             this.waterUserTypeId.Name = "waterUserTypeId";
-            this.waterUserTypeId.Size = new System.Drawing.Size(100, 21);
+            this.waterUserTypeId.Size = new System.Drawing.Size(100, 20);
             this.waterUserTypeId.TabIndex = 89;
             // 
             // label1
