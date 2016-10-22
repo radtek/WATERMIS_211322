@@ -55,6 +55,12 @@ namespace WaterBusiness
 
         private void Btn_Submit_Click_1(object sender, EventArgs e)
         {
+            //判断水表状态
+            if (sysidal.IsDisabledUser("User_Unsubscribe", waterUserId))
+            {
+                MessageBox.Show("用户状态不可用或存在未完成审批！");
+                return;
+            }
 
             if (!string.IsNullOrEmpty(waterUserId))
             {

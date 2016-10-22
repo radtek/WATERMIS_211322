@@ -1,6 +1,6 @@
 ﻿namespace PersonalWork
 {
-    partial class FrmDesterilize_MeterOut
+    partial class FrmUnsubscribe_MeterIn
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDesterilize_MeterOut));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmUnsubscribe_MeterIn));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.WaterMeterNum = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
@@ -57,13 +57,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Location = new System.Drawing.Point(12, 178);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 12);
             this.label2.TabIndex = 10;
             this.label2.Text = "水表读数：";
-            this.label2.Visible = false;
             // 
             // WaterMeterNum
             // 
@@ -78,7 +76,6 @@
             this.WaterMeterNum.Size = new System.Drawing.Size(152, 21);
             this.WaterMeterNum.TabIndex = 9;
             this.WaterMeterNum.ValidateState = false;
-            this.WaterMeterNum.Visible = false;
             // 
             // LB_Tip
             // 
@@ -97,11 +94,11 @@
             this.Btn_Submit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Submit.Font = new System.Drawing.Font("微软雅黑 Light", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Btn_Submit.ForeColor = System.Drawing.Color.White;
-            this.Btn_Submit.Location = new System.Drawing.Point(173, 304);
+            this.Btn_Submit.Location = new System.Drawing.Point(177, 304);
             this.Btn_Submit.Name = "Btn_Submit";
             this.Btn_Submit.Size = new System.Drawing.Size(129, 41);
             this.Btn_Submit.TabIndex = 6;
-            this.Btn_Submit.Text = "水表出库";
+            this.Btn_Submit.Text = "水表入库";
             this.Btn_Submit.UseVisualStyleBackColor = false;
             this.Btn_Submit.Click += new System.EventHandler(this.Btn_Submit_Click);
             // 
@@ -123,17 +120,17 @@
             this.UserOpinion.Size = new System.Drawing.Size(408, 69);
             this.UserOpinion.TabIndex = 1;
             // 
-            // FrmDesterilize_MeterOut
+            // FrmUnsubscribe_MeterIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(500, 370);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FrmDesterilize_MeterOut";
-            this.Text = "FrmDesterilize_MeterOut";
-            this.Load += new System.EventHandler(this.FrmDesterilize_MeterOut_Load);
-            this.Shown += new System.EventHandler(this.FrmDesterilize_MeterOut_Shown);
+            this.Name = "FrmUnsubscribe_MeterIn";
+            this.Text = "FrmUnsubscribe_MeterIn";
+            this.Load += new System.EventHandler(this.FrmUnsubscribe_MeterIn_Load);
+            this.Shown += new System.EventHandler(this.FrmUnsubscribe_MeterIn_Shown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -143,11 +140,12 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label2;
+        private Common.WinControl.Ryan.RegTextbox.RyanTextBox WaterMeterNum;
         private System.Windows.Forms.Label LB_Tip;
         private System.Windows.Forms.Button Btn_Submit;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox UserOpinion;
-        private System.Windows.Forms.Label label2;
-        private Common.WinControl.Ryan.RegTextbox.RyanTextBox WaterMeterNum;
+
     }
 }

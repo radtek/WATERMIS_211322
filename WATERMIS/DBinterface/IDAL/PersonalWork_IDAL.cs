@@ -66,7 +66,7 @@ namespace DBinterface.IDAL
 
        bool IsHaveLastFeeItems(string TaskID, string PointSort);
 
-       string GetLastFeeItemsByDep(string ResolveID, int FeeID);
+       DataTable GetLastFeeItemsByDep(string ResolveID, int FeeID);
 
        DataTable GetAllChargePoint(string TaskID);
 
@@ -161,6 +161,8 @@ namespace DBinterface.IDAL
        DataTable GetApproveCenterSub(int MenuID);
 
        DataTable GetUserMeterInfoByTaskId(string TaskID);
+
+       DataTable GetUserMeterInfoByTaskId(string tableName, string TaskID);
 
        bool SetTaskOver(string TableName, string TaskID);
     }

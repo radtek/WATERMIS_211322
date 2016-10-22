@@ -181,6 +181,30 @@
     <Compile Include="FrmApprove_WaterPrice_Default.Designer.cs">
       <DependentUpon>FrmApprove_WaterPrice_Default.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmChange_Approve.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmChange_Approve.Designer.cs">
+      <DependentUpon>FrmChange_Approve.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmChange_Default.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmChange_Default.Designer.cs">
+      <DependentUpon>FrmChange_Default.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmChange_MeterInit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmChange_MeterInit.Designer.cs">
+      <DependentUpon>FrmChange_MeterInit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmChange_MeterScrap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmChange_MeterScrap.Designer.cs">
+      <DependentUpon>FrmChange_MeterScrap.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmChargePoint.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -313,6 +337,18 @@
     <Compile Include="FrmUnsubscribe_Default.Designer.cs">
       <DependentUpon>FrmUnsubscribe_Default.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmUnsubscribe_MeterIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUnsubscribe_MeterIn.Designer.cs">
+      <DependentUpon>FrmUnsubscribe_MeterIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUnsubscribe_StopUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUnsubscribe_StopUser.Designer.cs">
+      <DependentUpon>FrmUnsubscribe_StopUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmUserPeccant_Approve.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -380,6 +416,18 @@
     <EmbeddedResource Include="FrmApprove_WaterPrice_Default.resx">
       <DependentUpon>FrmApprove_WaterPrice_Default.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmChange_Approve.resx">
+      <DependentUpon>FrmChange_Approve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmChange_Default.resx">
+      <DependentUpon>FrmChange_Default.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmChange_MeterInit.resx">
+      <DependentUpon>FrmChange_MeterInit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmChange_MeterScrap.resx">
+      <DependentUpon>FrmChange_MeterScrap.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmChargePoint.resx">
       <DependentUpon>FrmChargePoint.cs</DependentUpon>
     </EmbeddedResource>
@@ -437,11 +485,20 @@
     <EmbeddedResource Include="FrmShowFlowPicture.resx">
       <DependentUpon>FrmShowFlowPicture.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmTEST.resx">
+      <DependentUpon>frmTEST.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmUnsubscribe_Approve.resx">
       <DependentUpon>FrmUnsubscribe_Approve.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmUnsubscribe_Default.resx">
       <DependentUpon>FrmUnsubscribe_Default.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUnsubscribe_MeterIn.resx">
+      <DependentUpon>FrmUnsubscribe_MeterIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUnsubscribe_StopUser.resx">
+      <DependentUpon>FrmUnsubscribe_StopUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

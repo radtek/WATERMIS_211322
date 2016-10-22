@@ -130,7 +130,7 @@ namespace PersonalWork
             Btn_Voided.Enabled = false;
             string ComputerName = new Computer().ComputerName;
             string ip = new Computer().IpAddress;
-            int count = sysidal.UpdateApprove_Voided(ResolveID, UserOpinion.Text.Trim(), ip, ComputerName, TaskID);
+            int count = sysidal.UpdateApprove_Voided_ByTableName("Meter_Desterilize", ResolveID, UserOpinion.Text.Trim(), ip, ComputerName, TaskID);
 
             if (count > 0)
             {

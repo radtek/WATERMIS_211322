@@ -23,7 +23,7 @@ namespace WaterBusiness
 
         private void uC_SearchModule1_BtnEvent(object sender, EventArgs e)
         {
-            string sqlstr = "SELECT MC.ChangeID,MC.AcceptID,MC.QueryKey,MC.WaterUserNO,MC.waterUserName,MC.waterUserAddress,MWS.Value AS State,MC.TaskID,MC.SubmitDate,MC.MeterID,MC.ChangeDescribe,CreateDate FROM Meter_Change MC left join Meter_WorkTaskState MWS on MC.State=MWS.ID   ";
+            string sqlstr = "SELECT MC.ChangeID,MC.AcceptID,MC.QueryKey,MC.WaterUserNO,MC.waterUserName,MC.waterUserAddress,MWS.Value AS State,MC.TaskID,MC.SubmitDate,MC.waterMeterId,MC.ChangeDescribe,CreateDate FROM Meter_Change MC left join Meter_WorkTaskState MWS on MC.State=MWS.ID   ";
             if (!string.IsNullOrEmpty(uC_SearchModule1.sb.ToString()))
             {
                 sqlstr += " WHERE " + uC_SearchModule1.sb.ToString();

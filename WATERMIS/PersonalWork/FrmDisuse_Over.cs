@@ -74,14 +74,14 @@ namespace PersonalWork
 
         private void Btn_Over_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("你将结束并完成本审批，是否要继续！", "警告", MessageBoxButtons.OKCancel)==DialogResult.OK)
+            if (MessageBox.Show("你将结束并完成本审批，是否要继续！", "警告", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 if (sysidal.SetTaskOver("Meter_Disuse", TaskID))
                 {
                     MessageBox.Show("结束并完成该审批！");
                 }
             }
-           
+
         }
 
         private void FrmDisuse_Over_Load(object sender, EventArgs e)
@@ -137,9 +137,9 @@ namespace PersonalWork
         {
             Btn_Submit.Enabled = false;
             Btn_Voided.Enabled = false;
-          string  ComputerName = new Computer().ComputerName;
-          string ip = new Computer().IpAddress;
-            int count = sysidal.UpdateApprove_Voided(ResolveID, UserOpinion.Text.Trim(), ip, ComputerName, TaskID);
+            string ComputerName = new Computer().ComputerName;
+            string ip = new Computer().IpAddress;
+            int count = sysidal.UpdateApprove_Voided_ByTableName("Meter_Disuse", ResolveID, UserOpinion.Text.Trim(), ip, ComputerName, TaskID);
 
             if (count > 0)
             {

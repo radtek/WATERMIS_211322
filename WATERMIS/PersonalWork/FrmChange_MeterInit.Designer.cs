@@ -1,6 +1,6 @@
 ﻿namespace PersonalWork
 {
-    partial class FrmDesterilize_MeterOut
+    partial class FrmChange_MeterInit
     {
         /// <summary>
         /// Required designer variable.
@@ -28,14 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDesterilize_MeterOut));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmChange_MeterInit));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.WaterMeterNum = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
             this.LB_Tip = new System.Windows.Forms.Label();
             this.Btn_Submit = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.UserOpinion = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,7 +42,6 @@
             // 
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.WaterMeterNum);
             this.panel1.Controls.Add(this.LB_Tip);
             this.panel1.Controls.Add(this.Btn_Submit);
             this.panel1.Controls.Add(this.label1);
@@ -54,40 +52,14 @@
             this.panel1.Size = new System.Drawing.Size(500, 370);
             this.panel1.TabIndex = 6;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(12, 178);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 12);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "水表读数：";
-            this.label2.Visible = false;
-            // 
-            // WaterMeterNum
-            // 
-            this.WaterMeterNum.AllowEmpty = false;
-            this.WaterMeterNum.EmptyMessage = "";
-            this.WaterMeterNum.ErrorMessage = "";
-            this.WaterMeterNum.InputType = Common.WinControl.Ryan.RegTextbox.RyanTextBox.EMInputTypes.数字;
-            this.WaterMeterNum.Location = new System.Drawing.Point(78, 173);
-            this.WaterMeterNum.Name = "WaterMeterNum";
-            this.WaterMeterNum.RegexExpression = "";
-            this.WaterMeterNum.RemoveSpace = false;
-            this.WaterMeterNum.Size = new System.Drawing.Size(152, 21);
-            this.WaterMeterNum.TabIndex = 9;
-            this.WaterMeterNum.ValidateState = false;
-            this.WaterMeterNum.Visible = false;
-            // 
             // LB_Tip
             // 
             this.LB_Tip.AutoSize = true;
             this.LB_Tip.BackColor = System.Drawing.Color.Transparent;
-            this.LB_Tip.Location = new System.Drawing.Point(12, 144);
+            this.LB_Tip.Location = new System.Drawing.Point(10, 128);
             this.LB_Tip.Name = "LB_Tip";
             this.LB_Tip.Size = new System.Drawing.Size(125, 12);
-            this.LB_Tip.TabIndex = 8;
+            this.LB_Tip.TabIndex = 7;
             this.LB_Tip.Text = "用 户 号：水表编号：";
             // 
             // Btn_Submit
@@ -101,7 +73,7 @@
             this.Btn_Submit.Name = "Btn_Submit";
             this.Btn_Submit.Size = new System.Drawing.Size(129, 41);
             this.Btn_Submit.TabIndex = 6;
-            this.Btn_Submit.Text = "水表出库";
+            this.Btn_Submit.Text = "用户换表确认";
             this.Btn_Submit.UseVisualStyleBackColor = false;
             this.Btn_Submit.Click += new System.EventHandler(this.Btn_Submit_Click);
             // 
@@ -109,7 +81,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(12, 44);
+            this.label1.Location = new System.Drawing.Point(10, 44);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 12);
             this.label1.TabIndex = 2;
@@ -123,17 +95,29 @@
             this.UserOpinion.Size = new System.Drawing.Size(408, 69);
             this.UserOpinion.TabIndex = 1;
             // 
-            // FrmDesterilize_MeterOut
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.ForeColor = System.Drawing.Color.Maroon;
+            this.label2.Location = new System.Drawing.Point(75, 190);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(288, 15);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "警告：提交后用户表底数将置为【0】。";
+            // 
+            // FrmChange_MeterInit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(500, 370);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FrmDesterilize_MeterOut";
-            this.Text = "FrmDesterilize_MeterOut";
-            this.Load += new System.EventHandler(this.FrmDesterilize_MeterOut_Load);
-            this.Shown += new System.EventHandler(this.FrmDesterilize_MeterOut_Shown);
+            this.Name = "FrmChange_MeterInit";
+            this.Text = "FrmChange_MeterInit";
+            this.Load += new System.EventHandler(this.FrmChange_MeterInit_Load);
+            this.Shown += new System.EventHandler(this.FrmChange_MeterInit_Shown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -148,6 +132,5 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox UserOpinion;
         private System.Windows.Forms.Label label2;
-        private Common.WinControl.Ryan.RegTextbox.RyanTextBox WaterMeterNum;
     }
 }

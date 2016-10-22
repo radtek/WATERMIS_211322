@@ -146,10 +146,9 @@ namespace PersonalWork
         {
             Btn_Submit.Enabled = false;
             Btn_Voided.Enabled = false;
-           string ComputerName = new Computer().ComputerName;
-           string ip = new Computer().IpAddress;
-            int count = sysidal.UpdateApprove_Voided(ResolveID, UserOpinion.Text.Trim(), ip, ComputerName, TaskID);
-
+            string ComputerName = new Computer().ComputerName;
+            string ip = new Computer().IpAddress;
+            int count = sysidal.UpdateApprove_Voided_ByTableName("User_Unsubscribe", ResolveID, UserOpinion.Text.Trim(), ip, ComputerName, TaskID);
             if (count > 0)
             {
                 MessageBox.Show("作废完成！");

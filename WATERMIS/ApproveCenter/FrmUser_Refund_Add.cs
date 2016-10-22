@@ -21,6 +21,7 @@ namespace ApproveCenter
         private string strName;
         private string strRealName;
         private string _CHARGEID = "";
+        private string _WATERMETERTYPECLASSID = string.Empty;
 
         public FrmUser_Refund_Add()
         {
@@ -56,6 +57,8 @@ namespace ApproveCenter
                     else
                     {
                         new SqlServerHelper().BindHashTableToForm(ht, this.panel1.Controls);
+                        _WATERMETERTYPECLASSID = ht["WATERMETERTYPECLASSID"].ToString();
+                        
                     }
                 }
                 else
@@ -93,10 +96,33 @@ namespace ApproveCenter
                 ht["userName"] = strRealName;
                 ht["RefundID"] = Guid.NewGuid().ToString();
 
+                string _FlowCode = "User_Refund";
+                switch (_WATERMETERTYPECLASSID)
+                {
+                    case "0003":
+                    case "0004":
+                        _FlowCode = "User_Refund";
+                        break;
+                    case "0001":
+                    case "0006":
+                        _FlowCode = "User_Refund1";
+                        break;
+                    case "0002":
+                    case "0005":
+                    case "0007":
+                    case "0008":
+                    case "0010":
+                        _FlowCode = "User_Refund2";
+                        break;
+                    default:
+                        _FlowCode = "User_Refund";
+                        break;
+                }
+
                 
                 if (new SqlServerHelper().Submit_AddOrEdit("User_Refund", "RefundID", "", ht))
                 {
-                    bool result = new SqlServerHelper().CreateWorkTask(ht["RefundID"].ToString(), SDNO, "User_Refund", "RefundID", "用户退款");
+                    bool result = new SqlServerHelper().CreateWorkTask(ht["RefundID"].ToString(), SDNO, "User_Refund", "RefundID", "用户退款", _FlowCode);
                     if (result)
                     {
                         MessageBox.Show("任务创建成功！");

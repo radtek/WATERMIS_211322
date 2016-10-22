@@ -301,7 +301,7 @@ COMMIT TRAN",tableName);
 
         public DataTable GetFeeItems(string ResolveID)
         {
-            string sqlstr = "SELECT FeeID,FeeItem,Fee,DefaultValue,IsFinal  FROM Meter_WorkResolveFee WHERE ResolveID=@ResolveID ORDER BY Sort";
+            string sqlstr = "SELECT FeeID,FeeItem,Fee,DefaultValue,IsFinal,Quantity,Price  FROM Meter_WorkResolveFee WHERE ResolveID=@ResolveID ORDER BY Sort";
 
             return new SqlServerHelper().GetDateTableBySql(sqlstr, new SqlParameter[] { new SqlParameter("@ResolveID", ResolveID) });
         }
@@ -314,21 +314,20 @@ COMMIT TRAN",tableName);
             int Count = int.Parse(dt.Rows[0][0].ToString());
             return Count > 0 ? true : false;
         }
-        //RONG 2016-10-13
-        public string GetLastFeeItemsByDep(string ResolveID, int FeeID)
+        public DataTable GetLastFeeItemsByDep(string ResolveID, int FeeID)
         {
-            string FeeValue = string.Empty;
+            //string FeeValue = string.Empty;
             string strsql = @"DECLARE @TaskID NVARCHAR(50)
 DECLARE @PointSort INT
 DECLARE @DepartementID NVARCHAR(50)
 SELECT @TaskID=TaskID,@PointSort=PointSort,@DepartementID=DepartementID FROM Meter_WorkResolve MW WHERE ResolveID=@ResolveID
-SELECT FEE FROM Meter_WorkResolveFee MWF,Meter_WorkResolve MWR WHERE MWF.ResolveID=MWR.ResolveID AND MWR.DepartementID=@DepartementID AND MWR.TaskID=@TaskID AND PointSort<@PointSort AND MWF.FeeID=@FeeID  ORDER BY PointSort DESC";
-            DataTable dt = new SqlServerHelper().GetDateTableBySql(strsql, new SqlParameter[] { new SqlParameter("@ResolveID", ResolveID), new SqlParameter("@FeeID", FeeID) });
-            if (DataTableHelper.IsExistRows(dt))
-            {
-                FeeValue = dt.Rows[0][0].ToString();
-            }
-            return FeeValue;
+SELECT FEE,Price,Quantity FROM Meter_WorkResolveFee MWF,Meter_WorkResolve MWR WHERE MWF.ResolveID=MWR.ResolveID AND MWR.DepartementID=@DepartementID AND MWR.TaskID=@TaskID AND PointSort<@PointSort AND MWF.FeeID=@FeeID  ORDER BY PointSort DESC";
+            return new SqlServerHelper().GetDateTableBySql(strsql, new SqlParameter[] { new SqlParameter("@ResolveID", ResolveID), new SqlParameter("@FeeID", FeeID) });
+            //if (DataTableHelper.IsExistRows(dt))
+            //{
+            //    FeeValue = dt.Rows[0][0].ToString();
+            //}
+           // return FeeValue;
         }
 
 
@@ -592,7 +591,7 @@ COMMIT TRAN";
         public Hashtable GetUserAllowRefund(string CHARGEID)
         {
             string sqlstr = @"SELECT VV.CHARGEID,VV.CHARGEBCSS AS CHARGEBCSS_IN,VW.WATERUSERNO,VW.WATERUSERNAME AS ApplyUser,VW.waterPhone,
-VV.PRESTORERUNNINGACCOUNTID,VW.waterUserAddress,VW.prestore 
+VV.PRESTORERUNNINGACCOUNTID,VW.waterUserAddress,VW.prestore,VV.WATERMETERTYPECLASSID 
 FROM V_PRESTORERUNNINGACCOUNT_VALID VV,V_WATERUSERAREARAGE VW WHERE 
 VV.WATERUSERID=VW.waterUserId AND DATEDIFF(MONTH,CHARGEDATETIME,GETDATE())=0
 AND VV.CHARGEBCSS<=VW.prestore AND CHARGEID=@CHARGEID";
@@ -940,6 +939,12 @@ COMMIT TRAN", ht["TableName"].ToString());
         public DataTable GetUserMeterInfoByTaskId(string TaskID)
         {
             string sqlstr = "SELECT MD.WaterUserNO,VM.waterMeterNo FROM V_WATERMETER VM,Meter_Disuse MD WHERE VM.waterUserId=MD.WaterUserNO AND MD.TaskID=@TaskID";
+            return new SqlServerHelper().GetDateTableBySql(sqlstr, new SqlParameter[] { new SqlParameter("@TaskID", TaskID) });
+        }
+
+        public DataTable GetUserMeterInfoByTaskId(string tableName,string TaskID)
+        {
+            string sqlstr =string.Format("SELECT MD.WaterUserNO,VM.waterMeterNo FROM V_WATERMETER VM,{0} MD WHERE VM.waterUserId=MD.WaterUserNO AND MD.TaskID=@TaskID",tableName);
             return new SqlServerHelper().GetDateTableBySql(sqlstr, new SqlParameter[] { new SqlParameter("@TaskID", TaskID) });
         }
 

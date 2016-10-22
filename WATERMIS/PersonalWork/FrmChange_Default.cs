@@ -5,15 +5,15 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using DBinterface.IDAL;
-using DBinterface.DAL;
 using System.Collections;
+using DBinterface.DAL;
+using DBinterface.IDAL;
 using Common.DotNetUI;
 using Common.WinDevices;
 
 namespace PersonalWork
 {
-    public partial class FrmMaintain_Default : Form
+    public partial class FrmChange_Default : Form
     {
         private PersonalWork_IDAL sysidal = new PersonalWork_DAL();
         public Hashtable ht = new Hashtable();
@@ -23,11 +23,26 @@ namespace PersonalWork
         public bool IsCharge = false;
 
         private bool skip = false;
+        private string ComputerName = "";
+        private string ip = "";
         private string DepartementID = "0";
 
-        public FrmMaintain_Default()
+        public FrmChange_Default()
         {
             InitializeComponent();
+        }
+
+        private void FrmChange_Default_Load(object sender, EventArgs e)
+        {
+            ht = (Hashtable)this.Tag;
+            TaskID = ht["TaskID"].ToString();
+            ResolveID = ht["ResolveID"].ToString();
+            PointSort = ht["PointSort"].ToString();
+        }
+
+        private void FrmChange_Default_Shown(object sender, EventArgs e)
+        {
+            InitView();
         }
 
         private void InitView()
@@ -71,8 +86,6 @@ namespace PersonalWork
 
                             if (sysidal.IsHaveLastFeeItems(TaskID, PointSort))
                             {
-                                //默认值传递
-                                //=======================
                                 Btn_More.Visible = true;
                                 Btn_More.Left = FP_Fee.Left;
                                 Btn_More.Top = FP_Fee.Top + FP_Fee.Height + 10;
@@ -124,37 +137,8 @@ namespace PersonalWork
             frm.ShowDialog();
         }
 
-        private void FrmApprove_Single_Default_Shown(object sender, EventArgs e)
-        {
-            InitView();
-        }
-
-        private void Btn_Submit_Click(object sender, EventArgs e)
-        {
-            Btn_Submit.Enabled = false;
-            int count = sysidal.UpdateApprove_defalut("Meter_Maintain", ResolveID, IsPass.Checked, UserOpinion.Text.Trim(), PointSort, TaskID);
-
-            if (count > 0)
-            {
-                if (IsCharge)
-                {
-                    MessageBox.Show("审批成功！");
-                    ApproveDispose.UpdateFeeItem(this.FP_Fee, ResolveID);
-                }
-                else
-                {
-                    MessageBox.Show("审批成功！");
-                }
-            }
-            else
-            {
-                Btn_Submit.Enabled = true;
-            }
-        }
-
         private void IsPass_CheckedChanged(object sender, EventArgs e)
         {
-
             if (IsPass.Checked)
             {
                 IsPass.Text = "同意";
@@ -183,9 +167,9 @@ namespace PersonalWork
         {
             Btn_Submit.Enabled = false;
             Btn_Voided.Enabled = false;
-            string ComputerName = new Computer().ComputerName;
-            string ip = new Computer().IpAddress;
-            int count = sysidal.UpdateApprove_Voided_ByTableName("Meter_Maintain", ResolveID, UserOpinion.Text.Trim(), ip, ComputerName, TaskID);
+            ComputerName = new Computer().ComputerName;
+            ip = new Computer().IpAddress;
+            int count = sysidal.UpdateApprove_Voided_ByTableName("Meter_Change", ResolveID, UserOpinion.Text.Trim(), ip, ComputerName, TaskID);
 
             if (count > 0)
             {
@@ -197,20 +181,31 @@ namespace PersonalWork
                 Btn_Submit.Enabled = true;
                 Btn_Voided.Enabled = true;
             }
-
         }
 
-        private void FrmMaintain_Default_Shown(object sender, EventArgs e)
+        private void Btn_Submit_Click(object sender, EventArgs e)
         {
-            InitView();
-        }
+            Btn_Submit.Enabled = false;
+            ComputerName = new Computer().ComputerName;
+            ip = new Computer().IpAddress;
+            int count = sysidal.UpdateApprove_defalut("Meter_Change", ResolveID, IsPass.Checked, UserOpinion.Text.Trim(), ip, ComputerName, PointSort, TaskID);
 
-        private void FrmMaintain_Default_Load(object sender, EventArgs e)
-        {
-            ht = (Hashtable)this.Tag;
-            TaskID = ht["TaskID"].ToString();
-            ResolveID = ht["ResolveID"].ToString();
-            PointSort = ht["PointSort"].ToString();
+            if (count > 0)
+            {
+                if (IsCharge)
+                {
+                    MessageBox.Show("审批成功！");
+                    ApproveDispose.UpdateFeeItem(this.FP_Fee, ResolveID);
+                }
+                else
+                {
+                    MessageBox.Show("审批成功！");
+                }
+            }
+            else
+            {
+                Btn_Submit.Enabled = true;
+            }
         }
 
     }

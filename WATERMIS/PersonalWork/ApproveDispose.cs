@@ -52,25 +52,30 @@ namespace PersonalWork
            if (DataTableHelper.IsExistRows(dt))
            {
                // GB_Fee.Text = dt.Rows[0]["IsFinal"].ToString().ToLower().Equals("true") ? "预算" : "决算";
-               FP_Fee.Height = ((dt.Rows.Count + 1) / 2) * 33;
+               FP_Fee.Height = dt.Rows.Count * 33;
                foreach (DataRow dr in dt.Rows)
                {
                    UC_ChargeInput UC = new UC_ChargeInput();
+                  
                    UC.FeeID = dr["FeeID"].ToString();
                    UC.FeeItem = dr["FeeItem"].ToString().Trim();
                    UC.Quantity = int.Parse(dr["QUANTITY"].ToString());
                    UC.Price = float.Parse(dr["PRICE"].ToString());
-                   string _FeeStr = string.IsNullOrEmpty(dr["Fee"].ToString()) ? sysidal.GetLastFeeItemsByDep(ResolveID, (int)dr["FeeID"]) : dr["Fee"].ToString();
-                   float _Fee = 0f;
-                   if (float.TryParse(_FeeStr,out _Fee))
+                   UC.Fee = float.Parse(dr["Fee"].ToString());
+
+                   if (float.Parse(dr["PRICE"].ToString()) == 0f)
                    {
+                       DataTable dd = sysidal.GetLastFeeItemsByDep(ResolveID, (int)dr["FeeID"]);//FEE,Price,Quantity 
+                       if (DataTableHelper.IsExistRows(dd))
+                       {
+                           UC.Quantity = int.Parse(dd.Rows[0]["QUANTITY"].ToString());
+                           UC.Price = float.Parse(dd.Rows[0]["PRICE"].ToString());
+                           UC.Fee = float.Parse(dd.Rows[0]["FEE"].ToString()); ;
+                       }
                    }
 
-                   UC.Fee = _Fee;
                    FP_Fee.Controls.Add(UC);
                }
-               //判断是否有历史记录
-               //如果有，显示详细按钮
            }
        }
 

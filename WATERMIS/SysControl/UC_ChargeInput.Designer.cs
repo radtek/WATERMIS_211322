@@ -89,7 +89,7 @@
             this.TB_Price.RegexExpression = "";
             this.TB_Price.RemoveSpace = false;
             this.TB_Price.Size = new System.Drawing.Size(75, 21);
-            this.TB_Price.TabIndex = 7;
+            this.TB_Price.TabIndex = 21;
             this.TB_Price.ValidateState = false;
             this.TB_Price.TextChanged += new System.EventHandler(this.TB_Price_TextChanged);
             // 
@@ -105,7 +105,7 @@
             this.TB_Fee.RegexExpression = "";
             this.TB_Fee.RemoveSpace = false;
             this.TB_Fee.Size = new System.Drawing.Size(80, 21);
-            this.TB_Fee.TabIndex = 6;
+            this.TB_Fee.TabIndex = 23;
             this.TB_Fee.ValidateState = false;
             this.TB_Fee.TextChanged += new System.EventHandler(this.TB_Fee_TextChanged_1);
             // 
@@ -120,7 +120,7 @@
             this.TB_Quantity.RegexExpression = "";
             this.TB_Quantity.RemoveSpace = false;
             this.TB_Quantity.Size = new System.Drawing.Size(54, 21);
-            this.TB_Quantity.TabIndex = 4;
+            this.TB_Quantity.TabIndex = 22;
             this.TB_Quantity.ValidateState = false;
             this.TB_Quantity.TextChanged += new System.EventHandler(this.TB_Quantity_TextChanged);
             // 
