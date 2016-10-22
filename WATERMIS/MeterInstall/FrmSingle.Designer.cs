@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSingle));
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.waterUserNO = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.userName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.Btn_Submit = new System.Windows.Forms.Button();
@@ -56,15 +59,14 @@
             this.label85 = new System.Windows.Forms.Label();
             this.label86 = new System.Windows.Forms.Label();
             this.label87 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.waterUserNO = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.Btn_Search = new System.Windows.Forms.Button();
             this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox6
             // 
             this.groupBox6.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox6.Controls.Add(this.Btn_Search);
             this.groupBox6.Controls.Add(this.label3);
             this.groupBox6.Controls.Add(this.waterUserNO);
             this.groupBox6.Controls.Add(this.label1);
@@ -101,6 +103,33 @@
             this.groupBox6.TabIndex = 3;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "用户详细信息";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(250, 31);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(215, 12);
+            this.label3.TabIndex = 82;
+            this.label3.Text = "*说明：如果是新用户报装，用户号留空";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // waterUserNO
+            // 
+            this.waterUserNO.Location = new System.Drawing.Point(84, 28);
+            this.waterUserNO.Name = "waterUserNO";
+            this.waterUserNO.Size = new System.Drawing.Size(99, 21);
+            this.waterUserNO.TabIndex = 81;
+            this.waterUserNO.Leave += new System.EventHandler(this.waterUserNO_Leave);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(16, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 12);
+            this.label1.TabIndex = 80;
+            this.label1.Text = "用 户 号：";
             // 
             // userName
             // 
@@ -334,32 +363,16 @@
             this.label87.TabIndex = 28;
             this.label87.Text = "*用户类别：";
             // 
-            // label1
+            // Btn_Search
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 12);
-            this.label1.TabIndex = 80;
-            this.label1.Text = "用 户 号：";
-            // 
-            // waterUserNO
-            // 
-            this.waterUserNO.Location = new System.Drawing.Point(84, 28);
-            this.waterUserNO.Name = "waterUserNO";
-            this.waterUserNO.Size = new System.Drawing.Size(99, 21);
-            this.waterUserNO.TabIndex = 81;
-            this.waterUserNO.TextChanged += new System.EventHandler(this.waterUserNO_TextChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(197, 33);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(215, 12);
-            this.label3.TabIndex = 82;
-            this.label3.Text = "*说明：如果是新用户报装，用户号留空";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_Search.Location = new System.Drawing.Point(189, 26);
+            this.Btn_Search.Name = "Btn_Search";
+            this.Btn_Search.Size = new System.Drawing.Size(55, 23);
+            this.Btn_Search.TabIndex = 83;
+            this.Btn_Search.Tag = "";
+            this.Btn_Search.Text = "查询";
+            this.Btn_Search.UseVisualStyleBackColor = true;
+            this.Btn_Search.Click += new System.EventHandler(this.Btn_Search_Click);
             // 
             // FrmSingle
             // 
@@ -410,6 +423,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox waterUserNO;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button Btn_Search;
 
 
 

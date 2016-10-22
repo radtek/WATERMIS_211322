@@ -83,7 +83,7 @@
             this.FP_Fee.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("FP_Fee.BackgroundImage")));
             this.FP_Fee.Location = new System.Drawing.Point(23, 118);
             this.FP_Fee.Name = "FP_Fee";
-            this.FP_Fee.Size = new System.Drawing.Size(468, 66);
+            this.FP_Fee.Size = new System.Drawing.Size(468, 106);
             this.FP_Fee.TabIndex = 15;
             this.FP_Fee.Visible = false;
             // 

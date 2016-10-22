@@ -570,10 +570,16 @@ public class SqlServerHelper
     {
         string dateStr = DateTime.Now.ToString("yyyyMMdd");
         int index = 1;
+        string sqlstr = "SELECT TableID FROM Meter_Table WHERE Table_Name=@Table_Name";
+        string _TableOrder = "00";
+        DataTable dt = DbHelperSQL.Query(sqlstr, new SqlParameter[] { new SqlParameter("@Table_Name", tableName) }).Tables[0];
+        if (DataTableHelper.IsExistRows(dt))
+        {
+            _TableOrder = dt.Rows[0][0].ToString().Trim();
+        }
 
-        string sqlstr = string.Format("SELECT COUNT(1),MAX({2}) FROM {0} where datediff(dd,{1},GETDATE())=0", tableName, createDate, SDName);
-
-        DataTable dt = DbHelperSQL.Query(sqlstr, null).Tables[0];
+        sqlstr = string.Format("SELECT COUNT(1),MAX({2}) FROM {0} where datediff(dd,{1},GETDATE())=0", tableName, createDate, SDName);
+         dt = DbHelperSQL.Query(sqlstr, null).Tables[0];
         if (DataTableHelper.IsExistRows(dt))
         {
             int count = int.Parse(dt.Rows[0][0].ToString()) + 1;
@@ -598,7 +604,7 @@ public class SqlServerHelper
        
         string ord = String.Format("{0:0000}", index);
 
-        return (dateStr + ord);
+        return (dateStr + _TableOrder + ord);
     }
 
     public string GetSDByTable(string tableName)

@@ -122,7 +122,12 @@ namespace MeterInstall
             ApplyUser.Text = waterUserName.Text;
         }
 
-        private void waterUserNO_TextChanged(object sender, EventArgs e)
+        private void waterUserNO_Leave(object sender, EventArgs e)
+        {
+            Btn_Search_Click(sender, e);
+        }
+
+        private void Btn_Search_Click(object sender, EventArgs e)
         {
             Hashtable ht = new SqlServerHelper().GetHashtableById("waterUser", "waterUserNO", waterUserNO.Text.Trim());
             if (ht.Count > 0)
@@ -133,7 +138,6 @@ namespace MeterInstall
             {
                 waterUserNO.Text = "";
             }
-
         }
     }
 }

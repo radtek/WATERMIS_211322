@@ -15,7 +15,7 @@ namespace SysControl
             get
             {
                 var parms = base.CreateParams;
-                parms.Style &= ~0x02000000; // Turn off WS_CLIPCHILDREN 
+                parms.Style &= ~0x02000000;
                 return parms;
             }
         } 
@@ -33,17 +33,36 @@ namespace SysControl
             get { return LB_FeeName.Text; }
             set {  LB_FeeName.Text = value + "："; }
         }
-        /// <summary>
-        /// RONG 2016-10-10
-        /// </summary>
-        public string Fee
+
+        private float _Price = 0f;
+
+        public float Price
         {
-            get { return TB_Fee.Text; }
+            get { return _Price; }
             set
             {
-                float _Fee = 0f;
-                TB_Fee.Text = float.TryParse(value, out _Fee) ? value : "0";
-                //TB_Fee.Text = value;
+                _Price = value;
+                TB_Price.Text = _Price.ToString();
+            }
+        }
+
+        private int _Quantity=0;
+
+        public int Quantity
+        {
+            get { return _Quantity; }
+            set { _Quantity = value; TB_Quantity.Text = _Quantity.ToString(); }
+        }
+
+        private float _Fee = 0f;
+
+        public float Fee
+        {
+            get { return _Fee; }
+            set
+            {
+                _Fee = value;
+                TB_Fee.Text = _Fee.ToString();
             }
         }
 
@@ -55,9 +74,31 @@ namespace SysControl
 
         private void TB_Fee_TextChanged(object sender, EventArgs e)
         {
-            float _Fee = 0f;
             string _value = TB_Fee.Text;
             TB_Fee.Text = float.TryParse(_value, out _Fee) ? _value : "0";
+        }
+
+        private void TB_Quantity_TextChanged(object sender, EventArgs e)
+        {
+            if (int.TryParse(TB_Quantity.Text.Trim(),out _Quantity))
+            {
+                TB_Fee.Text = (_Price * _Quantity).ToString();
+            }
+        }
+
+        private void TB_Price_TextChanged(object sender, EventArgs e)
+        {
+            if (float.TryParse(TB_Price.Text.Trim(),out _Price))
+            {
+                TB_Fee.Text = (_Price * _Quantity).ToString();
+            }
+        }
+
+        private void TB_Fee_TextChanged_1(object sender, EventArgs e)
+        {
+            if (float.TryParse(TB_Fee.Text.Trim(), out _Fee))
+            {
+            }
         }
     }
 }

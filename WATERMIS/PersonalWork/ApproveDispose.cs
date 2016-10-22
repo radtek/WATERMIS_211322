@@ -31,7 +31,7 @@ namespace PersonalWork
 
                    if (int.TryParse(UC.FeeID, out feeid))
                    {
-                       sb.AppendLine(string.Format("UPDATE Meter_WorkResolveFee SET FEE='{0}',AcceptID='{1}',AcceptUser='{2}',AcceptDate='{3}' WHERE ResolveID=@ResolveID AND FeeID='{4}'", UC.Fee, AppDomain.CurrentDomain.GetData("LOGINID"), AppDomain.CurrentDomain.GetData("USERNAME"), DateTime.Now.ToString(), feeid));
+                       sb.AppendLine(string.Format("UPDATE Meter_WorkResolveFee SET Price='{5}',Quantity='{6}', FEE='{0}',AcceptID='{1}',AcceptUser='{2}',AcceptDate='{3}' WHERE ResolveID=@ResolveID AND FeeID='{4}'", UC.Fee, AppDomain.CurrentDomain.GetData("LOGINID"), AppDomain.CurrentDomain.GetData("USERNAME"), DateTime.Now.ToString(), feeid, UC.Price, UC.Quantity));
                    }
                }
            }
@@ -58,7 +58,15 @@ namespace PersonalWork
                    UC_ChargeInput UC = new UC_ChargeInput();
                    UC.FeeID = dr["FeeID"].ToString();
                    UC.FeeItem = dr["FeeItem"].ToString().Trim();
-                   UC.Fee = string.IsNullOrEmpty(dr["Fee"].ToString()) ? sysidal.GetLastFeeItemsByDep(ResolveID, (int)dr["FeeID"]) : dr["Fee"].ToString();
+                   UC.Quantity = int.Parse(dr["QUANTITY"].ToString());
+                   UC.Price = float.Parse(dr["PRICE"].ToString());
+                   string _FeeStr = string.IsNullOrEmpty(dr["Fee"].ToString()) ? sysidal.GetLastFeeItemsByDep(ResolveID, (int)dr["FeeID"]) : dr["Fee"].ToString();
+                   float _Fee = 0f;
+                   if (float.TryParse(_FeeStr,out _Fee))
+                   {
+                   }
+
+                   UC.Fee = _Fee;
                    FP_Fee.Controls.Add(UC);
                }
                //判断是否有历史记录

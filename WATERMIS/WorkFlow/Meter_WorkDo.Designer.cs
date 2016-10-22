@@ -63,6 +63,7 @@
             this.DoName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.YS = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -169,6 +170,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.YS);
             this.groupBox1.Controls.Add(this.FormName);
             this.groupBox1.Controls.Add(this.FrmAssemblyName);
             this.groupBox1.Controls.Add(this.label4);
@@ -473,6 +475,16 @@
             this.label1.TabIndex = 106;
             this.label1.Text = "*项目名称：";
             // 
+            // YS
+            // 
+            this.YS.AutoSize = true;
+            this.YS.Location = new System.Drawing.Point(212, 247);
+            this.YS.Name = "YS";
+            this.YS.Size = new System.Drawing.Size(72, 16);
+            this.YS.TabIndex = 130;
+            this.YS.Text = "是否应收";
+            this.YS.UseVisualStyleBackColor = true;
+            // 
             // Meter_WorkDo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -530,6 +542,7 @@
         private System.Windows.Forms.TextBox FrmAssemblyName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox YS;
 
     }
 }
