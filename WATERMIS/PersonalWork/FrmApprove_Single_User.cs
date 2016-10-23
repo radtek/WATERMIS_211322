@@ -66,22 +66,22 @@ namespace PersonalWork
             dt = new SqlServerHelper().GetDataTable("BASE_PIAN", "PARENTID<>'0'", "PIANID");
             ControlBindHelper.BindComboBoxData(this.PIANID, dt, "PIANNAME", "PIANID");
 
-            dt = new SqlServerHelper().GetDataTable("BASE_AREA", "PARENTID<>'0'", "areaId");
+            dt = new SqlServerHelper().GetDataTable("BASE_AREA", "areaId<>'0'", "areaName");
             ControlBindHelper.BindComboBoxData(this.areaId, dt, "areaName", "areaId");
 
-            dt = new SqlServerHelper().GetDataTable("BASE_DUAN", "PARENTID<>'0'", "DUANID");
+            dt = new SqlServerHelper().GetDataTable("BASE_DUAN", "PARENTID<>'0'", "DUANNAME");
             ControlBindHelper.BindComboBoxData(this.DUANID, dt, "DUANNAME", "DUANID");
 
             dt = new SqlServerHelper().GetDataTable("Base_Archives", "", "CreateTypeID");
             ControlBindHelper.BindComboBoxData(this.CreateTypeID, dt, "CreateType", "CreateTypeID");
 
-            dt = new SqlServerHelper().GetDataTable("BASE_COMMUNITY", "PARENTID<>'0'", "COMMUNITYID");
+            dt = new SqlServerHelper().GetDataTable("BASE_COMMUNITY", "PARENTID<>'0'", "COMMUNITYNAME");
             ControlBindHelper.BindComboBoxData(this.COMMUNITYID, dt, "COMMUNITYNAME", "COMMUNITYID");
 
-            dt = new SqlServerHelper().GetDataTable("base_login", "isMeterReader=1", "loginId");
+            dt = new SqlServerHelper().GetDataTable("base_login", "isMeterReader=1", "userName");
             ControlBindHelper.BindComboBoxData(this.meterReaderID, dt, "userName", "loginId");
 
-            dt = new SqlServerHelper().GetDataTable("base_login", "isCharger=1", "loginId");
+            dt = new SqlServerHelper().GetDataTable("base_login", "isCharger=1", "userName");
             ControlBindHelper.BindComboBoxData(this.chargerID, dt, "userName", "loginId");
 
             Hashtable hp = new SqlServerHelper().GetHashtableById("Meter_Install_Single", "TaskID", TaskID);

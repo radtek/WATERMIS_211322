@@ -12,6 +12,7 @@ using DBinterface.IDAL;
 using System.Collections;
 using Common.DotNetData;
 using Common.WinDevices;
+using Microsoft.VisualBasic;
 
 namespace PersonalWork
 {
@@ -33,7 +34,7 @@ namespace PersonalWork
         private string ip = "";
         private string DepartementID = "0";
 
-        private List<string> _MeterList = new List<string>();
+        private string strWaterMeterID = "";
 
         public FrmApprove_Peccant_User()
         {
@@ -67,23 +68,35 @@ namespace PersonalWork
             dt = new SqlServerHelper().GetDataTable("BASE_PIAN", "PARENTID<>'0'", "PIANID");
             ControlBindHelper.BindComboBoxData(this.PIANID, dt, "PIANNAME", "PIANID");
 
-            dt = new SqlServerHelper().GetDataTable("BASE_AREA", "PARENTID<>'0'", "areaId");
+            dt = new SqlServerHelper().GetDataTable("BASE_AREA", "areaId<>'0'", "areaName");
             ControlBindHelper.BindComboBoxData(this.areaId, dt, "areaName", "areaId");
 
-            dt = new SqlServerHelper().GetDataTable("BASE_DUAN", "PARENTID<>'0'", "DUANID");
+            dt = new SqlServerHelper().GetDataTable("BASE_DUAN", "PARENTID<>'0'", "DUANNAME");
             ControlBindHelper.BindComboBoxData(this.DUANID, dt, "DUANNAME", "DUANID");
 
             dt = new SqlServerHelper().GetDataTable("Base_Archives", "", "CreateTypeID");
             ControlBindHelper.BindComboBoxData(this.CreateTypeID, dt, "CreateType", "CreateTypeID");
 
-            dt = new SqlServerHelper().GetDataTable("BASE_COMMUNITY", "PARENTID<>'0'", "COMMUNITYID");
+            dt = new SqlServerHelper().GetDataTable("BASE_COMMUNITY", "PARENTID<>'0'", "COMMUNITYNAME");
             ControlBindHelper.BindComboBoxData(this.COMMUNITYID, dt, "COMMUNITYNAME", "COMMUNITYID");
 
-            dt = new SqlServerHelper().GetDataTable("base_login", "isMeterReader=1", "loginId");
+            dt = new SqlServerHelper().GetDataTable("base_login", "isMeterReader=1", "userName");
             ControlBindHelper.BindComboBoxData(this.meterReaderID, dt, "userName", "loginId");
 
-            dt = new SqlServerHelper().GetDataTable("base_login", "isCharger=1", "loginId");
+            dt = new SqlServerHelper().GetDataTable("base_login", "isCharger=1", "userName");
             ControlBindHelper.BindComboBoxData(this.chargerID, dt, "userName", "loginId");
+
+            dt = new SqlServerHelper().GetDataTable("waterMeterSize", "", "waterMeterSizeId");
+            ControlBindHelper.BindComboBoxData(this.waterMeterSizeId, dt, "waterMeterSizeValue", "waterMeterSizeId");
+
+            dt = new SqlServerHelper().GetDataTable("waterMeterType", "", "waterMeterTypeId");
+            ControlBindHelper.BindComboBoxData(this.waterMeterTypeId, dt, "waterMeterTypeValue", "waterMeterTypeId");
+
+            dt = new SqlServerHelper().GetDataTable("Meter_waterMeterState", "", "waterMeterStateID");
+            ControlBindHelper.BindComboBoxData(this.waterMeterState, dt, "waterMeterState", "waterMeterStateID");
+
+            dt = new SqlServerHelper().GetDataTable("V_WATERUSER_CONNECTWATERMETER", " isSummaryMeter='2'", "waterUserName");
+            ControlBindHelper.BindComboBoxData(this.waterMeterParentId, dt, "waterUserName", "waterMeterId", true);
 
             Hashtable hp = new SqlServerHelper().GetHashtableById("Meter_Install_Peccant", "TaskID", TaskID);
             new SqlServerHelper().BindHashTableToForm(hp, this.PL.Controls);
@@ -102,72 +115,91 @@ namespace PersonalWork
                 CreateTypeID.Text = hp["CREATETYPE"].ToString();
 
             dt = sysidal.GetUserMaterByTaskID(TaskID);
-            if (DataTableHelper.IsExistRows(dt))
+            if (dt.Rows.Count > 0)
             {
-                foreach (DataRow dr in dt.Rows)
+                object objWaterMes = dt.Rows[0]["MeterID"];
+                if (objWaterMes != null && objWaterMes != DBNull.Value)
                 {
-                    _MeterList.Add(dr["MeterID"].ToString());
-                }
+                    strWaterMeterID = objWaterMes.ToString();
 
-                LB_MeterInfo.Text = "水表数量：" + dt.Rows.Count;
+                    Hashtable ht = new SqlServerHelper().GetHashtableById("Meter", "MeterID", strWaterMeterID);
+                    new SqlServerHelper().BindHashTableToForm(ht, PL.Controls);
+
+                    objWaterMes = ht["WATERMETERPOSITIONMEMO"];
+                    if (objWaterMes != null && objWaterMes != DBNull.Value)
+                    {
+                        waterMeterPositionName.Text = objWaterMes.ToString();
+                    }
+                }
             }
 
             Hashtable Hps = new SqlServerHelper().GetHashtableById("Meter_WorkResolve", "ResolveID", ResolveID);
 
             Btn_Submit.Enabled = string.IsNullOrEmpty(Hps["ISPASS"].ToString()) ? true : bool.Parse(Hps["ISPASS"].ToString()) ? false : true;
-
         }
 
         private void Btn_Submit_Click(object sender, EventArgs e)
         {
-                if(PIANID.SelectedValue==null||PIANID.SelectedValue==DBNull.Value)
+            if (PIANID.SelectedValue == null || PIANID.SelectedValue == DBNull.Value)
             {
                 mes.Show("请选择片号");
                 PIANID.Focus();
                 return;
             }
-                if (areaId.SelectedValue == null || areaId.SelectedValue == DBNull.Value)
+            if (areaId.SelectedValue == null || areaId.SelectedValue == DBNull.Value)
             {
                 mes.Show("请选择区号");
                 areaId.Focus();
                 return;
             }
-                if (DUANID.SelectedValue == null || DUANID.SelectedValue == DBNull.Value)
+            if (DUANID.SelectedValue == null || DUANID.SelectedValue == DBNull.Value)
             {
                 mes.Show("请选择段号");
                 DUANID.Focus();
                 return;
             }
-                if (COMMUNITYID.SelectedValue == null || COMMUNITYID.SelectedValue == DBNull.Value)
+            if (COMMUNITYID.SelectedValue == null || COMMUNITYID.SelectedValue == DBNull.Value)
             {
                 mes.Show("请选择小区名称");
                 COMMUNITYID.Focus();
                 return;
             }
-                if (meterReaderID.SelectedValue == null || meterReaderID.SelectedValue == DBNull.Value)
-                {
-                    mes.Show("请选择抄表员");
-                    meterReaderID.Focus();
-                    return;
-                }
-                if (chargerID.SelectedValue == null || COMMUNITYID.SelectedValue == DBNull.Value)
-                {
-                    mes.Show("请选择收费员");
-                    chargerID.Focus();
-                    return;
-                }
-                if (CreateTypeID.SelectedValue == null || CreateTypeID.SelectedValue == DBNull.Value)
+            if (meterReaderID.SelectedValue == null || meterReaderID.SelectedValue == DBNull.Value)
+            {
+                mes.Show("请选择抄表员");
+                meterReaderID.Focus();
+                return;
+            }
+            if (chargerID.SelectedValue == null || COMMUNITYID.SelectedValue == DBNull.Value)
+            {
+                mes.Show("请选择收费员");
+                chargerID.Focus();
+                return;
+            }
+            if (CreateTypeID.SelectedValue == null || CreateTypeID.SelectedValue == DBNull.Value)
             {
                 mes.Show("请选择建档类型");
                 CreateTypeID.Focus();
                 return;
             }
-                if (!ordernumber.ValidateState)
-                {
-                    mes.Show("请输入正确的顺序号");
-                    ordernumber.Focus();
-                    return;
-                }
+            if (!ordernumber.ValidateState)
+            {
+                mes.Show("请输入正确的顺序号");
+                ordernumber.Focus();
+                return;
+            }
+            if (!Information.IsNumeric(waterMeterStartNumber.Text))
+            {
+                mes.Show("请输入正确的初始读数");
+                waterMeterStartNumber.Focus();
+                return;
+            }
+            if (!Information.IsNumeric(WATERFIXVALUE.Text))
+            {
+                mes.Show("请输入正确的定量用水量");
+                WATERFIXVALUE.Focus();
+                return;
+            }
 
             ComputerName = new Computer().ComputerName;
             ip = new Computer().IpAddress;
@@ -176,7 +208,7 @@ namespace PersonalWork
             hs["ModifyUser"] = AppDomain.CurrentDomain.GetData("USERNAME").ToString();
             hs["ModifyDate"] = DateTime.Now.ToString();
             hs["operatorID"] = AppDomain.CurrentDomain.GetData("LOGINID").ToString(); ;
-            hs["operatorName"]=AppDomain.CurrentDomain.GetData("USERNAME").ToString();
+            hs["operatorName"] = AppDomain.CurrentDomain.GetData("USERNAME").ToString();
 
             hs["pianNO"] = PIANID.Text;
             hs["areaNO"] = areaId.Text;
@@ -189,12 +221,12 @@ namespace PersonalWork
             hs["meterReaderName"] = meterReaderID.Text;
             hs["chargerID"] = chargerID.SelectedValue;
             hs["chargerName"] = chargerID.Text;
-            hs["agentsign"] = (agentsign.SelectedValue ==null||agentsign.SelectedValue==DBNull.Value) ? 0 : agentsign.SelectedValue;
+            hs["agentsign"] = (agentsign.SelectedValue == null || agentsign.SelectedValue == DBNull.Value) ? 0 : agentsign.SelectedValue;
             hs["bankId"] = bankId.SelectedValue;
             hs["BankAcountNumber"] = BankAcountNumber.Text;
             hs["chargeType"] = (chargeType.SelectedValue == null || chargeType.SelectedValue == DBNull.Value) ? 0 : chargeType.SelectedValue;
             hs["CreateType"] = CreateTypeID.Text;
-            hs["CreateUserDate"] =mes.GetDatetimeNow();
+            hs["CreateUserDate"] = mes.GetDatetimeNow();
             hs["ordernumber"] = ordernumber.Text;
 
             if (string.IsNullOrEmpty(_waterUserId))
@@ -205,21 +237,28 @@ namespace PersonalWork
             hs["waterUserNO"] = _waterUserId;
             if (new SqlServerHelper().Submit_AddOrEdit("Meter_Install_Peccant", "TaskID", TaskID, hs))
             {
+                //取该用户下最大的水表顺序号
                 DataTable dd = new SqlServerHelper().GetDateTableBySql(string.Format("SELECT RIGHT(MAX(waterMeterNo),2) FROM waterMeter WHERE waterUserId='{0}'", _waterUserId));
                 int MeterCount = string.IsNullOrEmpty(dd.Rows[0][0].ToString()) ? 0 : int.Parse(dd.Rows[0][0].ToString());
                 MeterCount++;
-                if (_MeterList.Count > 0)
-                {
-                    for (int i = 0; i < _MeterList.Count; i++)
-                    {
-                        string NewMeterID = _waterUserId + (MeterCount + i).ToString().PadLeft(2, '0');
-                        Hashtable hnb = new Hashtable();
-                        hnb["waterMeterId"] = NewMeterID;
-                        hnb["waterMeterNo"] = NewMeterID;
-                        hnb["waterUserId"] = _waterUserId;
-                        new SqlServerHelper().Submit_AddOrEdit("Meter", "MeterID", _MeterList[i], hnb);
-                    }
-                }
+
+                string NewMeterID = _waterUserId + (MeterCount + 1).ToString().PadLeft(2, '0');
+                Hashtable hnb = new Hashtable();
+                hnb["waterMeterId"] = NewMeterID;
+                hnb["waterMeterNo"] = NewMeterID;
+                hnb["waterUserId"] = _waterUserId;
+                hnb["waterMeterPositionName"] = waterMeterPositionName.Text;
+                hnb["waterMeterSizeId"] = waterMeterSizeId.SelectedValue;
+                hnb["waterMeterStartNumber"] = waterMeterStartNumber.Text;
+                hnb["waterMeterTypeId"] = waterMeterTypeId.SelectedValue;
+                hnb["waterMeterParentId"] = waterMeterParentId.SelectedValue;
+                hnb["waterMeterState"] = waterMeterState.SelectedValue;
+                hnb["IsReverse"] = IsReverse.Checked?'1':'0';
+                hnb["WATERFIXVALUE"] = WATERFIXVALUE.Text;
+                hnb["waterMeterMode"] = waterMeterMode.Text;
+                hnb["WATERMETERLOCKNO"] = WATERMETERLOCKNO.Text;
+
+                new SqlServerHelper().Submit_AddOrEdit("Meter", "MeterID", strWaterMeterID, hnb);
 
                 if (sysidal.Approve_Single_Append(TaskID))
                 {
@@ -236,17 +275,15 @@ namespace PersonalWork
                     }
                 }
             }
-
         }
 
-        private void PL_Paint(object sender, PaintEventArgs e)
+        private void waterMeterStartNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
-
-        }
-
-        private void memo_TextChanged(object sender, EventArgs e)
-        {
-
+            //如果输入的不是数字键，也不是回车键、Backspace键，则取消该输入
+            if (!(Char.IsNumber(e.KeyChar)) && e.KeyChar != (char)13 && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

@@ -56,8 +56,6 @@ namespace PersonalWork
 
         private void MeterOut()
         {
-           
-
             if (sysidal.ApproveMeterOut(hm))
             {
                 UpdateApprove();

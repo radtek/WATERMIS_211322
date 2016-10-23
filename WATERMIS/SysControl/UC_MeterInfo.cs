@@ -45,7 +45,7 @@ namespace SysControl
             dt = new SqlServerHelper().GetDataTable("Meter_waterMeterState", "", "waterMeterStateID");
             ControlBindHelper.BindComboBoxData(this.waterMeterState, dt, "waterMeterState", "waterMeterStateID");
 
-            dt = new SqlServerHelper().GetDataTable("V_WATERUSER_CONNECTWATERMETER", " isSummaryMeter='2'", "waterMeterId");
+            dt = new SqlServerHelper().GetDataTable("V_WATERUSER_CONNECTWATERMETER", " isSummaryMeter='2'", "waterUserName");
             ControlBindHelper.BindComboBoxData(this.waterMeterParentId, dt, "waterUserName", "waterMeterId", true);
 
             Hashtable ht = new SqlServerHelper().GetHashtableById("Meter", "MeterID", _MeterID);

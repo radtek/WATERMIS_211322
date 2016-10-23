@@ -77,7 +77,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1219, 684);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1219, 652);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -92,7 +92,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 253F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(578, 678);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(578, 646);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // PL_Proc
@@ -101,7 +101,7 @@
             this.PL_Proc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PL_Proc.Location = new System.Drawing.Point(3, 256);
             this.PL_Proc.Name = "PL_Proc";
-            this.PL_Proc.Size = new System.Drawing.Size(572, 419);
+            this.PL_Proc.Size = new System.Drawing.Size(572, 387);
             this.PL_Proc.TabIndex = 2;
             // 
             // gpMes
@@ -394,14 +394,14 @@
             this.uC_ApproveList1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uC_ApproveList1.Location = new System.Drawing.Point(3, 3);
             this.uC_ApproveList1.Name = "uC_ApproveList1";
-            this.uC_ApproveList1.Size = new System.Drawing.Size(629, 678);
+            this.uC_ApproveList1.Size = new System.Drawing.Size(629, 646);
             this.uC_ApproveList1.TabIndex = 1;
             // 
             // FrmApprove_PeccantYY
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1219, 684);
+            this.ClientSize = new System.Drawing.Size(1219, 652);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FrmApprove_PeccantYY";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
