@@ -20,7 +20,7 @@ namespace ApproveCenter
 
             string sqlstr = @"SELECT * FROM 
 (SELECT UW.*
-,(SELECT waterMeterTypeValue FROM waterMeterType WHERE waterMeterTypeId=UW.waterMeterType_Current) AS waterMeterType_CurrentName
+,(SELECT waterMeterTypeValue FROM waterMeterType WHERE waterMeterTypeId=UW.waterMeterTypeId) AS waterMeterType_CurrentName
 ,(SELECT waterMeterTypeValue FROM waterMeterType WHERE waterMeterTypeId=UW.waterMeterType_New) AS waterMeterType_NewName
 ,CASE WHEN OPState=1 THEN '变更完成' ELSE '-' END AS OPStateName
 ,CASE WHEN IsLong=1 THEN '是' ELSE '-' END AS IsLongName

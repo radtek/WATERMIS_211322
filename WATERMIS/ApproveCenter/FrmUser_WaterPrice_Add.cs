@@ -50,19 +50,22 @@ namespace ApproveCenter
                 //READMETERRECORDID、WATERMETERTYPEID、WATERPRICEDESCRIBE、WATERUSERADDRESS、WATERUSERNO、WATERUSERNAME、
                 //ISMONTH、WaterPriceID、METERREADERNAME、ISLONG、SD、ACCEPTID、LOGINID、WATERMETERTYPE_NEW、WATERPHONE、QueryKey
 
-                ht["READMETERRECORDID"] = readMeterRecordId.Text;
-                ht["WATERMETERTYPE_CURRENT"] = waterMeterTypeId.SelectedValue;
-                ht["WATERPRICEDESCRIBE"] = WaterPriceDescribe.Text;
-                ht["WATERUSERADDRESS"] = waterUserAddress.Text;
-                ht["WATERUSERNO"] = _WATERUSERNO;
-                ht["WATERUSERNAME"] = waterUserName.Text;
-                ht["ISMONTH"] = IsMonth.Checked?1:0;
-                ht["USERNAME"] = meterReaderName.Text;
-                ht["ISLONG"] = IsLong.Checked ? 1 : 0;
-                ht["WATERMETERTYPE_NEW"] = waterMeterType_New.SelectedValue;
-                ht["WATERPHONE"] = waterPhone.Text;
+                //ht["READMETERRECORDID"] = readMeterRecordId.Text;
+                //ht["WATERMETERTYPE_CURRENT"] = waterMeterTypeId.SelectedValue;
+                //ht["WATERPRICEDESCRIBE"] = WaterPriceDescribe.Text;
+                //ht["WATERUSERADDRESS"] = waterUserAddress.Text;
+                //ht["WATERUSERNO"] = _WATERUSERNO;
+                //ht["WATERUSERNAME"] = waterUserName.Text;
+                //ht["ISMONTH"] = IsMonth.Checked?1:0;
+                //ht["USERNAME"] = meterReaderName.Text;
+                //ht["ISLONG"] = IsLong.Checked ? 1 : 0;
+                //ht["WATERMETERTYPE_NEW"] = waterMeterType_New.SelectedValue;
+                //ht["WATERPHONE"] = waterPhone.Text;
 
-                //ht = new SqlServerHelper().GetHashTableByControl(this.panel1.Controls);
+                ht = new SqlServerHelper().GetHashTableByControl(this.panel1.Controls);
+
+                ht["waterMeterTypeIdChange"] = waterMeterTypeId.SelectedValue;
+
                 string SDNO = new SqlServerHelper().GetSDByTable("User_WaterPrice");
                 strLogID = AppDomain.CurrentDomain.GetData("LOGINID").ToString();
                 strName = AppDomain.CurrentDomain.GetData("LOGINNAME").ToString();
@@ -117,11 +120,44 @@ namespace ApproveCenter
         private bool CheckForm()
         {
 
-            if (string.IsNullOrEmpty(_WATERUSERNO))
+            if (!WaterPriceDescribe.ValidateState)
             {
                 mes.Show("信息不完整！");
                 return false;
             }
+
+            if (ISUSECHANGE.Checked)
+            {
+                if (string.IsNullOrEmpty(CHANGEMONTH.Text.Trim()))
+                {
+                    return false;
+                }
+                else
+                {
+                    if (CHANGEMONTH.Text.Length!=6)
+                    {
+                        CHANGEMONTH.Text = "";
+                        return false;
+                    }
+                    else
+                    {
+                        string _YearMonth=CHANGEMONTH.Text.Trim();
+                        int _Year=int.Parse(_YearMonth.Substring(0,4));
+                        int _Month = int.Parse(_YearMonth.Substring(4, 2));
+                        if (_Year > 2015 && _Year < 2099 && _Month > 0 && _Month < 13)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            CHANGEMONTH.Text = "";
+                            return false;
+                        }
+                    }
+                   
+                }
+            }
+
             if (!_WATERUSERNO.Equals(WATERUSERNO.Text))
             {
                 WATERUSERNO.Focus();
@@ -145,11 +181,11 @@ namespace ApproveCenter
                 mes.Show("用水性质没有变化！");
                 return false;
             }
-            if (!IsMonth.Checked && !IsLong.Checked)
-            {
-                mes.Show("勾选变更周期！");
-                return false;
-            }
+            //if (!IsMonth.Checked && !IsLong.Checked &&)
+            //{
+            //    mes.Show("勾选变更周期！");
+            //    return false;
+            //}
 
             return true;
         }
@@ -174,6 +210,24 @@ namespace ApproveCenter
                     mes.Show("未查到该用户本月可变更的台账信息！");
                     IsMonth.Checked = false;
                 }
+            }
+        }
+
+        private void IsLong_CheckedChanged(object sender, EventArgs e)
+        {
+            if (IsLong.Checked)
+            {
+                ISUSECHANGE.Checked = !IsLong.Checked;
+                CHANGEMONTH.Enabled = ISUSECHANGE.Checked;
+            }
+        }
+
+        private void ISUSECHANGE_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ISUSECHANGE.Checked)
+            {
+                IsLong.Checked = !ISUSECHANGE.Checked;
+                CHANGEMONTH.Enabled = ISUSECHANGE.Checked;
             }
         }
     }

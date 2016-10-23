@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmApprove_WaterPrice_Default));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.UserName = new System.Windows.Forms.TextBox();
+            this.meterReaderName = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.waterMeterType_Current = new System.Windows.Forms.ComboBox();
+            this.waterMeterTypeId = new System.Windows.Forms.ComboBox();
             this.IsLong = new System.Windows.Forms.CheckBox();
             this.IsMonth = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -58,6 +58,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.UserOpinion = new System.Windows.Forms.TextBox();
             this.IsPass = new System.Windows.Forms.CheckBox();
+            this.CHANGEMONTH = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
+            this.ISUSECHANGE = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -66,9 +68,11 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.UserName);
+            this.panel1.Controls.Add(this.CHANGEMONTH);
+            this.panel1.Controls.Add(this.ISUSECHANGE);
+            this.panel1.Controls.Add(this.meterReaderName);
             this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.waterMeterType_Current);
+            this.panel1.Controls.Add(this.waterMeterTypeId);
             this.panel1.Controls.Add(this.IsLong);
             this.panel1.Controls.Add(this.IsMonth);
             this.panel1.Controls.Add(this.label7);
@@ -91,13 +95,13 @@
             this.panel1.TabIndex = 2;
             this.panel1.Tag = "9999";
             // 
-            // UserName
+            // meterReaderName
             // 
-            this.UserName.Enabled = false;
-            this.UserName.Location = new System.Drawing.Point(509, 20);
-            this.UserName.Name = "UserName";
-            this.UserName.Size = new System.Drawing.Size(117, 21);
-            this.UserName.TabIndex = 21;
+            this.meterReaderName.Enabled = false;
+            this.meterReaderName.Location = new System.Drawing.Point(509, 20);
+            this.meterReaderName.Name = "meterReaderName";
+            this.meterReaderName.Size = new System.Drawing.Size(117, 21);
+            this.meterReaderName.TabIndex = 21;
             // 
             // label8
             // 
@@ -108,14 +112,14 @@
             this.label8.TabIndex = 20;
             this.label8.Text = " 抄 表 员：";
             // 
-            // waterMeterType_Current
+            // waterMeterTypeId
             // 
-            this.waterMeterType_Current.Enabled = false;
-            this.waterMeterType_Current.FormattingEnabled = true;
-            this.waterMeterType_Current.Location = new System.Drawing.Point(102, 84);
-            this.waterMeterType_Current.Name = "waterMeterType_Current";
-            this.waterMeterType_Current.Size = new System.Drawing.Size(186, 20);
-            this.waterMeterType_Current.TabIndex = 19;
+            this.waterMeterTypeId.Enabled = false;
+            this.waterMeterTypeId.FormattingEnabled = true;
+            this.waterMeterTypeId.Location = new System.Drawing.Point(102, 84);
+            this.waterMeterTypeId.Name = "waterMeterTypeId";
+            this.waterMeterTypeId.Size = new System.Drawing.Size(186, 20);
+            this.waterMeterTypeId.TabIndex = 19;
             // 
             // IsLong
             // 
@@ -371,6 +375,32 @@
             this.IsPass.Text = "同意";
             this.IsPass.UseVisualStyleBackColor = false;
             // 
+            // CHANGEMONTH
+            // 
+            this.CHANGEMONTH.AllowEmpty = true;
+            this.CHANGEMONTH.EmptyMessage = "";
+            this.CHANGEMONTH.Enabled = false;
+            this.CHANGEMONTH.ErrorMessage = "";
+            this.CHANGEMONTH.InputType = Common.WinControl.Ryan.RegTextbox.RyanTextBox.EMInputTypes.数字;
+            this.CHANGEMONTH.Location = new System.Drawing.Point(432, 116);
+            this.CHANGEMONTH.Name = "CHANGEMONTH";
+            this.CHANGEMONTH.RegexExpression = "";
+            this.CHANGEMONTH.RemoveSpace = false;
+            this.CHANGEMONTH.Size = new System.Drawing.Size(96, 21);
+            this.CHANGEMONTH.TabIndex = 26;
+            this.CHANGEMONTH.ValidateState = false;
+            // 
+            // ISUSECHANGE
+            // 
+            this.ISUSECHANGE.AutoSize = true;
+            this.ISUSECHANGE.Enabled = false;
+            this.ISUSECHANGE.Location = new System.Drawing.Point(367, 119);
+            this.ISUSECHANGE.Name = "ISUSECHANGE";
+            this.ISUSECHANGE.Size = new System.Drawing.Size(60, 16);
+            this.ISUSECHANGE.TabIndex = 25;
+            this.ISUSECHANGE.Text = "变更至";
+            this.ISUSECHANGE.UseVisualStyleBackColor = true;
+            // 
             // FrmApprove_WaterPrice_Default
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -395,9 +425,9 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox UserName;
+        private System.Windows.Forms.TextBox meterReaderName;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox waterMeterType_Current;
+        private System.Windows.Forms.ComboBox waterMeterTypeId;
         private System.Windows.Forms.CheckBox IsLong;
         private System.Windows.Forms.CheckBox IsMonth;
         private System.Windows.Forms.Label label7;
@@ -423,5 +453,7 @@
         private System.Windows.Forms.CheckBox IsPass;
         private System.Windows.Forms.Button Btn_Voided;
         private System.Windows.Forms.Button Btn_Submit;
+        private Common.WinControl.Ryan.RegTextbox.RyanTextBox CHANGEMONTH;
+        private System.Windows.Forms.CheckBox ISUSECHANGE;
     }
 }

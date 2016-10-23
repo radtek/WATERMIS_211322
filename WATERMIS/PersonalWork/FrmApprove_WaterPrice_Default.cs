@@ -50,7 +50,7 @@ namespace PersonalWork
         private void BindCombox()
         {
             DataTable dt = new SqlServerHelper().GetDataTable("waterMeterType", "", "waterMeterTypeId");
-            ControlBindHelper.BindComboBoxData(this.waterMeterType_Current, dt, "waterMeterTypeValue", "waterMeterTypeId");
+            ControlBindHelper.BindComboBoxData(this.waterMeterTypeId, dt, "waterMeterTypeValue", "waterMeterTypeId");
             dt = new SqlServerHelper().GetDataTable("waterMeterType", "", "waterMeterTypeId");
             ControlBindHelper.BindComboBoxData(this.waterMeterType_New, dt, "waterMeterTypeValue", "waterMeterTypeId");
         }
@@ -145,10 +145,12 @@ namespace PersonalWork
                     //隐藏窗体FrmUser_WaterPrice_Add显示的台账IDreadMeterRecordId
 
                     string strSQLExcute = "";
+                    strSQLExcute += @"SET XACT_ABORT ON
+BEGIN TRAN ";
                     string strWaterMeterTypeID = "", strWaterMeterTypeName = "", strWaterMeterTypeClassID = "", strWaterMeterTypeClassName = "";
                     DateTime dtNow = mes.GetDatetimeNow();
 
-                    if (IsMonth.Checked && !IsLong.Checked)
+                    if (IsMonth.Checked)
                     {
                         #region 变更本月水价
                         int intNotReadMonth = 1;//获取未抄月份数量,取阶梯水价
@@ -242,11 +244,11 @@ namespace PersonalWork
                                     decExtraCharge = decExtraCharge1 + decExtraCharge2;
                                     decTotalFee = decExtraCharge + Convert.ToDecimal(strWaterMeterRecordTrapePrice[2]);
 
-                                    strSQLExcute = string.Format(@"UPDATE readMeterRecord SET 
+                                    strSQLExcute += string.Format(@"UPDATE readMeterRecord SET 
 avePrice={0},avePriceDescribe='{1}',waterTotalCharge={2},extraChargePrice1={3},extraChargePrice2={4},
 extraCharge1={5},extraCharge2={6},extraCharge={7},totalCharge={8},
 waterMeterTypeClassID='{9}',waterMeterTypeClassName='{10}',waterMeterTypeId='{11}',waterMeterTypeName='{12}'
-WHERE readMeterRecordId='{13}'", strWaterMeterRecordTrapePrice[0], strWaterMeterRecordTrapePrice[1], strWaterMeterRecordTrapePrice[2],
+WHERE readMeterRecordId='{13}' ", strWaterMeterRecordTrapePrice[0], strWaterMeterRecordTrapePrice[1], strWaterMeterRecordTrapePrice[2],
                               decExtraChargePrice1, decExtraChargePrice2, decExtraCharge1, decExtraCharge2, decExtraCharge, decTotalFee,
                               strWaterMeterTypeClassID, strWaterMeterTypeClassName, strWaterMeterTypeID, strWaterMeterTypeName, strReadMeterRecordID
                                );
@@ -271,209 +273,19 @@ WHERE readMeterRecordId='{13}'", strWaterMeterRecordTrapePrice[0], strWaterMeter
                         }
                         #endregion
                     }
-                    if (!IsMonth.Checked && IsLong.Checked)
+                    if (IsLong.Checked || ISUSECHANGE.Checked)
                     {
-                        #region 变更永久水价
+                        strSQLExcute += string.Format(@"UPDATE waterMeter SET waterMeterTypeId='{0}',ISUSECHANGE='{1}',CHANGEMONTH='{2}',waterMeterTypeIdChange='{3}' ", waterMeterType_New.SelectedValue, ISUSECHANGE.Checked ? "1" : "0", CHANGEMONTH.Text, waterMeterTypeId.SelectedValue);
 
-                        string strWaterUserNO = WATERUSERNO.Text;
-                        if (strWaterUserNO.Trim() == "")
-                        {
-                            mes.Show("获取用户号失败,变更失败!");
-                            IsChangeMeterType = false;
-                        }
-                        else
-                        {
-                            try
-                            {
-                                strWaterMeterTypeID = waterMeterType_New.SelectedValue.ToString();
-                                DataTable dtWaterMeterType = new SqlServerHelper().GetDataTable("V_WATERMTERTYPE", "waterMeterTypeId='" + strWaterMeterTypeID + "'", "");
-                                if (dtWaterMeterType.Rows.Count > 0)
-                                {
-                                    object objWaterMeterType = dtWaterMeterType.Rows[0]["waterMeterTypeValue"];
-                                    if (objWaterMeterType != null && objWaterMeterType != DBNull.Value)
-                                        strWaterMeterTypeName = objWaterMeterType.ToString();
-
-                                    objWaterMeterType = dtWaterMeterType.Rows[0]["WATERMETERTYPECLASSID"];
-                                    if (objWaterMeterType != null && objWaterMeterType != DBNull.Value)
-                                        strWaterMeterTypeClassID = objWaterMeterType.ToString();
-
-                                    objWaterMeterType = dtWaterMeterType.Rows[0]["WATERMETERTYPECLASSNAME"];
-                                    if (objWaterMeterType != null && objWaterMeterType != DBNull.Value)
-                                        strWaterMeterTypeClassName = objWaterMeterType.ToString();
-
-                                    strSQLExcute = string.Format(@"UPDATE waterMeter SET
-waterMeterTypeClassID='{0}',waterMeterTypeId='{1}'
-WHERE waterUserId='{2}'", strWaterMeterTypeClassID, strWaterMeterTypeID, strWaterUserNO
-                               );
-                                }
-                                else
-                                {
-                                    mes.Show("获取新的用水性质信息失败,变更失败!");
-                                    IsChangeMeterType = false;
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                mes.Show("变更水价失败,原因:" + ex.Message);
-                                log.Write(ex.ToString(), MsgType.Error);
-                                IsChangeMeterType = false;
-                            }
-                        }
-                        #endregion
                     }
 
-                    if (IsMonth.Checked && IsLong.Checked)
-                    {
-                        #region 变更本月水价
-                        int intNotReadMonth = 1;//获取未抄月份数量,取阶梯水价
+                    strSQLExcute += "COMMIT TRAN";
 
-                        DataTable dtReadMeterRecord = new SqlServerHelper().GetDataTable("readMeterRecord", "readMeterRecordId='" + strReadMeterRecordID + "'", "");
-                        if (dtReadMeterRecord.Rows.Count > 0)
-                        {
-                            object objTotalNumber = dtReadMeterRecord.Rows[0]["totalNumber"];
-                            try
-                            {
-
-                                object objLastReadMonths = dtReadMeterRecord.Rows[0]["lastNumberYearMonth"];
-                                if (objLastReadMonths != null && objLastReadMonths != DBNull.Value)
-                                {
-                                    DateTime dtLastReadDate = Convert.ToDateTime(objLastReadMonths.ToString().Substring(0, 4) + "-" + objLastReadMonths.ToString().Substring(4, 2) + "-01");
-                                    intNotReadMonth = dtNow.Year * 12 + dtNow.Month - dtLastReadDate.Year * 12 - dtLastReadDate.Month;
-                                    if (intNotReadMonth < 1)
-                                        intNotReadMonth = 1;
-                                }
-                                else
-                                {
-                                    object objWaterMeterID = dtReadMeterRecord.Rows[0]["waterMeterId"];
-                                    if (objWaterMeterID.ToString() != "")
-                                    {
-                                        string strSQLGetInitialMonth = "SELECT TOP 1 initialReadMeterMesDateTime FROM readMeterRecord WHERE waterMeterId='" + objWaterMeterID.ToString() + "' ORDER BY initialReadMeterMesDateTime";
-                                        DataTable dtInitialMonth = new SqlServerHelper().GetDataTable(strSQLGetInitialMonth);
-                                        if (dtInitialMonth.Rows.Count > 0)
-                                        {
-                                            object objInitialMonth = dtInitialMonth.Rows[0]["initialReadMeterMesDateTime"];
-                                            if (Information.IsDate(objInitialMonth))
-                                            {
-                                                DateTime dtLastYearAndMonth = Convert.ToDateTime(objInitialMonth);
-                                                //strLastReadMonths = dtLastYearAndMonth.ToString("yyyyMM");
-                                                intNotReadMonth = dtNow.Year * 12 + dtNow.Month - dtLastYearAndMonth.Year * 12 - dtLastYearAndMonth.Month + 1;
-                                            }
-                                        }
-                                    }
-                                }
-
-                                strWaterMeterTypeID = waterMeterType_New.SelectedValue.ToString();
-
-                                DataTable dtWaterMeterType = new SqlServerHelper().GetDataTable("V_WATERMTERTYPE","waterMeterTypeId='" + strWaterMeterTypeID + "'","");
-                                if (dtWaterMeterType.Rows.Count > 0)
-                                {
-                                    object objWaterMeterType = dtWaterMeterType.Rows[0]["waterMeterTypeValue"];
-                                    if (objWaterMeterType != null && objWaterMeterType != DBNull.Value)
-                                        strWaterMeterTypeName = objWaterMeterType.ToString();
-
-                                    objWaterMeterType = dtWaterMeterType.Rows[0]["WATERMETERTYPECLASSID"];
-                                    if (objWaterMeterType != null && objWaterMeterType != DBNull.Value)
-                                        strWaterMeterTypeClassID = objWaterMeterType.ToString();
-
-                                    objWaterMeterType = dtWaterMeterType.Rows[0]["WATERMETERTYPECLASSNAME"];
-                                    if (objWaterMeterType != null && objWaterMeterType != DBNull.Value)
-                                        strWaterMeterTypeClassName = objWaterMeterType.ToString();
-
-
-                                    string[] strWaterMeterRecordTrapePrice = new string[3];
-                                    object objWaterMeterRecordTrapePrice = dtWaterMeterType.Rows[0]["trapezoidPrice"];
-                                    if (objWaterMeterRecordTrapePrice != null && objWaterMeterRecordTrapePrice != DBNull.Value)
-                                    {
-                                        strWaterMeterRecordTrapePrice = GetAvePrice(Convert.ToDecimal(objTotalNumber), objWaterMeterRecordTrapePrice.ToString(), intNotReadMonth);
-                                    }
-                                    else
-                                    {
-                                        strWaterMeterRecordTrapePrice[0] = "0";
-                                        strWaterMeterRecordTrapePrice[1] = "无";
-                                        strWaterMeterRecordTrapePrice[2] = "0";
-                                    }
-                                    decimal decExtraChargePrice1 = 0, decExtraChargePrice2 = 0, decExtraCharge1 = 0, decExtraCharge2 = 0, decExtraCharge = 0, decTotalFee = 0;
-                                    object objExtraFee = dtWaterMeterType.Rows[0]["extraCharge"];
-                                    if (objExtraFee != null && objExtraFee != DBNull.Value)
-                                    {
-                                        string[] strAllExtraFee = objExtraFee.ToString().Split('|');
-                                        for (int j = 0; j < strAllExtraFee.Length; j++)
-                                        {
-                                            string[] strSingleExtraFee = strAllExtraFee[j].Split(':');
-                                            if (strSingleExtraFee[0].Contains("F"))
-                                            {
-                                                string strNum = strSingleExtraFee[0].Substring(1, 1);
-                                                if (strNum == "1")
-                                                    decExtraChargePrice1 = Convert.ToDecimal(strSingleExtraFee[1]);
-                                                if (strNum == "2")
-                                                    decExtraChargePrice2 = Convert.ToDecimal(strSingleExtraFee[1]);
-                                            }
-                                        }
-                                    }
-                                    //计算附加费
-                                    decExtraCharge1 = decExtraChargePrice1 * Convert.ToDecimal(objTotalNumber);
-                                    decExtraCharge2 = decExtraChargePrice2 * Convert.ToDecimal(strWaterMeterRecordTrapePrice[2]);
-
-                                    decExtraCharge = decExtraCharge1 + decExtraCharge2;
-                                    decTotalFee = decExtraCharge + Convert.ToDecimal(strWaterMeterRecordTrapePrice[2]);
-
-
-                                    string strWaterUserNO = WATERUSERNO.Text;
-                                    if (strWaterUserNO.Trim() == "")
-                                    {
-                                        mes.Show("获取用户号失败,变更失败!");
-                                        IsChangeMeterType = false;
-                                    }
-
-                                    strSQLExcute = string.Format(@"
-BEGIN TRAN
-BEGIN
-UPDATE readMeterRecord SET 
-avePrice={0},avePriceDescribe='{1}',waterTotalCharge={2},extraChargePrice1={3},extraChargePrice2={4},
-extraCharge1={5},extraCharge2={6},extraCharge={7},totalCharge={8},
-waterMeterTypeClassID='{9}',waterMeterTypeClassName='{10}',waterMeterTypeId='{11}',waterMeterTypeName='{12}'
-WHERE readMeterRecordId='{13}'", strWaterMeterRecordTrapePrice[0], strWaterMeterRecordTrapePrice[1], strWaterMeterRecordTrapePrice[2],
-                              decExtraChargePrice1, decExtraChargePrice2, decExtraCharge1, decExtraCharge2, decExtraCharge, decTotalFee,
-                              strWaterMeterTypeClassID, strWaterMeterTypeClassName, strWaterMeterTypeID, strWaterMeterTypeName, strReadMeterRecordID
-                               );
-                                    strSQLExcute += string.Format(@"UPDATE waterMeter SET
-waterMeterTypeClassID='{0}',waterMeterTypeId='{1}'
-WHERE waterUserId='{2}'", strWaterMeterTypeClassID, strWaterMeterTypeID, strWaterUserNO
-                               );
-                                    strSQLExcute += string.Format(@"
-END
-IF(@@ERROR>0)
-BEGIN
-ROLLBACK TRAN
-RETURN
-END
-COMMIT TRAN
-");
-                                }
-                                else
-                                {
-                                    mes.Show("获取新的用水性质信息失败,变更失败!");
-                                    IsChangeMeterType = false;
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                mes.Show("变更水价失败,原因:" + ex.Message);
-                                log.Write(ex.ToString(), MsgType.Error);
-                                IsChangeMeterType = false;
-                            }
-                        }
-                        else
-                        {
-                            mes.Show("变更台账ID为空,变更失败!");
-                            IsChangeMeterType = false;
-                        }
-                        #endregion
-                    }
                     if (new SqlServerHelper().ExcuteSql(strSQLExcute) > 0)
                         IsChangeMeterType = true;
                     else
                         IsChangeMeterType = false;
+
                     #endregion
                     if (IsChangeMeterType)
                     {
