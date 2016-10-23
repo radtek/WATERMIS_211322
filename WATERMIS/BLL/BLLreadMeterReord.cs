@@ -1760,9 +1760,9 @@ namespace BLL
        public bool ChangeWaterMeter(string strWaterMeterID, string strReadMeterRecordID, string strCheckWorker)
        {
            string strSQL =string.Format(@"
-                            DECLARE @WATERMETERID VARCHAR(30)={0}  --传入参数水表ID
-                            DECLARE @readMeterRecordId VARCHAR(30)={1}  --传入参数水表抄表ID
-                            DECLARE @LoginID VARCHAR(30)={2}  --传入参数 登陆用户ID
+                            DECLARE @WATERMETERID VARCHAR(30)='{0}'  --传入参数水表ID
+                            DECLARE @readMeterRecordId VARCHAR(30)='{1}'  --传入参数水表抄表ID
+                            DECLARE @LoginID VARCHAR(30)='{2}'  --传入参数 登陆用户ID
                             DECLARE @WATERMETERLASTNUMBER INT =0
                             DECLARE @WATERMETERENDNUMBER INT =0
                             DECLARE @INTREADMETERCOUNT INT =0
@@ -1785,7 +1785,7 @@ namespace BLL
                                            waterMeterTypeName,waterMeterProduct,waterMeterSerialNumber,waterMeterMode,waterMeterMagnification,waterMeterMaxRange,
                                            meterReaderID,meterReaderName,chargerID,chargerName,chargeID,waterUserId,waterUserNO,waterUserName,waterPhone,waterUserAddress,
                                            waterUserPeopleCount,meterReadingID,meterReadingPageNo,waterUserTypeId,waterUserTypeName,waterUserCreateDate,agentsign,bankId,
-                                          bankName,BankAcountNumber,memo,initialReadMeterMesDateTime,avePriceDescribe,meterReadingNO,waterMeterParentId,totalNumberDescribe,
+                                          bankName,BankAcountNumber,initialReadMeterMesDateTime,avePriceDescribe,meterReadingNO,waterMeterParentId,totalNumberDescribe,
                                            waterUserHouseType,waterMeterTypeId,waterUserState,waterMeterSizeId,ordernumber,extraCharge,lastNumberYearMonth,isSummaryMeter,waterUserchargeType,
                                            IsReverse,areaNO,pianNO,duanNO,communityID,COMMUNITYNAME,buildingNO,unitNO,createType,waterUserTelphoneNO,waterUserNameCode,
                                            readMeterRecordYearAndMonth,waterMeterTypeClassID,waterMeterTypeClassName,WATERMETERNUMBERCHANGESTATE,WATERUSERQQYE,WATERUSERJSYE,WATERUSERLJQF,
@@ -1798,7 +1798,7 @@ namespace BLL
                                            waterMeterTypeName,waterMeterProduct,waterMeterSerialNumber,waterMeterMode,waterMeterMagnification,waterMeterMaxRange,
                                            meterReaderID,meterReaderName,chargerID,chargerName,chargeID,waterUserId,waterUserNO,waterUserName,waterPhone,waterUserAddress,
                                            waterUserPeopleCount,meterReadingID,meterReadingPageNo,waterUserTypeId,waterUserTypeName,waterUserCreateDate,agentsign,bankId,
-                                          bankName,BankAcountNumber,memo,GETDATE(),NULL,meterReadingNO,waterMeterParentId,NULL,
+                                          bankName,BankAcountNumber,GETDATE(),NULL,meterReadingNO,waterMeterParentId,NULL,
                                            waterUserHouseType,waterMeterTypeId,waterUserState,waterMeterSizeId,ordernumber,extraCharge,NULL,isSummaryMeter,waterUserchargeType,
                                            IsReverse,areaNO,pianNO,duanNO,communityID,COMMUNITYNAME,buildingNO,unitNO,createType,waterUserTelphoneNO,waterUserNameCode,
                                            GETDATE(),waterMeterTypeClassID,waterMeterTypeClassName,'1',0,0,0,0,'1',GETDATE(),@LoginID,'报装换表' 
@@ -1814,7 +1814,7 @@ namespace BLL
                             SET @ISSUCCESS=1
                             COMMIT TRAN
                             END
-                            ",strWaterMeterID,strReadMeterRecordID,strCheckWorker);
+                            ", strWaterMeterID,strReadMeterRecordID,strCheckWorker);
            int intRet = DBUtility.DbHelperSQL.ExecuteSql(strSQL);
            return intRet == 0 ? false : true;
        }
