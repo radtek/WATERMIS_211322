@@ -65,7 +65,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(510, 447);
+            this.panel1.Size = new System.Drawing.Size(510, 388);
             this.panel1.TabIndex = 1;
             // 
             // Btn_More
@@ -123,7 +123,7 @@
             // 
             // Btn_Voided
             // 
-            this.Btn_Voided.Location = new System.Drawing.Point(120, 389);
+            this.Btn_Voided.Location = new System.Drawing.Point(108, 336);
             this.Btn_Voided.Name = "Btn_Voided";
             this.Btn_Voided.Size = new System.Drawing.Size(129, 41);
             this.Btn_Voided.TabIndex = 8;
@@ -139,7 +139,7 @@
             this.Btn_Submit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Submit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Btn_Submit.ForeColor = System.Drawing.Color.White;
-            this.Btn_Submit.Location = new System.Drawing.Point(255, 389);
+            this.Btn_Submit.Location = new System.Drawing.Point(243, 336);
             this.Btn_Submit.Name = "Btn_Submit";
             this.Btn_Submit.Size = new System.Drawing.Size(129, 41);
             this.Btn_Submit.TabIndex = 6;
@@ -218,7 +218,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(510, 447);
+            this.ClientSize = new System.Drawing.Size(510, 388);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmApprove_Peccant_Default";

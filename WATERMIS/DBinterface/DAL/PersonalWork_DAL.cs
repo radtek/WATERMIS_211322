@@ -131,10 +131,10 @@ ORDER BY FeeItem, PointName";
             return new SqlServerHelper().GetDateTableBySql(sqlstr, new SqlParameter[] { new SqlParameter("@TaskID", TaskID), new SqlParameter("@PointSort", PointSort) });
         }
 
-        public int UpdateApprove_defalut(string tableName ,string ResolveID, bool IsPass, string UserOpinion, string ip, string ComputerName, string PointSort, string TaskID)
+        public int UpdateApprove_defalut(string tableName, string ResolveID, bool IsPass, string UserOpinion, string ip, string ComputerName, string PointSort, string TaskID)
         {
 
-            string sqlstr =string.Format(@"DECLARE @ISOVER INT=1
+            string sqlstr = string.Format(@"DECLARE @ISOVER INT=1
 DECLARE @NEXTSORT INT=0
 SELECT  TOP 1 @NEXTSORT=PointSort FROM Meter_WorkResolve WHERE TaskID=@TaskID AND PointSort>@PointSort ORDER BY PointSort
 SET XACT_ABORT ON
@@ -175,46 +175,46 @@ COMMIT TRAN", tableName);
             string ComputerName = new Computer().ComputerName;
             string ip = new Computer().IpAddress;
             return UpdateApprove_defalut(tableName, ResolveID, IsPass, UserOpinion, ip, ComputerName, PointSort, TaskID);
-         
+
         }
 
         public int UpdateApprove_Single_defalut(string ResolveID, bool IsPass, string UserOpinion, string ip, string ComputerName, string PointSort, string TaskID)
         {
             return UpdateApprove_defalut("Meter_Install_Single", ResolveID, IsPass, UserOpinion, ip, ComputerName, PointSort, TaskID);
-//            string sqlstr = @"DECLARE @ISOVER INT=1
-//DECLARE @NEXTSORT INT=0
-//SELECT  TOP 1 @NEXTSORT=PointSort FROM Meter_WorkResolve WHERE TaskID=@TaskID AND PointSort>@PointSort ORDER BY PointSort
-//SET XACT_ABORT ON
-//BEGIN TRAN
-//UPDATE Meter_WorkResolve SET IsPass=@IsPass,UserOpinion=@UserOpinion,AcceptUserID=@AcceptUserID,AcceptUser=@AcceptUser,AcceptDate=GETDATE(),IP=@IP,ComputerName=@ComputerName WHERE ResolveID=@ResolveID
-//SELECT @ISOVER=COUNT(1) FROM Meter_WorkResolve WHERE TaskID=@TaskID AND PointSort=@PointSort AND (IsPass IS NULL OR IsPass<>1)
-//if(@ISOVER=0)
-//begin
-//if(@NEXTSORT=0)
-//BEGIN
-//UPDATE Meter_WorkTask SET [State]=5, PointSort=PointSort+1,PointTime=GETDATE() WHERE TaskID=@TaskID AND PointSort=@PointSort
-//UPDATE Meter_Install_Single SET [State]=5 WHERE TaskID=@TaskID
-//END
-//ELSE
-//BEGIN
-//UPDATE Meter_WorkTask SET PointSort=@NEXTSORT,PointTime=GETDATE() WHERE TaskID=@TaskID AND PointSort=@PointSort
-//END
-//end
-//COMMIT TRAN";
+            //            string sqlstr = @"DECLARE @ISOVER INT=1
+            //DECLARE @NEXTSORT INT=0
+            //SELECT  TOP 1 @NEXTSORT=PointSort FROM Meter_WorkResolve WHERE TaskID=@TaskID AND PointSort>@PointSort ORDER BY PointSort
+            //SET XACT_ABORT ON
+            //BEGIN TRAN
+            //UPDATE Meter_WorkResolve SET IsPass=@IsPass,UserOpinion=@UserOpinion,AcceptUserID=@AcceptUserID,AcceptUser=@AcceptUser,AcceptDate=GETDATE(),IP=@IP,ComputerName=@ComputerName WHERE ResolveID=@ResolveID
+            //SELECT @ISOVER=COUNT(1) FROM Meter_WorkResolve WHERE TaskID=@TaskID AND PointSort=@PointSort AND (IsPass IS NULL OR IsPass<>1)
+            //if(@ISOVER=0)
+            //begin
+            //if(@NEXTSORT=0)
+            //BEGIN
+            //UPDATE Meter_WorkTask SET [State]=5, PointSort=PointSort+1,PointTime=GETDATE() WHERE TaskID=@TaskID AND PointSort=@PointSort
+            //UPDATE Meter_Install_Single SET [State]=5 WHERE TaskID=@TaskID
+            //END
+            //ELSE
+            //BEGIN
+            //UPDATE Meter_WorkTask SET PointSort=@NEXTSORT,PointTime=GETDATE() WHERE TaskID=@TaskID AND PointSort=@PointSort
+            //END
+            //end
+            //COMMIT TRAN";
 
-//            SqlParameter[] cmdParms = new SqlParameter[]{
-//            new SqlParameter("@ResolveID",ResolveID),
-//            new SqlParameter("@IsPass",IsPass?1:0),
-//            new SqlParameter("@UserOpinion",UserOpinion),
-//            new SqlParameter("@AcceptUserID",AppDomain.CurrentDomain.GetData("LOGINID").ToString()),
-//            new SqlParameter("@AcceptUser",AppDomain.CurrentDomain.GetData("USERNAME").ToString()),
-//            new SqlParameter("@IP",ip),
-//            new SqlParameter("@ComputerName",ComputerName),
-//            new SqlParameter("@PointSort",PointSort),
-//            new SqlParameter("@TaskID",TaskID)
-//            };
+            //            SqlParameter[] cmdParms = new SqlParameter[]{
+            //            new SqlParameter("@ResolveID",ResolveID),
+            //            new SqlParameter("@IsPass",IsPass?1:0),
+            //            new SqlParameter("@UserOpinion",UserOpinion),
+            //            new SqlParameter("@AcceptUserID",AppDomain.CurrentDomain.GetData("LOGINID").ToString()),
+            //            new SqlParameter("@AcceptUser",AppDomain.CurrentDomain.GetData("USERNAME").ToString()),
+            //            new SqlParameter("@IP",ip),
+            //            new SqlParameter("@ComputerName",ComputerName),
+            //            new SqlParameter("@PointSort",PointSort),
+            //            new SqlParameter("@TaskID",TaskID)
+            //            };
 
-//            return DbHelperSQL.ExecuteSql(sqlstr, cmdParms);
+            //            return DbHelperSQL.ExecuteSql(sqlstr, cmdParms);
         }
         /// <summary>
         /// 违章报装提交审批
@@ -232,14 +232,14 @@ COMMIT TRAN", tableName);
             return UpdateApprove_defalut("Meter_Install_Peccant", ResolveID, IsPass, UserOpinion, ip, ComputerName, PointSort, TaskID);
         }
 
-        public int UpdateApprove_Voided_ByTableName(string tableName,string ResolveID, string UserOpinion, string ip, string ComputerName, string TaskID)
+        public int UpdateApprove_Voided_ByTableName(string tableName, string ResolveID, string UserOpinion, string ip, string ComputerName, string TaskID)
         {
             string sqlstr = string.Format(@" SET XACT_ABORT ON
 BEGIN TRAN
 UPDATE Meter_WorkTask SET State=4 WHERE TaskID=@TaskID
 UPDATE {0} SET State=4 WHERE TaskID=@TaskID
 UPDATE Meter_WorkResolve SET MakeVoided=1,IsPass=0,UserOpinion=@UserOpinion,AcceptUserID=@AcceptUserID,AcceptUser=@AcceptUser,IP=@IP,ComputerName=@ComputerName WHERE ResolveID=@ResolveID
-COMMIT TRAN",tableName);
+COMMIT TRAN", tableName);
 
             SqlParameter[] cmdParms = new SqlParameter[]{
             new SqlParameter("@ResolveID",ResolveID),
@@ -263,26 +263,26 @@ COMMIT TRAN",tableName);
 
         public int UpdateApprove_Voided(string ResolveID, string UserOpinion, string ip, string ComputerName, string TaskID)
         {
-            return UpdateApprove_Voided_ByTableName("Meter_Install_Single",ResolveID, UserOpinion, ip, ComputerName, TaskID);
+            return UpdateApprove_Voided_ByTableName("Meter_Install_Single", ResolveID, UserOpinion, ip, ComputerName, TaskID);
 
-//            string sqlstr = @" SET XACT_ABORT ON
-//BEGIN TRAN
-//UPDATE Meter_WorkTask SET State=4 WHERE TaskID=@TaskID
-//UPDATE Meter_Install_Single SET State=4 WHERE TaskID=@TaskID
-//UPDATE Meter_WorkResolve SET MakeVoided=1,IsPass=0,UserOpinion=@UserOpinion,AcceptUserID=@AcceptUserID,AcceptUser=@AcceptUser,IP=@IP,ComputerName=@ComputerName WHERE ResolveID=@ResolveID
-//COMMIT TRAN";
+            //            string sqlstr = @" SET XACT_ABORT ON
+            //BEGIN TRAN
+            //UPDATE Meter_WorkTask SET State=4 WHERE TaskID=@TaskID
+            //UPDATE Meter_Install_Single SET State=4 WHERE TaskID=@TaskID
+            //UPDATE Meter_WorkResolve SET MakeVoided=1,IsPass=0,UserOpinion=@UserOpinion,AcceptUserID=@AcceptUserID,AcceptUser=@AcceptUser,IP=@IP,ComputerName=@ComputerName WHERE ResolveID=@ResolveID
+            //COMMIT TRAN";
 
-//            SqlParameter[] cmdParms = new SqlParameter[]{
-//            new SqlParameter("@ResolveID",ResolveID),
-//            new SqlParameter("@UserOpinion",UserOpinion),
-//            new SqlParameter("@AcceptUserID",AppDomain.CurrentDomain.GetData("LOGINID").ToString()),
-//            new SqlParameter("@AcceptUser",AppDomain.CurrentDomain.GetData("USERNAME").ToString()),
-//            new SqlParameter("@IP",ip),
-//            new SqlParameter("@ComputerName",ComputerName),
-//            new SqlParameter("@TaskID",TaskID)
-//            };
+            //            SqlParameter[] cmdParms = new SqlParameter[]{
+            //            new SqlParameter("@ResolveID",ResolveID),
+            //            new SqlParameter("@UserOpinion",UserOpinion),
+            //            new SqlParameter("@AcceptUserID",AppDomain.CurrentDomain.GetData("LOGINID").ToString()),
+            //            new SqlParameter("@AcceptUser",AppDomain.CurrentDomain.GetData("USERNAME").ToString()),
+            //            new SqlParameter("@IP",ip),
+            //            new SqlParameter("@ComputerName",ComputerName),
+            //            new SqlParameter("@TaskID",TaskID)
+            //            };
 
-//            return DbHelperSQL.ExecuteSql(sqlstr, cmdParms);
+            //            return DbHelperSQL.ExecuteSql(sqlstr, cmdParms);
         }
 
         /// <summary>
@@ -327,7 +327,7 @@ SELECT FEE,Price,Quantity FROM Meter_WorkResolveFee MWF,Meter_WorkResolve MWR WH
             //{
             //    FeeValue = dt.Rows[0][0].ToString();
             //}
-           // return FeeValue;
+            // return FeeValue;
         }
 
 
@@ -360,7 +360,7 @@ END";
 SELECT TOP 1 @LastPoingSort=PointSort FROM Meter_WorkResolveFee MWF,Meter_WorkResolve MWR WHERE MWF.ResolveID=MWR.ResolveID AND MWR.TaskID=@TaskID AND PointSort<@PointSort ORDER BY PointSort DESC
 SELECT DepartementID,FeeID,FeeItem,Fee,IsFinal,PointSort,State FROM Meter_WorkResolveFee MWF,Meter_WorkResolve MWR WHERE MWF.ResolveID=MWR.ResolveID AND MWR.TaskID=@TaskID AND PointSort=@LastPoingSort";
 
-            return new SqlServerHelper().GetDateTableBySql(strsql, new SqlParameter[] {new SqlParameter("@TaskID",TaskID),new SqlParameter("@PointSort",PointSort) });
+            return new SqlServerHelper().GetDateTableBySql(strsql, new SqlParameter[] { new SqlParameter("@TaskID", TaskID), new SqlParameter("@PointSort", PointSort) });
         }
 
         public Decimal GetLastFeeTotal(string TaskID, string PointSort)
@@ -388,7 +388,7 @@ SELECT SUM(CONVERT(decimal,Fee)) FROM Meter_WorkResolveFee MWF,Meter_WorkResolve
             if (DataTableHelper.IsExistRows(dt))
             {
                 string Abate = dt.Rows[0][0].ToString();
-                if (decimal.TryParse(Abate,out Abates))
+                if (decimal.TryParse(Abate, out Abates))
                 {
 
                 }
@@ -443,8 +443,8 @@ UPDATE Meter_WorkResolveFee SET State=1,CHARGEWORKERID=@CHARGEWORKERID,CHARGEWOR
 UPDATE {0} SET prestore=@Prestore WHERE TaskID=@TaskID
 COMMIT TRAN", ht["TableName"].ToString());
 
-           int count = DbHelperSQL.ExecuteSql(strsql, 
-                new SqlParameter[] {
+            int count = DbHelperSQL.ExecuteSql(strsql,
+                 new SqlParameter[] {
                 new SqlParameter("@TaskID",ht["TaskID"].ToString()),
                 new SqlParameter("@LastPointSort",ht["LastPointSort"].ToString()),
                 new SqlParameter("@Prestore",ht["Prestore"].ToString()),
@@ -463,7 +463,7 @@ COMMIT TRAN", ht["TableName"].ToString());
                 new SqlParameter("@POSRUNNINGNO",ht["POSRUNNINGNO"].ToString()),
                 new SqlParameter("@Memo",ht["Memo"].ToString())
                 });
-           return count > 0 ? true : false;
+            return count > 0 ? true : false;
         }
 
         public bool ApprovePrestoreFinal(Hashtable ht)
@@ -527,28 +527,28 @@ COMMIT TRAN", ht["waterMeterSerialNumber"].ToString());
 
         public bool Approve_Single_Append(string TaskID)
         {
-//            string strsql = @"DECLARE @waterUserId NVARCHAR(50)=''
-//DECLARE @ISEXIT INT=0
-//SET XACT_ABORT ON
-//BEGIN TRAN
-//SELECT @waterUserId=waterUserId FROM Meter_Install_Single WHERE TaskID=@TaskID
-//SELECT @ISEXIT=COUNT(1) FROM waterUser WHERE waterUserId=@waterUserId
-//IF(@ISEXIT=0)
-//BEGIN
-//INSERT INTO waterUser (waterUserId,waterUserNO,waterUserName,waterPhone,waterUserAddress,
-//waterUserPeopleCount,meterReadingID,meterReadingPageNo,waterUserTypeId,waterUserCreateDate,waterUserHouseType,agentsign,
-//bankId,BankAcountNumber,memo,prestore,ordernumber,chargeType) 
-//SELECT waterUserId,waterUserNO,waterUserName,waterPhone,waterUserAddress,
-//waterUserPeopleCount,meterReadingID,meterReadingPageNo,waterUserTypeId,GETDATE(),waterUserHouseType,agentsign,
-//bankId,BankAcountNumber,memo,prestore,ordernumber,chargeType FROM Meter_Install_Single WHERE TaskID=@TaskID
-//END
-//INSERT INTO waterMeter (waterMeterId,waterMeterNo,waterMeterStartNumber,waterMeterPositionName,waterMeterPositionId,
-//waterMeterSizeId,waterMeterTypeId,ISUSECHANGE,CHANGEMONTH,waterMeterTypeIdChange,WATERFIXVALUE,waterMeterProduct,waterMeterSerialNumber,waterMeterMode,waterMeterMagnification,waterMeterMaxRange,waterMeterProofreadingDate,waterMeteProofreadingPeriod,waterUserId,isSummaryMeter,waterMeterParentId,STARTUSEDATETIME,MEMO) 
-//SELECT waterMeterId,waterMeterNo,waterMeterStartNumber,waterMeterPositionName,waterMeterPositionId,
-//waterMeterSizeId,waterMeterTypeId,ISUSECHANGE,CHANGEMONTH,waterMeterTypeIdChange,WATERFIXVALUE,waterMeterProduct,waterMeterSerialNumber,waterMeterMode,waterMeterMagnification,waterMeterMaxRange,waterMeterProofreadingDate,waterMeteProofreadingPeriod,waterUserId,isSummaryMeter,waterMeterParentId,STARTUSEDATETIME,MEMO FROM Meter WHERE MeterID IN (SELECT MeterID FROM Meter_User WHERE TaskID=@TaskID)
-//INSERT INTO User_Append (TaskID,waterUserNO,waterUserName) SELECT TaskID,waterUserNO,waterUserName FROM Meter_Install_Single WHERE TaskID=@TaskID
-//UPDATE Meter_Install_Single SET prestore=0 WHERE TaskID=@TaskID
-//COMMIT TRAN";
+            //            string strsql = @"DECLARE @waterUserId NVARCHAR(50)=''
+            //DECLARE @ISEXIT INT=0
+            //SET XACT_ABORT ON
+            //BEGIN TRAN
+            //SELECT @waterUserId=waterUserId FROM Meter_Install_Single WHERE TaskID=@TaskID
+            //SELECT @ISEXIT=COUNT(1) FROM waterUser WHERE waterUserId=@waterUserId
+            //IF(@ISEXIT=0)
+            //BEGIN
+            //INSERT INTO waterUser (waterUserId,waterUserNO,waterUserName,waterPhone,waterUserAddress,
+            //waterUserPeopleCount,meterReadingID,meterReadingPageNo,waterUserTypeId,waterUserCreateDate,waterUserHouseType,agentsign,
+            //bankId,BankAcountNumber,memo,prestore,ordernumber,chargeType) 
+            //SELECT waterUserId,waterUserNO,waterUserName,waterPhone,waterUserAddress,
+            //waterUserPeopleCount,meterReadingID,meterReadingPageNo,waterUserTypeId,GETDATE(),waterUserHouseType,agentsign,
+            //bankId,BankAcountNumber,memo,prestore,ordernumber,chargeType FROM Meter_Install_Single WHERE TaskID=@TaskID
+            //END
+            //INSERT INTO waterMeter (waterMeterId,waterMeterNo,waterMeterStartNumber,waterMeterPositionName,waterMeterPositionId,
+            //waterMeterSizeId,waterMeterTypeId,ISUSECHANGE,CHANGEMONTH,waterMeterTypeIdChange,WATERFIXVALUE,waterMeterProduct,waterMeterSerialNumber,waterMeterMode,waterMeterMagnification,waterMeterMaxRange,waterMeterProofreadingDate,waterMeteProofreadingPeriod,waterUserId,isSummaryMeter,waterMeterParentId,STARTUSEDATETIME,MEMO) 
+            //SELECT waterMeterId,waterMeterNo,waterMeterStartNumber,waterMeterPositionName,waterMeterPositionId,
+            //waterMeterSizeId,waterMeterTypeId,ISUSECHANGE,CHANGEMONTH,waterMeterTypeIdChange,WATERFIXVALUE,waterMeterProduct,waterMeterSerialNumber,waterMeterMode,waterMeterMagnification,waterMeterMaxRange,waterMeterProofreadingDate,waterMeteProofreadingPeriod,waterUserId,isSummaryMeter,waterMeterParentId,STARTUSEDATETIME,MEMO FROM Meter WHERE MeterID IN (SELECT MeterID FROM Meter_User WHERE TaskID=@TaskID)
+            //INSERT INTO User_Append (TaskID,waterUserNO,waterUserName) SELECT TaskID,waterUserNO,waterUserName FROM Meter_Install_Single WHERE TaskID=@TaskID
+            //UPDATE Meter_Install_Single SET prestore=0 WHERE TaskID=@TaskID
+            //COMMIT TRAN";
 
             string strsql = @"DECLARE @waterUserId NVARCHAR(50)=''
 DECLARE @ISEXIT INT=0
@@ -574,7 +574,7 @@ bankId,BankAcountNumber,memo,ordernumber,chargeType,(SELECT PIANNAME FROM BASE_P
 END
 INSERT INTO waterMeter (waterMeterId,waterMeterNo,waterMeterStartNumber,waterMeterPositionName,waterMeterPositionId,
 waterMeterSizeId,waterMeterTypeId,ISUSECHANGE,CHANGEMONTH,waterMeterTypeIdChange,WATERFIXVALUE,waterMeterProduct,waterMeterSerialNumber,waterMeterMode,
-,waterMeterMaxRange,waterMeterProofreadingDate,waterMeteProofreadingPeriod,waterUserId,isSummaryMeter,waterMeterParentId,STARTUSEDATETIME,MEMO
+waterMeterMagnification,waterMeterMaxRange,waterMeterProofreadingDate,waterMeteProofreadingPeriod,waterUserId,isSummaryMeter,waterMeterParentId,STARTUSEDATETIME,MEMO
 ,waterMeterState,IsReverse,WATERMETERLOCKNO) 
 SELECT waterMeterId,waterMeterNo,waterMeterStartNumber,waterMeterPositionName,waterMeterPositionId,
 waterMeterSizeId,waterMeterTypeId,ISUSECHANGE,CHANGEMONTH,waterMeterTypeIdChange,WATERFIXVALUE,waterMeterProduct,waterMeterSerialNumber,waterMeterMode,
@@ -582,6 +582,46 @@ waterMeterMagnification,waterMeterMaxRange,waterMeterProofreadingDate,waterMeteP
 STARTUSEDATETIME,MEMO,waterMeterState,IsReverse,WATERMETERLOCKNO FROM Meter WHERE MeterID IN (SELECT MeterID FROM Meter_User WHERE TaskID=@TaskID)
 INSERT INTO User_Append (TaskID,waterUserNO,waterUserName) SELECT TaskID,waterUserNO,waterUserName FROM Meter_Install_Single WHERE TaskID=@TaskID
 COMMIT TRAN";
+            int count = DbHelperSQL.ExecuteSql(strsql, new SqlParameter[] { new SqlParameter("@TaskID", TaskID) });
+            return count > 0 ? true : false;
+
+        }
+
+        /// <summary>
+        /// 违章用户报装新增户和水表
+        /// </summary>
+        /// <param name="TaskID"></param>
+        /// <returns></returns>
+        public bool Approve_Peccant_Append(string TaskID)
+        {
+            string strsql = @"DECLARE @waterUserId NVARCHAR(50)=''
+                            DECLARE @ISEXIT INT=0
+                            SET XACT_ABORT ON
+                            BEGIN TRAN
+                            SELECT @waterUserId=waterUserId FROM Meter_Install_Single WHERE TaskID=@TaskID
+                            SELECT @ISEXIT=COUNT(1) FROM waterUser WHERE waterUserId=@waterUserId
+                            IF(@ISEXIT=0)
+                            BEGIN
+                            INSERT INTO waterUser (waterUserId,waterUserNO,waterUserName,waterUserTelphoneNO,waterUserAddress,
+                            waterUserPeopleCount,waterUserTypeId,waterUserCreateDate,waterUserHouseType,agentsign,
+                            bankId,BankAcountNumber,memo,ordernumber,chargeType,pianNO,areaNO,duanNO,communityID,buildingNO,unitNO,createType
+                            ,meterReaderID,meterReaderName,chargerID,chargerName,operatorName) 
+                            SELECT waterUserId,waterUserNO,waterUserName,waterPhone,waterUserAddress,
+                            waterUserPeopleCount,waterUserTypeId,GETDATE(),waterUserHouseType,agentsign,
+                            bankId,BankAcountNumber,memo,ordernumber,chargeType,pianNO,areaNO,duanNO,communityID,BuildingNO,UnitNO,
+                            (SELECT CreateType FROM Base_Archives WHERE CreateTypeID=MIS.CreateType) AS CreateType
+                            ,meterReaderID,meterReaderName,chargerID,chargerName,operatorName FROM Meter_Install_Peccant MIS WHERE TaskID=@TaskID
+                            END
+                            INSERT INTO waterMeter (waterMeterId,waterMeterNo,waterMeterStartNumber,waterMeterPositionName,waterMeterPositionId,
+                            waterMeterSizeId,waterMeterTypeId,ISUSECHANGE,CHANGEMONTH,waterMeterTypeIdChange,WATERFIXVALUE,waterMeterProduct,waterMeterSerialNumber,waterMeterMode
+                            ,waterMeterMaxRange,waterMeterProofreadingDate,waterMeteProofreadingPeriod,waterUserId,isSummaryMeter,waterMeterParentId,STARTUSEDATETIME,MEMO
+                            ,waterMeterState,IsReverse,WATERMETERLOCKNO) 
+                            SELECT waterMeterId,waterMeterNo,waterMeterStartNumber,waterMeterPositionName,waterMeterPositionId,
+                            waterMeterSizeId,waterMeterTypeId,ISUSECHANGE,CHANGEMONTH,waterMeterTypeIdChange,WATERFIXVALUE,waterMeterProduct,waterMeterSerialNumber,waterMeterMode,
+                            waterMeterMaxRange,waterMeterProofreadingDate,waterMeteProofreadingPeriod,waterUserId,isSummaryMeter,waterMeterParentId,
+                            STARTUSEDATETIME,MEMO,waterMeterState,IsReverse,WATERMETERLOCKNO FROM Meter WHERE MeterID IN (SELECT MeterID FROM Meter_User WHERE TaskID=@TaskID)
+                            INSERT INTO User_Append (TaskID,waterUserNO,waterUserName) SELECT TaskID,waterUserNO,waterUserName FROM Meter_Install_Single WHERE TaskID=@TaskID
+                            COMMIT TRAN";
             int count = DbHelperSQL.ExecuteSql(strsql, new SqlParameter[] { new SqlParameter("@TaskID", TaskID) });
             return count > 0 ? true : false;
 
@@ -621,12 +661,12 @@ AND VV.CHARGEBCSS<=VW.prestore AND CHARGEID=@CHARGEID";
             return UpdateApprove_defalut("User_Refund", ResolveID, IsPass, UserOpinion, ip, ComputerName, PointSort, TaskID);
         }
 
-        public int UpdateApprove_Refund_Voided(string ResolveID, string UserOpinion,string TaskID)
+        public int UpdateApprove_Refund_Voided(string ResolveID, string UserOpinion, string TaskID)
         {
             string ComputerName = new Computer().ComputerName;
             string ip = new Computer().IpAddress;
             return UpdateApprove_Voided_ByTableName("User_Refund", ResolveID, UserOpinion, ip, ComputerName, TaskID);
-      
+
         }
 
         public bool IsExitWaterPriceNO(string waterUserNO)
@@ -700,8 +740,8 @@ WHERE ItemsCount>0 AND TotalFee>0";
         {
             string strsql = "SELECT COUNT(1) FROM Meter_WorkResolveFee WHERE ResolveID IN (SELECT ResolveID FROM Meter_WorkResolve WHERE TaskID=@TaskID AND PointSort=@LastPoingSort) AND FEE>0 AND State<>1";
             DataTable dt = new SqlServerHelper().GetDateTableBySql(strsql, new SqlParameter[] { new SqlParameter("@TaskID", TaskID), new SqlParameter("@LastPoingSort", LastPoingSort) });
-            
-            return int.Parse(dt.Rows[0][0].ToString())>0?false:true;
+
+            return int.Parse(dt.Rows[0][0].ToString()) > 0 ? false : true;
         }
 
         public DataTable GetDepartMentFeeFinal(string TaskID, string PointSort)
@@ -752,9 +792,9 @@ FROM Meter_WorkResolveFee WHERE ResolveID=@ResolveID AND FEE>0 AND FeeID NOT IN 
 
             DataTable dt = new SqlServerHelper().GetDateTableBySql(sqlstr, new SqlParameter[] { new SqlParameter("@TaskID", TaskID), new SqlParameter("@LastPoingSort", LastPoingSort), new SqlParameter("@DepartementID", DepartementID) });
 
-            if (Decimal.TryParse(dt.Rows[0][0].ToString(),out DepertmentPrestore))
+            if (Decimal.TryParse(dt.Rows[0][0].ToString(), out DepertmentPrestore))
             {
-               
+
             }
             return DepertmentPrestore;
         }
@@ -856,7 +896,7 @@ COMMIT TRAN", ht["TableName"].ToString());
         //2016-10-03 RONG--Begin
         public DataTable GetMaintainType()
         {
-          return  new SqlServerHelper().GetDateTableBySql("SELECT MaintainType,MaintainTypeID FROM Meter_MaintainType ORDER BY MaintainTypeID");
+            return new SqlServerHelper().GetDateTableBySql("SELECT MaintainType,MaintainTypeID FROM Meter_MaintainType ORDER BY MaintainTypeID");
         }
 
         public Hashtable GetMaintainByTaskID(string TaskID)
@@ -877,8 +917,8 @@ COMMIT TRAN", ht["TableName"].ToString());
 
         public DataTable GetMeter_Group_People(string GroupID)
         {
-           // return new SqlServerHelper().GetDataTable("Meter_Group_People", "GroupID='"+GroupID+"'", "waterMeterTypeId");
-            string sqlstr="SELECT * FROM Meter_Group_People MGP,waterMeterType MT,waterUserType UT,waterUserHouseType UHT	WHERE MGP.waterMeterTypeId=MT.waterMeterTypeId AND MGP.waterUserTypeId=UT.waterUserTypeId AND MGP.waterUserHouseTypeID=UHT.waterUserHouseTypeID AND GroupID=@GroupID";
+            // return new SqlServerHelper().GetDataTable("Meter_Group_People", "GroupID='"+GroupID+"'", "waterMeterTypeId");
+            string sqlstr = "SELECT * FROM Meter_Group_People MGP,waterMeterType MT,waterUserType UT,waterUserHouseType UHT	WHERE MGP.waterMeterTypeId=MT.waterMeterTypeId AND MGP.waterUserTypeId=UT.waterUserTypeId AND MGP.waterUserHouseTypeID=UHT.waterUserHouseTypeID AND GroupID=@GroupID";
             return new SqlServerHelper().GetDateTableBySql(sqlstr, new SqlParameter[] { new SqlParameter("@GroupID", GroupID) });
         }
 
@@ -899,7 +939,7 @@ COMMIT TRAN", ht["TableName"].ToString());
         {
             string sqlstr = "SELECT COUNT(1) FROM base_login WHERE  loginId=@loginId AND groupID='0001' AND userstate=1";
             DataTable dt = new SqlServerHelper().GetDateTableBySql(sqlstr, new SqlParameter[] { new SqlParameter("@loginId", loginId) });
-            if (int.Parse(dt.Rows[0][0].ToString())>0)
+            if (int.Parse(dt.Rows[0][0].ToString()) > 0)
             {
                 return true;
             }
@@ -942,9 +982,9 @@ COMMIT TRAN", ht["TableName"].ToString());
             return new SqlServerHelper().GetDateTableBySql(sqlstr, new SqlParameter[] { new SqlParameter("@TaskID", TaskID) });
         }
 
-        public DataTable GetUserMeterInfoByTaskId(string tableName,string TaskID)
+        public DataTable GetUserMeterInfoByTaskId(string tableName, string TaskID)
         {
-            string sqlstr =string.Format("SELECT MD.WaterUserNO,VM.waterMeterNo FROM V_WATERMETER VM,{0} MD WHERE VM.waterUserId=MD.WaterUserNO AND MD.TaskID=@TaskID",tableName);
+            string sqlstr = string.Format("SELECT MD.WaterUserNO,VM.waterMeterNo FROM V_WATERMETER VM,{0} MD WHERE VM.waterUserId=MD.WaterUserNO AND MD.TaskID=@TaskID", tableName);
             return new SqlServerHelper().GetDateTableBySql(sqlstr, new SqlParameter[] { new SqlParameter("@TaskID", TaskID) });
         }
 
@@ -957,49 +997,7 @@ UPDATE Meter_Disuse SET [State]=5 WHERE TaskID=@TaskID
 COMMIT TRAN", TableName);
 
             int count = new SqlServerHelper().UpdateByHashtable(sqlstr, new SqlParameter[] { new SqlParameter("@TaskID", TaskID) });
-            return count>0?true:false;
-        }
-
-        /// <summary>
-        /// 违章报装新增用户
-        /// </summary>
-        /// <param name="TaskID"></param>
-        /// <returns></returns>
-        public bool Approve_Peccant_Append(string TaskID)
-        {
-            string strsql = @"DECLARE @waterUserId NVARCHAR(50)=''
-DECLARE @ISEXIT INT=0
-SET XACT_ABORT ON
-BEGIN TRAN
-SELECT @waterUserId=waterUserId FROM Meter_Install_Peccant WHERE TaskID=@TaskID
-SELECT @ISEXIT=COUNT(1) FROM waterUser WHERE waterUserId=@waterUserId
-IF(@ISEXIT=0)
-BEGIN
-INSERT INTO waterUser (waterUserId,waterUserNO,waterUserName,waterPhone,waterUserAddress,
-waterUserPeopleCount,meterReadingID,meterReadingPageNo,waterUserTypeId,waterUserCreateDate,waterUserHouseType,agentsign,
-bankId,BankAcountNumber,memo,ordernumber,chargeType,pianNO,areaNO,duanNO,communityID,buildingNO,unitNO,createType
-,meterReaderID,meterReaderName,chargerID,chargerName,operatorName) 
-SELECT waterUserId,waterUserNO,waterUserName,waterPhone,waterUserAddress,
-waterUserPeopleCount,meterReadingID,meterReadingPageNo,waterUserTypeId,GETDATE(),waterUserHouseType,agentsign,
-bankId,BankAcountNumber,memo,ordernumber,chargeType,pianNO,areaNO,duanNO,communityID,BuildingNO,UnitNO,CreateType
-,meterReaderID,meterReaderName,chargerID,chargerName,operatorName FROM Meter_Install_Peccant MIS WHERE TaskID=@TaskID
-END
-INSERT INTO waterMeter (waterMeterId,waterMeterNo,waterMeterStartNumber,waterMeterPositionName,waterMeterPositionId,
-waterMeterSizeId,waterMeterTypeId,ISUSECHANGE,CHANGEMONTH,waterMeterTypeIdChange,WATERFIXVALUE,waterMeterProduct,waterMeterSerialNumber,waterMeterMode,
-,waterMeterMaxRange,waterMeterProofreadingDate,waterMeteProofreadingPeriod,waterUserId,isSummaryMeter,waterMeterParentId,STARTUSEDATETIME,MEMO
-,waterMeterState,IsReverse,WATERMETERLOCKNO) 
-SELECT waterMeterId,waterMeterNo,waterMeterStartNumber,waterMeterPositionName,waterMeterPositionId,
-waterMeterSizeId,waterMeterTypeId,ISUSECHANGE,CHANGEMONTH,waterMeterTypeIdChange,WATERFIXVALUE,waterMeterProduct,waterMeterSerialNumber,waterMeterMode,
-waterMeterMagnification,waterMeterMaxRange,waterMeterProofreadingDate,waterMeteProofreadingPeriod,waterUserId,isSummaryMeter,waterMeterParentId,
-STARTUSEDATETIME,MEMO,waterMeterState,IsReverse,WATERMETERLOCKNO FROM Meter WHERE MeterID IN (SELECT MeterID FROM Meter_User WHERE TaskID=@TaskID)
-INSERT INTO User_Append (TaskID,waterUserNO,waterUserName) SELECT TaskID,waterUserNO,waterUserName FROM Meter_Install_Peccant WHERE TaskID=@TaskID
-COMMIT TRAN";
-            int count = DbHelperSQL.ExecuteSql(strsql, new SqlParameter[] { new SqlParameter("@TaskID", TaskID) });
             return count > 0 ? true : false;
-
         }
-
-      
-
     }
 }

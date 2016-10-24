@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmApprove_Peccant_User));
             this.Btn_Submit = new System.Windows.Forms.Button();
             this.PL = new System.Windows.Forms.Panel();
+            this.ordernumber = new System.Windows.Forms.TextBox();
+            this.waterMeterPositionName = new System.Windows.Forms.ComboBox();
             this.waterMeterParentId = new System.Windows.Forms.ComboBox();
             this.waterMeterState = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -42,6 +44,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.waterMeterSerialNumber = new System.Windows.Forms.TextBox();
+            this.waterMeterStartNumber = new System.Windows.Forms.TextBox();
             this.waterMeterTypeId = new System.Windows.Forms.ComboBox();
             this.waterMeterSizeId = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -50,13 +53,12 @@
             this.label29 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
-            this.ordernumber = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
             this.DUANID = new System.Windows.Forms.ComboBox();
             this.meterReaderID = new System.Windows.Forms.ComboBox();
             this.chargerID = new System.Windows.Forms.ComboBox();
             this.label22 = new System.Windows.Forms.Label();
             this.label55 = new System.Windows.Forms.Label();
-            this.CreateTypeID = new System.Windows.Forms.ComboBox();
+            this.CreateType = new System.Windows.Forms.ComboBox();
             this.label54 = new System.Windows.Forms.Label();
             this.UnitNO = new System.Windows.Forms.TextBox();
             this.BuildingNO = new System.Windows.Forms.TextBox();
@@ -69,7 +71,7 @@
             this.label38 = new System.Windows.Forms.Label();
             this.label53 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
-            this.memo = new System.Windows.Forms.TextBox();
+            this.Memo = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.chargeType = new System.Windows.Forms.ComboBox();
@@ -84,8 +86,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.meterReadingID = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.waterMeterPositionName = new System.Windows.Forms.ComboBox();
-            this.waterMeterStartNumber = new System.Windows.Forms.TextBox();
             this.PL.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -109,6 +109,7 @@
             this.PL.AutoScroll = true;
             this.PL.BackColor = System.Drawing.Color.Transparent;
             this.PL.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PL.BackgroundImage")));
+            this.PL.Controls.Add(this.ordernumber);
             this.PL.Controls.Add(this.waterMeterPositionName);
             this.PL.Controls.Add(this.waterMeterParentId);
             this.PL.Controls.Add(this.waterMeterState);
@@ -130,13 +131,12 @@
             this.PL.Controls.Add(this.label29);
             this.PL.Controls.Add(this.label28);
             this.PL.Controls.Add(this.label32);
-            this.PL.Controls.Add(this.ordernumber);
             this.PL.Controls.Add(this.DUANID);
             this.PL.Controls.Add(this.meterReaderID);
             this.PL.Controls.Add(this.chargerID);
             this.PL.Controls.Add(this.label22);
             this.PL.Controls.Add(this.label55);
-            this.PL.Controls.Add(this.CreateTypeID);
+            this.PL.Controls.Add(this.CreateType);
             this.PL.Controls.Add(this.label54);
             this.PL.Controls.Add(this.UnitNO);
             this.PL.Controls.Add(this.BuildingNO);
@@ -149,7 +149,7 @@
             this.PL.Controls.Add(this.label38);
             this.PL.Controls.Add(this.label53);
             this.PL.Controls.Add(this.label45);
-            this.PL.Controls.Add(this.memo);
+            this.PL.Controls.Add(this.Memo);
             this.PL.Controls.Add(this.label8);
             this.PL.Controls.Add(this.label7);
             this.PL.Controls.Add(this.chargeType);
@@ -165,6 +165,24 @@
             this.PL.Name = "PL";
             this.PL.Size = new System.Drawing.Size(510, 297);
             this.PL.TabIndex = 8;
+            // 
+            // ordernumber
+            // 
+            this.ordernumber.Location = new System.Drawing.Point(406, 66);
+            this.ordernumber.Name = "ordernumber";
+            this.ordernumber.Size = new System.Drawing.Size(68, 21);
+            this.ordernumber.TabIndex = 166;
+            this.ordernumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.waterMeterStartNumber_KeyPress);
+            // 
+            // waterMeterPositionName
+            // 
+            this.waterMeterPositionName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.waterMeterPositionName.DropDownWidth = 120;
+            this.waterMeterPositionName.FormattingEnabled = true;
+            this.waterMeterPositionName.Location = new System.Drawing.Point(266, 182);
+            this.waterMeterPositionName.Name = "waterMeterPositionName";
+            this.waterMeterPositionName.Size = new System.Drawing.Size(76, 20);
+            this.waterMeterPositionName.TabIndex = 165;
             // 
             // waterMeterParentId
             // 
@@ -266,6 +284,15 @@
             this.waterMeterSerialNumber.Size = new System.Drawing.Size(90, 21);
             this.waterMeterSerialNumber.TabIndex = 151;
             // 
+            // waterMeterStartNumber
+            // 
+            this.waterMeterStartNumber.Location = new System.Drawing.Point(100, 209);
+            this.waterMeterStartNumber.Name = "waterMeterStartNumber";
+            this.waterMeterStartNumber.Size = new System.Drawing.Size(90, 21);
+            this.waterMeterStartNumber.TabIndex = 149;
+            this.waterMeterStartNumber.Text = "0";
+            this.waterMeterStartNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.waterMeterStartNumber_KeyPress);
+            // 
             // waterMeterTypeId
             // 
             this.waterMeterTypeId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -279,7 +306,6 @@
             // waterMeterSizeId
             // 
             this.waterMeterSizeId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.waterMeterSizeId.Enabled = false;
             this.waterMeterSizeId.FormattingEnabled = true;
             this.waterMeterSizeId.Location = new System.Drawing.Point(406, 181);
             this.waterMeterSizeId.Name = "waterMeterSizeId";
@@ -346,20 +372,6 @@
             this.label32.TabIndex = 154;
             this.label32.Text = "所属总表：";
             // 
-            // ordernumber
-            // 
-            this.ordernumber.AllowEmpty = false;
-            this.ordernumber.EmptyMessage = "";
-            this.ordernumber.ErrorMessage = "";
-            this.ordernumber.InputType = Common.WinControl.Ryan.RegTextbox.RyanTextBox.EMInputTypes.文本;
-            this.ordernumber.Location = new System.Drawing.Point(406, 67);
-            this.ordernumber.Name = "ordernumber";
-            this.ordernumber.RegexExpression = "";
-            this.ordernumber.RemoveSpace = false;
-            this.ordernumber.Size = new System.Drawing.Size(68, 21);
-            this.ordernumber.TabIndex = 105;
-            this.ordernumber.ValidateState = false;
-            // 
             // DUANID
             // 
             this.DUANID.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
@@ -417,21 +429,21 @@
             this.label55.TabIndex = 102;
             this.label55.Text = "收 费 员：";
             // 
-            // CreateTypeID
+            // CreateType
             // 
-            this.CreateTypeID.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.CreateTypeID.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.CreateTypeID.DropDownWidth = 120;
-            this.CreateTypeID.FormattingEnabled = true;
-            this.CreateTypeID.Items.AddRange(new object[] {
+            this.CreateType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.CreateType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.CreateType.DropDownWidth = 120;
+            this.CreateType.FormattingEnabled = true;
+            this.CreateType.Items.AddRange(new object[] {
             "正式",
             "非正式",
             "基建",
             "无表"});
-            this.CreateTypeID.Location = new System.Drawing.Point(100, 154);
-            this.CreateTypeID.Name = "CreateTypeID";
-            this.CreateTypeID.Size = new System.Drawing.Size(90, 20);
-            this.CreateTypeID.TabIndex = 100;
+            this.CreateType.Location = new System.Drawing.Point(100, 154);
+            this.CreateType.Name = "CreateType";
+            this.CreateType.Size = new System.Drawing.Size(90, 20);
+            this.CreateType.TabIndex = 100;
             // 
             // label54
             // 
@@ -550,12 +562,12 @@
             this.label45.TabIndex = 88;
             this.label45.Text = "*段  号：";
             // 
-            // memo
+            // Memo
             // 
-            this.memo.Location = new System.Drawing.Point(266, 154);
-            this.memo.Name = "memo";
-            this.memo.Size = new System.Drawing.Size(208, 21);
-            this.memo.TabIndex = 15;
+            this.Memo.Location = new System.Drawing.Point(266, 154);
+            this.Memo.Name = "Memo";
+            this.Memo.Size = new System.Drawing.Size(208, 21);
+            this.Memo.TabIndex = 15;
             // 
             // label8
             // 
@@ -693,26 +705,6 @@
             this.label1.Text = "*抄 表 本：";
             this.label1.Visible = false;
             // 
-            // waterMeterPositionName
-            // 
-            this.waterMeterPositionName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.waterMeterPositionName.DropDownWidth = 120;
-            this.waterMeterPositionName.Enabled = false;
-            this.waterMeterPositionName.FormattingEnabled = true;
-            this.waterMeterPositionName.Location = new System.Drawing.Point(266, 182);
-            this.waterMeterPositionName.Name = "waterMeterPositionName";
-            this.waterMeterPositionName.Size = new System.Drawing.Size(76, 20);
-            this.waterMeterPositionName.TabIndex = 165;
-            // 
-            // waterMeterStartNumber
-            // 
-            this.waterMeterStartNumber.Location = new System.Drawing.Point(100, 209);
-            this.waterMeterStartNumber.Name = "waterMeterStartNumber";
-            this.waterMeterStartNumber.Size = new System.Drawing.Size(90, 21);
-            this.waterMeterStartNumber.TabIndex = 149;
-            this.waterMeterStartNumber.Text = "0";
-            this.waterMeterStartNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.waterMeterStartNumber_KeyPress);
-            // 
             // FrmApprove_Peccant_User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -744,7 +736,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox meterReadingPageNo;
-        private System.Windows.Forms.TextBox memo;
+        private System.Windows.Forms.TextBox Memo;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox chargeType;
@@ -767,13 +759,12 @@
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label53;
         private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.ComboBox CreateTypeID;
+        private System.Windows.Forms.ComboBox CreateType;
         private System.Windows.Forms.Label label54;
         private System.Windows.Forms.ComboBox meterReaderID;
         private System.Windows.Forms.ComboBox chargerID;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label55;
-        private Common.WinControl.Ryan.RegTextbox.RyanTextBox ordernumber;
         private System.Windows.Forms.ComboBox waterMeterParentId;
         private System.Windows.Forms.ComboBox waterMeterState;
         private System.Windows.Forms.Label label10;
@@ -795,5 +786,6 @@
         private System.Windows.Forms.ComboBox waterMeterSizeId;
         private System.Windows.Forms.ComboBox waterMeterPositionName;
         private System.Windows.Forms.TextBox waterMeterStartNumber;
+        private System.Windows.Forms.TextBox ordernumber;
     }
 }
