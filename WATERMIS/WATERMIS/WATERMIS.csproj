@@ -136,6 +136,10 @@
       <Project>{80D145CD-0A7C-49FB-BEF5-45DC8D5892A1}</Project>
       <Name>DBUtility</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FinanceOS\FinanceOS.csproj">
+      <Project>{7EF5B386-B2D4-40C3-AD3A-CEDEC81B0076}</Project>
+      <Name>FinanceOS</Name>
+    </ProjectReference>
     <ProjectReference Include="..\INVOICEMANAGE\INVOICEMANAGE.csproj">
       <Project>{67D14BB8-E68C-4C9F-BF99-02215AAF7385}</Project>
       <Name>INVOICEMANAGE</Name>

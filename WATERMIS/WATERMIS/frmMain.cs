@@ -24,6 +24,7 @@ using WorkFlow;
 using AppManage;
 using WaterBusiness;
 using ApproveCenter;
+using FinanceOS;
 
 
 namespace WATERMIS
@@ -1051,6 +1052,13 @@ namespace WATERMIS
             FrmApproveMain frm = new FrmApproveMain();
             frm.dockPanel2 = this.dockPanel1;
             GoTo(this, frm, true);
+        }
+
+        private void 业扩收费ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmFinanceCenter frm = new FrmFinanceCenter();
+            GoTo(this, frm, true);
+
         }
     }
 }

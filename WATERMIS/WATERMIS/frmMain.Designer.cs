@@ -199,6 +199,7 @@
             this.bgNotice = new System.ComponentModel.BackgroundWorker();
             this.trNotice = new System.Windows.Forms.Timer(this.components);
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
+            this.业扩收费ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -216,6 +217,7 @@
             this.水表管理ToolStripMenuItem1,
             this.业扩管理ToolStripMenuItem,
             this.审批中心ToolStripMenuItem,
+            this.业扩收费ToolStripMenuItem,
             this.营业审批ToolStripMenuItem,
             this.查询统计ToolStripMenuItem,
             this.窗口ToolStripMenuItem});
@@ -1540,6 +1542,13 @@
             this.dockPanel1.Size = new System.Drawing.Size(1350, 426);
             this.dockPanel1.TabIndex = 5;
             // 
+            // 业扩收费ToolStripMenuItem
+            // 
+            this.业扩收费ToolStripMenuItem.Name = "业扩收费ToolStripMenuItem";
+            this.业扩收费ToolStripMenuItem.Size = new System.Drawing.Size(86, 25);
+            this.业扩收费ToolStripMenuItem.Text = "业扩收费";
+            this.业扩收费ToolStripMenuItem.Click += new System.EventHandler(this.业扩收费ToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1738,6 +1747,7 @@
         private System.Windows.Forms.ToolStripMenuItem 业扩管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 营业审批ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 审批中心ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 业扩收费ToolStripMenuItem;
 
     }
 }

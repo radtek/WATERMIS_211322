@@ -6,12 +6,16 @@
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{7EF5B386-B2D4-40C3-AD3A-CEDEC81B0076}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FinanceOS</RootNamespace>
     <AssemblyName>FinanceOS</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <StartupObject>
+    </StartupObject>
+    <TargetFrameworkSubset>
+    </TargetFrameworkSubset>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,33 +35,97 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BASEFUNCTION, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WATERMIS\bin\x86\Debug\BASEFUNCTION.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Xml.Linq">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.9.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WATERMIS\bin\x86\Debug\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="FrmFinanceCenter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FrmFinanceCenter.Designer.cs">
+      <DependentUpon>FrmFinanceCenter.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="FrmFinance_Invoice_Change.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFinance_Invoice_Change.Designer.cs">
+      <DependentUpon>FrmFinance_Invoice_Change.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFinance_Invoice_Print.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFinance_Invoice_Print.Designer.cs">
+      <DependentUpon>FrmFinance_Invoice_Print.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFinance_Invoice_Scrap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFinance_Invoice_Scrap.Designer.cs">
+      <DependentUpon>FrmFinance_Invoice_Scrap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFinance_Receipt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFinance_Receipt.Designer.cs">
+      <DependentUpon>FrmFinance_Receipt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFinance_Receipted.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFinance_Receipted.Designer.cs">
+      <DependentUpon>FrmFinance_Receipted.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFinance_Receivable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFinance_Receivable.Designer.cs">
+      <DependentUpon>FrmFinance_Receivable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFinance_Receivable_OP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFinance_Receivable_OP.Designer.cs">
+      <DependentUpon>FrmFinance_Receivable_OP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFinance_Refund.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFinance_Refund.Designer.cs">
+      <DependentUpon>FrmFinance_Refund.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFinance_Settle_Day.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFinance_Settle_Day.Designer.cs">
+      <DependentUpon>FrmFinance_Settle_Day.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFinance_Settle_Month.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFinance_Settle_Month.Designer.cs">
+      <DependentUpon>FrmFinance_Settle_Month.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="FrmFinanceCenter.resx">
+      <DependentUpon>FrmFinanceCenter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFinance_Receivable.resx">
+      <DependentUpon>FrmFinance_Receivable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFinance_Receivable_OP.resx">
+      <DependentUpon>FrmFinance_Receivable_OP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -68,6 +136,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -77,6 +146,20 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{F1DAC157-5CF0-4ABE-AB30-E1B0EADA5354}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBinterface\DBinterface.csproj">
+      <Project>{1D1E2E75-6B84-446F-A446-0D7BE7A3502D}</Project>
+      <Name>DBinterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SysControl\SysControl.csproj">
+      <Project>{10BDADD7-D8EA-4D19-AD9D-A7678BBB5CD8}</Project>
+      <Name>SysControl</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

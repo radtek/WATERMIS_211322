@@ -643,8 +643,8 @@ begin
 SET XACT_ABORT ON
 begin tran
 --–¥»ÎMeter_WorkResolve
-INSERT INTO Meter_WorkResolve(ResolveID,TaskID,WorkFlowID,WorkName,PointName,PointSort,DoID,DoName,DepartementID,loginId,userName,Rulers,GroupID,TimeLimit,IsSkip,GoPointID,IsVoided,IsViewCharge,IsCharge,IsCashier) 
-SELECT NEWID() AS ResolveID, @TaskID AS TaskID,VW.WorkFlowID,VW.WorkName,VW.PointName,VW.PointSort,VW.DoID,VW.DoName,VW.DepartementID,VW.loginId,VW.userName,VW.Rulers,VW.GroupID,VW.TimeLimit,VW.IsSkip,VW.GoPointID,VW.IsVoided,VW.IsViewCharge,VW.IsCharge,VW.IsCashier  FROM [View_WorkResolve] VW  WHERE WORKFLOWID=@WORKFLOWID
+INSERT INTO Meter_WorkResolve(ResolveID,TaskID,WorkFlowID,WorkName,PointName,PointSort,DoID,DoName,DepartementID,loginId,userName,Rulers,GroupID,TimeLimit,IsSkip,GoPointID,IsVoided,IsViewCharge,IsCharge,IsCashier,YS) 
+SELECT NEWID() AS ResolveID, @TaskID AS TaskID,VW.WorkFlowID,VW.WorkName,VW.PointName,VW.PointSort,VW.DoID,VW.DoName,VW.DepartementID,VW.loginId,VW.userName,VW.Rulers,VW.GroupID,VW.TimeLimit,VW.IsSkip,VW.GoPointID,VW.IsVoided,VW.IsViewCharge,VW.IsCharge,VW.IsCashier,VW.YS  FROM [View_WorkResolve] VW  WHERE WORKFLOWID=@WORKFLOWID
 --–¥»ÎMeter_WorkTask
 INSERT INTO Meter_WorkTask (TaskID,TaskName,WorkFlowID,TaskCode,PointSort,AcceptUserID,AcceptUser,SD) VALUES (@TaskID,@TaskName,@WORKFLOWID,@WorkCode,@PointSort,@AcceptUserID,@AcceptUser,@SD)
 UPDATE {4} SET [State]=1,FlowID=@WORKFLOWID,TaskID=@TaskID WHERE {5}=@ExceID
