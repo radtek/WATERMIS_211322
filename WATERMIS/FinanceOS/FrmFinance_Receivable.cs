@@ -6,11 +6,14 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Common.DotNetUI;
+using DBinterface.IDAL;
+using DBinterface.DAL;
 
 namespace FinanceOS
 {
     public partial class FrmFinance_Receivable : Form
     {
+        private Finance_IDAL fdal = new Finance_Dal();
         public FrmFinance_Receivable()
         {
             InitializeComponent();
@@ -27,10 +30,10 @@ namespace FinanceOS
             if (dgList.CurrentRow != null)
             {
                 FrmFinance_Receivable_OP frm = new FrmFinance_Receivable_OP();
-               
+                frm.TaskID = dgList.CurrentRow.Cells["TaskID"].Value.ToString();
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
-                   
+
                 }
             }
         }
@@ -56,14 +59,11 @@ namespace FinanceOS
 
         private void BindData()
         {
-            DataTable dt = new SqlServerHelper().GetDateTableBySql("SELECT DISTINCT Meter_Table.TableID,Meter_Table.Table_Name_CH FROM View_WorkBase,Meter_Table WHERE View_WorkBase.TableID=Meter_Table.TableID AND View_WorkBase.[State] IN (1,2,5)");
-            ControlBindHelper.BindComboBoxData(this.CB_ID, dt, "Table_Name_CH", "TableID", true);
+            ControlBindHelper.BindComboBoxData(this.CB_ID, fdal.GetTableList(), "Table_Name_CH", "TableID", true);
 
-            dt = new SqlServerHelper().GetDateTableBySql("SELECT DISTINCT CreateMonth,CreateMonth AS CreateMonthVALUE FROM View_TaskFee");
-            ControlBindHelper.BindComboBoxData(this.CB_Month, dt, "CreateMonthVALUE", "CreateMonth", true);
+            ControlBindHelper.BindComboBoxData(this.CB_Month, fdal.GetChargeMonth(), "CreateMonthVALUE", "CreateMonth", true);
 
-            dt = new SqlServerHelper().GetDateTableBySql("SELECT DISTINCT CreateDay,CreateDay AS CreateDayVALUE FROM View_TaskFee");
-            ControlBindHelper.BindComboBoxData(this.CB_Day, dt, "CreateDayVALUE", "CreateDay", true);
+            ControlBindHelper.BindComboBoxData(this.CB_Day, fdal.GetChargeDay(), "CreateDayVALUE", "CreateDay", true);
 
             ShowData();
         }
@@ -71,25 +71,27 @@ namespace FinanceOS
         private void ShowData()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append( @"SELECT MT.Table_Name_CH,VW.SD,VW.waterUserId,VW.waterUserName,VW.ApplyUser,VT.FEE,VW.waterPhone,VT.CreateDate,VT.PointTime,VW.TableID,VT.TaskID,VT.STATES,VW.ID
-FROM View_TaskFee VT  LEFT JOIN View_WorkBase VW ON VT.TaskID=VW.TASKID,Meter_Table MT WHERE VW.TableID=MT.TableID AND VT.States=0 AND VW.[State] IN (1,2,5)");
+            sb.Append(fdal.ChargeSqlList());
+
+            sb.Append(" AND VT.States=0 ");
 
             if (!CB_ID.SelectedValue.ToString().Equals(""))
             {
-                sb.AppendFormat(" AND VW.ID='{0}'",CB_ID.SelectedValue);
+                sb.AppendFormat(" AND VW.TableID='{0}'", CB_ID.SelectedValue);
             }
             if (!CB_Month.SelectedValue.ToString().Equals(""))
             {
-                sb.AppendFormat(" AND VT.CreateMonth='{0}'",CB_Month.SelectedValue);
+                sb.AppendFormat(" AND VT.CreateMonth='{0}'", CB_Month.SelectedValue);
             }
             if (!CB_Day.SelectedValue.ToString().Equals(""))
             {
-                sb.AppendFormat(" AND VT.CreateDay='{0}'",CB_Day.SelectedValue);
+                sb.AppendFormat(" AND VT.CreateDay='{0}'", CB_Day.SelectedValue);
             }
             if (!TB_Keys.Text.Equals(""))
             {
-
+                sb.AppendFormat(" AND (waterUserName LIKE '%{0}%' OR ApplyUser LIKE '%{0}%' OR waterPhone LIKE '%{0}%' OR waterUserId LIKE '%{0}%')", TB_Keys.Text.Trim());
             }
+
             uC_DataGridView_Page1.Fields = new string[,] { { "rowNum", "序号" }, 
                                                            { "Table_Name_CH", "业务类型" }, 
                                                            { "SD", "流水号" }, 
@@ -100,6 +102,7 @@ FROM View_TaskFee VT  LEFT JOIN View_WorkBase VW ON VT.TaskID=VW.TASKID,Meter_Ta
                                                            { "ApplyPhone", "联系电话" },
                                                            { "CreateDate", "申请时间" }
             };
+            uC_DataGridView_Page1.FieldStatis = new string[,] { { "Table_Name_CH", "合计" }, { "FEE", "" } };
             uC_DataGridView_Page1.SqlString = sb.ToString();
             uC_DataGridView_Page1.PageOrderField = "PointTime";
             uC_DataGridView_Page1.PageOrderType = "DESC";
@@ -109,8 +112,8 @@ FROM View_TaskFee VT  LEFT JOIN View_WorkBase VW ON VT.TaskID=VW.TASKID,Meter_Ta
 
         private void FrmFinance_Receivable_Load(object sender, EventArgs e)
         {
-              }
+        }
 
-       
+
     }
 }

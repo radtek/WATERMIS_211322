@@ -58,6 +58,7 @@
     <Compile Include="BLL\Meter_Install_Single_BLL.cs" />
     <Compile Include="DALFactory.cs" />
     <Compile Include="DAL\EquipMent_DAL.cs" />
+    <Compile Include="DAL\Finance_Dal.cs" />
     <Compile Include="DAL\MeterInstall_DAL.cs" />
     <Compile Include="DAL\Meter_DAL.cs" />
     <Compile Include="DAL\Meter_Install_Single_DAL.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="DAL\WaterBusiness_DAL.cs" />
     <Compile Include="DAL\Meter_Install_Peccant_DAL.cs" />
     <Compile Include="IDAL\EquipMent_IDAL.cs" />
+    <Compile Include="IDAL\Finance_IDAL.cs" />
     <Compile Include="IDAL\MeterInstall_IDAL.cs" />
     <Compile Include="IDAL\Meter_IDAL.cs" />
     <Compile Include="IDAL\Meter_Install_Peccant_IDAL.cs" />

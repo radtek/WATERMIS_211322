@@ -39,6 +39,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\WATERMIS\bin\x86\Debug\BASEFUNCTION.dll</HintPath>
     </Reference>
+    <Reference Include="FastReport, Version=2014.4.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WATERMIS\bin\x86\Debug\FastReport.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -121,6 +126,9 @@
     <EmbeddedResource Include="FrmFinanceCenter.resx">
       <DependentUpon>FrmFinanceCenter.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmFinance_Receipted.resx">
+      <DependentUpon>FrmFinance_Receipted.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmFinance_Receivable.resx">
       <DependentUpon>FrmFinance_Receivable.cs</DependentUpon>
     </EmbeddedResource>
@@ -148,6 +156,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{1A522A59-6899-4106-88C9-A6E9D50DC363}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{F1DAC157-5CF0-4ABE-AB30-E1B0EADA5354}</Project>
       <Name>Common</Name>
