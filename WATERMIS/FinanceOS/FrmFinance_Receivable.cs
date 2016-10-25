@@ -8,12 +8,21 @@ using System.Windows.Forms;
 using Common.DotNetUI;
 using DBinterface.IDAL;
 using DBinterface.DAL;
+using System.Collections;
+using Common.DotNetData;
 
 namespace FinanceOS
 {
     public partial class FrmFinance_Receivable : Form
     {
         private Finance_IDAL fdal = new Finance_Dal();
+
+        private string TaskID = string.Empty;
+        private string PointSort = string.Empty;
+        private string ResolveID = string.Empty;
+        private string TableName = string.Empty;
+        private bool _IsFinal = true;
+
         public FrmFinance_Receivable()
         {
             InitializeComponent();
@@ -29,12 +38,52 @@ namespace FinanceOS
             DataGridView dgList = (DataGridView)sender;
             if (dgList.CurrentRow != null)
             {
-                FrmFinance_Receivable_OP frm = new FrmFinance_Receivable_OP();
-                frm.TaskID = dgList.CurrentRow.Cells["TaskID"].Value.ToString();
-                if (frm.ShowDialog() == DialogResult.OK)
-                {
+                TaskID = dgList.CurrentRow.Cells["TaskID"].Value.ToString();
+                _IsFinal = bool.Parse(dgList.CurrentRow.Cells["IsFinal"].Value.ToString());
 
+                Hashtable ht = new SqlServerHelper().GetHashtableById("Meter_WorkTask", "TaskID", TaskID);
+                PointSort = ht["POINTSORT"].ToString();
+
+                Hashtable htt = new SqlServerHelper().GetHashtableById("View_WorkBase", "TaskID", TaskID);
+                if (htt.Contains("TABLENAME"))
+                {
+                    TableName = htt["TABLENAME"].ToString();
                 }
+
+                string sqlstr = string.Format("SELECT * FROM Meter_WorkResolve MWR WHERE MWR.TaskID='{0}' AND PointSort={1} AND IsCashier=1 AND loginId='{2}'", TaskID, PointSort, AppDomain.CurrentDomain.GetData("LOGINID").ToString());
+                DataTable dt = new SqlServerHelper().GetDateTableBySql(sqlstr);
+                if (DataTableHelper.IsExistRows(dt))
+                {
+                    ResolveID = dt.Rows[0]["ResolveID"].ToString();
+
+                    if (_IsFinal)
+                    {
+                        FrmFinance_Receivable_OP frm = new FrmFinance_Receivable_OP();
+                        frm.TaskID = TaskID;
+                        frm.PointSort = PointSort;
+                        frm.ResolveID = ResolveID;
+                        frm.TableName = TableName;
+                        if (frm.ShowDialog() == DialogResult.OK)
+                        {
+                            ShowData();
+                        }
+                    }
+                    else
+                    {
+                        FrmFinance_Receivable_JS frm = new FrmFinance_Receivable_JS();
+                        frm.TaskID = TaskID;
+                        frm.PointSort = PointSort;
+                        frm.ResolveID = ResolveID;
+                        frm.TableName = TableName;
+                        if (frm.ShowDialog() == DialogResult.OK)
+                        {
+                            ShowData();
+                        }
+                    }
+                }
+
+
+
             }
         }
 

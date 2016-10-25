@@ -26,7 +26,7 @@ namespace DBinterface.DAL
 
         public string ChargeSqlList()
         {
-            return @"SELECT MT.Table_Name_CH,VW.SD,VW.waterUserId,VW.waterUserName,VW.ApplyUser,VT.FEE,VW.waterPhone,VT.CreateDate,VT.PointTime,VW.TableID,VT.TaskID,VT.STATES,VW.ID
+            return @"SELECT MT.Table_Name_CH,VW.SD,VW.waterUserId,VW.waterUserName,VW.ApplyUser,VT.FEE,VW.waterPhone,VT.CreateDate,VT.PointTime,VW.TableID,VT.TaskID,VT.STATES,VW.ID,VT.IsFinal
 FROM View_TaskFee VT  LEFT JOIN View_WorkBase VW ON VT.TaskID=VW.TASKID,Meter_Table MT WHERE VW.TableID=MT.TableID AND VW.[State] IN (1,2,5)";
         }
 

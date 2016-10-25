@@ -25,8 +25,8 @@ namespace FinanceOS
         public string TaskID;
         private string _LastPointSort;
         public string PointSort = string.Empty;
+        public string TableName = string.Empty;
 
-        private bool _IsFinal = false;
         private string _SelectResolveID = "";
         private string strLogID;
         private string strName;
@@ -44,7 +44,6 @@ namespace FinanceOS
         //private decimal _Abate = 0m;
         private decimal _BCSS = 0m;
         private decimal _BCYS = 0m;
-        private decimal _prestore = 0m;
 
         // private int _State = 0;
         private string _FeeItems = "";
@@ -52,6 +51,9 @@ namespace FinanceOS
         private string[] _PrintFeeItems;
         private int _FeeType = 0;
         private Hashtable hc = new Hashtable();
+
+        private decimal _prestore = 0m;
+
         #endregion
 
 
@@ -91,9 +93,6 @@ namespace FinanceOS
 
         private void FrmFinance_Receivable_OP_Load(object sender, EventArgs e)
         {
-            Hashtable ht = new SqlServerHelper().GetHashtableById("Meter_WorkTask", "TaskID", TaskID);
-            PointSort = ht["POINTSORT"].ToString();
-
             if (AppDomain.CurrentDomain.GetData("LOGINID") != null && AppDomain.CurrentDomain.GetData("LOGINID") != DBNull.Value)
             {
                 strLogID = AppDomain.CurrentDomain.GetData("LOGINID").ToString();
@@ -124,15 +123,66 @@ namespace FinanceOS
             htBaseMes = DataTableHelper.DataTableToHashtable(dt);
             new SqlServerHelper().BindHashTableToForm(htBaseMes, this.panel1.Controls);
 
-            sqlstr = string.Format("SELECT * FROM Meter_WorkResolve MWR WHERE MWR.TaskID='{0}' AND PointSort={1} AND IsCashier=1 AND loginId='{2}'", TaskID, PointSort, strLogID);
-            dt = new SqlServerHelper().GetDateTableBySql(sqlstr);
+            BindDepartmentFee();
+        }
+
+        private string GetPrintFee(string FeeID, string Fee)
+        {
+            string result = string.Empty;
+            DataTable dt = new SqlServerHelper().GetDateTableBySql("SELECT TOP 1 * FROM Meter_FeeItmes WHERE FeeID =FeeID", new SqlParameter[] { new SqlParameter("@FeeID", FeeID) });
             if (DataTableHelper.IsExistRows(dt))
             {
-                ResolveID = dt.Rows[0]["ResolveID"].ToString();
+                //{ID|收费项目名称|单价|单位|数量|总费用}
+                DataRow dr = dt.Rows[0];
+                decimal _Price = 0m;
 
-                BindDepartmentFee();
-                GetReceiptNO();
+                if (decimal.TryParse(dr["Price"].ToString(), out _Price))
+                {
+                    decimal _fee = 0m;
+                    if (decimal.TryParse(Fee, out _fee))
+                    {
+                        _Price = _Price == 0m ? _fee : _Price;
+                        if (_fee == 0m)
+                        {
+                            result = string.Format("{0}|{1}|{2}|{3}|{4}|{5}",
+                                                                 dt.Rows[0]["FeeID"].ToString(),
+                                                                  dt.Rows[0]["FeeItem"].ToString(),
+                                                                  _Price,
+                                                                  dt.Rows[0]["Units"].ToString(),
+                                                                  0,
+                                                                  0
+                                                                 );
+                        }
+                        else
+                        {
+                            result = string.Format("{0}|{1}|{2}|{3}|{4}|{5}",
+                                     dt.Rows[0]["FeeID"].ToString(),
+                                      dt.Rows[0]["FeeItem"].ToString(),
+                                      _Price,
+                                      dt.Rows[0]["Units"].ToString(),
+                                      (int)(_fee / _Price),
+                                      Fee
+                                     );
+                        }
+                    }
+
+                }
+                else
+                {
+                    result = string.Format("{0}|{1}|{2}|{3}|{4}|{5}",
+                                      dt.Rows[0]["FeeID"].ToString(),
+                                       dt.Rows[0]["FeeItem"].ToString(),
+                                       Fee,
+                                       dt.Rows[0]["Units"].ToString(),
+                                      1,
+                                       Fee
+                                      );
+                }
+
+
             }
+
+            return result;
         }
 
         #region
@@ -145,57 +195,22 @@ namespace FinanceOS
         private void BindDepartmentFee()
         {
             FP_Dep.Controls.Clear();
+            DataTable dt = null;
+            dt = sysidal.GetDepartMentFee(TaskID, PointSort);
+            _LastPointSort = dt.Rows[0]["FeePointSort"].ToString();
 
-            DataTable dt = sysidal.GetDepartMentFee(TaskID, PointSort);
             if (DataTableHelper.IsExistRows(dt))
             {
-                _LastPointSort = dt.Rows[0]["FeePointSort"].ToString();
-                _IsFinal = bool.Parse(dt.Rows[0]["IsFinal"].ToString());
-                if (!_IsFinal)
+                foreach (DataRow dr in dt.Rows)
                 {
-                    dt = sysidal.GetDepartMentFeeFinal(TaskID, PointSort);
-                    if (DataTableHelper.IsExistRows(dt))
-                    {
-                        foreach (DataRow dr in dt.Rows)
-                        {
-                            UC_DepartmentFee UD = new UC_DepartmentFee();
-                            UD.DataRowToProperty(dr);
-                            UD.Button_Open_Click += new EventHandler(UD_Button_Open_Click);
-                            FP_Dep.Controls.Add(UD);
-                        }
-                    }
-                }
-                else
-                {
-                    foreach (DataRow dr in dt.Rows)
-                    {
-                        UC_DepartmentFee UD = new UC_DepartmentFee();
-                        UD.DataRowToProperty(dr);
-                        UD.Button_Open_Click += new EventHandler(UD_Button_Open_Click);
-                        FP_Dep.Controls.Add(UD);
-                    }
+                    UC_DepartmentFee UD = new UC_DepartmentFee();
+                    UD.DataRowToProperty(dr);
+                    UD.Button_Open_Click += new EventHandler(UD_Button_Open_Click);
+                    FP_Dep.Controls.Add(UD);
                 }
 
                 TotalFee = sysidal.GetTotalFeeByPointSort(TaskID, _LastPointSort);
-                LB_Title.Text = _IsFinal ? "各部门费用列表(预算)" : "各部门费用列表(决算)";
                 LB_TotalFee.Text = string.Format("总计：{0}元", TotalFee);
-            }
-        }
-
-        /// <summary>
-        /// 获取最大收据号
-        /// </summary>
-        private void GetReceiptNO()
-        {
-            //获取新的收据号码,8位收据号
-            DataTable dtNewReceriptNO = BLLWATERFEECHARGE.GetMaxReceiptNO(strLogID);
-            if (dtNewReceriptNO.Rows.Count > 0)
-            {
-                object objReceiptNO = dtNewReceriptNO.Rows[0]["RECEIPTNO"];
-                if (Information.IsNumeric(objReceiptNO))
-                {
-                    RECEIPTNO.Text = (Convert.ToInt64(objReceiptNO) + 1).ToString().PadLeft(8, '0');
-                }
             }
         }
 
@@ -223,6 +238,7 @@ namespace FinanceOS
                 CHARGEBCSS.Text = TOTALCHARGE.Text;
             }
         }
+
         #endregion
 
         private void CHARGETYPEID_SelectedIndexChanged(object sender, EventArgs e)
@@ -234,33 +250,64 @@ namespace FinanceOS
 
         private void Btn_Print_Click(object sender, EventArgs e)
         {
+            if (sysidal.IsChargeOver(TaskID, _LastPointSort))
+            {
+                Btn_Print.Enabled = false;
+
+                int count = sysidal.UpdateApprove_defalut(TableName, ResolveID, true, "收费完成", PointSort, TaskID);
+
+                if (count > 0)
+                {
+                    //===============================================================================================打印收条
+                    MessageBox.Show("收费完成！");
+                    this.DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    Btn_Print.Enabled = true;
+                }
+            }
+            else
+            {
+                MessageBox.Show("还有未收费项目！");
+            }
+
+        }
+
+        private bool Approve_Finance()
+        {
+            _prestore = sysidal.GetUserPrestore(TableName, TaskID);
+            string _chargeID = sysidal.GetNewChargeID(strLogID);
+            hc["TaskID"] = TaskID;
+            hc["CHARGEClASS"] = 14;
+            hc["TableName"] = TableName;
+            hc["Prestore"] = _BCSS + _prestore;
+            hc["CHARGEID"] = _chargeID;
+            hc["TaskID"] = TaskID;
+            hc["CHARGEBCSS"] = _BCSS;
+            hc["CHARGEBCYS"] = _BCSS;
+            hc["TOTALCHARGE"] = _BCSS;
+            hc["FeeList"] = _FeeItems;
+            hc["CHARGETYPEID"] = CHARGETYPEID.SelectedValue;
+            hc["CHARGEWORKERID"] = strLogID;
+            hc["CHARGEWORKERNAME"] = strRealName;
+            hc["ReceiptPrintSign"] = "";
+            hc["RECEIPTNO"] = "";  
+            hc["POSRUNNINGNO"] = POSRUNNINGNO.Text;
+            hc["Memo"] = Memo.Text;
+            hc["LastPointSort"] = _LastPointSort;
+            hc["ResolveID"] = _SelectResolveID;
+            return sysidal.ApproveBudgetPrestore(hc);
+        }
+
+        private void Btn_Charge_Click(object sender, EventArgs e)
+        {
             if (string.IsNullOrEmpty(TOTALCHARGE.Text.Trim()))
             {
                 mes.Show("请选择收费项目!");
                 return;
             }
 
-            if (RECEIPTNO.Text.Trim() == "")
-            {
-                mes.Show("请输入收据号!");
-                RECEIPTNO.Focus();
-                return;
-            }
-            if (!Information.IsNumeric(RECEIPTNO.Text))
-            {
-                mes.Show("收据号只能由数字组成!");
-                RECEIPTNO.SelectAll();
-                return;
-            }
-            RECEIPTNO.Text = RECEIPTNO.Text.PadLeft(8, '0');
-            if (BLLWATERFEECHARGE.IsExistReceiptNO(RECEIPTNO.Text))
-            {
-                if (mes.ShowQ("系统检测到号码为'" + RECEIPTNO.Text + "'的收据已使用,确定使用此号码吗?") != DialogResult.OK)
-                {
-                    RECEIPTNO.SelectAll();
-                    return;
-                }
-            }
             if (CHARGETYPEID.SelectedValue == null || CHARGETYPEID.SelectedValue == DBNull.Value)
             {
                 mes.Show("收款方式不能为空!");
@@ -284,87 +331,6 @@ namespace FinanceOS
             {
                 if (Approve_Finance())
                 {
-                    //===================================ByRen201610170956===================================================打印收据
-                    #region
-                    FastReport.Report report1 = new FastReport.Report();
-                    try
-                    {
-                        string strWaterUserName = "", strAddress = "", strFeeName = "";
-                        DateTime dtNow = mes.GetDatetimeNow(); //获取收据打印时间
-                        decimal decDepSum = 0;
-
-                        object objMes = htBaseMes["WATERUSERNAME"];
-                        if (objMes != null && objMes != DBNull.Value)
-                            strWaterUserName = objMes.ToString();
-
-                        objMes = htBaseMes["WATERUSERADDRESS"];
-                        if (objMes != null && objMes != DBNull.Value)
-                            strAddress = objMes.ToString();
-
-                        for (int i = 0; i < dtFeeItems.Rows.Count; i++)
-                        {
-                            string strFeeNameSingle = "";
-                            decimal decFeeSingle = 0;
-
-                            object obj = dtFeeItems.Rows[i]["FeeItem"];
-                            if (obj != null && obj != DBNull.Value)
-                                strFeeNameSingle = obj.ToString();
-
-                            obj = dtFeeItems.Rows[i]["Fee"];
-                            if (Information.IsNumeric(obj))
-                                decFeeSingle = Convert.ToDecimal(obj);
-
-                            if (strFeeName == "")
-                                strFeeName = strFeeNameSingle + ":" + decFeeSingle.ToString("F2");
-                            else
-                                strFeeName += "\r\n" + strFeeNameSingle + ":" + decFeeSingle.ToString("F2");
-
-                            decDepSum += decFeeSingle;
-                        }
-
-                        report1.Load(Application.StartupPath + @"\PRINTModel\收据模板\报装预算收据.frx");
-
-                        (report1.FindObject("CellWaterUserName") as FastReport.Table.TableCell).Text = strWaterUserName;
-                        (report1.FindObject("CellWaterUserAddress") as FastReport.Table.TableCell).Text = strAddress;
-
-                        (report1.FindObject("txtBCSS") as FastReport.TextObject).Text = "本次实收: " + _BCSS.ToString("F2");
-                        (report1.FindObject("txtYSZJ") as FastReport.TextObject).Text = "预算总计: " + _BCSS.ToString("F2");
-                        (report1.FindObject("txtFeeDetailSummery") as FastReport.TextObject).Text = strFeeDepartMent + "预算明细: ";
-                        (report1.FindObject("txtFeeDetail") as FastReport.TextObject).Text = strFeeName;
-
-                        (report1.FindObject("txtChargeWorkerName") as FastReport.TextObject).Text = strRealName;
-                        (report1.FindObject("txtReceiptNO") as FastReport.TextObject).Text = "NO." + RECEIPTNO.Text.PadLeft(8, '0');
-
-                        string strCapMoney = RMBToCapMoney.CmycurD(_BCSS.ToString("F2"));
-                        if (CHARGETYPEID.SelectedValue.ToString() == "2")
-                        {
-                            (report1.FindObject("txtCapMoney") as FastReport.TextObject).Text = "金额大写:" + strCapMoney + "   " + "交易流水号:" + POSRUNNINGNO.Text;
-                        }
-                        else
-                            (report1.FindObject("txtCapMoney") as FastReport.TextObject).Text = "金额大写:" + strCapMoney;
-
-                        report1.PrintSettings.ShowDialog = false;
-                        report1.Prepare();
-                        report1.Print();
-
-                        //获取新的收据号码,8位收据号
-                        if (Information.IsNumeric(RECEIPTNO.Text))
-                        {
-                            RECEIPTNO.Text = (Convert.ToInt64(RECEIPTNO.Text) + 1).ToString().PadLeft(8, '0');
-                        }
-                    }
-                    catch (Exception exx)
-                    {
-                        MessageBox.Show(exx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    finally
-                    {
-                        // free resources used by report
-                        report1.Dispose();
-                    }
-                    #endregion
-                    //=========================================================================
-
                     mes.Show("收费成功！");
                     BindDepartmentFee();
                     TOTALCHARGE.Text = "";
@@ -376,69 +342,7 @@ namespace FinanceOS
                 mes.Show("未检测到收费信息!");
             }
 
-            if (sysidal.IsChargeOver(TaskID, _LastPointSort))
-            {
-                Btn_Submit.Enabled = false;
-
-                int count = sysidal.UpdateApprove_defalut(htBaseMes["TABLE_NAME"].ToString(), ResolveID, true, "收费完成", PointSort, TaskID);
-
-                if (count > 0)
-                {
-                    MessageBox.Show("收费完成！");
-                }
-                else
-                {
-                    Btn_Submit.Enabled = true;
-                }
-            }
-
         }
 
-        private void Btn_Submit_Click(object sender, EventArgs e)
-        {
-            if (sysidal.IsChargeOver(TaskID, _LastPointSort))
-            {
-                Btn_Submit.Enabled = false;
-
-                int count = sysidal.UpdateApprove_defalut(htBaseMes["TABLE_NAME"].ToString(), ResolveID, true, "收费完成", PointSort, TaskID);
-
-                if (count > 0)
-                {
-                    MessageBox.Show("收费完成！");
-                }
-                else
-                {
-                    Btn_Submit.Enabled = true;
-                }
-            }
-            else
-            {
-                MessageBox.Show("还有未收费项目！");
-            }
-        }
-
-        private bool Approve_Finance()
-        {
-            string _chargeID = sysidal.GetNewChargeID(strLogID);
-            hc["CHARGEClASS"] = 14;
-            hc["TableName"] = htBaseMes["TABLE_NAME"].ToString();
-            hc["Prestore"] = _BCSS + _prestore;
-            hc["CHARGEID"] = _chargeID;
-            hc["TaskID"] = TaskID;
-            hc["CHARGEBCSS"] = _BCSS;
-            hc["CHARGEBCYS"] = _BCSS;
-            hc["TOTALCHARGE"] = _BCSS;
-            hc["FeeList"] = _FeeItems;
-            hc["CHARGETYPEID"] = CHARGETYPEID.SelectedValue;
-            hc["CHARGEWORKERID"] = strLogID;
-            hc["CHARGEWORKERNAME"] = strRealName;
-            hc["ReceiptPrintSign"] = ReceiptPrintSign.Checked;
-            hc["RECEIPTNO"] = RECEIPTNO.Text.Trim().PadLeft(8, '0');  //保存8位收据号
-            hc["POSRUNNINGNO"] = POSRUNNINGNO.Text;
-            hc["Memo"] = Memo.Text;
-            hc["LastPointSort"] = _LastPointSort;
-            hc["ResolveID"] = _SelectResolveID;
-            return sysidal.ApproveBudgetPrestore(hc);
-        }
     }
 }

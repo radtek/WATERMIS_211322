@@ -98,6 +98,12 @@
     <Compile Include="FrmFinance_Receivable.Designer.cs">
       <DependentUpon>FrmFinance_Receivable.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmFinance_Receivable_JS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFinance_Receivable_JS.Designer.cs">
+      <DependentUpon>FrmFinance_Receivable_JS.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmFinance_Receivable_OP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmFinance_Receivable.resx">
       <DependentUpon>FrmFinance_Receivable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFinance_Receivable_JS.resx">
+      <DependentUpon>FrmFinance_Receivable_JS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmFinance_Receivable_OP.resx">
       <DependentUpon>FrmFinance_Receivable_OP.cs</DependentUpon>
