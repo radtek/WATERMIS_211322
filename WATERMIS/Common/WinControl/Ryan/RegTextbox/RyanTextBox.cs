@@ -289,7 +289,7 @@ namespace Common.WinControl.Ryan.RegTextbox
         {
             CheckInput();
             _ShowTime.Enabled = true;
-            
+
         }
 
         //protected override void OnEnter(EventArgs e)
@@ -305,22 +305,25 @@ namespace Common.WinControl.Ryan.RegTextbox
 
         public void TimeOut(object source, System.Timers.ElapsedEventArgs e)
         {
-
-            if (_tooltip!=null)
+            try
             {
-                if (_tooltip.Active)
+                if (_tooltip != null)
                 {
-                    _tooltip.Hide(_ShowControl);
+                    if (_tooltip.Active)
+                    {
+                        _tooltip.Hide(_ShowControl);
+                        _ShowTime.Stop();
+                    }
+                }
+                else
+                {
                     _ShowTime.Stop();
                 }
             }
-            else
+            catch (Exception)
             {
-                _ShowTime.Stop();
+
             }
-           
-        }  
-
-
+        }
     }
 }

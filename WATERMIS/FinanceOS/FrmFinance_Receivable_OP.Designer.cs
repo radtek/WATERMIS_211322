@@ -81,7 +81,7 @@
             // 
             // Btn_Print
             // 
-            this.Btn_Print.Location = new System.Drawing.Point(150, 483);
+            this.Btn_Print.Location = new System.Drawing.Point(190, 483);
             this.Btn_Print.Name = "Btn_Print";
             this.Btn_Print.Size = new System.Drawing.Size(97, 33);
             this.Btn_Print.TabIndex = 30;
@@ -261,12 +261,13 @@
             // 
             // Btn_Submit
             // 
-            this.Btn_Submit.Location = new System.Drawing.Point(255, 483);
+            this.Btn_Submit.Location = new System.Drawing.Point(344, 483);
             this.Btn_Submit.Name = "Btn_Submit";
             this.Btn_Submit.Size = new System.Drawing.Size(97, 33);
             this.Btn_Submit.TabIndex = 25;
             this.Btn_Submit.Text = "收费完成";
             this.Btn_Submit.UseVisualStyleBackColor = true;
+            this.Btn_Submit.Visible = false;
             this.Btn_Submit.Click += new System.EventHandler(this.Btn_Submit_Click);
             // 
             // groupBox1

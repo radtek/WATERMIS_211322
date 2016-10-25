@@ -24,7 +24,7 @@ namespace PersonalWork
 
         private void SearchData()
         {
-            string sqlstr = string.Format(@"SELECT * FROM  (SELECT MW.TaskName,MW.TaskCode,MWR.DoName,MW.PointTime,MWR.TimeLimit,MW.TaskID,MWR.ResolveID,MWR.PointSort,MWR.PointName,MW.SD,MWR.WorkName,MW.AcceptUser,MW.AcceptDate,MWR.CreateDate,loginId
+            string sqlstr = string.Format(@"SELECT * FROM  (SELECT MW.TaskName,MW.TaskCode,MWR.DoName,MW.PointTime,MWR.TimeLimit,MW.TaskID,MWR.ResolveID,MWR.PointSort,MWR.PointName,MW.SD,MWR.WorkName,MW.AcceptUser,MW.AcceptDate,MWR.CreateDate,MWR.isPass,loginId
    FROM Meter_WorkTask MW,Meter_WorkResolve MWR WHERE MW.TaskID=MWR.TaskID AND MW.PointSort=MWR.PointSort AND ','+loginId+',' like '%,'+'{0}'+',%' AND MW.[State]=1) M  ", loginid);
 
             if (!string.IsNullOrEmpty(uC_SearchApprove1.sb.ToString()))
@@ -45,6 +45,7 @@ namespace PersonalWork
             //uC_DataGridView_Page1.FieldStatis = new string[,] { { "AcceptID", "合计" }, { "Abate", "" }, { "IsAbate", "" } };
             uC_DataGridView_Page1.SqlString = sqlstr;
             uC_DataGridView_Page1.PageOrderField = "CreateDate";
+            uC_DataGridView_Page1.FiledColor = "isPass";
             uC_DataGridView_Page1.PageIndex = 1;
             uC_DataGridView_Page1.Init();
         }

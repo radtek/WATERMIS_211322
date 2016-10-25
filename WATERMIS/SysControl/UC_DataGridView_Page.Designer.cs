@@ -87,6 +87,7 @@
             this.DG.TabIndex = 1;
             this.DG.Tag = "9999";
             this.DG.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DG_CellDoubleClick);
+            this.DG.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.DG_CellPainting);
             this.DG.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DG_CellClick);
             // 
             // UC_DataGridView_Page

@@ -89,13 +89,13 @@ namespace FinanceOS
             }
             if (!TB_Keys.Text.Equals(""))
             {
-                sb.AppendFormat(" AND (waterUserName LIKE '%{0}%' OR ApplyUser LIKE '%{0}%' OR waterPhone LIKE '%{0}%' OR waterUserId LIKE '%{0}%')", TB_Keys.Text.Trim());
+                sb.AppendFormat(" AND (waterUserName LIKE '%{0}%' OR ApplyUser LIKE '%{0}%' OR waterPhone LIKE '%{0}%' OR waterUserId LIKE '%{0}%' OR SD LIKE '%{0}%')", TB_Keys.Text.Trim());
             }
 
             uC_DataGridView_Page1.Fields = new string[,] { { "rowNum", "序号" }, 
                                                            { "Table_Name_CH", "业务类型" }, 
                                                            { "SD", "流水号" }, 
-                                                           { "waterUserId", "户名ID" }, 
+                                                           { "waterUserId", "用户ID" }, 
                                                            { "waterUserName", "户名" }, 
                                                            { "ApplyUser", "申请人" },
                                                            { "FEE", "应收合计" },

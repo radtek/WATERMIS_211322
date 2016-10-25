@@ -4,6 +4,7 @@ using System.Data;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Drawing;
 
 namespace SysControl
 {
@@ -123,6 +124,25 @@ namespace SysControl
             get { return _RowCount; }
         }
 
+        private string _FiledColor;
+        [Browsable(true)]
+        [Category("文本")]
+        [Description("变色索引")]
+        [DefaultValue("")]//默认值  
+        public string FiledColor
+        {
+            get { return _FiledColor; }
+            set { _FiledColor = value; }
+        }
+
+        //private string[,] _ColorValue;
+
+        //public string[,] ColorValue
+        //{
+        //    get { return _ColorValue; }
+        //    set { _ColorValue = value; }
+        //}
+
         public void Init()
         {
             if (string.IsNullOrEmpty(_PageOrderField))
@@ -226,6 +246,73 @@ namespace SysControl
             if (CellDoubleClickEvents != null)
             {
                 CellDoubleClickEvents(sender, e);
+            }
+        }
+
+        private void DG_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(_FiledColor))
+            {
+                if (e.RowIndex>-1 && e.ColumnIndex>-1)
+                {
+                    if (DG.Rows[e.RowIndex].Cells[_FiledColor].Value != null && DG.Rows[e.RowIndex].Cells[_FiledColor].Value != DBNull.Value)
+                    {
+                        string _Value=DG.Rows[e.RowIndex].Cells[_FiledColor].Value.ToString();
+
+                        switch (_Value.ToUpper())
+                        { 
+                            case "0":
+                                DG.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
+                                break;
+                            case "1":
+                            case "TRUE":
+                                DG.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.DarkSeaGreen;
+                                break;
+                            case "2":
+                                DG.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Pink;
+                                break;
+                            case "3":
+                                DG.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Orange;
+                                break;
+                            case "4":
+                                DG.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Gray;
+                                break;
+                            case "5":
+                                DG.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightSkyBlue;
+                                break;
+                            case "6":
+                                DG.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Teal;
+                                break;
+                            default:
+                                DG.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
+                                break;
+                        }
+
+                        //if (_ColorValue.GetLength(0) > 0)
+                        //{
+                        //    if (Array.IndexOf(_ColorValue,_Value)!=-1)
+                        //    {
+                                
+                        //    }
+                        //}
+                        //switch ()
+                        //{
+                        //    case "":
+
+                        //        break;
+
+                        //    default:
+                        //        DG.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
+                        //        break;
+
+                        //}
+                        //if (DG.Rows[e.RowIndex].Cells[_FiledColor].Value.ToString().Equals("1"))
+                        //{
+                        //    DG.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.DarkSeaGreen;
+                        //}
+                    }
+                }
+             
             }
         }
 
