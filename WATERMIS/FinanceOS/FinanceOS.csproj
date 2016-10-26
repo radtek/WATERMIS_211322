@@ -144,6 +144,12 @@
     <EmbeddedResource Include="FrmFinance_Receivable_OP.resx">
       <DependentUpon>FrmFinance_Receivable_OP.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmFinance_Settle_Day.resx">
+      <DependentUpon>FrmFinance_Settle_Day.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFinance_Settle_Month.resx">
+      <DependentUpon>FrmFinance_Settle_Month.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
