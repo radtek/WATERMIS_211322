@@ -1060,5 +1060,11 @@ namespace WATERMIS
             GoTo(this, frm, true);
 
         }
+
+        private void 审批任务管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmWorkTask_Manage frm = new FrmWorkTask_Manage();
+            GoTo(this, frm, true);
+        }
     }
 }

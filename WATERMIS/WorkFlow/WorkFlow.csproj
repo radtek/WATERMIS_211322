@@ -96,6 +96,18 @@
     <Compile Include="FrmWorkFlow.Designer.cs">
       <DependentUpon>FrmWorkFlow.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmWorkTask_Goto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmWorkTask_Goto.Designer.cs">
+      <DependentUpon>FrmWorkTask_Goto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmWorkTask_Manage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmWorkTask_Manage.Designer.cs">
+      <DependentUpon>FrmWorkTask_Manage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Meter_WorkDo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +132,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmWorkFlow.resx">
       <DependentUpon>FrmWorkFlow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmWorkTask_Goto.resx">
+      <DependentUpon>FrmWorkTask_Goto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmWorkTask_Manage.resx">
+      <DependentUpon>FrmWorkTask_Manage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Meter_WorkDo.resx">
       <DependentUpon>Meter_WorkDo.cs</DependentUpon>
@@ -159,6 +177,10 @@
     <ProjectReference Include="..\DBinterface\DBinterface.csproj">
       <Project>{1D1E2E75-6B84-446F-A446-0D7BE7A3502D}</Project>
       <Name>DBinterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SysControl\SysControl.csproj">
+      <Project>{10BDADD7-D8EA-4D19-AD9D-A7678BBB5CD8}</Project>
+      <Name>SysControl</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

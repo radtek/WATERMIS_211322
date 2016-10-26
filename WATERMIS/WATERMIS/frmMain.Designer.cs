@@ -144,6 +144,7 @@
             this.水表管理ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.业扩管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.审批中心ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.业扩收费ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.营业审批ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查询统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.明细查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -199,7 +200,7 @@
             this.bgNotice = new System.ComponentModel.BackgroundWorker();
             this.trNotice = new System.Windows.Forms.Timer(this.components);
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.业扩收费ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.审批任务管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -547,7 +548,8 @@
             this.流程管理ToolStripMenuItem,
             this.节点管理ToolStripMenuItem,
             this.审批项目管理ToolStripMenuItem,
-            this.收费项目管理ToolStripMenuItem});
+            this.收费项目管理ToolStripMenuItem,
+            this.审批任务管理ToolStripMenuItem});
             this.流程设计ToolStripMenuItem.Name = "流程设计ToolStripMenuItem";
             this.流程设计ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.流程设计ToolStripMenuItem.Text = "流程设计";
@@ -1098,6 +1100,13 @@
             this.审批中心ToolStripMenuItem.Text = "审批中心";
             this.审批中心ToolStripMenuItem.Click += new System.EventHandler(this.审批中心ToolStripMenuItem_Click);
             // 
+            // 业扩收费ToolStripMenuItem
+            // 
+            this.业扩收费ToolStripMenuItem.Name = "业扩收费ToolStripMenuItem";
+            this.业扩收费ToolStripMenuItem.Size = new System.Drawing.Size(86, 25);
+            this.业扩收费ToolStripMenuItem.Text = "业扩收费";
+            this.业扩收费ToolStripMenuItem.Click += new System.EventHandler(this.业扩收费ToolStripMenuItem_Click);
+            // 
             // 营业审批ToolStripMenuItem
             // 
             this.营业审批ToolStripMenuItem.Name = "营业审批ToolStripMenuItem";
@@ -1542,12 +1551,12 @@
             this.dockPanel1.Size = new System.Drawing.Size(1350, 426);
             this.dockPanel1.TabIndex = 5;
             // 
-            // 业扩收费ToolStripMenuItem
+            // 审批任务管理ToolStripMenuItem
             // 
-            this.业扩收费ToolStripMenuItem.Name = "业扩收费ToolStripMenuItem";
-            this.业扩收费ToolStripMenuItem.Size = new System.Drawing.Size(86, 25);
-            this.业扩收费ToolStripMenuItem.Text = "业扩收费";
-            this.业扩收费ToolStripMenuItem.Click += new System.EventHandler(this.业扩收费ToolStripMenuItem_Click);
+            this.审批任务管理ToolStripMenuItem.Name = "审批任务管理ToolStripMenuItem";
+            this.审批任务管理ToolStripMenuItem.Size = new System.Drawing.Size(176, 26);
+            this.审批任务管理ToolStripMenuItem.Text = "审批任务管理";
+            this.审批任务管理ToolStripMenuItem.Click += new System.EventHandler(this.审批任务管理ToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -1748,6 +1757,7 @@
         private System.Windows.Forms.ToolStripMenuItem 营业审批ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 审批中心ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 业扩收费ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 审批任务管理ToolStripMenuItem;
 
     }
 }
