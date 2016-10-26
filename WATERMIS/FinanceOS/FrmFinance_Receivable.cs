@@ -50,7 +50,7 @@ namespace FinanceOS
                     TableName = htt["TABLENAME"].ToString();
                 }
 
-                string sqlstr = string.Format("SELECT * FROM Meter_WorkResolve MWR WHERE MWR.TaskID='{0}' AND PointSort={1} AND IsCashier=1 AND loginId='{2}'", TaskID, PointSort, AppDomain.CurrentDomain.GetData("LOGINID").ToString());
+                string sqlstr = string.Format("SELECT * FROM Meter_WorkResolve MWR WHERE MWR.TaskID='{0}' AND PointSort={1} AND IsCashier=1 AND loginId LIKE '%{2}%'", TaskID, PointSort, AppDomain.CurrentDomain.GetData("LOGINID").ToString());
                 DataTable dt = new SqlServerHelper().GetDateTableBySql(sqlstr);
                 if (DataTableHelper.IsExistRows(dt))
                 {
