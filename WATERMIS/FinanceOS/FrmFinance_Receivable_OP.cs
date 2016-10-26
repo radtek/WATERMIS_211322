@@ -15,6 +15,7 @@ using Common.DotNetUI;
 using BLL;
 using Microsoft.VisualBasic;
 using System.Data.SqlClient;
+using Common.DotNetCode;
 
 namespace FinanceOS
 {
@@ -258,7 +259,7 @@ namespace FinanceOS
 
                 if (count > 0)
                 {
-                    //===============================================================================================打印收条
+                    PrintReceipt(TaskID,_LastPointSort);
                     MessageBox.Show("收费完成！");
                     this.DialogResult = DialogResult.OK;
                 }
@@ -272,6 +273,50 @@ namespace FinanceOS
                 MessageBox.Show("还有未收费项目！");
             }
 
+        }
+        /// <summary>
+        /// 打印收条
+        /// </summary>
+        /// <param name="TaskID"></param>
+        /// <param name="_LastPointSort"></param>
+        private void PrintReceipt(string TaskID, string _LastPointSort)
+        {
+            //获取用户基本信息
+            Hashtable ht = new SqlServerHelper().GetHashtableById("View_WorkBase", "TaskID", TaskID);
+            if (ht.Contains("SD"))
+            {
+                string _waterUserId = ht["WATERUSERID"].ToString();
+                string _waterUserName = ht["WATERUSERNAME"].ToString();
+                string _SD = ht["SD"].ToString();
+                string _waterUserAddress = ht["WATERUSERADDRESS"].ToString();
+                string _TotalFee_CH = "";//合计大写
+
+                //获取费用合计
+                string sqlstr = @"SELECT SUM(FEE) AS FEE,InvoiceType AS FEENAME,'0' AS SORT FROM 
+(SELECT FEE,(SELECT InvoiceTitle FROM Meter_FeeItmes WHERE FeeID=MWF.FeeID) AS InvoiceType FROM Meter_WorkResolveFee MWF,Meter_WorkResolve MWR 
+WHERE MWF.ResolveID=MWR.ResolveID AND MWF.[STATE]=1 
+AND MWR.TaskID=@TaskID AND PointSort=@LastPoingSort
+) T GROUP BY InvoiceType
+UNION ALL
+SELECT SUM(CONVERT(decimal,Fee)),'合计','1' FROM Meter_WorkResolveFee MWF,Meter_WorkResolve MWR 
+WHERE MWF.ResolveID=MWR.ResolveID AND MWF.[STATE]=1
+AND MWR.TaskID=@TaskID AND PointSort=@LastPoingSort";
+                //FEE--收费金额
+                //FEENAME--收费名称
+                DataTable dt = new SqlServerHelper().GetDateTableBySql(sqlstr, new SqlParameter[] { new SqlParameter("@TaskID", TaskID), new SqlParameter("@LastPoingSort", _LastPointSort) });
+                if (DataTableHelper.IsExistRows(dt))
+                {
+                    DataRow[] DR = dt.Select("SORT=1");
+                    if (DR.Length.Equals(1))
+                    {
+                        _TotalFee_CH = RMBHelper.CmycurD(decimal.Parse(DR[0]["FEE"].ToString()));
+                    }
+
+                    //====================================打印
+
+
+                }
+            }
         }
 
         private bool Approve_Finance()
