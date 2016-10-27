@@ -36,12 +36,14 @@
             this.Btn_Submit = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.UserOpinion = new System.Windows.Forms.TextBox();
+            this.MeterCount = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
+            this.panel1.Controls.Add(this.MeterCount);
             this.panel1.Controls.Add(this.Btn_Save);
             this.panel1.Controls.Add(this.FP);
             this.panel1.Controls.Add(this.label4);
@@ -61,21 +63,22 @@
             this.Btn_Save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Save.Font = new System.Drawing.Font("微软雅黑 Light", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Btn_Save.ForeColor = System.Drawing.Color.White;
-            this.Btn_Save.Location = new System.Drawing.Point(133, 394);
+            this.Btn_Save.Location = new System.Drawing.Point(119, 398);
             this.Btn_Save.Name = "Btn_Save";
             this.Btn_Save.Size = new System.Drawing.Size(129, 41);
             this.Btn_Save.TabIndex = 88;
             this.Btn_Save.Text = "保存信息";
             this.Btn_Save.UseVisualStyleBackColor = false;
+            this.Btn_Save.Click += new System.EventHandler(this.Btn_Save_Click);
             // 
             // FP
             // 
             this.FP.AutoScroll = true;
             this.FP.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("FP.BackgroundImage")));
             this.FP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FP.Location = new System.Drawing.Point(83, 109);
+            this.FP.Location = new System.Drawing.Point(17, 114);
             this.FP.Name = "FP";
-            this.FP.Size = new System.Drawing.Size(408, 264);
+            this.FP.Size = new System.Drawing.Size(474, 277);
             this.FP.TabIndex = 87;
             // 
             // label4
@@ -95,12 +98,13 @@
             this.Btn_Submit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Submit.Font = new System.Drawing.Font("微软雅黑 Light", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Btn_Submit.ForeColor = System.Drawing.Color.White;
-            this.Btn_Submit.Location = new System.Drawing.Point(283, 394);
+            this.Btn_Submit.Location = new System.Drawing.Point(269, 398);
             this.Btn_Submit.Name = "Btn_Submit";
             this.Btn_Submit.Size = new System.Drawing.Size(129, 41);
             this.Btn_Submit.TabIndex = 6;
             this.Btn_Submit.Text = "提交审批";
             this.Btn_Submit.UseVisualStyleBackColor = false;
+            this.Btn_Submit.Click += new System.EventHandler(this.Btn_Submit_Click);
             // 
             // label1
             // 
@@ -120,6 +124,14 @@
             this.UserOpinion.Size = new System.Drawing.Size(408, 69);
             this.UserOpinion.TabIndex = 1;
             // 
+            // MeterCount
+            // 
+            this.MeterCount.Enabled = false;
+            this.MeterCount.Location = new System.Drawing.Point(83, 88);
+            this.MeterCount.Name = "MeterCount";
+            this.MeterCount.Size = new System.Drawing.Size(79, 21);
+            this.MeterCount.TabIndex = 106;
+            // 
             // FrmApprove_Group_MeterOut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -129,6 +141,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmApprove_Group_MeterOut";
             this.Text = "FrmApprove_Group_MeterOut";
+            this.Load += new System.EventHandler(this.FrmApprove_Group_MeterOut_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -144,5 +157,6 @@
         private System.Windows.Forms.Button Btn_Submit;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox UserOpinion;
+        private System.Windows.Forms.TextBox MeterCount;
     }
 }
