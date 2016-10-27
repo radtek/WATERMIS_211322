@@ -86,30 +86,30 @@ namespace PersonalWork
 
         private void BindGroupMeter()
         {
-            FP.Controls.Clear();
-            MeterCount1 = 0;
-            DataTable dt = new SqlServerHelper().GetDataTable("Meter_GroupMeter", "GroupID='" + _GroupID + "'", "waterMeterSerialNumber");
-            if (DataTableHelper.IsExistRows(dt))
-            {
-                foreach (DataRow dr in dt.Rows)
-                {
-                    GroupMeterSize GM = new GroupMeterSize();
-                    GM.GroupID = dr["GroupID"].ToString();
-                    GM.waterMeterSizeId = dr["waterMeterSizeId"].ToString();
-                    GM.MeterCount = int.Parse(dr["MeterCount"].ToString());
-                    MeterCount1 += GM.MeterCount;
-                    GM.Memo = dr["Memo"].ToString();
+            //FP.Controls.Clear();
+            //MeterCount1 = 0;
+            //DataTable dt = new SqlServerHelper().GetDataTable("Meter_GroupMeter", "GroupID='" + _GroupID + "'", "waterMeterSerialNumber");
+            //if (DataTableHelper.IsExistRows(dt))
+            //{
+            //    foreach (DataRow dr in dt.Rows)
+            //    {
+            //        GroupMeterSize GM = new GroupMeterSize();
+            //        GM.GroupID = dr["GroupID"].ToString();
+            //        GM.waterMeterSizeId = dr["waterMeterSizeId"].ToString();
+            //        GM.MeterCount = int.Parse(dr["MeterCount"].ToString());
+            //        MeterCount1 += GM.MeterCount;
+            //        GM.Memo = dr["Memo"].ToString();
 
-                    MS.Add(GM);
-                    UC_MeterSize UM = new UC_MeterSize();
-                    UM.WaterMeterSizeId = dr["waterMeterSizeId"].ToString();
-                    UM.MeterCount = int.Parse(dr["MeterCount"].ToString());
-                    UM.DelEvent += new EventHandler(UM_DelEvent);
-                    FP.Controls.Add(UM);
-                }
-                MG.GroupMeterSize_Items = MS;
-                MeterCount.Text = _MeterCount.ToString();
-            }
+            //        MS.Add(GM);
+            //        UC_MeterSize UM = new UC_MeterSize();
+            //        UM.WaterMeterSizeId = dr["waterMeterSizeId"].ToString();
+            //        UM.MeterCount = int.Parse(dr["MeterCount"].ToString());
+            //        UM.DelEvent += new EventHandler(UM_DelEvent);
+            //        FP.Controls.Add(UM);
+            //    }
+            //    MG.GroupMeterSize_Items = MS;
+            //    MeterCount.Text = _MeterCount.ToString();
+            //}
         }
 
 
