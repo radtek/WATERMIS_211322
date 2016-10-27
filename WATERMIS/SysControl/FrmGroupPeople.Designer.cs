@@ -1,4 +1,4 @@
-﻿namespace MeterInstall
+﻿namespace SysControl
 {
     partial class FrmGroupPeople
     {

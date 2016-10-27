@@ -52,19 +52,24 @@
             this.label83 = new System.Windows.Forms.Label();
             this.label84 = new System.Windows.Forms.Label();
             this.label85 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.MeterCount = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
+            this.panel1.Controls.Add(this.MeterCount);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.LB_More);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.userName);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.contractNO);
             this.panel1.Controls.Add(this.waterUserPeopleCount);
-            this.panel1.Controls.Add(this.label71);
             this.panel1.Controls.Add(this.ApplyUser);
             this.panel1.Controls.Add(this.label73);
             this.panel1.Controls.Add(this.Memo);
@@ -80,6 +85,7 @@
             this.panel1.Controls.Add(this.label83);
             this.panel1.Controls.Add(this.label84);
             this.panel1.Controls.Add(this.label85);
+            this.panel1.Controls.Add(this.label71);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -90,7 +96,7 @@
             // 
             this.LB_More.AutoSize = true;
             this.LB_More.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LB_More.Location = new System.Drawing.Point(76, 173);
+            this.LB_More.Location = new System.Drawing.Point(159, 172);
             this.LB_More.Name = "LB_More";
             this.LB_More.Size = new System.Drawing.Size(77, 12);
             this.LB_More.TabIndex = 102;
@@ -108,7 +114,7 @@
             // 
             // userName
             // 
-            this.userName.Location = new System.Drawing.Point(376, 104);
+            this.userName.Location = new System.Drawing.Point(231, 105);
             this.userName.Name = "userName";
             this.userName.ReadOnly = true;
             this.userName.Size = new System.Drawing.Size(111, 21);
@@ -117,11 +123,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(318, 108);
+            this.label2.Location = new System.Drawing.Point(164, 109);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 12);
+            this.label2.Size = new System.Drawing.Size(65, 12);
             this.label2.TabIndex = 99;
-            this.label2.Text = "受理人：";
+            this.label2.Text = "受 理 人：";
             // 
             // contractNO
             // 
@@ -134,7 +140,7 @@
             // waterUserPeopleCount
             // 
             this.waterUserPeopleCount.Enabled = false;
-            this.waterUserPeopleCount.Location = new System.Drawing.Point(71, 104);
+            this.waterUserPeopleCount.Location = new System.Drawing.Point(71, 167);
             this.waterUserPeopleCount.Name = "waterUserPeopleCount";
             this.waterUserPeopleCount.ReadOnly = true;
             this.waterUserPeopleCount.Size = new System.Drawing.Size(84, 21);
@@ -144,16 +150,17 @@
             // label71
             // 
             this.label71.AutoSize = true;
-            this.label71.Location = new System.Drawing.Point(5, 108);
+            this.label71.Location = new System.Drawing.Point(2, 109);
             this.label71.Name = "label71";
             this.label71.Size = new System.Drawing.Size(65, 12);
             this.label71.TabIndex = 98;
             this.label71.Text = "用 户 数：";
+            this.label71.Visible = false;
             // 
             // ApplyUser
             // 
             this.ApplyUser.Enabled = false;
-            this.ApplyUser.Location = new System.Drawing.Point(231, 104);
+            this.ApplyUser.Location = new System.Drawing.Point(71, 105);
             this.ApplyUser.Name = "ApplyUser";
             this.ApplyUser.Size = new System.Drawing.Size(79, 21);
             this.ApplyUser.TabIndex = 93;
@@ -230,7 +237,7 @@
             // label78
             // 
             this.label78.AutoSize = true;
-            this.label78.Location = new System.Drawing.Point(164, 108);
+            this.label78.Location = new System.Drawing.Point(4, 109);
             this.label78.Name = "label78";
             this.label78.Size = new System.Drawing.Size(65, 12);
             this.label78.TabIndex = 92;
@@ -281,6 +288,33 @@
             this.label85.TabIndex = 81;
             this.label85.Text = "受理编号：";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(254, 173);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 12);
+            this.label1.TabIndex = 103;
+            this.label1.Text = "水表数量：";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label3.Location = new System.Drawing.Point(404, 173);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 12);
+            this.label3.TabIndex = 104;
+            this.label3.Text = "点击查看详细";
+            // 
+            // MeterCount
+            // 
+            this.MeterCount.Enabled = false;
+            this.MeterCount.Location = new System.Drawing.Point(321, 168);
+            this.MeterCount.Name = "MeterCount";
+            this.MeterCount.Size = new System.Drawing.Size(79, 21);
+            this.MeterCount.TabIndex = 105;
+            // 
             // UC_Approve_GroupInfos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -319,6 +353,9 @@
         private System.Windows.Forms.Label label83;
         private System.Windows.Forms.Label label84;
         private System.Windows.Forms.Label label85;
+        private System.Windows.Forms.TextBox MeterCount;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label1;
 
     }
 }

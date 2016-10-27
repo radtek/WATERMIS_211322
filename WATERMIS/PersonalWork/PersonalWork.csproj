@@ -97,11 +97,35 @@
     <Compile Include="FrmApprove_Group_Budget.Designer.cs">
       <DependentUpon>FrmApprove_Group_Budget.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmApprove_Group_Design.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprove_Group_Design.Designer.cs">
+      <DependentUpon>FrmApprove_Group_Design.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmApprove_Group_Final.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmApprove_Group_Final.Designer.cs">
       <DependentUpon>FrmApprove_Group_Final.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmApprove_Group_Install.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprove_Group_Install.Designer.cs">
+      <DependentUpon>FrmApprove_Group_Install.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmApprove_Group_MeterOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprove_Group_MeterOut.Designer.cs">
+      <DependentUpon>FrmApprove_Group_MeterOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmApprove_Group_MeterSize.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprove_Group_MeterSize.Designer.cs">
+      <DependentUpon>FrmApprove_Group_MeterSize.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmApprove_Group_User.cs">
       <SubType>Form</SubType>
@@ -368,8 +392,20 @@
     <EmbeddedResource Include="FrmApprove_Group_Budget.resx">
       <DependentUpon>FrmApprove_Group_Budget.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmApprove_Group_Design.resx">
+      <DependentUpon>FrmApprove_Group_Design.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmApprove_Group_Final.resx">
       <DependentUpon>FrmApprove_Group_Final.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmApprove_Group_Install.resx">
+      <DependentUpon>FrmApprove_Group_Install.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmApprove_Group_MeterOut.resx">
+      <DependentUpon>FrmApprove_Group_MeterOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmApprove_Group_MeterSize.resx">
+      <DependentUpon>FrmApprove_Group_MeterSize.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmApprove_Group_User.resx">
       <DependentUpon>FrmApprove_Group_User.cs</DependentUpon>

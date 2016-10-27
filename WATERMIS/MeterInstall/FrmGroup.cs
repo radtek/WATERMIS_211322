@@ -94,7 +94,7 @@ namespace MeterInstall
                     GP.GroupPeople_Items = GPList;
                     BindGroupUser();
                 }
-               
+
                 Btn_Submit.Enabled = FlowFunction.IsAllowEdit(taskid);
                 Btn_Submit.Visible = Btn_Submit.Enabled;
             }
@@ -115,7 +115,7 @@ namespace MeterInstall
 
             if (string.IsNullOrEmpty(key))
             {
-                SDNO = new SqlServerHelper().GetSDByTable("Meter_Install_Group"); 
+                SDNO = new SqlServerHelper().GetSDByTable("Meter_Install_Group");
                 ht["GroupID"] = newKey;
                 ht["ACCEPTID"] = SDNO;
                 ht["LOGINID"] = strLogID;
@@ -126,9 +126,10 @@ namespace MeterInstall
                 ht["GroupID"] = key;
             }
             ht["AcceptDate"] = DateTime.Now.ToString();
+           
             if (new SqlServerHelper().Submit_AddOrEdit("Meter_Install_Group", "GroupID", key, ht))
             {
-                if (GP.GroupPeople_Items.Count>0)
+                if (GP.GroupPeople_Items.Count > 0)
                 {
                     SaveGoupPeople();
                 }
@@ -144,7 +145,7 @@ namespace MeterInstall
                     else
                     {
                         MessageBox.Show("任务创建失败！");
-                    }  
+                    }
                 }
                 else
                 {
@@ -156,7 +157,7 @@ namespace MeterInstall
 
         private void SaveGoupPeople()
         {
-            new SqlServerHelper().DeleteData("Meter_Group_People","GroupID",key);
+            new SqlServerHelper().DeleteData("Meter_Group_People", "GroupID", key);
             foreach (GroupPeople_Model GM in GP.GroupPeople_Items)
             {
                 Hashtable ht = new Hashtable();
@@ -169,7 +170,7 @@ namespace MeterInstall
                 ht["IsBoot"] = GM.IsBoot;
                 ht["CreateDate"] = DateTime.Now.ToString();
                 ht["CreateUser"] = strRealName;
-
+                ht["Step"] = 0;
                 new SqlServerHelper().Submit_AddOrEdit("Meter_Group_People", "GroupPeopleID", "", ht);
             }
         }
@@ -177,14 +178,14 @@ namespace MeterInstall
         private void FP_Click(object sender, EventArgs e)
         {
             FrmGroupPeople frm = new FrmGroupPeople();
-            
+
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 GroupPeople_Model GM = frm.GM;
                 //if (!GPList.Contains(GM))
                 //{
-                    GPList.Add(GM);
-               // }
+                GPList.Add(GM);
+                // }
                 GP.GroupPeople_Items = GPList;
 
                 BindGroupUser();

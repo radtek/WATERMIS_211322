@@ -9,11 +9,18 @@ using Common.DotNetUI;
 using DBinterface.Model;
 using System.Collections;
 
-namespace MeterInstall
+namespace SysControl
 {
     public partial class FrmGroupPeople : Form
     {
-        public GroupPeople_Model GM = new GroupPeople_Model();
+       // public GroupPeople_Model GM = new GroupPeople_Model();
+        private GroupPeople_Model _GM = new GroupPeople_Model();
+
+        public GroupPeople_Model GM
+        {
+            get { return _GM; }
+            set { _GM = value; }
+        }
 
         public FrmGroupPeople()
         {

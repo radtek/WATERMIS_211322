@@ -142,6 +142,8 @@ namespace DBinterface.IDAL
 
        Hashtable GetMeter_Install_GroupInfos(string TaskID);
 
+       DataTable GetMeter_Group_People(string GroupID, int Step);
+
        DataTable GetMeter_Group_People(string GroupID);
 
        string GetWaterUserTypeByID(string waterUserTypeId);

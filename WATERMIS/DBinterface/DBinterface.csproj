@@ -74,8 +74,10 @@
     <Compile Include="IDAL\WaterBusiness_IDAL.cs" />
     <Compile Include="IDAL\Meter_Install_Single_IDAL.cs" />
     <Compile Include="Model\EquipMent_Model.cs" />
+    <Compile Include="Model\GroupMeterSize.cs" />
     <Compile Include="Model\GroupPeople_Item.cs" />
     <Compile Include="Model\GroupPeople_Model.cs" />
+    <Compile Include="Model\Meter_GroupMeterSize.cs" />
     <Compile Include="Model\Meter_Install_Single_Model.cs" />
     <Compile Include="Model\Meter_Model.cs" />
     <Compile Include="Model\Meter_ModelList.cs" />

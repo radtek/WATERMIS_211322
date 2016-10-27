@@ -915,11 +915,18 @@ COMMIT TRAN", ht["TableName"].ToString());
             return new SqlServerHelper().GetHashtableById("Meter_Install_Group", "TaskID", TaskID);
         }
 
+        public DataTable GetMeter_Group_People(string GroupID,int Step)
+        {
+            string sqlstr = "SELECT * FROM Meter_Group_People MGP,waterMeterType MT,waterUserType UT,waterUserHouseType UHT	WHERE MGP.waterMeterTypeId=MT.waterMeterTypeId AND MGP.waterUserTypeId=UT.waterUserTypeId AND MGP.waterUserHouseTypeID=UHT.waterUserHouseTypeID AND GroupID=@GroupID AND Step=@Step";
+            return new SqlServerHelper().GetDateTableBySql(sqlstr, new SqlParameter[] { new SqlParameter("@GroupID", GroupID), new SqlParameter("@Step", Step) });
+        }
+
         public DataTable GetMeter_Group_People(string GroupID)
         {
-            // return new SqlServerHelper().GetDataTable("Meter_Group_People", "GroupID='"+GroupID+"'", "waterMeterTypeId");
-            string sqlstr = "SELECT * FROM Meter_Group_People MGP,waterMeterType MT,waterUserType UT,waterUserHouseType UHT	WHERE MGP.waterMeterTypeId=MT.waterMeterTypeId AND MGP.waterUserTypeId=UT.waterUserTypeId AND MGP.waterUserHouseTypeID=UHT.waterUserHouseTypeID AND GroupID=@GroupID";
-            return new SqlServerHelper().GetDateTableBySql(sqlstr, new SqlParameter[] { new SqlParameter("@GroupID", GroupID) });
+            //// return new SqlServerHelper().GetDataTable("Meter_Group_People", "GroupID='"+GroupID+"'", "waterMeterTypeId");
+            //string sqlstr = "SELECT * FROM Meter_Group_People MGP,waterMeterType MT,waterUserType UT,waterUserHouseType UHT	WHERE MGP.waterMeterTypeId=MT.waterMeterTypeId AND MGP.waterUserTypeId=UT.waterUserTypeId AND MGP.waterUserHouseTypeID=UHT.waterUserHouseTypeID AND GroupID=@GroupID";
+            //return new SqlServerHelper().GetDateTableBySql(sqlstr, new SqlParameter[] { new SqlParameter("@GroupID", GroupID) });
+            return GetMeter_Group_People(GroupID, 0);
         }
 
         public string GetWaterUserTypeByID(string waterUserTypeId)
