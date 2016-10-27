@@ -12,6 +12,8 @@ using Common.DotNetData;
 using SysControl;
 using System.Data.SqlClient;
 using Common.DotNetUI;
+using Microsoft.VisualBasic;
+using Common.DotNetCode;
 
 namespace FinanceOS
 {
@@ -103,8 +105,22 @@ namespace FinanceOS
             BindChargeType();
 
             BindDepartmentFee();
+
+            GetMaxReceiptNO();
         }
 
+        /// <summary>
+        /// 获取当前收费员最大8位收据号
+        /// </summary>
+        private void GetMaxReceiptNO()
+        {
+            string strSQL = "SELECT TOP 1 RECEIPTNO FROM Meter_Charge WHERE RECEIPTNO<>N'' AND CHARGEWORKERID=@CHARGEWORKERID ORDER BY ReceiptPrintTime DESC";
+            object objMax = new SqlServerHelper().GetFirsRowsValue(strSQL, new SqlParameter[] { new SqlParameter("@CHARGEWORKERID", strLogID) });
+            if (Information.IsNumeric(objMax))
+                RECEIPTNO.Text = Convert.ToInt32(objMax).ToString().PadLeft(8, '0');
+            else
+                RECEIPTNO.Text = "00000001";
+        }
         #region
         private void BindDepartmentFee()
         {
@@ -356,20 +372,64 @@ namespace FinanceOS
             }
             hc["CHARGEClASS"] = 15;
 
-            //if (ReceiptPrintSign.Checked)
-            //{
-            //    //==============================================================================获取收据编号
+            if (ReceiptPrintSign.Checked)
+                if (!Information.IsNumeric(RECEIPTNO.Text))
+                {
+                    MessageBox.Show("收据号只能由数字组成，请输入正确的收据号!");
+                    RECEIPTNO.Focus();
+                    return;
+                }
+            string strCapMoney = RMBHelper.CmycurD(_BCSS);
 
-            //    RECEIPTNO.Text = "";
-            //}
-            //else
-            //{
-            //    return;
-            //}
-
-
+            RECEIPTNO.Text = RECEIPTNO.Text.PadLeft(8,'0');
             if (Approve_Finance())
             {
+                if (ReceiptPrintSign.Checked)
+                {
+                    try
+                    {
+                        FastReport.Report report1 = new FastReport.Report();
+                        // load the existing report
+                        report1.Load(Application.StartupPath + @"\PRINTModel\收据模板\业扩决算收据模板.frx");
+
+                        (report1.FindObject("txtReceiptNO") as FastReport.TextObject).Text = "NO." + RECEIPTNO.Text;
+                        (report1.FindObject("txtWaterUserNO") as FastReport.TextObject).Text = "用 户 号:" + waterUserId.Text;
+                        (report1.FindObject("txtSD") as FastReport.TextObject).Text = "受理编号:" + SD.Text;
+                        (report1.FindObject("txtWaterUserName") as FastReport.TextObject).Text = "用户名称:" + waterUserName.Text;
+                        (report1.FindObject("txtWaterUserAddress") as FastReport.TextObject).Text = "地    址:" + waterUserAddress.Text;
+                        (report1.FindObject("txtBCSS") as FastReport.TextObject).Text = "本次实收:" + _BCSS.ToString("F2")+"元";
+
+                        (report1.FindObject("txtCapMoney") as FastReport.TextObject).Text = "金额大写:" + strCapMoney;
+                        (report1.FindObject("txtCasher") as FastReport.TextObject).Text = "收 款 员:" + strRealName;
+
+                        (report1.FindObject("txtReceiptNO1") as FastReport.TextObject).Text = "NO." + RECEIPTNO.Text;
+                        (report1.FindObject("txtWaterUserNO1") as FastReport.TextObject).Text = "用 户 号:" + waterUserId.Text;
+                        (report1.FindObject("txtSD1") as FastReport.TextObject).Text = "受理编号:" + SD.Text;
+                        (report1.FindObject("txtWaterUserName1") as FastReport.TextObject).Text = "用户名称:" + waterUserName.Text;
+                        (report1.FindObject("txtWaterUserAddress1") as FastReport.TextObject).Text = "地    址:" + waterUserAddress.Text;
+                        (report1.FindObject("txtBCSS1") as FastReport.TextObject).Text = "本次实收:" + _BCSS.ToString("F2") + "元";
+
+                        (report1.FindObject("txtCapMoney1") as FastReport.TextObject).Text = "金额大写:" + strCapMoney;
+                        (report1.FindObject("txtCasher1") as FastReport.TextObject).Text = "收 款 员:" + strRealName;
+
+                        //report1.Show();
+                        report1.PrintSettings.ShowDialog = false;
+                        report1.Prepare();
+                        report1.Print();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("收据打印失败:" + ex.Message);
+                    }
+                    if (Information.IsNumeric(RECEIPTNO.Text))
+                        RECEIPTNO.Text = (Convert.ToInt32(RECEIPTNO.Text) + 1).ToString().PadLeft(8,'0');
+                    else
+                        RECEIPTNO.Text = "00000001";
+                }
+                else
+                {
+                    return;
+                }
                 MessageBox.Show("收费成功！");
                 TOTALCHARGE.Text = "0";
                 CHARGEBCYS.Text = "0";

@@ -47,6 +47,7 @@
             this.LB_Prestore = new System.Windows.Forms.Label();
             this.Btn_Settle = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.RECEIPTNO = new System.Windows.Forms.TextBox();
             this.POSRUNNINGNO = new System.Windows.Forms.TextBox();
             this.LB_POSRUNNINGNO = new System.Windows.Forms.Label();
             this.CHARGEBCSS = new System.Windows.Forms.MaskedTextBox();
@@ -64,7 +65,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.CHARGEBCYS = new System.Windows.Forms.MaskedTextBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.RECEIPTNO = new System.Windows.Forms.MaskedTextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.LB_TotalFee = new System.Windows.Forms.Label();
             this.Btn_Print = new System.Windows.Forms.Button();
@@ -72,6 +72,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.FP_Items = new System.Windows.Forms.FlowLayoutPanel();
             this.Btn_Submit = new System.Windows.Forms.Button();
+            this.waterUserAddress = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.PL_JS.SuspendLayout();
@@ -91,6 +92,7 @@
             // panel1
             // 
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
+            this.panel1.Controls.Add(this.waterUserAddress);
             this.panel1.Controls.Add(this.StateName);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.CreateDate);
@@ -255,6 +257,7 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.RECEIPTNO);
             this.panel4.Controls.Add(this.POSRUNNINGNO);
             this.panel4.Controls.Add(this.LB_POSRUNNINGNO);
             this.panel4.Controls.Add(this.CHARGEBCSS);
@@ -272,12 +275,18 @@
             this.panel4.Controls.Add(this.label17);
             this.panel4.Controls.Add(this.CHARGEBCYS);
             this.panel4.Controls.Add(this.label18);
-            this.panel4.Controls.Add(this.RECEIPTNO);
             this.panel4.Controls.Add(this.label15);
             this.panel4.Location = new System.Drawing.Point(10, 186);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(486, 153);
             this.panel4.TabIndex = 161;
+            // 
+            // RECEIPTNO
+            // 
+            this.RECEIPTNO.Location = new System.Drawing.Point(327, 93);
+            this.RECEIPTNO.Name = "RECEIPTNO";
+            this.RECEIPTNO.Size = new System.Drawing.Size(144, 21);
+            this.RECEIPTNO.TabIndex = 153;
             // 
             // POSRUNNINGNO
             // 
@@ -400,7 +409,7 @@
             this.ReceiptPrintSign.Checked = true;
             this.ReceiptPrintSign.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ReceiptPrintSign.Enabled = false;
-            this.ReceiptPrintSign.Location = new System.Drawing.Point(261, 99);
+            this.ReceiptPrintSign.Location = new System.Drawing.Point(156, 95);
             this.ReceiptPrintSign.Name = "ReceiptPrintSign";
             this.ReceiptPrintSign.Size = new System.Drawing.Size(72, 16);
             this.ReceiptPrintSign.TabIndex = 132;
@@ -442,19 +451,11 @@
             this.label18.TabIndex = 127;
             this.label18.Text = "应收金额：";
             // 
-            // RECEIPTNO
-            // 
-            this.RECEIPTNO.Location = new System.Drawing.Point(84, 96);
-            this.RECEIPTNO.Mask = "999999999999999999999";
-            this.RECEIPTNO.Name = "RECEIPTNO";
-            this.RECEIPTNO.Size = new System.Drawing.Size(144, 21);
-            this.RECEIPTNO.TabIndex = 145;
-            // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Location = new System.Drawing.Point(18, 100);
+            this.label15.Location = new System.Drawing.Point(263, 99);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(65, 12);
             this.label15.TabIndex = 139;
@@ -521,6 +522,16 @@
             this.Btn_Submit.UseVisualStyleBackColor = true;
             this.Btn_Submit.Click += new System.EventHandler(this.Btn_Submit_Click);
             // 
+            // waterUserAddress
+            // 
+            this.waterUserAddress.AutoSize = true;
+            this.waterUserAddress.Location = new System.Drawing.Point(188, 63);
+            this.waterUserAddress.Name = "waterUserAddress";
+            this.waterUserAddress.Size = new System.Drawing.Size(29, 12);
+            this.waterUserAddress.TabIndex = 12;
+            this.waterUserAddress.Text = "地址";
+            this.waterUserAddress.Visible = false;
+            // 
             // FrmFinance_Receivable_JS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -580,7 +591,6 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.MaskedTextBox CHARGEBCYS;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.MaskedTextBox RECEIPTNO;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label LB_TotalFee;
         private System.Windows.Forms.Button Btn_Print;
@@ -588,5 +598,7 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.FlowLayoutPanel FP_Items;
         private System.Windows.Forms.Button Btn_Submit;
+        private System.Windows.Forms.TextBox RECEIPTNO;
+        private System.Windows.Forms.Label waterUserAddress;
     }
 }

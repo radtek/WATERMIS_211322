@@ -65,7 +65,7 @@
             this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 91F));
-            this.tb1.Size = new System.Drawing.Size(1212, 787);
+            this.tb1.Size = new System.Drawing.Size(1212, 750);
             this.tb1.TabIndex = 65;
             this.tb1.Tag = "9999";
             // 
@@ -191,7 +191,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 83);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1206, 610);
+            this.groupBox2.Size = new System.Drawing.Size(1206, 573);
             this.groupBox2.TabIndex = 902;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "待收费列表";
@@ -204,6 +204,7 @@
             this.uC_DataGridView_Page1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uC_DataGridView_Page1.Fields = null;
             this.uC_DataGridView_Page1.FieldStatis = null;
+            this.uC_DataGridView_Page1.FiledColor = null;
             this.uC_DataGridView_Page1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uC_DataGridView_Page1.Location = new System.Drawing.Point(3, 17);
             this.uC_DataGridView_Page1.MinimumSize = new System.Drawing.Size(833, 80);
@@ -211,7 +212,7 @@
             this.uC_DataGridView_Page1.PageIndex = 1;
             this.uC_DataGridView_Page1.PageOrderField = null;
             this.uC_DataGridView_Page1.PageSize = 100;
-            this.uC_DataGridView_Page1.Size = new System.Drawing.Size(1200, 590);
+            this.uC_DataGridView_Page1.Size = new System.Drawing.Size(1200, 553);
             this.uC_DataGridView_Page1.TabIndex = 906;
             this.uC_DataGridView_Page1.Tag = "9999";
             this.uC_DataGridView_Page1.CellDoubleClickEvents += new SysControl.UC_DataGridView_Page.CellDoubleClickEvent(this.uC_DataGridView_Page1_CellDoubleClickEvents);
@@ -223,7 +224,7 @@
             this.uC_FlowList1.AutoSize = true;
             this.uC_FlowList1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uC_FlowList1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uC_FlowList1.Location = new System.Drawing.Point(3, 699);
+            this.uC_FlowList1.Location = new System.Drawing.Point(3, 662);
             this.uC_FlowList1.MinimumSize = new System.Drawing.Size(900, 85);
             this.uC_FlowList1.Name = "uC_FlowList1";
             this.uC_FlowList1.Size = new System.Drawing.Size(1206, 85);
@@ -235,7 +236,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1212, 787);
+            this.ClientSize = new System.Drawing.Size(1212, 750);
             this.Controls.Add(this.tb1);
             this.Name = "FrmFinance_Receivable";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

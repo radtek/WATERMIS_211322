@@ -293,7 +293,8 @@ namespace FinanceOS
                 string _TotalFee_CH = "";//合计大写
 
                 //获取费用合计
-                string sqlstr = @"SELECT SUM(FEE) AS FEE,InvoiceType AS FEENAME,'0' AS SORT FROM 
+                string sqlstr = @"SELECT * FROM 
+(SELECT SUM(FEE) AS FEE,InvoiceType AS FEENAME,'0' AS SORT FROM 
 (SELECT FEE,(SELECT InvoiceTitle FROM Meter_FeeItmes WHERE FeeID=MWF.FeeID) AS InvoiceType FROM Meter_WorkResolveFee MWF,Meter_WorkResolve MWR 
 WHERE MWF.ResolveID=MWR.ResolveID AND MWF.[STATE]=1 
 AND MWR.TaskID=@TaskID AND PointSort=@LastPoingSort
@@ -301,7 +302,7 @@ AND MWR.TaskID=@TaskID AND PointSort=@LastPoingSort
 UNION ALL
 SELECT SUM(CONVERT(decimal,Fee)),'合计','1' FROM Meter_WorkResolveFee MWF,Meter_WorkResolve MWR 
 WHERE MWF.ResolveID=MWR.ResolveID AND MWF.[STATE]=1
-AND MWR.TaskID=@TaskID AND PointSort=@LastPoingSort";
+AND MWR.TaskID=@TaskID AND PointSort=@LastPoingSort) M WHERE FEE<>0";
                 //FEE--收费金额
                 //FEENAME--收费名称
                 DataTable dt = new SqlServerHelper().GetDateTableBySql(sqlstr, new SqlParameter[] { new SqlParameter("@TaskID", TaskID), new SqlParameter("@LastPoingSort", _LastPointSort) });
