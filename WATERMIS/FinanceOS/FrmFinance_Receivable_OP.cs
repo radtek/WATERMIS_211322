@@ -16,6 +16,7 @@ using BLL;
 using Microsoft.VisualBasic;
 using System.Data.SqlClient;
 using Common.DotNetCode;
+using FastReport;
 
 namespace FinanceOS
 {
@@ -313,7 +314,45 @@ AND MWR.TaskID=@TaskID AND PointSort=@LastPoingSort";
                     }
 
                     //====================================打印
+                    DataSet ds = new DataSet();
+                    DataTable dtTemp = dt.Copy();
+                    dtTemp.TableName = "收据模板";
+                    ds.Tables.Add(dtTemp);
+                    FastReport.Report report1 = new FastReport.Report();
 
+                    try
+                    {
+                        // load the existing report
+                        report1.Load(Application.StartupPath + @"\PRINTModel\收据模板\业扩预算收据模板.frx");
+
+                        (report1.FindObject("txtWaterUserNO") as FastReport.TextObject).Text = "用 户 号:" + _waterUserId;
+                        (report1.FindObject("txtSD") as FastReport.TextObject).Text = "受理编号:" + _SD;
+                        (report1.FindObject("txtWaterUserName") as FastReport.TextObject).Text = "用户名称:"+_waterUserName;
+                        (report1.FindObject("txtWaterUserAddress") as FastReport.TextObject).Text ="地    址:"+ _waterUserAddress;
+
+                        (report1.FindObject("txtCapMoney") as FastReport.TextObject).Text = "金额大写:" + _TotalFee_CH;
+                        (report1.FindObject("txtCasher") as FastReport.TextObject).Text = "收 款 员:" + strRealName;
+
+                        (report1.FindObject("txtWaterUserNO1") as FastReport.TextObject).Text = "用 户 号:" + _waterUserId;
+                        (report1.FindObject("txtSD1") as FastReport.TextObject).Text = "受理编号:" + _SD;
+                        (report1.FindObject("txtWaterUserName1") as FastReport.TextObject).Text = "用户名称:" + _waterUserName;
+                        (report1.FindObject("txtWaterUserAddress1") as FastReport.TextObject).Text = "地    址:" + _waterUserAddress;
+
+                        (report1.FindObject("txtCapMoney1") as FastReport.TextObject).Text = "金额大写:" + _TotalFee_CH;
+                        (report1.FindObject("txtCasher1") as FastReport.TextObject).Text = "收 款 员:" + strRealName;
+
+                        // register the dataset
+                        report1.RegisterData(ds);
+                        report1.GetDataSource("收据模板").Enabled = true;
+                        //report1.Show();
+                        report1.PrintSettings.ShowDialog = false;
+                        report1.Prepare();
+                        report1.Print();
+                    }
+                    catch (Exception ex)
+                    {
+                        mes.Show("收据打印失败:"+ex.Message);
+                    }
 
                 }
             }
