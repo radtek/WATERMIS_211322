@@ -38,6 +38,9 @@ namespace FinanceOS
             DataGridView dgList = (DataGridView)sender;
             if (dgList.CurrentRow != null)
             {
+                object obj = dgList.CurrentRow.Cells["TaskID"].Value;
+                if (obj == null || obj == DBNull.Value)
+                    return;
                 TaskID = dgList.CurrentRow.Cells["TaskID"].Value.ToString();
                 _IsFinal = bool.Parse(dgList.CurrentRow.Cells["IsFinal"].Value.ToString());
 

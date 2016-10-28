@@ -379,6 +379,16 @@ namespace FinanceOS
                     RECEIPTNO.Focus();
                     return;
                 }
+
+            if (!CHARGETYPEID.Text.Equals("现金"))
+            {
+                if (POSRUNNINGNO.Text.Trim() == "")
+                {
+                    MessageBox.Show("请输入交易流水号!");
+                    POSRUNNINGNO.Focus();
+                    return;
+                }
+            }
             string strCapMoney = RMBHelper.CmycurD(_BCSS);
 
             RECEIPTNO.Text = RECEIPTNO.Text.PadLeft(8,'0');
@@ -397,20 +407,47 @@ namespace FinanceOS
                         (report1.FindObject("txtSD") as FastReport.TextObject).Text = "受理编号:" + SD.Text;
                         (report1.FindObject("txtWaterUserName") as FastReport.TextObject).Text = "用户名称:" + waterUserName.Text;
                         (report1.FindObject("txtWaterUserAddress") as FastReport.TextObject).Text = "地    址:" + waterUserAddress.Text;
-                        (report1.FindObject("txtBCSS") as FastReport.TextObject).Text = "本次实收:" + _BCSS.ToString("F2")+"元";
+
+                        if (!CHARGETYPEID.Text.Equals("现金"))
+                            (report1.FindObject("txtRunningNO") as FastReport.TextObject).Text = "交易流水号:" + POSRUNNINGNO.Text;
+                        else
+                            (report1.FindObject("txtRunningNO") as FastReport.TextObject).Text = "";
 
                         (report1.FindObject("txtCapMoney") as FastReport.TextObject).Text = "金额大写:" + strCapMoney;
                         (report1.FindObject("txtCasher") as FastReport.TextObject).Text = "收 款 员:" + strRealName;
+                        if (_BCSS < 0)
+                        {
+                            (report1.FindObject("txtWaterUserSign") as FastReport.TextObject).Text = "用户签字:";
+                            (report1.FindObject("txtBCSS") as FastReport.TextObject).Text = "本次退款:" + _BCSS.ToString("F2") + "元";
+                        }
+                        else
+                        {
+                            (report1.FindObject("txtWaterUserSign") as FastReport.TextObject).Text = "";
+                            (report1.FindObject("txtBCSS") as FastReport.TextObject).Text = "本次实收:" + _BCSS.ToString("F2") + "元";
+                        }
 
                         (report1.FindObject("txtReceiptNO1") as FastReport.TextObject).Text = "NO." + RECEIPTNO.Text;
                         (report1.FindObject("txtWaterUserNO1") as FastReport.TextObject).Text = "用 户 号:" + waterUserId.Text;
                         (report1.FindObject("txtSD1") as FastReport.TextObject).Text = "受理编号:" + SD.Text;
                         (report1.FindObject("txtWaterUserName1") as FastReport.TextObject).Text = "用户名称:" + waterUserName.Text;
                         (report1.FindObject("txtWaterUserAddress1") as FastReport.TextObject).Text = "地    址:" + waterUserAddress.Text;
-                        (report1.FindObject("txtBCSS1") as FastReport.TextObject).Text = "本次实收:" + _BCSS.ToString("F2") + "元";
 
+                        if (!CHARGETYPEID.Text.Equals("现金"))
+                            (report1.FindObject("txtRunningNO1") as FastReport.TextObject).Text = "交易流水号:" + POSRUNNINGNO.Text;
+                        else
+                            (report1.FindObject("txtRunningNO1") as FastReport.TextObject).Text = "";
                         (report1.FindObject("txtCapMoney1") as FastReport.TextObject).Text = "金额大写:" + strCapMoney;
                         (report1.FindObject("txtCasher1") as FastReport.TextObject).Text = "收 款 员:" + strRealName;
+                        if (_BCSS < 0)
+                        {
+                            (report1.FindObject("txtWaterUserSign1") as FastReport.TextObject).Text = "用户签字:";
+                            (report1.FindObject("txtBCSS1") as FastReport.TextObject).Text = "本次退款:" + _BCSS.ToString("F2") + "元";
+                        }
+                        else
+                        {
+                            (report1.FindObject("txtWaterUserSign1") as FastReport.TextObject).Text = "";
+                            (report1.FindObject("txtBCSS1") as FastReport.TextObject).Text = "本次实收:" + _BCSS.ToString("F2") + "元";
+                        }
 
                         //report1.Show();
                         report1.PrintSettings.ShowDialog = false;
@@ -448,9 +485,9 @@ namespace FinanceOS
 
         private void CHARGETYPEID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            bool isshow = CHARGETYPEID.Text.Equals("POS机收费");
-            LB_POSRUNNINGNO.Visible = isshow;
-            POSRUNNINGNO.Visible = isshow;
+            bool isshow = CHARGETYPEID.Text.Equals("现金");
+            LB_POSRUNNINGNO.Visible = !isshow;
+            POSRUNNINGNO.Visible = !isshow;
         }
 
         private void Btn_Submit_Click(object sender, EventArgs e)
@@ -459,7 +496,7 @@ namespace FinanceOS
             {
                 MessageBox.Show("收费完成！");
                 Btn_Submit.Enabled = false;
-                sysidal.UpdateApprove_defalut("TableName", ResolveID, true, "已收费", ip, ComputerName, PointSort, TaskID);
+                sysidal.UpdateApprove_defalut(TableName, ResolveID, true, "已收费", ip, ComputerName, PointSort, TaskID);
             }
             else
             {
