@@ -34,7 +34,11 @@ namespace SysControl
         {
             FP.Controls.Clear();
 
-            DataTable dt = sysidal.GetMeter_Group_People(GroupID);
+            DataTable dt = sysidal.GetMeter_Group_People(GroupID,2);
+            if (!DataTableHelper.IsExistRows(dt))
+            {
+                dt = sysidal.GetMeter_Group_People(GroupID);
+            }
             if (DataTableHelper.IsExistRows(dt))
             {
                 foreach (DataRow dr in dt.Rows)

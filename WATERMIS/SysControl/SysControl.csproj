@@ -58,6 +58,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CreateForm.cs" />
+    <Compile Include="FrmGroupMeter_Show.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGroupMeter_Show.Designer.cs">
+      <DependentUpon>FrmGroupMeter_Show.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmGroupPeople.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +172,12 @@
     <Compile Include="UC_MeterSize.Designer.cs">
       <DependentUpon>UC_MeterSize.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC_MeterSizeModel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_MeterSizeModel.Designer.cs">
+      <DependentUpon>UC_MeterSizeModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC_PageControlBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -232,6 +244,9 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FrmGroupMeter_Show.resx">
+      <DependentUpon>FrmGroupMeter_Show.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmGroupPeople.resx">
       <DependentUpon>FrmGroupPeople.cs</DependentUpon>
     </EmbeddedResource>
@@ -287,6 +302,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UC_MeterSize.resx">
       <DependentUpon>UC_MeterSize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_MeterSizeModel.resx">
+      <DependentUpon>UC_MeterSizeModel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_PageControlBar.resx">
       <DependentUpon>UC_PageControlBar.cs</DependentUpon>

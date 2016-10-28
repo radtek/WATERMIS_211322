@@ -48,6 +48,13 @@ namespace SysControl
             frm.ShowDialog();
         }
 
+        private void LB_Meter_Click(object sender, EventArgs e)
+        {
+            FrmGroupMeter_Show frm = new FrmGroupMeter_Show();
+            frm.GroupID = (string)ht["GROUPID"];
+            frm.ShowDialog();
+        }
+
        
 
     }

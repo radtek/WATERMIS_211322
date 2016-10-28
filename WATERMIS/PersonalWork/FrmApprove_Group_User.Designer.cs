@@ -34,7 +34,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(621, 529);
+            this.ClientSize = new System.Drawing.Size(510, 447);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmApprove_Group_User";
             this.Text = "FrmApprove_Group_User";
             this.ResumeLayout(false);

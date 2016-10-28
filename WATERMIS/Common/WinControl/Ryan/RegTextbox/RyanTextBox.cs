@@ -16,6 +16,7 @@ namespace Common.WinControl.Ryan.RegTextbox
         public string Name { get; set; }
 
     }
+    [ToolboxBitmap(typeof(RyanTextBox), "RyanTextBox.png")]
     public partial class RyanTextBox : TextBox, IRyanControl
     {
         private static ToolTip _tooltip;

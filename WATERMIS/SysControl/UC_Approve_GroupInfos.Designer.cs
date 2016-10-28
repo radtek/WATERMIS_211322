@@ -30,13 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Approve_GroupInfos));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.MeterCount = new System.Windows.Forms.TextBox();
+            this.LB_Meter = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.LB_More = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.userName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.contractNO = new System.Windows.Forms.TextBox();
             this.waterUserPeopleCount = new System.Windows.Forms.TextBox();
-            this.label71 = new System.Windows.Forms.Label();
             this.ApplyUser = new System.Windows.Forms.TextBox();
             this.label73 = new System.Windows.Forms.Label();
             this.Memo = new System.Windows.Forms.TextBox();
@@ -52,9 +54,7 @@
             this.label83 = new System.Windows.Forms.Label();
             this.label84 = new System.Windows.Forms.Label();
             this.label85 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.MeterCount = new System.Windows.Forms.TextBox();
+            this.label71 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,7 +62,7 @@
             // 
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.Controls.Add(this.MeterCount);
-            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.LB_Meter);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.LB_More);
             this.panel1.Controls.Add(this.label4);
@@ -91,6 +91,34 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(502, 200);
             this.panel1.TabIndex = 4;
+            // 
+            // MeterCount
+            // 
+            this.MeterCount.Enabled = false;
+            this.MeterCount.Location = new System.Drawing.Point(321, 168);
+            this.MeterCount.Name = "MeterCount";
+            this.MeterCount.Size = new System.Drawing.Size(79, 21);
+            this.MeterCount.TabIndex = 105;
+            // 
+            // LB_Meter
+            // 
+            this.LB_Meter.AutoSize = true;
+            this.LB_Meter.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.LB_Meter.Location = new System.Drawing.Point(404, 173);
+            this.LB_Meter.Name = "LB_Meter";
+            this.LB_Meter.Size = new System.Drawing.Size(77, 12);
+            this.LB_Meter.TabIndex = 104;
+            this.LB_Meter.Text = "点击查看详细";
+            this.LB_Meter.Click += new System.EventHandler(this.LB_Meter_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(254, 173);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 12);
+            this.label1.TabIndex = 103;
+            this.label1.Text = "水表数量：";
             // 
             // LB_More
             // 
@@ -146,16 +174,6 @@
             this.waterUserPeopleCount.Size = new System.Drawing.Size(84, 21);
             this.waterUserPeopleCount.TabIndex = 97;
             this.waterUserPeopleCount.Text = "0";
-            // 
-            // label71
-            // 
-            this.label71.AutoSize = true;
-            this.label71.Location = new System.Drawing.Point(2, 109);
-            this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(65, 12);
-            this.label71.TabIndex = 98;
-            this.label71.Text = "用 户 数：";
-            this.label71.Visible = false;
             // 
             // ApplyUser
             // 
@@ -288,32 +306,15 @@
             this.label85.TabIndex = 81;
             this.label85.Text = "受理编号：";
             // 
-            // label1
+            // label71
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(254, 173);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 12);
-            this.label1.TabIndex = 103;
-            this.label1.Text = "水表数量：";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label3.Location = new System.Drawing.Point(404, 173);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 12);
-            this.label3.TabIndex = 104;
-            this.label3.Text = "点击查看详细";
-            // 
-            // MeterCount
-            // 
-            this.MeterCount.Enabled = false;
-            this.MeterCount.Location = new System.Drawing.Point(321, 168);
-            this.MeterCount.Name = "MeterCount";
-            this.MeterCount.Size = new System.Drawing.Size(79, 21);
-            this.MeterCount.TabIndex = 105;
+            this.label71.AutoSize = true;
+            this.label71.Location = new System.Drawing.Point(2, 109);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(65, 12);
+            this.label71.TabIndex = 98;
+            this.label71.Text = "用 户 数：";
+            this.label71.Visible = false;
             // 
             // UC_Approve_GroupInfos
             // 
@@ -354,7 +355,7 @@
         private System.Windows.Forms.Label label84;
         private System.Windows.Forms.Label label85;
         private System.Windows.Forms.TextBox MeterCount;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label LB_Meter;
         private System.Windows.Forms.Label label1;
 
     }

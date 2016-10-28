@@ -38,6 +38,8 @@ namespace PersonalWork
         private string strRealName;
         private int _waterUserPeopleCount = 0;
 
+        private string _GroupAddress;
+
         public int WaterUserPeopleCount
         {
             get { return _waterUserPeopleCount; }
@@ -75,6 +77,7 @@ namespace PersonalWork
             {
                 _GroupID = htt["GROUPID"].ToString();
                 WaterUserPeopleCount = int.Parse(htt["WATERUSERPEOPLECOUNT"].ToString());
+                _GroupAddress = htt["WATERUSERADDRESS"].ToString();
                 FP.Controls.Clear();
 
                 DataTable dt = sysidal.GetMeter_Group_People(_GroupID, 2);
@@ -188,12 +191,16 @@ namespace PersonalWork
 
         private int SaveGoupPeople()
         {
-            new SqlServerHelper().DeleteData("Meter_Group_People", "GroupID", _GroupID);
+            string sqlstr=string.Format(@"DELETE FROM Meter_Group_People WHERE GroupID='{0}' AND STEP=2
+DELETE FROM  Meter_Groupeople_Detail  WHERE GroupID='{0}'",_GroupID);
+            WaterUserPeopleCount = 0;
+            new SqlServerHelper().UpdateByHashtable(sqlstr, new SqlParameter[] { new SqlParameter("@GroupID", _GroupID) });
+            //new SqlServerHelper().DeleteData("Meter_Groupeople_Detail", "GroupID", _GroupID);
             foreach (GroupPeople_Model GM in GP.GroupPeople_Items)
             {
                 Hashtable ht = new Hashtable();
                 ht["GroupPeopleID"] = Guid.NewGuid();
-                ht["GroupID"] = GP.GroupID;
+                ht["GroupID"] = _GroupID;
                 ht["waterMeterTypeId"] = GM.waterMeterTypeId;
                 ht["waterUserTypeId"] = GM.waterUserTypeId;
                 ht["waterUserHouseTypeID"] = GM.waterUserHouseTypeID;
@@ -202,10 +209,23 @@ namespace PersonalWork
                 ht["CreateDate"] = DateTime.Now.ToString();
                 ht["CreateUser"] = strRealName;
                 ht["Step"] = 2;
+                WaterUserPeopleCount += GM.UserCount_Apply;
                 new SqlServerHelper().Submit_AddOrEdit("Meter_Group_People", "GroupPeopleID", "", ht);
+                for (int i = 0; i < GM.UserCount_Apply; i++)
+                {
+                    Hashtable hp = new Hashtable();
+                    hp["GroupID"] = _GroupID;
+                    hp["waterUserAddress"] = _GroupAddress;
+                    hp["IsBoost"] = GM.IsBoot;
+                    hp["waterUserTypeId"] = GM.waterUserTypeId;
+                    hp["waterUserHouseTypeID"] = GM.waterUserHouseTypeID;
+                    hp["waterMeterTypeId"] = GM.waterMeterTypeId;
+                   
+                    new SqlServerHelper().Submit_AddOrEdit("Meter_Groupeople_Detail", "PeopleID", "", hp);
+                }
             }
 
-            string sqlstr = "UPDATE Meter_Install_Group SET waterUserPeopleCount=@waterUserPeopleCount WHERE TaskID=@TaskID";
+            sqlstr = "UPDATE Meter_Install_Group SET waterUserPeopleCount=@waterUserPeopleCount WHERE TaskID=@TaskID";
             return new SqlServerHelper().UpdateByHashtable(sqlstr, new SqlParameter[] { new SqlParameter("@waterUserPeopleCount", _waterUserPeopleCount), new SqlParameter("@TaskID", TaskID) });
 
         }

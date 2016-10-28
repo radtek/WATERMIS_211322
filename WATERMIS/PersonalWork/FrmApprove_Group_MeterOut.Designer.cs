@@ -30,13 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmApprove_Group_MeterOut));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.MeterCount = new System.Windows.Forms.TextBox();
             this.Btn_Save = new System.Windows.Forms.Button();
             this.FP = new System.Windows.Forms.FlowLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.Btn_Submit = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.UserOpinion = new System.Windows.Forms.TextBox();
-            this.MeterCount = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,6 +55,14 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(510, 447);
             this.panel1.TabIndex = 3;
+            // 
+            // MeterCount
+            // 
+            this.MeterCount.Enabled = false;
+            this.MeterCount.Location = new System.Drawing.Point(83, 88);
+            this.MeterCount.Name = "MeterCount";
+            this.MeterCount.Size = new System.Drawing.Size(79, 21);
+            this.MeterCount.TabIndex = 106;
             // 
             // Btn_Save
             // 
@@ -80,6 +88,7 @@
             this.FP.Name = "FP";
             this.FP.Size = new System.Drawing.Size(474, 277);
             this.FP.TabIndex = 87;
+            this.FP.Click += new System.EventHandler(this.FP_Click);
             // 
             // label4
             // 
@@ -123,14 +132,6 @@
             this.UserOpinion.Name = "UserOpinion";
             this.UserOpinion.Size = new System.Drawing.Size(408, 69);
             this.UserOpinion.TabIndex = 1;
-            // 
-            // MeterCount
-            // 
-            this.MeterCount.Enabled = false;
-            this.MeterCount.Location = new System.Drawing.Point(83, 88);
-            this.MeterCount.Name = "MeterCount";
-            this.MeterCount.Size = new System.Drawing.Size(79, 21);
-            this.MeterCount.TabIndex = 106;
             // 
             // FrmApprove_Group_MeterOut
             // 

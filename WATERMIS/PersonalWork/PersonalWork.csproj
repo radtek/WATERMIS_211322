@@ -121,6 +121,12 @@
     <Compile Include="FrmApprove_Group_MeterOut.Designer.cs">
       <DependentUpon>FrmApprove_Group_MeterOut.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmApprove_Group_MeterSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprove_Group_MeterSelect.Designer.cs">
+      <DependentUpon>FrmApprove_Group_MeterSelect.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmApprove_Group_MeterSize.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -403,6 +409,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmApprove_Group_MeterOut.resx">
       <DependentUpon>FrmApprove_Group_MeterOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmApprove_Group_MeterSelect.resx">
+      <DependentUpon>FrmApprove_Group_MeterSelect.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmApprove_Group_MeterSize.resx">
       <DependentUpon>FrmApprove_Group_MeterSize.cs</DependentUpon>

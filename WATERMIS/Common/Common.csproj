@@ -114,5 +114,8 @@
     <Compile Include="WinControl\Ryan\RegTextbox\IRyanControl.cs" />
     <Compile Include="WinDevices\Computer.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WinControl\Ryan\RegTextbox\RyanTextBox.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
