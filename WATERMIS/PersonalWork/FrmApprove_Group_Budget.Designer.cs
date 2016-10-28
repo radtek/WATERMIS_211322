@@ -71,6 +71,7 @@
             this.Btn_Print.TabIndex = 30;
             this.Btn_Print.Text = "打印收据";
             this.Btn_Print.UseVisualStyleBackColor = true;
+            this.Btn_Print.Visible = false;
             this.Btn_Print.Click += new System.EventHandler(this.Btn_Print_Click);
             // 
             // FP_Dep
