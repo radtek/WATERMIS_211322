@@ -211,6 +211,12 @@
     <Compile Include="FrmApprove_WaterPrice_Default.Designer.cs">
       <DependentUpon>FrmApprove_WaterPrice_Default.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmApprove_Group_BatchAddUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprove_Group_BatchAddUser.Designer.cs">
+      <DependentUpon>FrmApprove_Group_BatchAddUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmChange_Approve.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -454,6 +460,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmApprove_WaterPrice_Default.resx">
       <DependentUpon>FrmApprove_WaterPrice_Default.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmApprove_Group_BatchAddUser.resx">
+      <DependentUpon>FrmApprove_Group_BatchAddUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmChange_Approve.resx">
       <DependentUpon>FrmChange_Approve.cs</DependentUpon>
