@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmFinance_Receivable_JS));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.waterUserAddress = new System.Windows.Forms.Label();
             this.StateName = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.CreateDate = new System.Windows.Forms.TextBox();
@@ -72,7 +73,6 @@
             this.label20 = new System.Windows.Forms.Label();
             this.FP_Items = new System.Windows.Forms.FlowLayoutPanel();
             this.Btn_Submit = new System.Windows.Forms.Button();
-            this.waterUserAddress = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.PL_JS.SuspendLayout();
@@ -110,6 +110,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(475, 80);
             this.panel1.TabIndex = 0;
+            // 
+            // waterUserAddress
+            // 
+            this.waterUserAddress.AutoSize = true;
+            this.waterUserAddress.Location = new System.Drawing.Point(188, 63);
+            this.waterUserAddress.Name = "waterUserAddress";
+            this.waterUserAddress.Size = new System.Drawing.Size(29, 12);
+            this.waterUserAddress.TabIndex = 12;
+            this.waterUserAddress.Text = "地址";
+            this.waterUserAddress.Visible = false;
             // 
             // StateName
             // 
@@ -299,11 +309,11 @@
             // LB_POSRUNNINGNO
             // 
             this.LB_POSRUNNINGNO.AutoSize = true;
-            this.LB_POSRUNNINGNO.Location = new System.Drawing.Point(265, 71);
+            this.LB_POSRUNNINGNO.Location = new System.Drawing.Point(247, 71);
             this.LB_POSRUNNINGNO.Name = "LB_POSRUNNINGNO";
-            this.LB_POSRUNNINGNO.Size = new System.Drawing.Size(59, 12);
+            this.LB_POSRUNNINGNO.Size = new System.Drawing.Size(77, 12);
             this.LB_POSRUNNINGNO.TabIndex = 151;
-            this.LB_POSRUNNINGNO.Text = "POS单号：";
+            this.LB_POSRUNNINGNO.Text = "交易流水号：";
             this.LB_POSRUNNINGNO.Visible = false;
             // 
             // CHARGEBCSS
@@ -521,16 +531,6 @@
             this.Btn_Submit.Text = "收费完成";
             this.Btn_Submit.UseVisualStyleBackColor = true;
             this.Btn_Submit.Click += new System.EventHandler(this.Btn_Submit_Click);
-            // 
-            // waterUserAddress
-            // 
-            this.waterUserAddress.AutoSize = true;
-            this.waterUserAddress.Location = new System.Drawing.Point(188, 63);
-            this.waterUserAddress.Name = "waterUserAddress";
-            this.waterUserAddress.Size = new System.Drawing.Size(29, 12);
-            this.waterUserAddress.TabIndex = 12;
-            this.waterUserAddress.Text = "地址";
-            this.waterUserAddress.Visible = false;
             // 
             // FrmFinance_Receivable_JS
             // 
