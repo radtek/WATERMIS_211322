@@ -70,7 +70,7 @@
             // 
             // Btn_More
             // 
-            this.Btn_More.Location = new System.Drawing.Point(23, 266);
+            this.Btn_More.Location = new System.Drawing.Point(26, 308);
             this.Btn_More.Name = "Btn_More";
             this.Btn_More.Size = new System.Drawing.Size(28, 27);
             this.Btn_More.TabIndex = 16;

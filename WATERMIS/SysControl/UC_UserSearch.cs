@@ -42,5 +42,11 @@ namespace SysControl
             new SqlServerHelper().ClearControls(groupBox1.Controls);
             dgWaterUser.DataSource = null;
         }
+
+        private void txt_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btSearch_Click(null,null);
+        }
     }
 }

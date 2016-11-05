@@ -7,6 +7,9 @@ using System.Text;
 using System.Windows.Forms;
 using System.Collections;
 using BASEFUNCTION;
+using Common.WinDevices;
+using DBinterface.DAL;
+using DBinterface.IDAL;
 
 namespace PersonalWork
 {
@@ -20,19 +23,28 @@ namespace PersonalWork
         private Hashtable ht = new Hashtable();
         string strTaskID = "";
         string strGroupID = "";
+        public string ResolveID = string.Empty;
+        public string PointSort = string.Empty;
+
+        private string ComputerName = "";
+        private string ip = "";
+
+        private PersonalWork_IDAL sysidal = new PersonalWork_DAL();
 
         private void btAddWaterUserBatch_Click(object sender, EventArgs e)
         {
-                FrmApprove_Group_BatchAddUser frm = new FrmApprove_Group_BatchAddUser();
-                frm.strGroupID = strGroupID;
-                frm.Owner = this;
-                frm.ShowDialog();
+            FrmApprove_Group_BatchAddUser frm = new FrmApprove_Group_BatchAddUser();
+            frm.strGroupID = strGroupID;
+            frm.Owner = this;
+            frm.ShowDialog();
         }
         Hashtable htt = new Hashtable();
         private void FrmApprove_Group_User_Load(object sender, EventArgs e)
         {
             ht = (Hashtable)this.Tag;
             strTaskID = ht["TaskID"].ToString();
+            ResolveID = ht["ResolveID"].ToString();
+            PointSort = ht["PointSort"].ToString();
             htt = new SqlServerHelper().GetHashtableById("Meter_Install_Group", "TaskID", strTaskID);
             if (htt.Contains("GROUPID"))
             {
@@ -58,6 +70,19 @@ namespace PersonalWork
                 else
                 {
                     //处理审批操作；
+                    ComputerName = new Computer().ComputerName;
+                    ip = new Computer().IpAddress;
+                    int count = sysidal.UpdateApprove_defalut("Meter_Install_Group", ResolveID, true, "新增用户", PointSort, strTaskID);
+
+                    if (count > 0)
+                    {
+                        Btn_Submit.Enabled = false;
+                        MessageBox.Show("增户成功！");
+                    }
+                    else
+                    {
+                        Btn_Submit.Enabled = true;
+                    }
                 }
             }
             else

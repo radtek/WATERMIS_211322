@@ -70,7 +70,7 @@
             // button1
             // 
             this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(217, 211);
+            this.button1.Location = new System.Drawing.Point(202, 170);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(138, 37);
             this.button1.TabIndex = 11;
@@ -81,7 +81,7 @@
             // label61
             // 
             this.label61.AutoSize = true;
-            this.label61.Location = new System.Drawing.Point(316, 127);
+            this.label61.Location = new System.Drawing.Point(300, 104);
             this.label61.Name = "label61";
             this.label61.Size = new System.Drawing.Size(17, 12);
             this.label61.TabIndex = 115;
@@ -90,7 +90,7 @@
             // label46
             // 
             this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(196, 127);
+            this.label46.Location = new System.Drawing.Point(191, 104);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(65, 12);
             this.label46.TabIndex = 114;
@@ -98,21 +98,22 @@
             // 
             // MEMO
             // 
-            this.MEMO.Location = new System.Drawing.Point(90, 157);
+            this.MEMO.Location = new System.Drawing.Point(84, 134);
             this.MEMO.Name = "MEMO";
-            this.MEMO.Size = new System.Drawing.Size(348, 21);
+            this.MEMO.Size = new System.Drawing.Size(427, 21);
             this.MEMO.TabIndex = 10;
             // 
             // waterMeterMode
             // 
-            this.waterMeterMode.Location = new System.Drawing.Point(266, 96);
+            this.waterMeterMode.Location = new System.Drawing.Point(424, 95);
             this.waterMeterMode.Name = "waterMeterMode";
             this.waterMeterMode.Size = new System.Drawing.Size(89, 21);
             this.waterMeterMode.TabIndex = 7;
+            this.waterMeterMode.Visible = false;
             // 
             // waterMeterProduct
             // 
-            this.waterMeterProduct.Location = new System.Drawing.Point(90, 95);
+            this.waterMeterProduct.Location = new System.Drawing.Point(424, 66);
             this.waterMeterProduct.Name = "waterMeterProduct";
             this.waterMeterProduct.Size = new System.Drawing.Size(88, 21);
             this.waterMeterProduct.TabIndex = 6;
@@ -121,7 +122,7 @@
             // 
             this.waterMeterSizeId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.waterMeterSizeId.FormattingEnabled = true;
-            this.waterMeterSizeId.Location = new System.Drawing.Point(266, 33);
+            this.waterMeterSizeId.Location = new System.Drawing.Point(251, 33);
             this.waterMeterSizeId.Name = "waterMeterSizeId";
             this.waterMeterSizeId.Size = new System.Drawing.Size(89, 20);
             this.waterMeterSizeId.TabIndex = 2;
@@ -130,7 +131,7 @@
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(21, 161);
+            this.label33.Location = new System.Drawing.Point(22, 138);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(65, 12);
             this.label33.TabIndex = 110;
@@ -139,7 +140,7 @@
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(196, 68);
+            this.label30.Location = new System.Drawing.Point(191, 70);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(65, 12);
             this.label30.TabIndex = 99;
@@ -148,11 +149,12 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(198, 100);
+            this.label13.Location = new System.Drawing.Point(363, 99);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(65, 12);
             this.label13.TabIndex = 101;
             this.label13.Text = "规格型号：";
+            this.label13.Visible = false;
             // 
             // label14
             // 
@@ -166,7 +168,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(21, 99);
+            this.label15.Location = new System.Drawing.Point(363, 70);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(65, 12);
             this.label15.TabIndex = 104;
@@ -175,7 +177,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(189, 36);
+            this.label27.Location = new System.Drawing.Point(185, 37);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(71, 12);
             this.label27.TabIndex = 95;
@@ -184,7 +186,7 @@
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(14, 72);
+            this.label29.Location = new System.Drawing.Point(16, 70);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(71, 12);
             this.label29.TabIndex = 89;
@@ -199,7 +201,7 @@
             "正常",
             "停水",
             "未启用"});
-            this.MeterState.Location = new System.Drawing.Point(446, 33);
+            this.MeterState.Location = new System.Drawing.Point(424, 33);
             this.MeterState.Name = "MeterState";
             this.MeterState.Size = new System.Drawing.Size(87, 20);
             this.MeterState.TabIndex = 3;
@@ -208,7 +210,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(367, 36);
+            this.label17.Location = new System.Drawing.Point(357, 37);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(71, 12);
             this.label17.TabIndex = 90;
@@ -217,7 +219,7 @@
             // waterMeterProofreadingDate
             // 
             this.waterMeterProofreadingDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.waterMeterProofreadingDate.Location = new System.Drawing.Point(91, 123);
+            this.waterMeterProofreadingDate.Location = new System.Drawing.Point(84, 100);
             this.waterMeterProofreadingDate.Name = "waterMeterProofreadingDate";
             this.waterMeterProofreadingDate.Size = new System.Drawing.Size(88, 21);
             this.waterMeterProofreadingDate.TabIndex = 113;
@@ -225,7 +227,7 @@
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(21, 127);
+            this.label31.Location = new System.Drawing.Point(22, 104);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(65, 12);
             this.label31.TabIndex = 102;
@@ -233,7 +235,7 @@
             // 
             // waterMeterStartNumber
             // 
-            this.waterMeterStartNumber.Location = new System.Drawing.Point(89, 68);
+            this.waterMeterStartNumber.Location = new System.Drawing.Point(84, 66);
             this.waterMeterStartNumber.Mask = "99999";
             this.waterMeterStartNumber.Name = "waterMeterStartNumber";
             this.waterMeterStartNumber.Size = new System.Drawing.Size(90, 21);
@@ -243,7 +245,7 @@
             // 
             // waterMeterMaxRange
             // 
-            this.waterMeterMaxRange.Location = new System.Drawing.Point(266, 65);
+            this.waterMeterMaxRange.Location = new System.Drawing.Point(251, 66);
             this.waterMeterMaxRange.Mask = "99999";
             this.waterMeterMaxRange.Name = "waterMeterMaxRange";
             this.waterMeterMaxRange.Size = new System.Drawing.Size(89, 21);
@@ -252,7 +254,7 @@
             // 
             // waterMeteProofreadingPeriod
             // 
-            this.waterMeteProofreadingPeriod.Location = new System.Drawing.Point(266, 122);
+            this.waterMeteProofreadingPeriod.Location = new System.Drawing.Point(251, 100);
             this.waterMeteProofreadingPeriod.Mask = "99";
             this.waterMeteProofreadingPeriod.Name = "waterMeteProofreadingPeriod";
             this.waterMeteProofreadingPeriod.Size = new System.Drawing.Size(44, 21);
@@ -261,7 +263,7 @@
             // 
             // waterMeterSerialNumber
             // 
-            this.waterMeterSerialNumber.Location = new System.Drawing.Point(89, 32);
+            this.waterMeterSerialNumber.Location = new System.Drawing.Point(84, 33);
             this.waterMeterSerialNumber.Name = "waterMeterSerialNumber";
             this.waterMeterSerialNumber.Size = new System.Drawing.Size(90, 21);
             this.waterMeterSerialNumber.TabIndex = 119;
@@ -271,7 +273,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(561, 275);
+            this.ClientSize = new System.Drawing.Size(561, 234);
             this.Controls.Add(this.waterMeterSerialNumber);
             this.Controls.Add(this.waterMeteProofreadingPeriod);
             this.Controls.Add(this.waterMeterMaxRange);

@@ -191,6 +191,7 @@ namespace MeterInstall
             uC_DataGridView_Page1.PageOrderField = "CreateDate";
             uC_DataGridView_Page1.PageIndex = 1;
             uC_DataGridView_Page1.Init();
+
         }
         private void Binddata()
         {
@@ -237,6 +238,23 @@ namespace MeterInstall
                     SeachData();
                 }
             }
+        }
+
+        private void toolPrint_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolPrintPreview_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolExcel_Click(object sender, EventArgs e)
+        {
+            //string strCaption = "水表在库情况表";
+            //ExportExcel ExportExcel = new ExportExcel();
+            //ExportExcel.ExportToExcel(strCaption, dgList);
         }
 
     }

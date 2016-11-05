@@ -86,12 +86,13 @@ namespace MeterInstall
                 waterPhone.Focus();
                 return;
             }
-            if (string.IsNullOrEmpty(userName.Text.Trim()))
-            {
-                mes.Show("受理人为空,请打开窗体重试!");
-                userName.Focus();
-                return;
-            }
+            userName.Text = strRealName;
+            //if (string.IsNullOrEmpty(userName.Text.Trim()))
+            //{
+            //    mes.Show("受理人为空,请打开窗体重试!");
+            //    userName.Focus();
+            //    return;
+            //}
             if (PeccantMemo.Text.Trim() == "")
             {
                 mes.Show("请简要说明违章情况!");
@@ -108,6 +109,8 @@ namespace MeterInstall
             ht["SD"] = SDNO;
 
             ht["PeccantInstallType"] = "1";//入口类型 1营业  2监察
+
+            string _FlowCode = "Meter_Install_Peccant_2";
 
             AcceptID.Text = SDNO;
 
@@ -127,7 +130,7 @@ namespace MeterInstall
 
                 if (string.IsNullOrEmpty(key) || state.Equals("0"))
                 {
-                    bool result = new SqlServerHelper().CreateWorkTask(ht["SingleID"].ToString(), SDNO, "Meter_Install_Peccant", "SingleID", "违章用户报装");
+                    bool result = new SqlServerHelper().CreateWorkTask(ht["SingleID"].ToString(), SDNO, "Meter_Install_Peccant", "SingleID", "违章用户报装-监察", _FlowCode);
                     if (result)
                     {
                         MessageBox.Show("任务创建成功！");

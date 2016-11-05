@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMeterManage));
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbInvoiceCancelReason = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.Btn_Scrap = new System.Windows.Forms.Button();
             this.TB_waterMeterSerialNumber_2 = new System.Windows.Forms.MaskedTextBox();
             this.TB_waterMeterSerialNumber_1 = new System.Windows.Forms.MaskedTextBox();
             this.CB_waterMeterProduct = new System.Windows.Forms.ComboBox();
@@ -46,17 +48,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tb1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.toolPrintPreview = new System.Windows.Forms.ToolStripButton();
-            this.toolPrint = new System.Windows.Forms.ToolStripButton();
+            this.uC_DataGridView_Page1 = new SysControl.UC_DataGridView_Page();
             this.toolStripWaterUser = new System.Windows.Forms.ToolStrip();
-            this.toolSearch = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolSearch = new System.Windows.Forms.ToolStripButton();
             this.toolEntering = new System.Windows.Forms.ToolStripButton();
             this.toolBatch = new System.Windows.Forms.ToolStripButton();
-            this.cmbInvoiceCancelReason = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.Btn_Scrap = new System.Windows.Forms.Button();
-            this.uC_DataGridView_Page1 = new SysControl.UC_DataGridView_Page();
+            this.toolPrint = new System.Windows.Forms.ToolStripButton();
+            this.toolPrintPreview = new System.Windows.Forms.ToolStripButton();
+            this.toolExcel = new System.Windows.Forms.ToolStripButton();
             this.groupBox1.SuspendLayout();
             this.tb1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -99,6 +101,41 @@
             this.groupBox1.TabIndex = 60;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "查询条件";
+            // 
+            // cmbInvoiceCancelReason
+            // 
+            this.cmbInvoiceCancelReason.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbInvoiceCancelReason.FormattingEnabled = true;
+            this.cmbInvoiceCancelReason.Items.AddRange(new object[] {
+            "",
+            "损坏作废",
+            "未打作废"});
+            this.cmbInvoiceCancelReason.Location = new System.Drawing.Point(774, 24);
+            this.cmbInvoiceCancelReason.Name = "cmbInvoiceCancelReason";
+            this.cmbInvoiceCancelReason.Size = new System.Drawing.Size(174, 20);
+            this.cmbInvoiceCancelReason.TabIndex = 914;
+            this.cmbInvoiceCancelReason.Visible = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(698, 28);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(59, 12);
+            this.label9.TabIndex = 913;
+            this.label9.Text = "报废原因:";
+            this.label9.Visible = false;
+            // 
+            // Btn_Scrap
+            // 
+            this.Btn_Scrap.Enabled = false;
+            this.Btn_Scrap.Location = new System.Drawing.Point(730, 37);
+            this.Btn_Scrap.Name = "Btn_Scrap";
+            this.Btn_Scrap.Size = new System.Drawing.Size(80, 32);
+            this.Btn_Scrap.TabIndex = 912;
+            this.Btn_Scrap.Text = "水表报废";
+            this.Btn_Scrap.UseVisualStyleBackColor = true;
+            this.Btn_Scrap.Visible = false;
             // 
             // TB_waterMeterSerialNumber_2
             // 
@@ -258,109 +295,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "明细列表";
             // 
-            // toolPrintPreview
-            // 
-            this.toolPrintPreview.Enabled = false;
-            this.toolPrintPreview.Image = ((System.Drawing.Image)(resources.GetObject("toolPrintPreview.Image")));
-            this.toolPrintPreview.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolPrintPreview.Name = "toolPrintPreview";
-            this.toolPrintPreview.Size = new System.Drawing.Size(87, 22);
-            this.toolPrintPreview.Text = "打印预览";
-            // 
-            // toolPrint
-            // 
-            this.toolPrint.Enabled = false;
-            this.toolPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolPrint.Name = "toolPrint";
-            this.toolPrint.Size = new System.Drawing.Size(41, 22);
-            this.toolPrint.Text = "打印";
-            // 
-            // toolStripWaterUser
-            // 
-            this.toolStripWaterUser.Font = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.toolStripWaterUser.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStripWaterUser.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolSearch,
-            this.toolStripSeparator6,
-            this.toolEntering,
-            this.toolBatch,
-            this.toolPrint,
-            this.toolPrintPreview});
-            this.toolStripWaterUser.Location = new System.Drawing.Point(0, 0);
-            this.toolStripWaterUser.Name = "toolStripWaterUser";
-            this.toolStripWaterUser.Size = new System.Drawing.Size(1080, 25);
-            this.toolStripWaterUser.TabIndex = 59;
-            this.toolStripWaterUser.Text = "toolStrip2";
-            // 
-            // toolSearch
-            // 
-            this.toolSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolSearch.Name = "toolSearch";
-            this.toolSearch.Size = new System.Drawing.Size(41, 22);
-            this.toolSearch.Text = "查询";
-            this.toolSearch.Click += new System.EventHandler(this.toolSearch_Click);
-            // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.AutoSize = false;
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(10, 25);
-            // 
-            // toolEntering
-            // 
-            this.toolEntering.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolEntering.Image = ((System.Drawing.Image)(resources.GetObject("toolEntering.Image")));
-            this.toolEntering.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolEntering.Name = "toolEntering";
-            this.toolEntering.Size = new System.Drawing.Size(71, 22);
-            this.toolEntering.Text = "单个入库";
-            this.toolEntering.Click += new System.EventHandler(this.toolEntering_Click);
-            // 
-            // toolBatch
-            // 
-            this.toolBatch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolBatch.Image = ((System.Drawing.Image)(resources.GetObject("toolBatch.Image")));
-            this.toolBatch.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolBatch.Name = "toolBatch";
-            this.toolBatch.Size = new System.Drawing.Size(71, 22);
-            this.toolBatch.Text = "批量入库";
-            this.toolBatch.Click += new System.EventHandler(this.toolBatch_Click);
-            // 
-            // cmbInvoiceCancelReason
-            // 
-            this.cmbInvoiceCancelReason.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbInvoiceCancelReason.FormattingEnabled = true;
-            this.cmbInvoiceCancelReason.Items.AddRange(new object[] {
-            "",
-            "损坏作废",
-            "未打作废"});
-            this.cmbInvoiceCancelReason.Location = new System.Drawing.Point(774, 24);
-            this.cmbInvoiceCancelReason.Name = "cmbInvoiceCancelReason";
-            this.cmbInvoiceCancelReason.Size = new System.Drawing.Size(174, 20);
-            this.cmbInvoiceCancelReason.TabIndex = 914;
-            this.cmbInvoiceCancelReason.Visible = false;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(698, 28);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(59, 12);
-            this.label9.TabIndex = 913;
-            this.label9.Text = "报废原因:";
-            this.label9.Visible = false;
-            // 
-            // Btn_Scrap
-            // 
-            this.Btn_Scrap.Enabled = false;
-            this.Btn_Scrap.Location = new System.Drawing.Point(730, 37);
-            this.Btn_Scrap.Name = "Btn_Scrap";
-            this.Btn_Scrap.Size = new System.Drawing.Size(80, 32);
-            this.Btn_Scrap.TabIndex = 912;
-            this.Btn_Scrap.Text = "水表报废";
-            this.Btn_Scrap.UseVisualStyleBackColor = true;
-            this.Btn_Scrap.Visible = false;
-            // 
             // uC_DataGridView_Page1
             // 
             this.uC_DataGridView_Page1.AutoSize = true;
@@ -369,6 +303,7 @@
             this.uC_DataGridView_Page1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uC_DataGridView_Page1.Fields = null;
             this.uC_DataGridView_Page1.FieldStatis = null;
+            this.uC_DataGridView_Page1.FiledColor = null;
             this.uC_DataGridView_Page1.Location = new System.Drawing.Point(3, 17);
             this.uC_DataGridView_Page1.MinimumSize = new System.Drawing.Size(833, 330);
             this.uC_DataGridView_Page1.Name = "uC_DataGridView_Page1";
@@ -379,6 +314,96 @@
             this.uC_DataGridView_Page1.TabIndex = 403;
             this.uC_DataGridView_Page1.Tag = "9999";
             this.uC_DataGridView_Page1.CellDoubleClickEvents += new SysControl.UC_DataGridView_Page.CellDoubleClickEvent(this.uC_DataGridView_Page1_CellDoubleClickEvents);
+            // 
+            // toolStripWaterUser
+            // 
+            this.toolStripWaterUser.Font = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.toolStripWaterUser.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStripWaterUser.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolSearch,
+            this.toolStripSeparator6,
+            this.toolEntering,
+            this.toolBatch,
+            this.toolStripSeparator2,
+            this.toolPrint,
+            this.toolPrintPreview,
+            this.toolStripSeparator1,
+            this.toolExcel});
+            this.toolStripWaterUser.Location = new System.Drawing.Point(0, 0);
+            this.toolStripWaterUser.Name = "toolStripWaterUser";
+            this.toolStripWaterUser.Size = new System.Drawing.Size(1080, 25);
+            this.toolStripWaterUser.TabIndex = 59;
+            this.toolStripWaterUser.Text = "toolStrip2";
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.AutoSize = false;
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(10, 25);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolSearch
+            // 
+            this.toolSearch.Image = global::MeterInstall.Properties.Resources.onebit_02;
+            this.toolSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolSearch.Name = "toolSearch";
+            this.toolSearch.Size = new System.Drawing.Size(57, 22);
+            this.toolSearch.Text = "查询";
+            this.toolSearch.Click += new System.EventHandler(this.toolSearch_Click);
+            // 
+            // toolEntering
+            // 
+            this.toolEntering.Image = global::MeterInstall.Properties.Resources.add;
+            this.toolEntering.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolEntering.Name = "toolEntering";
+            this.toolEntering.Size = new System.Drawing.Size(87, 22);
+            this.toolEntering.Text = "单个入库";
+            this.toolEntering.Click += new System.EventHandler(this.toolEntering_Click);
+            // 
+            // toolBatch
+            // 
+            this.toolBatch.Image = global::MeterInstall.Properties.Resources.apply;
+            this.toolBatch.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolBatch.Name = "toolBatch";
+            this.toolBatch.Size = new System.Drawing.Size(87, 22);
+            this.toolBatch.Text = "批量入库";
+            this.toolBatch.Click += new System.EventHandler(this.toolBatch_Click);
+            // 
+            // toolPrint
+            // 
+            this.toolPrint.Image = global::MeterInstall.Properties.Resources.打印;
+            this.toolPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolPrint.Name = "toolPrint";
+            this.toolPrint.Size = new System.Drawing.Size(57, 22);
+            this.toolPrint.Text = "打印";
+            this.toolPrint.Click += new System.EventHandler(this.toolPrint_Click);
+            // 
+            // toolPrintPreview
+            // 
+            this.toolPrintPreview.Image = global::MeterInstall.Properties.Resources.preview;
+            this.toolPrintPreview.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolPrintPreview.Name = "toolPrintPreview";
+            this.toolPrintPreview.Size = new System.Drawing.Size(87, 22);
+            this.toolPrintPreview.Text = "打印预览";
+            this.toolPrintPreview.Click += new System.EventHandler(this.toolPrintPreview_Click);
+            // 
+            // toolExcel
+            // 
+            this.toolExcel.Image = global::MeterInstall.Properties.Resources.snap_undo;
+            this.toolExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolExcel.Name = "toolExcel";
+            this.toolExcel.Size = new System.Drawing.Size(97, 22);
+            this.toolExcel.Text = "导出Excel";
+            this.toolExcel.Click += new System.EventHandler(this.toolExcel_Click);
             // 
             // FrmMeterManage
             // 
@@ -433,6 +458,9 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button Btn_Scrap;
         private SysControl.UC_DataGridView_Page uC_DataGridView_Page1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton toolExcel;
 
     }
 }

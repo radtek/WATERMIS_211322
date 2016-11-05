@@ -39,6 +39,11 @@ namespace PersonalWork
             if (ht != null)
             {
                 UserOpinion.Text = ht["USEROPINION"].ToString().Trim();
+                object objIsPass = ht["ISPASS"];
+                if (objIsPass != null && objIsPass != DBNull.Value && Convert.ToBoolean(objIsPass))
+                    IsPass.Checked = true;
+                else
+                    IsPass.Checked = false;
 
                 if (ht["MAKESKIP"] != null && ht["MAKEPOINTID"] != null)//是否显示跳转
                 {
@@ -90,6 +95,7 @@ namespace PersonalWork
             TaskID = ht["TaskID"].ToString();
             ResolveID = ht["ResolveID"].ToString();
             PointSort = ht["PointSort"].ToString();
+            InitView();
         }
 
         private void Btn_Submit_Click(object sender, EventArgs e)

@@ -114,7 +114,7 @@
             this.label2.Size = new System.Drawing.Size(161, 12);
             this.label2.TabIndex = 85;
             this.label2.Tag = "9999";
-            this.label2.Text = "如何为正数，该用户不欠费。";
+            this.label2.Text = "如果为正数，该用户不欠费。";
             // 
             // Fee
             // 

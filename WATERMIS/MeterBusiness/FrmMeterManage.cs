@@ -11,6 +11,7 @@ using DBinterface.DAL;
 using Common.DotNetUI;
 using Common.DotNetCode;
 using System.Collections;
+using FastReport;
 
 namespace MeterBusiness
 {
@@ -172,6 +173,18 @@ namespace MeterBusiness
 
             DataTable dtList = sysidal.GetListTable(sb.ToString());
             dgList.DataSource = dtList;
+            if (dtList.Rows.Count > 0)
+            {
+                toolPrint.Enabled = true;
+                toolPrintPreview.Enabled = true;
+                toolExcel.Enabled = true;
+            }
+            else
+            {
+                toolPrint.Enabled = false;
+                toolPrintPreview.Enabled = false;
+                toolExcel.Enabled = false;
+            }
         }
 
         private void dgList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -235,5 +248,99 @@ namespace MeterBusiness
             frm.ShowDialog();
         }
 
+        private void toolExcel_Click(object sender, EventArgs e)
+        {
+            string strCaption = "水表在库情况表";
+            ExportExcel ExportExcel = new ExportExcel();
+            ExportExcel.ExportToExcel(strCaption, dgList);
+        }
+
+        private void toolPrint_Click(object sender, EventArgs e)
+        {
+            DataSet ds = new DataSet();
+            DataTable dtPrint = GetDgvToTable(dgList);
+            dtPrint.TableName = "水表情况表";
+            ds.Tables.Add(dtPrint);
+            FastReport.Report report1 = new FastReport.Report();
+            try
+            {
+                // load the existing report
+                report1.Load(Application.StartupPath + @"\PRINTModel\业扩模板\水表库存模板.frx");
+                // register the dataset
+                report1.RegisterData(ds);
+                report1.GetDataSource("水表情况表").Enabled = true;
+                report1.Prepare();
+                report1.PrintSettings.ShowDialog = false;
+                report1.Print();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // free resources used by report
+                report1.Dispose();
+            }
+
+        }
+
+        private void toolPrintPreview_Click(object sender, EventArgs e)
+        {
+            DataSet ds = new DataSet();
+
+            //DataTable dt = (DataTable)dgList.DataSource;
+            DataTable dtPrint = GetDgvToTable(dgList);
+
+            dtPrint.TableName = "水表情况表";
+            ds.Tables.Add(dtPrint);
+            FastReport.Report report1 = new FastReport.Report();
+            try
+            {
+                // load the existing report
+                report1.Load(Application.StartupPath + @"\PRINTModel\业扩模板\水表库存模板.frx");
+                // register the dataset
+                report1.RegisterData(ds);
+                report1.GetDataSource("水表情况表").Enabled = true;
+                // run the report
+                report1.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // free resources used by report
+                report1.Dispose();
+            }
+
+        }
+        /// <summary>
+        /// 方法实现把dgv里的数据完整的复制到一张内存表
+        /// </summary>
+        /// <param name="dgv">dgv控件作为参数</param>
+        /// <returns>返回临时内存表</returns>
+        public static DataTable GetDgvToTable(DataGridView dgv)
+        {
+            DataTable dt = new DataTable();
+            for (int count = 0; count < dgv.Columns.Count; count++)
+            {
+                DataColumn dc = new DataColumn(dgv.Columns[count].Name.ToString());
+                dt.Columns.Add(dc);
+            }
+            for (int count = 0; count < dgv.Rows.Count; count++)
+            {
+                DataRow dr = dt.NewRow();
+                for (int countsub = 0; countsub < dgv.Columns.Count; countsub++)
+                {
+                    object obj = dgv.Rows[count].Cells[countsub].Value;
+                    if (obj != null && obj != DBNull.Value)
+                        dr[countsub] = dgv.Rows[count].Cells[countsub].Value.ToString();
+                }
+                dt.Rows.Add(dr);
+            }
+            return dt;
+        }
     }
 }

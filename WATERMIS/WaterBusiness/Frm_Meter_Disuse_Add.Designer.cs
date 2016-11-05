@@ -32,7 +32,6 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.DisuseDescribe = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
             this.LB_Num = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.LB_Fee = new System.Windows.Forms.Label();
@@ -43,6 +42,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.Btn_Submit = new System.Windows.Forms.Button();
+            this.DisuseDescribe = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
             this.uC_UserMeterDetails1 = new SysControl.UC_UserMeterDetails();
             this.uC_UserSearch1 = new SysControl.UC_UserSearch();
             this.tableLayoutPanel1.SuspendLayout();
@@ -53,8 +53,8 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.19743F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.80257F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.uC_UserSearch1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -62,7 +62,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(932, 639);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(932, 601);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
             // tableLayoutPanel2
@@ -72,12 +72,12 @@
             this.tableLayoutPanel2.Controls.Add(this.panel1, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.uC_UserMeterDetails1, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(403, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(359, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 384F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(526, 633);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 63.63636F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 36.36364F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(570, 595);
             this.tableLayoutPanel2.TabIndex = 10;
             // 
             // panel1
@@ -95,9 +95,9 @@
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.Btn_Submit);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 387);
+            this.panel1.Location = new System.Drawing.Point(3, 381);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(520, 243);
+            this.panel1.Size = new System.Drawing.Size(564, 211);
             this.panel1.TabIndex = 11;
             // 
             // label1
@@ -110,21 +110,6 @@
             this.label1.TabIndex = 89;
             this.label1.Tag = "9999";
             this.label1.Text = "说明：如果欠费金额是正数，该用户不存在欠费。";
-            // 
-            // DisuseDescribe
-            // 
-            this.DisuseDescribe.AllowEmpty = false;
-            this.DisuseDescribe.EmptyMessage = "";
-            this.DisuseDescribe.ErrorMessage = "";
-            this.DisuseDescribe.InputType = Common.WinControl.Ryan.RegTextbox.RyanTextBox.EMInputTypes.文本;
-            this.DisuseDescribe.Location = new System.Drawing.Point(94, 12);
-            this.DisuseDescribe.Multiline = true;
-            this.DisuseDescribe.Name = "DisuseDescribe";
-            this.DisuseDescribe.RegexExpression = "";
-            this.DisuseDescribe.RemoveSpace = false;
-            this.DisuseDescribe.Size = new System.Drawing.Size(407, 48);
-            this.DisuseDescribe.TabIndex = 88;
-            this.DisuseDescribe.ValidateState = false;
             // 
             // LB_Num
             // 
@@ -206,7 +191,7 @@
             this.Btn_Submit.BackColor = System.Drawing.Color.LimeGreen;
             this.Btn_Submit.Enabled = false;
             this.Btn_Submit.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Btn_Submit.Location = new System.Drawing.Point(215, 187);
+            this.Btn_Submit.Location = new System.Drawing.Point(212, 166);
             this.Btn_Submit.Name = "Btn_Submit";
             this.Btn_Submit.Size = new System.Drawing.Size(108, 37);
             this.Btn_Submit.TabIndex = 74;
@@ -215,12 +200,27 @@
             this.Btn_Submit.UseVisualStyleBackColor = false;
             this.Btn_Submit.Click += new System.EventHandler(this.Btn_Submit_Click);
             // 
+            // DisuseDescribe
+            // 
+            this.DisuseDescribe.AllowEmpty = false;
+            this.DisuseDescribe.EmptyMessage = "";
+            this.DisuseDescribe.ErrorMessage = "";
+            this.DisuseDescribe.InputType = Common.WinControl.Ryan.RegTextbox.RyanTextBox.EMInputTypes.文本;
+            this.DisuseDescribe.Location = new System.Drawing.Point(94, 12);
+            this.DisuseDescribe.Multiline = true;
+            this.DisuseDescribe.Name = "DisuseDescribe";
+            this.DisuseDescribe.RegexExpression = "";
+            this.DisuseDescribe.RemoveSpace = false;
+            this.DisuseDescribe.Size = new System.Drawing.Size(407, 48);
+            this.DisuseDescribe.TabIndex = 88;
+            this.DisuseDescribe.ValidateState = false;
+            // 
             // uC_UserMeterDetails1
             // 
             this.uC_UserMeterDetails1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uC_UserMeterDetails1.Location = new System.Drawing.Point(3, 3);
             this.uC_UserMeterDetails1.Name = "uC_UserMeterDetails1";
-            this.uC_UserMeterDetails1.Size = new System.Drawing.Size(520, 378);
+            this.uC_UserMeterDetails1.Size = new System.Drawing.Size(564, 372);
             this.uC_UserMeterDetails1.TabIndex = 6;
             // 
             // uC_UserSearch1
@@ -228,15 +228,14 @@
             this.uC_UserSearch1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uC_UserSearch1.Location = new System.Drawing.Point(3, 3);
             this.uC_UserSearch1.Name = "uC_UserSearch1";
-            this.uC_UserSearch1.Size = new System.Drawing.Size(394, 633);
+            this.uC_UserSearch1.Size = new System.Drawing.Size(350, 595);
             this.uC_UserSearch1.TabIndex = 9;
             this.uC_UserSearch1.BtnSearchEvent += new System.EventHandler(this.uC_UserSearch1_BtnSearchEvent);
             // 
             // Frm_Meter_Disuse_Add
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(932, 639);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.ClientSize = new System.Drawing.Size(932, 601);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Frm_Meter_Disuse_Add";
             this.Text = "用户报停（营业）";

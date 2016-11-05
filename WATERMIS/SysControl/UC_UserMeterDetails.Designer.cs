@@ -30,7 +30,6 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.dgWaterMeter = new System.Windows.Forms.DataGridView();
@@ -59,18 +58,19 @@
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 250F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 134F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(528, 400);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 65.10989F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 34.89011F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(528, 364);
             this.tableLayoutPanel2.TabIndex = 8;
             // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.dgWaterMeter);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox5.Location = new System.Drawing.Point(3, 253);
+            this.groupBox5.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.groupBox5.Location = new System.Drawing.Point(3, 240);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(522, 144);
+            this.groupBox5.Size = new System.Drawing.Size(522, 121);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "水表列表";
@@ -102,22 +102,14 @@
             this.waterMeterSerialNumber,
             this.WATERFIXVALUE,
             this.memoWaterMeter});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgWaterMeter.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgWaterMeter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgWaterMeter.Location = new System.Drawing.Point(3, 17);
+            this.dgWaterMeter.Location = new System.Drawing.Point(3, 19);
             this.dgWaterMeter.MultiSelect = false;
             this.dgWaterMeter.Name = "dgWaterMeter";
             this.dgWaterMeter.ReadOnly = true;
             this.dgWaterMeter.RowHeadersWidth = 25;
             this.dgWaterMeter.RowTemplate.Height = 23;
-            this.dgWaterMeter.Size = new System.Drawing.Size(516, 124);
+            this.dgWaterMeter.Size = new System.Drawing.Size(516, 99);
             this.dgWaterMeter.TabIndex = 1;
             // 
             // waterMeterNo
@@ -194,18 +186,20 @@
             // 
             // uC_UserDetails1
             // 
+            this.uC_UserDetails1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uC_UserDetails1.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uC_UserDetails1.Location = new System.Drawing.Point(3, 3);
             this.uC_UserDetails1.Name = "uC_UserDetails1";
-            this.uC_UserDetails1.Size = new System.Drawing.Size(522, 244);
+            this.uC_UserDetails1.Size = new System.Drawing.Size(522, 231);
             this.uC_UserDetails1.TabIndex = 5;
             // 
             // UC_UserMeterDetails
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.tableLayoutPanel2);
             this.Name = "UC_UserMeterDetails";
-            this.Size = new System.Drawing.Size(528, 400);
+            this.Size = new System.Drawing.Size(528, 364);
+            this.Tag = "";
             this.tableLayoutPanel2.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgWaterMeter)).EndInit();

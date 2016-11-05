@@ -183,7 +183,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 12);
             this.label2.TabIndex = 79;
-            this.label2.Text = "*受理人：";
+            this.label2.Text = "*发现人：";
             // 
             // Btn_Submit
             // 

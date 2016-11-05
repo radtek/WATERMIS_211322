@@ -90,7 +90,7 @@ namespace PersonalWork
                             {
                                 Btn_More.Visible = true;
                                 Btn_More.Left = FP_Fee.Left;
-                                Btn_More.Top = FP_Fee.Top + FP_Fee.Height + 10;
+                                Btn_More.Top = FP_Fee.Top + FP_Fee.Height + 30;
                                 DepartementID = ht["DEPARTEMENTID"].ToString();
                                 Btn_More.Click += new EventHandler(Btn_More_Click);
                             }
