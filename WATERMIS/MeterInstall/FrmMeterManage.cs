@@ -196,6 +196,7 @@ namespace MeterInstall
             uC_DataGridView_Page1.SqlString = strSql.ToString();
             uC_DataGridView_Page1.PageOrderField = "CreateDate";
             uC_DataGridView_Page1.PageIndex = 1;
+            uC_DataGridView_Page1.strCaption = "水表库存情况明细表";
             uC_DataGridView_Page1.Init();
 
             dtList = new SqlServerHelper().GetDateTableBySql(strSql.ToString());

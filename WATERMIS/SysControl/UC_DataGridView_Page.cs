@@ -136,13 +136,10 @@ namespace SysControl
             set { _FiledColor = value; }
         }
 
-        //private string[,] _ColorValue;
-
-        //public string[,] ColorValue
-        //{
-        //    get { return _ColorValue; }
-        //    set { _ColorValue = value; }
-        //}
+        /// <summary>
+        /// 导出Excel的标题
+        /// </summary>
+        public string strCaption = "";
 
         public void Init()
         {
@@ -375,7 +372,6 @@ namespace SysControl
                 //}
                 dgAll.DataSource = dtAll;
                 
-                string strCaption = "";
                 ExportExcel ExportExcel = new ExportExcel();
                 ExportExcel.ExportToExcel(strCaption, dgAll);
             }
