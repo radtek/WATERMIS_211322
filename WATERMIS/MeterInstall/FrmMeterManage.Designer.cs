@@ -50,14 +50,14 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.uC_DataGridView_Page1 = new SysControl.UC_DataGridView_Page();
             this.toolStripWaterUser = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolSearch = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolEntering = new System.Windows.Forms.ToolStripButton();
             this.toolBatch = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolPrint = new System.Windows.Forms.ToolStripButton();
             this.toolPrintPreview = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolExcel = new System.Windows.Forms.ToolStripButton();
             this.groupBox1.SuspendLayout();
             this.tb1.SuspendLayout();
@@ -335,22 +335,6 @@
             this.toolStripWaterUser.TabIndex = 59;
             this.toolStripWaterUser.Text = "toolStrip2";
             // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.AutoSize = false;
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(10, 25);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
             // toolSearch
             // 
             this.toolSearch.Image = global::MeterInstall.Properties.Resources.onebit_02;
@@ -359,6 +343,12 @@
             this.toolSearch.Size = new System.Drawing.Size(57, 22);
             this.toolSearch.Text = "查询";
             this.toolSearch.Click += new System.EventHandler(this.toolSearch_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.AutoSize = false;
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(10, 25);
             // 
             // toolEntering
             // 
@@ -378,6 +368,11 @@
             this.toolBatch.Text = "批量入库";
             this.toolBatch.Click += new System.EventHandler(this.toolBatch_Click);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
             // toolPrint
             // 
             this.toolPrint.Image = global::MeterInstall.Properties.Resources.打印;
@@ -396,6 +391,12 @@
             this.toolPrintPreview.Text = "打印预览";
             this.toolPrintPreview.Click += new System.EventHandler(this.toolPrintPreview_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator1.Visible = false;
+            // 
             // toolExcel
             // 
             this.toolExcel.Image = global::MeterInstall.Properties.Resources.snap_undo;
@@ -403,6 +404,7 @@
             this.toolExcel.Name = "toolExcel";
             this.toolExcel.Size = new System.Drawing.Size(97, 22);
             this.toolExcel.Text = "导出Excel";
+            this.toolExcel.Visible = false;
             this.toolExcel.Click += new System.EventHandler(this.toolExcel_Click);
             // 
             // FrmMeterManage

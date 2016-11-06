@@ -196,7 +196,6 @@
             this.label4.Tag = "9999";
             this.label4.Text = " 分页大小";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // panel2
             // 

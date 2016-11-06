@@ -152,9 +152,9 @@ namespace SysControl
                     exportEvents(true);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                throw ex;
             }
         }
 
@@ -179,11 +179,6 @@ namespace SysControl
         }
 
         private void textEditCurPage_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
         {
 
         }

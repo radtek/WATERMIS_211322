@@ -50,10 +50,10 @@
             this.label17 = new System.Windows.Forms.Label();
             this.waterMeterProofreadingDate = new System.Windows.Forms.DateTimePicker();
             this.label31 = new System.Windows.Forms.Label();
-            this.waterMeterStartNumber = new System.Windows.Forms.MaskedTextBox();
             this.waterMeterMaxRange = new System.Windows.Forms.MaskedTextBox();
             this.waterMeteProofreadingPeriod = new System.Windows.Forms.MaskedTextBox();
             this.waterMeterSerialNumber = new System.Windows.Forms.MaskedTextBox();
+            this.waterMeterStartNumber = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
             this.SuspendLayout();
             // 
             // imageList1
@@ -108,6 +108,7 @@
             this.waterMeterMode.Name = "waterMeterMode";
             this.waterMeterMode.Size = new System.Drawing.Size(89, 21);
             this.waterMeterMode.TabIndex = 7;
+            this.waterMeterMode.Visible = false;
             // 
             // waterMeterProduct
             // 
@@ -151,6 +152,7 @@
             this.label13.Size = new System.Drawing.Size(65, 12);
             this.label13.TabIndex = 101;
             this.label13.Text = "规格型号：";
+            this.label13.Visible = false;
             // 
             // label14
             // 
@@ -228,15 +230,6 @@
             this.label31.TabIndex = 102;
             this.label31.Text = "鉴定日期：";
             // 
-            // waterMeterStartNumber
-            // 
-            this.waterMeterStartNumber.Location = new System.Drawing.Point(82, 68);
-            this.waterMeterStartNumber.Mask = "99999";
-            this.waterMeterStartNumber.Name = "waterMeterStartNumber";
-            this.waterMeterStartNumber.Size = new System.Drawing.Size(90, 21);
-            this.waterMeterStartNumber.TabIndex = 4;
-            this.waterMeterStartNumber.Text = "0";
-            // 
             // waterMeterMaxRange
             // 
             this.waterMeterMaxRange.Location = new System.Drawing.Point(254, 68);
@@ -262,15 +255,31 @@
             this.waterMeterSerialNumber.Size = new System.Drawing.Size(90, 21);
             this.waterMeterSerialNumber.TabIndex = 119;
             // 
+            // waterMeterStartNumber
+            // 
+            this.waterMeterStartNumber.AllowEmpty = false;
+            this.waterMeterStartNumber.EmptyMessage = "";
+            this.waterMeterStartNumber.ErrorMessage = "";
+            this.waterMeterStartNumber.InputType = Common.WinControl.Ryan.RegTextbox.RyanTextBox.EMInputTypes.数字;
+            this.waterMeterStartNumber.Location = new System.Drawing.Point(82, 68);
+            this.waterMeterStartNumber.Name = "waterMeterStartNumber";
+            this.waterMeterStartNumber.RegexExpression = "";
+            this.waterMeterStartNumber.RemoveSpace = false;
+            this.waterMeterStartNumber.Size = new System.Drawing.Size(90, 21);
+            this.waterMeterStartNumber.TabIndex = 120;
+            this.waterMeterStartNumber.Text = "0";
+            this.waterMeterStartNumber.ValidateState = false;
+            this.waterMeterStartNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.waterMeterStartNumber_KeyPress);
+            // 
             // FrmEntering
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(544, 229);
+            this.Controls.Add(this.waterMeterStartNumber);
             this.Controls.Add(this.waterMeterSerialNumber);
             this.Controls.Add(this.waterMeteProofreadingPeriod);
             this.Controls.Add(this.waterMeterMaxRange);
-            this.Controls.Add(this.waterMeterStartNumber);
             this.Controls.Add(this.Btn_Submit);
             this.Controls.Add(this.label61);
             this.Controls.Add(this.label46);
@@ -321,10 +330,10 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.DateTimePicker waterMeterProofreadingDate;
         private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.MaskedTextBox waterMeterStartNumber;
         private System.Windows.Forms.MaskedTextBox waterMeterMaxRange;
         private System.Windows.Forms.MaskedTextBox waterMeteProofreadingPeriod;
         private System.Windows.Forms.MaskedTextBox waterMeterSerialNumber;
+        private Common.WinControl.Ryan.RegTextbox.RyanTextBox waterMeterStartNumber;
 
     }
 }

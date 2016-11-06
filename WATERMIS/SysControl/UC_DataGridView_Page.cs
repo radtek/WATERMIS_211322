@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Drawing;
+using BASEFUNCTION;
 
 namespace SysControl
 {
@@ -154,6 +155,9 @@ namespace SysControl
                 return;
             }
             DG.DataSource = null;
+            dgAll.Columns.Clear();
+            dgAll.DataSource = null;
+
             RefreshData();
             if (_DataSource!=null)
             {
@@ -163,6 +167,11 @@ namespace SysControl
                     col.Name = dc.ColumnName;
                     col.DataPropertyName = dc.ColumnName;
                     col.HeaderText = dc.ColumnName;
+
+                    DataGridViewTextBoxColumn colCopy = new DataGridViewTextBoxColumn();
+                    colCopy.Name = dc.ColumnName+"1";
+                    colCopy.DataPropertyName = dc.ColumnName;
+                    colCopy.HeaderText = dc.ColumnName;
                     bool isShow = false;
                     for (int i = 0; i < Fields.GetLength(0); i++)
                     {
@@ -172,11 +181,18 @@ namespace SysControl
                             col.DataPropertyName = Fields[i, 0];
                             col.HeaderText = Fields[i, 1];
                             col.DisplayIndex = i;
+
+                            colCopy.DataPropertyName = Fields[i, 0];
+                            colCopy.HeaderText = Fields[i, 1];
+                            colCopy.DisplayIndex = i;
                             break;
                         }
                     }
                     col.Visible = isShow;
                     DG.Columns.Add(col);
+
+                    colCopy.Visible = isShow;
+                    dgAll.Columns.Add(colCopy);
                 }
             }
             DG.DataSource = _DataSource;
@@ -313,6 +329,55 @@ namespace SysControl
                     }
                 }
              
+            }
+        }
+
+        private void uPage_exportEvents(bool singlePage)
+        {
+            if (singlePage)
+            {
+                string strCaption = "";
+                ExportExcel ExportExcel = new ExportExcel();
+                ExportExcel.ExportToExcel(strCaption, DG);
+            }
+            else
+            {
+                DataTable dtAll = new SqlServerHelper().GetDateTableBySql(_SqlString);
+                //if (dtAll != null)
+                //{
+                //    DataRow newrow = dtAll.NewRow();
+                //    if (_FieldStatis != null)
+                //    {
+                //        for (int i = 0; i < _FieldStatis.GetLength(0); i++)
+                //        {
+                //            if (!FieldStatis[i, 1].Equals("合计"))
+                //            {
+                //                FieldStatis[i, 1] = dtAll.Compute("SUM(" + FieldStatis[i, 0] + ")", "").ToString();
+                //            }
+
+                //            Type Dtype = dtAll.Columns[FieldStatis[i, 0]].DataType;
+                //            string FC = FieldStatis[i, 1];
+                //            try
+                //            {
+                //                if (!string.IsNullOrEmpty(FC))
+                //                {
+                //                    newrow[FieldStatis[i, 0]] = System.ComponentModel.TypeDescriptor.GetConverter(Dtype).ConvertFrom(FC);
+                //                }
+                //            }
+                //            catch (Exception)
+                //            {
+
+
+                //            }
+                //        }
+                //        dtAll.Rows.Add(newrow);
+                //    }
+                //}
+                dgAll.DataSource = dtAll;
+                
+                string strCaption = "";
+                ExportExcel ExportExcel = new ExportExcel();
+                ExportExcel.ExportToExcel(strCaption, dgAll);
             }
         }
 

@@ -59,6 +59,11 @@ namespace MeterInstall
                 MessageBox.Show("信息不完整！");
                 return;
             }
+            if (!waterMeterStartNumber.ValidateState)
+            {
+                MessageBox.Show("请输入正确的初始读数!");
+                return;
+            }
 
             Btn_Submit.Enabled = false;
             Hashtable ht = new Hashtable();
@@ -78,12 +83,15 @@ namespace MeterInstall
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
-
-
         }
 
-
-
-
+        private void waterMeterStartNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //如果输入的不是数字键，也不是回车键、Backspace键，则取消该输入
+            if (!(Char.IsNumber(e.KeyChar)) && e.KeyChar != (char)13 && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

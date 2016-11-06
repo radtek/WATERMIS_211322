@@ -32,8 +32,10 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.uPage = new SysControl.UC_PageControlBar();
             this.DG = new System.Windows.Forms.DataGridView();
+            this.dgAll = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgAll)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel2
@@ -42,14 +44,15 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.uPage, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.DG, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.dgAll, 0, 2);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 0F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(841, 279);
             this.tableLayoutPanel2.TabIndex = 1;
             this.tableLayoutPanel2.Tag = "9999";
@@ -68,6 +71,7 @@
             this.uPage.Size = new System.Drawing.Size(841, 33);
             this.uPage.TabIndex = 3;
             this.uPage.Tag = "9999";
+            this.uPage.exportEvents += new SysControl.UC_PageControlBar.ExportEvents(this.uPage_exportEvents);
             this.uPage.myPagerEvents += new SysControl.UC_PageControlBar.MyPagerEvents(this.uPage_myPagerEvents);
             // 
             // DG
@@ -90,6 +94,16 @@
             this.DG.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.DG_CellPainting);
             this.DG.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DG_CellClick);
             // 
+            // dgAll
+            // 
+            this.dgAll.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgAll.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgAll.Location = new System.Drawing.Point(3, 282);
+            this.dgAll.Name = "dgAll";
+            this.dgAll.RowTemplate.Height = 23;
+            this.dgAll.Size = new System.Drawing.Size(835, 1);
+            this.dgAll.TabIndex = 4;
+            // 
             // UC_DataGridView_Page
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -105,6 +119,7 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgAll)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -114,6 +129,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.DataGridView DG;
         private UC_PageControlBar uPage;
+        private System.Windows.Forms.DataGridView dgAll;
 
 
     }

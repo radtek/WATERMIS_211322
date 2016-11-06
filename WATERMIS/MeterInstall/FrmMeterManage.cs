@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using BASEFUNCTION;
 using Common.DotNetUI;
 using Common.DotNetCode;
+using FastReport;
 
 namespace MeterInstall
 {
@@ -30,6 +31,11 @@ namespace MeterInstall
             }
         }
 
+        /// <summary>
+        /// 查询到的水表明细
+        /// </summary>
+        private DataTable dtList = new DataTable();
+
         private void toolSearch_Click(object sender, EventArgs e)
         {
             SeachData();
@@ -37,6 +43,7 @@ namespace MeterInstall
 
         void SeachData()
         {
+            dtList = new DataTable();
             StringBuilder sb = new StringBuilder();
 
             bool isfirst = true;
@@ -171,7 +178,6 @@ namespace MeterInstall
             uC_DataGridView_Page1.Fields = new string[,] { { "rowNum", "序号" }, 
                                                            { "waterMeterSerialNumber", "出厂编号" }, 
                                                            { "waterMeterProduct", "水表厂家" }, 
-                                                           { "waterMeterMode", "型号" }, 
                                                            { "StateDescribe", "水表状态" }, 
                                                            { "waterMeterSizeValue", "口径" }, 
                                                            { "waterMeterStartNumber", "初始读数" },
@@ -192,6 +198,19 @@ namespace MeterInstall
             uC_DataGridView_Page1.PageIndex = 1;
             uC_DataGridView_Page1.Init();
 
+            dtList = new SqlServerHelper().GetDateTableBySql(strSql.ToString());
+            if (dtList.Rows.Count > 0)
+            {
+                toolPrint.Enabled = true;
+                toolPrintPreview.Enabled = true;
+                toolExcel.Enabled = true;
+            }
+            else
+            {
+                toolPrint.Enabled = false;
+                toolPrintPreview.Enabled = false;
+                toolExcel.Enabled = false;
+            }
         }
         private void Binddata()
         {
@@ -242,18 +261,66 @@ namespace MeterInstall
 
         private void toolPrint_Click(object sender, EventArgs e)
         {
-
+            DataSet ds = new DataSet();
+            DataTable dtPrint =dtList.Copy();
+            dtPrint.TableName = "水表情况表";
+            ds.Tables.Add(dtPrint);
+            FastReport.Report report1 = new FastReport.Report();
+            try
+            {
+                // load the existing report
+                report1.Load(Application.StartupPath + @"\PRINTModel\业扩模板\水表库存模板.frx");
+                // register the dataset
+                report1.RegisterData(ds);
+                report1.GetDataSource("水表情况表").Enabled = true;
+                report1.Prepare();
+                report1.PrintSettings.ShowDialog = false;
+                report1.Print();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // free resources used by report
+                report1.Dispose();
+            }
         }
 
         private void toolPrintPreview_Click(object sender, EventArgs e)
         {
-
+            DataSet ds = new DataSet();
+            DataTable dtPrint = dtList.Copy();
+            dtPrint.TableName = "水表情况表";
+            ds.Tables.Add(dtPrint);
+            FastReport.Report report1 = new FastReport.Report();
+            try
+            {
+                // load the existing report
+                report1.Load(Application.StartupPath + @"\PRINTModel\业扩模板\水表库存模板.frx");
+                // register the dataset
+                report1.RegisterData(ds);
+                report1.GetDataSource("水表情况表").Enabled = true;
+                // run the report
+                report1.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // free resources used by report
+                report1.Dispose();
+            }
         }
 
         private void toolExcel_Click(object sender, EventArgs e)
         {
             //string strCaption = "水表在库情况表";
             //ExportExcel ExportExcel = new ExportExcel();
+            //ExcelHelper.ExportExcel(dtList,"1");
             //ExportExcel.ExportToExcel(strCaption, dgList);
         }
 
