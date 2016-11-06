@@ -38,6 +38,7 @@ namespace FinanceOS
         private decimal _BCSS = 0m;
         private decimal _BCYS = 0m;
         private string _SelectResolveID = "";
+        private decimal _YuCun = 0m;//用户预存水费
 
         private string _LastPointSort;
         private string _FeeItems = "";
@@ -164,7 +165,7 @@ namespace FinanceOS
                     UC_ChargeItem UC = new UC_ChargeItem();
                     UC.FeeItem = string.Format("{0}:{1}元;", dr["FeeItem"].ToString().Trim(), dr["Fee"].ToString());
                     _FeeItems += string.Format("{0}:{1};", dr["FeeItem"].ToString().Trim(), dr["Fee"].ToString());
-
+                    _YuCun = dr["IsPrestore"].ToString().Equals("1") ? decimal.Parse(dr["Fee"].ToString()) : 0m;
                     string _FeeItemDetail = GetPrintFee(dr["FeeID"].ToString(), dr["Fee"].ToString());
                     if (!string.IsNullOrEmpty(_FeeItemDetail))
                     {
@@ -291,7 +292,7 @@ namespace FinanceOS
             _prestore = sysidal.GetUserPrestore(TableName, TaskID);
             string _chargeID = sysidal.GetNewChargeID(strLogID);
             hc["TableName"] = TableName;
-            hc["Prestore"] = _prestore - _DepTotalFee + _BCSS;
+            hc["Prestore"] = _prestore - _DepTotalFee + _BCSS + _YuCun;
             hc["CHARGEID"] = _chargeID;
             hc["TaskID"] = TaskID;
             hc["CHARGEBCSS"] = CHARGEBCSS.Text;

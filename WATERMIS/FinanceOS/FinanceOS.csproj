@@ -74,6 +74,12 @@
     <Compile Include="FrmFinance_Invoice_Print.Designer.cs">
       <DependentUpon>FrmFinance_Invoice_Print.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmFinance_Invoice_PrintShow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFinance_Invoice_PrintShow.Designer.cs">
+      <DependentUpon>FrmFinance_Invoice_PrintShow.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmFinance_Invoice_Scrap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +122,18 @@
     <Compile Include="FrmFinance_Refund.Designer.cs">
       <DependentUpon>FrmFinance_Refund.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmFinance_RefundShow1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFinance_RefundShow1.Designer.cs">
+      <DependentUpon>FrmFinance_RefundShow1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFinance_RefundShow2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFinance_RefundShow2.Designer.cs">
+      <DependentUpon>FrmFinance_RefundShow2.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmFinance_Settle_Day.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +156,9 @@
     <EmbeddedResource Include="FrmFinance_Invoice_Print.resx">
       <DependentUpon>FrmFinance_Invoice_Print.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmFinance_Invoice_PrintShow.resx">
+      <DependentUpon>FrmFinance_Invoice_PrintShow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmFinance_Invoice_Scrap.resx">
       <DependentUpon>FrmFinance_Invoice_Scrap.cs</DependentUpon>
     </EmbeddedResource>
@@ -158,6 +179,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmFinance_Refund.resx">
       <DependentUpon>FrmFinance_Refund.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFinance_RefundShow1.resx">
+      <DependentUpon>FrmFinance_RefundShow1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFinance_RefundShow2.resx">
+      <DependentUpon>FrmFinance_RefundShow2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmFinance_Settle_Day.resx">
       <DependentUpon>FrmFinance_Settle_Day.cs</DependentUpon>

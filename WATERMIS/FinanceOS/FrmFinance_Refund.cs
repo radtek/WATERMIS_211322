@@ -63,19 +63,36 @@ namespace FinanceOS
             }
         }
 
-        private void Refund2()
-        {
-            
-        }
-
         private void Refund1()
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.Append(@"SELECT MT.Table_Name_CH,VW.SD,VW.waterUserId,VW.waterUserName,VW.ApplyUser,VT.FEE,VW.waterPhone,VT.CreateDate,VT.PointTime,VW.TableID,VT.TaskID,VT.STATES,VW.ID,VT.ChargeID,VT.CHARGEWORKERNAME,VT.ChargeDate,VT.IsFinal,(CASE WHEN VT.IsFinal=1 THEN '预算' ELSE '决算' END) AS IsFinalS,VT.DepartementID,BD.departmentName
-FROM View_TaskFee VT  LEFT JOIN View_WorkBase VW ON VT.TaskID=VW.TASKID,Meter_Table MT , base_department BD  WHERE VW.TableID=MT.TableID AND  VT.DepartementID=BD.departmentID AND VW.[State] IN (1,2,5) AND VT.States=1");
+            sb.AppendFormat(@"SELECT * FROM Meter_Charge WHERE CHARGEID IN
+(SELECT DISTINCT MWF.ChargeID FROM Meter_WorkTask MW,Meter_WorkResolve MWR,Meter_WorkResolveFee MWF 
+WHERE MW.TaskID=MWR.TaskID AND MW.PointSort=MWR.PointSort AND MWR.ResolveID=MWF.ResolveID
+AND MW.[State]=1 AND MWF.[State]=1 AND ISNULL(MWF.ChargeID,'')<>N'') AND CHARGEWORKERID='{0}' ", AppDomain.CurrentDomain.GetData("LOGINID").ToString());
 
-            sb.Append(" AND VT.States=0 ");
+            uC_DataGridView_Page1.Fields = new string[,] { { "rowNum", "序号" }, 
+                                                           { "CHARGEID", "收费流水号" }, 
+                                                           { "CHARGEBCSS", "本次实收" }, 
+                                                           { "CHARGEBCYS", "本次应收" }, 
+                                                           { "TOTALCHARGE", "费用合计" }, 
+                                                           { "FeeList", "收费明细" },
+                                                           { "CHARGEDATETIME", "收费时间" }
+            };
+            uC_DataGridView_Page1.FieldStatis = new string[,] { { "CHARGEID", "合计" }, { "TOTALCHARGE", "" } };
+            uC_DataGridView_Page1.SqlString = sb.ToString();
+            uC_DataGridView_Page1.PageOrderField = "CHARGEDATETIME";
+            uC_DataGridView_Page1.PageOrderType = "DESC";
+            uC_DataGridView_Page1.PageIndex = 1;
+            uC_DataGridView_Page1.Init();
+        }
+
+        private void Refund2()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append(@"SELECT * FROM View_WorkBase VW WHERE VW.prestore>0 AND VW.[State]=4");
 
             if (!CB_ID.SelectedValue.ToString().Equals(""))
             {
@@ -93,35 +110,60 @@ FROM View_TaskFee VT  LEFT JOIN View_WorkBase VW ON VT.TaskID=VW.TASKID,Meter_Ta
                                                            { "waterUserId", "用户ID" }, 
                                                            { "waterUserName", "户名" }, 
                                                            { "ApplyUser", "申请人" },
-                                                           { "FEE", "应收合计" },
-                                                           { "ApplyPhone", "联系电话" },
+                                                           { "prestore", "账户余额" },
+                                                           { "waterPhone", "联系电话" },
                                                            { "CreateDate", "申请时间" }
             };
-            uC_DataGridView_Page1.FieldStatis = new string[,] { { "Table_Name_CH", "合计" }, { "FEE", "" } };
+            uC_DataGridView_Page1.FieldStatis = new string[,] { { "Table_Name_CH", "合计" }, { "prestore", "" } };
             uC_DataGridView_Page1.SqlString = sb.ToString();
-            uC_DataGridView_Page1.PageOrderField = "PointTime";
+            uC_DataGridView_Page1.PageOrderField = "CreateDate";
             uC_DataGridView_Page1.PageOrderType = "DESC";
             uC_DataGridView_Page1.PageIndex = 1;
             uC_DataGridView_Page1.Init();
         }
+
+        
 
         private void uC_DataGridView_Page1_CellClickEvents(object sender, DataGridViewCellEventArgs e)
         {
             DataGridView dgList = (DataGridView)sender;
             if (dgList.CurrentRow != null)
             {
-                string taskid = dgList.CurrentRow.Cells["TaskID"].Value.ToString();
-                if (!string.IsNullOrEmpty(taskid))
-                {
-                    uC_FlowList1.TaskId = taskid;
-                    uC_FlowList1.DataBind();
-                }
+                //string taskid = dgList.CurrentRow.Cells["TaskID"].Value.ToString();
+                //if (!string.IsNullOrEmpty(taskid))
+                //{
+                //    uC_FlowList1.TaskId = taskid;
+                //    uC_FlowList1.DataBind();
+                //}
             }
         }
 
         private void uC_DataGridView_Page1_CellDoubleClickEvents(object sender, DataGridViewCellEventArgs e)
         {
+             DataGridView dgList = (DataGridView)sender;
+             if (dgList.CurrentRow != null)
+             {
+                 switch (_ReType)
+                 {
+                     case 1://收费退款
+                         FrmFinance_RefundShow1 frm = new FrmFinance_RefundShow1();
+                         if (frm.ShowDialog() == DialogResult.OK)
+                         {
+                             Refund1();
+                         }
+                         break;
+                     case 2://作废退款
+                         FrmFinance_RefundShow2 frm2 = new FrmFinance_RefundShow2();
+                         if (frm2.ShowDialog() == DialogResult.OK)
+                         {
+                             Refund2();
+                         }
 
+                         break;
+                     default:
+                         break;
+                 }
+             }
         }
 
     }

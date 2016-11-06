@@ -31,6 +31,9 @@
             this.tb1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.CB_Month = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.CB_ID = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.TB_Keys = new System.Windows.Forms.TextBox();
@@ -38,10 +41,6 @@
             this.Btn_Search = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.uC_DataGridView_Page1 = new SysControl.UC_DataGridView_Page();
-            this.uC_FlowList1 = new SysControl.UC_FlowList();
-            this.label3 = new System.Windows.Forms.Label();
-            this.CB_Month = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.tb1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -54,15 +53,14 @@
             this.tb1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tb1.Controls.Add(this.groupBox1, 0, 0);
             this.tb1.Controls.Add(this.groupBox2, 0, 1);
-            this.tb1.Controls.Add(this.uC_FlowList1, 0, 2);
             this.tb1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tb1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tb1.Location = new System.Drawing.Point(0, 0);
             this.tb1.Name = "tb1";
-            this.tb1.RowCount = 3;
+            this.tb1.RowCount = 2;
             this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 91F));
+            this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tb1.Size = new System.Drawing.Size(909, 688);
             this.tb1.TabIndex = 67;
             this.tb1.Tag = "9999";
@@ -94,6 +92,32 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(897, 50);
             this.panel1.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(339, 18);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(17, 12);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "月";
+            // 
+            // CB_Month
+            // 
+            this.CB_Month.FormattingEnabled = true;
+            this.CB_Month.Location = new System.Drawing.Point(266, 14);
+            this.CB_Month.Name = "CB_Month";
+            this.CB_Month.Size = new System.Drawing.Size(69, 20);
+            this.CB_Month.TabIndex = 12;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(195, 18);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 12);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "收费月份：";
             // 
             // CB_ID
             // 
@@ -136,6 +160,7 @@
             this.Btn_Search.TabIndex = 0;
             this.Btn_Search.Text = "搜 索";
             this.Btn_Search.UseVisualStyleBackColor = true;
+            this.Btn_Search.Click += new System.EventHandler(this.Btn_Search_Click);
             // 
             // groupBox2
             // 
@@ -143,7 +168,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 83);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(903, 511);
+            this.groupBox2.Size = new System.Drawing.Size(903, 602);
             this.groupBox2.TabIndex = 902;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "待打印发票列表";
@@ -164,49 +189,11 @@
             this.uC_DataGridView_Page1.PageIndex = 1;
             this.uC_DataGridView_Page1.PageOrderField = null;
             this.uC_DataGridView_Page1.PageSize = 100;
-            this.uC_DataGridView_Page1.Size = new System.Drawing.Size(897, 491);
+            this.uC_DataGridView_Page1.Size = new System.Drawing.Size(897, 582);
             this.uC_DataGridView_Page1.TabIndex = 906;
             this.uC_DataGridView_Page1.Tag = "9999";
-            // 
-            // uC_FlowList1
-            // 
-            this.uC_FlowList1.AutoScroll = true;
-            this.uC_FlowList1.AutoSize = true;
-            this.uC_FlowList1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uC_FlowList1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uC_FlowList1.Location = new System.Drawing.Point(3, 600);
-            this.uC_FlowList1.MinimumSize = new System.Drawing.Size(900, 85);
-            this.uC_FlowList1.Name = "uC_FlowList1";
-            this.uC_FlowList1.Size = new System.Drawing.Size(903, 85);
-            this.uC_FlowList1.TabIndex = 903;
-            this.uC_FlowList1.Tag = "9999";
-            this.uC_FlowList1.TaskId = null;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(339, 18);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(17, 12);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "月";
-            // 
-            // CB_Month
-            // 
-            this.CB_Month.FormattingEnabled = true;
-            this.CB_Month.Location = new System.Drawing.Point(266, 14);
-            this.CB_Month.Name = "CB_Month";
-            this.CB_Month.Size = new System.Drawing.Size(69, 20);
-            this.CB_Month.TabIndex = 12;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(195, 18);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 12);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "收费月份：";
+            this.uC_DataGridView_Page1.CellDoubleClickEvents += new SysControl.UC_DataGridView_Page.CellDoubleClickEvent(this.uC_DataGridView_Page1_CellDoubleClickEvents);
+            this.uC_DataGridView_Page1.CellClickEvents += new SysControl.UC_DataGridView_Page.CellClickEvent(this.uC_DataGridView_Page1_CellClickEvents);
             // 
             // FrmFinance_Invoice_Print
             // 
@@ -217,8 +204,8 @@
             this.Name = "FrmFinance_Invoice_Print";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "发票打印";
+            this.Load += new System.EventHandler(this.FrmFinance_Invoice_Print_Load);
             this.tb1.ResumeLayout(false);
-            this.tb1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -240,7 +227,6 @@
         private System.Windows.Forms.Button Btn_Search;
         private System.Windows.Forms.GroupBox groupBox2;
         private SysControl.UC_DataGridView_Page uC_DataGridView_Page1;
-        private SysControl.UC_FlowList uC_FlowList1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox CB_Month;
         private System.Windows.Forms.Label label5;
