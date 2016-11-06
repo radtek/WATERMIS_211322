@@ -125,6 +125,7 @@ namespace FinanceOS
         private void BindDepartmentFee()
         {
             FP_Dep.Controls.Clear();
+            //部门费用2016-11-5
             DataTable dt = sysidal.GetDepartMentFeeFinal(TaskID, PointSort);
             if (DataTableHelper.IsExistRows(dt))
             {
@@ -139,7 +140,7 @@ namespace FinanceOS
                 _LastPointSort = dt.Rows[0]["LastPointSort"].ToString();
                 TotalFee = sysidal.GetTotalFeeFinalByPointSort(TaskID, _LastPointSort);
 
-                LB_TotalFee.Text = string.Format("总计：{0}元（不含预存水费）", TotalFee);
+                LB_TotalFee.Text = string.Format("总计：{0}元（含预存水费{1}元）", TotalFee, sysidal.GetTotalFeeYuCun(TaskID,_LastPointSort));
                 Prestore = sysidal.GetUserPrestore("View_WorkBase", TaskID);
             }
         }

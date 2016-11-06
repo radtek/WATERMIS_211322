@@ -132,6 +132,18 @@
     <EmbeddedResource Include="FrmFinanceCenter.resx">
       <DependentUpon>FrmFinanceCenter.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmFinance_Invoice_Change.resx">
+      <DependentUpon>FrmFinance_Invoice_Change.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFinance_Invoice_Print.resx">
+      <DependentUpon>FrmFinance_Invoice_Print.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFinance_Invoice_Scrap.resx">
+      <DependentUpon>FrmFinance_Invoice_Scrap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFinance_Receipt.resx">
+      <DependentUpon>FrmFinance_Receipt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmFinance_Receipted.resx">
       <DependentUpon>FrmFinance_Receipted.cs</DependentUpon>
     </EmbeddedResource>
@@ -143,6 +155,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmFinance_Receivable_OP.resx">
       <DependentUpon>FrmFinance_Receivable_OP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFinance_Refund.resx">
+      <DependentUpon>FrmFinance_Refund.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmFinance_Settle_Day.resx">
       <DependentUpon>FrmFinance_Settle_Day.cs</DependentUpon>

@@ -71,6 +71,7 @@
             this.PL.Name = "PL";
             this.PL.Size = new System.Drawing.Size(486, 149);
             this.PL.TabIndex = 21;
+            this.PL.Visible = false;
             // 
             // POSRUNNINGNO
             // 
@@ -213,7 +214,7 @@
             // 
             // Btn_Submit
             // 
-            this.Btn_Submit.Location = new System.Drawing.Point(251, 427);
+            this.Btn_Submit.Location = new System.Drawing.Point(198, 427);
             this.Btn_Submit.Name = "Btn_Submit";
             this.Btn_Submit.Size = new System.Drawing.Size(97, 33);
             this.Btn_Submit.TabIndex = 18;
@@ -231,12 +232,13 @@
             // 
             // Btn_Print
             // 
-            this.Btn_Print.Location = new System.Drawing.Point(146, 427);
+            this.Btn_Print.Location = new System.Drawing.Point(93, 427);
             this.Btn_Print.Name = "Btn_Print";
             this.Btn_Print.Size = new System.Drawing.Size(97, 33);
             this.Btn_Print.TabIndex = 23;
             this.Btn_Print.Text = "打印收据";
             this.Btn_Print.UseVisualStyleBackColor = true;
+            this.Btn_Print.Visible = false;
             this.Btn_Print.Click += new System.EventHandler(this.Btn_Print_Click);
             // 
             // LB_TotalFee

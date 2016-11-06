@@ -31,6 +31,12 @@
             this.tb1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.RB_IsFinal0 = new System.Windows.Forms.RadioButton();
+            this.RB_IsFinal1 = new System.Windows.Forms.RadioButton();
+            this.CB_DepartementID = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.CHARGEWORKERID = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.CB_Day = new System.Windows.Forms.ComboBox();
@@ -44,8 +50,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.uC_DataGridView_Page1 = new SysControl.UC_DataGridView_Page();
             this.uC_FlowList1 = new SysControl.UC_FlowList();
-            this.label6 = new System.Windows.Forms.Label();
-            this.CHARGEWORKERID = new System.Windows.Forms.ComboBox();
             this.tb1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -64,7 +68,7 @@
             this.tb1.Location = new System.Drawing.Point(0, 0);
             this.tb1.Name = "tb1";
             this.tb1.RowCount = 3;
-            this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 91F));
             this.tb1.Size = new System.Drawing.Size(1124, 754);
@@ -78,13 +82,17 @@
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 7);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1118, 70);
+            this.groupBox1.Size = new System.Drawing.Size(1118, 90);
             this.groupBox1.TabIndex = 60;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "查询条件";
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.RB_IsFinal0);
+            this.panel1.Controls.Add(this.RB_IsFinal1);
+            this.panel1.Controls.Add(this.CB_DepartementID);
+            this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.CHARGEWORKERID);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label4);
@@ -100,13 +108,71 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 17);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1112, 50);
+            this.panel1.Size = new System.Drawing.Size(1112, 70);
             this.panel1.TabIndex = 0;
+            // 
+            // RB_IsFinal0
+            // 
+            this.RB_IsFinal0.AutoSize = true;
+            this.RB_IsFinal0.Location = new System.Drawing.Point(273, 44);
+            this.RB_IsFinal0.Name = "RB_IsFinal0";
+            this.RB_IsFinal0.Size = new System.Drawing.Size(47, 16);
+            this.RB_IsFinal0.TabIndex = 17;
+            this.RB_IsFinal0.Text = "决算";
+            this.RB_IsFinal0.UseVisualStyleBackColor = true;
+            this.RB_IsFinal0.CheckedChanged += new System.EventHandler(this.RB_IsFinal0_CheckedChanged);
+            // 
+            // RB_IsFinal1
+            // 
+            this.RB_IsFinal1.AutoSize = true;
+            this.RB_IsFinal1.Checked = true;
+            this.RB_IsFinal1.Location = new System.Drawing.Point(216, 44);
+            this.RB_IsFinal1.Name = "RB_IsFinal1";
+            this.RB_IsFinal1.Size = new System.Drawing.Size(47, 16);
+            this.RB_IsFinal1.TabIndex = 16;
+            this.RB_IsFinal1.TabStop = true;
+            this.RB_IsFinal1.Text = "预算";
+            this.RB_IsFinal1.UseVisualStyleBackColor = true;
+            this.RB_IsFinal1.CheckedChanged += new System.EventHandler(this.RB_IsFinal1_CheckedChanged);
+            // 
+            // CB_DepartementID
+            // 
+            this.CB_DepartementID.FormattingEnabled = true;
+            this.CB_DepartementID.Location = new System.Drawing.Point(75, 42);
+            this.CB_DepartementID.Name = "CB_DepartementID";
+            this.CB_DepartementID.Size = new System.Drawing.Size(104, 20);
+            this.CB_DepartementID.TabIndex = 15;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 45);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(65, 12);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "部    门：";
+            // 
+            // CHARGEWORKERID
+            // 
+            this.CHARGEWORKERID.FormattingEnabled = true;
+            this.CHARGEWORKERID.Location = new System.Drawing.Point(480, 9);
+            this.CHARGEWORKERID.Name = "CHARGEWORKERID";
+            this.CHARGEWORKERID.Size = new System.Drawing.Size(69, 20);
+            this.CHARGEWORKERID.TabIndex = 13;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(426, 14);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(53, 12);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "收费员：";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(403, 17);
+            this.label4.Location = new System.Drawing.Point(403, 14);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(17, 12);
             this.label4.TabIndex = 11;
@@ -115,7 +181,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(329, 17);
+            this.label3.Location = new System.Drawing.Point(329, 14);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(17, 12);
             this.label3.TabIndex = 10;
@@ -124,7 +190,7 @@
             // CB_Day
             // 
             this.CB_Day.FormattingEnabled = true;
-            this.CB_Day.Location = new System.Drawing.Point(350, 13);
+            this.CB_Day.Location = new System.Drawing.Point(350, 10);
             this.CB_Day.Name = "CB_Day";
             this.CB_Day.Size = new System.Drawing.Size(48, 20);
             this.CB_Day.TabIndex = 9;
@@ -132,7 +198,7 @@
             // CB_Month
             // 
             this.CB_Month.FormattingEnabled = true;
-            this.CB_Month.Location = new System.Drawing.Point(256, 13);
+            this.CB_Month.Location = new System.Drawing.Point(256, 10);
             this.CB_Month.Name = "CB_Month";
             this.CB_Month.Size = new System.Drawing.Size(69, 20);
             this.CB_Month.TabIndex = 8;
@@ -140,7 +206,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(185, 17);
+            this.label5.Location = new System.Drawing.Point(185, 14);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 12);
             this.label5.TabIndex = 7;
@@ -149,7 +215,7 @@
             // CB_ID
             // 
             this.CB_ID.FormattingEnabled = true;
-            this.CB_ID.Location = new System.Drawing.Point(75, 13);
+            this.CB_ID.Location = new System.Drawing.Point(75, 10);
             this.CB_ID.Name = "CB_ID";
             this.CB_ID.Size = new System.Drawing.Size(104, 20);
             this.CB_ID.TabIndex = 4;
@@ -157,7 +223,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(554, 17);
+            this.label2.Location = new System.Drawing.Point(345, 46);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 3;
@@ -165,15 +231,15 @@
             // 
             // TB_Keys
             // 
-            this.TB_Keys.Location = new System.Drawing.Point(611, 12);
+            this.TB_Keys.Location = new System.Drawing.Point(404, 41);
             this.TB_Keys.Name = "TB_Keys";
-            this.TB_Keys.Size = new System.Drawing.Size(132, 21);
+            this.TB_Keys.Size = new System.Drawing.Size(145, 21);
             this.TB_Keys.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 17);
+            this.label1.Location = new System.Drawing.Point(6, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 12);
             this.label1.TabIndex = 1;
@@ -181,9 +247,9 @@
             // 
             // Btn_Search
             // 
-            this.Btn_Search.Location = new System.Drawing.Point(746, 11);
+            this.Btn_Search.Location = new System.Drawing.Point(558, 7);
             this.Btn_Search.Name = "Btn_Search";
-            this.Btn_Search.Size = new System.Drawing.Size(75, 23);
+            this.Btn_Search.Size = new System.Drawing.Size(75, 55);
             this.Btn_Search.TabIndex = 0;
             this.Btn_Search.Text = "搜 索";
             this.Btn_Search.UseVisualStyleBackColor = true;
@@ -193,12 +259,12 @@
             // 
             this.groupBox2.Controls.Add(this.uC_DataGridView_Page1);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(3, 83);
+            this.groupBox2.Location = new System.Drawing.Point(3, 103);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1118, 577);
+            this.groupBox2.Size = new System.Drawing.Size(1118, 557);
             this.groupBox2.TabIndex = 902;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "待收费列表";
+            this.groupBox2.Text = "已费列表";
             // 
             // uC_DataGridView_Page1
             // 
@@ -208,6 +274,7 @@
             this.uC_DataGridView_Page1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uC_DataGridView_Page1.Fields = null;
             this.uC_DataGridView_Page1.FieldStatis = null;
+            this.uC_DataGridView_Page1.FiledColor = null;
             this.uC_DataGridView_Page1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uC_DataGridView_Page1.Location = new System.Drawing.Point(3, 17);
             this.uC_DataGridView_Page1.MinimumSize = new System.Drawing.Size(833, 80);
@@ -215,7 +282,7 @@
             this.uC_DataGridView_Page1.PageIndex = 1;
             this.uC_DataGridView_Page1.PageOrderField = null;
             this.uC_DataGridView_Page1.PageSize = 100;
-            this.uC_DataGridView_Page1.Size = new System.Drawing.Size(1112, 557);
+            this.uC_DataGridView_Page1.Size = new System.Drawing.Size(1112, 537);
             this.uC_DataGridView_Page1.TabIndex = 906;
             this.uC_DataGridView_Page1.Tag = "9999";
             this.uC_DataGridView_Page1.CellDoubleClickEvents += new SysControl.UC_DataGridView_Page.CellDoubleClickEvent(this.uC_DataGridView_Page1_CellDoubleClickEvents);
@@ -234,23 +301,6 @@
             this.uC_FlowList1.TabIndex = 903;
             this.uC_FlowList1.Tag = "9999";
             this.uC_FlowList1.TaskId = null;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(426, 17);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 12);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "收费员：";
-            // 
-            // CHARGEWORKERID
-            // 
-            this.CHARGEWORKERID.FormattingEnabled = true;
-            this.CHARGEWORKERID.Location = new System.Drawing.Point(480, 12);
-            this.CHARGEWORKERID.Name = "CHARGEWORKERID";
-            this.CHARGEWORKERID.Size = new System.Drawing.Size(69, 20);
-            this.CHARGEWORKERID.TabIndex = 13;
             // 
             // FrmFinance_Receipted
             // 
@@ -294,5 +344,9 @@
         private SysControl.UC_FlowList uC_FlowList1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox CHARGEWORKERID;
+        private System.Windows.Forms.RadioButton RB_IsFinal0;
+        private System.Windows.Forms.RadioButton RB_IsFinal1;
+        private System.Windows.Forms.ComboBox CB_DepartementID;
+        private System.Windows.Forms.Label label7;
     }
 }

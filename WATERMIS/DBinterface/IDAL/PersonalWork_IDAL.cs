@@ -120,6 +120,8 @@ namespace DBinterface.IDAL
 
        decimal GetTotalFeeFinalByPointSort(string TaskID, string LastPoingSort);
 
+       decimal GetTotalFeeYuCun(string TaskID, string LastPoingSort);
+
        DataTable GetDepartMentFeeFinalItems(string ResolveID);
 
        decimal GetDepartmentPrestore(string TaskID, int LastPoingSort, string DepartementID);

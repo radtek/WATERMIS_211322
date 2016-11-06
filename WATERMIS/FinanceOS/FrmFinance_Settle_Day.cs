@@ -79,13 +79,16 @@ namespace FinanceOS
  ELSE CAST(YEAR(MC.CHARGEDATETIME) AS varchar) + CAST(MONTH(MC.CHARGEDATETIME) AS varchar) END AS ChargeMonth, DAY(MC.CHARGEDATETIME) AS CHARGEDAY
 FROM Meter_Charge MC LEFT JOIN Meter_WorkTask MWT  ON MC.TaskID=MWT.TaskID) MT WHERE CHARGEWORKERID='{0}' ", strLogID);
 
-            if (!CB_Month.SelectedValue.ToString().Equals(""))
+            if (CB_Month.SelectedValue!=null)
             {
-                sb.AppendFormat(" AND ChargeMonth='{0}'", CB_Month.SelectedValue);
-            }
-            if (!CB_Day.SelectedValue.ToString().Equals(""))
-            {
-                sb.AppendFormat(" AND CHARGEDAY='{0}'", CB_Day.SelectedValue);
+                if (!CB_Month.SelectedValue.ToString().Equals(""))
+                {
+                    sb.AppendFormat(" AND ChargeMonth='{0}'", CB_Month.SelectedValue);
+                }
+                if (!CB_Day.SelectedValue.ToString().Equals(""))
+                {
+                    sb.AppendFormat(" AND CHARGEDAY='{0}'", CB_Day.SelectedValue);
+                }
             }
 
             uC_DataGridView_Page1.Fields = new string[,] { { "rowNum", "序号" }, 

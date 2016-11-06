@@ -718,7 +718,8 @@ WHERE ItemsCount>0 AND TotalFee>0";
 
         public DataTable GetDepartMentFinalFeeItems(string ResolveID)
         {
-            string strsql = @"SELECT *,(SELECT SUM (Fee) FROM Meter_WorkResolveFee WHERE ResolveID=@ResolveID AND FEE>0) AS DepartTotalFee,(SELECT SUM (Fee) FROM Meter_WorkResolveFee WHERE ResolveID=@ResolveID AND FEE>0 AND State<>1) AS FinalTotalFee FROM Meter_WorkResolveFee WHERE ResolveID=@ResolveID AND FEE>0 AND FeeID NOT IN (SELECT FeeID FROM Meter_FeeItmes WHERE IsPrestore=1)";
+         //   string strsql = @"SELECT *,(SELECT SUM (Fee) FROM Meter_WorkResolveFee WHERE ResolveID=@ResolveID AND FEE>0) AS DepartTotalFee,(SELECT SUM (Fee) FROM Meter_WorkResolveFee WHERE ResolveID=@ResolveID AND FEE>0 AND State<>1) AS FinalTotalFee FROM Meter_WorkResolveFee WHERE ResolveID=@ResolveID AND FEE>0 AND FeeID NOT IN (SELECT FeeID FROM Meter_FeeItmes WHERE IsPrestore=1)";
+            string strsql = @"SELECT *,(SELECT SUM (Fee) FROM Meter_WorkResolveFee WHERE ResolveID=@ResolveID AND FEE>0) AS DepartTotalFee,(SELECT SUM (Fee) FROM Meter_WorkResolveFee WHERE ResolveID=@ResolveID AND FEE>0 AND State<>1) AS FinalTotalFee FROM Meter_WorkResolveFee WHERE ResolveID=@ResolveID AND FEE>0";
 
             return new SqlServerHelper().GetDateTableBySql(strsql, new SqlParameter[] { new SqlParameter("@ResolveID", ResolveID) });
         }
@@ -746,13 +747,24 @@ WHERE ItemsCount>0 AND TotalFee>0";
 
         public DataTable GetDepartMentFeeFinal(string TaskID, string PointSort)
         {
+//            string strsql = @"DECLARE @LastPoingSort INT=0
+//SELECT TOP 1 @LastPoingSort=PointSort FROM Meter_WorkResolveFee MWF,Meter_WorkResolve MWR WHERE MWF.ResolveID=MWR.ResolveID AND MWR.TaskID=@TaskID AND PointSort<@PointSort ORDER BY PointSort DESC
+//SELECT * FROM 
+//(SELECT *,
+//(SELECT COUNT(1) FROM Meter_WorkResolveFee WHERE ResolveID=T.ResolveID AND FeeID NOT IN (SELECT FeeID FROM Meter_FeeItmes WHERE IsPrestore=1)) AS ItemsCount,
+//(SELECT SUM(Fee) FROM Meter_WorkResolveFee WHERE ResolveID=T.ResolveID AND FeeID NOT IN (SELECT FeeID FROM Meter_FeeItmes WHERE IsPrestore=1)) AS TotalFee,
+//(SELECT SUM(State) FROM Meter_WorkResolveFee WHERE ResolveID=T.ResolveID AND FeeID NOT IN (SELECT FeeID FROM Meter_FeeItmes WHERE IsPrestore=1)) AS STATE,
+//(SELECT TOP 1 IsFinal FROM Meter_WorkResolveFee WHERE ResolveID=T.ResolveID) AS IsFinal
+//FROM 
+//(SELECT DISTINCT MWR.DepartementID,BD.departmentName,MWR.ResolveID,MWR.PointSort AS LastPointSort FROM base_department BD,Meter_WorkResolve MWR WHERE BD.departmentID=MWR.DepartementID AND MWR.TaskID=@TaskID AND PointSort=@LastPoingSort) T) M
+//WHERE ItemsCount>0 AND TotalFee>0";
             string strsql = @"DECLARE @LastPoingSort INT=0
 SELECT TOP 1 @LastPoingSort=PointSort FROM Meter_WorkResolveFee MWF,Meter_WorkResolve MWR WHERE MWF.ResolveID=MWR.ResolveID AND MWR.TaskID=@TaskID AND PointSort<@PointSort ORDER BY PointSort DESC
 SELECT * FROM 
 (SELECT *,
-(SELECT COUNT(1) FROM Meter_WorkResolveFee WHERE ResolveID=T.ResolveID AND FeeID NOT IN (SELECT FeeID FROM Meter_FeeItmes WHERE IsPrestore=1)) AS ItemsCount,
-(SELECT SUM(Fee) FROM Meter_WorkResolveFee WHERE ResolveID=T.ResolveID AND FeeID NOT IN (SELECT FeeID FROM Meter_FeeItmes WHERE IsPrestore=1)) AS TotalFee,
-(SELECT SUM(State) FROM Meter_WorkResolveFee WHERE ResolveID=T.ResolveID AND FeeID NOT IN (SELECT FeeID FROM Meter_FeeItmes WHERE IsPrestore=1)) AS STATE,
+(SELECT COUNT(1) FROM Meter_WorkResolveFee WHERE ResolveID=T.ResolveID) AS ItemsCount,
+(SELECT SUM(Fee) FROM Meter_WorkResolveFee WHERE ResolveID=T.ResolveID) AS TotalFee,
+(SELECT SUM(State) FROM Meter_WorkResolveFee WHERE ResolveID=T.ResolveID) AS STATE,
 (SELECT TOP 1 IsFinal FROM Meter_WorkResolveFee WHERE ResolveID=T.ResolveID) AS IsFinal
 FROM 
 (SELECT DISTINCT MWR.DepartementID,BD.departmentName,MWR.ResolveID,MWR.PointSort AS LastPointSort FROM base_department BD,Meter_WorkResolve MWR WHERE BD.departmentID=MWR.DepartementID AND MWR.TaskID=@TaskID AND PointSort=@LastPoingSort) T) M
@@ -764,7 +776,22 @@ WHERE ItemsCount>0 AND TotalFee>0";
         public decimal GetTotalFeeFinalByPointSort(string TaskID, string LastPoingSort)
         {
             decimal totalfee = 0m;
-            string strsql = "SELECT SUM(Fee) FROM Meter_WorkResolveFee WHERE ResolveID IN (SELECT ResolveID FROM Meter_WorkResolve WHERE TaskID=@TaskID AND PointSort=@LastPoingSort) AND FEE>0 AND FeeID NOT IN  (SELECT FeeID FROM Meter_FeeItmes WHERE IsPrestore=1)";
+            //string strsql = "SELECT SUM(Fee) FROM Meter_WorkResolveFee WHERE ResolveID IN (SELECT ResolveID FROM Meter_WorkResolve WHERE TaskID=@TaskID AND PointSort=@LastPoingSort) AND FEE>0 AND FeeID NOT IN  (SELECT FeeID FROM Meter_FeeItmes WHERE IsPrestore=1)";
+            string strsql = "SELECT SUM(Fee) FROM Meter_WorkResolveFee WHERE ResolveID IN (SELECT ResolveID FROM Meter_WorkResolve WHERE TaskID=@TaskID AND PointSort=@LastPoingSort) AND FEE>0 ";
+
+            DataTable dt = new SqlServerHelper().GetDateTableBySql(strsql, new SqlParameter[] { new SqlParameter("@TaskID", TaskID), new SqlParameter("@LastPoingSort", LastPoingSort) });
+            if (DataTableHelper.IsExistRows(dt))
+            {
+                totalfee = decimal.Parse(dt.Rows[0][0].ToString());
+            }
+            return totalfee;
+        }
+
+        //预存水费2016-11-5
+        public decimal GetTotalFeeYuCun(string TaskID, string LastPoingSort)
+        {
+            decimal totalfee = 0m;
+            string strsql = "SELECT SUM(Fee) FROM Meter_WorkResolveFee WHERE ResolveID IN (SELECT ResolveID FROM Meter_WorkResolve WHERE TaskID=@TaskID AND PointSort=@LastPoingSort) AND FEE>0 AND FeeID IN  (SELECT FeeID FROM Meter_FeeItmes WHERE IsPrestore=1)";
 
             DataTable dt = new SqlServerHelper().GetDateTableBySql(strsql, new SqlParameter[] { new SqlParameter("@TaskID", TaskID), new SqlParameter("@LastPoingSort", LastPoingSort) });
             if (DataTableHelper.IsExistRows(dt))
@@ -802,7 +829,8 @@ FROM Meter_WorkResolveFee WHERE ResolveID=@ResolveID AND FEE>0 AND FeeID NOT IN 
         public decimal GetDepartmentPrestoreFinal(string TaskID, int LastPoingSort, string DepartementID)
         {
             decimal DepertmentPrestore = 0m;
-            string sqlstr = @"SELECT SUM(Fee) FROM Meter_WorkResolveFee WHERE State=1 AND FeeID NOT IN (SELECT FeeID FROM Meter_FeeItmes WHERE IsPrestore=1) AND ResolveID IN (SELECT ResolveID FROM Meter_WorkResolve WHERE PointSort<@LastPoingSort AND TaskID=@TaskID AND DepartementID=@DepartementID)";
+           // string sqlstr = @"SELECT SUM(Fee) FROM Meter_WorkResolveFee WHERE State=1 AND FeeID NOT IN (SELECT FeeID FROM Meter_FeeItmes WHERE IsPrestore=1) AND ResolveID IN (SELECT ResolveID FROM Meter_WorkResolve WHERE PointSort<@LastPoingSort AND TaskID=@TaskID AND DepartementID=@DepartementID)";
+            string sqlstr = @"SELECT SUM(Fee) FROM Meter_WorkResolveFee WHERE State=1 AND ResolveID IN (SELECT ResolveID FROM Meter_WorkResolve WHERE PointSort<@LastPoingSort AND TaskID=@TaskID AND DepartementID=@DepartementID)";
 
             DataTable dt = new SqlServerHelper().GetDateTableBySql(sqlstr, new SqlParameter[] { new SqlParameter("@TaskID", TaskID), new SqlParameter("@LastPoingSort", LastPoingSort), new SqlParameter("@DepartementID", DepartementID) });
 
@@ -815,9 +843,12 @@ FROM Meter_WorkResolveFee WHERE ResolveID=@ResolveID AND FEE>0 AND FeeID NOT IN 
 
         public bool IsChargeOverFinal(string TaskID, string LastPoingSort)
         {
+//            string strsql = @"SELECT COUNT(1) FROM Meter_WorkResolveFee WHERE ResolveID IN 
+//(SELECT ResolveID FROM Meter_WorkResolve WHERE TaskID=@TaskID AND PointSort=@LastPoingSort) 
+//AND FEE>0 AND State<>1 AND ChargeID <>'' AND FeeID NOT IN (SELECT FeeID FROM Meter_FeeItmes WHERE IsPrestore=1)";
             string strsql = @"SELECT COUNT(1) FROM Meter_WorkResolveFee WHERE ResolveID IN 
 (SELECT ResolveID FROM Meter_WorkResolve WHERE TaskID=@TaskID AND PointSort=@LastPoingSort) 
-AND FEE>0 AND State<>1 AND ChargeID <>'' AND FeeID NOT IN (SELECT FeeID FROM Meter_FeeItmes WHERE IsPrestore=1)";
+AND FEE>0 AND State<>1 AND ISNULL(ChargeID,'')=N''";
             DataTable dt = new SqlServerHelper().GetDateTableBySql(strsql, new SqlParameter[] { new SqlParameter("@TaskID", TaskID), new SqlParameter("@LastPoingSort", LastPoingSort) });
 
             return int.Parse(dt.Rows[0][0].ToString()) > 0 ? false : true;
