@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace SysControl
 {
-    public partial class FrmFileUpload : Form
+    public partial class FrmFileShow : Form
     {
         private string _UnsubscribeID = string.Empty;
 
@@ -18,14 +18,9 @@ namespace SysControl
             set { _UnsubscribeID = value; }
         }
 
-        public FrmFileUpload()
+        public FrmFileShow()
         {
             InitializeComponent();
-        }
-
-        private void FrmFileUpload_Load(object sender, EventArgs e)
-        {
-           
         }
     }
 }

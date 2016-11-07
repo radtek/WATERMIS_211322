@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTransition));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -70,9 +71,7 @@
             this.ProjectNum = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
             this.ProjectTier = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
             this.ProjectArea = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.QueryKey = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -129,6 +128,15 @@
             this.panel1.Size = new System.Drawing.Size(464, 507);
             this.panel1.TabIndex = 0;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(100, 393);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(215, 12);
+            this.label10.TabIndex = 130;
+            this.label10.Text = "说明：文件上传支持图片格式（JPG）。";
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -148,6 +156,7 @@
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 124;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // pictureBox2
             // 
@@ -159,6 +168,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 123;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // pictureBox1
             // 
@@ -170,6 +180,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 122;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // FileApply
             // 
@@ -536,10 +547,6 @@
             this.ProjectArea.TabIndex = 127;
             this.ProjectArea.ValidateState = false;
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
             // QueryKey
             // 
             this.QueryKey.AllowEmpty = false;
@@ -554,15 +561,6 @@
             this.QueryKey.TabIndex = 129;
             this.QueryKey.Text = "123456";
             this.QueryKey.ValidateState = false;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(100, 393);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(215, 12);
-            this.label10.TabIndex = 130;
-            this.label10.Text = "说明：文件上传支持图片格式（JPG）。";
             // 
             // FrmTransition
             // 
@@ -614,7 +612,6 @@
         private System.Windows.Forms.TextBox FileApply;
         private System.Windows.Forms.TextBox FileReply;
         private System.Windows.Forms.TextBox FileAgree;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;

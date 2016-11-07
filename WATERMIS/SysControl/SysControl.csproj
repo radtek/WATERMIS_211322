@@ -62,6 +62,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CreateForm.cs" />
+    <Compile Include="FrmFileShow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFileShow.Designer.cs">
+      <DependentUpon>FrmFileShow.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmFileUpload.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -254,6 +260,9 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FrmFileShow.resx">
+      <DependentUpon>FrmFileShow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmFileUpload.resx">
       <DependentUpon>FrmFileUpload.cs</DependentUpon>
     </EmbeddedResource>

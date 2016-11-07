@@ -9,6 +9,7 @@ using DBinterface.IDAL;
 using System.Collections;
 using DBinterface;
 using System.Globalization;
+using SysControl;
 
 
 
@@ -111,6 +112,37 @@ namespace MeterInstall
 
             this.WaterUseOverDate.Value = dt.AddYears(2);
 
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            string FileAgreeID = string.IsNullOrEmpty(FileAgree.Text) ? Guid.NewGuid().ToString() : FileAgree.Text;
+
+            FrmFileUpload frm = new FrmFileUpload();
+            frm.UnsubscribeID = FileAgreeID;
+            FileAgree.Text = FileAgreeID;
+            frm.ShowDialog();
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            string FileReplyID = string.IsNullOrEmpty(FileReply.Text) ? Guid.NewGuid().ToString() : FileReply.Text;
+
+            FrmFileUpload frm = new FrmFileUpload();
+            frm.UnsubscribeID = FileReplyID;
+            FileReply.Text = FileReplyID;
+            frm.ShowDialog();
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            string FileApplyID = string.IsNullOrEmpty(FileApply.Text) ? Guid.NewGuid().ToString() : FileApply.Text;
+
+            FrmFileUpload frm = new FrmFileUpload();
+            frm.UnsubscribeID = FileApplyID;
+            FileApply.Text = FileApplyID;
+            frm.ShowDialog();
         }
     }
 }
