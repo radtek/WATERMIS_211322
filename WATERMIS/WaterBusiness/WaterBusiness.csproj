@@ -155,6 +155,18 @@
     <Compile Include="Frm_User_Peccant_Add.Designer.cs">
       <DependentUpon>Frm_User_Peccant_Add.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_User_Peccant_Add_JC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_User_Peccant_Add_JC.Designer.cs">
+      <DependentUpon>Frm_User_Peccant_Add_JC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_User_Peccant_Add_YY.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_User_Peccant_Add_YY.Designer.cs">
+      <DependentUpon>Frm_User_Peccant_Add_YY.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_User_Unsubscribe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -209,6 +221,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_User_Peccant_Add.resx">
       <DependentUpon>Frm_User_Peccant_Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_User_Peccant_Add_JC.resx">
+      <DependentUpon>Frm_User_Peccant_Add_JC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_User_Peccant_Add_YY.resx">
+      <DependentUpon>Frm_User_Peccant_Add_YY.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_User_Unsubscribe.resx">
       <DependentUpon>Frm_User_Unsubscribe.cs</DependentUpon>

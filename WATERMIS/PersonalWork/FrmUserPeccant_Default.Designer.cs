@@ -130,6 +130,7 @@
             this.Btn_Voided.Text = "作废";
             this.Btn_Voided.UseVisualStyleBackColor = true;
             this.Btn_Voided.Visible = false;
+            this.Btn_Voided.Click += new System.EventHandler(this.Btn_Voided_Click);
             // 
             // Btn_Submit
             // 
@@ -144,6 +145,7 @@
             this.Btn_Submit.TabIndex = 6;
             this.Btn_Submit.Text = "提交审批";
             this.Btn_Submit.UseVisualStyleBackColor = false;
+            this.Btn_Submit.Click += new System.EventHandler(this.Btn_Submit_Click);
             // 
             // LB_GoPointID
             // 
@@ -209,6 +211,7 @@
             this.IsPass.TabIndex = 0;
             this.IsPass.Text = "同意";
             this.IsPass.UseVisualStyleBackColor = false;
+            this.IsPass.CheckedChanged += new System.EventHandler(this.IsPass_CheckedChanged);
             // 
             // FrmUserPeccant_Default
             // 
@@ -219,6 +222,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmUserPeccant_Default";
             this.Text = "FrmUserPeccant_Default";
+            this.Load += new System.EventHandler(this.FrmUserPeccant_Default_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.FP_Items.ResumeLayout(false);

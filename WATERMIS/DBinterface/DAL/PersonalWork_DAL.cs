@@ -797,7 +797,10 @@ WHERE ItemsCount>0 AND TotalFee>0";
             DataTable dt = new SqlServerHelper().GetDateTableBySql(strsql, new SqlParameter[] { new SqlParameter("@TaskID", TaskID), new SqlParameter("@LastPoingSort", LastPoingSort) });
             if (DataTableHelper.IsExistRows(dt))
             {
-                totalfee = decimal.Parse(dt.Rows[0][0].ToString());
+                if (!string.IsNullOrEmpty(dt.Rows[0][0].ToString()))
+                {
+                    totalfee = decimal.Parse(dt.Rows[0][0].ToString());
+                }
             }
             return totalfee;
         }

@@ -236,7 +236,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1023, 559);
+            this.ClientSize = new System.Drawing.Size(700, 435);
             this.Controls.Add(this.userName);
             this.Controls.Add(this.Memo);
             this.Controls.Add(this.ApplyPhone);

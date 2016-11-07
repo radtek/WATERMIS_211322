@@ -43,11 +43,19 @@ AND TaskID IN (SELECT TaskID FROM View_TaskFee WHERE StateS=1 AND IsFinal=0 AND 
         private void ShowData()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append(@"SELECT VF.FEE,VF.TaskID,VF.ChargeID,VF.CHARGEWORKERID,VF.CHARGEWORKERNAME,VF.ChargeMonth,VF.ChargeDay,VF.DepartementID,
-(SELECT departmentName FROM base_department WHERE departmentID=  VF.DepartementID) AS DepartementName,VF.ChargeDate ,
+            sb.Append(@"SELECT     SUM(MWF.Fee) AS FEE, MWK.TaskID, MWF.State AS StateS, MWK.PointTime, MWK.AcceptDate AS CreateDate, MWF.CHARGEWORKERID, MWF.CHARGEWORKERNAME, MWF.ChargeDate, 
+                      MWF.ChargeID, DAY(MWK.AcceptDate) AS CreateDay, CASE WHEN MONTH(MWK.AcceptDate) < 10 THEN CAST(YEAR(MWK.AcceptDate) AS varchar) + '0' + CAST(MONTH(MWK.AcceptDate) 
+                      AS varchar) ELSE CAST(YEAR(MWK.AcceptDate) AS varchar) + CAST(MONTH(MWK.AcceptDate) AS varchar) END AS CreateMonth, DAY(MWF.ChargeDate) AS ChargeDay, 
+                      CASE WHEN MONTH(MWF.ChargeDate) < 10 THEN CAST(YEAR(MWF.ChargeDate) AS varchar) + '0' + CAST(MONTH(MWF.ChargeDate) AS varchar) ELSE CAST(YEAR(MWF.ChargeDate) AS varchar) 
+                      + CAST(MONTH(MWF.ChargeDate) AS varchar) END AS ChargeMonth, MWF.IsFinal, MWR.DepartementID, MWK.State,(SELECT departmentName FROM base_department WHERE departmentID=  MWR.DepartementID) AS DepartementName,
 VW.ID,VW.SD,VW.waterUserId,VW.waterUserName,VW.waterUserAddress,VW.TableName,VW.Table_Name_CH 
-FROM View_TaskFee VF LEFT JOIN View_WorkBase VW ON VF.TaskID=VW.TaskID,Meter_Charge MC
-WHERE VF.StateS=1 AND VF.IsFinal=0 AND VF.[State]=5 AND VF.ChargeID=MC.CHARGEID AND ISNULL(MC.INVOICEPRINTSIGN,'')<>1");
+FROM         dbo.Meter_WorkTask AS MWK LEFT JOIN View_WorkBase VW ON MWK.TaskID=VW.TaskID INNER JOIN
+                      dbo.Meter_WorkResolve AS MWR ON MWK.TaskID = MWR.TaskID AND MWK.PointSort > MWR.PointSort INNER JOIN
+                      dbo.Meter_WorkResolveFee AS MWF ON MWR.ResolveID = MWF.ResolveID,Meter_Charge MC
+WHERE     (MWR.YS = 1) AND (MWF.Fee <> 0) AND (MWK.State =5) AND (MWF.IsFinal = 0) 
+AND MWF.FeeID NOT IN (SELECT FeeID FROM Meter_FeeItmes WHERE IsPrestore=1) AND MWF.ChargeID=MC.CHARGEID AND ISNULL(MC.INVOICEPRINTSIGN,'')<>1
+GROUP BY MWK.TaskID, MWF.State, MWK.PointTime, MWK.AcceptDate, MWF.CHARGEWORKERID, MWF.CHARGEWORKERNAME, MWF.ChargeDate, MWF.ChargeID, MWF.IsFinal, MWR.DepartementID, 
+                      MWK.State,VW.ID,VW.SD,VW.waterUserId,VW.waterUserName,VW.waterUserAddress,VW.TableName,VW.Table_Name_CH ");
 
             if (!CB_ID.SelectedValue.ToString().Equals(""))
             {
