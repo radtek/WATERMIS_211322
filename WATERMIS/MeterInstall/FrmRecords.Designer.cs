@@ -58,6 +58,7 @@
             this.uC_DataGridView_Page1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uC_DataGridView_Page1.Fields = null;
             this.uC_DataGridView_Page1.FieldStatis = null;
+            this.uC_DataGridView_Page1.FiledColor = null;
             this.uC_DataGridView_Page1.Location = new System.Drawing.Point(3, 17);
             this.uC_DataGridView_Page1.MinimumSize = new System.Drawing.Size(833, 330);
             this.uC_DataGridView_Page1.Name = "uC_DataGridView_Page1";

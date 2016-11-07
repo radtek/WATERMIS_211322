@@ -18,7 +18,8 @@ namespace DBUtility
                 string strLoginName = ConfigurationSettings.AppSettings["connStringLoginName"];
                 string strPWD = ConfigurationSettings.AppSettings["connStringPWD"];
                 //_connectionString = ConfigurationSettings.AppSettings["connString"];
-                _connectionString = string.Format("Data Source={0};Initial Catalog={1};User ID={2};Password={3};",strServerIp,strDataSourceName,strLoginName,strPWD); 
+                //_connectionString = string.Format("Data Source={0};Initial Catalog={1};User ID={2};Password={3};",strServerIp,strDataSourceName,strLoginName,strPWD); 
+                _connectionString = string.Format("Data Source={0};Initial Catalog={1};User ID=SERVICECLIENT;Password=##AUTHORITY@C2s;", strServerIp, strDataSourceName); 
             }
             else
                 _connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=CRYSTAL.mdb;User Id=admin;Password=;";// ConfigurationSettings.AppSettings["connStringAccess"];

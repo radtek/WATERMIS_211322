@@ -43,8 +43,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.waterUserName = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
             this.WaterUserNO = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
+            this.waterUserName = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
             this.PeccantAdress = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
             this.PecantDescribe = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
             this.ApplyPhone = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
@@ -67,7 +67,7 @@
             this.Memo.Location = new System.Drawing.Point(107, 228);
             this.Memo.Name = "Memo";
             this.Memo.Size = new System.Drawing.Size(326, 21);
-            this.Memo.TabIndex = 16;
+            this.Memo.TabIndex = 17;
             // 
             // Btn_Submit
             // 
@@ -76,7 +76,7 @@
             this.Btn_Submit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Submit.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Btn_Submit.ForeColor = System.Drawing.Color.White;
-            this.Btn_Submit.Location = new System.Drawing.Point(112, 298);
+            this.Btn_Submit.Location = new System.Drawing.Point(107, 305);
             this.Btn_Submit.Name = "Btn_Submit";
             this.Btn_Submit.Size = new System.Drawing.Size(113, 37);
             this.Btn_Submit.TabIndex = 17;
@@ -156,7 +156,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(71, 12);
             this.label5.TabIndex = 98;
-            this.label5.Text = "*用 户 号：";
+            this.label5.Text = " 用 户 名：";
             // 
             // label4
             // 
@@ -192,21 +192,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 12);
             this.label1.TabIndex = 90;
-            this.label1.Text = "*用 户 名：";
-            // 
-            // waterUserName
-            // 
-            this.waterUserName.AllowEmpty = false;
-            this.waterUserName.EmptyMessage = "";
-            this.waterUserName.ErrorMessage = "";
-            this.waterUserName.InputType = Common.WinControl.Ryan.RegTextbox.RyanTextBox.EMInputTypes.文本;
-            this.waterUserName.Location = new System.Drawing.Point(107, 51);
-            this.waterUserName.Name = "waterUserName";
-            this.waterUserName.RegexExpression = "";
-            this.waterUserName.RemoveSpace = false;
-            this.waterUserName.Size = new System.Drawing.Size(143, 21);
-            this.waterUserName.TabIndex = 10;
-            this.waterUserName.ValidateState = false;
+            this.label1.Text = "*户    号：";
             // 
             // WaterUserNO
             // 
@@ -214,13 +200,28 @@
             this.WaterUserNO.EmptyMessage = "";
             this.WaterUserNO.ErrorMessage = "";
             this.WaterUserNO.InputType = Common.WinControl.Ryan.RegTextbox.RyanTextBox.EMInputTypes.文本;
-            this.WaterUserNO.Location = new System.Drawing.Point(330, 51);
+            this.WaterUserNO.Location = new System.Drawing.Point(107, 51);
             this.WaterUserNO.Name = "WaterUserNO";
             this.WaterUserNO.RegexExpression = "";
             this.WaterUserNO.RemoveSpace = false;
-            this.WaterUserNO.Size = new System.Drawing.Size(103, 21);
-            this.WaterUserNO.TabIndex = 11;
+            this.WaterUserNO.Size = new System.Drawing.Size(143, 21);
+            this.WaterUserNO.TabIndex = 10;
             this.WaterUserNO.ValidateState = false;
+            this.WaterUserNO.Leave += new System.EventHandler(this.WaterUserNO_Leave);
+            // 
+            // waterUserName
+            // 
+            this.waterUserName.AllowEmpty = true;
+            this.waterUserName.EmptyMessage = "";
+            this.waterUserName.ErrorMessage = "";
+            this.waterUserName.InputType = Common.WinControl.Ryan.RegTextbox.RyanTextBox.EMInputTypes.文本;
+            this.waterUserName.Location = new System.Drawing.Point(330, 51);
+            this.waterUserName.Name = "waterUserName";
+            this.waterUserName.RegexExpression = "";
+            this.waterUserName.RemoveSpace = false;
+            this.waterUserName.Size = new System.Drawing.Size(103, 21);
+            this.waterUserName.TabIndex = 11;
+            this.waterUserName.ValidateState = false;
             // 
             // PeccantAdress
             // 
@@ -233,7 +234,7 @@
             this.PeccantAdress.RegexExpression = "";
             this.PeccantAdress.RemoveSpace = false;
             this.PeccantAdress.Size = new System.Drawing.Size(326, 21);
-            this.PeccantAdress.TabIndex = 12;
+            this.PeccantAdress.TabIndex = 13;
             this.PeccantAdress.ValidateState = false;
             // 
             // PecantDescribe
@@ -248,7 +249,7 @@
             this.PecantDescribe.RegexExpression = "";
             this.PecantDescribe.RemoveSpace = false;
             this.PecantDescribe.Size = new System.Drawing.Size(326, 50);
-            this.PecantDescribe.TabIndex = 13;
+            this.PecantDescribe.TabIndex = 14;
             this.PecantDescribe.ValidateState = false;
             // 
             // ApplyPhone
@@ -262,7 +263,7 @@
             this.ApplyPhone.RegexExpression = "";
             this.ApplyPhone.RemoveSpace = false;
             this.ApplyPhone.Size = new System.Drawing.Size(103, 21);
-            this.ApplyPhone.TabIndex = 15;
+            this.ApplyPhone.TabIndex = 16;
             this.ApplyPhone.ValidateState = false;
             // 
             // ApplyUser
@@ -276,7 +277,7 @@
             this.ApplyUser.RegexExpression = "";
             this.ApplyUser.RemoveSpace = false;
             this.ApplyUser.Size = new System.Drawing.Size(144, 21);
-            this.ApplyUser.TabIndex = 14;
+            this.ApplyUser.TabIndex = 15;
             this.ApplyUser.ValidateState = false;
             // 
             // label8
@@ -299,22 +300,22 @@
             this.waterPhone.RegexExpression = "";
             this.waterPhone.RemoveSpace = false;
             this.waterPhone.Size = new System.Drawing.Size(143, 21);
-            this.waterPhone.TabIndex = 112;
+            this.waterPhone.TabIndex = 12;
             this.waterPhone.ValidateState = false;
             // 
             // Frm_User_Peccant_Add_JC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(682, 422);
+            this.ClientSize = new System.Drawing.Size(472, 368);
             this.Controls.Add(this.waterPhone);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.ApplyUser);
             this.Controls.Add(this.ApplyPhone);
             this.Controls.Add(this.PecantDescribe);
             this.Controls.Add(this.PeccantAdress);
-            this.Controls.Add(this.WaterUserNO);
             this.Controls.Add(this.waterUserName);
+            this.Controls.Add(this.WaterUserNO);
             this.Controls.Add(this.userName);
             this.Controls.Add(this.Memo);
             this.Controls.Add(this.Btn_Submit);
@@ -356,8 +357,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private Common.WinControl.Ryan.RegTextbox.RyanTextBox waterUserName;
         private Common.WinControl.Ryan.RegTextbox.RyanTextBox WaterUserNO;
+        private Common.WinControl.Ryan.RegTextbox.RyanTextBox waterUserName;
         private Common.WinControl.Ryan.RegTextbox.RyanTextBox PeccantAdress;
         private Common.WinControl.Ryan.RegTextbox.RyanTextBox PecantDescribe;
         private Common.WinControl.Ryan.RegTextbox.RyanTextBox ApplyPhone;

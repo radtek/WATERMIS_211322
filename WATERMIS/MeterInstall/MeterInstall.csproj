@@ -49,13 +49,9 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BASEFUNCTION, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\WATERMIS\bin\Debug\BASEFUNCTION.dll</HintPath>
-    </Reference>
     <Reference Include="FastReport, Version=2014.4.8.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\WATERMIS\bin\Debug\FastReport.dll</HintPath>
+      <HintPath>..\WATERMIS\bin\x86\Debug\FastReport.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
@@ -116,11 +112,23 @@
     <Compile Include="FrmRecordsGroup.Designer.cs">
       <DependentUpon>FrmRecordsGroup.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmRecordsTransition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRecordsTransition.Designer.cs">
+      <DependentUpon>FrmRecordsTransition.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmSingle.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmSingle.Designer.cs">
       <DependentUpon>FrmSingle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTransition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTransition.Designer.cs">
+      <DependentUpon>FrmTransition.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmWaterUserList.cs">
       <SubType>Form</SubType>
@@ -196,8 +204,14 @@
     <EmbeddedResource Include="FrmRecordsGroup.resx">
       <DependentUpon>FrmRecordsGroup.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmRecordsTransition.resx">
+      <DependentUpon>FrmRecordsTransition.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmSingle.resx">
       <DependentUpon>FrmSingle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTransition.resx">
+      <DependentUpon>FrmTransition.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmWaterUserList.resx">
       <DependentUpon>FrmWaterUserList.cs</DependentUpon>
@@ -235,36 +249,38 @@
     <Content Include="MeterInstallPages\FlowFAQ.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="MeterInstallPages\FlowImages\Meter_Install_Peccant.jpg" />
+    <Content Include="MeterInstallPages\FlowImages\Meter_Install_Peccant.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="MeterInstallPages\FlowTransition.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="MeterInstallPages\FlowImages\Meter_Change.JPG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="MeterInstallPages\FlowImages\Meter_Desterilize.JPG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="MeterInstallPages\FlowImages\Meter_Disuse.JPG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="MeterInstallPages\FlowImages\Meter_Install_Group.JPG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="MeterInstallPages\FlowImages\Meter_Install_Single.JPG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="MeterInstallPages\FlowImages\Meter_Install_Transition.JPG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="MeterInstallPages\FlowImages\Meter_Maintain.JPG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="MeterInstallPages\FlowImages\User_Peccant.JPG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="MeterInstallPages\FlowImages\User_Unsubscribe.JPG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="MeterInstallPages\FlowInstall.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -280,6 +296,10 @@
     <None Include="Resources\add.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BASEFUNCTION\BASEFUNCTION.csproj">
+      <Project>{ACBD9B62-1323-4264-A4D6-B600705D9228}</Project>
+      <Name>BASEFUNCTION</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{F1DAC157-5CF0-4ABE-AB30-E1B0EADA5354}</Project>
       <Name>Common</Name>

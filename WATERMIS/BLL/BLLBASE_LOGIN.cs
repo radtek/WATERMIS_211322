@@ -85,11 +85,11 @@ namespace BLL
        public bool UpdateUserPWD(string strLogID,string strPWD)
        {
            StringBuilder str = new StringBuilder();
-           str.Append("UPDATE BASE_LOGIN SET LOGINPASSWORD=@LOGINPASSWORD ");
+           str.Append("UPDATE BASE_LOGIN SET Password=@Password ");
            str.Append("WHERE LOGINID=@LOGINID");
            SqlParameter[] para =
            {
-               new SqlParameter("@LOGINPASSWORD",SqlDbType.VarChar,200),
+               new SqlParameter("@Password",SqlDbType.VarChar,200),
                new SqlParameter("@LOGINID",SqlDbType.VarChar,50)
            };
            para[0].Value = strPWD;
@@ -103,9 +103,9 @@ namespace BLL
        public bool InsertBASE_LOGIN(MODELBASE_LOGIN MODELBASE_LOGIN)
        {
            StringBuilder str = new StringBuilder();
-           str.Append("INSERT INTO BASE_LOGIN(LOGINID,LOGINNAME,workNO,USERNAME,LOGINPASSWORD,POSTID,DEPARTMENTID,"+
+           str.Append("INSERT INTO BASE_LOGIN(LOGINID,LOGINNAME,workNO,USERNAME,Password,POSTID,DEPARTMENTID,"+
                "MEMO,TELEPHONENO,isMeterReader,isCharger,groupID,generateDateTime,userstate,IsCashier) ");
-           str.Append("VALUES(@LOGINID,@LOGINNAME,@workNO,@USERNAME,@LOGINPASSWORD,@POSTID,@DEPARTMENTID,"+
+           str.Append("VALUES(@LOGINID,@LOGINNAME,@workNO,@USERNAME,@Password,@POSTID,@DEPARTMENTID,"+
                "@MEMO,@TELEPHONENO,@isMeterReader,@isCharger,@groupID,@generateDateTime,@userstate,@IsCashier)");
            SqlParameter[] para =
            {
@@ -113,7 +113,7 @@ namespace BLL
                new SqlParameter("@LOGINNAME",SqlDbType.VarChar,50),
                new SqlParameter("@workNO",SqlDbType.VarChar,30),
                new SqlParameter("@USERNAME",SqlDbType.VarChar,50),
-               new SqlParameter("@LOGINPASSWORD",SqlDbType.VarChar,200),
+               new SqlParameter("@Password",SqlDbType.VarChar,200),
                new SqlParameter("@POSTID",SqlDbType.Int),
                new SqlParameter("@DEPARTMENTID",SqlDbType.VarChar,30),
                new SqlParameter("@MEMO",SqlDbType.VarChar,50),
@@ -129,7 +129,7 @@ namespace BLL
            para[1].Value = MODELBASE_LOGIN.LOGINNAME;
            para[2].Value = MODELBASE_LOGIN.workNO;
            para[3].Value = MODELBASE_LOGIN.USERNAME;
-           para[4].Value = MODELBASE_LOGIN.LOGINPASSWORD;
+           para[4].Value = MODELBASE_LOGIN.Password;
            para[5].Value = MODELBASE_LOGIN.POSTID;
            para[6].Value = MODELBASE_LOGIN.DEPARTMENTID;
            para[7].Value = MODELBASE_LOGIN.MEMO;
@@ -165,7 +165,7 @@ namespace BLL
                MODELBASE_LOGIN.LOGINNAME = dt.Rows[0]["LOGINNAME"].ToString();
                if(dt.Rows[0]["USERNAME"]!=null)
                MODELBASE_LOGIN.USERNAME=dt.Rows[0]["USERNAME"].ToString();
-               MODELBASE_LOGIN.LOGINPASSWORD=dt.Rows[0]["LOGINPASSWORD"].ToString();
+               MODELBASE_LOGIN.Password=dt.Rows[0]["Password"].ToString();
                MODELBASE_LOGIN.POSTID=dt.Rows[0]["POSTID"].ToString();
                MODELBASE_LOGIN.DEPARTMENTID = dt.Rows[0]["DEPARTMENTID"].ToString();
                if (dt.Rows[0]["MEMO"] != null)

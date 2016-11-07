@@ -34,7 +34,7 @@ namespace WaterBusiness
         {
             Hashtable ht = new Hashtable();
 
-            if (string.IsNullOrEmpty(PeccantAdress.Text) || string.IsNullOrEmpty(ApplyPhone.Text))
+            if (!(WaterUserNO.ValidateState && waterPhone.ValidateState && PeccantAdress.ValidateState && PecantDescribe.ValidateState && ApplyUser.ValidateState && ApplyPhone.ValidateState))
             {
                 MessageBox.Show("信息不完整！");
                 return;
@@ -47,6 +47,7 @@ namespace WaterBusiness
             ht["ACCEPTID"] = SDNO;
             ht["LOGINID"] = strLogID;
             ht["SD"] = SDNO;
+            ht["PECCANTTYPEID"] = 1;
 
             AcceptID.Text = SDNO;
 
@@ -61,12 +62,16 @@ namespace WaterBusiness
 
             if (new SqlServerHelper().Submit_AddOrEdit("User_Peccant", "PeccantID", key, ht))
             {
+                string _TableName = "User_Peccant";
+                string _TablePkName = "PeccantID";
+                string _FlowCode = "User_Peccant_JC";
+                string _TaskName = "用户违章-监察";
+
                 AcceptID.Text = ht["ACCEPTID"].ToString();
                 Btn_Submit.Enabled = false;
                 Btn_Submit.BackColor = Color.Gray;
-                // MessageBox.Show("信息保存成功！");
-
-                bool result = new SqlServerHelper().CreateWorkTask(ht["PeccantID"].ToString(), SDNO, "User_Peccant_JC", "PeccantID", "用户违章");
+                 bool result = new SqlServerHelper().CreateWorkTask(ht[_TablePkName].ToString(), SDNO, _TableName, _TablePkName, _TaskName, _FlowCode);
+               // bool result = new SqlServerHelper().CreateWorkTask(ht["PeccantID"].ToString(), SDNO, "User_Peccant_JC", "PeccantID", "用户违章");
                 if (result)
                 {
                     MessageBox.Show("任务创建成功！");
@@ -78,6 +83,11 @@ namespace WaterBusiness
 
             }
             
+        }
+
+        private void WaterUserNO_Leave(object sender, EventArgs e)
+        {
+
         }
     }
 }

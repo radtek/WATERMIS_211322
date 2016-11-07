@@ -205,6 +205,18 @@
     <Compile Include="FrmApprove_Single_User.Designer.cs">
       <DependentUpon>FrmApprove_Single_User.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmApprove_Transition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprove_Transition.Designer.cs">
+      <DependentUpon>FrmApprove_Transition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmApprove_Transition_Default.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprove_Transition_Default.Designer.cs">
+      <DependentUpon>FrmApprove_Transition_Default.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmApprove_WaterPrice_Default.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -457,6 +469,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmApprove_Single_User.resx">
       <DependentUpon>FrmApprove_Single_User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmApprove_Transition.resx">
+      <DependentUpon>FrmApprove_Transition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmApprove_Transition_Default.resx">
+      <DependentUpon>FrmApprove_Transition_Default.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmApprove_WaterPrice_Default.resx">
       <DependentUpon>FrmApprove_WaterPrice_Default.cs</DependentUpon>

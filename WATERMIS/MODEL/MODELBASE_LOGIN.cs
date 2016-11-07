@@ -66,7 +66,7 @@ namespace MODEL
                 _REALNAME = value;
             }
         }
-        public string LOGINPASSWORD
+        public string Password
         {
             get
             {

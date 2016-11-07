@@ -43,7 +43,7 @@ namespace SYSMANAGE
             }
             string strPWD = txtOldPWD.Text;
             //strPWD = DBUtility.DESEncrypt.Encrypt(strPWD);
-            string strFliter = " AND LOGINID='" + AppDomain.CurrentDomain.GetData("LOGINID").ToString() + "' AND LOGINPASSWORD='" + strPWD + "'";
+            string strFliter = " AND LOGINID='" + AppDomain.CurrentDomain.GetData("LOGINID").ToString() + "' AND Password='" + strPWD + "'";
             DataTable dt = BLLBASE_LOGIN.QueryUser(strFliter);
             if (dt.Rows.Count > 0)
             {
@@ -51,8 +51,8 @@ namespace SYSMANAGE
                 strPWD = txtPWD.Text;
                 MODELBASE_LOGIN MODELBASE_LOGIN = new MODELBASE_LOGIN();
                 MODELBASE_LOGIN.LOGINID = AppDomain.CurrentDomain.GetData("LOGINID").ToString();
-                MODELBASE_LOGIN.LOGINPASSWORD = strPWD;
-                if (BLLBASE_LOGIN.UpdateUserPWD(MODELBASE_LOGIN.LOGINID, MODELBASE_LOGIN.LOGINPASSWORD))
+                MODELBASE_LOGIN.Password = strPWD;
+                if (BLLBASE_LOGIN.UpdateUserPWD(MODELBASE_LOGIN.LOGINID, MODELBASE_LOGIN.Password))
                 {
                     mes.Show("密码修改成功!");
                     return;

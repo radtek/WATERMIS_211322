@@ -50,6 +50,7 @@ namespace WaterBusiness
             ht["ACCEPTID"] = SDNO;
             ht["LOGINID"] = strLogID;
             ht["SD"] = SDNO;
+            ht["PECCANTTYPEID"] = 0;
 
             AcceptID.Text = SDNO;
 

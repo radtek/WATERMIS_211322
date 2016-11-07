@@ -58,7 +58,7 @@ namespace SYSMANAGE
             }
             //strPWD = DBUtility.DESEncrypt.Encrypt(strPWD);
             //strPWD = DBUtility.DESEncrypt.Encrypt(strPWD);
-            strSQL = " AND LOGINNAME='" + strName + "' AND LOGINPASSWORD='" + strPWD + "'";
+            strSQL = " AND LOGINNAME='" + strName + "' AND Password='" + strPWD + "'";
             btLogin.Enabled = false;
             try
             {
