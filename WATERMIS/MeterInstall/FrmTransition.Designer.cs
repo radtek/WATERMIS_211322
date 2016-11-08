@@ -205,6 +205,7 @@
             this.FileAgree.ReadOnly = true;
             this.FileAgree.Size = new System.Drawing.Size(304, 21);
             this.FileAgree.TabIndex = 119;
+            this.FileAgree.Click += new System.EventHandler(this.FileAgree_Click);
             // 
             // label8
             // 

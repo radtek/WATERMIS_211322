@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Configuration;
 using Common.DotNetCode;
+using Common.DotNetEncrypt;
 
 namespace SysControl
 {
@@ -46,7 +47,7 @@ namespace SysControl
         private void FrmFileUpload_Load(object sender, EventArgs e)
         {
             string strFilePaht = ConfigurationSettings.AppSettings["FilesPath"];
-            _url = string.Format("{0}Default.aspx?UnsubscribeID={1}&ShowName={2}&TableNames={3}", strFilePaht, System.Web.HttpUtility.UrlEncode(_UnsubscribeID, System.Text.Encoding.Unicode), System.Web.HttpUtility.UrlEncode(GB2312UnicodeConverter.ToUnicode(_ShowName), System.Text.Encoding.GetEncoding("GB2312")), System.Web.HttpUtility.UrlEncode(_TableNames, System.Text.Encoding.Unicode));
+            _url = string.Format("{0}Default.aspx?UnsubscribeID={1}&ShowName={2}&TableNames={3}", strFilePaht, DESEncrypt.Encrypt(_UnsubscribeID), DESEncrypt.Encrypt(GB2312UnicodeConverter.ToUnicode(_ShowName)), DESEncrypt.Encrypt(_TableNames));
 
         }
 

@@ -76,6 +76,7 @@
             this.节点管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.审批项目管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.收费项目管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.审批任务管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.用水用户管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.用户管理ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.用户开票信息管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -200,7 +201,6 @@
             this.bgNotice = new System.ComponentModel.BackgroundWorker();
             this.trNotice = new System.Windows.Forms.Timer(this.components);
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.审批任务管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -581,6 +581,13 @@
             this.收费项目管理ToolStripMenuItem.Size = new System.Drawing.Size(176, 26);
             this.收费项目管理ToolStripMenuItem.Text = "收费项目管理";
             this.收费项目管理ToolStripMenuItem.Click += new System.EventHandler(this.收费项目管理ToolStripMenuItem_Click);
+            // 
+            // 审批任务管理ToolStripMenuItem
+            // 
+            this.审批任务管理ToolStripMenuItem.Name = "审批任务管理ToolStripMenuItem";
+            this.审批任务管理ToolStripMenuItem.Size = new System.Drawing.Size(176, 26);
+            this.审批任务管理ToolStripMenuItem.Text = "审批任务管理";
+            this.审批任务管理ToolStripMenuItem.Click += new System.EventHandler(this.审批任务管理ToolStripMenuItem_Click);
             // 
             // 用水用户管理ToolStripMenuItem
             // 
@@ -1550,13 +1557,6 @@
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.Size = new System.Drawing.Size(1350, 426);
             this.dockPanel1.TabIndex = 5;
-            // 
-            // 审批任务管理ToolStripMenuItem
-            // 
-            this.审批任务管理ToolStripMenuItem.Name = "审批任务管理ToolStripMenuItem";
-            this.审批任务管理ToolStripMenuItem.Size = new System.Drawing.Size(176, 26);
-            this.审批任务管理ToolStripMenuItem.Text = "审批任务管理";
-            this.审批任务管理ToolStripMenuItem.Click += new System.EventHandler(this.审批任务管理ToolStripMenuItem_Click);
             // 
             // frmMain
             // 

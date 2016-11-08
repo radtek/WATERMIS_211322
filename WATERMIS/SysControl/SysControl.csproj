@@ -69,6 +69,12 @@
     <Compile Include="FrmFileShow.Designer.cs">
       <DependentUpon>FrmFileShow.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmFileShowDel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFileShowDel.Designer.cs">
+      <DependentUpon>FrmFileShowDel.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmFileUpload.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -263,6 +269,9 @@
   <ItemGroup>
     <EmbeddedResource Include="FrmFileShow.resx">
       <DependentUpon>FrmFileShow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFileShowDel.resx">
+      <DependentUpon>FrmFileShowDel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmFileUpload.resx">
       <DependentUpon>FrmFileUpload.cs</DependentUpon>

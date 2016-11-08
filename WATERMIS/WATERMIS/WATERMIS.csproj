@@ -16,7 +16,7 @@
     </TargetFrameworkSubset>
     <StartupObject>
     </StartupObject>
-    <ApplicationIcon>logo.ico</ApplicationIcon>
+    <ApplicationIcon>NewLogo.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -331,11 +331,11 @@
     <Content Include="Images\打印.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="logo.ico" />
-    <None Include="Resources\loginPic.jpg" />
+    <Content Include="NewLogo.ico" />
     <None Include="CONFIG.INI">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Resources\loginPic.jpg" />
     <None Include="skin\DiamondBlue.ssk">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -150,5 +150,10 @@ namespace MeterInstall
             FileApply.Text = FileApplyID;
             frm.ShowDialog();
         }
+
+        private void FileAgree_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
