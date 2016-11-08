@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace SysControl
 {
@@ -18,9 +19,31 @@ namespace SysControl
             set { _UnsubscribeID = value; }
         }
 
+        private string _url = "";
+
         public FrmFileShow()
         {
             InitializeComponent();
+        }
+
+        private void FrmFileShow_Load(object sender, EventArgs e)
+        {
+            string strFilePaht = ConfigurationSettings.AppSettings["FilesPath"];
+            _url = string.Format("{0}FileShow.aspx?UnsubscribeID={1}", strFilePaht, _UnsubscribeID);
+
+        }
+
+        private void FrmFileShow_Shown(object sender, EventArgs e)
+        {
+            WB1.Visible = false;
+            WB1.Navigate(new Uri(_url));
+        }
+
+        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+
+            WB1.Refresh();
+            WB1.Visible = true;
         }
     }
 }

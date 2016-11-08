@@ -28,33 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.WB1 = new System.Windows.Forms.WebBrowser();
             this.SuspendLayout();
             // 
-            // webBrowser1
+            // WB1
             // 
-            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(682, 582);
-            this.webBrowser1.TabIndex = 0;
+            this.WB1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WB1.Location = new System.Drawing.Point(0, 0);
+            this.WB1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.WB1.Name = "WB1";
+            this.WB1.Size = new System.Drawing.Size(682, 582);
+            this.WB1.TabIndex = 0;
+            this.WB1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
             // 
             // FrmFileShow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(682, 582);
-            this.Controls.Add(this.webBrowser1);
+            this.Controls.Add(this.WB1);
             this.Name = "FrmFileShow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "文件查看";
+            this.Load += new System.EventHandler(this.FrmFileShow_Load);
+            this.Shown += new System.EventHandler(this.FrmFileShow_Shown);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.WebBrowser webBrowser1;
+        private System.Windows.Forms.WebBrowser WB1;
     }
 }

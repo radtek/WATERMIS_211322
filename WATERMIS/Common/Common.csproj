@@ -68,6 +68,7 @@
     <Compile Include="DotNetCode\CommonHelper.cs" />
     <Compile Include="DotNetCode\ConvertHelper.cs" />
     <Compile Include="DotNetCode\DateTimeHelper.cs" />
+    <Compile Include="DotNetCode\GB2312UnicodeConverter.cs" />
     <Compile Include="DotNetCode\IDCardValidation.cs" />
     <Compile Include="DotNetCode\LogHelper.cs" />
     <Compile Include="DotNetCode\PageValidate.cs" />

@@ -120,6 +120,8 @@ namespace MeterInstall
 
             FrmFileUpload frm = new FrmFileUpload();
             frm.UnsubscribeID = FileAgreeID;
+            frm.ShowName = "安装协议书";
+            frm.TableNames = "Meter_Install_Transition";
             FileAgree.Text = FileAgreeID;
             frm.ShowDialog();
 
@@ -131,6 +133,8 @@ namespace MeterInstall
 
             FrmFileUpload frm = new FrmFileUpload();
             frm.UnsubscribeID = FileReplyID;
+            frm.ShowName = "发改委批复文件";
+            frm.TableNames = "Meter_Install_Transition";
             FileReply.Text = FileReplyID;
             frm.ShowDialog();
         }
@@ -141,6 +145,8 @@ namespace MeterInstall
 
             FrmFileUpload frm = new FrmFileUpload();
             frm.UnsubscribeID = FileApplyID;
+            frm.ShowName = "申请表";
+            frm.TableNames = "Meter_Install_Transition";
             FileApply.Text = FileApplyID;
             frm.ShowDialog();
         }
