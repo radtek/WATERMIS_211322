@@ -8,6 +8,7 @@ using System.IO;
 using System.Text;
 using System.Runtime.InteropServices;
 using System.Data;
+using System.Diagnostics;
 
 namespace WATERMIS
 {
@@ -74,20 +75,8 @@ namespace WATERMIS
             #endregion
             if (intCount > 0)
             {
-                if (mes.ShowQ("软件有最新版本,是否要升级?") == DialogResult.OK)
-                {
-                    Application.Exit();
-                    System.Diagnostics.Process process = System.Diagnostics.Process.Start(Application.StartupPath + @"\DOWNLOAD.exe");
-                }
-                else
-                {
-                    FrmLogin frm = new FrmLogin();
-                    frm.ShowDialog();
-                    if (frm.DialogResult == DialogResult.OK)
-                    {
-                        Application.Run(new frmMain());
-                    }
-                }
+                Application.Exit();
+                System.Diagnostics.Process process = System.Diagnostics.Process.Start(Application.StartupPath + @"\DOWNLOAD.exe");
             }
             else
             {

@@ -61,7 +61,7 @@
             this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tb1.Size = new System.Drawing.Size(909, 688);
+            this.tb1.Size = new System.Drawing.Size(909, 595);
             this.tb1.TabIndex = 67;
             this.tb1.Tag = "9999";
             // 
@@ -168,7 +168,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 83);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(903, 602);
+            this.groupBox2.Size = new System.Drawing.Size(903, 509);
             this.groupBox2.TabIndex = 902;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "待打印发票列表";
@@ -189,7 +189,7 @@
             this.uC_DataGridView_Page1.PageIndex = 1;
             this.uC_DataGridView_Page1.PageOrderField = null;
             this.uC_DataGridView_Page1.PageSize = 100;
-            this.uC_DataGridView_Page1.Size = new System.Drawing.Size(897, 582);
+            this.uC_DataGridView_Page1.Size = new System.Drawing.Size(897, 489);
             this.uC_DataGridView_Page1.TabIndex = 906;
             this.uC_DataGridView_Page1.Tag = "9999";
             this.uC_DataGridView_Page1.CellDoubleClickEvents += new SysControl.UC_DataGridView_Page.CellDoubleClickEvent(this.uC_DataGridView_Page1_CellDoubleClickEvents);
@@ -199,11 +199,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(909, 688);
+            this.ClientSize = new System.Drawing.Size(909, 595);
             this.Controls.Add(this.tb1);
             this.Name = "FrmFinance_Invoice_Print";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "发票打印";
+            this.Text = "发票待打印明细";
             this.Load += new System.EventHandler(this.FrmFinance_Invoice_Print_Load);
             this.tb1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);

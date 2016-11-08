@@ -102,5 +102,20 @@ namespace BLL
            else
                return false;
        }
+        /// <summary>
+        /// 获取有业扩最大发票号
+        /// </summary>
+        /// <param name="strLogID">登陆用户ID</param>
+        /// <param name="strInvoiceBatchID">发票批次</param>
+        /// <returns></returns>
+       public DataTable GetMaxInvoiceNO_MeterWork(string strLogID, string strInvoiceBatchID)
+       {
+           StringBuilder str = new StringBuilder();
+           str.Append("SELECT TOP 1 INVOICEBATCHID,INVOICENO FROM Meter_WorkResolveFee_Invoice WHERE INVOICEPRINTWORKERID='" + strLogID + "' AND INVOICECANCEL<>'3' AND " +
+               " INVOICEBATCHID='" + strInvoiceBatchID + "' ORDER BY INVOICEPRINTDATETIME DESC");
+           DataTable dt = DBUtility.DbHelperSQL.Query(str.ToString()).Tables[0];
+
+           return dt;
+       }
     }
 }
