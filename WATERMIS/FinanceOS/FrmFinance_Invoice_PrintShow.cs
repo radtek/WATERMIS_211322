@@ -8,6 +8,8 @@ using System.Windows.Forms;
 using BLL;
 using BASEFUNCTION;
 using Microsoft.VisualBasic;
+using System.Runtime.InteropServices;
+using MODEL;
 
 namespace FinanceOS
 {
@@ -18,9 +20,106 @@ namespace FinanceOS
         {
             InitializeComponent();
         }
+        #region 发票打印接口相关函数
+        /// <summary>
+        /// 功能：发票开具初始化
+        /// </summary>
+        /// <param name="hCurWnd">传入参数：为ERP当前的窗口句柄</param>
+        /// <returns></returns>
+        [DllImport("InvKey.dll")]
+        private static extern bool FPInfoInit(IntPtr hCurWnd);
+
+        /// <summary>
+        /// 功能：发票添加
+        /// </summary>
+        /// <param name="FPClientName">购方名称</param>
+        /// <param name="FPClientTaxCode">购方税号</param>
+        /// <param name="FPClientBankAccount">购方开户行及账号</param>
+        /// <param name="FPClientAddressTel">购方地址电话</param>
+        /// <param name="FPSellerBankAccount">销方开户行及账号</param>
+        /// <param name="FPSellerAddressTel">销方地址电话</param>
+        /// <param name="FPNotes">备注</param>
+        /// <param name="FPInvoicer">开票人</param>
+        /// <param name="FPChecker">复核人 可以为空</param>
+        /// <param name="FPCashier">收款人 可以为空</param>
+        /// <param name="FPListName">如不为空，则开具销货清单，应为“（详见销货清单）”</param>
+        /// <param name="FPState">0:只导入不开票 1：开票不打印 2：开票并打印</param>
+        /// <param name="InvQDState">0：正常开具清单 1：不足8条开具清单</param>
+        /// <returns></returns>
+        [DllImport("InvKey.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+        private static extern bool AddFPData([MarshalAs(UnmanagedType.LPTStr)] string FPClientName, [MarshalAs(UnmanagedType.LPTStr)] string FPClientTaxCode,
+           [MarshalAs(UnmanagedType.LPTStr)] string FPClientBankAccount, [MarshalAs(UnmanagedType.LPTStr)] string FPClientAddressTel,
+           [MarshalAs(UnmanagedType.LPTStr)] string FPSellerBankAccount, [MarshalAs(UnmanagedType.LPTStr)] string FPSellerAddressTel,
+           [MarshalAs(UnmanagedType.LPTStr)] string FPNotes, [MarshalAs(UnmanagedType.LPTStr)] string FPInvoicer,
+           [MarshalAs(UnmanagedType.LPTStr)] string FPChecker, [MarshalAs(UnmanagedType.LPTStr)] string FPCashier,
+           [MarshalAs(UnmanagedType.LPTStr)] string FPListName, int FPState, int InvQDState);
+
+        /// <summary>
+        /// 初始化明细信息,如果要保证总金额不变，传入含税总金额，单价传入0，MXPriceKind传入1，开票软件上显示的是单价（含税）和金额（含税）就可以了
+        /// </summary>
+        /// <returns></returns>
+        [DllImport("InvKey.dll")]
+        private static extern bool MXInfoInit();
+
+        /// <summary>
+        /// 添加明细
+        /// </summary>
+        /// <param name="MXGoodsName">商品或劳务名称</param>
+        /// <param name="MXStandard">规格型号</param>
+        /// <param name="MXUnit">计量单位 如果为空，忽略数量和单价</param>
+        /// <param name="MXNumber">数量</param>
+        /// <param name="MXPrice">单价</param>
+        /// <param name="MXAmount">金额 可以不传，由开票软件计算，如传入应符合计算关系</param>
+        /// <param name="MXTaxRate">税率 17、13、4、0等  0.17对应17 0.13对应13 4对应0.04</param>
+        /// <param name="MXPriceKind">含税价标志 单价和金额的种类，0为不含税价，1为含税价</param>
+        /// <param name="MXTaxAmount">税额 可以不传，由开票软件计算，如传入应符合计算关系</param>
+        /// <returns></returns>
+        [DllImport("InvKey.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+        private static extern bool AddMXData([MarshalAs(UnmanagedType.LPTStr)] string MXGoodsName, [MarshalAs(UnmanagedType.LPTStr)] string MXStandard,
+           [MarshalAs(UnmanagedType.LPTStr)] string MXUnit, double MXNumber,
+            double MXPrice, double MXAmount, int MXTaxRate, int MXPriceKind, double MXTaxAmount);
+
+        /// <summary>
+        /// 发票开具
+        /// </summary>
+        /// <param name="outInvTypeCode">出参:发票代码</param>
+        /// <param name="outInvNumber">出参:发票号码</param>
+        /// <returns></returns>
+        [DllImport("InvKey.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+        private static extern bool FPInvoice(StringBuilder outInvTypeCode, StringBuilder outInvNumber);
+
+        /// <summary>
+        /// 获取发票数据
+        /// </summary>
+        /// <param name="outInvTypeCode">出参:发票代码</param>
+        /// <param name="outInvNumber">出参:发票号码</param>
+        /// <returns></returns>
+        [DllImport("InvKey.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+        private static extern bool GetFPInfo(StringBuilder outInvTypeCode, StringBuilder outInvNumber);
+
+        /// <summary>
+        /// 关闭接口
+        /// </summary>
+        /// <returns></returns>
+        [DllImport("InvKey.dll")]
+        private static extern bool CloseInvKey();
+
+        //接口调用规范：
+        //1、	将带有注册信息的login.ini配置文件放置到接口软件的根目录下；
+        //2、	启动“开票软件”，将界面打开到开票界面；
+        //3、	调用FPInfoInit，初始化发票；
+        //4、	调用AddFPData，添加发票；
+        //5、	调用MXInfoInit，初始化明细，多条明细只调用一次；
+        //6、	调用AddMXData，添加明细，添加一条明细调用一次。
+        //7、	调用FPInvoice，填开发票。
+        //8、	退出程序时，调用CloseInvKey。
+        #endregion
         BLLINVOICEFETCH BLLINVOICEFETCH = new BLLINVOICEFETCH();
+        BllMeter_WorkResolveFee_Invoice_Detail BllMeter_WorkResolveFee_Invoice_Detail = new BllMeter_WorkResolveFee_Invoice_Detail();
         Messages mes = new Messages();
         RMBToCapMoney RMBToCapMoney = new RMBToCapMoney();
+        Log log = new Log(Application.StartupPath + @"\Logs\", LogType.Daily);
+        GETTABLEID GETTABLEID = new GETTABLEID();
 
         /// <summary>
         /// 收费ID
@@ -71,7 +170,8 @@ namespace FinanceOS
         /// 用户基础信息
         /// </summary>
         public string strWaterUserID = "", strWaterUserName = "", strWaterUserAddress = "",
-             strWaterUserTel = "", strWaterUserFPTaxNO = "", strWaterUserFPBankNameAndAccountNO = "";
+             strWaterUserTel = "", strWaterUserFPTaxNO = "", strWaterUserFPBankNameAndAccountNO = "",
+                    strTable_Name_CH = "",strFeeDepID="",strFeeDepName="";
 
         /// <summary>
         /// 待打发票明细
@@ -112,6 +212,8 @@ namespace FinanceOS
             txtCompanyBankNameAndAccountNO.Text = strCompanyBankNameAndAccountNO;
             txtPayee.Text = strCompanyPayee;
             txtChecker.Text = strCompanyChecker;
+
+            txtInvoiceOpener.Text = strLoginName;
 
             dgList.DataSource = dtFPDetail;
 
@@ -169,7 +271,7 @@ namespace FinanceOS
             //获取新的发票号码
             if (cmbBatch.SelectedValue != null && cmbBatch.SelectedValue != DBNull.Value)
             {
-                DataTable dtNewInvoiceNO = BLLINVOICEFETCH.GetMaxInvoiceNO_MeterWork(strLoginID, cmbBatch.SelectedValue.ToString());
+                DataTable dtNewInvoiceNO = BllMeter_WorkResolveFee_Invoice_Detail.GetMaxInvoiceNO_MeterWork(strLoginID, cmbBatch.SelectedValue.ToString());
                 if (dtNewInvoiceNO.Rows.Count > 0)
                 {
                     object objInvoiceNO = dtNewInvoiceNO.Rows[0]["INVOICENO"];
@@ -257,6 +359,230 @@ namespace FinanceOS
                 txtCapMoney.Text = RMBToCapMoney.CmycurD(decSumMoney);
                 txtSumMoney.Text = decSumMoney.ToString("F2");
             }
+        }
+
+        private void toolPrint_Click(object sender, EventArgs e)
+        {
+            if (dgList.Rows.Count == 0)
+            {
+                return;
+            }
+            dgList.EndEdit();
+
+            if (cmbBatch.SelectedValue == null || cmbBatch.SelectedValue == DBNull.Value)
+            {
+                mes.Show("请选择发票批次!");
+                cmbBatch.Focus();
+                return;
+            }
+            if (txtInvoiceNO.Text.Trim() == "")
+            {
+                mes.Show("请输入发票号码!");
+                txtInvoiceNO.Focus();
+                return;
+            }
+            else
+            {
+                if (txtInvoiceNO.Text.Length > 8)
+                {
+                    mes.Show("发票号码长度应小于9位，请确定发票号是否正确!");
+                    txtInvoiceNO.Focus();
+                    return;
+                }
+                if (!Information.IsNumeric(txtInvoiceNO.Text))
+                {
+                    mes.Show("发票号码只能由数字组成!");
+                    txtInvoiceNO.Focus();
+                    return;
+                }
+            }
+            txtInvoiceNO.Text = txtInvoiceNO.Text.PadLeft(8, '0');
+
+            for (int i = 0; i < dgList.Rows.Count; i++)
+            {
+                object obj = dgList.Rows[i].Cells["Quantity"].Value;
+                if (!Information.IsNumeric(obj))
+                {
+                    mes.Show("第 " + (i + 1).ToString() + "行 数量不正确,请重新填写!");
+                    return;
+                }
+                else if (Convert.ToDecimal(obj) == 0)
+                {
+                    mes.Show("第 " + (i + 1).ToString() + "行 数量为零,请重新填写!");
+                    return;
+                }
+
+                obj = dgList.Rows[i].Cells["Price"].Value;
+                if (!Information.IsNumeric(obj))
+                {
+                    mes.Show("第 " + (i + 1).ToString() + "行 单价不正确,请重新填写!");
+                    return;
+                }
+                else if (Convert.ToDecimal(obj) == 0)
+                {
+                    mes.Show("第 " + (i + 1).ToString() + "行 单价为零,请重新填写!");
+                    return;
+                }
+
+                obj = dgList.Rows[i].Cells["Fee"].Value;
+                if (!Information.IsNumeric(obj))
+                {
+                    mes.Show("第 " + (i + 1).ToString() + "行 金额(含税)不正确,请重新填写!");
+                    return;
+                }
+                else if (Convert.ToDecimal(obj) == 0)
+                {
+                    mes.Show("第 " + (i + 1).ToString() + "行 金额(含税)为零,请重新填写!");
+                    return;
+                }
+
+                obj = dgList.Rows[i].Cells["TaxPercent"].Value;
+                if (!Information.IsNumeric(obj))
+                {
+                    mes.Show("第 " + (i + 1).ToString() + "行 税率不正确,请重新填写!");
+                    return;
+                }
+                else if (Convert.ToDecimal(obj) == 0)
+                {
+                    mes.Show("第 " + (i + 1).ToString() + "行 税率为零,请重新填写!");
+                    return;
+                }
+            }
+
+            #region 检查起始发票号是否可用
+            DataTable dtCheckInvoiceExists = BllMeter_WorkResolveFee_Invoice_Detail.QueryMeterWorkInvoice(" AND INVOICENO='" + txtInvoiceNO.Text + "' AND INVOICEBATCHID='" + cmbBatch.SelectedValue.ToString() + "' AND INVOICECANCEL<>'3' ");
+            if (dtCheckInvoiceExists.Rows.Count > 0)
+            {
+                if (mes.ShowQ("发票批次为'" + cmbBatch.Text + "'票号为'" + txtInvoiceNO.Text + "'的发票已使用，确定使用此发票号打印吗?") != DialogResult.OK)
+                {
+                    txtInvoiceNO.Focus();
+                    return;
+                }
+            }
+            #endregion
+
+            StringBuilder strInvTypeCode1 = new StringBuilder();
+            StringBuilder strInvNumber1 = new StringBuilder();
+            bool ret = GetFPInfo(strInvTypeCode1, strInvNumber1);
+            if (ret)
+            {
+                if (strInvNumber1.ToString() != txtInvoiceNO.Text)
+                {
+                    mes.Show("当前发票号与税控系统发票号不一致，请设置新的发票号!" + Environment.NewLine + "设置发票号:" + txtInvoiceNO.Text + Environment.NewLine + "系统发票号:" + strInvNumber1);
+                    txtInvoiceNO.SelectAll();
+                    return;
+                }
+            }
+            else
+            {
+                mes.Show("获取税控系统发票号失败,请重试!");
+                return;
+            }
+
+            #region 打印发票
+            try
+            {
+                if (AddFPData(strWaterUserName, strWaterUserFPTaxNO, strWaterUserFPBankNameAndAccountNO, strWaterUserAddress + strWaterUserTel, strCompanyBankNameAndAccountNO,
+                                strCompanyAddressAndTel, "", strLoginName, strCompanyChecker, strCompanyPayee, null, 2, 0))
+                {
+                    if (MXInfoInit())
+                    {
+                        for (int i = 0; i < dgList.Rows.Count; i++)
+                        {
+                            double dbNumber = Convert.ToDouble(dgList.Rows[i].Cells["Quantity"].Value);
+                            double dbSumMoney = Convert.ToDouble(dgList.Rows[i].Cells["Fee"].Value);
+
+                            int intTaxPercent = (int)(Convert.ToDecimal(dgList.Rows[i].Cells["TaxPercent"].Value) * 100);
+
+                            string strUnit = "";
+                            string strFeeInvoiceTitle = "";
+                            object obj = dgList.Rows[i].Cells["InvoiceTitle"].Value;
+                            if (obj != null && obj != DBNull.Value)
+                                strFeeInvoiceTitle = obj.ToString();
+
+                            obj = dgList.Rows[i].Cells["Units"].Value;
+                            if (obj != null && obj != DBNull.Value)
+                                strUnit = obj.ToString();
+
+                            if (AddMXData(strFeeInvoiceTitle, "", strUnit, dbNumber, 0, dbSumMoney, intTaxPercent, 1, 0))
+                            {
+
+                            }
+                            else
+                            {
+                                mes.Show("添加第 " + (i + 1).ToString() + "行 发票明细'" + strFeeInvoiceTitle + "'错误,请重试!");
+                                return;
+                            }
+                        }
+                        StringBuilder strInvTypeCode = new StringBuilder();
+                        StringBuilder strInvNumber = new StringBuilder();
+                        if (!FPInvoice(strInvTypeCode, strInvNumber))
+                        {
+                            mes.Show("发票填开错误,请重试!");
+                            return;
+                        }
+                        bool isOK = CloseInvKey();
+
+                        //发票打印成功后，开始处理数据库部分
+                        ModelMeter_WorkResolveFee_Invoice ModelMeter_WorkResolveFee_Invoice = new ModelMeter_WorkResolveFee_Invoice();
+                        ModelMeter_WorkResolveFee_Invoice.InvoicePrintID = GETTABLEID.GetTableID(strLoginID, "Meter_WorkResolveFee_Invoice");
+                        ModelMeter_WorkResolveFee_Invoice.ChargeID = ChargeID;
+                        ModelMeter_WorkResolveFee_Invoice.InvoiceBatchID = cmbBatch.SelectedValue.ToString();
+                        ModelMeter_WorkResolveFee_Invoice.InvoiceBatchName = cmbBatch.Text;
+                        ModelMeter_WorkResolveFee_Invoice.InvoiceNO = txtInvoiceNO.Text;
+                        ModelMeter_WorkResolveFee_Invoice.WaterUserName = txtWaterUserName.Text;
+                        ModelMeter_WorkResolveFee_Invoice.WaterUserAddress = txtWaterUserAddress.Text;
+                        ModelMeter_WorkResolveFee_Invoice.WaterUserFPTaxNO = txtWaterUserFPTaxNO.Text;
+                        ModelMeter_WorkResolveFee_Invoice.WaterUserFPBankNameAndAccountNO = txtWaterUserBankAccount.Text;
+                        ModelMeter_WorkResolveFee_Invoice.Table_Name_CH = strTable_Name_CH;
+                        ModelMeter_WorkResolveFee_Invoice.InvoiceFeeDepID = strFeeDepID;
+                        ModelMeter_WorkResolveFee_Invoice.InvoiceFeeDepName = strFeeDepName;
+                        ModelMeter_WorkResolveFee_Invoice.InvoiceTotalFeeMoney = Convert.ToDecimal(txtSumMoney.Text);
+                        ModelMeter_WorkResolveFee_Invoice.CompanyName = strCompanyName;
+                        ModelMeter_WorkResolveFee_Invoice.CompanyAddress = strCompanyAddressAndTel;
+                        ModelMeter_WorkResolveFee_Invoice.CompanyFPTaxNO = strCompanyTaxNO;
+                        ModelMeter_WorkResolveFee_Invoice.CompanyFPBankNameAndAccountNO = strCompanyBankNameAndAccountNO;
+                        ModelMeter_WorkResolveFee_Invoice.Payee = strCompanyPayee;
+                        ModelMeter_WorkResolveFee_Invoice.Checker = strCompanyChecker;
+                        ModelMeter_WorkResolveFee_Invoice.InvoicePrintWorkerID = strLoginID;
+                        ModelMeter_WorkResolveFee_Invoice.InvoicePrintWorker = strLoginName;
+                        ModelMeter_WorkResolveFee_Invoice.InvoiceType = rbNormal.Checked?"1":"2"; //普通发票还是专用发票
+                        if (BllMeter_WorkResolveFee_Invoice_Detail.Insert(ModelMeter_WorkResolveFee_Invoice))
+                        {
+                            for (int i = 0; i < dgList.Rows.Count; i++)
+                            {
+                                ModelMeter_WorkResolveFee_Invoice_Detail ModelMeter_WorkResolveFee_Invoice_Detail = new ModelMeter_WorkResolveFee_Invoice_Detail();
+                                ModelMeter_WorkResolveFee_Invoice_Detail.InvoicePrintID = ModelMeter_WorkResolveFee_Invoice.InvoicePrintID;
+                                ModelMeter_WorkResolveFee_Invoice_Detail.DetailIndex = i + 1;
+                                ModelMeter_WorkResolveFee_Invoice_Detail.FeeItem = dgList.Rows[i].Cells["FeeItem"].Value.ToString();
+                                ModelMeter_WorkResolveFee_Invoice_Detail.FeeItemInvoiceTitle = dgList.Rows[i].Cells["FeeItemInvoiceTitle"].Value.ToString();
+                                ModelMeter_WorkResolveFee_Invoice_Detail.Quatity = decimal.Parse(dgList.Rows[i].Cells["Quatity"].Value.ToString());
+                                ModelMeter_WorkResolveFee_Invoice_Detail.Price = decimal.Parse(dgList.Rows[i].Cells["Price"].Value.ToString());
+                                ModelMeter_WorkResolveFee_Invoice_Detail.TaxPercent = decimal.Parse(dgList.Rows[i].Cells["TaxPercent"].Value.ToString());
+                                ModelMeter_WorkResolveFee_Invoice_Detail.TaxMoney = decimal.Parse(dgList.Rows[i].Cells["TaxMoney"].Value.ToString());
+                                ModelMeter_WorkResolveFee_Invoice_Detail.TotalMoney = decimal.Parse(dgList.Rows[i].Cells["TotalMoney"].Value.ToString());
+                            }
+                        }
+                    }
+                    else
+                    {
+                        mes.Show("发票明细初始化错误,请重试!");
+                        return;
+                    }
+                }
+                else
+                {
+                    mes.Show("添加发票基础信息错误,请重试!");
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                mes.Show("发票打印错误:" + ex.Message);
+                log.Write(ex.ToString(), MsgType.Error);
+                return;
+            }
+            #endregion
         }
     }
 }

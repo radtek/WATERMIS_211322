@@ -32,9 +32,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmFinance_Invoice_PrintShow));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolAdd = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolPrint = new System.Windows.Forms.ToolStripButton();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.删除一行ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.增加一行ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.txtMemo = new System.Windows.Forms.TextBox();
@@ -67,17 +68,16 @@
             this.cmbBatch = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.删除一行ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.增加一行ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rbNormal = new System.Windows.Forms.RadioButton();
+            this.rbZZ = new System.Windows.Forms.RadioButton();
             this.toolStrip1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgList)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -85,33 +85,42 @@
             this.toolStrip1.BackColor = System.Drawing.Color.LimeGreen;
             this.toolStrip1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolAdd,
-            this.toolStripSeparator1,
             this.toolPrint});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(879, 28);
+            this.toolStrip1.Size = new System.Drawing.Size(879, 31);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolAdd
-            // 
-            this.toolAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolAdd.Name = "toolAdd";
-            this.toolAdd.Size = new System.Drawing.Size(46, 25);
-            this.toolAdd.Text = "清空";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
-            // 
             // toolPrint
             // 
+            this.toolPrint.Font = new System.Drawing.Font("微软雅黑", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.toolPrint.Image = global::FinanceOS.Properties.Resources.打印;
             this.toolPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolPrint.Name = "toolPrint";
-            this.toolPrint.Size = new System.Drawing.Size(46, 25);
+            this.toolPrint.Size = new System.Drawing.Size(66, 28);
             this.toolPrint.Text = "打印";
+            this.toolPrint.Click += new System.EventHandler(this.toolPrint_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.删除一行ToolStripMenuItem,
+            this.增加一行ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 48);
+            // 
+            // 删除一行ToolStripMenuItem
+            // 
+            this.删除一行ToolStripMenuItem.Name = "删除一行ToolStripMenuItem";
+            this.删除一行ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.删除一行ToolStripMenuItem.Text = "删除一行";
+            // 
+            // 增加一行ToolStripMenuItem
+            // 
+            this.增加一行ToolStripMenuItem.Name = "增加一行ToolStripMenuItem";
+            this.增加一行ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.增加一行ToolStripMenuItem.Text = "增加一行";
             // 
             // tableLayoutPanel1
             // 
@@ -125,14 +134,14 @@
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 28);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 31);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.48763F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.08481F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.14841F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 37.27915F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(879, 567);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(879, 564);
             this.tableLayoutPanel1.TabIndex = 2;
             this.tableLayoutPanel1.Tag = "9999";
             // 
@@ -150,10 +159,10 @@
             this.panel4.Controls.Add(this.txtSumMoney);
             this.panel4.Controls.Add(this.txtCapMoney);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(1, 355);
+            this.panel4.Location = new System.Drawing.Point(1, 353);
             this.panel4.Margin = new System.Windows.Forms.Padding(0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(877, 211);
+            this.panel4.Size = new System.Drawing.Size(877, 210);
             this.panel4.TabIndex = 3;
             // 
             // txtMemo
@@ -246,7 +255,7 @@
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.Controls.Add(this.dgList);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(1, 208);
+            this.panel3.Location = new System.Drawing.Point(1, 206);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(877, 146);
@@ -341,10 +350,10 @@
             this.panel2.Controls.Add(this.txtWaterUserFPTaxNO);
             this.panel2.Controls.Add(this.txtWaterUserName);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(1, 83);
+            this.panel2.Location = new System.Drawing.Point(1, 82);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(877, 124);
+            this.panel2.Size = new System.Drawing.Size(877, 123);
             this.panel2.TabIndex = 1;
             // 
             // txtWaterUserBankAccount
@@ -382,6 +391,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.rbZZ);
+            this.panel1.Controls.Add(this.rbNormal);
             this.panel1.Controls.Add(this.txtInvoiceNO);
             this.panel1.Controls.Add(this.cmbBatch);
             this.panel1.Controls.Add(this.label2);
@@ -390,13 +401,13 @@
             this.panel1.Location = new System.Drawing.Point(1, 1);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(877, 81);
+            this.panel1.Size = new System.Drawing.Size(877, 80);
             this.panel1.TabIndex = 0;
             // 
             // txtInvoiceNO
             // 
             this.txtInvoiceNO.BackColor = System.Drawing.Color.LightYellow;
-            this.txtInvoiceNO.Location = new System.Drawing.Point(369, 53);
+            this.txtInvoiceNO.Location = new System.Drawing.Point(531, 53);
             this.txtInvoiceNO.Name = "txtInvoiceNO";
             this.txtInvoiceNO.Size = new System.Drawing.Size(125, 21);
             this.txtInvoiceNO.TabIndex = 112;
@@ -406,7 +417,7 @@
             this.cmbBatch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBatch.DropDownWidth = 130;
             this.cmbBatch.FormattingEnabled = true;
-            this.cmbBatch.Location = new System.Drawing.Point(120, 54);
+            this.cmbBatch.Location = new System.Drawing.Point(296, 54);
             this.cmbBatch.Name = "cmbBatch";
             this.cmbBatch.Size = new System.Drawing.Size(144, 20);
             this.cmbBatch.TabIndex = 111;
@@ -416,7 +427,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(52, 57);
+            this.label2.Location = new System.Drawing.Point(228, 57);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 14);
             this.label2.TabIndex = 1;
@@ -426,31 +437,35 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(295, 57);
+            this.label1.Location = new System.Drawing.Point(457, 57);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 14);
             this.label1.TabIndex = 0;
             this.label1.Text = "发票号码：";
             // 
-            // contextMenuStrip1
+            // rbNormal
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.删除一行ToolStripMenuItem,
-            this.增加一行ToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 48);
+            this.rbNormal.AutoSize = true;
+            this.rbNormal.Checked = true;
+            this.rbNormal.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.rbNormal.Location = new System.Drawing.Point(20, 55);
+            this.rbNormal.Name = "rbNormal";
+            this.rbNormal.Size = new System.Drawing.Size(81, 18);
+            this.rbNormal.TabIndex = 113;
+            this.rbNormal.TabStop = true;
+            this.rbNormal.Text = "普通发票";
+            this.rbNormal.UseVisualStyleBackColor = true;
             // 
-            // 删除一行ToolStripMenuItem
+            // rbZZ
             // 
-            this.删除一行ToolStripMenuItem.Name = "删除一行ToolStripMenuItem";
-            this.删除一行ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.删除一行ToolStripMenuItem.Text = "删除一行";
-            // 
-            // 增加一行ToolStripMenuItem
-            // 
-            this.增加一行ToolStripMenuItem.Name = "增加一行ToolStripMenuItem";
-            this.增加一行ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.增加一行ToolStripMenuItem.Text = "增加一行";
+            this.rbZZ.AutoSize = true;
+            this.rbZZ.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.rbZZ.Location = new System.Drawing.Point(116, 55);
+            this.rbZZ.Name = "rbZZ";
+            this.rbZZ.Size = new System.Drawing.Size(81, 18);
+            this.rbZZ.TabIndex = 114;
+            this.rbZZ.Text = "专用发票";
+            this.rbZZ.UseVisualStyleBackColor = true;
             // 
             // FrmFinance_Invoice_PrintShow
             // 
@@ -468,6 +483,7 @@
             this.Load += new System.EventHandler(this.FrmFinance_Invoice_PrintShow_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -477,7 +493,6 @@
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -486,8 +501,6 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolAdd;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton toolPrint;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel4;
@@ -524,5 +537,7 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 删除一行ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 增加一行ToolStripMenuItem;
+        private System.Windows.Forms.RadioButton rbZZ;
+        private System.Windows.Forms.RadioButton rbNormal;
     }
 }

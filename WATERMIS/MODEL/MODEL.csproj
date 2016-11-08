@@ -96,6 +96,8 @@
     <Compile Include="MODELSETTLEACCOUNTSS.cs" />
     <Compile Include="MODELRECEIPTFETCH.cs" />
     <Compile Include="MODELNullReadReasonName.cs" />
+    <Compile Include="ModelMeter_WorkResolveFee_Invoice.cs" />
+    <Compile Include="ModelMeter_WorkResolveFee_Invoice_Detail.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

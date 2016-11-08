@@ -98,6 +98,7 @@
     <Compile Include="BLLSETTLEACCOUNTSS.cs" />
     <Compile Include="BLLRECEIPTFETCH.cs" />
     <Compile Include="BLLNullReadReasonMemo.cs" />
+    <Compile Include="BllMeter_WorkResolveFee_Invoice_Detail.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DBUtility\DBUtility.csproj">

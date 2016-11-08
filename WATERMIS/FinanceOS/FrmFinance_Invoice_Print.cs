@@ -206,8 +206,9 @@ GROUP BY MWK.TaskID, MWF.State, MWK.PointTime, MWK.AcceptDate, MWF.CHARGEWORKERI
             DataGridView dgList = (DataGridView)sender;
             if (dgList.CurrentRow != null)
             {
-                string strWaterUserID = "", strWaterUserName = "", strWaterUserAddress = "", 
-                    strWaterUserTel = "", strWaterUserFPTaxNO = "", strWaterUserFPBankNameAndAccountNO = "",strChargeID="";
+                string strWaterUserID = "", strWaterUserName = "", strWaterUserAddress = "", strWaterUserTel = "",
+                    strWaterUserFPTaxNO = "", strWaterUserFPBankNameAndAccountNO = "", strChargeID = "", 
+                    strTable_Name_CH = "",strFeeDepID="",strFeeDepName="";
                 
                 object obj = dgList.CurrentRow.Cells["waterUserName"].Value;
                 if (obj != null && obj != DBNull.Value)
@@ -240,6 +241,18 @@ GROUP BY MWK.TaskID, MWF.State, MWK.PointTime, MWK.AcceptDate, MWF.CHARGEWORKERI
                     }
                 }
 
+                obj = dgList.CurrentRow.Cells["Table_Name_CH"].Value;
+                if (obj != null && obj != DBNull.Value)
+                    strTable_Name_CH = obj.ToString();
+
+                obj = dgList.CurrentRow.Cells["DepartementID"].Value;
+                if (obj != null && obj != DBNull.Value)
+                    strFeeDepID = obj.ToString();
+
+                obj = dgList.CurrentRow.Cells["DepartementName"].Value;
+                if (obj != null && obj != DBNull.Value)
+                    strFeeDepName = obj.ToString();
+
                 obj = dgList.CurrentRow.Cells["ChargeID"].Value;
                 if (obj != null && obj != DBNull.Value && obj.ToString() != "")
                 {
@@ -267,6 +280,11 @@ GROUP BY MWK.TaskID, MWF.State, MWK.PointTime, MWK.AcceptDate, MWF.CHARGEWORKERI
                     frm.strWaterUserTel = strWaterUserTel;
                     frm.strWaterUserFPTaxNO = strWaterUserFPTaxNO;
                     frm.strWaterUserFPBankNameAndAccountNO = strWaterUserFPBankNameAndAccountNO;
+
+                    frm.strTable_Name_CH = strTable_Name_CH;
+                    frm.strFeeDepID = strFeeDepID;
+                    frm.strFeeDepName = strFeeDepName;
+
 
                     frm.dtFPDetail = dtFeeDetail;
 

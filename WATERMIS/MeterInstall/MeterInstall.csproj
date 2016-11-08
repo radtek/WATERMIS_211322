@@ -95,7 +95,6 @@
       <DependentUpon>FrmMeterImport.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmMeterManage.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmMeterManage.Designer.cs">
       <DependentUpon>FrmMeterManage.cs</DependentUpon>

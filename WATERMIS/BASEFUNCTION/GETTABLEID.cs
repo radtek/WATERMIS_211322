@@ -402,6 +402,32 @@ namespace BASEFUNCTION
                             }
                         }
                         return strReturnID;
+                    case "Meter_WorkResolveFee_Invoice"://业扩发票表 as 201512290001000001 18位
+                        if (intLogID == 4)
+                        {
+                            strSQL = "SELECT MAX(RIGHT(InvoicePrintID,4)) FROM Meter_WorkResolveFee_Invoice WHERE LEFT(InvoicePrintID,12)='" + strDate + strLogID + "'";
+                            objGetID = DBUtility.DbHelperSQL.GetSingle(strSQL);
+                            if (objGetID == null)
+                                strReturnID = strDate + strLogID + "0001";
+                            else
+                            {
+                                strReturnID = (int.Parse(objGetID.ToString()) + 1).ToString();
+                                strReturnID = strDate + strLogID + strReturnID.PadLeft(4, '0');
+                            }
+                        }
+                        else
+                        {
+                            strSQL = "SELECT MAX(RIGHT(InvoicePrintID,4)) FROM Meter_WorkResolveFee_Invoice WHERE LEFT(InvoicePrintID,8)='" + strDate + "'";
+                            objGetID = DBUtility.DbHelperSQL.GetSingle(strSQL);
+                            if (objGetID == null)
+                                strReturnID = strDate + "0001";
+                            else
+                            {
+                                strReturnID = (int.Parse(objGetID.ToString()) + 1).ToString();
+                                strReturnID = strDate + strReturnID.PadLeft(4, '0');
+                            }
+                        }
+                        return strReturnID;
                     case "WATERFEEREMIT"://发票表 as 20150411JM000001 16位
                         strSQL = "SELECT MAX(RIGHT(WATERFEEREMITID,6)) FROM WATERFEEREMIT WHERE LEFT(WATERFEEREMITID,8)='" + strDate + "'";
                         objGetID = DBUtility.DbHelperSQL.GetSingle(strSQL);
