@@ -1281,6 +1281,7 @@ namespace METERREADINGMACHINE
                                 MODELreadMeterRecord.TrapeZoidPrice1 = strPrice[0].Split(':')[1];
                                 MODELreadMeterRecord.TrapeZoidPrice2 = strPrice[1].Split(':')[1];
                                 MODELreadMeterRecord.TrapeZoidPrice3 = strPrice[2].Split(':')[1];
+                                MODELreadMeterRecord.avePrice =Convert.ToDecimal(MODELreadMeterRecord.TrapeZoidPrice1);
                             }
                         }
 

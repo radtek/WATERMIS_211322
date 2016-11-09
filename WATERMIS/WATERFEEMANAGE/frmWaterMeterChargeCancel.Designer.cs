@@ -39,6 +39,13 @@
             FastReport.ReportSettings reportSettings1 = new FastReport.ReportSettings();
             this.tb1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtJYLSH = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.btModify = new System.Windows.Forms.Button();
+            this.cmbChargeTypeNew = new System.Windows.Forms.ComboBox();
+            this.cmbChargeTypeOld = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.txtReceiptNO = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.txtBCSS = new System.Windows.Forms.TextBox();
@@ -175,6 +182,7 @@
             this.RECEIPTNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CHARGETYPEID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CHARGETYPENAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.POSRUNNINGNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CHARGEClASS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CHARGEBCYS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CHARGEBCSS = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -185,7 +193,7 @@
             this.CHARGEDATETIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CHARGECANCEL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DAYCHECKSTATES = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MONTHCHECKSTATES = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SETTLEACCOUNTSSSID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.meterReaderID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.meterReaderName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.memo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -221,6 +229,13 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.LimeGreen;
+            this.groupBox2.Controls.Add(this.txtJYLSH);
+            this.groupBox2.Controls.Add(this.label31);
+            this.groupBox2.Controls.Add(this.btModify);
+            this.groupBox2.Controls.Add(this.cmbChargeTypeNew);
+            this.groupBox2.Controls.Add(this.cmbChargeTypeOld);
+            this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.txtReceiptNO);
             this.groupBox2.Controls.Add(this.label23);
             this.groupBox2.Controls.Add(this.txtBCSS);
@@ -255,6 +270,73 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Tag = "9999";
             this.groupBox2.Text = "本次结算(单位:元)";
+            // 
+            // txtJYLSH
+            // 
+            this.txtJYLSH.BackColor = System.Drawing.Color.LightYellow;
+            this.txtJYLSH.Location = new System.Drawing.Point(537, 153);
+            this.txtJYLSH.Name = "txtJYLSH";
+            this.txtJYLSH.Size = new System.Drawing.Size(159, 26);
+            this.txtJYLSH.TabIndex = 809;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.BackColor = System.Drawing.Color.Transparent;
+            this.label31.ForeColor = System.Drawing.Color.Blue;
+            this.label31.Location = new System.Drawing.Point(445, 158);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(96, 16);
+            this.label31.TabIndex = 808;
+            this.label31.Text = "交易流水号:";
+            // 
+            // btModify
+            // 
+            this.btModify.Location = new System.Drawing.Point(703, 151);
+            this.btModify.Name = "btModify";
+            this.btModify.Size = new System.Drawing.Size(80, 30);
+            this.btModify.TabIndex = 807;
+            this.btModify.Text = "修改";
+            this.btModify.UseVisualStyleBackColor = true;
+            this.btModify.Click += new System.EventHandler(this.btModify_Click);
+            // 
+            // cmbChargeTypeNew
+            // 
+            this.cmbChargeTypeNew.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbChargeTypeNew.Font = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbChargeTypeNew.FormattingEnabled = true;
+            this.cmbChargeTypeNew.Location = new System.Drawing.Point(537, 124);
+            this.cmbChargeTypeNew.Name = "cmbChargeTypeNew";
+            this.cmbChargeTypeNew.Size = new System.Drawing.Size(159, 23);
+            this.cmbChargeTypeNew.TabIndex = 804;
+            // 
+            // cmbChargeTypeOld
+            // 
+            this.cmbChargeTypeOld.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbChargeTypeOld.Font = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbChargeTypeOld.FormattingEnabled = true;
+            this.cmbChargeTypeOld.Location = new System.Drawing.Point(537, 95);
+            this.cmbChargeTypeOld.Name = "cmbChargeTypeOld";
+            this.cmbChargeTypeOld.Size = new System.Drawing.Size(159, 23);
+            this.cmbChargeTypeOld.TabIndex = 805;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(477, 128);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(64, 16);
+            this.label11.TabIndex = 806;
+            this.label11.Text = "修改为:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(445, 98);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(96, 16);
+            this.label14.TabIndex = 803;
+            this.label14.Text = "原收款方式:";
             // 
             // txtReceiptNO
             // 
@@ -378,7 +460,7 @@
             // 
             this.txtYSJSYE.BackColor = System.Drawing.Color.LightYellow;
             this.txtYSJSYE.ForeColor = System.Drawing.Color.Blue;
-            this.txtYSJSYE.Location = new System.Drawing.Point(526, 56);
+            this.txtYSJSYE.Location = new System.Drawing.Point(537, 58);
             this.txtYSJSYE.Name = "txtYSJSYE";
             this.txtYSJSYE.ReadOnly = true;
             this.txtYSJSYE.Size = new System.Drawing.Size(88, 26);
@@ -421,7 +503,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label19.Location = new System.Drawing.Point(450, 61);
+            this.label19.Location = new System.Drawing.Point(461, 63);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(80, 16);
             this.label19.TabIndex = 78;
@@ -519,9 +601,9 @@
             this.groupBox4.Controls.Add(this.btInvoiceCancel);
             this.groupBox4.Controls.Add(this.btInvoicePrint);
             this.groupBox4.ForeColor = System.Drawing.Color.Blue;
-            this.groupBox4.Location = new System.Drawing.Point(656, 69);
+            this.groupBox4.Location = new System.Drawing.Point(47, 153);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(136, 124);
+            this.groupBox4.Size = new System.Drawing.Size(57, 41);
             this.groupBox4.TabIndex = 121;
             this.groupBox4.TabStop = false;
             this.groupBox4.Tag = "9999";
@@ -794,6 +876,7 @@
             this.RECEIPTNO,
             this.CHARGETYPEID,
             this.CHARGETYPENAME,
+            this.POSRUNNINGNO,
             this.CHARGEClASS,
             this.CHARGEBCYS,
             this.CHARGEBCSS,
@@ -804,7 +887,7 @@
             this.CHARGEDATETIME,
             this.CHARGECANCEL,
             this.DAYCHECKSTATES,
-            this.MONTHCHECKSTATES,
+            this.SETTLEACCOUNTSSSID,
             this.meterReaderID,
             this.meterReaderName,
             this.memo,
@@ -1648,6 +1731,13 @@
             this.CHARGETYPENAME.ReadOnly = true;
             this.CHARGETYPENAME.Width = 97;
             // 
+            // POSRUNNINGNO
+            // 
+            this.POSRUNNINGNO.DataPropertyName = "POSRUNNINGNO";
+            this.POSRUNNINGNO.HeaderText = "交易流水号";
+            this.POSRUNNINGNO.Name = "POSRUNNINGNO";
+            this.POSRUNNINGNO.ReadOnly = true;
+            // 
             // CHARGEClASS
             // 
             this.CHARGEClASS.DataPropertyName = "CHARGEClASS";
@@ -1727,14 +1817,13 @@
             this.DAYCHECKSTATES.ReadOnly = true;
             this.DAYCHECKSTATES.Width = 65;
             // 
-            // MONTHCHECKSTATES
+            // SETTLEACCOUNTSSSID
             // 
-            this.MONTHCHECKSTATES.DataPropertyName = "MONTHCHECKSTATES";
-            this.MONTHCHECKSTATES.HeaderText = "月结";
-            this.MONTHCHECKSTATES.Name = "MONTHCHECKSTATES";
-            this.MONTHCHECKSTATES.ReadOnly = true;
-            this.MONTHCHECKSTATES.Visible = false;
-            this.MONTHCHECKSTATES.Width = 65;
+            this.SETTLEACCOUNTSSSID.DataPropertyName = "SETTLEACCOUNTSSSID";
+            this.SETTLEACCOUNTSSSID.HeaderText = "月结单号";
+            this.SETTLEACCOUNTSSSID.Name = "SETTLEACCOUNTSSSID";
+            this.SETTLEACCOUNTSSSID.ReadOnly = true;
+            this.SETTLEACCOUNTSSSID.Width = 65;
             // 
             // meterReaderID
             // 
@@ -1890,6 +1979,13 @@
         private System.Windows.Forms.ToolStripMenuItem 上年ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem 全部ToolStripMenuItem;
+        private System.Windows.Forms.TextBox txtJYLSH;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Button btModify;
+        private System.Windows.Forms.ComboBox cmbChargeTypeNew;
+        private System.Windows.Forms.ComboBox cmbChargeTypeOld;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterUserId;
         private System.Windows.Forms.DataGridViewTextBoxColumn readMeterRecordId;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterUserNO;
@@ -1940,6 +2036,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn RECEIPTNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn CHARGETYPEID;
         private System.Windows.Forms.DataGridViewTextBoxColumn CHARGETYPENAME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn POSRUNNINGNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn CHARGEClASS;
         private System.Windows.Forms.DataGridViewTextBoxColumn CHARGEBCYS;
         private System.Windows.Forms.DataGridViewTextBoxColumn CHARGEBCSS;
@@ -1950,7 +2047,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CHARGEDATETIME;
         private System.Windows.Forms.DataGridViewTextBoxColumn CHARGECANCEL;
         private System.Windows.Forms.DataGridViewTextBoxColumn DAYCHECKSTATES;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MONTHCHECKSTATES;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SETTLEACCOUNTSSSID;
         private System.Windows.Forms.DataGridViewTextBoxColumn meterReaderID;
         private System.Windows.Forms.DataGridViewTextBoxColumn meterReaderName;
         private System.Windows.Forms.DataGridViewTextBoxColumn memo;

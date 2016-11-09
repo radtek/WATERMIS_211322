@@ -1759,7 +1759,7 @@ namespace BLL
        /// <returns>成功返回true；失败返回false</returns>
        public bool ChangeWaterMeter(string strWaterMeterID, string strReadMeterRecordID, string strCheckWorker)
        {
-           string strSQL =string.Format(@"
+           string strSQL = string.Format(@"
                             DECLARE @WATERMETERID VARCHAR(30)='{0}'  --传入参数水表ID
                             DECLARE @readMeterRecordId VARCHAR(30)='{1}'  --传入参数水表抄表ID
                             DECLARE @LoginID VARCHAR(30)='{2}'  --传入参数 登陆用户ID
@@ -1814,7 +1814,7 @@ namespace BLL
                             SET @ISSUCCESS=1
                             COMMIT TRAN
                             END
-                            ", strWaterMeterID,strReadMeterRecordID,strCheckWorker);
+                            ", strWaterMeterID, strReadMeterRecordID, strCheckWorker);
            int intRet = DBUtility.DbHelperSQL.ExecuteSql(strSQL);
            return intRet == 0 ? false : true;
        }

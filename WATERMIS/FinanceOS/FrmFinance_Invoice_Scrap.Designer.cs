@@ -81,7 +81,7 @@
             this.tb1.RowCount = 2;
             this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 88F));
             this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tb1.Size = new System.Drawing.Size(1022, 469);
+            this.tb1.Size = new System.Drawing.Size(909, 595);
             this.tb1.TabIndex = 66;
             this.tb1.Tag = "9999";
             // 
@@ -109,7 +109,7 @@
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 8);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1016, 77);
+            this.groupBox1.Size = new System.Drawing.Size(903, 77);
             this.groupBox1.TabIndex = 60;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "查询条件";
@@ -290,7 +290,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 91);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1016, 375);
+            this.groupBox2.Size = new System.Drawing.Size(903, 501);
             this.groupBox2.TabIndex = 902;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "待收费列表";
@@ -310,7 +310,7 @@
             this.uC_DataGridView_Page1.PageIndex = 1;
             this.uC_DataGridView_Page1.PageOrderField = null;
             this.uC_DataGridView_Page1.PageSize = 100;
-            this.uC_DataGridView_Page1.Size = new System.Drawing.Size(1010, 355);
+            this.uC_DataGridView_Page1.Size = new System.Drawing.Size(897, 481);
             this.uC_DataGridView_Page1.TabIndex = 0;
             this.uC_DataGridView_Page1.Tag = "9999";
             this.uC_DataGridView_Page1.CellDoubleClickEvents += new SysControl.UC_DataGridView_Page.CellDoubleClickEvent(this.uC_DataGridView_Page1_CellDoubleClickEvents);
@@ -400,7 +400,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1022, 469);
+            this.ClientSize = new System.Drawing.Size(909, 595);
             this.Controls.Add(this.tb1);
             this.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "FrmFinance_Invoice_Scrap";

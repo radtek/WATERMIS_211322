@@ -223,31 +223,33 @@ namespace BLL
        {
            StringBuilder str = new StringBuilder();
            str.Append("INSERT INTO Meter_WorkResolveFee_Invoice_Detail(InvoicePrintID,DetailIndex,FeeItem,FeeItemInvoiceTitle,");
-           str.Append("Quatity,TaxPercent,TaxMoney,TotalMoney,Units) ");
+           str.Append("Quantity,TaxPercent,TaxMoney,TotalMoney,Units,Price) ");
 
            str.Append("VALUES(@InvoicePrintID,@DetailIndex,@FeeItem,@FeeItemInvoiceTitle,");
-           str.Append("@Quatity,@TaxPercent,@TaxMoney,@TotalMoney,@Units) ");
+           str.Append("@Quantity,@TaxPercent,@TaxMoney,@TotalMoney,@Units,@Price) ");
            SqlParameter[] para =
            {
                new SqlParameter("@InvoicePrintID",SqlDbType.VarChar,30),
                new SqlParameter("@DetailIndex",SqlDbType.Int),
                new SqlParameter("@FeeItem",SqlDbType.VarChar,30),
                new SqlParameter("@FeeItemInvoiceTitle",SqlDbType.VarChar,30),
-               new SqlParameter("@Quatity",SqlDbType.Decimal),
+               new SqlParameter("@Quantity",SqlDbType.Decimal),
                new SqlParameter("@TaxPercent",SqlDbType.Decimal),
                new SqlParameter("@TaxMoney",SqlDbType.Decimal),               
                new SqlParameter("@TotalMoney",SqlDbType.Decimal),
-               new SqlParameter("@Units",SqlDbType.VarChar,30)
+               new SqlParameter("@Units",SqlDbType.VarChar,30),
+               new SqlParameter("@Price",SqlDbType.Decimal)
            };
            para[0].Value = ModelMeter_WorkResolveFee_Invoice_Detail.InvoicePrintID;
            para[1].Value = ModelMeter_WorkResolveFee_Invoice_Detail.DetailIndex;
            para[2].Value = ModelMeter_WorkResolveFee_Invoice_Detail.FeeItem;
            para[3].Value = ModelMeter_WorkResolveFee_Invoice_Detail.FeeItemInvoiceTitle;
-           para[4].Value = ModelMeter_WorkResolveFee_Invoice_Detail.Quatity;
+           para[4].Value = ModelMeter_WorkResolveFee_Invoice_Detail.Quantity;
            para[5].Value = ModelMeter_WorkResolveFee_Invoice_Detail.TaxPercent;
            para[6].Value = ModelMeter_WorkResolveFee_Invoice_Detail.TaxMoney;
            para[7].Value = ModelMeter_WorkResolveFee_Invoice_Detail.TotalMoney;
            para[8].Value = ModelMeter_WorkResolveFee_Invoice_Detail.Units;
+           para[9].Value = ModelMeter_WorkResolveFee_Invoice_Detail.Price;
 
            if (DBUtility.DbHelperSQL.ExecuteSql(str.ToString(), para) > 0)
                return true;

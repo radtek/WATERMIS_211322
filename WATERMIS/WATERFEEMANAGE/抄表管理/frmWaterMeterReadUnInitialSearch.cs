@@ -220,8 +220,8 @@ namespace WATERFEEMANAGE
                 TD = new Thread(showwaitfrm);
                 TD.Start();
                 //Thread.Sleep(2000);   //此行可以不需要，主要用于等待主窗体填充数据
-                Thread.Sleep(1000);   //此行可以不需要，主要用于等待主窗体填充数据
                 LoadData();
+                Thread.Sleep(1000);   //此行可以不需要，主要用于等待主窗体填充数据
 
                 if (!waitfrm.IsDisposed)
                 {
@@ -284,7 +284,9 @@ namespace WATERFEEMANAGE
                 if (cmbChargerS.SelectedValue != null && cmbChargerS.SelectedValue != DBNull.Value)
                     strFilter += " AND chargerID='" + cmbChargerS.SelectedValue.ToString() + "'";
                 if (cmbMeterState.SelectedIndex > 0)
-                    strFilter += " AND waterMeterStateS='"+cmbMeterState.Text+"' ";
+                    strFilter += " AND waterMeterStateS='" + cmbMeterState.Text + "' ";
+                if (cmbWaterMeterType.SelectedValue != null && cmbWaterMeterType.SelectedValue != DBNull.Value)
+                    strFilter += " AND waterMeterTypeId='" + cmbWaterMeterType.SelectedValue.ToString() + "'";
 
                 strFilter += " AND waterMeterId NOT IN (SELECT waterMeterId FROM readMeterRecord WHERE readMeterRecordYearAndMonth BETWEEN '" + new DateTime(dtpStart.Value.Year, dtpStart.Value.Month, 1) + "' AND '" + new DateTime(dtpEnd.Value.Year, dtpEnd.Value.Month, 1).AddMonths(1).AddDays(-1) + "') ";
 

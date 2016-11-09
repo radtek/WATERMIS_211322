@@ -37,6 +37,8 @@ namespace MODEL
        private string _MONTHCHECKWORKERNAME;
        private string _MONTHCHECKSTATE;
        private DateTime _MONTHCHECKDATETIME;
+
+       private string _SETTLEACCOUNTSSSID;
         
        private string _CHARGECANCEL;
        private decimal _CANCELYSQQYE;
@@ -367,6 +369,18 @@ namespace MODEL
            set
            {
                _MONTHCHECKDATETIME = value;
+           }
+       }
+
+       public string SETTLEACCOUNTSSSID
+       {
+           get
+           {
+               return _SETTLEACCOUNTSSSID;
+           }
+           set
+           {
+               _SETTLEACCOUNTSSSID = value;
            }
        }
 

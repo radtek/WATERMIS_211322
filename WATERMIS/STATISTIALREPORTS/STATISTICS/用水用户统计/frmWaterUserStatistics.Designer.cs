@@ -37,6 +37,8 @@
             this.toolExcel = new System.Windows.Forms.ToolStripButton();
             this.tb1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btSetMonth = new System.Windows.Forms.Button();
+            this.dtpEnd = new System.Windows.Forms.DateTimePicker();
             this.chkSumAndSubMeter = new System.Windows.Forms.CheckBox();
             this.chkSumAndSubMeterState = new System.Windows.Forms.CheckBox();
             this.chkIsReserve = new System.Windows.Forms.CheckBox();
@@ -67,12 +69,10 @@
             this.txtSenior = new System.Windows.Forms.TextBox();
             this.btSenior = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.dtpEnd = new System.Windows.Forms.DateTimePicker();
             this.dtpStart = new System.Windows.Forms.DateTimePicker();
             this.chkDateTime = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgList = new System.Windows.Forms.DataGridView();
-            this.btSetMonth = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.今天ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -192,6 +192,26 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Tag = "9999";
             this.groupBox1.Text = "查询条件";
+            // 
+            // btSetMonth
+            // 
+            this.btSetMonth.BackgroundImage = global::STATISTIALREPORTS.Properties.Resources.onebit_20;
+            this.btSetMonth.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btSetMonth.Location = new System.Drawing.Point(725, 55);
+            this.btSetMonth.Name = "btSetMonth";
+            this.btSetMonth.Size = new System.Drawing.Size(22, 23);
+            this.btSetMonth.TabIndex = 214;
+            this.btSetMonth.UseVisualStyleBackColor = true;
+            this.btSetMonth.Click += new System.EventHandler(this.btSetMonth_Click);
+            // 
+            // dtpEnd
+            // 
+            this.dtpEnd.CustomFormat = "yyyy-MM-dd 23:59:59";
+            this.dtpEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpEnd.Location = new System.Drawing.Point(620, 53);
+            this.dtpEnd.Name = "dtpEnd";
+            this.dtpEnd.Size = new System.Drawing.Size(102, 26);
+            this.dtpEnd.TabIndex = 111;
             // 
             // chkSumAndSubMeter
             // 
@@ -370,7 +390,8 @@
             "欠费停水",
             "违章停水",
             "坏表",
-            "待审核"});
+            "待审核",
+            "待拆迁"});
             this.cmbState.Location = new System.Drawing.Point(278, 55);
             this.cmbState.Name = "cmbState";
             this.cmbState.Size = new System.Drawing.Size(102, 24);
@@ -508,15 +529,6 @@
             this.label3.TabIndex = 112;
             this.label3.Text = "至";
             // 
-            // dtpEnd
-            // 
-            this.dtpEnd.CustomFormat = "yyyy-MM-dd 23:59:59";
-            this.dtpEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpEnd.Location = new System.Drawing.Point(620, 53);
-            this.dtpEnd.Name = "dtpEnd";
-            this.dtpEnd.Size = new System.Drawing.Size(102, 26);
-            this.dtpEnd.TabIndex = 111;
-            // 
             // dtpStart
             // 
             this.dtpStart.CustomFormat = "yyyy-MM-dd 00:00:00";
@@ -574,17 +586,6 @@
             this.dgList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgList_CellDoubleClick);
             this.dgList.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgList_CellPainting);
             this.dgList.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgList_DataBindingComplete);
-            // 
-            // btSetMonth
-            // 
-            this.btSetMonth.BackgroundImage = global::STATISTIALREPORTS.Properties.Resources.onebit_20;
-            this.btSetMonth.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btSetMonth.Location = new System.Drawing.Point(725, 55);
-            this.btSetMonth.Name = "btSetMonth";
-            this.btSetMonth.Size = new System.Drawing.Size(22, 23);
-            this.btSetMonth.TabIndex = 214;
-            this.btSetMonth.UseVisualStyleBackColor = true;
-            this.btSetMonth.Click += new System.EventHandler(this.btSetMonth_Click);
             // 
             // contextMenuStrip1
             // 

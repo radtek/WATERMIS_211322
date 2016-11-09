@@ -1759,21 +1759,15 @@ namespace WATERFEEMANAGE
         {
             if (dgHistoryWaterFee.CurrentRow == null)
                 return;
-            if (strGroupID == "0001")
+            object objJZ = dgHistoryWaterFee.CurrentRow.Cells["SETTLEACCOUNTSSSID"].Value;
+            if (objJZ != null && objJZ != DBNull.Value && objJZ.ToString() != "")
             {
-                object objJZ = dgHistoryWaterFee.CurrentRow.Cells["MONTHCHECKSTATES"].Value;
-                if (objJZ != null && objJZ != DBNull.Value)
-                {
-                    if (objJZ.ToString() == "是")
-                    {
-                        mes.Show("该单据已经结账，无法执行此操作!");
-                        return;
-                    }
-                }
+                mes.Show("该单据已月结，无法执行此操作!");
+                return;
             }
-            else
+            if (strGroupID != "0001")
             {
-                object objJZ = dgHistoryWaterFee.CurrentRow.Cells["DAYCHECKSTATES"].Value;
+                objJZ = dgHistoryWaterFee.CurrentRow.Cells["DAYCHECKSTATES"].Value;
                 if (objJZ != null && objJZ != DBNull.Value)
                 {
                     if (objJZ.ToString() == "是")
@@ -1972,21 +1966,15 @@ namespace WATERFEEMANAGE
         {
             if (dgHistoryWaterFee.CurrentRow == null)
                 return;
-            if (strGroupID == "0001")
+            object objJZ = dgHistoryWaterFee.CurrentRow.Cells["SETTLEACCOUNTSSSID"].Value;
+            if (objJZ != null && objJZ != DBNull.Value && objJZ.ToString() != "")
             {
-                object objJZ = dgHistoryWaterFee.CurrentRow.Cells["MONTHCHECKSTATES"].Value;
-                if (objJZ != null && objJZ != DBNull.Value)
-                {
-                    if (objJZ.ToString() == "是")
-                    {
-                        mes.Show("该单据已经结账，无法执行此操作!");
-                        return;
-                    }
-                }
+                mes.Show("该单据已月结，无法执行此操作!");
+                return;
             }
-            else
+            if (strGroupID != "0001")
             {
-                object objJZ = dgHistoryWaterFee.CurrentRow.Cells["DAYCHECKSTATES"].Value;
+                objJZ = dgHistoryWaterFee.CurrentRow.Cells["DAYCHECKSTATES"].Value;
                 if (objJZ != null && objJZ != DBNull.Value)
                 {
                     if (objJZ.ToString() == "是")
@@ -2215,21 +2203,17 @@ namespace WATERFEEMANAGE
 
         private void btInvoiceCancel_Click(object sender, EventArgs e)
         {
-            if (strGroupID == "0001")
+            if (dgHistoryWaterFee.CurrentRow == null)
+                return;
+            object objJZ = dgHistoryWaterFee.CurrentRow.Cells["SETTLEACCOUNTSSSID"].Value;
+            if (objJZ != null && objJZ != DBNull.Value && objJZ.ToString() != "")
             {
-                object objJZ = dgHistoryWaterFee.CurrentRow.Cells["MONTHCHECKSTATES"].Value;
-                if (objJZ != null && objJZ != DBNull.Value)
-                {
-                    if (objJZ.ToString() == "是")
-                    {
-                        mes.Show("该单据已经结账，无法执行此操作!");
-                        return;
-                    }
-                }
+                mes.Show("该单据已月结，无法执行此操作!");
+                return;
             }
-            else
+            if (strGroupID != "0001")
             {
-                object objJZ = dgHistoryWaterFee.CurrentRow.Cells["DAYCHECKSTATES"].Value;
+                objJZ = dgHistoryWaterFee.CurrentRow.Cells["DAYCHECKSTATES"].Value;
                 if (objJZ != null && objJZ != DBNull.Value)
                 {
                     if (objJZ.ToString() == "是")
@@ -3359,7 +3343,7 @@ namespace WATERFEEMANAGE
                     MODELWATERFEECHARGE.MONTHCHECKSTATE = "0";
                     if (BLLWATERFEECHARGE.UpdateMonthCheckState(MODELWATERFEECHARGE, " AND CHARGEID='" + objChargeID.ToString() + "'") > 0)
                     {
-                        dgHistoryWaterFee.CurrentRow.Cells["MONTHCHECKSTATES"].Value = "否";
+                        dgHistoryWaterFee.CurrentRow.Cells["SETTLEACCOUNTSSSID"].Value = DBNull.Value;
                         mes.Show("反月结成功!");
                     }
                     else
@@ -3379,14 +3363,11 @@ namespace WATERFEEMANAGE
         {
             if (dgHistoryWaterFee.CurrentRow == null)
                 return;
-            object objJZ = dgHistoryWaterFee.CurrentRow.Cells["MONTHCHECKSTATES"].Value;
-            if (objJZ != null && objJZ != DBNull.Value)
+            object objJZ = dgHistoryWaterFee.CurrentRow.Cells["SETTLEACCOUNTSSSID"].Value;
+            if (objJZ != null && objJZ != DBNull.Value && objJZ.ToString()!="")
             {
-                if (objJZ.ToString() == "是")
-                {
                     mes.Show("该单据已月结，无法执行此操作!");
                     return;
-                }
             }
             object objChargeID = dgHistoryWaterFee.CurrentRow.Cells["CHARGEID"].Value;
             if (objChargeID != null && objChargeID != DBNull.Value)

@@ -62,6 +62,8 @@
     <Compile Include="MODELBASE_LOGIN.cs" />
     <Compile Include="MODELBASE_POST.cs" />
     <Compile Include="MODELFILEUPLOAD.cs" />
+    <Compile Include="ModelMeter_WorkResolveFee_Invoice.cs" />
+    <Compile Include="ModelMeter_WorkResolveFee_Invoice_Detail.cs" />
     <Compile Include="MODELreadMeterRecord.cs" />
     <Compile Include="MODELSYSTEMARGUMENTS.cs" />
     <Compile Include="MODELwaterMeterPosition.cs" />
@@ -96,8 +98,6 @@
     <Compile Include="MODELSETTLEACCOUNTSS.cs" />
     <Compile Include="MODELRECEIPTFETCH.cs" />
     <Compile Include="MODELNullReadReasonName.cs" />
-    <Compile Include="ModelMeter_WorkResolveFee_Invoice.cs" />
-    <Compile Include="ModelMeter_WorkResolveFee_Invoice_Detail.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

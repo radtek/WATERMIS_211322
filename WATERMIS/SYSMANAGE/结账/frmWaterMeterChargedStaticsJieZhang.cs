@@ -361,7 +361,7 @@ namespace SYSMANAGE
 
         private void toolSaveAccounts_Click(object sender, EventArgs e)
         {
-            #region 检测是否有未审核或者未结算信息
+            #region 检测是否有未审核、未结算或未生台账信息
             try
             {
                 string strWarningString = "";//存储提醒有未审核和未结算的提示
@@ -370,7 +370,7 @@ namespace SYSMANAGE
                 DataTable dtUnchecked = BLLreadMeterRecord.Query(strFilter);
                 if (dtUnchecked.Rows.Count > 0)
                 {
-                    strWarningString = "未审核信息:";
+                    strWarningString = "==================未审核信息:==================";
                     for (int i = 0; i < dtUnchecked.Rows.Count; i++)
                     {
                         strWarningString += "\r\n";
@@ -404,9 +404,9 @@ namespace SYSMANAGE
                 if (dtUnJieSuan.Rows.Count > 0)
                 {
                     if (strWarningString.Trim() != "")
-                        strWarningString += "\r\n未结算信息:";
+                        strWarningString += "\r\n==================未结算信息:==================";
                     else
-                        strWarningString = "未结算信息:";
+                        strWarningString = "==================未结算信息:==================";
 
                     for (int i = 0; i < dtUnJieSuan.Rows.Count; i++)
                     {
@@ -430,9 +430,73 @@ namespace SYSMANAGE
                         }
                     }
                 }
+
+                string strSQL = "SELECT * FROM WATERUSER WHERE prestore<>0 AND WATERUSERID NOT IN (SELECT WATERUSERID FROM readMeterRecord WHERE DATEDIFF(MONTH,readMeterRecordYearAndMonth,'" + dtpDateTimeSearch.Value.ToShortDateString() + "')=0)";
+                DataTable dtUnInitial = BLLwaterUser.QuerySQL(strSQL);
+                if (dtUnInitial.Rows.Count > 0)
+                {
+                    if (strWarningString.Trim() != "")
+                        strWarningString += "\r\n============有余额但未生成台账用户:=============";
+                    else
+                        strWarningString = "============有余额但未生成台账用户:=============";
+
+                    for (int i = 0; i < dtUnInitial.Rows.Count; i++)
+                    {
+                        strWarningString += "\r\n";
+
+                        object obj = dtUnInitial.Rows[i]["waterUserId"];
+                        if (obj != null && obj != DBNull.Value)
+                        {
+                            if (strWarningString.Trim() != "")
+                                strWarningString += "用户号:" + obj.ToString();
+                            else
+                                strWarningString = "用户号:" + obj.ToString();
+                        }
+                        obj = dtUnInitial.Rows[i]["waterUserCreateDate"];
+                        if (Information.IsDate(obj))
+                        {
+                            if (strWarningString.Trim() != "")
+                                strWarningString += ",建档时间:" + Convert.ToDateTime(obj).ToString("yyyy-MM-dd HH:mm:ss");
+                            else
+                                strWarningString = "建档时间:" + Convert.ToDateTime(obj).ToString("yyyy-MM-dd HH:mm:ss");
+                        }
+                    }
+                }
+
+                strSQL = "SELECT * FROM readMeterRecord WHERE waterTotalCharge+extraCharge1+extraCharge2<>totalCharge";
+                DataTable dtTotalProblem = BLLwaterUser.QuerySQL(strSQL);
+                if (dtTotalProblem.Rows.Count > 0)
+                {
+                    if (strWarningString.Trim() != "")
+                        strWarningString += "\r\n============总金额与费用明细之和不等的用户:=============";
+                    else
+                        strWarningString = "============总金额与费用明细之和不等的用户:=============";
+
+                    for (int i = 0; i < dtTotalProblem.Rows.Count; i++)
+                    {
+                        strWarningString += "\r\n";
+
+                        object obj = dtTotalProblem.Rows[i]["waterUserId"];
+                        if (obj != null && obj != DBNull.Value)
+                        {
+                            if (strWarningString.Trim() != "")
+                                strWarningString += "用户号:" + obj.ToString();
+                            else
+                                strWarningString = "用户号:" + obj.ToString();
+                        }
+                        obj = dtTotalProblem.Rows[i]["readMeterRecordYearAndMonth"];
+                        if (Information.IsDate(obj))
+                        {
+                            if (strWarningString.Trim() != "")
+                                strWarningString += ",水费月份:" + Convert.ToDateTime(obj).ToString("yyyy-MM");
+                            else
+                                strWarningString = "水费月份:" + Convert.ToDateTime(obj).ToString("yyyy-MM");
+                        }
+                    }
+                }
                 if (strWarningString.Trim() != "")
                 {
-                    mes.Show("存在未审核或未结账信息，点击确定按钮查看详情!");
+                    mes.Show("存在异常信息，点击确定按钮查看详情!");
                     System.Diagnostics.Process Proc;
 
                     try
@@ -461,15 +525,15 @@ namespace SYSMANAGE
                         IntPtr vHandle = FindWindowEx(Proc.MainWindowHandle, IntPtr.Zero, "Edit", null);
 
                         // 传递数据给记事本
-                        SendMessage(vHandle, WM_SETTEXT, 0,strWarningString);
+                        SendMessage(vHandle, WM_SETTEXT, 0, strWarningString);
                     }
                     return;
                 }
             }
             catch (Exception ex)
             {
-                mes.Show("获取未审核或未结账信息失败,原因:"+ex.Message);
-                log.Write(ex.ToString(),MsgType.Error);
+                mes.Show("获取异常信息失败,原因:" + ex.Message);
+                log.Write(ex.ToString(), MsgType.Error);
                 return;
             }
             #endregion

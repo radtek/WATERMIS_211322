@@ -69,6 +69,14 @@ namespace FinanceOS
         /// 开户行及账号
         /// </summary>
         private string strCompanyBankNameAndAccountNO = "";
+
+        private DataTable dtCompany = new DataTable();
+
+        /// <summary>
+        /// 弹出界面是否修改，如果修改则重新查询
+        /// </summary>
+        public bool isModify = false;
+
         private void FrmFinance_Invoice_Print_Load(object sender, EventArgs e)
         {
             //获取用户ID
@@ -92,32 +100,10 @@ namespace FinanceOS
         /// </summary>
         private void GetCompanyFPMes()
         {
-            DataTable dtCompany = BLLBASE_DEPARTMENT.QueryDep(" AND departmentID='01'");
-            if (dtCompany.Rows.Count > 0)
+            dtCompany = BLLBASE_DEPARTMENT.QueryDep(" AND departmentID='01' OR departmentID='010003'");
+            if (dtCompany.Rows.Count == 0)
             {
-                object objCompany = dtCompany.Rows[0]["departmentName"];
-                if (objCompany != null && objCompany != DBNull.Value)
-                    strCompanyName = objCompany.ToString();
-
-                objCompany = dtCompany.Rows[0]["FPAddressAndTel"];
-                if (objCompany != null && objCompany != DBNull.Value)
-                    strCompanyAddressAndTel = objCompany.ToString();
-
-                objCompany = dtCompany.Rows[0]["FPTaxNO"];
-                if (objCompany != null && objCompany != DBNull.Value)
-                    strCompanyTaxNO = objCompany.ToString();
-
-                objCompany = dtCompany.Rows[0]["FPBankNameAndAccountNO"];
-                if (objCompany != null && objCompany != DBNull.Value)
-                    strCompanyBankNameAndAccountNO = objCompany.ToString();
-
-                objCompany = dtCompany.Rows[0]["Payee"];
-                if (objCompany != null && objCompany != DBNull.Value)
-                    strCompanyPayee = objCompany.ToString();
-
-                objCompany = dtCompany.Rows[0]["Checker"];
-                if (objCompany != null && objCompany != DBNull.Value)
-                    strCompanyChecker = objCompany.ToString();
+                mes.Show("未检测到公司开票信息,请设置！");
             }
         }
 
@@ -208,6 +194,12 @@ AND MWF.FeeID NOT IN (SELECT FeeID FROM Meter_FeeItmes WHERE IsPrestore=1) AND M
         {
             if (e.RowIndex < 0 || e.ColumnIndex < 0)
                 return;
+
+            strCompanyName = strCompanyAddressAndTel = strCompanyTaxNO = strCompanyBankNameAndAccountNO = strCompanyPayee = strCompanyChecker = "";
+
+            //是否修改
+            isModify = false;
+
             DataGridView dgList = (DataGridView)sender;
             if (dgList.CurrentRow != null)
             {
@@ -252,7 +244,51 @@ AND MWF.FeeID NOT IN (SELECT FeeID FROM Meter_FeeItmes WHERE IsPrestore=1) AND M
 
                 obj = dgList.CurrentRow.Cells["DepartementID"].Value;
                 if (obj != null && obj != DBNull.Value)
+                {
                     strFeeDepID = obj.ToString();
+
+                    //判断是否是管道安装部门
+                    DataRow[] dr=null;
+                    if (strFeeDepID == "010003")
+                        dr = dtCompany.Select("departmentID='010003'");
+                    else
+                        dr = dtCompany.Select("departmentID='01'");
+
+                    if (dr!=null&&dr.Length > 0)
+                    {
+                        object objCompany = dr[0]["departmentName"];
+                        if (objCompany != null && objCompany != DBNull.Value)
+                            strCompanyName = objCompany.ToString();
+
+                        objCompany = dr[0]["FPAddressAndTel"];
+                        if (objCompany != null && objCompany != DBNull.Value)
+                            strCompanyAddressAndTel = objCompany.ToString();
+
+                        objCompany = dr[0]["FPTaxNO"];
+                        if (objCompany != null && objCompany != DBNull.Value)
+                            strCompanyTaxNO = objCompany.ToString();
+
+                        objCompany = dr[0]["FPBankNameAndAccountNO"];
+                        if (objCompany != null && objCompany != DBNull.Value)
+                            strCompanyBankNameAndAccountNO = objCompany.ToString();
+
+                        objCompany = dr[0]["Payee"];
+                        if (objCompany != null && objCompany != DBNull.Value)
+                            strCompanyPayee = objCompany.ToString();
+
+                        objCompany = dr[0]["Checker"];
+                        if (objCompany != null && objCompany != DBNull.Value)
+                            strCompanyChecker = objCompany.ToString();
+                    }
+                    else
+                    {
+                        mes.Show("未获取到公司信息!");
+                    }
+                }
+                else
+                {
+                    mes.Show("未找到公司开票信息!");
+                }
 
                 obj = dgList.CurrentRow.Cells["DepartementName"].Value;
                 if (obj != null && obj != DBNull.Value)
@@ -292,8 +328,10 @@ AND MWF.FeeID NOT IN (SELECT FeeID FROM Meter_FeeItmes WHERE IsPrestore=1) AND M
 
 
                     frm.dtFPDetail = dtFeeDetail;
+                    frm.Owner = this;
+                    frm.ShowDialog();
 
-                    if (frm.ShowDialog() == DialogResult.OK)
+                    if (isModify)
                     {
                         ShowData();
                     }

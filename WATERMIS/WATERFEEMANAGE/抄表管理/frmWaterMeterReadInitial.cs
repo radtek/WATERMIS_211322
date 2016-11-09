@@ -750,7 +750,7 @@ namespace WATERFEEMANAGE
                     MODELreadMeterRecord.NotReadMonthCount = 1;//未抄表月数
 
                     //从历史记录表里获取最后一次水表的读数，如果为变更记录readMeterRecordDate为空，取不到上次抄表日期字段数据
-                    string strLastNumberFilter = " AND waterMeterId='" + objWaterMeterID.ToString() + "' ORDER BY checkDateTime DESC,readMeterRecordDate DESC";//已经审核完的才能作为下一个月水表的初始值
+                    string strLastNumberFilter = " AND waterMeterLastNumber<>waterMeterEndNumber AND waterMeterId='" + objWaterMeterID.ToString() + "' ORDER BY checkDateTime DESC,readMeterRecordDate DESC";//已经审核完的才能作为下一个月水表的初始值
                     //string strLastNumberFilter = " AND waterMeterId='" + objWaterMeterID.ToString() + "' ORDER BY readMeterRecordDate DESC";//已经审核完的才能作为下一个月水表的初始值
                     DataTable dtLastNumber = BLLreadMeterRecord.GetLastNumber(strLastNumberFilter);
                     if (dtLastNumber.Rows.Count > 0)

@@ -705,22 +705,15 @@ namespace BLL
         public int UpdateMonthCheckState(MODELWATERFEECHARGE MODELWATERFEECHARGE, string strFilter)
         {
             StringBuilder str = new StringBuilder();
-            str.Append("UPDATE WATERFEECHARGE SET MONTHCHECKWORKERNAME=@MONTHCHECKWORKERNAME,MONTHCHECKSTATE=@MONTHCHECKSTATE,MONTHCHECKDATETIME=@MONTHCHECKDATETIME " +
+            str.Append("UPDATE WATERFEECHARGE SET SETTLEACCOUNTSSSID=NULL,MONTHCHECKSTATE=@MONTHCHECKSTATE,MONTHCHECKDATETIME=GETDATE() " +
                 " WHERE 1=1" + strFilter);
             SqlParameter[] para =
            {
                new SqlParameter("@MONTHCHECKWORKERNAME",SqlDbType.VarChar,30),
                new SqlParameter("@MONTHCHECKSTATE",SqlDbType.VarChar,10),
-               new SqlParameter("@MONTHCHECKDATETIME",SqlDbType.DateTime)
            };
             para[0].Value = MODELWATERFEECHARGE.MONTHCHECKWORKERNAME;
             para[1].Value = MODELWATERFEECHARGE.MONTHCHECKSTATE;
-
-            //如果是月结，则更新月结时间，如果反月结，则将月结时间更新为空
-            if (MODELWATERFEECHARGE.MONTHCHECKSTATE == "1")
-                para[2].Value = MODELWATERFEECHARGE.MONTHCHECKDATETIME;
-            else
-                para[2].Value = null;
             int intCount = DBUtility.DbHelperSQL.ExecuteSql(str.ToString(), para);
             return intCount;
         }

@@ -46,7 +46,7 @@
             this.USERNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LOGINNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.workNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LOGINPASSWORD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DEPARTMENTNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -234,7 +234,7 @@
             this.USERNAME,
             this.LOGINNAME,
             this.workNO,
-            this.Password,
+            this.LOGINPASSWORD,
             this.DEPARTMENTNAME,
             this.groupID,
             this.groupName,
@@ -291,14 +291,14 @@
             this.workNO.ReadOnly = true;
             this.workNO.Width = 60;
             // 
-            // Password
+            // LOGINPASSWORD
             // 
-            this.Password.DataPropertyName = "Password";
-            this.Password.HeaderText = "登录密码";
-            this.Password.Name = "Password";
-            this.Password.ReadOnly = true;
-            this.Password.Visible = false;
-            this.Password.Width = 88;
+            this.LOGINPASSWORD.DataPropertyName = "LOGINPASSWORD";
+            this.LOGINPASSWORD.HeaderText = "登录密码";
+            this.LOGINPASSWORD.Name = "LOGINPASSWORD";
+            this.LOGINPASSWORD.ReadOnly = true;
+            this.LOGINPASSWORD.Visible = false;
+            this.LOGINPASSWORD.Width = 88;
             // 
             // DEPARTMENTNAME
             // 
@@ -893,7 +893,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn USERNAME;
         private System.Windows.Forms.DataGridViewTextBoxColumn LOGINNAME;
         private System.Windows.Forms.DataGridViewTextBoxColumn workNO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Password;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LOGINPASSWORD;
         private System.Windows.Forms.DataGridViewTextBoxColumn DEPARTMENTNAME;
         private System.Windows.Forms.DataGridViewTextBoxColumn groupID;
         private System.Windows.Forms.DataGridViewTextBoxColumn groupName;

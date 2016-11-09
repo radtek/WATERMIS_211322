@@ -19,6 +19,7 @@ namespace FinanceOS
         public FrmFinance_Invoice_PrintShow()
         {
             InitializeComponent();
+            tb1.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(tb1, true, null);
         }
         #region 发票打印接口相关函数
         /// <summary>
@@ -248,6 +249,11 @@ namespace FinanceOS
 
             txtCapMoney.Text = RMBToCapMoney.CmycurD(decSumMoney);
             txtSumMoney.Text = decSumMoney.ToString("F2");
+
+            if (strFeeDepID == "010003")
+            {
+                mes.Show("管道安装处费用信息,请确认");
+            }
         }
         /// <summary>
         /// 绑定发票批次
@@ -575,14 +581,14 @@ namespace FinanceOS
                                         object objUnit = dgList.Rows[i].Cells["Units"].Value;
                                         if (objUnit != null && objUnit != DBNull.Value)
                                             ModelMeter_WorkResolveFee_Invoice_Detail.Units = objUnit.ToString();
-                                        ModelMeter_WorkResolveFee_Invoice_Detail.Quatity = decimal.Parse(dgList.Rows[i].Cells["Quantity"].Value.ToString());
+                                        ModelMeter_WorkResolveFee_Invoice_Detail.Quantity = decimal.Parse(dgList.Rows[i].Cells["Quantity"].Value.ToString());
                                         ModelMeter_WorkResolveFee_Invoice_Detail.Price = decimal.Parse(dgList.Rows[i].Cells["Price"].Value.ToString());
                                         ModelMeter_WorkResolveFee_Invoice_Detail.TaxPercent = decimal.Parse(dgList.Rows[i].Cells["TaxPercent"].Value.ToString());
                                         ModelMeter_WorkResolveFee_Invoice_Detail.TaxMoney = decimal.Parse(dgList.Rows[i].Cells["TaxMoney"].Value.ToString());
                                         ModelMeter_WorkResolveFee_Invoice_Detail.TotalMoney = decimal.Parse(dgList.Rows[i].Cells["Fee"].Value.ToString());
                                         if (BllMeter_WorkResolveFee_Invoice_Detail.InsertDetail(ModelMeter_WorkResolveFee_Invoice_Detail))
                                         {
-
+                                            
                                         }
                                         else
                                         {
@@ -609,6 +615,9 @@ namespace FinanceOS
                                                 mes.Show("更新发票标志失败,请重新打印发票!");
                                                 return;
                                             }
+                                            toolPrint.Enabled = false;
+                                            labInvoiceState.Visible = true;
+                                            ((FrmFinance_Invoice_Print)Owner).isModify = true;
                                         }
                                     }
                                     catch (Exception ex)

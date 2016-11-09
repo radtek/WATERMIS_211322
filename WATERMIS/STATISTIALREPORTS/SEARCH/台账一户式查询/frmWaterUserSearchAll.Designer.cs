@@ -104,6 +104,7 @@
             this.totalNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.readMeterRecordYearAndMonth = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CHARGEYSJSYE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CHARGEBCSS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waterUserTelphoneNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waterTotalCharge = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.extraCharge1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -124,7 +125,6 @@
             this.CHARGETYPENAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CHARGEClASS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CHARGEBCYS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CHARGEBCSS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CHARGEYSBCSZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.INVOICEBATCHNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.INVOICENO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -759,6 +759,7 @@
             this.totalNumber,
             this.readMeterRecordYearAndMonth,
             this.CHARGEYSJSYE,
+            this.CHARGEBCSS,
             this.waterUserTelphoneNO,
             this.waterTotalCharge,
             this.extraCharge1,
@@ -779,7 +780,6 @@
             this.CHARGETYPENAME,
             this.CHARGEClASS,
             this.CHARGEBCYS,
-            this.CHARGEBCSS,
             this.CHARGEYSBCSZ,
             this.INVOICEBATCHNAME,
             this.INVOICENO,
@@ -922,6 +922,14 @@
             this.CHARGEYSJSYE.Name = "CHARGEYSJSYE";
             this.CHARGEYSJSYE.ReadOnly = true;
             this.CHARGEYSJSYE.Width = 97;
+            // 
+            // CHARGEBCSS
+            // 
+            this.CHARGEBCSS.DataPropertyName = "CHARGEBCSS";
+            this.CHARGEBCSS.HeaderText = "本次实收";
+            this.CHARGEBCSS.Name = "CHARGEBCSS";
+            this.CHARGEBCSS.ReadOnly = true;
+            this.CHARGEBCSS.Width = 97;
             // 
             // waterUserTelphoneNO
             // 
@@ -1080,14 +1088,6 @@
             this.CHARGEBCYS.Name = "CHARGEBCYS";
             this.CHARGEBCYS.ReadOnly = true;
             this.CHARGEBCYS.Width = 97;
-            // 
-            // CHARGEBCSS
-            // 
-            this.CHARGEBCSS.DataPropertyName = "CHARGEBCSS";
-            this.CHARGEBCSS.HeaderText = "本次实收";
-            this.CHARGEBCSS.Name = "CHARGEBCSS";
-            this.CHARGEBCSS.ReadOnly = true;
-            this.CHARGEBCSS.Width = 97;
             // 
             // CHARGEYSBCSZ
             // 
@@ -1371,6 +1371,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn totalNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn readMeterRecordYearAndMonth;
         private System.Windows.Forms.DataGridViewTextBoxColumn CHARGEYSJSYE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CHARGEBCSS;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterUserTelphoneNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterTotalCharge;
         private System.Windows.Forms.DataGridViewTextBoxColumn extraCharge1;
@@ -1391,7 +1392,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CHARGETYPENAME;
         private System.Windows.Forms.DataGridViewTextBoxColumn CHARGEClASS;
         private System.Windows.Forms.DataGridViewTextBoxColumn CHARGEBCYS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CHARGEBCSS;
         private System.Windows.Forms.DataGridViewTextBoxColumn CHARGEYSBCSZ;
         private System.Windows.Forms.DataGridViewTextBoxColumn INVOICEBATCHNAME;
         private System.Windows.Forms.DataGridViewTextBoxColumn INVOICENO;

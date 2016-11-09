@@ -221,25 +221,8 @@ namespace STATISTIALREPORTS
             try
             {
                 string strFilter="";
-                //if (txtWaterUserNOSearch.Text.Trim() != "")
-                //{
-                //    if (txtWaterUserNOSearch.Text.Length < 6)
-                //    {
-                //        txtWaterUserNOSearch.Text = "U" + txtWaterUserNOSearch.Text.PadLeft(5, '0');
-                //        strFilter += " AND waterUserNO='" + txtWaterUserNOSearch.Text + "'";
-                //    }
-                //    else
-                //        strFilter += " AND waterUserNO='" + txtWaterUserNOSearch.Text + "'";
-                //}
-                //if (txtWaterUserName.Text.Trim() != "")
-                //{
-                //    strFilter += " AND waterUserName LIKE '%" + txtWaterUserName.Text + "%'";
-                //}
-                //if (txtWaterUserAdd.Text.Trim() != "")
-                //{
-                //    strFilter += " AND waterUserAddress LIKE '%" + txtWaterUserAdd.Text + "%'";
-                //}
                 string strSearch = txtWaterUserNOSearch.Text;
+                if (strSearch!="")
                 strFilter = " AND (waterUserNO LIKE '%" + strSearch + "%' OR waterUserName LIKE '%" + strSearch +
                     "%' OR waterUserAddress LIKE '%" + strSearch + "%') ";
 
@@ -255,7 +238,7 @@ namespace STATISTIALREPORTS
                 if (cmbMeterReaderS.SelectedValue != null && cmbMeterReaderS.SelectedValue != DBNull.Value)
                     strFilter += " AND meterReaderID='" + cmbMeterReaderS.SelectedValue.ToString() + "'";
                 if (cmbChargerS.SelectedValue != null && cmbChargerS.SelectedValue != DBNull.Value)
-                    strFilter += " AND chargerID='" + cmbMeterReaderS.SelectedValue.ToString() + "'";
+                    strFilter += " AND chargerID='" + cmbChargerS.SelectedValue.ToString() + "'";
                 if (chkHSL.Checked)
                     strFilter += " AND TOTALNUMBER>0 ";
 

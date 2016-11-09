@@ -675,6 +675,7 @@ namespace WATERUSERMETERMANAGE
                     cmbModifyValue.Items.Add("违章停水");
                     cmbModifyValue.Items.Add("坏表");
                     cmbModifyValue.Items.Add("待审核");
+                    cmbModifyValue.Items.Add("待拆迁");
                     cmbModifyValue.Text = "正常";
                     break;
                 case "用水性质":

@@ -266,6 +266,10 @@ namespace WATERFEEMANAGE
         private void BindWaterUserType(ComboBox cmb)
         {
             DataTable dt = BLLwaterUserType.Query("");
+            DataRow dr = dt.NewRow();
+            dr["waterUserTypeName"] = "全部";
+            dr["waterUserTypeId"] = DBNull.Value;
+            dt.Rows.InsertAt(dr, 0);
             cmb.DataSource = dt;
             cmb.DisplayMember = "waterUserTypeName";
             cmb.ValueMember = "waterUserTypeId";

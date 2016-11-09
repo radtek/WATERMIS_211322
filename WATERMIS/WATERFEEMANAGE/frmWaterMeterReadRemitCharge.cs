@@ -70,8 +70,6 @@ namespace WATERFEEMANAGE
             if (AppDomain.CurrentDomain.GetData("USERNAME") != null && AppDomain.CurrentDomain.GetData("USERNAME") != DBNull.Value)
                 strLoginName = AppDomain.CurrentDomain.GetData("USERNAME").ToString();
 
-            this.Text = "大厅坐收——当前收费员:" + strLoginName;
-
             //保存默认的单元格颜色
             colorCellDefault = dgWaterList.DefaultCellStyle.BackColor;
 

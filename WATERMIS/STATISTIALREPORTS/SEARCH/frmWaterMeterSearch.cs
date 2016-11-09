@@ -162,7 +162,7 @@ namespace STATISTIALREPORTS
             if (cmbWaterUserHouseType.Text != "")
                 strFilter += " AND waterUserHouseTypeS='" + cmbWaterUserHouseType.Text + "'";
 
-            if (cmbWaterMeterState.Text != "")
+            if (cmbWaterMeterState.SelectedIndex>0)
                 strFilter += " AND waterMeterStateS='" + cmbWaterMeterState.Text + "'";
 
             if (cmbMeterReader.SelectedValue != null && cmbMeterReader.SelectedValue != DBNull.Value)

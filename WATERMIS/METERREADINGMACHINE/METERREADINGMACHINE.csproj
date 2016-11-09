@@ -49,10 +49,6 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BASEFUNCTION, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\WATERMIS\bin\Debug\BASEFUNCTION.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
@@ -61,12 +57,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmConnectMachine.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmConnectMachine.Designer.cs">
-      <DependentUpon>frmConnectMachine.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmFromMachineManage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,9 +120,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frmConnectMachine.resx">
-      <DependentUpon>frmConnectMachine.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmFromMachineManage.resx">
       <DependentUpon>frmFromMachineManage.cs</DependentUpon>
     </EmbeddedResource>
@@ -165,6 +152,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BASEFUNCTION\BASEFUNCTION.csproj">
+      <Project>{ACBD9B62-1323-4264-A4D6-B600705D9228}</Project>
+      <Name>BASEFUNCTION</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BLL\BLL.csproj">
       <Project>{1A522A59-6899-4106-88C9-A6E9D50DC363}</Project>
       <Name>BLL</Name>

@@ -1160,6 +1160,11 @@ namespace METERREADINGMACHINE
                         if (Information.IsNumeric(objBYSL))
                             intBYSL = Convert.ToInt32(objBYSL);
 
+                        //如果总水量为负值，跳过
+                        if (intBYSL < 0)
+                            continue;
+
+
                         object objWCYS = dtHandSetData.Rows[i]["WCYS"];
                         if (Information.IsNumeric(objWCYS))
                             intWCYS = Convert.ToInt32(objWCYS);

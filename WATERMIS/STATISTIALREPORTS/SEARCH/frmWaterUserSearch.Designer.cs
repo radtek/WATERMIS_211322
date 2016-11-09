@@ -294,7 +294,8 @@
             "欠费停水",
             "违章停水",
             "坏表",
-            "待审核"});
+            "待审核",
+            "待拆迁"});
             this.cmbState.Location = new System.Drawing.Point(446, 56);
             this.cmbState.Name = "cmbState";
             this.cmbState.Size = new System.Drawing.Size(102, 24);

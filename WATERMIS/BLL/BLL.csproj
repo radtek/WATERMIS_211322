@@ -65,6 +65,7 @@
     <Compile Include="BLLCHARGETYPE.cs" />
     <Compile Include="BLLFILEUPLOAD.cs" />
     <Compile Include="BLLINFORMCANCELRECORD.cs" />
+    <Compile Include="BllMeter_WorkResolveFee_Invoice_Detail.cs" />
     <Compile Include="BLLreadMeterReord.cs" />
     <Compile Include="BLLSYSTEMARGUMENTS.cs" />
     <Compile Include="BLLwaterMeterPosition.cs" />
@@ -98,7 +99,6 @@
     <Compile Include="BLLSETTLEACCOUNTSS.cs" />
     <Compile Include="BLLRECEIPTFETCH.cs" />
     <Compile Include="BLLNullReadReasonMemo.cs" />
-    <Compile Include="BllMeter_WorkResolveFee_Invoice_Detail.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DBUtility\DBUtility.csproj">

@@ -21,7 +21,7 @@ namespace Common.WinControl.Ryan.RegTextbox
     {
         private static ToolTip _tooltip;
 
-        private bool EmptyValidate(Control ctl)
+        public bool EmptyValidate(Control ctl)
         {
             IRyanControl c = ctl as IRyanControl;
             _ValidateState = true;

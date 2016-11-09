@@ -438,7 +438,10 @@
             "换表",
             "未启用",
             "欠费停水",
-            "坏表"});
+            "违章停水",
+            "坏表",
+            "待审核",
+            "待拆迁"});
             this.cmbWaterMeterState.Location = new System.Drawing.Point(84, 70);
             this.cmbWaterMeterState.Name = "cmbWaterMeterState";
             this.cmbWaterMeterState.Size = new System.Drawing.Size(78, 24);

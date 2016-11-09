@@ -34,6 +34,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRestoreChargeCancel));
             this.tb1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtJYLSH = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.btModify = new System.Windows.Forms.Button();
+            this.cmbChargeTypeNew = new System.Windows.Forms.ComboBox();
+            this.cmbChargeTypeOld = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.txtReceiptNO = new System.Windows.Forms.TextBox();
             this.labReceiptNO = new System.Windows.Forms.Label();
             this.cmbInvoiceCancelReason = new System.Windows.Forms.ComboBox();
@@ -63,25 +70,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.tb2 = new System.Windows.Forms.TableLayoutPanel();
             this.dgHistoryWaterFee = new System.Windows.Forms.DataGridView();
-            this.waterUserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.waterUserNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.waterUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WATERUSERADDRESS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.chargeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CHARGEYSQQYE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CHARGEYSBCSZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CHARGEYSJSYE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CHARGECANCEL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CHARGEINVOICEPRINTID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CHARGEWORKERNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CHARGEDATETIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INVOICEBATCHNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INVOICENO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INVOICECANCEL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DAYCHECKSTATES = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MONTHCHECKSTATES = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.METERREADERID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.METERREADERNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtWaterUserNameSearch = new System.Windows.Forms.TextBox();
             this.label48 = new System.Windows.Forms.Label();
@@ -99,6 +87,28 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.反月结ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.反日结ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.waterUserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.waterUserNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.waterUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WATERUSERADDRESS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chargeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CHARGEYSQQYE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CHARGEYSBCSZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CHARGEYSJSYE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CHARGECANCEL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CHARGEINVOICEPRINTID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CHARGEWORKERNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CHARGEDATETIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INVOICEBATCHNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INVOICENO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INVOICECANCEL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CHARGETYPEID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CHARGETYPENAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.POSRUNNINGNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DAYCHECKSTATES = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SETTLEACCOUNTSSSID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.METERREADERID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.METERREADERNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tb1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -126,6 +136,13 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.LimeGreen;
+            this.groupBox2.Controls.Add(this.txtJYLSH);
+            this.groupBox2.Controls.Add(this.label31);
+            this.groupBox2.Controls.Add(this.btModify);
+            this.groupBox2.Controls.Add(this.cmbChargeTypeNew);
+            this.groupBox2.Controls.Add(this.cmbChargeTypeOld);
+            this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.txtReceiptNO);
             this.groupBox2.Controls.Add(this.labReceiptNO);
             this.groupBox2.Controls.Add(this.cmbInvoiceCancelReason);
@@ -158,6 +175,73 @@
             this.groupBox2.Tag = "9999";
             this.groupBox2.Text = "本次结算(单位:元)";
             // 
+            // txtJYLSH
+            // 
+            this.txtJYLSH.BackColor = System.Drawing.Color.LightYellow;
+            this.txtJYLSH.Location = new System.Drawing.Point(624, 153);
+            this.txtJYLSH.Name = "txtJYLSH";
+            this.txtJYLSH.Size = new System.Drawing.Size(159, 26);
+            this.txtJYLSH.TabIndex = 820;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.BackColor = System.Drawing.Color.Transparent;
+            this.label31.ForeColor = System.Drawing.Color.Blue;
+            this.label31.Location = new System.Drawing.Point(532, 158);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(96, 16);
+            this.label31.TabIndex = 819;
+            this.label31.Text = "交易流水号:";
+            // 
+            // btModify
+            // 
+            this.btModify.Location = new System.Drawing.Point(790, 151);
+            this.btModify.Name = "btModify";
+            this.btModify.Size = new System.Drawing.Size(80, 30);
+            this.btModify.TabIndex = 818;
+            this.btModify.Text = "修改";
+            this.btModify.UseVisualStyleBackColor = true;
+            this.btModify.Click += new System.EventHandler(this.btModify_Click);
+            // 
+            // cmbChargeTypeNew
+            // 
+            this.cmbChargeTypeNew.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbChargeTypeNew.Font = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbChargeTypeNew.FormattingEnabled = true;
+            this.cmbChargeTypeNew.Location = new System.Drawing.Point(624, 124);
+            this.cmbChargeTypeNew.Name = "cmbChargeTypeNew";
+            this.cmbChargeTypeNew.Size = new System.Drawing.Size(159, 23);
+            this.cmbChargeTypeNew.TabIndex = 815;
+            // 
+            // cmbChargeTypeOld
+            // 
+            this.cmbChargeTypeOld.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbChargeTypeOld.Font = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmbChargeTypeOld.FormattingEnabled = true;
+            this.cmbChargeTypeOld.Location = new System.Drawing.Point(624, 95);
+            this.cmbChargeTypeOld.Name = "cmbChargeTypeOld";
+            this.cmbChargeTypeOld.Size = new System.Drawing.Size(159, 23);
+            this.cmbChargeTypeOld.TabIndex = 816;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(564, 128);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(64, 16);
+            this.label11.TabIndex = 817;
+            this.label11.Text = "修改为:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(532, 98);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(96, 16);
+            this.label14.TabIndex = 814;
+            this.label14.Text = "原收款方式:";
+            // 
             // txtReceiptNO
             // 
             this.txtReceiptNO.BackColor = System.Drawing.Color.LightYellow;
@@ -184,7 +268,7 @@
             "",
             "发票污损",
             "发票未打印"});
-            this.cmbInvoiceCancelReason.Location = new System.Drawing.Point(435, 135);
+            this.cmbInvoiceCancelReason.Location = new System.Drawing.Point(159, 137);
             this.cmbInvoiceCancelReason.Name = "cmbInvoiceCancelReason";
             this.cmbInvoiceCancelReason.Size = new System.Drawing.Size(177, 24);
             this.cmbInvoiceCancelReason.TabIndex = 811;
@@ -193,7 +277,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(359, 138);
+            this.label9.Location = new System.Drawing.Point(83, 140);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(80, 16);
             this.label9.TabIndex = 810;
@@ -203,7 +287,7 @@
             // txtChargeInvoicePrintID
             // 
             this.txtChargeInvoicePrintID.BackColor = System.Drawing.Color.LightYellow;
-            this.txtChargeInvoicePrintID.Location = new System.Drawing.Point(706, 138);
+            this.txtChargeInvoicePrintID.Location = new System.Drawing.Point(430, 140);
             this.txtChargeInvoicePrintID.Name = "txtChargeInvoicePrintID";
             this.txtChargeInvoicePrintID.ReadOnly = true;
             this.txtChargeInvoicePrintID.Size = new System.Drawing.Size(21, 26);
@@ -213,7 +297,7 @@
             // txtMemo
             // 
             this.txtMemo.BackColor = System.Drawing.Color.LightYellow;
-            this.txtMemo.Location = new System.Drawing.Point(435, 101);
+            this.txtMemo.Location = new System.Drawing.Point(159, 103);
             this.txtMemo.Name = "txtMemo";
             this.txtMemo.Size = new System.Drawing.Size(177, 26);
             this.txtMemo.TabIndex = 803;
@@ -221,7 +305,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(359, 104);
+            this.label5.Location = new System.Drawing.Point(83, 106);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(80, 16);
             this.label5.TabIndex = 807;
@@ -230,7 +314,7 @@
             // btInvoiceCancel
             // 
             this.btInvoiceCancel.Enabled = false;
-            this.btInvoiceCancel.Location = new System.Drawing.Point(623, 133);
+            this.btInvoiceCancel.Location = new System.Drawing.Point(347, 135);
             this.btInvoiceCancel.Name = "btInvoiceCancel";
             this.btInvoiceCancel.Size = new System.Drawing.Size(80, 32);
             this.btInvoiceCancel.TabIndex = 806;
@@ -253,7 +337,7 @@
             // btCancelCharge
             // 
             this.btCancelCharge.Enabled = false;
-            this.btCancelCharge.Location = new System.Drawing.Point(623, 96);
+            this.btCancelCharge.Location = new System.Drawing.Point(347, 98);
             this.btCancelCharge.Name = "btCancelCharge";
             this.btCancelCharge.Size = new System.Drawing.Size(80, 32);
             this.btCancelCharge.TabIndex = 804;
@@ -268,9 +352,9 @@
             this.groupBox4.Controls.Add(this.txtInvoiceNO);
             this.groupBox4.Controls.Add(this.label6);
             this.groupBox4.Controls.Add(this.btInvoicePrint);
-            this.groupBox4.Location = new System.Drawing.Point(41, 87);
+            this.groupBox4.Location = new System.Drawing.Point(21, 87);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(268, 83);
+            this.groupBox4.Size = new System.Drawing.Size(48, 83);
             this.groupBox4.TabIndex = 808;
             this.groupBox4.TabStop = false;
             this.groupBox4.Visible = false;
@@ -483,8 +567,11 @@
             this.INVOICEBATCHNAME,
             this.INVOICENO,
             this.INVOICECANCEL,
+            this.CHARGETYPEID,
+            this.CHARGETYPENAME,
+            this.POSRUNNINGNO,
             this.DAYCHECKSTATES,
-            this.MONTHCHECKSTATES,
+            this.SETTLEACCOUNTSSSID,
             this.METERREADERID,
             this.METERREADERNAME});
             this.dgHistoryWaterFee.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -500,164 +587,6 @@
             this.dgHistoryWaterFee.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgHistoryWaterFee_CellMouseDown);
             this.dgHistoryWaterFee.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgHistoryWaterFee_CellFormatting);
             this.dgHistoryWaterFee.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgHistoryWaterFee_CellClick);
-            // 
-            // waterUserId
-            // 
-            this.waterUserId.DataPropertyName = "waterUserId";
-            this.waterUserId.Frozen = true;
-            this.waterUserId.HeaderText = "waterUserId";
-            this.waterUserId.Name = "waterUserId";
-            this.waterUserId.ReadOnly = true;
-            this.waterUserId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.waterUserId.Visible = false;
-            this.waterUserId.Width = 121;
-            // 
-            // waterUserNO
-            // 
-            this.waterUserNO.DataPropertyName = "waterUserNO";
-            this.waterUserNO.Frozen = true;
-            this.waterUserNO.HeaderText = "用户编号";
-            this.waterUserNO.Name = "waterUserNO";
-            this.waterUserNO.ReadOnly = true;
-            this.waterUserNO.Width = 97;
-            // 
-            // waterUserName
-            // 
-            this.waterUserName.DataPropertyName = "waterUserName";
-            this.waterUserName.Frozen = true;
-            this.waterUserName.HeaderText = "用户名";
-            this.waterUserName.Name = "waterUserName";
-            this.waterUserName.ReadOnly = true;
-            this.waterUserName.Width = 81;
-            // 
-            // WATERUSERADDRESS
-            // 
-            this.WATERUSERADDRESS.DataPropertyName = "WATERUSERADDRESS";
-            this.WATERUSERADDRESS.HeaderText = "地址";
-            this.WATERUSERADDRESS.Name = "WATERUSERADDRESS";
-            this.WATERUSERADDRESS.ReadOnly = true;
-            this.WATERUSERADDRESS.Width = 150;
-            // 
-            // chargeID
-            // 
-            this.chargeID.DataPropertyName = "chargeID";
-            this.chargeID.HeaderText = "收费单号";
-            this.chargeID.Name = "chargeID";
-            this.chargeID.ReadOnly = true;
-            this.chargeID.Width = 97;
-            // 
-            // CHARGEYSQQYE
-            // 
-            this.CHARGEYSQQYE.DataPropertyName = "CHARGEYSQQYE";
-            this.CHARGEYSQQYE.HeaderText = "前期余额";
-            this.CHARGEYSQQYE.Name = "CHARGEYSQQYE";
-            this.CHARGEYSQQYE.ReadOnly = true;
-            this.CHARGEYSQQYE.Width = 97;
-            // 
-            // CHARGEYSBCSZ
-            // 
-            this.CHARGEYSBCSZ.DataPropertyName = "CHARGEYSBCSZ";
-            this.CHARGEYSBCSZ.HeaderText = "预存金额";
-            this.CHARGEYSBCSZ.Name = "CHARGEYSBCSZ";
-            this.CHARGEYSBCSZ.ReadOnly = true;
-            this.CHARGEYSBCSZ.Width = 97;
-            // 
-            // CHARGEYSJSYE
-            // 
-            this.CHARGEYSJSYE.DataPropertyName = "CHARGEYSJSYE";
-            this.CHARGEYSJSYE.HeaderText = "用户余额";
-            this.CHARGEYSJSYE.Name = "CHARGEYSJSYE";
-            this.CHARGEYSJSYE.ReadOnly = true;
-            this.CHARGEYSJSYE.Width = 97;
-            // 
-            // CHARGECANCEL
-            // 
-            this.CHARGECANCEL.DataPropertyName = "CHARGECANCEL";
-            this.CHARGECANCEL.HeaderText = "单据状态";
-            this.CHARGECANCEL.Name = "CHARGECANCEL";
-            this.CHARGECANCEL.ReadOnly = true;
-            this.CHARGECANCEL.Width = 97;
-            // 
-            // CHARGEINVOICEPRINTID
-            // 
-            this.CHARGEINVOICEPRINTID.DataPropertyName = "CHARGEINVOICEPRINTID";
-            this.CHARGEINVOICEPRINTID.HeaderText = "CHARGEINVOICEPRINTID";
-            this.CHARGEINVOICEPRINTID.Name = "CHARGEINVOICEPRINTID";
-            this.CHARGEINVOICEPRINTID.ReadOnly = true;
-            this.CHARGEINVOICEPRINTID.Visible = false;
-            this.CHARGEINVOICEPRINTID.Width = 193;
-            // 
-            // CHARGEWORKERNAME
-            // 
-            this.CHARGEWORKERNAME.DataPropertyName = "CHARGEWORKERNAME";
-            this.CHARGEWORKERNAME.HeaderText = "收费员";
-            this.CHARGEWORKERNAME.Name = "CHARGEWORKERNAME";
-            this.CHARGEWORKERNAME.ReadOnly = true;
-            this.CHARGEWORKERNAME.Width = 81;
-            // 
-            // CHARGEDATETIME
-            // 
-            this.CHARGEDATETIME.DataPropertyName = "CHARGEDATETIME";
-            this.CHARGEDATETIME.HeaderText = "收费日期";
-            this.CHARGEDATETIME.Name = "CHARGEDATETIME";
-            this.CHARGEDATETIME.ReadOnly = true;
-            this.CHARGEDATETIME.Width = 97;
-            // 
-            // INVOICEBATCHNAME
-            // 
-            this.INVOICEBATCHNAME.DataPropertyName = "INVOICEBATCHNAME";
-            this.INVOICEBATCHNAME.HeaderText = "发票批次";
-            this.INVOICEBATCHNAME.Name = "INVOICEBATCHNAME";
-            this.INVOICEBATCHNAME.ReadOnly = true;
-            this.INVOICEBATCHNAME.Width = 97;
-            // 
-            // INVOICENO
-            // 
-            this.INVOICENO.DataPropertyName = "INVOICENO";
-            this.INVOICENO.HeaderText = "发票号";
-            this.INVOICENO.Name = "INVOICENO";
-            this.INVOICENO.ReadOnly = true;
-            this.INVOICENO.Width = 81;
-            // 
-            // INVOICECANCEL
-            // 
-            this.INVOICECANCEL.DataPropertyName = "INVOICECANCEL";
-            this.INVOICECANCEL.HeaderText = "发票状态";
-            this.INVOICECANCEL.Name = "INVOICECANCEL";
-            this.INVOICECANCEL.ReadOnly = true;
-            this.INVOICECANCEL.Width = 97;
-            // 
-            // DAYCHECKSTATES
-            // 
-            this.DAYCHECKSTATES.DataPropertyName = "DAYCHECKSTATES";
-            this.DAYCHECKSTATES.HeaderText = "日结账";
-            this.DAYCHECKSTATES.Name = "DAYCHECKSTATES";
-            this.DAYCHECKSTATES.ReadOnly = true;
-            this.DAYCHECKSTATES.Width = 81;
-            // 
-            // MONTHCHECKSTATES
-            // 
-            this.MONTHCHECKSTATES.DataPropertyName = "MONTHCHECKSTATES";
-            this.MONTHCHECKSTATES.HeaderText = "月结账";
-            this.MONTHCHECKSTATES.Name = "MONTHCHECKSTATES";
-            this.MONTHCHECKSTATES.ReadOnly = true;
-            this.MONTHCHECKSTATES.Width = 81;
-            // 
-            // METERREADERID
-            // 
-            this.METERREADERID.DataPropertyName = "METERREADERID";
-            this.METERREADERID.HeaderText = "METERREADERID";
-            this.METERREADERID.Name = "METERREADERID";
-            this.METERREADERID.ReadOnly = true;
-            this.METERREADERID.Visible = false;
-            // 
-            // METERREADERNAME
-            // 
-            this.METERREADERNAME.DataPropertyName = "METERREADERNAME";
-            this.METERREADERNAME.HeaderText = "METERREADERNAME";
-            this.METERREADERNAME.Name = "METERREADERNAME";
-            this.METERREADERNAME.ReadOnly = true;
-            this.METERREADERNAME.Visible = false;
             // 
             // groupBox1
             // 
@@ -826,6 +755,185 @@
             this.反日结ToolStripMenuItem.Text = "反日结";
             this.反日结ToolStripMenuItem.Click += new System.EventHandler(this.反日结ToolStripMenuItem_Click);
             // 
+            // waterUserId
+            // 
+            this.waterUserId.DataPropertyName = "waterUserId";
+            this.waterUserId.Frozen = true;
+            this.waterUserId.HeaderText = "waterUserId";
+            this.waterUserId.Name = "waterUserId";
+            this.waterUserId.ReadOnly = true;
+            this.waterUserId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.waterUserId.Visible = false;
+            this.waterUserId.Width = 121;
+            // 
+            // waterUserNO
+            // 
+            this.waterUserNO.DataPropertyName = "waterUserNO";
+            this.waterUserNO.Frozen = true;
+            this.waterUserNO.HeaderText = "用户编号";
+            this.waterUserNO.Name = "waterUserNO";
+            this.waterUserNO.ReadOnly = true;
+            this.waterUserNO.Width = 97;
+            // 
+            // waterUserName
+            // 
+            this.waterUserName.DataPropertyName = "waterUserName";
+            this.waterUserName.Frozen = true;
+            this.waterUserName.HeaderText = "用户名";
+            this.waterUserName.Name = "waterUserName";
+            this.waterUserName.ReadOnly = true;
+            this.waterUserName.Width = 81;
+            // 
+            // WATERUSERADDRESS
+            // 
+            this.WATERUSERADDRESS.DataPropertyName = "WATERUSERADDRESS";
+            this.WATERUSERADDRESS.HeaderText = "地址";
+            this.WATERUSERADDRESS.Name = "WATERUSERADDRESS";
+            this.WATERUSERADDRESS.ReadOnly = true;
+            this.WATERUSERADDRESS.Width = 150;
+            // 
+            // chargeID
+            // 
+            this.chargeID.DataPropertyName = "chargeID";
+            this.chargeID.HeaderText = "收费单号";
+            this.chargeID.Name = "chargeID";
+            this.chargeID.ReadOnly = true;
+            this.chargeID.Width = 97;
+            // 
+            // CHARGEYSQQYE
+            // 
+            this.CHARGEYSQQYE.DataPropertyName = "CHARGEYSQQYE";
+            this.CHARGEYSQQYE.HeaderText = "前期余额";
+            this.CHARGEYSQQYE.Name = "CHARGEYSQQYE";
+            this.CHARGEYSQQYE.ReadOnly = true;
+            this.CHARGEYSQQYE.Width = 97;
+            // 
+            // CHARGEYSBCSZ
+            // 
+            this.CHARGEYSBCSZ.DataPropertyName = "CHARGEYSBCSZ";
+            this.CHARGEYSBCSZ.HeaderText = "预存金额";
+            this.CHARGEYSBCSZ.Name = "CHARGEYSBCSZ";
+            this.CHARGEYSBCSZ.ReadOnly = true;
+            this.CHARGEYSBCSZ.Width = 97;
+            // 
+            // CHARGEYSJSYE
+            // 
+            this.CHARGEYSJSYE.DataPropertyName = "CHARGEYSJSYE";
+            this.CHARGEYSJSYE.HeaderText = "用户余额";
+            this.CHARGEYSJSYE.Name = "CHARGEYSJSYE";
+            this.CHARGEYSJSYE.ReadOnly = true;
+            this.CHARGEYSJSYE.Width = 97;
+            // 
+            // CHARGECANCEL
+            // 
+            this.CHARGECANCEL.DataPropertyName = "CHARGECANCEL";
+            this.CHARGECANCEL.HeaderText = "单据状态";
+            this.CHARGECANCEL.Name = "CHARGECANCEL";
+            this.CHARGECANCEL.ReadOnly = true;
+            this.CHARGECANCEL.Width = 97;
+            // 
+            // CHARGEINVOICEPRINTID
+            // 
+            this.CHARGEINVOICEPRINTID.DataPropertyName = "CHARGEINVOICEPRINTID";
+            this.CHARGEINVOICEPRINTID.HeaderText = "CHARGEINVOICEPRINTID";
+            this.CHARGEINVOICEPRINTID.Name = "CHARGEINVOICEPRINTID";
+            this.CHARGEINVOICEPRINTID.ReadOnly = true;
+            this.CHARGEINVOICEPRINTID.Visible = false;
+            this.CHARGEINVOICEPRINTID.Width = 193;
+            // 
+            // CHARGEWORKERNAME
+            // 
+            this.CHARGEWORKERNAME.DataPropertyName = "CHARGEWORKERNAME";
+            this.CHARGEWORKERNAME.HeaderText = "收费员";
+            this.CHARGEWORKERNAME.Name = "CHARGEWORKERNAME";
+            this.CHARGEWORKERNAME.ReadOnly = true;
+            this.CHARGEWORKERNAME.Width = 81;
+            // 
+            // CHARGEDATETIME
+            // 
+            this.CHARGEDATETIME.DataPropertyName = "CHARGEDATETIME";
+            this.CHARGEDATETIME.HeaderText = "收费日期";
+            this.CHARGEDATETIME.Name = "CHARGEDATETIME";
+            this.CHARGEDATETIME.ReadOnly = true;
+            this.CHARGEDATETIME.Width = 97;
+            // 
+            // INVOICEBATCHNAME
+            // 
+            this.INVOICEBATCHNAME.DataPropertyName = "INVOICEBATCHNAME";
+            this.INVOICEBATCHNAME.HeaderText = "发票批次";
+            this.INVOICEBATCHNAME.Name = "INVOICEBATCHNAME";
+            this.INVOICEBATCHNAME.ReadOnly = true;
+            this.INVOICEBATCHNAME.Width = 97;
+            // 
+            // INVOICENO
+            // 
+            this.INVOICENO.DataPropertyName = "INVOICENO";
+            this.INVOICENO.HeaderText = "发票号";
+            this.INVOICENO.Name = "INVOICENO";
+            this.INVOICENO.ReadOnly = true;
+            this.INVOICENO.Width = 81;
+            // 
+            // INVOICECANCEL
+            // 
+            this.INVOICECANCEL.DataPropertyName = "INVOICECANCEL";
+            this.INVOICECANCEL.HeaderText = "发票状态";
+            this.INVOICECANCEL.Name = "INVOICECANCEL";
+            this.INVOICECANCEL.ReadOnly = true;
+            this.INVOICECANCEL.Width = 97;
+            // 
+            // CHARGETYPEID
+            // 
+            this.CHARGETYPEID.HeaderText = "CHARGETYPEID";
+            this.CHARGETYPEID.Name = "CHARGETYPEID";
+            this.CHARGETYPEID.ReadOnly = true;
+            this.CHARGETYPEID.Visible = false;
+            // 
+            // CHARGETYPENAME
+            // 
+            this.CHARGETYPENAME.DataPropertyName = "CHARGETYPENAME";
+            this.CHARGETYPENAME.HeaderText = "收款方式";
+            this.CHARGETYPENAME.Name = "CHARGETYPENAME";
+            this.CHARGETYPENAME.ReadOnly = true;
+            // 
+            // POSRUNNINGNO
+            // 
+            this.POSRUNNINGNO.DataPropertyName = "POSRUNNINGNO";
+            this.POSRUNNINGNO.HeaderText = "交易流水号";
+            this.POSRUNNINGNO.Name = "POSRUNNINGNO";
+            this.POSRUNNINGNO.ReadOnly = true;
+            // 
+            // DAYCHECKSTATES
+            // 
+            this.DAYCHECKSTATES.DataPropertyName = "DAYCHECKSTATES";
+            this.DAYCHECKSTATES.HeaderText = "日结账";
+            this.DAYCHECKSTATES.Name = "DAYCHECKSTATES";
+            this.DAYCHECKSTATES.ReadOnly = true;
+            this.DAYCHECKSTATES.Width = 81;
+            // 
+            // SETTLEACCOUNTSSSID
+            // 
+            this.SETTLEACCOUNTSSSID.DataPropertyName = "SETTLEACCOUNTSSSID";
+            this.SETTLEACCOUNTSSSID.HeaderText = "月结单号";
+            this.SETTLEACCOUNTSSSID.Name = "SETTLEACCOUNTSSSID";
+            this.SETTLEACCOUNTSSSID.ReadOnly = true;
+            this.SETTLEACCOUNTSSSID.Width = 81;
+            // 
+            // METERREADERID
+            // 
+            this.METERREADERID.DataPropertyName = "METERREADERID";
+            this.METERREADERID.HeaderText = "METERREADERID";
+            this.METERREADERID.Name = "METERREADERID";
+            this.METERREADERID.ReadOnly = true;
+            this.METERREADERID.Visible = false;
+            // 
+            // METERREADERNAME
+            // 
+            this.METERREADERNAME.DataPropertyName = "METERREADERNAME";
+            this.METERREADERNAME.HeaderText = "METERREADERNAME";
+            this.METERREADERNAME.Name = "METERREADERNAME";
+            this.METERREADERNAME.ReadOnly = true;
+            this.METERREADERNAME.Visible = false;
+            // 
             // frmRestoreChargeCancel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -902,6 +1010,13 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 反月结ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 反日结ToolStripMenuItem;
+        private System.Windows.Forms.TextBox txtJYLSH;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Button btModify;
+        private System.Windows.Forms.ComboBox cmbChargeTypeNew;
+        private System.Windows.Forms.ComboBox cmbChargeTypeOld;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterUserId;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterUserNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterUserName;
@@ -917,8 +1032,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn INVOICEBATCHNAME;
         private System.Windows.Forms.DataGridViewTextBoxColumn INVOICENO;
         private System.Windows.Forms.DataGridViewTextBoxColumn INVOICECANCEL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CHARGETYPEID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CHARGETYPENAME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn POSRUNNINGNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn DAYCHECKSTATES;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MONTHCHECKSTATES;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SETTLEACCOUNTSSSID;
         private System.Windows.Forms.DataGridViewTextBoxColumn METERREADERID;
         private System.Windows.Forms.DataGridViewTextBoxColumn METERREADERNAME;
     }

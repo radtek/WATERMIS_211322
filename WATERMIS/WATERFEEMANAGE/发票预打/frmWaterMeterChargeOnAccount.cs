@@ -325,6 +325,10 @@ namespace WATERFEEMANAGE
         private void BindWaterUserType(ComboBox cmb)
         {
             DataTable dt = BLLwaterUserType.Query("");
+            DataRow dr = dt.NewRow();
+            dr["waterUserTypeName"] = "全部";
+            dr["waterUserTypeId"] = DBNull.Value;
+            dt.Rows.InsertAt(dr, 0);
             cmb.DataSource = dt;
             cmb.DisplayMember = "waterUserTypeName";
             cmb.ValueMember = "waterUserTypeId";
@@ -675,30 +679,26 @@ namespace WATERFEEMANAGE
 
         private void btSetOnAccount_Click(object sender, EventArgs e)
         {
-            //if (strGroupID == "0001")
-            //{
-            object objJZ = dgHistoryWaterFee.CurrentRow.Cells["MONTHCHECKSTATES"].Value;
-            if (objJZ != null && objJZ != DBNull.Value)
+            if (dgHistoryWaterFee.CurrentRow == null)
+                return;
+            object objJZ = dgHistoryWaterFee.CurrentRow.Cells["SETTLEACCOUNTSSSID"].Value;
+            if (objJZ != null && objJZ != DBNull.Value && objJZ.ToString() != "")
             {
-                if (objJZ.ToString() == "是")
+                mes.Show("该单据已月结，无法执行此操作!");
+                return;
+            }
+            if (strGroupID != "0001")
+            {
+                objJZ = dgHistoryWaterFee.CurrentRow.Cells["DAYCHECKSTATES"].Value;
+                if (objJZ != null && objJZ != DBNull.Value)
                 {
-                    mes.Show("该单据已经结账，无法执行此操作!");
-                    return;
+                    if (objJZ.ToString() == "是")
+                    {
+                        mes.Show("该单据已经结账，无法执行此操作!");
+                        return;
+                    }
                 }
             }
-            //}
-            //else
-            //{
-            objJZ = dgHistoryWaterFee.CurrentRow.Cells["DAYCHECKSTATES"].Value;
-            if (objJZ != null && objJZ != DBNull.Value)
-            {
-                if (objJZ.ToString() == "是")
-                {
-                    mes.Show("该单据已经结账，无法执行此操作!");
-                    return;
-                }
-            }
-            //}
             if (dgHistoryWaterFee.SelectedRows.Count > 0)
                 if (mes.ShowQ("确定要将所有选择的行挂账处理吗?") != DialogResult.OK)
                     return;
@@ -804,31 +804,6 @@ namespace WATERFEEMANAGE
         {
             try
             {
-                //if (strGroupID == "0001")
-                //{
-                    object objJZ = dgHistoryWaterFee.CurrentRow.Cells["MONTHCHECKSTATES"].Value;
-                    if (objJZ != null && objJZ != DBNull.Value)
-                    {
-                        if (objJZ.ToString() == "是")
-                        {
-                            mes.Show("该单据已经结账，无法执行此操作!");
-                            return;
-                        }
-                    }
-                //}
-                //else
-                //{
-                    objJZ = dgHistoryWaterFee.CurrentRow.Cells["DAYCHECKSTATES"].Value;
-                    if (objJZ != null && objJZ != DBNull.Value)
-                    {
-                        if (objJZ.ToString() == "是")
-                        {
-                            mes.Show("该单据已经结账，无法执行此操作!");
-                            return;
-                        }
-                    }
-                //}
-
                 if (dgHistoryWaterFee.SelectedRows.Count > 0)
                     if (mes.ShowQ("确定要将所有选择的行解除挂账处理吗?") != DialogResult.OK)
                         return;
@@ -1000,6 +975,86 @@ namespace WATERFEEMANAGE
                 mes.Show("修改收款方式失败,原因:"+ex.Message);
                 log.Write(ex.ToString(),MsgType.Error);
                 return;
+            }
+        }
+
+        private void 反月结ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgHistoryWaterFee.CurrentRow == null)
+                return;
+            object objChargeID = dgHistoryWaterFee.CurrentRow.Cells["CHARGEID"].Value;
+            if (objChargeID != null && objChargeID != DBNull.Value)
+            {
+                if (mes.ShowQ("确定要将单号为'" + objChargeID.ToString() + "'的收费单据反月结吗?") == DialogResult.OK)
+                {
+                    MODELWATERFEECHARGE MODELWATERFEECHARGE = new MODELWATERFEECHARGE();
+                    MODELWATERFEECHARGE.CHARGEID = objChargeID.ToString();
+                    //MODELWATERFEECHARGE.SETTLEACCOUNTSSSID = null;
+                    MODELWATERFEECHARGE.MONTHCHECKSTATE = "0";
+                    if (BLLWATERFEECHARGE.UpdateMonthCheckState(MODELWATERFEECHARGE, " AND CHARGEID='" + objChargeID.ToString() + "'") > 0)
+                    {
+                        dgHistoryWaterFee.CurrentRow.Cells["SETTLEACCOUNTSSSID"].Value = DBNull.Value;
+                        mes.Show("反月结成功!");
+                    }
+                    else
+                    {
+                        mes.Show("反月结失败,请重新选择单据后重试!");
+                    }
+                }
+            }
+            else
+            {
+                mes.Show("获取单号失败,请重新选择要操作的单号!");
+                return;
+            }
+        }
+
+        private void 反日结ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgHistoryWaterFee.CurrentRow == null)
+                return;
+
+            object objJZ = dgHistoryWaterFee.CurrentRow.Cells["SETTLEACCOUNTSSSID"].Value;
+            if (objJZ != null && objJZ != DBNull.Value && objJZ.ToString() != "")
+            {
+                mes.Show("该单据已月账，无法执行此操作!");
+                return;
+            }
+            object objChargeID = dgHistoryWaterFee.CurrentRow.Cells["CHARGEID"].Value;
+            if (objChargeID != null && objChargeID != DBNull.Value)
+            {
+                if (mes.ShowQ("确定要将单号为'" + objChargeID.ToString() + "'的收费单据反日结吗?") == DialogResult.OK)
+                {
+                    MODELWATERFEECHARGE MODELWATERFEECHARGE = new MODELWATERFEECHARGE();
+                    MODELWATERFEECHARGE.CHARGEID = objChargeID.ToString();
+                    MODELWATERFEECHARGE.DAYCHECKSTATE = "0";
+                    if (BLLWATERFEECHARGE.UpdateDayCheckState(MODELWATERFEECHARGE, " AND CHARGEID='" + objChargeID.ToString() + "'") > 0)
+                    {
+                        dgHistoryWaterFee.CurrentRow.Cells["DAYCHECKSTATES"].Value = "否";
+                        mes.Show("反日结成功!");
+                    }
+                    else
+                    {
+                        mes.Show("反日结失败,请重新选择单据后重试!");
+                    }
+                }
+            }
+            else
+            {
+                mes.Show("获取单号失败,请重新选择要操作的单号!");
+                return;
+            }
+        }
+
+        private void dgHistoryWaterFee_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (strGroupID == "0001")
+                {
+                    dgHistoryWaterFee.CurrentCell = dgHistoryWaterFee.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                    contextMenuStrip1.Show(MousePosition.X, MousePosition.Y);
+                }
             }
         }
     }

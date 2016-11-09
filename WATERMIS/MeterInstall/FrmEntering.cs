@@ -59,7 +59,7 @@ namespace MeterInstall
                 MessageBox.Show("信息不完整！");
                 return;
             }
-            if (!waterMeterStartNumber.ValidateState)
+            if (!waterMeterStartNumber.EmptyValidate(waterMeterStartNumber))
             {
                 MessageBox.Show("请输入正确的初始读数!");
                 return;

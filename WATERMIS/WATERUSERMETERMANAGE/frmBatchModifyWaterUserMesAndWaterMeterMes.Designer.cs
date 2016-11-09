@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBatchModifyWaterUserMesAndWaterMeterMes));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dgWaterListBatch = new System.Windows.Forms.DataGridView();
@@ -168,14 +168,14 @@
             this.dgWaterListBatch.AllowUserToAddRows = false;
             this.dgWaterListBatch.AllowUserToDeleteRows = false;
             this.dgWaterListBatch.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgWaterListBatch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgWaterListBatch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgWaterListBatch.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.waterUserIdBatch,
             this.waterUserNOBacth,
@@ -559,9 +559,9 @@
             // waterMeterProofreadingDateBatch
             // 
             this.waterMeterProofreadingDateBatch.DataPropertyName = "waterMeterProofreadingDate";
-            dataGridViewCellStyle6.Format = "D";
-            dataGridViewCellStyle6.NullValue = null;
-            this.waterMeterProofreadingDateBatch.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Format = "D";
+            dataGridViewCellStyle2.NullValue = null;
+            this.waterMeterProofreadingDateBatch.DefaultCellStyle = dataGridViewCellStyle2;
             this.waterMeterProofreadingDateBatch.HeaderText = "鉴定日期";
             this.waterMeterProofreadingDateBatch.Name = "waterMeterProofreadingDateBatch";
             this.waterMeterProofreadingDateBatch.Width = 88;
@@ -780,13 +780,15 @@
             this.cmbWaterMeterStateBatch.DropDownWidth = 120;
             this.cmbWaterMeterStateBatch.FormattingEnabled = true;
             this.cmbWaterMeterStateBatch.Items.AddRange(new object[] {
-            "全部",
             "正常",
             "注销",
             "换表",
             "未启用",
             "欠费停水",
-            "坏表"});
+            "违章停水",
+            "坏表",
+            "待审核",
+            "待拆迁"});
             this.cmbWaterMeterStateBatch.Location = new System.Drawing.Point(383, 53);
             this.cmbWaterMeterStateBatch.Name = "cmbWaterMeterStateBatch";
             this.cmbWaterMeterStateBatch.Size = new System.Drawing.Size(78, 22);
@@ -1105,7 +1107,7 @@
             this.toolStripSeparator2,
             this.粘贴复制内容ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(169, 158);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(169, 136);
             // 
             // 剪切选中行ToolStripMenuItem
             // 

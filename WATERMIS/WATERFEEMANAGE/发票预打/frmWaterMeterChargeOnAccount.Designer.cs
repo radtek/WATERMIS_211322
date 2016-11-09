@@ -114,7 +114,7 @@
             this.CHARGEDATETIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CHARGECANCEL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DAYCHECKSTATES = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MONTHCHECKSTATES = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SETTLEACCOUNTSSSID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.meterReaderName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.meterReaderID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chargerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -395,7 +395,7 @@
             this.CHARGEDATETIME,
             this.CHARGECANCEL,
             this.DAYCHECKSTATES,
-            this.MONTHCHECKSTATES,
+            this.SETTLEACCOUNTSSSID,
             this.meterReaderName,
             this.meterReaderID,
             this.chargerName,
@@ -410,6 +410,7 @@
             this.dgHistoryWaterFee.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgHistoryWaterFee.Size = new System.Drawing.Size(835, 405);
             this.dgHistoryWaterFee.TabIndex = 907;
+            this.dgHistoryWaterFee.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgHistoryWaterFee_CellMouseDown);
             this.dgHistoryWaterFee.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgHistoryWaterFee_CellFormatting);
             this.dgHistoryWaterFee.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgHistoryWaterFee_CellPainting);
             this.dgHistoryWaterFee.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgHistoryWaterFee_CellClick);
@@ -934,13 +935,13 @@
             this.DAYCHECKSTATES.ReadOnly = true;
             this.DAYCHECKSTATES.Width = 65;
             // 
-            // MONTHCHECKSTATES
+            // SETTLEACCOUNTSSSID
             // 
-            this.MONTHCHECKSTATES.DataPropertyName = "MONTHCHECKSTATES";
-            this.MONTHCHECKSTATES.HeaderText = "月结";
-            this.MONTHCHECKSTATES.Name = "MONTHCHECKSTATES";
-            this.MONTHCHECKSTATES.ReadOnly = true;
-            this.MONTHCHECKSTATES.Width = 65;
+            this.SETTLEACCOUNTSSSID.DataPropertyName = "SETTLEACCOUNTSSSID";
+            this.SETTLEACCOUNTSSSID.HeaderText = "月结单号";
+            this.SETTLEACCOUNTSSSID.Name = "SETTLEACCOUNTSSSID";
+            this.SETTLEACCOUNTSSSID.ReadOnly = true;
+            this.SETTLEACCOUNTSSSID.Width = 65;
             // 
             // meterReaderName
             // 
@@ -1338,12 +1339,14 @@
             this.反月结ToolStripMenuItem.Name = "反月结ToolStripMenuItem";
             this.反月结ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.反月结ToolStripMenuItem.Text = "反月结";
+            this.反月结ToolStripMenuItem.Click += new System.EventHandler(this.反月结ToolStripMenuItem_Click);
             // 
             // 反日结ToolStripMenuItem
             // 
             this.反日结ToolStripMenuItem.Name = "反日结ToolStripMenuItem";
             this.反日结ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.反日结ToolStripMenuItem.Text = "反日结";
+            this.反日结ToolStripMenuItem.Click += new System.EventHandler(this.反日结ToolStripMenuItem_Click);
             // 
             // bgGetFPNO
             // 
@@ -1490,7 +1493,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CHARGEDATETIME;
         private System.Windows.Forms.DataGridViewTextBoxColumn CHARGECANCEL;
         private System.Windows.Forms.DataGridViewTextBoxColumn DAYCHECKSTATES;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MONTHCHECKSTATES;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SETTLEACCOUNTSSSID;
         private System.Windows.Forms.DataGridViewTextBoxColumn meterReaderName;
         private System.Windows.Forms.DataGridViewTextBoxColumn meterReaderID;
         private System.Windows.Forms.DataGridViewTextBoxColumn chargerName;

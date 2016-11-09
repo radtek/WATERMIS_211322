@@ -74,6 +74,13 @@ namespace FinanceOS.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap onebit_33 {
+            get {
+                object obj = ResourceManager.GetObject("onebit_33", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap 打印 {
             get {
                 object obj = ResourceManager.GetObject("打印", resourceCulture);

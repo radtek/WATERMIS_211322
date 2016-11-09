@@ -524,7 +524,7 @@ namespace SYSMANAGE
                 if (isAdd)
                 {
                     MODELBASE_LOGIN.LOGINID = GETTABLEID.GetTableID(strLoginID, "BASE_LOGIN");
-                    MODELBASE_LOGIN.Password = "123456";
+                    MODELBASE_LOGIN.LOGINPASSWORD = "123456";
                     MODELBASE_LOGIN.generateDateTime = mes.GetDatetimeNow();
                     if (BLLBASE_LOGIN.InsertBASE_LOGIN(MODELBASE_LOGIN))
                     {

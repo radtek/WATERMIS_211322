@@ -121,10 +121,13 @@
   <data name="打印" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\打印.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="onebit_20" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\onebit_20.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="InvoiceBg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\InvoiceBg1.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="onebit_20" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\onebit_20.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="onebit_33" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\onebit_33.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

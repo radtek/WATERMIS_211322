@@ -43,12 +43,12 @@ namespace MODEL
            set { _Units = value; }
        }
 
-       private decimal _Quatity;
+       private decimal _Quantity;
 
-       public decimal Quatity
+       public decimal Quantity
        {
-           get { return _Quatity; }
-           set { _Quatity = value; }
+           get { return _Quantity; }
+           set { _Quantity = value; }
        }
        private decimal _Price;
 

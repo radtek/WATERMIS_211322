@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWaterMeterSearch));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStripWaterUser = new System.Windows.Forms.ToolStrip();
             this.toolSearch = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
@@ -286,10 +286,16 @@
             this.cmbWaterMeterState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbWaterMeterState.FormattingEnabled = true;
             this.cmbWaterMeterState.Items.AddRange(new object[] {
-            "",
+            "全部",
             "正常",
-            "停水",
-            "报废"});
+            "注销",
+            "换表",
+            "未启用",
+            "欠费停水",
+            "违章停水",
+            "坏表",
+            "待审核",
+            "待拆迁"});
             this.cmbWaterMeterState.Location = new System.Drawing.Point(283, 89);
             this.cmbWaterMeterState.Name = "cmbWaterMeterState";
             this.cmbWaterMeterState.Size = new System.Drawing.Size(88, 24);
@@ -543,14 +549,14 @@
             this.dgList.AllowUserToDeleteRows = false;
             this.dgList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.waterUserId,
@@ -810,9 +816,9 @@
             // waterMeterProofreadingDate
             // 
             this.waterMeterProofreadingDate.DataPropertyName = "waterMeterProofreadingDate";
-            dataGridViewCellStyle4.Format = "D";
-            dataGridViewCellStyle4.NullValue = null;
-            this.waterMeterProofreadingDate.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Format = "D";
+            dataGridViewCellStyle2.NullValue = null;
+            this.waterMeterProofreadingDate.DefaultCellStyle = dataGridViewCellStyle2;
             this.waterMeterProofreadingDate.HeaderText = "鉴定日期";
             this.waterMeterProofreadingDate.Name = "waterMeterProofreadingDate";
             this.waterMeterProofreadingDate.ReadOnly = true;

@@ -21,11 +21,11 @@ namespace BASEMANAGE
         BLLBASE_DEPARTMENT BLLBASE_DEPARTMENT = new BLLBASE_DEPARTMENT();
         private void frmCompanyMes_Load(object sender, EventArgs e)
         {
-            GetCompanyName();
+
         }
-        private void GetCompanyName()
+        private void GetCompanyName(string strID)
         {
-            DataTable dt = BLLBASE_DEPARTMENT.QueryDep(" AND departmentID='01'");
+            DataTable dt = BLLBASE_DEPARTMENT.QueryDep(" AND departmentID='" + strID + "'");
             if (dt.Rows.Count > 0)
             {
                 object obj = dt.Rows[0]["departmentName"];
@@ -65,11 +65,22 @@ namespace BASEMANAGE
         Messages mes = new Messages();
         private void btSetUp_Click(object sender, EventArgs e)
         {
+            string strCompany="";
+            if (rb01.Checked)
+                strCompany = "01";
+            else if(rb010003.Checked)
+                strCompany = "010003";
+            if (strCompany == "")
+            {
+                mes.Show("请选择公司后操作!");
+                return;
+            }
             if (txtName.Text.Trim() == "")
             {
                 mes.Show("公司名称不能为空!");
                 return;
             }
+
             MODELBASE_DEPARTMENT MODELBASE_DEPARTMENT = new MODELBASE_DEPARTMENT();
             MODELBASE_DEPARTMENT.DEPARTMENTID = "01";
             MODELBASE_DEPARTMENT.DEPARTMENTNAME = txtName.Text.Trim();
@@ -93,6 +104,16 @@ namespace BASEMANAGE
         private void btCancle_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void rb01_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rb01.Checked)
+            {
+                GetCompanyName("01");
+            }
+            else
+                GetCompanyName("010003");
         }
 
     }

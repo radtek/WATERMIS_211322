@@ -36,7 +36,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.删除一行ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.增加一行ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tb1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.txtMemo = new System.Windows.Forms.TextBox();
             this.txtInvoiceOpener = new System.Windows.Forms.TextBox();
@@ -64,6 +64,7 @@
             this.txtWaterUserFPTaxNO = new System.Windows.Forms.TextBox();
             this.txtWaterUserName = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labInvoiceState = new System.Windows.Forms.Label();
             this.rbZZ = new System.Windows.Forms.RadioButton();
             this.rbNormal = new System.Windows.Forms.RadioButton();
             this.txtInvoiceNO = new System.Windows.Forms.TextBox();
@@ -72,7 +73,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.tb1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgList)).BeginInit();
@@ -90,6 +91,7 @@
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(879, 31);
             this.toolStrip1.TabIndex = 1;
+            this.toolStrip1.Tag = "9999";
             this.toolStrip1.Text = "toolStrip1";
             // 
             // toolPrint
@@ -122,28 +124,28 @@
             this.增加一行ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.增加一行ToolStripMenuItem.Text = "增加一行";
             // 
-            // tableLayoutPanel1
+            // tb1
             // 
-            this.tableLayoutPanel1.BackgroundImage = global::FinanceOS.Properties.Resources.InvoiceBg;
-            this.tableLayoutPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.panel4, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 31);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.48763F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.08481F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.14841F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 37.27915F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(879, 564);
-            this.tableLayoutPanel1.TabIndex = 2;
-            this.tableLayoutPanel1.Tag = "9999";
+            this.tb1.BackgroundImage = global::FinanceOS.Properties.Resources.InvoiceBg;
+            this.tb1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tb1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tb1.ColumnCount = 1;
+            this.tb1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tb1.Controls.Add(this.panel4, 0, 3);
+            this.tb1.Controls.Add(this.panel3, 0, 2);
+            this.tb1.Controls.Add(this.panel2, 0, 1);
+            this.tb1.Controls.Add(this.panel1, 0, 0);
+            this.tb1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tb1.Location = new System.Drawing.Point(0, 31);
+            this.tb1.Name = "tb1";
+            this.tb1.RowCount = 4;
+            this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.48763F));
+            this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.08481F));
+            this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.14841F));
+            this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 37.27915F));
+            this.tb1.Size = new System.Drawing.Size(879, 564);
+            this.tb1.TabIndex = 2;
+            this.tb1.Tag = "9999";
             // 
             // panel4
             // 
@@ -177,76 +179,94 @@
             // txtInvoiceOpener
             // 
             this.txtInvoiceOpener.AcceptsReturn = true;
+            this.txtInvoiceOpener.BackColor = System.Drawing.SystemColors.Window;
             this.txtInvoiceOpener.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtInvoiceOpener.Location = new System.Drawing.Point(638, 176);
             this.txtInvoiceOpener.Name = "txtInvoiceOpener";
+            this.txtInvoiceOpener.ReadOnly = true;
             this.txtInvoiceOpener.Size = new System.Drawing.Size(111, 23);
             this.txtInvoiceOpener.TabIndex = 3;
             // 
             // txtChecker
             // 
             this.txtChecker.AcceptsReturn = true;
+            this.txtChecker.BackColor = System.Drawing.SystemColors.Window;
             this.txtChecker.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtChecker.Location = new System.Drawing.Point(345, 176);
             this.txtChecker.Name = "txtChecker";
+            this.txtChecker.ReadOnly = true;
             this.txtChecker.Size = new System.Drawing.Size(111, 23);
             this.txtChecker.TabIndex = 3;
             // 
             // txtPayee
             // 
             this.txtPayee.AcceptsReturn = true;
+            this.txtPayee.BackColor = System.Drawing.SystemColors.Window;
             this.txtPayee.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtPayee.Location = new System.Drawing.Point(95, 176);
             this.txtPayee.Name = "txtPayee";
+            this.txtPayee.ReadOnly = true;
             this.txtPayee.Size = new System.Drawing.Size(111, 23);
             this.txtPayee.TabIndex = 3;
             // 
             // txtCompanyBankNameAndAccountNO
             // 
             this.txtCompanyBankNameAndAccountNO.AcceptsReturn = true;
+            this.txtCompanyBankNameAndAccountNO.BackColor = System.Drawing.SystemColors.Window;
             this.txtCompanyBankNameAndAccountNO.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtCompanyBankNameAndAccountNO.Location = new System.Drawing.Point(166, 141);
             this.txtCompanyBankNameAndAccountNO.Name = "txtCompanyBankNameAndAccountNO";
+            this.txtCompanyBankNameAndAccountNO.ReadOnly = true;
             this.txtCompanyBankNameAndAccountNO.Size = new System.Drawing.Size(355, 23);
             this.txtCompanyBankNameAndAccountNO.TabIndex = 3;
             // 
             // txtCompanyAddress
             // 
+            this.txtCompanyAddress.BackColor = System.Drawing.SystemColors.Window;
             this.txtCompanyAddress.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtCompanyAddress.Location = new System.Drawing.Point(166, 110);
             this.txtCompanyAddress.Name = "txtCompanyAddress";
+            this.txtCompanyAddress.ReadOnly = true;
             this.txtCompanyAddress.Size = new System.Drawing.Size(355, 23);
             this.txtCompanyAddress.TabIndex = 3;
             // 
             // txtCompanyFPTaxNO
             // 
+            this.txtCompanyFPTaxNO.BackColor = System.Drawing.SystemColors.Window;
             this.txtCompanyFPTaxNO.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtCompanyFPTaxNO.Location = new System.Drawing.Point(166, 79);
             this.txtCompanyFPTaxNO.Name = "txtCompanyFPTaxNO";
+            this.txtCompanyFPTaxNO.ReadOnly = true;
             this.txtCompanyFPTaxNO.Size = new System.Drawing.Size(355, 23);
             this.txtCompanyFPTaxNO.TabIndex = 3;
             // 
             // txtCompanyName
             // 
+            this.txtCompanyName.BackColor = System.Drawing.SystemColors.Window;
             this.txtCompanyName.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtCompanyName.Location = new System.Drawing.Point(166, 48);
             this.txtCompanyName.Name = "txtCompanyName";
+            this.txtCompanyName.ReadOnly = true;
             this.txtCompanyName.Size = new System.Drawing.Size(355, 23);
             this.txtCompanyName.TabIndex = 3;
             // 
             // txtSumMoney
             // 
+            this.txtSumMoney.BackColor = System.Drawing.SystemColors.Window;
             this.txtSumMoney.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtSumMoney.Location = new System.Drawing.Point(638, 8);
             this.txtSumMoney.Name = "txtSumMoney";
+            this.txtSumMoney.ReadOnly = true;
             this.txtSumMoney.Size = new System.Drawing.Size(163, 23);
             this.txtSumMoney.TabIndex = 2;
             // 
             // txtCapMoney
             // 
+            this.txtCapMoney.BackColor = System.Drawing.SystemColors.Window;
             this.txtCapMoney.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtCapMoney.Location = new System.Drawing.Point(171, 8);
             this.txtCapMoney.Name = "txtCapMoney";
+            this.txtCapMoney.ReadOnly = true;
             this.txtCapMoney.Size = new System.Drawing.Size(310, 23);
             this.txtCapMoney.TabIndex = 1;
             // 
@@ -391,6 +411,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.labInvoiceState);
             this.panel1.Controls.Add(this.rbZZ);
             this.panel1.Controls.Add(this.rbNormal);
             this.panel1.Controls.Add(this.txtInvoiceNO);
@@ -403,6 +424,19 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(877, 80);
             this.panel1.TabIndex = 0;
+            // 
+            // labInvoiceState
+            // 
+            this.labInvoiceState.AutoSize = true;
+            this.labInvoiceState.Font = new System.Drawing.Font("宋体", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labInvoiceState.ForeColor = System.Drawing.Color.Red;
+            this.labInvoiceState.Location = new System.Drawing.Point(733, 17);
+            this.labInvoiceState.Name = "labInvoiceState";
+            this.labInvoiceState.Size = new System.Drawing.Size(96, 27);
+            this.labInvoiceState.TabIndex = 116;
+            this.labInvoiceState.Tag = "9999";
+            this.labInvoiceState.Text = "已打印";
+            this.labInvoiceState.Visible = false;
             // 
             // rbZZ
             // 
@@ -472,7 +506,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(879, 595);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.tb1);
             this.Controls.Add(this.toolStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -484,7 +518,7 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tb1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -502,7 +536,7 @@
 
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolPrint;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tb1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
@@ -539,5 +573,6 @@
         private System.Windows.Forms.ToolStripMenuItem 增加一行ToolStripMenuItem;
         private System.Windows.Forms.RadioButton rbZZ;
         private System.Windows.Forms.RadioButton rbNormal;
+        private System.Windows.Forms.Label labInvoiceState;
     }
 }

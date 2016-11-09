@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
 using BLL;
 using BASEFUNCTION;
 
@@ -16,10 +17,40 @@ namespace FinanceOS
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// 登陆用户的ID
+        /// </summary>
+        public string strLoginID = "";
+
+        /// <summary>
+        /// 登陆用户的姓名
+        /// </summary>
+        public string strLoginName = "";
+
         Messages mes = new Messages();
         BllMeter_WorkResolveFee_Invoice_Detail BllMeter_WorkResolveFee_Invoice_Detail = new BllMeter_WorkResolveFee_Invoice_Detail();
+
+        /// <summary>
+        /// 弹出界面是否修改，如果修改则重新查询
+        /// </summary>
+        public bool isModify = false;
+
         private void FrmFinance_Invoice_Scrap_Load(object sender, EventArgs e)
         {
+            //获取用户ID
+            if (AppDomain.CurrentDomain.GetData("LOGINID") != null && AppDomain.CurrentDomain.GetData("LOGINID") != DBNull.Value)
+                strLoginID = AppDomain.CurrentDomain.GetData("LOGINID").ToString();
+            else
+            {
+                mes.Show("收费员姓名获取失败!请重新打开该窗体!");
+                this.Close();
+            }
+
+            //获取用户姓名
+            if (AppDomain.CurrentDomain.GetData("USERNAME") != null && AppDomain.CurrentDomain.GetData("USERNAME") != DBNull.Value)
+                strLoginName = AppDomain.CurrentDomain.GetData("USERNAME").ToString();
+
             cmbState.SelectedIndex = 0;
             cmbType.SelectedIndex = 0;
             BindWorkType();
@@ -45,7 +76,7 @@ namespace FinanceOS
             strSQL.Append(@"SELECT InvoicePrintID,ChargeID,InvoiceBatchID,InvoiceBatchName,InvoiceNO,WaterUserName,WaterUserAddress,WaterUserFPTaxNO,WaterUserFPBankNameAndAccountNO, ");
             strSQL.Append(@"Table_Name_CH,InvoiceFeeDepID,InvoiceFeeDepName,InvoiceTotalFeeMoney,CompanyName,CompanyAddress,CompanyFPTaxNO,CompanyFPBankNameAndAccountNO,Payee,");
             strSQL.Append(@"Checker,InvoicePrintWorkerID,InvoicePrintWorker,InvoicePrintDateTime,(CASE InvoiceType WHEN '1' THEN '普通发票' ELSE '专用发票' END) AS InvoiceType,");
-            strSQL.Append(@"(CASE InvoiceCancel WHEN '0' THEN '正常' WHEN '1' THEN '退款作废' WHEN '2' THEN '损坏作废' WHEN '3' THEN '未打作废' END) AS InvoiceCancel, ");
+            strSQL.Append(@"(CASE InvoiceCancel WHEN '0' THEN '正常' WHEN '1' THEN '退款作废' WHEN '2' THEN '损坏作废' WHEN '3' THEN '未打作废' END) AS InvoiceCancel,Memo, ");
             strSQL.Append(@"InvoiceCancelDatetime,InvoiceCancelWorkerID,InvoiceCancelWorkerName,InvoiceCancelMemo ");
             strSQL.Append(@"FROM Meter_WorkResolveFee_Invoice WHERE 1=1 ");
 
@@ -116,16 +147,135 @@ namespace FinanceOS
         {
             if (e.RowIndex < 0 || e.ColumnIndex < 0)
                 return;
+
+            //是否修改
+            isModify = false;
+
             DataGridView dg = (DataGridView)sender;
             if (dg != null)
             {
-                object objChargeID = dg.Rows[e.RowIndex].Cells["InvoicePrintID"].Value;
-                if (objChargeID != null && objChargeID != DBNull.Value && objChargeID.ToString() != "")
+                string strInvoicePrintID = "", strChargeID = "", strCompanyName = "", strCompanyTaxNO = "", strCompanyAddressAndTel = "", strCompanyBankNameAndAccountNO = "",
+                    strCompanyPayee = "", strCompanyChecker = "", strWaterUserName = "", strWaterUserAddressAndTel = "",
+              strWaterUserFPTaxNO = "", strWaterUserFPBankNameAndAccountNO = "", strInvoiceType = "", strInvoiceCancel = "",
+              strInvoiceBatchID = "", strInvoiceNO = "", strMemo = "";
+
+                decimal decInvoiceTotalFeeMoney = 0;
+
+                object obj = dg.Rows[e.RowIndex].Cells["InvoicePrintID"].Value;
+                if (obj != null && obj != DBNull.Value && obj.ToString() != "")
                 {
+                    strInvoicePrintID=obj.ToString();
                     StringBuilder str = new StringBuilder();
                     str.Append("SELECT * FROM Meter_WorkResolveFee_Invoice A INNER JOIN Meter_WorkResolveFee_Invoice_Detail B ON A.InvoicePrintID=B.InvoicePrintID ");
-                    str.Append("AND InvoicePrintID='"+objChargeID.ToString()+"' ");
+                    str.Append("AND A.InvoicePrintID='" + strInvoicePrintID + "' ");
                     DataTable dtInvoiceDetail = BllMeter_WorkResolveFee_Invoice_Detail.Query(str.ToString());
+
+                    obj = dg.Rows[e.RowIndex].Cells["ChargeID"].Value;
+                    if (obj != null && obj != DBNull.Value)
+                        strChargeID = obj.ToString();
+
+                    obj = dg.Rows[e.RowIndex].Cells["CompanyName"].Value;
+                    if (obj != null && obj != DBNull.Value)
+                        strCompanyName = obj.ToString();
+
+                    obj = dg.Rows[e.RowIndex].Cells["CompanyAddress"].Value;
+                    if (obj != null && obj != DBNull.Value)
+                        strCompanyAddressAndTel = obj.ToString();
+
+                    obj = dg.Rows[e.RowIndex].Cells["CompanyFPTaxNO"].Value;
+                    if (obj != null && obj != DBNull.Value)
+                        strCompanyTaxNO = obj.ToString();
+
+                    obj = dg.Rows[e.RowIndex].Cells["CompanyFPBankNameAndAccountNO"].Value;
+                    if (obj != null && obj != DBNull.Value)
+                        strCompanyBankNameAndAccountNO = obj.ToString();
+
+                    obj = dg.Rows[e.RowIndex].Cells["Payee"].Value;
+                    if (obj != null && obj != DBNull.Value)
+                        strCompanyPayee = obj.ToString();
+
+                    obj = dg.Rows[e.RowIndex].Cells["Checker"].Value;
+                    if (obj != null && obj != DBNull.Value)
+                        strCompanyChecker = obj.ToString();
+
+                    obj = dg.Rows[e.RowIndex].Cells["WaterUserName"].Value;
+                    if (obj != null && obj != DBNull.Value)
+                        strWaterUserName = obj.ToString();
+
+                    obj = dg.Rows[e.RowIndex].Cells["WaterUserAddress"].Value;
+                    if (obj != null && obj != DBNull.Value)
+                        strWaterUserAddressAndTel = obj.ToString();
+
+                    obj = dg.Rows[e.RowIndex].Cells["WaterUserFPTaxNO"].Value;
+                    if (obj != null && obj != DBNull.Value)
+                        strWaterUserFPTaxNO = obj.ToString();
+
+                    obj = dg.Rows[e.RowIndex].Cells["WaterUserFPBankNameAndAccountNO"].Value;
+                    if (obj != null && obj != DBNull.Value)
+                        strWaterUserFPBankNameAndAccountNO = obj.ToString();
+
+                    obj = dg.Rows[e.RowIndex].Cells["InvoiceCancel"].Value;
+                    if (obj != null && obj != DBNull.Value)
+                        strInvoiceCancel = obj.ToString();
+
+                    obj = dg.Rows[e.RowIndex].Cells["InvoiceType"].Value;
+                    if (obj != null && obj != DBNull.Value)
+                        strInvoiceType = obj.ToString();
+
+                    obj = dg.Rows[e.RowIndex].Cells["InvoiceTotalFeeMoney"].Value;
+                    if (Information.IsNumeric(obj))
+                        decInvoiceTotalFeeMoney = Convert.ToDecimal(obj);
+
+                    obj = dg.Rows[e.RowIndex].Cells["InvoiceType"].Value;
+                    if (obj != null && obj != DBNull.Value)
+                        strInvoiceType = obj.ToString();
+
+                    obj = dg.Rows[e.RowIndex].Cells["InvoiceBatchID"].Value;
+                    if (obj != null && obj != DBNull.Value)
+                        strInvoiceBatchID = obj.ToString();
+
+                    obj = dg.Rows[e.RowIndex].Cells["InvoiceNO"].Value;
+                    if (obj != null && obj != DBNull.Value)
+                        strInvoiceNO = obj.ToString();
+
+                    obj = dg.Rows[e.RowIndex].Cells["Memo"].Value;
+                    if (obj != null && obj != DBNull.Value)
+                        strMemo = obj.ToString();
+
+                    FrmFinance_Invoice_Cancel frm = new FrmFinance_Invoice_Cancel();
+                    frm.strLoginID = strLoginID;
+                    frm.strLoginName = strLoginName;
+                    frm.strWaterUserName = strWaterUserName;
+                    frm.strWaterUserAddressAndTel = strWaterUserAddressAndTel;
+                    frm.strWaterUserFPTaxNO = strWaterUserFPTaxNO;
+                    frm.strWaterUserFPBankNameAndAccountNO = strWaterUserFPBankNameAndAccountNO;
+
+                    frm.strCompanyName = strCompanyName;
+                    frm.strCompanyAddressAndTel = strCompanyAddressAndTel;
+                    frm.strCompanyBankNameAndAccountNO = strCompanyBankNameAndAccountNO;
+                    frm.strCompanyTaxNO = strCompanyTaxNO;
+                    frm.strCompanyPayee = strCompanyPayee;
+                    frm.strCompanyChecker = strCompanyChecker;
+
+                    frm.strInvoiceType = strInvoiceType;
+                    frm.strInvoiceCancel = strInvoiceCancel;
+
+                    frm.decWorkResolveSumFee = decInvoiceTotalFeeMoney;
+                    frm.strInvoiceBatchID = strInvoiceBatchID;
+                    frm.strInvoiceNO = strInvoiceNO;
+                    frm.strMemo = strMemo;
+
+                    frm.dtFPDetail = dtInvoiceDetail;
+
+                    frm.strInvoicePrintID = strInvoicePrintID;
+                    frm.strChargeID = strChargeID;
+                    frm.Owner = this;
+                    frm.ShowDialog();
+
+                    if (isModify)
+                    {
+                        ShowData();
+                    }
                 }
                 else
                 {

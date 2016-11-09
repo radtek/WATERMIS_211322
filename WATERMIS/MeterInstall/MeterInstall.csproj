@@ -49,6 +49,10 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BASEFUNCTION, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WATERMIS\bin\Debug\BASEFUNCTION.dll</HintPath>
+    </Reference>
     <Reference Include="FastReport, Version=2014.4.8.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\WATERMIS\bin\x86\Debug\FastReport.dll</HintPath>
@@ -296,10 +300,6 @@
     <None Include="Resources\add.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BASEFUNCTION\BASEFUNCTION.csproj">
-      <Project>{ACBD9B62-1323-4264-A4D6-B600705D9228}</Project>
-      <Name>BASEFUNCTION</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{F1DAC157-5CF0-4ABE-AB30-E1B0EADA5354}</Project>
       <Name>Common</Name>
