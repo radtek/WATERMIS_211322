@@ -153,7 +153,32 @@ namespace MeterInstall
 
         private void FileAgree_Click(object sender, EventArgs e)
         {
+            if (!string.IsNullOrEmpty( FileAgree.Text))
+            {
+                FrmFileShowDel frm = new FrmFileShowDel();
+                frm.UnsubscribeID = FileAgree.Text;
+                frm.ShowDialog();
+            }
+        }
 
+        private void FileReply_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(FileReply.Text))
+            {
+                FrmFileShowDel frm = new FrmFileShowDel();
+                frm.UnsubscribeID = FileReply.Text;
+                frm.ShowDialog();
+            }
+        }
+
+        private void FileApply_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(FileApply.Text))
+            {
+                FrmFileShowDel frm = new FrmFileShowDel();
+                frm.UnsubscribeID = FileApply.Text;
+                frm.ShowDialog();
+            }
         }
     }
 }

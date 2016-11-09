@@ -154,6 +154,7 @@ AND MW.[State]=1 AND MWF.[State]=1 AND ISNULL(MWF.ChargeID,'')<>N'') AND CHARGEW
                          break;
                      case 2://作废退款
                          FrmFinance_RefundShow2 frm2 = new FrmFinance_RefundShow2();
+                         frm2.TaskID = dgList.CurrentRow.Cells["TaskID"].Value.ToString();
                          if (frm2.ShowDialog() == DialogResult.OK)
                          {
                              Refund2();

@@ -1,6 +1,6 @@
-﻿namespace SysControl
+﻿namespace WATERMIS
 {
-    partial class FrmFileShowDel
+    partial class FrmHelp
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmHelp));
             this.WB1 = new System.Windows.Forms.WebBrowser();
             this.SuspendLayout();
             // 
@@ -37,21 +38,23 @@
             this.WB1.Location = new System.Drawing.Point(0, 0);
             this.WB1.MinimumSize = new System.Drawing.Size(20, 20);
             this.WB1.Name = "WB1";
-            this.WB1.Size = new System.Drawing.Size(667, 618);
-            this.WB1.TabIndex = 1;
+            this.WB1.ScrollBarsEnabled = false;
+            this.WB1.Size = new System.Drawing.Size(504, 611);
+            this.WB1.TabIndex = 0;
             this.WB1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.WB1_DocumentCompleted);
             // 
-            // FrmFileShowDel
+            // FrmHelp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(667, 618);
+            this.ClientSize = new System.Drawing.Size(504, 611);
             this.Controls.Add(this.WB1);
-            this.Name = "FrmFileShowDel";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "图片查看删除";
-            this.Load += new System.EventHandler(this.FrmFileShowDel_Load);
-            this.Shown += new System.EventHandler(this.FrmFileShowDel_Shown);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "FrmHelp";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.Text = "帮助";
+            this.Load += new System.EventHandler(this.FrmHelp_Load);
+            this.Shown += new System.EventHandler(this.FrmHelp_Shown);
             this.ResumeLayout(false);
 
         }

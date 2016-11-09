@@ -1066,5 +1066,11 @@ namespace WATERMIS
             FrmWorkTask_Manage frm = new FrmWorkTask_Manage();
             GoTo(this, frm, true);
         }
+
+        private void 帮助ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmHelp frm = new FrmHelp();
+            frm.Show();
+        }
     }
 }

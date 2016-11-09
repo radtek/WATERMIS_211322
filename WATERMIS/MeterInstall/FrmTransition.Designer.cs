@@ -189,6 +189,7 @@
             this.FileApply.ReadOnly = true;
             this.FileApply.Size = new System.Drawing.Size(247, 21);
             this.FileApply.TabIndex = 121;
+            this.FileApply.Click += new System.EventHandler(this.FileApply_Click);
             // 
             // FileReply
             // 
@@ -197,6 +198,7 @@
             this.FileReply.ReadOnly = true;
             this.FileReply.Size = new System.Drawing.Size(274, 21);
             this.FileReply.TabIndex = 120;
+            this.FileReply.Click += new System.EventHandler(this.FileReply_Click);
             // 
             // FileAgree
             // 
