@@ -402,7 +402,7 @@ namespace BASEFUNCTION
                             }
                         }
                         return strReturnID;
-                    case "Meter_WorkResolveFee_Invoice"://业扩发票表 as 201512290001000001 18位
+                    case "METER_WORKRESOLVEFEE_INVOICE"://业扩发票表 as 201512290001000001 18位
                         if (intLogID == 4)
                         {
                             strSQL = "SELECT MAX(RIGHT(InvoicePrintID,4)) FROM Meter_WorkResolveFee_Invoice WHERE LEFT(InvoicePrintID,12)='" + strDate + strLogID + "'";

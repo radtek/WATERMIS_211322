@@ -11,6 +11,13 @@ namespace MODEL
         private string _InvoiceBatchID;
         private string _InvoiceBatchName;
         private string _InvoiceNO;
+
+        private string _WaterUserID;
+        public string WaterUserID
+        {
+            get { return _WaterUserID; }
+            set { _WaterUserID = value; }
+        }
         private string _WaterUserName;
         private string _WaterUserAddress;
         private string _WaterUserFPTaxNO;
@@ -19,14 +26,13 @@ namespace MODEL
         private string _Table_Name;
         private string _InvoiceFeeDepID;
         private string _InvoiceFeeDepName;
-
         public string InvoiceFeeDepName
         {
             get { return _InvoiceFeeDepName; }
             set { _InvoiceFeeDepName = value; }
         }
-        private decimal _InvoiceTotalFeeMoney;
 
+        private decimal _InvoiceTotalFeeMoney;
         public decimal InvoiceTotalFeeMoney
         {
             get { return _InvoiceTotalFeeMoney; }
@@ -35,35 +41,33 @@ namespace MODEL
 
 
         private string _CompanyName;
-
         public string CompanyName
         {
             get { return _CompanyName; }
             set { _CompanyName = value; }
         }
         private string _CompanyAddress;
-
         public string CompanyAddress
         {
             get { return _CompanyAddress; }
             set { _CompanyAddress = value; }
         }
-        private string _CompanyFPTaxNO;
 
+        private string _CompanyFPTaxNO;
         public string CompanyFPTaxNO
         {
             get { return _CompanyFPTaxNO; }
             set { _CompanyFPTaxNO = value; }
         }
-        private string _CompanyFPBankNameAndAccountNO;
 
+        private string _CompanyFPBankNameAndAccountNO;
         public string CompanyFPBankNameAndAccountNO
         {
             get { return _CompanyFPBankNameAndAccountNO; }
             set { _CompanyFPBankNameAndAccountNO = value; }
         }
-        private string _Payee;
 
+        private string _Payee;
         public string Payee
         {
             get { return _Payee; }
@@ -261,6 +265,19 @@ namespace MODEL
             set
             {
                 _InvoicePrintWorker = value;
+            }
+        }
+
+        private string _Memo;
+        public string Memo
+        {
+            get
+            {
+                return _Memo;
+            }
+            set
+            {
+                _Memo = value;
             }
         }
 

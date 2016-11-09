@@ -64,12 +64,12 @@
             this.txtWaterUserFPTaxNO = new System.Windows.Forms.TextBox();
             this.txtWaterUserName = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.rbZZ = new System.Windows.Forms.RadioButton();
+            this.rbNormal = new System.Windows.Forms.RadioButton();
             this.txtInvoiceNO = new System.Windows.Forms.TextBox();
             this.cmbBatch = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.rbNormal = new System.Windows.Forms.RadioButton();
-            this.rbZZ = new System.Windows.Forms.RadioButton();
             this.toolStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -178,7 +178,7 @@
             // 
             this.txtInvoiceOpener.AcceptsReturn = true;
             this.txtInvoiceOpener.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtInvoiceOpener.Location = new System.Drawing.Point(638, 174);
+            this.txtInvoiceOpener.Location = new System.Drawing.Point(638, 176);
             this.txtInvoiceOpener.Name = "txtInvoiceOpener";
             this.txtInvoiceOpener.Size = new System.Drawing.Size(111, 23);
             this.txtInvoiceOpener.TabIndex = 3;
@@ -187,7 +187,7 @@
             // 
             this.txtChecker.AcceptsReturn = true;
             this.txtChecker.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtChecker.Location = new System.Drawing.Point(345, 174);
+            this.txtChecker.Location = new System.Drawing.Point(345, 176);
             this.txtChecker.Name = "txtChecker";
             this.txtChecker.Size = new System.Drawing.Size(111, 23);
             this.txtChecker.TabIndex = 3;
@@ -196,7 +196,7 @@
             // 
             this.txtPayee.AcceptsReturn = true;
             this.txtPayee.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtPayee.Location = new System.Drawing.Point(95, 174);
+            this.txtPayee.Location = new System.Drawing.Point(95, 176);
             this.txtPayee.Name = "txtPayee";
             this.txtPayee.Size = new System.Drawing.Size(111, 23);
             this.txtPayee.TabIndex = 3;
@@ -205,7 +205,7 @@
             // 
             this.txtCompanyBankNameAndAccountNO.AcceptsReturn = true;
             this.txtCompanyBankNameAndAccountNO.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtCompanyBankNameAndAccountNO.Location = new System.Drawing.Point(166, 138);
+            this.txtCompanyBankNameAndAccountNO.Location = new System.Drawing.Point(166, 141);
             this.txtCompanyBankNameAndAccountNO.Name = "txtCompanyBankNameAndAccountNO";
             this.txtCompanyBankNameAndAccountNO.Size = new System.Drawing.Size(355, 23);
             this.txtCompanyBankNameAndAccountNO.TabIndex = 3;
@@ -213,7 +213,7 @@
             // txtCompanyAddress
             // 
             this.txtCompanyAddress.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtCompanyAddress.Location = new System.Drawing.Point(166, 108);
+            this.txtCompanyAddress.Location = new System.Drawing.Point(166, 110);
             this.txtCompanyAddress.Name = "txtCompanyAddress";
             this.txtCompanyAddress.Size = new System.Drawing.Size(355, 23);
             this.txtCompanyAddress.TabIndex = 3;
@@ -221,7 +221,7 @@
             // txtCompanyFPTaxNO
             // 
             this.txtCompanyFPTaxNO.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtCompanyFPTaxNO.Location = new System.Drawing.Point(166, 78);
+            this.txtCompanyFPTaxNO.Location = new System.Drawing.Point(166, 79);
             this.txtCompanyFPTaxNO.Name = "txtCompanyFPTaxNO";
             this.txtCompanyFPTaxNO.Size = new System.Drawing.Size(355, 23);
             this.txtCompanyFPTaxNO.TabIndex = 3;
@@ -404,6 +404,30 @@
             this.panel1.Size = new System.Drawing.Size(877, 80);
             this.panel1.TabIndex = 0;
             // 
+            // rbZZ
+            // 
+            this.rbZZ.AutoSize = true;
+            this.rbZZ.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.rbZZ.Location = new System.Drawing.Point(116, 55);
+            this.rbZZ.Name = "rbZZ";
+            this.rbZZ.Size = new System.Drawing.Size(81, 18);
+            this.rbZZ.TabIndex = 114;
+            this.rbZZ.Text = "专用发票";
+            this.rbZZ.UseVisualStyleBackColor = true;
+            // 
+            // rbNormal
+            // 
+            this.rbNormal.AutoSize = true;
+            this.rbNormal.Checked = true;
+            this.rbNormal.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.rbNormal.Location = new System.Drawing.Point(20, 55);
+            this.rbNormal.Name = "rbNormal";
+            this.rbNormal.Size = new System.Drawing.Size(81, 18);
+            this.rbNormal.TabIndex = 113;
+            this.rbNormal.TabStop = true;
+            this.rbNormal.Text = "普通发票";
+            this.rbNormal.UseVisualStyleBackColor = true;
+            // 
             // txtInvoiceNO
             // 
             this.txtInvoiceNO.BackColor = System.Drawing.Color.LightYellow;
@@ -442,30 +466,6 @@
             this.label1.Size = new System.Drawing.Size(77, 14);
             this.label1.TabIndex = 0;
             this.label1.Text = "发票号码：";
-            // 
-            // rbNormal
-            // 
-            this.rbNormal.AutoSize = true;
-            this.rbNormal.Checked = true;
-            this.rbNormal.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rbNormal.Location = new System.Drawing.Point(20, 55);
-            this.rbNormal.Name = "rbNormal";
-            this.rbNormal.Size = new System.Drawing.Size(81, 18);
-            this.rbNormal.TabIndex = 113;
-            this.rbNormal.TabStop = true;
-            this.rbNormal.Text = "普通发票";
-            this.rbNormal.UseVisualStyleBackColor = true;
-            // 
-            // rbZZ
-            // 
-            this.rbZZ.AutoSize = true;
-            this.rbZZ.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rbZZ.Location = new System.Drawing.Point(116, 55);
-            this.rbZZ.Name = "rbZZ";
-            this.rbZZ.Size = new System.Drawing.Size(81, 18);
-            this.rbZZ.TabIndex = 114;
-            this.rbZZ.Text = "专用发票";
-            this.rbZZ.UseVisualStyleBackColor = true;
             // 
             // FrmFinance_Invoice_PrintShow
             // 

@@ -149,17 +149,17 @@ namespace BLL
            StringBuilder str = new StringBuilder();
            str.Append("INSERT INTO Meter_WorkResolveFee_Invoice(InvoicePrintID,ChargeID,INVOICEBATCHID,INVOICEBATCHNAME,INVOICENO,");
            str.Append("WaterUserName,WaterUserAddress,WaterUserFPTaxNO,WaterUserFPBankNameAndAccountNO,Table_Name_CH,InvoiceFeeDepID,InvoiceFeeDepName,");
-           str.Append("InvoiceTotalFeeMoney,CompanyName,CompanyAddress,CompanyFPTaxNO,CompanyFPBankNameAndAccountNO,Payee,Checker,InvoicePrintWorkerID,InvoicePrintWorker,)");
-           str.Append("InvoicePrintDateTime,InvoiceType,InvoiceCancel) ");
+           str.Append("InvoiceTotalFeeMoney,CompanyName,CompanyAddress,CompanyFPTaxNO,CompanyFPBankNameAndAccountNO,Payee,Checker,InvoicePrintWorkerID,InvoicePrintWorker,");
+           str.Append("InvoicePrintDateTime,InvoiceType,InvoiceCancel,Memo,WaterUserID) ");
 
            str.Append("VALUES(@InvoicePrintID,@ChargeID,@INVOICEBATCHID,@INVOICEBATCHNAME,@INVOICENO,");
            str.Append("@WaterUserName,@WaterUserAddress,@WaterUserFPTaxNO,@WaterUserFPBankNameAndAccountNO,@Table_Name_CH,@InvoiceFeeDepID,@InvoiceFeeDepName,");
-           str.Append("@InvoiceTotalFeeMoney,@CompanyName,@CompanyAddress,@CompanyFPTaxNO,@CompanyFPBankNameAndAccountNO,@Payee,@Checker,@InvoicePrintWorkerID,@InvoicePrintWorker,)");
-           str.Append("GETDATE(),@InvoiceType,'0')");
+           str.Append("@InvoiceTotalFeeMoney,@CompanyName,@CompanyAddress,@CompanyFPTaxNO,@CompanyFPBankNameAndAccountNO,@Payee,@Checker,@InvoicePrintWorkerID,@InvoicePrintWorker,");
+           str.Append("GETDATE(),@InvoiceType,'0',@Memo,@WaterUserID)");
            SqlParameter[] para =
            {
                new SqlParameter("@InvoicePrintID",SqlDbType.VarChar,30),
-               new SqlParameter("@ChargeID",SqlDbType.UniqueIdentifier),
+               new SqlParameter("@ChargeID",SqlDbType.VarChar,30),
                new SqlParameter("@INVOICEBATCHID",SqlDbType.VarChar,30),
                new SqlParameter("@INVOICEBATCHNAME",SqlDbType.VarChar,50),
                new SqlParameter("@INVOICENO",SqlDbType.VarChar,30),
@@ -179,7 +179,10 @@ namespace BLL
                new SqlParameter("@Checker",SqlDbType.VarChar,20),
                new SqlParameter("@InvoicePrintWorkerID",SqlDbType.VarChar,10),
                new SqlParameter("@InvoicePrintWorker",SqlDbType.VarChar,20),
-               new SqlParameter("@InvoiceType",SqlDbType.VarChar,10)
+               new SqlParameter("@InvoiceType",SqlDbType.VarChar,10),
+               new SqlParameter("@Memo",SqlDbType.VarChar,100),
+               new SqlParameter("@WaterUserID",SqlDbType.VarChar,100)
+
            };
            para[0].Value = ModelMeter_WorkResolveFee_Invoice.InvoicePrintID;
            para[1].Value = ModelMeter_WorkResolveFee_Invoice.ChargeID;
@@ -203,11 +206,100 @@ namespace BLL
            para[19].Value = ModelMeter_WorkResolveFee_Invoice.InvoicePrintWorkerID;
            para[20].Value = ModelMeter_WorkResolveFee_Invoice.InvoicePrintWorker;
            para[21].Value = ModelMeter_WorkResolveFee_Invoice.InvoiceType;
+           para[22].Value = ModelMeter_WorkResolveFee_Invoice.Memo;
+           para[23].Value = ModelMeter_WorkResolveFee_Invoice.WaterUserID;
 
            if (DBUtility.DbHelperSQL.ExecuteSql(str.ToString(), para) > 0)
                return true;
            else
                return false;
+       }
+       /// <summary>
+       /// 插入发票项目记录
+       /// </summary>
+       /// <param name="MODELCHARGEINVOICEPRINT"></param>
+       /// <returns></returns>
+       public bool InsertDetail(ModelMeter_WorkResolveFee_Invoice_Detail ModelMeter_WorkResolveFee_Invoice_Detail)
+       {
+           StringBuilder str = new StringBuilder();
+           str.Append("INSERT INTO Meter_WorkResolveFee_Invoice_Detail(InvoicePrintID,DetailIndex,FeeItem,FeeItemInvoiceTitle,");
+           str.Append("Quatity,TaxPercent,TaxMoney,TotalMoney,Units) ");
+
+           str.Append("VALUES(@InvoicePrintID,@DetailIndex,@FeeItem,@FeeItemInvoiceTitle,");
+           str.Append("@Quatity,@TaxPercent,@TaxMoney,@TotalMoney,@Units) ");
+           SqlParameter[] para =
+           {
+               new SqlParameter("@InvoicePrintID",SqlDbType.VarChar,30),
+               new SqlParameter("@DetailIndex",SqlDbType.Int),
+               new SqlParameter("@FeeItem",SqlDbType.VarChar,30),
+               new SqlParameter("@FeeItemInvoiceTitle",SqlDbType.VarChar,30),
+               new SqlParameter("@Quatity",SqlDbType.Decimal),
+               new SqlParameter("@TaxPercent",SqlDbType.Decimal),
+               new SqlParameter("@TaxMoney",SqlDbType.Decimal),               
+               new SqlParameter("@TotalMoney",SqlDbType.Decimal),
+               new SqlParameter("@Units",SqlDbType.VarChar,30)
+           };
+           para[0].Value = ModelMeter_WorkResolveFee_Invoice_Detail.InvoicePrintID;
+           para[1].Value = ModelMeter_WorkResolveFee_Invoice_Detail.DetailIndex;
+           para[2].Value = ModelMeter_WorkResolveFee_Invoice_Detail.FeeItem;
+           para[3].Value = ModelMeter_WorkResolveFee_Invoice_Detail.FeeItemInvoiceTitle;
+           para[4].Value = ModelMeter_WorkResolveFee_Invoice_Detail.Quatity;
+           para[5].Value = ModelMeter_WorkResolveFee_Invoice_Detail.TaxPercent;
+           para[6].Value = ModelMeter_WorkResolveFee_Invoice_Detail.TaxMoney;
+           para[7].Value = ModelMeter_WorkResolveFee_Invoice_Detail.TotalMoney;
+           para[8].Value = ModelMeter_WorkResolveFee_Invoice_Detail.Units;
+
+           if (DBUtility.DbHelperSQL.ExecuteSql(str.ToString(), para) > 0)
+               return true;
+           else
+               return false;
+       }
+
+        /// <summary>
+        /// 根据发票ID删除发票及发票明细记录
+        /// </summary>
+        /// <param name="strID"></param>
+        /// <returns></returns>
+       public bool Delete(string strID)
+       {
+           StringBuilder str = new StringBuilder();
+           str.Append("DELETE FROM Meter_WorkResolveFee_Invoice WHERE InvoicePrintID='" + strID + "' \n");
+           str.Append("DELETE FROM Meter_WorkResolveFee_Invoice_Detail WHERE InvoicePrintID='" + strID + "'");
+
+           if (DBUtility.DbHelperSQL.ExecuteSql(str.ToString()) > 0)
+               return true;
+           else
+               return false;
+       }
+        /// <summary>
+        /// 自定义执行语句
+        /// </summary>
+        /// <param name="strSQL"></param>
+        /// <returns></returns>
+       public object GetSingle(string strSQL)
+       {
+           object obj = DBUtility.DbHelperSQL.GetSingle(strSQL);
+           return obj;
+       }
+       /// <summary>
+       /// 自定义执行语句
+       /// </summary>
+       /// <param name="strSQL"></param>
+       /// <returns></returns>
+       public int ExcuteSQL(string strSQL)
+       {
+           int intRows = DBUtility.DbHelperSQL.ExecuteSql(strSQL);
+           return intRows;
+       }
+       /// <summary>
+       /// 自定义查询语句
+       /// </summary>
+       /// <param name="strSQL"></param>
+       /// <returns></returns>
+       public DataTable Query(string strSQL)
+       {
+           DataTable dt = DBUtility.DbHelperSQL.Query(strSQL).Tables[0];
+           return dt;
        }
     }
 }

@@ -402,7 +402,7 @@ namespace FinanceOS
                     {
                         FastReport.Report report1 = new FastReport.Report();
                         // load the existing report
-                        report1.Load(Application.StartupPath + @"\PRINTModel\收据模板\业扩决算收据模板.frx");
+                        report1.Load(Application.StartupPath + @"\PRINTModel\业扩模板\业扩决算收据模板.frx");
 
                         (report1.FindObject("txtReceiptNO") as FastReport.TextObject).Text = "NO." + RECEIPTNO.Text;
                         (report1.FindObject("txtWaterUserNO") as FastReport.TextObject).Text = "用 户 号:" + waterUserId.Text;

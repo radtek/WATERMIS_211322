@@ -324,7 +324,7 @@ AND MWR.TaskID=@TaskID AND PointSort=@LastPoingSort) M WHERE FEE<>0";
                     try
                     {
                         // load the existing report
-                        report1.Load(Application.StartupPath + @"\PRINTModel\收据模板\业扩预算收据模板.frx");
+                        report1.Load(Application.StartupPath + @"\PRINTModel\业扩模板\业扩预算收据模板.frx");
 
                         (report1.FindObject("txtWaterUserNO") as FastReport.TextObject).Text = "用 户 号:" + _waterUserId;
                         (report1.FindObject("txtSD") as FastReport.TextObject).Text = "受理编号:" + _SD;

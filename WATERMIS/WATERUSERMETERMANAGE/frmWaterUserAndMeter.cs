@@ -2342,6 +2342,8 @@ namespace WATERUSERMETERMANAGE
                     MODELwaterMeterOld.waterMeterState = "7";
                 else if (obj.ToString() == "待审核")
                     MODELwaterMeterOld.waterMeterState = "8";
+                else if (obj.ToString() == "待拆迁")
+                    MODELwaterMeterOld.waterMeterState = "9";
             }
 
 //            正常

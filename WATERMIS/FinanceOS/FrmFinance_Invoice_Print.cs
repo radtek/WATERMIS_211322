@@ -149,9 +149,8 @@ FROM         dbo.Meter_WorkTask AS MWK LEFT JOIN View_WorkBase VW ON MWK.TaskID=
                       dbo.Meter_WorkResolve AS MWR ON MWK.TaskID = MWR.TaskID AND MWK.PointSort > MWR.PointSort INNER JOIN
                       dbo.Meter_WorkResolveFee AS MWF ON MWR.ResolveID = MWF.ResolveID,Meter_Charge MC
 WHERE     (MWR.YS = 1) AND (MWF.Fee <> 0) AND (MWK.State =5) AND (MWF.IsFinal = 0) 
-AND MWF.FeeID NOT IN (SELECT FeeID FROM Meter_FeeItmes WHERE IsPrestore=1) AND MWF.ChargeID=MC.CHARGEID AND ISNULL(MC.INVOICEPRINTSIGN,'')<>1
-GROUP BY MWK.TaskID, MWF.State, MWK.PointTime, MWK.AcceptDate, MWF.CHARGEWORKERID, MWF.CHARGEWORKERNAME, MWF.ChargeDate, MWF.ChargeID, MWF.IsFinal, MWR.DepartementID, 
-                      MWK.State,VW.ID,VW.SD,VW.waterUserId,VW.waterUserName,VW.waterUserAddress,VW.waterPhone,VW.TableName,VW.Table_Name_CH ");
+AND MWF.FeeID NOT IN (SELECT FeeID FROM Meter_FeeItmes WHERE IsPrestore=1) AND MWF.ChargeID=MC.CHARGEID AND ISNULL(MC.INVOICEPRINTSIGN,'')<>1 ");
+
 
             if (!CB_ID.SelectedValue.ToString().Equals(""))
             {
@@ -159,17 +158,21 @@ GROUP BY MWK.TaskID, MWF.State, MWK.PointTime, MWK.AcceptDate, MWF.CHARGEWORKERI
             }
             if (!CB_Month.SelectedValue.ToString().Equals(""))
             {
-                sb.AppendFormat(" AND VF.ChargeMonth='{0}'", CB_Month.SelectedValue);
+                sb.AppendFormat(" AND CAST(YEAR(ChargeDate) AS VARCHAR)+RIGHT(REPLICATE('0',2)+CAST(MONTH(ChargeDate) AS VARCHAR),2)='{0}'", CB_Month.SelectedValue);
             }
           
             if (!TB_Keys.Text.Equals(""))
             {
-                sb.AppendFormat(" AND (VW.waterUserName LIKE '%{0}%' OR VW.waterUserId LIKE '%{0}%' OR VW.SD LIKE '%{0}%')", TB_Keys.Text.Trim());
-            }
+                sb.AppendFormat(" AND (VW.waterUserName LIKE '%{0}%' OR VW.waterUserId LIKE '%{0}%' OR VW.SD LIKE '%{0}%' OR waterUserAddress LIKE '%{0}%')", TB_Keys.Text.Trim());
+            } 
+            
+            sb.Append(@" GROUP BY MWK.TaskID, MWF.State, MWK.PointTime, MWK.AcceptDate, MWF.CHARGEWORKERID, MWF.CHARGEWORKERNAME, MWF.ChargeDate, MWF.ChargeID, MWF.IsFinal, MWR.DepartementID, 
+                      MWK.State,VW.ID,VW.SD,VW.waterUserId,VW.waterUserName,VW.waterUserAddress,VW.waterPhone,VW.TableName,VW.Table_Name_CH ");
 
             uC_DataGridView_Page1.Fields = new string[,] { { "rowNum", "序号" }, 
                                                            { "Table_Name_CH", "业务类型" }, 
                                                            { "SD", "流水号" }, 
+                                                           { "DepartementName", "所属部门" },
                                                            { "waterUserId", "用户ID" }, 
                                                            { "waterUserName", "户名" }, 
                                                            { "waterUserAddress", "地址" }, 
@@ -203,6 +206,8 @@ GROUP BY MWK.TaskID, MWF.State, MWK.PointTime, MWK.AcceptDate, MWF.CHARGEWORKERI
 
         private void uC_DataGridView_Page1_CellDoubleClickEvents(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+                return;
             DataGridView dgList = (DataGridView)sender;
             if (dgList.CurrentRow != null)
             {
@@ -258,7 +263,7 @@ GROUP BY MWK.TaskID, MWF.State, MWK.PointTime, MWK.AcceptDate, MWF.CHARGEWORKERI
                 {
                     strChargeID = obj.ToString();
                     string strGetSQL = @"SELECT * FROM Meter_WorkResolveFee A INNER JOIN Meter_FeeItmes B
-                                    ON  A.FeeID=B.FeeID AND IsPrestore<>'1' AND ChargeID='"+strChargeID+"'";
+                                    ON  A.FeeID=B.FeeID AND IsPrestore<>'1' AND IsFinal='0' AND A.[State]='1' AND ChargeID='" + strChargeID + "'";
 
                     //获取待打发票明细
                     DataTable dtFeeDetail = new SqlServerHelper().GetDateTableBySql(strGetSQL);

@@ -178,6 +178,11 @@ namespace FinanceOS
         /// </summary>
         public DataTable dtFPDetail = new DataTable();
 
+        /// <summary>
+        /// 本次收费应收总金额，与发票金额比对。如果已打发票金额>=应收总金额,则更新收费表里的发票打印标志。
+        /// </summary>
+        private decimal decWorkResolveSumFee = 0;
+
         private void FrmFinance_Invoice_PrintShow_Load(object sender, EventArgs e)
         {
             //收费记录表：Meter_Charge
@@ -238,6 +243,9 @@ namespace FinanceOS
 
                 decSumMoney += decMoney;
             }
+
+            decWorkResolveSumFee = decSumMoney;
+
             txtCapMoney.Text = RMBToCapMoney.CmycurD(decSumMoney);
             txtSumMoney.Text = decSumMoney.ToString("F2");
         }
@@ -280,20 +288,22 @@ namespace FinanceOS
                         txtInvoiceNO.Text = (Convert.ToInt64(objInvoiceNO) + 1).ToString().PadLeft(8, '0');
                     }
                 }
+                else
+                    txtInvoiceNO.Text = "00000001";
             }
         }
 
         private void dgList_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.RowIndex < 0 || e.ColumnIndex < 0)
-                return;
+            //if (e.RowIndex < 0 || e.ColumnIndex < 0)
+            //    return;
 
-            if (e.Button == MouseButtons.Right)
-            {
-                dgList.ClearSelection();
-                dgList.CurrentCell = dgList.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                contextMenuStrip1.Show(MousePosition.X, MousePosition.Y);
-            }
+            //if (e.Button == MouseButtons.Right)
+            //{
+            //    dgList.ClearSelection();
+            //    dgList.CurrentCell = dgList.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            //    contextMenuStrip1.Show(MousePosition.X, MousePosition.Y);
+            //}
         }
 
         private void dgList_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -523,45 +533,111 @@ namespace FinanceOS
                         }
                         bool isOK = CloseInvKey();
 
-                        //发票打印成功后，开始处理数据库部分
-                        ModelMeter_WorkResolveFee_Invoice ModelMeter_WorkResolveFee_Invoice = new ModelMeter_WorkResolveFee_Invoice();
-                        ModelMeter_WorkResolveFee_Invoice.InvoicePrintID = GETTABLEID.GetTableID(strLoginID, "Meter_WorkResolveFee_Invoice");
-                        ModelMeter_WorkResolveFee_Invoice.ChargeID = ChargeID;
-                        ModelMeter_WorkResolveFee_Invoice.InvoiceBatchID = cmbBatch.SelectedValue.ToString();
-                        ModelMeter_WorkResolveFee_Invoice.InvoiceBatchName = cmbBatch.Text;
-                        ModelMeter_WorkResolveFee_Invoice.InvoiceNO = txtInvoiceNO.Text;
-                        ModelMeter_WorkResolveFee_Invoice.WaterUserName = txtWaterUserName.Text;
-                        ModelMeter_WorkResolveFee_Invoice.WaterUserAddress = txtWaterUserAddress.Text;
-                        ModelMeter_WorkResolveFee_Invoice.WaterUserFPTaxNO = txtWaterUserFPTaxNO.Text;
-                        ModelMeter_WorkResolveFee_Invoice.WaterUserFPBankNameAndAccountNO = txtWaterUserBankAccount.Text;
-                        ModelMeter_WorkResolveFee_Invoice.Table_Name_CH = strTable_Name_CH;
-                        ModelMeter_WorkResolveFee_Invoice.InvoiceFeeDepID = strFeeDepID;
-                        ModelMeter_WorkResolveFee_Invoice.InvoiceFeeDepName = strFeeDepName;
-                        ModelMeter_WorkResolveFee_Invoice.InvoiceTotalFeeMoney = Convert.ToDecimal(txtSumMoney.Text);
-                        ModelMeter_WorkResolveFee_Invoice.CompanyName = strCompanyName;
-                        ModelMeter_WorkResolveFee_Invoice.CompanyAddress = strCompanyAddressAndTel;
-                        ModelMeter_WorkResolveFee_Invoice.CompanyFPTaxNO = strCompanyTaxNO;
-                        ModelMeter_WorkResolveFee_Invoice.CompanyFPBankNameAndAccountNO = strCompanyBankNameAndAccountNO;
-                        ModelMeter_WorkResolveFee_Invoice.Payee = strCompanyPayee;
-                        ModelMeter_WorkResolveFee_Invoice.Checker = strCompanyChecker;
-                        ModelMeter_WorkResolveFee_Invoice.InvoicePrintWorkerID = strLoginID;
-                        ModelMeter_WorkResolveFee_Invoice.InvoicePrintWorker = strLoginName;
-                        ModelMeter_WorkResolveFee_Invoice.InvoiceType = rbNormal.Checked?"1":"2"; //普通发票还是专用发票
-                        if (BllMeter_WorkResolveFee_Invoice_Detail.Insert(ModelMeter_WorkResolveFee_Invoice))
+                        try
                         {
-                            for (int i = 0; i < dgList.Rows.Count; i++)
+                            //发票打印成功后，开始处理数据库部分
+                            ModelMeter_WorkResolveFee_Invoice ModelMeter_WorkResolveFee_Invoice = new ModelMeter_WorkResolveFee_Invoice();
+                            ModelMeter_WorkResolveFee_Invoice.InvoicePrintID = GETTABLEID.GetTableID(strLoginID, "Meter_WorkResolveFee_Invoice");
+                            ModelMeter_WorkResolveFee_Invoice.ChargeID = ChargeID;
+                            ModelMeter_WorkResolveFee_Invoice.InvoiceBatchID = cmbBatch.SelectedValue.ToString();
+                            ModelMeter_WorkResolveFee_Invoice.InvoiceBatchName = cmbBatch.Text;
+                            ModelMeter_WorkResolveFee_Invoice.InvoiceNO = txtInvoiceNO.Text;
+                            ModelMeter_WorkResolveFee_Invoice.WaterUserID = strWaterUserID;
+                            ModelMeter_WorkResolveFee_Invoice.WaterUserName = txtWaterUserName.Text;
+                            ModelMeter_WorkResolveFee_Invoice.WaterUserAddress = txtWaterUserAddress.Text;
+                            ModelMeter_WorkResolveFee_Invoice.WaterUserFPTaxNO = txtWaterUserFPTaxNO.Text;
+                            ModelMeter_WorkResolveFee_Invoice.WaterUserFPBankNameAndAccountNO = txtWaterUserBankAccount.Text;
+                            ModelMeter_WorkResolveFee_Invoice.Table_Name_CH = strTable_Name_CH;
+                            ModelMeter_WorkResolveFee_Invoice.InvoiceFeeDepID = strFeeDepID;
+                            ModelMeter_WorkResolveFee_Invoice.InvoiceFeeDepName = strFeeDepName;
+                            ModelMeter_WorkResolveFee_Invoice.InvoiceTotalFeeMoney = Convert.ToDecimal(txtSumMoney.Text);
+                            ModelMeter_WorkResolveFee_Invoice.CompanyName = strCompanyName;
+                            ModelMeter_WorkResolveFee_Invoice.CompanyAddress = strCompanyAddressAndTel;
+                            ModelMeter_WorkResolveFee_Invoice.CompanyFPTaxNO = strCompanyTaxNO;
+                            ModelMeter_WorkResolveFee_Invoice.CompanyFPBankNameAndAccountNO = strCompanyBankNameAndAccountNO;
+                            ModelMeter_WorkResolveFee_Invoice.Payee = strCompanyPayee;
+                            ModelMeter_WorkResolveFee_Invoice.Checker = strCompanyChecker;
+                            ModelMeter_WorkResolveFee_Invoice.InvoicePrintWorkerID = strLoginID;
+                            ModelMeter_WorkResolveFee_Invoice.InvoicePrintWorker = strLoginName;
+                            ModelMeter_WorkResolveFee_Invoice.InvoiceType = rbNormal.Checked ? "1" : "2"; //普通发票还是专用发票
+                            ModelMeter_WorkResolveFee_Invoice.Memo = txtMemo.Text;
+                            if (BllMeter_WorkResolveFee_Invoice_Detail.Insert(ModelMeter_WorkResolveFee_Invoice))
                             {
-                                ModelMeter_WorkResolveFee_Invoice_Detail ModelMeter_WorkResolveFee_Invoice_Detail = new ModelMeter_WorkResolveFee_Invoice_Detail();
-                                ModelMeter_WorkResolveFee_Invoice_Detail.InvoicePrintID = ModelMeter_WorkResolveFee_Invoice.InvoicePrintID;
-                                ModelMeter_WorkResolveFee_Invoice_Detail.DetailIndex = i + 1;
-                                ModelMeter_WorkResolveFee_Invoice_Detail.FeeItem = dgList.Rows[i].Cells["FeeItem"].Value.ToString();
-                                ModelMeter_WorkResolveFee_Invoice_Detail.FeeItemInvoiceTitle = dgList.Rows[i].Cells["FeeItemInvoiceTitle"].Value.ToString();
-                                ModelMeter_WorkResolveFee_Invoice_Detail.Quatity = decimal.Parse(dgList.Rows[i].Cells["Quatity"].Value.ToString());
-                                ModelMeter_WorkResolveFee_Invoice_Detail.Price = decimal.Parse(dgList.Rows[i].Cells["Price"].Value.ToString());
-                                ModelMeter_WorkResolveFee_Invoice_Detail.TaxPercent = decimal.Parse(dgList.Rows[i].Cells["TaxPercent"].Value.ToString());
-                                ModelMeter_WorkResolveFee_Invoice_Detail.TaxMoney = decimal.Parse(dgList.Rows[i].Cells["TaxMoney"].Value.ToString());
-                                ModelMeter_WorkResolveFee_Invoice_Detail.TotalMoney = decimal.Parse(dgList.Rows[i].Cells["TotalMoney"].Value.ToString());
+                                try
+                                {
+                                    for (int i = 0; i < dgList.Rows.Count; i++)
+                                    {
+                                        ModelMeter_WorkResolveFee_Invoice_Detail ModelMeter_WorkResolveFee_Invoice_Detail = new ModelMeter_WorkResolveFee_Invoice_Detail();
+                                        ModelMeter_WorkResolveFee_Invoice_Detail.InvoicePrintID = ModelMeter_WorkResolveFee_Invoice.InvoicePrintID;
+                                        ModelMeter_WorkResolveFee_Invoice_Detail.DetailIndex = i + 1;
+                                        ModelMeter_WorkResolveFee_Invoice_Detail.FeeItem = dgList.Rows[i].Cells["FeeItem"].Value.ToString();
+                                        ModelMeter_WorkResolveFee_Invoice_Detail.FeeItemInvoiceTitle = dgList.Rows[i].Cells["InvoiceTitle"].Value.ToString();
+                                        object objUnit = dgList.Rows[i].Cells["Units"].Value;
+                                        if (objUnit != null && objUnit != DBNull.Value)
+                                            ModelMeter_WorkResolveFee_Invoice_Detail.Units = objUnit.ToString();
+                                        ModelMeter_WorkResolveFee_Invoice_Detail.Quatity = decimal.Parse(dgList.Rows[i].Cells["Quantity"].Value.ToString());
+                                        ModelMeter_WorkResolveFee_Invoice_Detail.Price = decimal.Parse(dgList.Rows[i].Cells["Price"].Value.ToString());
+                                        ModelMeter_WorkResolveFee_Invoice_Detail.TaxPercent = decimal.Parse(dgList.Rows[i].Cells["TaxPercent"].Value.ToString());
+                                        ModelMeter_WorkResolveFee_Invoice_Detail.TaxMoney = decimal.Parse(dgList.Rows[i].Cells["TaxMoney"].Value.ToString());
+                                        ModelMeter_WorkResolveFee_Invoice_Detail.TotalMoney = decimal.Parse(dgList.Rows[i].Cells["Fee"].Value.ToString());
+                                        if (BllMeter_WorkResolveFee_Invoice_Detail.InsertDetail(ModelMeter_WorkResolveFee_Invoice_Detail))
+                                        {
+
+                                        }
+                                        else
+                                        {
+                                            BllMeter_WorkResolveFee_Invoice_Detail.Delete(ModelMeter_WorkResolveFee_Invoice.InvoicePrintID);
+                                            mes.Show("插入发票项目明细失败,请重试");
+                                            return;
+                                        }
+                                    }
+                                    try
+                                    {
+                                        decimal decSumInvoiceSumFee = 0;
+
+                                        string strGetSumFee = @"SELECT SUM(InvoiceTotalFeeMoney) FROM Meter_WorkResolveFee_Invoice WHERE CHARGEID='" + ChargeID + "'";
+                                        object objSumFee = BllMeter_WorkResolveFee_Invoice_Detail.GetSingle(strGetSumFee);
+                                        if (Information.IsNumeric(objSumFee))
+                                            decSumInvoiceSumFee = Convert.ToDecimal(objSumFee);
+
+                                        if (decSumInvoiceSumFee >= decWorkResolveSumFee)
+                                        {
+                                            string strUpdateInvoiceSign = "UPDATE Meter_Charge SET INVOICEPRINTSIGN='1' WHERE CHARGEID='" + ChargeID + "'";
+                                            int intRows = BllMeter_WorkResolveFee_Invoice_Detail.ExcuteSQL(strUpdateInvoiceSign);
+                                            if (intRows == 0)
+                                            {
+                                                mes.Show("更新发票标志失败,请重新打印发票!");
+                                                return;
+                                            }
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        mes.Show("更新发票标志失败,原因:" + ex.Message);
+                                        log.Write(ex.ToString(), MsgType.Error);
+                                        BllMeter_WorkResolveFee_Invoice_Detail.Delete(ModelMeter_WorkResolveFee_Invoice.InvoicePrintID);
+                                        return;
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    mes.Show("插入发票项目明细失败,原因:" + ex.Message);
+                                    log.Write(ex.ToString(), MsgType.Error);
+                                    BllMeter_WorkResolveFee_Invoice_Detail.Delete(ModelMeter_WorkResolveFee_Invoice.InvoicePrintID);
+                                    return;
+                                }
                             }
+                            else
+                            {
+                                mes.Show("插入发票记录失败,请补登发票号!");
+                                return;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            mes.Show("插入发票记录失败,请补登发票号!\n原因:" + ex.Message);
+                            log.Write(ex.ToString(), MsgType.Error);
+                            return;
                         }
                     }
                     else

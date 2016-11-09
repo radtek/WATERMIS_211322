@@ -35,6 +35,14 @@ namespace MODEL
            get { return _FeeItemInvoiceTitle; }
            set { _FeeItemInvoiceTitle = value; }
        }
+       private string _Units;
+
+       public string Units
+       {
+           get { return _Units; }
+           set { _Units = value; }
+       }
+
        private decimal _Quatity;
 
        public decimal Quatity

@@ -113,7 +113,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(195, 18);
+            this.label5.Location = new System.Drawing.Point(203, 18);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 12);
             this.label5.TabIndex = 11;
@@ -122,7 +122,7 @@
             // CB_ID
             // 
             this.CB_ID.FormattingEnabled = true;
-            this.CB_ID.Location = new System.Drawing.Point(85, 14);
+            this.CB_ID.Location = new System.Drawing.Point(78, 14);
             this.CB_ID.Name = "CB_ID";
             this.CB_ID.Size = new System.Drawing.Size(104, 20);
             this.CB_ID.TabIndex = 4;
@@ -130,17 +130,17 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(367, 18);
+            this.label2.Location = new System.Drawing.Point(387, 18);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 12);
+            this.label2.Size = new System.Drawing.Size(59, 12);
             this.label2.TabIndex = 3;
-            this.label2.Text = "关键词：";
+            this.label2.Text = "用户信息:";
             // 
             // TB_Keys
             // 
-            this.TB_Keys.Location = new System.Drawing.Point(426, 14);
+            this.TB_Keys.Location = new System.Drawing.Point(446, 14);
             this.TB_Keys.Name = "TB_Keys";
-            this.TB_Keys.Size = new System.Drawing.Size(145, 21);
+            this.TB_Keys.Size = new System.Drawing.Size(131, 21);
             this.TB_Keys.TabIndex = 2;
             // 
             // label1
@@ -154,7 +154,7 @@
             // 
             // Btn_Search
             // 
-            this.Btn_Search.Location = new System.Drawing.Point(575, 13);
+            this.Btn_Search.Location = new System.Drawing.Point(583, 13);
             this.Btn_Search.Name = "Btn_Search";
             this.Btn_Search.Size = new System.Drawing.Size(75, 23);
             this.Btn_Search.TabIndex = 0;
