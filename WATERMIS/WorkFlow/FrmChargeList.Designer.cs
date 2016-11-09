@@ -33,6 +33,13 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.TV_FeeItems = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.TaxPercent = new System.Windows.Forms.MaskedTextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.Sort = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
+            this.FeeItem = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
+            this.InvoiceTitle = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.Units = new System.Windows.Forms.TextBox();
             this.Price = new System.Windows.Forms.MaskedTextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,10 +51,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.InvoiceTitle = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
-            this.FeeItem = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
-            this.Sort = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -96,6 +99,9 @@
             // panel1
             // 
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.TaxPercent);
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.Sort);
             this.panel1.Controls.Add(this.FeeItem);
             this.panel1.Controls.Add(this.InvoiceTitle);
@@ -117,6 +123,88 @@
             this.panel1.Size = new System.Drawing.Size(434, 621);
             this.panel1.TabIndex = 1;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(238, 239);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(113, 12);
+            this.label6.TabIndex = 144;
+            this.label6.Text = "请输入小数,如 0.03";
+            // 
+            // TaxPercent
+            // 
+            this.TaxPercent.Location = new System.Drawing.Point(115, 233);
+            this.TaxPercent.Name = "TaxPercent";
+            this.TaxPercent.Size = new System.Drawing.Size(117, 21);
+            this.TaxPercent.TabIndex = 143;
+            this.TaxPercent.Text = "0.03";
+            this.TaxPercent.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDot_KeyPress);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(44, 239);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 12);
+            this.label5.TabIndex = 142;
+            this.label5.Text = "税    率：";
+            // 
+            // Sort
+            // 
+            this.Sort.AllowEmpty = false;
+            this.Sort.EmptyMessage = "";
+            this.Sort.ErrorMessage = "";
+            this.Sort.InputType = Common.WinControl.Ryan.RegTextbox.RyanTextBox.EMInputTypes.文本;
+            this.Sort.Location = new System.Drawing.Point(116, 78);
+            this.Sort.Name = "Sort";
+            this.Sort.RegexExpression = "";
+            this.Sort.RemoveSpace = false;
+            this.Sort.Size = new System.Drawing.Size(47, 21);
+            this.Sort.TabIndex = 141;
+            this.Sort.Text = "1";
+            this.Sort.ValidateState = false;
+            // 
+            // FeeItem
+            // 
+            this.FeeItem.AllowEmpty = false;
+            this.FeeItem.EmptyMessage = "";
+            this.FeeItem.ErrorMessage = "";
+            this.FeeItem.InputType = Common.WinControl.Ryan.RegTextbox.RyanTextBox.EMInputTypes.文本;
+            this.FeeItem.Location = new System.Drawing.Point(115, 46);
+            this.FeeItem.Name = "FeeItem";
+            this.FeeItem.RegexExpression = "";
+            this.FeeItem.RemoveSpace = false;
+            this.FeeItem.Size = new System.Drawing.Size(116, 21);
+            this.FeeItem.TabIndex = 140;
+            this.FeeItem.ValidateState = false;
+            // 
+            // InvoiceTitle
+            // 
+            this.InvoiceTitle.AllowEmpty = false;
+            this.InvoiceTitle.EmptyMessage = "";
+            this.InvoiceTitle.ErrorMessage = "";
+            this.InvoiceTitle.InputType = Common.WinControl.Ryan.RegTextbox.RyanTextBox.EMInputTypes.文本;
+            this.InvoiceTitle.Location = new System.Drawing.Point(115, 202);
+            this.InvoiceTitle.Name = "InvoiceTitle";
+            this.InvoiceTitle.RegexExpression = "";
+            this.InvoiceTitle.RemoveSpace = false;
+            this.InvoiceTitle.Size = new System.Drawing.Size(116, 21);
+            this.InvoiceTitle.TabIndex = 139;
+            this.InvoiceTitle.ValidateState = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(44, 207);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 12);
+            this.label4.TabIndex = 138;
+            this.label4.Text = "发票名目：";
+            // 
             // Units
             // 
             this.Units.Location = new System.Drawing.Point(115, 140);
@@ -131,6 +219,7 @@
             this.Price.Size = new System.Drawing.Size(117, 21);
             this.Price.TabIndex = 136;
             this.Price.Text = "0";
+            this.Price.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDot_KeyPress);
             // 
             // label3
             // 
@@ -158,13 +247,14 @@
             this.DefaultValue.Name = "DefaultValue";
             this.DefaultValue.Size = new System.Drawing.Size(116, 21);
             this.DefaultValue.TabIndex = 130;
+            this.DefaultValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDot_KeyPress);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label1.Location = new System.Drawing.Point(44, 282);
+            this.label1.Location = new System.Drawing.Point(44, 311);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 129;
@@ -173,7 +263,7 @@
             // 
             // Btn_submit
             // 
-            this.Btn_submit.Location = new System.Drawing.Point(138, 273);
+            this.Btn_submit.Location = new System.Drawing.Point(138, 302);
             this.Btn_submit.Name = "Btn_submit";
             this.Btn_submit.Size = new System.Drawing.Size(84, 30);
             this.Btn_submit.TabIndex = 128;
@@ -187,7 +277,7 @@
             this.State.BackColor = System.Drawing.Color.White;
             this.State.Checked = true;
             this.State.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.State.Location = new System.Drawing.Point(116, 238);
+            this.State.Location = new System.Drawing.Point(116, 267);
             this.State.Name = "State";
             this.State.Size = new System.Drawing.Size(48, 16);
             this.State.TabIndex = 127;
@@ -224,59 +314,6 @@
             this.label29.Size = new System.Drawing.Size(71, 12);
             this.label29.TabIndex = 122;
             this.label29.Text = " 排    序：";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(44, 207);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 12);
-            this.label4.TabIndex = 138;
-            this.label4.Text = "发票名目：";
-            // 
-            // InvoiceTitle
-            // 
-            this.InvoiceTitle.AllowEmpty = false;
-            this.InvoiceTitle.EmptyMessage = "";
-            this.InvoiceTitle.ErrorMessage = "";
-            this.InvoiceTitle.InputType = Common.WinControl.Ryan.RegTextbox.RyanTextBox.EMInputTypes.文本;
-            this.InvoiceTitle.Location = new System.Drawing.Point(115, 202);
-            this.InvoiceTitle.Name = "InvoiceTitle";
-            this.InvoiceTitle.RegexExpression = "";
-            this.InvoiceTitle.RemoveSpace = false;
-            this.InvoiceTitle.Size = new System.Drawing.Size(116, 21);
-            this.InvoiceTitle.TabIndex = 139;
-            this.InvoiceTitle.ValidateState = false;
-            // 
-            // FeeItem
-            // 
-            this.FeeItem.AllowEmpty = false;
-            this.FeeItem.EmptyMessage = "";
-            this.FeeItem.ErrorMessage = "";
-            this.FeeItem.InputType = Common.WinControl.Ryan.RegTextbox.RyanTextBox.EMInputTypes.文本;
-            this.FeeItem.Location = new System.Drawing.Point(115, 46);
-            this.FeeItem.Name = "FeeItem";
-            this.FeeItem.RegexExpression = "";
-            this.FeeItem.RemoveSpace = false;
-            this.FeeItem.Size = new System.Drawing.Size(116, 21);
-            this.FeeItem.TabIndex = 140;
-            this.FeeItem.ValidateState = false;
-            // 
-            // Sort
-            // 
-            this.Sort.AllowEmpty = false;
-            this.Sort.EmptyMessage = "";
-            this.Sort.ErrorMessage = "";
-            this.Sort.InputType = Common.WinControl.Ryan.RegTextbox.RyanTextBox.EMInputTypes.文本;
-            this.Sort.Location = new System.Drawing.Point(116, 78);
-            this.Sort.Name = "Sort";
-            this.Sort.RegexExpression = "";
-            this.Sort.RemoveSpace = false;
-            this.Sort.Size = new System.Drawing.Size(47, 21);
-            this.Sort.TabIndex = 141;
-            this.Sort.Text = "1";
-            this.Sort.ValidateState = false;
             // 
             // FrmChargeList
             // 
@@ -317,5 +354,8 @@
         private Common.WinControl.Ryan.RegTextbox.RyanTextBox InvoiceTitle;
         private System.Windows.Forms.Label label4;
         private Common.WinControl.Ryan.RegTextbox.RyanTextBox Sort;
+        private System.Windows.Forms.MaskedTextBox TaxPercent;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }

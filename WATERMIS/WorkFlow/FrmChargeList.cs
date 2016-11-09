@@ -93,5 +93,28 @@ namespace WorkFlow
         {
             State.Text = State.Checked ? "启用" : "不启用";
         }
+
+        private void txtInt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //如果输入的不是数字键，也不是回车键、Backspace键，则取消该输入
+            if (!(Char.IsNumber(e.KeyChar)) && e.KeyChar != (char)13 && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtDot_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //检测是否已经输入了小数点 
+            bool IsContainsDot = ((MaskedTextBox)sender).Text.Contains(".");
+            if ((e.KeyChar < 48 || e.KeyChar > 57) && (e.KeyChar != 8) && (e.KeyChar != 46))
+            {
+                e.Handled = true;
+            }
+            else if (IsContainsDot && (e.KeyChar == 46)) //如果输入了小数点，并且再次输入 
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
