@@ -525,7 +525,7 @@ COMMIT TRAN", ht["waterMeterSerialNumber"].ToString());
             return new SqlServerHelper().GetDateTableBySql(sqlstr);
         }
 
-        public bool Approve_Single_Append(string TaskID)
+        public bool Approve_Single_Append(string TaskID,string CHARGEID,string PRESTORERUNNINGACCOUNTID)
         {
             //            string strsql = @"DECLARE @waterUserId NVARCHAR(50)=''
             //DECLARE @ISEXIT INT=0
@@ -550,8 +550,46 @@ COMMIT TRAN", ht["waterMeterSerialNumber"].ToString());
             //UPDATE Meter_Install_Single SET prestore=0 WHERE TaskID=@TaskID
             //COMMIT TRAN";
 
-            string strsql = @"DECLARE @waterUserId NVARCHAR(50)=''
+            //2016-11-10
+//            DECLARE @waterUserId NVARCHAR(50)=''
+//DECLARE @ISEXIT INT=0
+//SET XACT_ABORT ON
+//BEGIN TRAN
+//SELECT @waterUserId=waterUserId FROM Meter_Install_Single WHERE TaskID=@TaskID
+//SELECT @ISEXIT=COUNT(1) FROM waterUser WHERE waterUserId=@waterUserId
+//IF(@ISEXIT=0)
+//BEGIN
+//INSERT INTO waterUser (waterUserId,waterUserNO,waterUserName,waterPhone,waterUserAddress,
+//waterUserPeopleCount,meterReadingID,meterReadingPageNo,waterUserTypeId,waterUserCreateDate,waterUserHouseType,agentsign,
+//bankId,BankAcountNumber,memo,ordernumber,chargeType,pianNO,areaNO,duanNO,communityID,buildingNO,unitNO,createType
+//,meterReaderID,meterReaderName,chargerID,chargerName,operatorName) 
+//SELECT waterUserId,waterUserNO,waterUserName,waterPhone,waterUserAddress,
+//waterUserPeopleCount,meterReadingID,meterReadingPageNo,waterUserTypeId,GETDATE(),waterUserHouseType,agentsign,
+//bankId,BankAcountNumber,memo,ordernumber,chargeType,(SELECT PIANNAME FROM BASE_PIAN WHERE PIANID=MIS.PIANID) AS pianNO
+//,(SELECT areaName FROM BASE_AREA WHERE areaId=MIS.areaId) AS areaNO
+//,(SELECT DUANNAME FROM BASE_DUAN WHERE DUANID=MIS.DUANID) AS duanNO
+//,communityID,BuildingNO,UnitNO,(SELECT CreateType FROM Base_Archives WHERE CreateTypeID=MIS.CreateTypeID) AS CreateType
+//,meterReaderID,(SELECT userName FROM base_login WHERE loginId=MIS.meterReaderID) AS meterReaderName
+//,chargerID,(SELECT userName FROM base_login WHERE loginId=MIS.chargerID) AS chargerName
+//,operatorName FROM Meter_Install_Single MIS WHERE TaskID=@TaskID
+//END
+//INSERT INTO waterMeter (waterMeterId,waterMeterNo,waterMeterStartNumber,waterMeterPositionName,waterMeterPositionId,
+//waterMeterSizeId,waterMeterTypeId,ISUSECHANGE,CHANGEMONTH,waterMeterTypeIdChange,WATERFIXVALUE,waterMeterProduct,waterMeterSerialNumber,waterMeterMode,
+//waterMeterMagnification,waterMeterMaxRange,waterMeterProofreadingDate,waterMeteProofreadingPeriod,waterUserId,isSummaryMeter,waterMeterParentId,STARTUSEDATETIME,MEMO
+//,waterMeterState,IsReverse,WATERMETERLOCKNO) 
+//SELECT waterMeterId,waterMeterNo,waterMeterStartNumber,waterMeterPositionName,waterMeterPositionId,
+//waterMeterSizeId,waterMeterTypeId,ISUSECHANGE,CHANGEMONTH,waterMeterTypeIdChange,WATERFIXVALUE,waterMeterProduct,waterMeterSerialNumber,waterMeterMode,
+//waterMeterMagnification,waterMeterMaxRange,waterMeterProofreadingDate,waterMeteProofreadingPeriod,waterUserId,isSummaryMeter,waterMeterParentId,
+//STARTUSEDATETIME,MEMO,waterMeterState,IsReverse,WATERMETERLOCKNO FROM Meter WHERE MeterID IN (SELECT MeterID FROM Meter_User WHERE TaskID=@TaskID)
+//INSERT INTO User_Append (TaskID,waterUserNO,waterUserName) SELECT TaskID,waterUserNO,waterUserName FROM Meter_Install_Single WHERE TaskID=@TaskID
+//COMMIT TRAN
+
+            string Chargeid = GetNewChargeID("0092");
+
+
+            string strsql = string.Format(@"DECLARE @waterUserId NVARCHAR(50)=''
 DECLARE @ISEXIT INT=0
+DECLARE @FEE DECIMAL(18,2)=0
 SET XACT_ABORT ON
 BEGIN TRAN
 SELECT @waterUserId=waterUserId FROM Meter_Install_Single WHERE TaskID=@TaskID
@@ -581,7 +619,23 @@ waterMeterSizeId,waterMeterTypeId,ISUSECHANGE,CHANGEMONTH,waterMeterTypeIdChange
 waterMeterMagnification,waterMeterMaxRange,waterMeterProofreadingDate,waterMeteProofreadingPeriod,waterUserId,isSummaryMeter,waterMeterParentId,
 STARTUSEDATETIME,MEMO,waterMeterState,IsReverse,WATERMETERLOCKNO FROM Meter WHERE MeterID IN (SELECT MeterID FROM Meter_User WHERE TaskID=@TaskID)
 INSERT INTO User_Append (TaskID,waterUserNO,waterUserName) SELECT TaskID,waterUserNO,waterUserName FROM Meter_Install_Single WHERE TaskID=@TaskID
-COMMIT TRAN";
+
+SELECT @FEE=prestore FROM Meter_Install_Single WHERE TaskID=@TaskID
+UPDATE Meter_Install_Single SET prestore=0 WHERE TaskID=@TaskID
+UPDATE waterUser SET prestore=prestore+@FEE WHERE waterUserId=@waterUserId
+INSERT INTO Meter_Charge (CHARGEID,TaskID,CHARGEBCSS,CHARGEBCYS,TOTALCHARGE,prestore,FeeList,CHARGETYPEID,CHARGEClASS,CHARGEWORKERID,CHARGEWORKERNAME,CHARGEDATETIME) 
+VALUES 
+('{0}',@TaskID,0-@FEE,0,0,0,'余额转营业','5','17','0092','温国艳',GETDATE())
+INSERT INTO WATERFEECHARGE (CHARGEID,CHARGETYPEID,CHARGEClASS,CHARGEBCYS,CHARGEBCSS,CHARGEYSQQYE,CHARGEYSBCSZ,CHARGEYSJSYE,CHARGEWORKERID,CHARGEWORKERNAME,CHARGEDATETIME) 
+VALUES 
+('{1}','5','17',0,@FEE,0,@FEE,@FEE,'0092','温国艳',GETDATE())
+INSERT INTO PRESTORERUNNINGACCOUNT (PRESTORERUNNINGACCOUNTID,CHARGEID,WATERUSERID,WATERUSERNO,WATERUSERNAME,WATERUSERADDRESS,AREANO,PIANNO,DUANNO,ORDERNUMBER,COMMUNITYID,COMMUNITYNAME,
+METERREADERID,METERREADERNAME,CHARGERID,CHARGERNAME,WATERUSERTYPEID,WATERUSERTYPENAME,WATERMETERTYPEID,WATERMETERTYPEVALUE,WATERMETERTYPECLASSID,WATERMETERTYPECLASSNAME,WATERUSERHOUSETYPE,CREATETYPE)
+SELECT '{2}','{1}', WATERUSERID,WATERUSERNO,WATERUSERNAME,WATERUSERADDRESS,AREANO,PIANNO,DUANNO,ORDERNUMBER,COMMUNITYID,COMMUNITYNAME,
+METERREADERID,METERREADERNAME,CHARGERID,CHARGERNAME,WATERUSERTYPEID,WATERUSERTYPENAME,WATERMETERTYPEID,WATERMETERTYPEVALUE,WATERMETERTYPECLASSID,WATERMETERTYPECLASSNAME,WATERUSERHOUSETYPE,CREATETYPE 
+FROM V_WATERUSER_CONNECTWATERMETER
+WHERE waterUserId=@waterUserId
+COMMIT TRAN", Chargeid, CHARGEID, PRESTORERUNNINGACCOUNTID);
             int count = DbHelperSQL.ExecuteSql(strsql, new SqlParameter[] { new SqlParameter("@TaskID", TaskID) });
             return count > 0 ? true : false;
 

@@ -90,7 +90,7 @@ namespace DBinterface.IDAL
 
        DataTable GetUserMaterByTaskID(string TaskID);
 
-       bool Approve_Single_Append(string TaskID);
+       bool Approve_Single_Append(string TaskID, string CHARGEID, string PRESTORERUNNINGACCOUNTID);
 
        Hashtable GetUserAllowRefund(string CHARGEID);
 

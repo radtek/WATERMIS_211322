@@ -145,10 +145,13 @@ namespace PersonalWork
                     }
                 }
 
-                if (sysidal.Approve_Single_Append(TaskID))
+                string CHARGEID = GETTABLEID.GetTableID("0092", "WATERFEECHARGE");
+                string PRESTORERUNNINGACCOUNTID = GETTABLEID.GetTableID("0092", "PRESTORERUNNINGACCOUNT");
+
+                if (sysidal.Approve_Single_Append(TaskID, CHARGEID, PRESTORERUNNINGACCOUNTID))
                 {
                     int count = sysidal.UpdateApprove_Single_defalut(ResolveID, true, "新增用户（水表）", ip, ComputerName, PointSort, TaskID);
-
+                    
                     if (count > 0)
                     {
                         Btn_Submit.Enabled = false;
