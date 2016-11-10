@@ -75,7 +75,7 @@ namespace UPLOAD
             string strDataSourceName = ReadConfig.GetAttributeValue("connStringDataSourceName"); 
             string strLoginName = ReadConfig.GetAttributeValue("connStringLoginName");
             string strPWD = ReadConfig.GetAttributeValue("connStringPWD");
-           string strConnectionString = string.Format("Data Source={0};Initial Catalog={1};User ID={2};Password={3};", strServerIp, strDataSourceName, strLoginName, strPWD);
+            string strConnectionString = string.Format("Data Source={0};Initial Catalog={1};User ID=SERVICECLIENT;Password=##AUTHORITY@C2s;", strServerIp, strDataSourceName, strLoginName, strPWD);
            DBUtility.DbHelperSQL.connectionString = strConnectionString;
         }
 

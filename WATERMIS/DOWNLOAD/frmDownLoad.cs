@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
 using DBUtility;
-using BASEFUNCTION;
+using System.Threading;
 
 namespace DOWNLOAD
 {
@@ -54,7 +54,7 @@ namespace DOWNLOAD
             string strDataSourceName = ReadConfig.GetAttributeValue("connStringDataSourceName");
             string strLoginName = ReadConfig.GetAttributeValue("connStringLoginName");
             string strPWD = ReadConfig.GetAttributeValue("connStringPWD");
-            string strConnectionString = string.Format("Data Source={0};Initial Catalog={1};User ID={2};Password={3};", strServerIp, strDataSourceName, strLoginName, strPWD);
+            string strConnectionString = string.Format("Data Source={0};Initial Catalog={1};User ID=SERVICECLIENT;Password=##AUTHORITY@C2s;", strServerIp, strDataSourceName, strLoginName, strPWD);
             DBUtility.DbHelperSQL.connectionString = strConnectionString;
 
             dt = Query(" AND VERSION>'" + strVersion + "'");
@@ -62,6 +62,8 @@ namespace DOWNLOAD
                 btDown.Enabled = true;
             else
                 btDown.Enabled = false;
+
+            btDown_Click(null,null);
         }
         /// <summary>
         /// 监测主系统是否在运行
@@ -69,24 +71,30 @@ namespace DOWNLOAD
         private bool TestTheProcess()
         {
             bool isProcess = false;
-            Process currentProcess = Process.GetCurrentProcess(); //得到当前进程的ID
+            //Process currentProcess = Process.GetCurrentProcess(); //得到当前进程的ID
             string strProcessName = "WATERMIS";
-            Process[] procList = Process.GetProcessesByName(strProcessName);//根据进程的名称得到所有进程
-            if (procList.Length > 0)
-            {
-                MessageBox.Show("系统检测到主程序正在运行,请关闭主程序后再执行升级操作!");
-                isProcess = true;
-            }
-            //foreach (Process proc in procList)
+            //Process[] procList = Process.GetProcessesByName(strProcessName);//根据进程的名称得到所有进程
+            //if (procList.Length > 0)
             //{
-            //    //找到相同进程
-            //    if (proc.Id == currentProcess.Id)
-            //    {
-            //        MessageBox.Show("系统监测到主程序正在运行,请关闭主程序后再执行升级操作!");
-            //        isProcess = true;
-            //        break;
-            //    }
+            //    MessageBox.Show("系统检测到主程序正在运行,请关闭主程序后再执行升级操作!");
+            //    isProcess = true;
             //}
+
+            Process[] procList = Process.GetProcesses();
+            foreach (Process proc in procList)
+            {
+                //找到相同进程
+                if (proc.ProcessName == strProcessName)
+                {
+                    //MessageBox.Show("系统监测到主程序正在运行,请关闭主程序后再执行升级操作!");
+                    //isProcess = true;
+                    proc.Kill();
+
+                    Thread.Sleep(500);
+                    
+                    break;
+                }
+            }
             return isProcess;
         }
         private void btDown_Click(object sender, EventArgs e)
@@ -130,12 +138,14 @@ namespace DOWNLOAD
                     WritePrivateProfileString("VERSION", "VERSION", strVersion, strConfigPath);
                 }
                 labState.Text = "更新成功!";
+                Application.Exit();
+                System.Diagnostics.Process process = System.Diagnostics.Process.Start(Application.StartupPath + @"\WATERMIS.exe");
 
-                if (MessageBox.Show("文件更新成功，是否启动主系统?", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
-                {
-                    Application.Exit();
-                    System.Diagnostics.Process process = System.Diagnostics.Process.Start(Application.StartupPath + @"\WATERMIS.exe");
-                }
+                //if (MessageBox.Show("文件更新成功，是否启动主系统?", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+                //{
+                //    Application.Exit();
+                //    System.Diagnostics.Process process = System.Diagnostics.Process.Start(Application.StartupPath + @"\WATERMIS.exe");
+                //}
             }
             catch (Exception ex)
             {
@@ -149,6 +159,35 @@ namespace DOWNLOAD
             str.Append("SELECT * FROM FILEUPLOAD WHERE 1=1 ");
             dt = DBUtility.DbHelperSQL.Query(str.ToString() + strFilter).Tables[0];
             return dt;
+        }
+
+        private void labClose_DoubleClick(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        int intCount = 1;
+        private void trChange_Tick(object sender, EventArgs e)
+        {
+            switch (intCount)
+            {
+                case 1:
+                    picUpdate.BackgroundImage = Properties.Resources.同步1;
+                    intCount = 2;
+                    break;
+                case 2:
+                    picUpdate.BackgroundImage = Properties.Resources.同步2;
+                    intCount = 3;
+                    break;
+                case 3:
+                    picUpdate.BackgroundImage = Properties.Resources.同步3;
+                    intCount = 4;
+                    break;
+                case 4:
+                    picUpdate.BackgroundImage = Properties.Resources.同步4;
+                    intCount = 1;
+                    break;
+            }
         }
     }
     class MODELFILEDOWNLOAD
