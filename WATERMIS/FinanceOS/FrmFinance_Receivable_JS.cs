@@ -62,15 +62,7 @@ namespace FinanceOS
 
         private decimal _DepPrestore = 0m;
 
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x02000000;
-                return cp;
-            }
-        }
+       
 
         public FrmFinance_Receivable_JS()
         {

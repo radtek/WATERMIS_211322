@@ -39,15 +39,7 @@ namespace WATERMIS
             //this.skinEngine1.SkinFile = Application.StartupPath + @"\skin\MP10.ssk";
         }
 
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x02000000; // Turn on WS_EX_COMPOSITED 
-                return cp;
-            }
-        }
+        
         /// <summary>
         /// 登陆用户的ID
         /// </summary>

@@ -53,15 +53,7 @@ namespace PersonalWork
 
 
         #region
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x02000000;
-                return cp;
-            }
-        }
+      
         private void FrmApprove_Single_Budget_Load(object sender, EventArgs e)
         {
             ht = (Hashtable)this.Tag;
