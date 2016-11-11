@@ -38,6 +38,8 @@ namespace FinanceOS
                 //{
                 FrmFinance_Cancel frm = new FrmFinance_Cancel();
                 frm.ChargeID = _ChargeID;
+                frm.TaskID = dgList.CurrentRow.Cells["TaskID"].Value.ToString();
+                frm.ChargerID=dgList.CurrentRow.Cells["CHARGEWORKERID"].Value.ToString();
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     ShowData();

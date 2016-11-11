@@ -173,5 +173,9 @@ namespace DBinterface.IDAL
        bool Approve_Peccant_Append(string TaskID);
 
        bool UserPrestoreRefund(string TaskID,string Memo);
+
+       string GetTableNameByTaskID(string TaskID);
+
+       bool CancelCharge(string TaskID, string ChargeID, string CANCELMEMO);
     }
 }

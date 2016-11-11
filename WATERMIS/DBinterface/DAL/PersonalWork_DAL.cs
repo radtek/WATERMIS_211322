@@ -1121,5 +1121,43 @@ COMMIT TRAN", Chargeid, Memo,dt.Rows[0][0].ToString());
 
             
         }
+
+        public string GetTableNameByTaskID(string TaskID)
+        {
+            string _tableName = "";
+            string sqlstr = "SELECT TableName FROM View_WorkBase WHERE TaskID=@TaskID";
+            DataTable dt = DbHelperSQL.Query(sqlstr, new SqlParameter[] { new SqlParameter("@TaskID", TaskID) }).Tables[0];
+            if (DataTableHelper.IsExistRows(dt))
+            {
+                _tableName = dt.Rows[0][0].ToString();
+            }
+            return _tableName;
+        }
+
+        public bool CancelCharge(string TaskID, string ChargeID, string CANCELMEMO)
+        {
+            string _tableNmae = GetTableNameByTaskID(TaskID);
+            string loginid = AppDomain.CurrentDomain.GetData("LOGINID").ToString();
+            string userName = AppDomain.CurrentDomain.GetData("USERNAME").ToString();
+            string sqlstr =string.Format(@"
+DECLARE @FEE DECIMAL(18,2)=0
+
+--获取收取费用
+SELECT @FEE=CHARGEBCSS FROM Meter_Charge WHERE TaskID=@TaskID AND CHARGEID=@CHARGEID AND ISNULL(DAYCHECKSTATE,'')='0'
+SET XACT_ABORT ON
+BEGIN TRAN
+--取消收费
+UPDATE Meter_Charge SET CHARGECANCEL=1,CANCELYSQQYE=0,CANCELYSBCSZ=@FEE,CANCELYSJSYE=@FEE,CANCELWORKERID
+='{2}',CANCELWORKERNAME='{3}',CANCELDATETIME=GETDATE(),CANCELMEMO='{1}' WHERE TaskID=@TaskID AND CHARGEID=@CHARGEID AND ISNULL(DAYCHECKSTATE,'')='0'
+--更改收费项目状态
+UPDATE Meter_WorkResolveFee SET [State]=0 WHERE ChargeID=@CHARGEID
+--更改账户余额
+UPDATE {0} SET prestore=prestore-@FEE WHERE TaskID=@TaskID
+COMMIT TRAN", _tableNmae, CANCELMEMO, loginid, userName);
+            int count = new SqlServerHelper().UpdateByHashtable(sqlstr, new SqlParameter[] { new SqlParameter("@TaskID", TaskID), new SqlParameter("@CHARGEID", ChargeID) });
+            return count > 0 ? true : false;
+        }
+
+
     }
 }
