@@ -80,13 +80,13 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.RB_Type2);
-            this.panel1.Controls.Add(this.RB_Type1);
             this.panel1.Controls.Add(this.CB_ID);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.TB_Keys);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.Btn_Search);
+            this.panel1.Controls.Add(this.RB_Type2);
+            this.panel1.Controls.Add(this.RB_Type1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 17);
             this.panel1.Name = "panel1";
@@ -96,31 +96,33 @@
             // RB_Type2
             // 
             this.RB_Type2.AutoSize = true;
+            this.RB_Type2.Checked = true;
             this.RB_Type2.Location = new System.Drawing.Point(96, 16);
             this.RB_Type2.Name = "RB_Type2";
             this.RB_Type2.Size = new System.Drawing.Size(71, 16);
             this.RB_Type2.TabIndex = 17;
+            this.RB_Type2.TabStop = true;
             this.RB_Type2.Text = "作废退款";
             this.RB_Type2.UseVisualStyleBackColor = true;
+            this.RB_Type2.Visible = false;
             this.RB_Type2.CheckedChanged += new System.EventHandler(this.RB_Type2_CheckedChanged);
             // 
             // RB_Type1
             // 
             this.RB_Type1.AutoSize = true;
-            this.RB_Type1.Checked = true;
             this.RB_Type1.Location = new System.Drawing.Point(18, 16);
             this.RB_Type1.Name = "RB_Type1";
             this.RB_Type1.Size = new System.Drawing.Size(71, 16);
             this.RB_Type1.TabIndex = 16;
-            this.RB_Type1.TabStop = true;
             this.RB_Type1.Text = "收费退款";
             this.RB_Type1.UseVisualStyleBackColor = true;
+            this.RB_Type1.Visible = false;
             this.RB_Type1.CheckedChanged += new System.EventHandler(this.RB_Type1_CheckedChanged);
             // 
             // CB_ID
             // 
             this.CB_ID.FormattingEnabled = true;
-            this.CB_ID.Location = new System.Drawing.Point(247, 13);
+            this.CB_ID.Location = new System.Drawing.Point(87, 12);
             this.CB_ID.Name = "CB_ID";
             this.CB_ID.Size = new System.Drawing.Size(104, 20);
             this.CB_ID.TabIndex = 4;
@@ -128,7 +130,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(358, 17);
+            this.label2.Location = new System.Drawing.Point(198, 17);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 3;
@@ -136,7 +138,7 @@
             // 
             // TB_Keys
             // 
-            this.TB_Keys.Location = new System.Drawing.Point(414, 12);
+            this.TB_Keys.Location = new System.Drawing.Point(254, 12);
             this.TB_Keys.Name = "TB_Keys";
             this.TB_Keys.Size = new System.Drawing.Size(145, 21);
             this.TB_Keys.TabIndex = 2;
@@ -144,7 +146,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(177, 18);
+            this.label1.Location = new System.Drawing.Point(17, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 12);
             this.label1.TabIndex = 1;
@@ -152,7 +154,7 @@
             // 
             // Btn_Search
             // 
-            this.Btn_Search.Location = new System.Drawing.Point(565, 12);
+            this.Btn_Search.Location = new System.Drawing.Point(405, 13);
             this.Btn_Search.Name = "Btn_Search";
             this.Btn_Search.Size = new System.Drawing.Size(75, 21);
             this.Btn_Search.TabIndex = 0;

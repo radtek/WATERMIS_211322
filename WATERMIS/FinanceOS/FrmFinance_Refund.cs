@@ -14,7 +14,7 @@ namespace FinanceOS
     public partial class FrmFinance_Refund : Form
     {
         private Finance_IDAL fdal = new Finance_Dal();
-        private int _ReType = 1;
+        private int _ReType = 2;
 
         public FrmFinance_Refund()
         {
@@ -129,12 +129,12 @@ AND MW.[State]=1 AND MWF.[State]=1 AND ISNULL(MWF.ChargeID,'')<>N'') AND CHARGEW
             DataGridView dgList = (DataGridView)sender;
             if (dgList.CurrentRow != null)
             {
-                //string taskid = dgList.CurrentRow.Cells["TaskID"].Value.ToString();
-                //if (!string.IsNullOrEmpty(taskid))
-                //{
-                //    uC_FlowList1.TaskId = taskid;
-                //    uC_FlowList1.DataBind();
-                //}
+                string taskid = dgList.CurrentRow.Cells["TaskID"].Value.ToString();
+                if (!string.IsNullOrEmpty(taskid))
+                {
+                    uC_FlowList1.TaskId = taskid;
+                    uC_FlowList1.DataBind();
+                }
             }
         }
 

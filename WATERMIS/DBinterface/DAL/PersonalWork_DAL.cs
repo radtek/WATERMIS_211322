@@ -1095,5 +1095,31 @@ COMMIT TRAN", TableName);
             int count = new SqlServerHelper().UpdateByHashtable(sqlstr, new SqlParameter[] { new SqlParameter("@TaskID", TaskID) });
             return count > 0 ? true : false;
         }
+
+        //用户余额退款
+        public bool UserPrestoreRefund(string TaskID, string Memo)
+        {
+            int count = 0;
+            string sqlstr = "SELECT TableName FROM View_WorkBase WHERE TaskID=@TaskID";
+            DataTable dt = DbHelperSQL.Query(sqlstr, new SqlParameter[] { new SqlParameter("@TaskID", TaskID) }).Tables[0];
+            if (DataTableHelper.IsExistRows(dt))
+            {
+                string Chargeid = GetNewChargeID("0092");
+                string strsql = string.Format(@"DECLARE @FEE DECIMAL(18,2)=0
+SELECT @FEE=prestore FROM View_WorkBase WHERE TaskID=@TaskID
+SET XACT_ABORT ON
+BEGIN TRAN
+UPDATE {2} SET prestore=0 WHERE TaskID=@TaskID
+INSERT INTO Meter_Charge (CHARGEID,TaskID,CHARGEBCSS,CHARGEBCYS,TOTALCHARGE,prestore,FeeList,CHARGETYPEID,CHARGEClASS,CHARGEWORKERID,CHARGEWORKERNAME,CHARGEDATETIME,Memo) 
+VALUES 
+('{0}',@TaskID,0-@FEE,0,0,0,'余额退款','1','17','0092','温国艳',GETDATE(),'{1}')
+COMMIT TRAN", Chargeid, Memo,dt.Rows[0][0].ToString());
+
+                count = DbHelperSQL.ExecuteSql(strsql, new SqlParameter[] { new SqlParameter("@TaskID", TaskID) });
+            }
+            return count > 0 ? true : false;
+
+            
+        }
     }
 }

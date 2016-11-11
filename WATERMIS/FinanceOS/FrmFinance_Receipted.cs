@@ -28,16 +28,23 @@ namespace FinanceOS
 
         private void uC_DataGridView_Page1_CellDoubleClickEvents(object sender, DataGridViewCellEventArgs e)
         {
-            //DataGridView dgList = (DataGridView)sender;
-            //if (dgList.CurrentRow != null)
-            //{
-            //    FrmFinance_Receivable_OP frm = new FrmFinance_Receivable_OP();
-            //    frm.TaskID = dgList.CurrentRow.Cells["TaskID"].Value.ToString();
-            //    if (frm.ShowDialog() == DialogResult.OK)
-            //    {
+            DataGridView dgList = (DataGridView)sender;
+            if (dgList.CurrentRow != null)
+            {
+                string _ChargeID = dgList.CurrentRow.Cells["ChargeID"].Value.ToString();
+                //string _Loginid = AppDomain.CurrentDomain.GetData("LOGINID").ToString();
+                //string _ChargerID = dgList.CurrentRow.Cells["CHARGEWORKERID"].Value.ToString();
+                //if (_Loginid.Equals(_ChargerID))
+                //{
+                FrmFinance_Cancel frm = new FrmFinance_Cancel();
+                frm.ChargeID = _ChargeID;
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    ShowData();
+                }
 
-            //    }
-            //}
+                //}
+            }
         }
 
         private void uC_DataGridView_Page1_CellClickEvents(object sender, DataGridViewCellEventArgs e)
@@ -69,9 +76,9 @@ namespace FinanceOS
             ControlBindHelper.BindComboBoxData(this.CB_Month, fdal.GetChargeMonth(), "CreateMonthVALUE", "CreateMonth", true);
 
             ControlBindHelper.BindComboBoxData(this.CB_Day, fdal.GetChargeDay(), "CreateDayVALUE", "CreateDay", true);
-
+            //AND VW.[State] IN (1,2,5)
             string sqlstr = @"SELECT DISTINCT VT.CHARGEWORKERID,CHARGEWORKERNAME
-FROM View_TaskFee VT  LEFT JOIN View_WorkBase VW ON VT.TaskID=VW.TASKID,Meter_Table MT WHERE VW.TableID=MT.TableID AND VW.[State] IN (1,2,5) AND VT.States=1 ";
+FROM View_TaskFee VT  LEFT JOIN View_WorkBase VW ON VT.TaskID=VW.TASKID,Meter_Table MT WHERE VW.TableID=MT.TableID AND VT.States=1 ";
             dt = new SqlServerHelper().GetDateTableBySql(sqlstr);
             ControlBindHelper.BindComboBoxData(this.CHARGEWORKERID, dt, "CHARGEWORKERNAME", "CHARGEWORKERID", true);
 
@@ -80,9 +87,9 @@ FROM View_TaskFee VT  LEFT JOIN View_WorkBase VW ON VT.TaskID=VW.TASKID,Meter_Ta
 
         private void ShowData()
         {
+            //AND VW.[State] IN (1,2,5)
             StringBuilder sb = new StringBuilder();
-            sb.Append(@"SELECT MT.Table_Name_CH,VW.SD,VW.waterUserId,VW.waterUserName,VW.ApplyUser,VT.FEE,VW.waterPhone,VT.CreateDate,VT.PointTime,VW.TableID,VT.TaskID,VT.STATES,VW.ID,VT.ChargeID,VT.CHARGEWORKERNAME,VT.ChargeDate,VT.IsFinal,(CASE WHEN VT.IsFinal=1 THEN '预算' ELSE '决算' END) AS IsFinalS,VT.DepartementID,BD.departmentName
-FROM View_TaskFee VT  LEFT JOIN View_WorkBase VW ON VT.TaskID=VW.TASKID,Meter_Table MT , base_department BD  WHERE VW.TableID=MT.TableID AND  VT.DepartementID=BD.departmentID AND VW.[State] IN (1,2,5) AND VT.States=1");
+            sb.Append(@"SELECT * FROM View_TaskChargeList VT WHERE  VT.States=1");
 
             if (!CB_ID.SelectedValue.ToString().Equals(""))
             {

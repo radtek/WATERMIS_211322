@@ -171,5 +171,7 @@ namespace DBinterface.IDAL
        bool SetTaskOver(string TableName, string TaskID);
 
        bool Approve_Peccant_Append(string TaskID);
+
+       bool UserPrestoreRefund(string TaskID,string Memo);
     }
 }

@@ -9,6 +9,8 @@ using System.Data.SqlClient;
 using Common.DotNetData;
 using Common.DotNetUI;
 using System.Collections;
+using DBinterface.DAL;
+using DBinterface.IDAL;
 
 namespace FinanceOS
 {
@@ -31,17 +33,45 @@ namespace FinanceOS
 
         private void GetTaskInfos()
         {
-            string sqlstr = "";
-            Hashtable ht = new SqlServerHelper().GetHashtableById("View_WorkBase", "TaskID", "TaskID");
-           // Hashtable ht = new SqlServerHelper().GetDateTableBySql(sqlstr, new SqlParameter[] { new SqlParameter("@TaskID", TaskID) });
-            
-                new SqlServerHelper().BindHashTableToForm(ht, this.panel2.Controls);
+            Hashtable ht = new SqlServerHelper().GetHashtableById("View_WorkBase", "TaskID", TaskID);
+            new SqlServerHelper().BindHashTableToForm(ht, this.panel2.Controls);
+            string sqlstr = "SELECT PointTime,( SELECT top 1 PointName FROM  Meter_WorkResolve WHERE TaskID=MW.TaskID AND PointSort=MW.PointSort) AS PointName FROM Meter_WorkTask MW WHERE MW.TaskID=@TaskID";
+            DataTable dt = new SqlServerHelper().GetDateTableBySql(sqlstr, new SqlParameter[] { new SqlParameter("@TaskID", TaskID) });
+            if (DataTableHelper.IsExistRows(dt))
+            {
+                PointTime.Text = dt.Rows[0][0].ToString();
+                PointName.Text = dt.Rows[0][1].ToString();
 
+                CHARGEBCSS.Text = prestore.Text;
+            }
         }
 
         private void Btn_Submit_Click(object sender, EventArgs e)
         {
-
+            decimal _prestore = 0m;
+            if (decimal.TryParse(prestore.Text, out _prestore))
+            {
+                decimal _bcss = 0m;
+                if (decimal.TryParse(CHARGEBCSS.Text, out _bcss))
+                {
+                    if (_bcss > _prestore)
+                    {
+                        MessageBox.Show("退款金额不能大于账户余额！");
+                    }
+                    else
+                    {
+                        PersonalWork_IDAL sysidal = new PersonalWork_DAL();
+                        if (sysidal.UserPrestoreRefund(TaskID,Memo.Text))
+                        {
+                            MessageBox.Show("退款成功！");
+                        }
+                        else
+                        {
+                            MessageBox.Show("退款失败！");
+                        }
+                    }
+                }
+            }
         }
     }
 }

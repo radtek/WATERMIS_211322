@@ -30,18 +30,23 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmFinance_RefundShow2));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.Memo = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.CHARGEBCSS = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.waterUserId = new System.Windows.Forms.TextBox();
+            this.CreateDate = new System.Windows.Forms.TextBox();
+            this.PointTime = new System.Windows.Forms.TextBox();
+            this.waterUserAddress = new System.Windows.Forms.TextBox();
+            this.waterUserName = new System.Windows.Forms.TextBox();
+            this.userName = new System.Windows.Forms.TextBox();
+            this.prestore = new System.Windows.Forms.TextBox();
+            this.PointName = new System.Windows.Forms.TextBox();
+            this.waterPhone = new System.Windows.Forms.TextBox();
+            this.Table_Name_CH = new System.Windows.Forms.TextBox();
+            this.SD = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -54,14 +59,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.Btn_Submit = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.ryanTextBox1 = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -76,20 +76,72 @@
             this.panel1.Size = new System.Drawing.Size(600, 374);
             this.panel1.TabIndex = 0;
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.Memo);
+            this.panel3.Controls.Add(this.label13);
+            this.panel3.Controls.Add(this.CHARGEBCSS);
+            this.panel3.Controls.Add(this.label12);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 219);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(600, 85);
+            this.panel3.TabIndex = 2;
+            // 
+            // Memo
+            // 
+            this.Memo.Location = new System.Drawing.Point(100, 47);
+            this.Memo.Name = "Memo";
+            this.Memo.Size = new System.Drawing.Size(269, 21);
+            this.Memo.TabIndex = 25;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(29, 50);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(65, 12);
+            this.label13.TabIndex = 27;
+            this.label13.Text = "退款说明：";
+            // 
+            // CHARGEBCSS
+            // 
+            this.CHARGEBCSS.AllowEmpty = false;
+            this.CHARGEBCSS.EmptyMessage = "";
+            this.CHARGEBCSS.Enabled = false;
+            this.CHARGEBCSS.ErrorMessage = "";
+            this.CHARGEBCSS.InputType = Common.WinControl.Ryan.RegTextbox.RyanTextBox.EMInputTypes.数字;
+            this.CHARGEBCSS.Location = new System.Drawing.Point(100, 16);
+            this.CHARGEBCSS.Name = "CHARGEBCSS";
+            this.CHARGEBCSS.RegexExpression = "";
+            this.CHARGEBCSS.RemoveSpace = false;
+            this.CHARGEBCSS.Size = new System.Drawing.Size(109, 21);
+            this.CHARGEBCSS.TabIndex = 24;
+            this.CHARGEBCSS.ValidateState = false;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(29, 19);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(65, 12);
+            this.label12.TabIndex = 26;
+            this.label12.Text = "退款金额：";
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.panel2.Controls.Add(this.textBox11);
-            this.panel2.Controls.Add(this.textBox10);
-            this.panel2.Controls.Add(this.textBox9);
-            this.panel2.Controls.Add(this.textBox8);
-            this.panel2.Controls.Add(this.textBox7);
-            this.panel2.Controls.Add(this.textBox6);
-            this.panel2.Controls.Add(this.textBox5);
-            this.panel2.Controls.Add(this.textBox4);
-            this.panel2.Controls.Add(this.textBox3);
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.waterUserId);
+            this.panel2.Controls.Add(this.CreateDate);
+            this.panel2.Controls.Add(this.PointTime);
+            this.panel2.Controls.Add(this.waterUserAddress);
+            this.panel2.Controls.Add(this.waterUserName);
+            this.panel2.Controls.Add(this.userName);
+            this.panel2.Controls.Add(this.prestore);
+            this.panel2.Controls.Add(this.PointName);
+            this.panel2.Controls.Add(this.waterPhone);
+            this.panel2.Controls.Add(this.Table_Name_CH);
+            this.panel2.Controls.Add(this.SD);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.label9);
@@ -107,93 +159,93 @@
             this.panel2.Size = new System.Drawing.Size(600, 219);
             this.panel2.TabIndex = 1;
             // 
-            // textBox11
+            // waterUserId
             // 
-            this.textBox11.Location = new System.Drawing.Point(471, 59);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.ReadOnly = true;
-            this.textBox11.Size = new System.Drawing.Size(87, 21);
-            this.textBox11.TabIndex = 21;
+            this.waterUserId.Location = new System.Drawing.Point(471, 59);
+            this.waterUserId.Name = "waterUserId";
+            this.waterUserId.ReadOnly = true;
+            this.waterUserId.Size = new System.Drawing.Size(87, 21);
+            this.waterUserId.TabIndex = 21;
             // 
-            // textBox10
+            // CreateDate
             // 
-            this.textBox10.Location = new System.Drawing.Point(471, 21);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.ReadOnly = true;
-            this.textBox10.Size = new System.Drawing.Size(87, 21);
-            this.textBox10.TabIndex = 20;
+            this.CreateDate.Location = new System.Drawing.Point(471, 21);
+            this.CreateDate.Name = "CreateDate";
+            this.CreateDate.ReadOnly = true;
+            this.CreateDate.Size = new System.Drawing.Size(87, 21);
+            this.CreateDate.TabIndex = 20;
             // 
-            // textBox9
+            // PointTime
             // 
-            this.textBox9.Location = new System.Drawing.Point(303, 135);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.ReadOnly = true;
-            this.textBox9.Size = new System.Drawing.Size(162, 21);
-            this.textBox9.TabIndex = 19;
+            this.PointTime.Location = new System.Drawing.Point(303, 135);
+            this.PointTime.Name = "PointTime";
+            this.PointTime.ReadOnly = true;
+            this.PointTime.Size = new System.Drawing.Size(162, 21);
+            this.PointTime.TabIndex = 19;
             // 
-            // textBox8
+            // waterUserAddress
             // 
-            this.textBox8.Location = new System.Drawing.Point(303, 97);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(255, 21);
-            this.textBox8.TabIndex = 18;
+            this.waterUserAddress.Location = new System.Drawing.Point(303, 97);
+            this.waterUserAddress.Name = "waterUserAddress";
+            this.waterUserAddress.ReadOnly = true;
+            this.waterUserAddress.Size = new System.Drawing.Size(255, 21);
+            this.waterUserAddress.TabIndex = 18;
             // 
-            // textBox7
+            // waterUserName
             // 
-            this.textBox7.Location = new System.Drawing.Point(303, 59);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(87, 21);
-            this.textBox7.TabIndex = 17;
+            this.waterUserName.Location = new System.Drawing.Point(303, 59);
+            this.waterUserName.Name = "waterUserName";
+            this.waterUserName.ReadOnly = true;
+            this.waterUserName.Size = new System.Drawing.Size(87, 21);
+            this.waterUserName.TabIndex = 17;
             // 
-            // textBox6
+            // userName
             // 
-            this.textBox6.Location = new System.Drawing.Point(303, 21);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(87, 21);
-            this.textBox6.TabIndex = 16;
+            this.userName.Location = new System.Drawing.Point(303, 21);
+            this.userName.Name = "userName";
+            this.userName.ReadOnly = true;
+            this.userName.Size = new System.Drawing.Size(87, 21);
+            this.userName.TabIndex = 16;
             // 
-            // textBox5
+            // prestore
             // 
-            this.textBox5.Location = new System.Drawing.Point(100, 173);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(124, 21);
-            this.textBox5.TabIndex = 15;
+            this.prestore.Location = new System.Drawing.Point(100, 173);
+            this.prestore.Name = "prestore";
+            this.prestore.ReadOnly = true;
+            this.prestore.Size = new System.Drawing.Size(124, 21);
+            this.prestore.TabIndex = 15;
             // 
-            // textBox4
+            // PointName
             // 
-            this.textBox4.Location = new System.Drawing.Point(100, 135);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(124, 21);
-            this.textBox4.TabIndex = 14;
+            this.PointName.Location = new System.Drawing.Point(100, 135);
+            this.PointName.Name = "PointName";
+            this.PointName.ReadOnly = true;
+            this.PointName.Size = new System.Drawing.Size(124, 21);
+            this.PointName.TabIndex = 14;
             // 
-            // textBox3
+            // waterPhone
             // 
-            this.textBox3.Location = new System.Drawing.Point(100, 97);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(124, 21);
-            this.textBox3.TabIndex = 13;
+            this.waterPhone.Location = new System.Drawing.Point(100, 97);
+            this.waterPhone.Name = "waterPhone";
+            this.waterPhone.ReadOnly = true;
+            this.waterPhone.Size = new System.Drawing.Size(124, 21);
+            this.waterPhone.TabIndex = 13;
             // 
-            // textBox2
+            // Table_Name_CH
             // 
-            this.textBox2.Location = new System.Drawing.Point(100, 59);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(124, 21);
-            this.textBox2.TabIndex = 12;
+            this.Table_Name_CH.Location = new System.Drawing.Point(100, 59);
+            this.Table_Name_CH.Name = "Table_Name_CH";
+            this.Table_Name_CH.ReadOnly = true;
+            this.Table_Name_CH.Size = new System.Drawing.Size(124, 21);
+            this.Table_Name_CH.TabIndex = 12;
             // 
-            // textBox1
+            // SD
             // 
-            this.textBox1.Location = new System.Drawing.Point(100, 21);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(124, 21);
-            this.textBox1.TabIndex = 11;
+            this.SD.Location = new System.Drawing.Point(100, 21);
+            this.SD.Name = "SD";
+            this.SD.ReadOnly = true;
+            this.SD.Size = new System.Drawing.Size(124, 21);
+            this.SD.TabIndex = 11;
             // 
             // label11
             // 
@@ -304,57 +356,6 @@
             this.Btn_Submit.UseVisualStyleBackColor = true;
             this.Btn_Submit.Click += new System.EventHandler(this.Btn_Submit_Click);
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.textBox12);
-            this.panel3.Controls.Add(this.label13);
-            this.panel3.Controls.Add(this.ryanTextBox1);
-            this.panel3.Controls.Add(this.label12);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 219);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(600, 85);
-            this.panel3.TabIndex = 2;
-            // 
-            // textBox12
-            // 
-            this.textBox12.Location = new System.Drawing.Point(100, 47);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(269, 21);
-            this.textBox12.TabIndex = 25;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(29, 50);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(65, 12);
-            this.label13.TabIndex = 27;
-            this.label13.Text = "退款说明：";
-            // 
-            // ryanTextBox1
-            // 
-            this.ryanTextBox1.AllowEmpty = false;
-            this.ryanTextBox1.EmptyMessage = "";
-            this.ryanTextBox1.ErrorMessage = "";
-            this.ryanTextBox1.InputType = Common.WinControl.Ryan.RegTextbox.RyanTextBox.EMInputTypes.数字;
-            this.ryanTextBox1.Location = new System.Drawing.Point(100, 16);
-            this.ryanTextBox1.Name = "ryanTextBox1";
-            this.ryanTextBox1.RegexExpression = "";
-            this.ryanTextBox1.RemoveSpace = false;
-            this.ryanTextBox1.Size = new System.Drawing.Size(109, 21);
-            this.ryanTextBox1.TabIndex = 24;
-            this.ryanTextBox1.ValidateState = false;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(29, 19);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(65, 12);
-            this.label12.TabIndex = 26;
-            this.label12.Text = "退款金额：";
-            // 
             // FrmFinance_RefundShow2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -366,10 +367,10 @@
             this.Text = "作废退款";
             this.Load += new System.EventHandler(this.FrmFinance_RefundShow2_Load);
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -390,21 +391,21 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox userName;
+        private System.Windows.Forms.TextBox prestore;
+        private System.Windows.Forms.TextBox PointName;
+        private System.Windows.Forms.TextBox waterPhone;
+        private System.Windows.Forms.TextBox Table_Name_CH;
+        private System.Windows.Forms.TextBox SD;
+        private System.Windows.Forms.TextBox waterUserId;
+        private System.Windows.Forms.TextBox CreateDate;
+        private System.Windows.Forms.TextBox PointTime;
+        private System.Windows.Forms.TextBox waterUserAddress;
+        private System.Windows.Forms.TextBox waterUserName;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox Memo;
         private System.Windows.Forms.Label label13;
-        private Common.WinControl.Ryan.RegTextbox.RyanTextBox ryanTextBox1;
+        private Common.WinControl.Ryan.RegTextbox.RyanTextBox CHARGEBCSS;
         private System.Windows.Forms.Label label12;
     }
 }

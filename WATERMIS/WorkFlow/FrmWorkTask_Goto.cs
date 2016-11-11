@@ -77,7 +77,7 @@ ORDER BY MWR.PointSort";
         private void Btn_Scrap_Click(object sender, EventArgs e)
         {
             string sqlstr = string.Format(@"UPDATE Meter_WorkTask SET [State]=4 WHERE TaskID=@TaskID
-UPDATE {0} SET [State]=5 WHERE TaskID=@TaskID", TableName);
+UPDATE {0} SET [State]=4 WHERE TaskID=@TaskID", TableName);
             int count = new SqlServerHelper().UpdateByHashtable(sqlstr, new SqlParameter[] { new SqlParameter("@TaskID", TaskID) });
             if (count > 0)
             {
