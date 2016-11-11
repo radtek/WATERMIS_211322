@@ -1385,5 +1385,90 @@ namespace WATERFEEMANAGE
                 return;
             }
         }
+        private void 今天ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DateTime dtNow = mes.GetDatetimeNow();
+
+            DateTime dtMonthStart = new DateTime(dtNow.Year, dtNow.Month, dtNow.Day, 0, 0, 0);
+            dtpStart.Value = dtMonthStart;
+
+            DateTime dtMonthEnd = new DateTime(dtNow.Year, dtNow.Month, dtNow.Day, 23, 59, 59);
+            dtpEnd.Value = dtMonthEnd;
+        }
+
+        private void 本月ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DateTime dtNow = mes.GetDatetimeNow();
+            DateTime dtMonthStart = new DateTime(dtNow.Year, dtNow.Month, 1);
+            dtpStart.Value = dtMonthStart;
+
+            DateTime dtMonthEnd = dtMonthStart.AddMonths(1).AddDays(-1);
+            dtMonthEnd = new DateTime(dtMonthEnd.Year, dtMonthEnd.Month, dtMonthEnd.Day, 23, 59, 59);
+            dtpEnd.Value = dtMonthEnd;
+        }
+
+        private void 上月ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DateTime dtNow = mes.GetDatetimeNow();
+            DateTime dtMonthStart = new DateTime(dtNow.Year, dtNow.Month, 1);
+            DateTime dtLastMonth = dtMonthStart.AddMonths(-1);
+            dtLastMonth = new DateTime(dtLastMonth.Year, dtLastMonth.Month, dtLastMonth.Day, 0, 0, 0);
+            dtpStart.Value = dtLastMonth;
+
+            DateTime dtMonthEnd = dtMonthStart.AddDays(-1);
+            dtMonthEnd = new DateTime(dtMonthEnd.Year, dtMonthEnd.Month, dtMonthEnd.Day, 23, 59, 59);
+            dtpEnd.Value = dtMonthEnd;
+        }
+
+        private void 下月ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DateTime dtNow = mes.GetDatetimeNow();
+            DateTime dtMonthStart = new DateTime(dtNow.Year, dtNow.Month, 1);
+            DateTime dtLastMonth = dtMonthStart.AddMonths(1);
+            dtLastMonth = new DateTime(dtLastMonth.Year, dtLastMonth.Month, dtMonthStart.Day, 0, 0, 0);
+            dtpStart.Value = dtLastMonth;
+
+            DateTime dtMonthEnd = dtMonthStart.AddMonths(2).AddDays(-1);
+            dtMonthEnd = new DateTime(dtMonthEnd.Year, dtMonthEnd.Month, dtMonthEnd.Day, 23, 59, 59);
+            dtpEnd.Value = dtMonthEnd;
+        }
+
+        private void 本年ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DateTime dtNow = mes.GetDatetimeNow();
+            DateTime dtMonthStart = new DateTime(dtNow.Year, 1, 1);
+            DateTime dtLastMonth = new DateTime(dtMonthStart.Year, 1, 1, 0, 0, 0);
+            dtpStart.Value = dtLastMonth;
+
+            DateTime dtMonthEnd = dtMonthStart.AddYears(1).AddDays(-1);
+            dtMonthEnd = new DateTime(dtMonthEnd.Year, dtMonthEnd.Month, dtMonthEnd.Day, 23, 59, 59);
+            dtpEnd.Value = dtMonthEnd;
+        }
+
+        private void 上年ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DateTime dtNow = mes.GetDatetimeNow();
+            DateTime dtMonthStart = new DateTime(dtNow.Year, 1, 1);
+            DateTime dtLastYear = new DateTime(dtMonthStart.AddYears(-1).Year, 1, 1, 0, 0, 0);
+            dtpStart.Value = dtLastYear;
+
+            DateTime dtMonthEnd = dtMonthStart.AddDays(-1);
+            dtMonthEnd = new DateTime(dtMonthEnd.Year, dtMonthEnd.Month, dtMonthEnd.Day, 23, 59, 59);
+            dtpEnd.Value = dtMonthEnd;
+        }
+
+        private void 全部ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DateTime dtLastYear = new DateTime(2000, 1, 1);
+            dtpStart.Value = dtLastYear;
+
+            DateTime dtMonthEnd = new DateTime(3000, 1, 1, 23, 59, 59);
+            dtpEnd.Value = dtMonthEnd;
+        }
+
+        private void btSetMonth_Click(object sender, EventArgs e)
+        {
+            contextMenuStrip2.Show(btSetMonth, 0, btSetMonth.Width + 1);
+        }
     }
 }

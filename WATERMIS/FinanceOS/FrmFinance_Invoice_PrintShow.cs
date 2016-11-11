@@ -477,6 +477,13 @@ namespace FinanceOS
             }
             #endregion
 
+            //发票开具初始化
+            bool isSuccess = FPInfoInit(this.Handle);
+            if (!isSuccess)
+            {
+                mes.Show("发票开具初始化失败,请重试!");
+                return;
+            }
             StringBuilder strInvTypeCode1 = new StringBuilder();
             StringBuilder strInvNumber1 = new StringBuilder();
             bool ret = GetFPInfo(strInvTypeCode1, strInvNumber1);
@@ -498,8 +505,8 @@ namespace FinanceOS
             #region 打印发票
             try
             {
-                if (AddFPData(strWaterUserName, strWaterUserFPTaxNO, strWaterUserFPBankNameAndAccountNO, strWaterUserAddress + strWaterUserTel, strCompanyBankNameAndAccountNO,
-                                strCompanyAddressAndTel, "", strLoginName, strCompanyChecker, strCompanyPayee, null, 2, 0))
+                if (AddFPData(strWaterUserName, txtWaterUserFPTaxNO.Text, txtWaterUserBankAccount.Text, txtWaterUserAddress.Text, strCompanyBankNameAndAccountNO,
+                                strCompanyAddressAndTel, txtMemo.Text, strLoginName, strCompanyChecker, strCompanyPayee, null, 2, 0))
                 {
                     if (MXInfoInit())
                     {

@@ -72,25 +72,21 @@
       <DependentUpon>frmSingleChargeSelectWaterUser.cs</DependentUpon>
     </Compile>
     <Compile Include="SEARCH\台账一户式查询\frmWaterUserReadMeterRecordSearchAll.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="SEARCH\台账一户式查询\frmWaterUserReadMeterRecordSearchAll.Designer.cs">
       <DependentUpon>frmWaterUserReadMeterRecordSearchAll.cs</DependentUpon>
     </Compile>
     <Compile Include="SEARCH\台账一户式查询\frmWaterUserSearchAll_CanModify.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="SEARCH\台账一户式查询\frmWaterUserSearchAll_CanModify.Designer.cs">
       <DependentUpon>frmWaterUserSearchAll_CanModify.cs</DependentUpon>
     </Compile>
     <Compile Include="STATISTICS\frmWaterFeeSummaryPreview_Year.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="STATISTICS\frmWaterFeeSummaryPreview_Year.Designer.cs">
       <DependentUpon>frmWaterFeeSummaryPreview_Year.cs</DependentUpon>
     </Compile>
     <Compile Include="STATISTICS\用水用户统计\frmWaterUserStatisticsSearch.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="STATISTICS\用水用户统计\frmWaterUserStatisticsSearch.Designer.cs">
       <DependentUpon>frmWaterUserStatisticsSearch.cs</DependentUpon>
@@ -102,67 +98,56 @@
       <DependentUpon>frmWaterUserSeniorSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="STATISTICS\实收陈欠\frmWaterMeterChargedOldStatisticsSearch.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="STATISTICS\实收陈欠\frmWaterMeterChargedOldStatisticsSearch.Designer.cs">
       <DependentUpon>frmWaterMeterChargedOldStatisticsSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="STATISTICS\欠费统计\frmWaterMeterYSDebtStatics.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="STATISTICS\欠费统计\frmWaterMeterYSDebtStatics.Designer.cs">
       <DependentUpon>frmWaterMeterYSDebtStatics.cs</DependentUpon>
     </Compile>
     <Compile Include="STATISTICS\实收陈欠\frmWaterMeterChargedOldStatics.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="STATISTICS\实收陈欠\frmWaterMeterChargedOldStatics.Designer.cs">
       <DependentUpon>frmWaterMeterChargedOldStatics.cs</DependentUpon>
     </Compile>
     <Compile Include="STATISTICS\财务报表\实收统计\frmWaterMeterChargedStatics_ALLYear.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="STATISTICS\财务报表\实收统计\frmWaterMeterChargedStatics_ALLYear.Designer.cs">
       <DependentUpon>frmWaterMeterChargedStatics_ALLYear.cs</DependentUpon>
     </Compile>
     <Compile Include="STATISTICS\财务报表\应收统计\frmWaterMeterYSStaticsSearch.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="STATISTICS\财务报表\应收统计\frmWaterMeterYSStaticsSearch.Designer.cs">
       <DependentUpon>frmWaterMeterYSStaticsSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="STATISTICS\财务报表\应收统计\frmWaterMeterYSStatics.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="STATISTICS\财务报表\应收统计\frmWaterMeterYSStatics.Designer.cs">
       <DependentUpon>frmWaterMeterYSStatics.cs</DependentUpon>
     </Compile>
     <Compile Include="STATISTICS\财务报表\实收统计\frmWaterMeterChargedStatisticsSearch.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="STATISTICS\财务报表\实收统计\frmWaterMeterChargedStatisticsSearch.Designer.cs">
       <DependentUpon>frmWaterMeterChargedStatisticsSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="STATISTICS\财务报表\实收统计\frmWaterMeterChargedStatics.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="STATISTICS\财务报表\实收统计\frmWaterMeterChargedStatics.Designer.cs">
       <DependentUpon>frmWaterMeterChargedStatics.cs</DependentUpon>
     </Compile>
     <Compile Include="SEARCH\frmWaterMeterChargedSearch.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="SEARCH\frmWaterMeterChargedSearch.Designer.cs">
       <DependentUpon>frmWaterMeterChargedSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="SEARCH\历史台账查询\frmReadMeterRecordOldSearch.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="SEARCH\历史台账查询\frmReadMeterRecordOldSearch.Designer.cs">
       <DependentUpon>frmReadMeterRecordOldSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="SEARCH\frmWaterUserSearch.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="SEARCH\frmWaterUserSearch.Designer.cs">
       <DependentUpon>frmWaterUserSearch.cs</DependentUpon>
@@ -174,61 +159,51 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="SEARCH\frmWaterMeterSearch.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="SEARCH\frmWaterMeterSearch.Designer.cs">
       <DependentUpon>frmWaterMeterSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="SEARCH\frmWaterMeterYSMXSearch.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="SEARCH\frmWaterMeterYSMXSearch.Designer.cs">
       <DependentUpon>frmWaterMeterYSMXSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="SEARCH\frmWaterUserYSMXSearch.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="SEARCH\frmWaterUserYSMXSearch.Designer.cs">
       <DependentUpon>frmWaterUserYSMXSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="SEARCH\frmWaterMeterChargeSearch.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="SEARCH\frmWaterMeterChargeSearch.Designer.cs">
       <DependentUpon>frmWaterMeterChargeSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="SEARCH\frmReadMeterRecordSearch.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="SEARCH\frmReadMeterRecordSearch.Designer.cs">
       <DependentUpon>frmReadMeterRecordSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="SEARCH\frmChargeInvoicePrintSearch.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="SEARCH\frmChargeInvoicePrintSearch.Designer.cs">
       <DependentUpon>frmChargeInvoicePrintSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="SEARCH\frmPrestoreChargeCancelSearch.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="SEARCH\frmPrestoreChargeCancelSearch.Designer.cs">
       <DependentUpon>frmPrestoreChargeCancelSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="SEARCH\frmPrestoreChargeSearch.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="SEARCH\frmPrestoreChargeSearch.Designer.cs">
       <DependentUpon>frmPrestoreChargeSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="SEARCH\frmWaterMeterChargeCancelSearch.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="SEARCH\frmWaterMeterChargeCancelSearch.Designer.cs">
       <DependentUpon>frmWaterMeterChargeCancelSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="SEARCH\frmWaterFeeRemitSearch.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="SEARCH\frmWaterFeeRemitSearch.Designer.cs">
       <DependentUpon>frmWaterFeeRemitSearch.cs</DependentUpon>
@@ -240,7 +215,6 @@
       <DependentUpon>frmWaterMeterSeniorSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="SEARCH\frmWaterMeterDebtSearch.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="SEARCH\frmWaterMeterDebtSearch.Designer.cs">
       <DependentUpon>frmWaterMeterDebtSearch.cs</DependentUpon>
@@ -252,19 +226,16 @@
       <DependentUpon>frmReadMeterRecordOldSearchSingleWaterUser.cs</DependentUpon>
     </Compile>
     <Compile Include="STATISTICS\frmWaterMeterDebtStatisc.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="STATISTICS\frmWaterMeterDebtStatisc.Designer.cs">
       <DependentUpon>frmWaterMeterDebtStatisc.cs</DependentUpon>
     </Compile>
     <Compile Include="STATISTICS\frmChargeInvoicePrintStatistisc.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="STATISTICS\frmChargeInvoicePrintStatistisc.Designer.cs">
       <DependentUpon>frmChargeInvoicePrintStatistisc.cs</DependentUpon>
     </Compile>
     <Compile Include="STATISTICS\frmReadMeterRecordPecent.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="STATISTICS\frmReadMeterRecordPecent.Designer.cs">
       <DependentUpon>frmReadMeterRecordPecent.cs</DependentUpon>
@@ -276,55 +247,46 @@
       <DependentUpon>frmSeniorSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="STATISTICS\frmWaterMeterChargePercent.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="STATISTICS\frmWaterMeterChargePercent.Designer.cs">
       <DependentUpon>frmWaterMeterChargePercent.cs</DependentUpon>
     </Compile>
     <Compile Include="STATISTICS\frmReadMeterExceptionSearch.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="STATISTICS\frmReadMeterExceptionSearch.Designer.cs">
       <DependentUpon>frmReadMeterExceptionSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="STATISTICS\用水用户统计\frmWaterUserStatistics.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="STATISTICS\用水用户统计\frmWaterUserStatistics.Designer.cs">
       <DependentUpon>frmWaterUserStatistics.cs</DependentUpon>
     </Compile>
     <Compile Include="STATISTICS\frmWaterMeterStatistics.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="STATISTICS\frmWaterMeterStatistics.Designer.cs">
       <DependentUpon>frmWaterMeterStatistics.cs</DependentUpon>
     </Compile>
     <Compile Include="STATISTICS\frmWaterChargeStatistics.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="STATISTICS\frmWaterChargeStatistics.Designer.cs">
       <DependentUpon>frmWaterChargeStatistics.cs</DependentUpon>
     </Compile>
     <Compile Include="STATISTICS\frmWaterPrestoreChargeStatistics.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="STATISTICS\frmWaterPrestoreChargeStatistics.Designer.cs">
       <DependentUpon>frmWaterPrestoreChargeStatistics.cs</DependentUpon>
     </Compile>
     <Compile Include="STATISTICS\frmWaterChargeStatisticsNew.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="STATISTICS\frmWaterChargeStatisticsNew.Designer.cs">
       <DependentUpon>frmWaterChargeStatisticsNew.cs</DependentUpon>
     </Compile>
     <Compile Include="STATISTICS\frmInformStatistics.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="STATISTICS\frmInformStatistics.Designer.cs">
       <DependentUpon>frmInformStatistics.cs</DependentUpon>
     </Compile>
     <Compile Include="STATISTICS\frmChargeStatistics.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="STATISTICS\frmChargeStatistics.Designer.cs">
       <DependentUpon>frmChargeStatistics.cs</DependentUpon>
@@ -336,13 +298,11 @@
       <DependentUpon>frmChargeStatisticsAll.cs</DependentUpon>
     </Compile>
     <Compile Include="STATISTICS\财务报表\应收统计\frmWaterMeterYSStatics_AllYear.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="STATISTICS\财务报表\应收统计\frmWaterMeterYSStatics_AllYear.Designer.cs">
       <DependentUpon>frmWaterMeterYSStatics_AllYear.cs</DependentUpon>
     </Compile>
     <Compile Include="SEARCH\台账一户式查询\frmWaterUserSearchAll.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="SEARCH\台账一户式查询\frmWaterUserSearchAll.Designer.cs">
       <DependentUpon>frmWaterUserSearchAll.cs</DependentUpon>

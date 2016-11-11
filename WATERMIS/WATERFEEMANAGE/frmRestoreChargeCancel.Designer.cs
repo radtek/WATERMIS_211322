@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRestoreChargeCancel));
             this.tb1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -70,23 +70,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.tb2 = new System.Windows.Forms.TableLayoutPanel();
             this.dgHistoryWaterFee = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtWaterUserNameSearch = new System.Windows.Forms.TextBox();
-            this.label48 = new System.Windows.Forms.Label();
-            this.cmbChargerWorkName = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.btSearch = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dtpEnd = new System.Windows.Forms.DateTimePicker();
-            this.dtpStart = new System.Windows.Forms.DateTimePicker();
-            this.chkChargeDateTime = new System.Windows.Forms.CheckBox();
-            this.txtWaterUserNOSearch = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtChargeNO = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.反月结ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.反日结ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.waterUserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waterUserNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waterUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -109,6 +92,35 @@
             this.SETTLEACCOUNTSSSID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.METERREADERID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.METERREADERNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtWaterUserNameSearch = new System.Windows.Forms.TextBox();
+            this.label48 = new System.Windows.Forms.Label();
+            this.cmbChargerWorkName = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btSearch = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dtpEnd = new System.Windows.Forms.DateTimePicker();
+            this.dtpStart = new System.Windows.Forms.DateTimePicker();
+            this.chkChargeDateTime = new System.Windows.Forms.CheckBox();
+            this.txtWaterUserNOSearch = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtChargeNO = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.反月结ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.反日结ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btSetMonth = new System.Windows.Forms.Button();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.今天ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.本月ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.上月ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.下月ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.本年ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.上年ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.全部ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tb1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -116,6 +128,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgHistoryWaterFee)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            this.contextMenuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tb1
@@ -539,16 +552,16 @@
             this.dgHistoryWaterFee.AllowUserToAddRows = false;
             this.dgHistoryWaterFee.AllowUserToDeleteRows = false;
             this.dgHistoryWaterFee.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgHistoryWaterFee.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgHistoryWaterFee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgHistoryWaterFee.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgHistoryWaterFee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgHistoryWaterFee.ColumnHeadersHeight = 25;
             this.dgHistoryWaterFee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgHistoryWaterFee.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -587,173 +600,6 @@
             this.dgHistoryWaterFee.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgHistoryWaterFee_CellMouseDown);
             this.dgHistoryWaterFee.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgHistoryWaterFee_CellFormatting);
             this.dgHistoryWaterFee.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgHistoryWaterFee_CellClick);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.Color.LimeGreen;
-            this.groupBox1.Controls.Add(this.txtWaterUserNameSearch);
-            this.groupBox1.Controls.Add(this.label48);
-            this.groupBox1.Controls.Add(this.cmbChargerWorkName);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.btSearch);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.dtpEnd);
-            this.groupBox1.Controls.Add(this.dtpStart);
-            this.groupBox1.Controls.Add(this.chkChargeDateTime);
-            this.groupBox1.Controls.Add(this.txtWaterUserNOSearch);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.txtChargeNO);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(3, 10);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(972, 86);
-            this.groupBox1.TabIndex = 906;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Tag = "9999";
-            this.groupBox1.Text = "查询条件";
-            // 
-            // txtWaterUserNameSearch
-            // 
-            this.txtWaterUserNameSearch.BackColor = System.Drawing.SystemColors.Window;
-            this.txtWaterUserNameSearch.Location = new System.Drawing.Point(544, 19);
-            this.txtWaterUserNameSearch.Name = "txtWaterUserNameSearch";
-            this.txtWaterUserNameSearch.Size = new System.Drawing.Size(99, 26);
-            this.txtWaterUserNameSearch.TabIndex = 134;
-            this.txtWaterUserNameSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtWaterUserNOSearch_KeyDown);
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(466, 24);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(80, 16);
-            this.label48.TabIndex = 133;
-            this.label48.Text = "用户名称:";
-            // 
-            // cmbChargerWorkName
-            // 
-            this.cmbChargerWorkName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbChargerWorkName.FormattingEnabled = true;
-            this.cmbChargerWorkName.Location = new System.Drawing.Point(82, 53);
-            this.cmbChargerWorkName.Name = "cmbChargerWorkName";
-            this.cmbChargerWorkName.Size = new System.Drawing.Size(88, 24);
-            this.cmbChargerWorkName.TabIndex = 131;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 57);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(80, 16);
-            this.label7.TabIndex = 132;
-            this.label7.Text = "收 款 员:";
-            // 
-            // btSearch
-            // 
-            this.btSearch.Location = new System.Drawing.Point(661, 46);
-            this.btSearch.Name = "btSearch";
-            this.btSearch.Size = new System.Drawing.Size(59, 36);
-            this.btSearch.TabIndex = 2;
-            this.btSearch.Text = "查询";
-            this.btSearch.UseVisualStyleBackColor = true;
-            this.btSearch.Click += new System.EventHandler(this.btSearch_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(452, 58);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(24, 16);
-            this.label3.TabIndex = 108;
-            this.label3.Text = "至";
-            // 
-            // dtpEnd
-            // 
-            this.dtpEnd.CustomFormat = "yyyy-MM-dd HH:mm";
-            this.dtpEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpEnd.Location = new System.Drawing.Point(477, 52);
-            this.dtpEnd.Name = "dtpEnd";
-            this.dtpEnd.Size = new System.Drawing.Size(165, 26);
-            this.dtpEnd.TabIndex = 107;
-            // 
-            // dtpStart
-            // 
-            this.dtpStart.CustomFormat = "yyyy-MM-dd HH:mm";
-            this.dtpStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpStart.Location = new System.Drawing.Point(287, 52);
-            this.dtpStart.Name = "dtpStart";
-            this.dtpStart.Size = new System.Drawing.Size(165, 26);
-            this.dtpStart.TabIndex = 106;
-            // 
-            // chkChargeDateTime
-            // 
-            this.chkChargeDateTime.AutoSize = true;
-            this.chkChargeDateTime.Checked = true;
-            this.chkChargeDateTime.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkChargeDateTime.Location = new System.Drawing.Point(195, 56);
-            this.chkChargeDateTime.Name = "chkChargeDateTime";
-            this.chkChargeDateTime.Size = new System.Drawing.Size(99, 20);
-            this.chkChargeDateTime.TabIndex = 105;
-            this.chkChargeDateTime.Text = "收费时间:";
-            this.chkChargeDateTime.UseVisualStyleBackColor = true;
-            // 
-            // txtWaterUserNOSearch
-            // 
-            this.txtWaterUserNOSearch.Location = new System.Drawing.Point(328, 19);
-            this.txtWaterUserNOSearch.Name = "txtWaterUserNOSearch";
-            this.txtWaterUserNOSearch.Size = new System.Drawing.Size(124, 26);
-            this.txtWaterUserNOSearch.TabIndex = 0;
-            this.txtWaterUserNOSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtWaterUserNOSearch_KeyDown);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(249, 24);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 16);
-            this.label2.TabIndex = 103;
-            this.label2.Text = "用户编号:";
-            // 
-            // txtChargeNO
-            // 
-            this.txtChargeNO.Location = new System.Drawing.Point(82, 19);
-            this.txtChargeNO.Name = "txtChargeNO";
-            this.txtChargeNO.Size = new System.Drawing.Size(160, 26);
-            this.txtChargeNO.TabIndex = 102;
-            this.txtChargeNO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtWaterUserNOSearch_KeyDown);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 16);
-            this.label1.TabIndex = 101;
-            this.label1.Text = "收费单号:";
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.反月结ToolStripMenuItem,
-            this.反日结ToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(113, 48);
-            // 
-            // 反月结ToolStripMenuItem
-            // 
-            this.反月结ToolStripMenuItem.Name = "反月结ToolStripMenuItem";
-            this.反月结ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
-            this.反月结ToolStripMenuItem.Text = "反月结";
-            this.反月结ToolStripMenuItem.Click += new System.EventHandler(this.反月结ToolStripMenuItem_Click);
-            // 
-            // 反日结ToolStripMenuItem
-            // 
-            this.反日结ToolStripMenuItem.Name = "反日结ToolStripMenuItem";
-            this.反日结ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
-            this.反日结ToolStripMenuItem.Text = "反日结";
-            this.反日结ToolStripMenuItem.Click += new System.EventHandler(this.反日结ToolStripMenuItem_Click);
             // 
             // waterUserId
             // 
@@ -934,6 +780,268 @@
             this.METERREADERNAME.ReadOnly = true;
             this.METERREADERNAME.Visible = false;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.LimeGreen;
+            this.groupBox1.Controls.Add(this.btSetMonth);
+            this.groupBox1.Controls.Add(this.txtWaterUserNameSearch);
+            this.groupBox1.Controls.Add(this.label48);
+            this.groupBox1.Controls.Add(this.cmbChargerWorkName);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.btSearch);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.dtpEnd);
+            this.groupBox1.Controls.Add(this.dtpStart);
+            this.groupBox1.Controls.Add(this.chkChargeDateTime);
+            this.groupBox1.Controls.Add(this.txtWaterUserNOSearch);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.txtChargeNO);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(3, 10);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(972, 86);
+            this.groupBox1.TabIndex = 906;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Tag = "9999";
+            this.groupBox1.Text = "查询条件";
+            // 
+            // txtWaterUserNameSearch
+            // 
+            this.txtWaterUserNameSearch.BackColor = System.Drawing.SystemColors.Window;
+            this.txtWaterUserNameSearch.Location = new System.Drawing.Point(544, 19);
+            this.txtWaterUserNameSearch.Name = "txtWaterUserNameSearch";
+            this.txtWaterUserNameSearch.Size = new System.Drawing.Size(99, 26);
+            this.txtWaterUserNameSearch.TabIndex = 134;
+            this.txtWaterUserNameSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtWaterUserNOSearch_KeyDown);
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(466, 24);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(80, 16);
+            this.label48.TabIndex = 133;
+            this.label48.Text = "用户名称:";
+            // 
+            // cmbChargerWorkName
+            // 
+            this.cmbChargerWorkName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbChargerWorkName.FormattingEnabled = true;
+            this.cmbChargerWorkName.Location = new System.Drawing.Point(82, 53);
+            this.cmbChargerWorkName.Name = "cmbChargerWorkName";
+            this.cmbChargerWorkName.Size = new System.Drawing.Size(88, 24);
+            this.cmbChargerWorkName.TabIndex = 131;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 57);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(80, 16);
+            this.label7.TabIndex = 132;
+            this.label7.Text = "收 款 员:";
+            // 
+            // btSearch
+            // 
+            this.btSearch.Location = new System.Drawing.Point(710, 48);
+            this.btSearch.Name = "btSearch";
+            this.btSearch.Size = new System.Drawing.Size(59, 36);
+            this.btSearch.TabIndex = 2;
+            this.btSearch.Text = "查询";
+            this.btSearch.UseVisualStyleBackColor = true;
+            this.btSearch.Click += new System.EventHandler(this.btSearch_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(452, 58);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(24, 16);
+            this.label3.TabIndex = 108;
+            this.label3.Text = "至";
+            // 
+            // dtpEnd
+            // 
+            this.dtpEnd.CustomFormat = "yyyy-MM-dd HH:mm";
+            this.dtpEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpEnd.Location = new System.Drawing.Point(477, 52);
+            this.dtpEnd.Name = "dtpEnd";
+            this.dtpEnd.Size = new System.Drawing.Size(165, 26);
+            this.dtpEnd.TabIndex = 107;
+            // 
+            // dtpStart
+            // 
+            this.dtpStart.CustomFormat = "yyyy-MM-dd HH:mm";
+            this.dtpStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpStart.Location = new System.Drawing.Point(287, 52);
+            this.dtpStart.Name = "dtpStart";
+            this.dtpStart.Size = new System.Drawing.Size(165, 26);
+            this.dtpStart.TabIndex = 106;
+            // 
+            // chkChargeDateTime
+            // 
+            this.chkChargeDateTime.AutoSize = true;
+            this.chkChargeDateTime.Checked = true;
+            this.chkChargeDateTime.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkChargeDateTime.Location = new System.Drawing.Point(195, 56);
+            this.chkChargeDateTime.Name = "chkChargeDateTime";
+            this.chkChargeDateTime.Size = new System.Drawing.Size(99, 20);
+            this.chkChargeDateTime.TabIndex = 105;
+            this.chkChargeDateTime.Text = "收费时间:";
+            this.chkChargeDateTime.UseVisualStyleBackColor = true;
+            // 
+            // txtWaterUserNOSearch
+            // 
+            this.txtWaterUserNOSearch.Location = new System.Drawing.Point(328, 19);
+            this.txtWaterUserNOSearch.Name = "txtWaterUserNOSearch";
+            this.txtWaterUserNOSearch.Size = new System.Drawing.Size(124, 26);
+            this.txtWaterUserNOSearch.TabIndex = 0;
+            this.txtWaterUserNOSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtWaterUserNOSearch_KeyDown);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(249, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(80, 16);
+            this.label2.TabIndex = 103;
+            this.label2.Text = "用户编号:";
+            // 
+            // txtChargeNO
+            // 
+            this.txtChargeNO.Location = new System.Drawing.Point(82, 19);
+            this.txtChargeNO.Name = "txtChargeNO";
+            this.txtChargeNO.Size = new System.Drawing.Size(160, 26);
+            this.txtChargeNO.TabIndex = 102;
+            this.txtChargeNO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtWaterUserNOSearch_KeyDown);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(80, 16);
+            this.label1.TabIndex = 101;
+            this.label1.Text = "收费单号:";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.反月结ToolStripMenuItem,
+            this.反日结ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(113, 48);
+            // 
+            // 反月结ToolStripMenuItem
+            // 
+            this.反月结ToolStripMenuItem.Name = "反月结ToolStripMenuItem";
+            this.反月结ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.反月结ToolStripMenuItem.Text = "反月结";
+            this.反月结ToolStripMenuItem.Click += new System.EventHandler(this.反月结ToolStripMenuItem_Click);
+            // 
+            // 反日结ToolStripMenuItem
+            // 
+            this.反日结ToolStripMenuItem.Name = "反日结ToolStripMenuItem";
+            this.反日结ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.反日结ToolStripMenuItem.Text = "反日结";
+            this.反日结ToolStripMenuItem.Click += new System.EventHandler(this.反日结ToolStripMenuItem_Click);
+            // 
+            // btSetMonth
+            // 
+            this.btSetMonth.BackgroundImage = global::WATERFEEMANAGE.Properties.Resources.onebit_20;
+            this.btSetMonth.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btSetMonth.ContextMenuStrip = this.contextMenuStrip1;
+            this.btSetMonth.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btSetMonth.Location = new System.Drawing.Point(646, 54);
+            this.btSetMonth.Name = "btSetMonth";
+            this.btSetMonth.Size = new System.Drawing.Size(22, 23);
+            this.btSetMonth.TabIndex = 146;
+            this.btSetMonth.UseVisualStyleBackColor = true;
+            this.btSetMonth.Click += new System.EventHandler(this.btSetMonth_Click);
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Font = new System.Drawing.Font("微软雅黑", 11F);
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.今天ToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.本月ToolStripMenuItem,
+            this.上月ToolStripMenuItem,
+            this.下月ToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.本年ToolStripMenuItem,
+            this.上年ToolStripMenuItem,
+            this.toolStripSeparator3,
+            this.全部ToolStripMenuItem});
+            this.contextMenuStrip2.Name = "contextMenuStrip1";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(109, 190);
+            // 
+            // 今天ToolStripMenuItem
+            // 
+            this.今天ToolStripMenuItem.Name = "今天ToolStripMenuItem";
+            this.今天ToolStripMenuItem.Size = new System.Drawing.Size(108, 24);
+            this.今天ToolStripMenuItem.Text = "今天";
+            this.今天ToolStripMenuItem.Click += new System.EventHandler(this.今天ToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(105, 6);
+            // 
+            // 本月ToolStripMenuItem
+            // 
+            this.本月ToolStripMenuItem.Name = "本月ToolStripMenuItem";
+            this.本月ToolStripMenuItem.Size = new System.Drawing.Size(108, 24);
+            this.本月ToolStripMenuItem.Text = "本月";
+            this.本月ToolStripMenuItem.Click += new System.EventHandler(this.本月ToolStripMenuItem_Click);
+            // 
+            // 上月ToolStripMenuItem
+            // 
+            this.上月ToolStripMenuItem.Name = "上月ToolStripMenuItem";
+            this.上月ToolStripMenuItem.Size = new System.Drawing.Size(108, 24);
+            this.上月ToolStripMenuItem.Text = "上月";
+            this.上月ToolStripMenuItem.Click += new System.EventHandler(this.上月ToolStripMenuItem_Click);
+            // 
+            // 下月ToolStripMenuItem
+            // 
+            this.下月ToolStripMenuItem.Name = "下月ToolStripMenuItem";
+            this.下月ToolStripMenuItem.Size = new System.Drawing.Size(108, 24);
+            this.下月ToolStripMenuItem.Text = "下月";
+            this.下月ToolStripMenuItem.Click += new System.EventHandler(this.下月ToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(105, 6);
+            // 
+            // 本年ToolStripMenuItem
+            // 
+            this.本年ToolStripMenuItem.Name = "本年ToolStripMenuItem";
+            this.本年ToolStripMenuItem.Size = new System.Drawing.Size(108, 24);
+            this.本年ToolStripMenuItem.Text = "本年";
+            this.本年ToolStripMenuItem.Click += new System.EventHandler(this.本年ToolStripMenuItem_Click);
+            // 
+            // 上年ToolStripMenuItem
+            // 
+            this.上年ToolStripMenuItem.Name = "上年ToolStripMenuItem";
+            this.上年ToolStripMenuItem.Size = new System.Drawing.Size(108, 24);
+            this.上年ToolStripMenuItem.Text = "上年";
+            this.上年ToolStripMenuItem.Click += new System.EventHandler(this.上年ToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(105, 6);
+            // 
+            // 全部ToolStripMenuItem
+            // 
+            this.全部ToolStripMenuItem.Name = "全部ToolStripMenuItem";
+            this.全部ToolStripMenuItem.Size = new System.Drawing.Size(108, 24);
+            this.全部ToolStripMenuItem.Text = "全部";
+            this.全部ToolStripMenuItem.Click += new System.EventHandler(this.全部ToolStripMenuItem_Click);
+            // 
             // frmRestoreChargeCancel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -956,6 +1064,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
+            this.contextMenuStrip2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1039,5 +1148,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SETTLEACCOUNTSSSID;
         private System.Windows.Forms.DataGridViewTextBoxColumn METERREADERID;
         private System.Windows.Forms.DataGridViewTextBoxColumn METERREADERNAME;
+        private System.Windows.Forms.Button btSetMonth;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem 今天ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem 本月ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 上月ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 下月ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem 本年ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 上年ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem 全部ToolStripMenuItem;
     }
 }

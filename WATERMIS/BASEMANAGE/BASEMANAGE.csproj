@@ -62,55 +62,46 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="frmAreaManage.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmAreaManage.Designer.cs">
       <DependentUpon>frmAreaManage.cs</DependentUpon>
     </Compile>
     <Compile Include="frmBankManage.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmBankManage.Designer.cs">
       <DependentUpon>frmBankManage.cs</DependentUpon>
     </Compile>
     <Compile Include="frmCompanyMes.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmCompanyMes.Designer.cs">
       <DependentUpon>frmCompanyMes.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmDepartment.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmDepartment.Designer.cs">
       <DependentUpon>FrmDepartment.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogAuthority.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmLogAuthority.designer.cs">
       <DependentUpon>frmLogAuthority.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPost.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmPost.Designer.cs">
       <DependentUpon>frmPost.cs</DependentUpon>
     </Compile>
     <Compile Include="frmWaterMeTerPosition.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmWaterMeTerPosition.Designer.cs">
       <DependentUpon>frmWaterMeTerPosition.cs</DependentUpon>
     </Compile>
     <Compile Include="frmWaterMeterSize.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmWaterMeterSize.Designer.cs">
       <DependentUpon>frmWaterMeterSize.cs</DependentUpon>
     </Compile>
     <Compile Include="frmWaterUserType.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmWaterUserType.Designer.cs">
       <DependentUpon>frmWaterUserType.cs</DependentUpon>
@@ -122,37 +113,31 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="frmExtraChargeManage.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmExtraChargeManage.Designer.cs">
       <DependentUpon>frmExtraChargeManage.cs</DependentUpon>
     </Compile>
     <Compile Include="frmWaterMeterType.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmWaterMeterType.Designer.cs">
       <DependentUpon>frmWaterMeterType.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPianManage.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmPianManage.Designer.cs">
       <DependentUpon>frmPianManage.cs</DependentUpon>
     </Compile>
     <Compile Include="frmDuanManage.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmDuanManage.Designer.cs">
       <DependentUpon>frmDuanManage.cs</DependentUpon>
     </Compile>
     <Compile Include="frmCommunityManage.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmCommunityManage.Designer.cs">
       <DependentUpon>frmCommunityManage.cs</DependentUpon>
     </Compile>
     <Compile Include="frmNullReadReason.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmNullReadReason.Designer.cs">
       <DependentUpon>frmNullReadReason.cs</DependentUpon>

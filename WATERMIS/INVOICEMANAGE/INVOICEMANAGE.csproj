@@ -62,7 +62,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="frmInvoiceStocks.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmInvoiceStocks.Designer.cs">
       <DependentUpon>frmInvoiceStocks.cs</DependentUpon>
@@ -80,13 +79,11 @@
       <DependentUpon>frmBatchManage.cs</DependentUpon>
     </Compile>
     <Compile Include="frmInvoiceFetch.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmInvoiceFetch.Designer.cs">
       <DependentUpon>frmInvoiceFetch.cs</DependentUpon>
     </Compile>
     <Compile Include="frmReceiptFetch.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmReceiptFetch.Designer.cs">
       <DependentUpon>frmReceiptFetch.cs</DependentUpon>
