@@ -36,7 +36,7 @@ namespace BLL
        public bool UpdateReadSign(string strID)
        {
            StringBuilder str = new StringBuilder();
-           str.Append("UPDATE MESSAGERECEIVE SET MESSAGEREADEDSIGN='1',MESSAGEREADEDDATETIME=GETDATE() WHERE  MESSAGERECEIVEID=@MESSAGERECEIVEID");
+           str.Append("UPDATE MESSAGERECEIVE SET MESSAGEREADEDSIGN='1',MESSAGEREADEDDATETIME=GETDATE(),ISPOPSHOW='1' WHERE  MESSAGERECEIVEID=@MESSAGERECEIVEID");
            SqlParameter[] para =
            {
                new SqlParameter("@MESSAGERECEIVEID",SqlDbType.VarChar,50)

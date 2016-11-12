@@ -109,9 +109,6 @@ namespace WATERUSERMETERMANAGE
             BindCharger(cmbCharger, "1");
             BindParentID();
 
-            //tabControl1.SelectedIndex = 1;
-
-            //strExcelVision = ConfigurationSettings.AppSettings["EXCELVISION"];
         }
         /// <summary>
         /// 绑定总表
@@ -3327,6 +3324,16 @@ namespace WATERUSERMETERMANAGE
                 return cnChar;
             }
             else return cnChar;
+        }
+
+        private void txtWaterUserNOSearch_MouseEnter(object sender, EventArgs e)
+        {
+            toolTip1.Show("可输入用户号、用户名、地址信息", txtWaterUserNOSearch,3000);
+        }
+
+        private void txtChangeMonth_MouseEnter(object sender, EventArgs e)
+        {
+            toolTipMonth.Show("请输入6位年月，例如201602", txtChangeMonth,5000);
         }
         ///// <summary>
         ///// 获取一串汉字的拼音声母

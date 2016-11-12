@@ -136,6 +136,12 @@
     <Compile Include="frmSendMessage.Designer.cs">
       <DependentUpon>frmSendMessage.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSysVision.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSysVision.Designer.cs">
+      <DependentUpon>frmSysVision.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmUserManage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSendMessage.resx">
       <DependentUpon>frmSendMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSysVision.resx">
+      <DependentUpon>frmSysVision.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUserManage.resx">
       <DependentUpon>frmUserManage.cs</DependentUpon>

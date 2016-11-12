@@ -85,7 +85,7 @@ namespace BLL
        public bool UpdateUserPWD(string strLogID,string strPWD)
        {
            StringBuilder str = new StringBuilder();
-           str.Append("UPDATE BASE_LOGIN SET LOGINPASSWORD=@LOGINPASSWORD ");
+           str.Append("UPDATE BASE_LOGIN SET LOGINPASSWORD=@LOGINPASSWORD,Password=@LOGINPASSWORD ");
            str.Append("WHERE LOGINID=@LOGINID");
            SqlParameter[] para =
            {

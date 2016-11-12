@@ -195,6 +195,7 @@
             this.toolStripMenuItem15 = new System.Windows.Forms.ToolStripMenuItem();
             this.全部关闭ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.skinEngine1 = new Sunisoft.IrisSkin.SkinEngine(((System.ComponentModel.Component)(this)));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -202,6 +203,7 @@
             this.bgNotice = new System.ComponentModel.BackgroundWorker();
             this.trNotice = new System.Windows.Forms.Timer(this.components);
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
+            this.打开首页ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -1364,13 +1366,15 @@
             // 窗口ToolStripMenuItem
             // 
             this.窗口ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.打开首页ToolStripMenuItem,
             this.toolStripMenuItem1,
             this.全部关闭ToolStripMenuItem,
-            this.帮助ToolStripMenuItem});
+            this.帮助ToolStripMenuItem,
+            this.关于ToolStripMenuItem});
             this.窗口ToolStripMenuItem.Name = "窗口ToolStripMenuItem";
-            this.窗口ToolStripMenuItem.Size = new System.Drawing.Size(54, 25);
+            this.窗口ToolStripMenuItem.Size = new System.Drawing.Size(86, 25);
             this.窗口ToolStripMenuItem.Tag = "0";
-            this.窗口ToolStripMenuItem.Text = "窗口";
+            this.窗口ToolStripMenuItem.Text = "关于系统";
             // 
             // toolStripMenuItem1
             // 
@@ -1390,7 +1394,7 @@
             this.toolStripMenuItem14,
             this.toolStripMenuItem15});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 26);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 26);
             this.toolStripMenuItem1.Text = "皮肤选择";
             // 
             // toolStripMenuItem6
@@ -1508,7 +1512,7 @@
             // 全部关闭ToolStripMenuItem
             // 
             this.全部关闭ToolStripMenuItem.Name = "全部关闭ToolStripMenuItem";
-            this.全部关闭ToolStripMenuItem.Size = new System.Drawing.Size(149, 26);
+            this.全部关闭ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.全部关闭ToolStripMenuItem.Text = "全部关闭";
             this.全部关闭ToolStripMenuItem.Click += new System.EventHandler(this.全部关闭ToolStripMenuItem_Click);
             // 
@@ -1516,9 +1520,16 @@
             // 
             this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
             this.帮助ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F12;
-            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(149, 26);
+            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.帮助ToolStripMenuItem.Text = "帮助";
             this.帮助ToolStripMenuItem.Click += new System.EventHandler(this.帮助ToolStripMenuItem_Click);
+            // 
+            // 关于ToolStripMenuItem
+            // 
+            this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.关于ToolStripMenuItem.Text = "关于";
+            this.关于ToolStripMenuItem.Click += new System.EventHandler(this.关于ToolStripMenuItem_Click);
             // 
             // skinEngine1
             // 
@@ -1567,6 +1578,13 @@
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.Size = new System.Drawing.Size(1350, 426);
             this.dockPanel1.TabIndex = 5;
+            // 
+            // 打开首页ToolStripMenuItem
+            // 
+            this.打开首页ToolStripMenuItem.Name = "打开首页ToolStripMenuItem";
+            this.打开首页ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.打开首页ToolStripMenuItem.Text = "打开首页";
+            this.打开首页ToolStripMenuItem.Click += new System.EventHandler(this.打开首页ToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -1770,6 +1788,8 @@
         private System.Windows.Forms.ToolStripMenuItem 业扩收费ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 审批任务管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 帮助ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 关于ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 打开首页ToolStripMenuItem;
 
     }
 }

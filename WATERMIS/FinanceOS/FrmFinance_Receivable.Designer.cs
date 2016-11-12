@@ -31,6 +31,7 @@
             this.tb1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.CB_Day = new System.Windows.Forms.ComboBox();
@@ -83,6 +84,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.TB_Keys);
+            this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.CB_Day);
@@ -90,7 +93,6 @@
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.CB_ID);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.TB_Keys);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.Btn_Search);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -98,6 +100,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1200, 50);
             this.panel1.TabIndex = 0;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(731, 19);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(341, 12);
+            this.label9.TabIndex = 19;
+            this.label9.Text = "关键词可输入用户号、用户名、联系方式、申请人、业务流水号";
             // 
             // label4
             // 
@@ -161,7 +172,7 @@
             // 
             // TB_Keys
             // 
-            this.TB_Keys.Location = new System.Drawing.Point(484, 12);
+            this.TB_Keys.Location = new System.Drawing.Point(476, 12);
             this.TB_Keys.Name = "TB_Keys";
             this.TB_Keys.Size = new System.Drawing.Size(168, 21);
             this.TB_Keys.TabIndex = 2;
@@ -177,7 +188,7 @@
             // 
             // Btn_Search
             // 
-            this.Btn_Search.Location = new System.Drawing.Point(656, 11);
+            this.Btn_Search.Location = new System.Drawing.Point(650, 11);
             this.Btn_Search.Name = "Btn_Search";
             this.Btn_Search.Size = new System.Drawing.Size(75, 23);
             this.Btn_Search.TabIndex = 0;
@@ -273,5 +284,6 @@
         private System.Windows.Forms.ComboBox CB_Month;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label9;
     }
 }

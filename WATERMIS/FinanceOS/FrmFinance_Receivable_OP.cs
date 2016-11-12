@@ -101,7 +101,20 @@ namespace FinanceOS
 
             BindChargeType();
             UserDataInit();
+            GetMaxReceiptNO();
+        }
 
+        /// <summary>
+        /// 获取当前收费员最大8位收据号
+        /// </summary>
+        private void GetMaxReceiptNO()
+        {
+            string strSQL = "SELECT TOP 1 RECEIPTNO FROM Meter_Charge WHERE RECEIPTNO<>N'' AND CHARGEWORKERID=@CHARGEWORKERID ORDER BY ReceiptPrintTime DESC";
+            object objMax = new SqlServerHelper().GetFirsRowsValue(strSQL, new SqlParameter[] { new SqlParameter("@CHARGEWORKERID", strLogID) });
+            if (Information.IsNumeric(objMax))
+                RECEIPTNO.Text = Convert.ToInt32(objMax).ToString().PadLeft(8, '0');
+            else
+                RECEIPTNO.Text = "00000001";
         }
 
         private void UserDataInit()
@@ -246,6 +259,14 @@ namespace FinanceOS
         {
             if (sysidal.IsChargeOver(TaskID, _LastPointSort))
             {
+                if (!Information.IsNumeric(RECEIPTNO.Text))
+                {
+                    MessageBox.Show("收据号只能由数字组成，请输入正确的收据号!");
+                    RECEIPTNO.Focus();
+                    return;
+                }
+                RECEIPTNO.Text = RECEIPTNO.Text.PadLeft(8, '0');
+
                 Btn_Print.Enabled = false;
 
                 int count = sysidal.UpdateApprove_defalut(TableName, ResolveID, true, "收费完成", PointSort, TaskID);
@@ -253,8 +274,15 @@ namespace FinanceOS
                 if (count > 0)
                 {
                     PrintReceipt(TaskID,_LastPointSort);
-                    MessageBox.Show("收费完成！");
-                    this.DialogResult = DialogResult.OK;
+
+                    //更新预算收据号
+                    string strSQL = string.Format(@"UPDATE Meter_Charge SET RECEIPTPRINTCOUNT=1,ReceiptPrintSign='1',ReceiptPrintTime=GETDATE() WHERE CHARGEID
+ IN (SELECT CHARGEID FROM View_TaskFee WHERE TaskID='{0}'", TaskID);
+                    count = new SqlServerHelper().ExcuteSql(strSQL);
+                    if (count == 0)
+                        mes.Show("更新收据单号失败!");
+
+                    mes.Show("收费完成!");
                 }
                 else
                 {
@@ -318,6 +346,7 @@ AND MWR.TaskID=@TaskID AND PointSort=@LastPoingSort) M WHERE FEE<>0";
                         // load the existing report
                         report1.Load(Application.StartupPath + @"\PRINTModel\业扩模板\业扩预算收据模板.frx");
 
+                        (report1.FindObject("txtReceiptNO") as FastReport.TextObject).Text = "NO." + RECEIPTNO.Text;
                         (report1.FindObject("txtWaterUserNO") as FastReport.TextObject).Text = "用 户 号:" + _waterUserId;
                         (report1.FindObject("txtSD") as FastReport.TextObject).Text = "受理编号:" + _SD;
                         (report1.FindObject("txtWaterUserName") as FastReport.TextObject).Text = "用户名称:"+_waterUserName;
@@ -326,6 +355,7 @@ AND MWR.TaskID=@TaskID AND PointSort=@LastPoingSort) M WHERE FEE<>0";
                         (report1.FindObject("txtCapMoney") as FastReport.TextObject).Text = "金额大写:" + _TotalFee_CH;
                         (report1.FindObject("txtCasher") as FastReport.TextObject).Text = "收 款 员:" + strRealName;
 
+                        (report1.FindObject("txtReceiptNO1") as FastReport.TextObject).Text = "NO." + RECEIPTNO.Text;
                         (report1.FindObject("txtWaterUserNO1") as FastReport.TextObject).Text = "用 户 号:" + _waterUserId;
                         (report1.FindObject("txtSD1") as FastReport.TextObject).Text = "受理编号:" + _SD;
                         (report1.FindObject("txtWaterUserName1") as FastReport.TextObject).Text = "用户名称:" + _waterUserName;

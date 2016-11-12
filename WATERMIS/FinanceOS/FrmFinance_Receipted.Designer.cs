@@ -31,8 +31,10 @@
             this.tb1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.RB_IsFinal0 = new System.Windows.Forms.RadioButton();
-            this.RB_IsFinal1 = new System.Windows.Forms.RadioButton();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cmbChargeType = new System.Windows.Forms.ComboBox();
+            this.CB_Month = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.CB_DepartementID = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.CHARGEWORKERID = new System.Windows.Forms.ComboBox();
@@ -40,7 +42,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.CB_Day = new System.Windows.Forms.ComboBox();
-            this.CB_Month = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.CB_ID = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -71,7 +72,7 @@
             this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 91F));
-            this.tb1.Size = new System.Drawing.Size(1124, 754);
+            this.tb1.Size = new System.Drawing.Size(1124, 750);
             this.tb1.TabIndex = 66;
             this.tb1.Tag = "9999";
             // 
@@ -89,8 +90,11 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.RB_IsFinal0);
-            this.panel1.Controls.Add(this.RB_IsFinal1);
+            this.panel1.Controls.Add(this.TB_Keys);
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.cmbChargeType);
+            this.panel1.Controls.Add(this.CB_Month);
+            this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.CB_DepartementID);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.CHARGEWORKERID);
@@ -98,11 +102,9 @@
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.CB_Day);
-            this.panel1.Controls.Add(this.CB_Month);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.CB_ID);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.TB_Keys);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.Btn_Search);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -111,29 +113,44 @@
             this.panel1.Size = new System.Drawing.Size(1112, 70);
             this.panel1.TabIndex = 0;
             // 
-            // RB_IsFinal0
+            // label9
             // 
-            this.RB_IsFinal0.AutoSize = true;
-            this.RB_IsFinal0.Location = new System.Drawing.Point(273, 44);
-            this.RB_IsFinal0.Name = "RB_IsFinal0";
-            this.RB_IsFinal0.Size = new System.Drawing.Size(47, 16);
-            this.RB_IsFinal0.TabIndex = 17;
-            this.RB_IsFinal0.Text = "决算";
-            this.RB_IsFinal0.UseVisualStyleBackColor = true;
-            this.RB_IsFinal0.CheckedChanged += new System.EventHandler(this.RB_IsFinal0_CheckedChanged);
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(662, 45);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(341, 12);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "关键词可输入用户号、用户名、联系方式、申请人、业务流水号";
             // 
-            // RB_IsFinal1
+            // cmbChargeType
             // 
-            this.RB_IsFinal1.AutoSize = true;
-            this.RB_IsFinal1.Checked = true;
-            this.RB_IsFinal1.Location = new System.Drawing.Point(216, 44);
-            this.RB_IsFinal1.Name = "RB_IsFinal1";
-            this.RB_IsFinal1.Size = new System.Drawing.Size(47, 16);
-            this.RB_IsFinal1.TabIndex = 16;
-            this.RB_IsFinal1.TabStop = true;
-            this.RB_IsFinal1.Text = "预算";
-            this.RB_IsFinal1.UseVisualStyleBackColor = true;
-            this.RB_IsFinal1.CheckedChanged += new System.EventHandler(this.RB_IsFinal1_CheckedChanged);
+            this.cmbChargeType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbChargeType.FormattingEnabled = true;
+            this.cmbChargeType.Items.AddRange(new object[] {
+            "全部",
+            "决算收费",
+            "预算收费"});
+            this.cmbChargeType.Location = new System.Drawing.Point(254, 41);
+            this.cmbChargeType.Name = "cmbChargeType";
+            this.cmbChargeType.Size = new System.Drawing.Size(71, 20);
+            this.cmbChargeType.TabIndex = 17;
+            // 
+            // CB_Month
+            // 
+            this.CB_Month.FormattingEnabled = true;
+            this.CB_Month.Location = new System.Drawing.Point(256, 10);
+            this.CB_Month.Name = "CB_Month";
+            this.CB_Month.Size = new System.Drawing.Size(69, 20);
+            this.CB_Month.TabIndex = 8;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(198, 45);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(65, 12);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "结算类型：";
             // 
             // CB_DepartementID
             // 
@@ -195,18 +212,10 @@
             this.CB_Day.Size = new System.Drawing.Size(48, 20);
             this.CB_Day.TabIndex = 9;
             // 
-            // CB_Month
-            // 
-            this.CB_Month.FormattingEnabled = true;
-            this.CB_Month.Location = new System.Drawing.Point(256, 10);
-            this.CB_Month.Name = "CB_Month";
-            this.CB_Month.Size = new System.Drawing.Size(69, 20);
-            this.CB_Month.TabIndex = 8;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(185, 14);
+            this.label5.Location = new System.Drawing.Point(198, 14);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 12);
             this.label5.TabIndex = 7;
@@ -223,7 +232,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(345, 46);
+            this.label2.Location = new System.Drawing.Point(353, 46);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 3;
@@ -247,7 +256,7 @@
             // 
             // Btn_Search
             // 
-            this.Btn_Search.Location = new System.Drawing.Point(558, 7);
+            this.Btn_Search.Location = new System.Drawing.Point(570, 7);
             this.Btn_Search.Name = "Btn_Search";
             this.Btn_Search.Size = new System.Drawing.Size(75, 55);
             this.Btn_Search.TabIndex = 0;
@@ -261,7 +270,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 103);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1118, 557);
+            this.groupBox2.Size = new System.Drawing.Size(1118, 553);
             this.groupBox2.TabIndex = 902;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "已费列表";
@@ -282,7 +291,7 @@
             this.uC_DataGridView_Page1.PageIndex = 1;
             this.uC_DataGridView_Page1.PageOrderField = null;
             this.uC_DataGridView_Page1.PageSize = 100;
-            this.uC_DataGridView_Page1.Size = new System.Drawing.Size(1112, 537);
+            this.uC_DataGridView_Page1.Size = new System.Drawing.Size(1112, 533);
             this.uC_DataGridView_Page1.TabIndex = 906;
             this.uC_DataGridView_Page1.Tag = "9999";
             this.uC_DataGridView_Page1.CellDoubleClickEvents += new SysControl.UC_DataGridView_Page.CellDoubleClickEvent(this.uC_DataGridView_Page1_CellDoubleClickEvents);
@@ -294,7 +303,7 @@
             this.uC_FlowList1.AutoSize = true;
             this.uC_FlowList1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uC_FlowList1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uC_FlowList1.Location = new System.Drawing.Point(3, 666);
+            this.uC_FlowList1.Location = new System.Drawing.Point(3, 662);
             this.uC_FlowList1.MinimumSize = new System.Drawing.Size(900, 85);
             this.uC_FlowList1.Name = "uC_FlowList1";
             this.uC_FlowList1.Size = new System.Drawing.Size(1118, 85);
@@ -306,7 +315,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1124, 754);
+            this.ClientSize = new System.Drawing.Size(1124, 750);
             this.Controls.Add(this.tb1);
             this.Name = "FrmFinance_Receipted";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -344,9 +353,10 @@
         private SysControl.UC_FlowList uC_FlowList1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox CHARGEWORKERID;
-        private System.Windows.Forms.RadioButton RB_IsFinal0;
-        private System.Windows.Forms.RadioButton RB_IsFinal1;
         private System.Windows.Forms.ComboBox CB_DepartementID;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox cmbChargeType;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
     }
 }

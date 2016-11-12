@@ -10,11 +10,14 @@ using System.Reflection;
 using DBinterface.DAL;
 using DBinterface.IDAL;
 using BASEFUNCTION;
+using BLL;
+using SYSMANAGE;
 
 namespace SysControl
 {
     public partial class FrmDefaultPage : DockContentEx
     {
+        BLLMESSAGERECEIVE BLLMESSAGERECEIVE = new BLLMESSAGERECEIVE();
         private PersonalWork_IDAL sysidal = new PersonalWork_DAL();
         private string loginid = "";
 
@@ -25,6 +28,7 @@ namespace SysControl
 
         private void FrmDefaultPage_Load(object sender, EventArgs e)
         {
+            dgNotice.AutoGenerateColumns = false;
             loginid = AppDomain.CurrentDomain.GetData("LOGINID").ToString();
 
             InitTaskWork();
@@ -79,6 +83,11 @@ namespace SysControl
                 DG.DataSource = _DataSource;
             }
 
+            #region 显示消息
+            DataTable dtNotice = BLLMESSAGERECEIVE.Query("  AND MESSAGERECEIVERID='" + loginid + "' AND MESSAGERECEIVE.ISDELETE='0' AND MESSAGEREADEDSIGN='0' ");
+            dgNotice.DataSource = dtNotice;
+            #endregion
+
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -126,7 +135,70 @@ namespace SysControl
 
         }
 
+        private void dgNotice_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0)
+                return;
 
+            string strFromName = "", strTitle = "", strContent = "", strClass = "", strReceiveID = "";
 
+            object obj = dgNotice.Rows[e.RowIndex].Cells["MESSAGERECEIVEID"].Value;
+            if (obj != null && obj != DBNull.Value)
+            {
+                strReceiveID = obj.ToString();
+
+                obj = dgNotice.Rows[e.RowIndex].Cells["MESSAGESENDERNAME"].Value;
+                if (obj != null && obj != DBNull.Value)
+                    strFromName = obj.ToString();
+
+                obj = dgNotice.Rows[e.RowIndex].Cells["MESSAGETITLE"].Value;
+                if (obj != null && obj != DBNull.Value)
+                    strTitle = obj.ToString();
+
+                obj = dgNotice.Rows[e.RowIndex].Cells["MESSAGECONTENT"].Value;
+                if (obj != null && obj != DBNull.Value)
+                    strContent = obj.ToString();
+
+                obj = dgNotice.Rows[e.RowIndex].Cells["MESSAGECLASS"].Value;
+                if (obj != null && obj != DBNull.Value)
+                    strClass = obj.ToString();
+                frmNoticeShow frm = new frmNoticeShow();
+                frm.strFromName = strFromName;
+                frm.strTitle = strTitle;
+                frm.strContent = strContent;
+                frm.strClass = strClass;
+                frm.Show();
+
+                try
+                {
+                    BLLMESSAGERECEIVE.UpdateReadSign(strReceiveID);
+                }
+                catch (Exception ex)
+                {
+                    
+                }
+            }
+        }
+
+        private void dgNotice_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+                return;
+            if (dgNotice.Columns[e.ColumnIndex].Name == "MESSAGECLASS")
+            {
+                object obj = e.Value;
+                if (obj != null && obj != DBNull.Value)
+                {
+                    if (obj.ToString() == "1")
+                        e.Value = "次要";
+                    else if (obj.ToString() == "2")
+                        e.Value = "一般";
+                    else if (obj.ToString() == "3")
+                        e.Value = "重要";
+                    else if (obj.ToString() == "4")
+                        e.Value = "紧急";
+                }
+            }
+        }
     }
 }

@@ -92,6 +92,7 @@ namespace WATERMIS
                 }
 
             this.toolUserName.Text =strUserName;
+            this.Text =this.Text+"      版本号:V" + Application.ProductVersion.ToString();
         }
         /// <summary>
         /// 根据权限判断菜单的有无
@@ -1069,6 +1070,18 @@ namespace WATERMIS
         }
 
         private void frmMain_Shown(object sender, EventArgs e)
+        {
+            FrmDefaultPage frm = new FrmDefaultPage();
+            frm.Show(this.dockPanel1);
+        }
+
+        private void 关于ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSysVision frm = new frmSysVision();
+            frm.ShowDialog();
+        }
+
+        private void 打开首页ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmDefaultPage frm = new FrmDefaultPage();
             frm.Show(this.dockPanel1);

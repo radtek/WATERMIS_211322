@@ -60,7 +60,7 @@
             this.tb1.RowCount = 2;
             this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tb1.Size = new System.Drawing.Size(1155, 778);
+            this.tb1.Size = new System.Drawing.Size(1155, 612);
             this.tb1.TabIndex = 66;
             this.tb1.Tag = "9999";
             // 
@@ -171,7 +171,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 83);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1149, 692);
+            this.groupBox2.Size = new System.Drawing.Size(1149, 526);
             this.groupBox2.TabIndex = 902;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "待收费列表";
@@ -192,7 +192,7 @@
             this.uC_DataGridView_Page1.PageIndex = 1;
             this.uC_DataGridView_Page1.PageOrderField = null;
             this.uC_DataGridView_Page1.PageSize = 100;
-            this.uC_DataGridView_Page1.Size = new System.Drawing.Size(1143, 672);
+            this.uC_DataGridView_Page1.Size = new System.Drawing.Size(1143, 506);
             this.uC_DataGridView_Page1.TabIndex = 906;
             this.uC_DataGridView_Page1.Tag = "9999";
             // 
@@ -200,7 +200,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1155, 778);
+            this.ClientSize = new System.Drawing.Size(1155, 612);
             this.Controls.Add(this.tb1);
             this.Name = "FrmFinance_Settle_Day";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

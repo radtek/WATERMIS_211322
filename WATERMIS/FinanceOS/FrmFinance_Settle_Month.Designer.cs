@@ -71,7 +71,7 @@
             this.tb1.RowCount = 2;
             this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tb1.Size = new System.Drawing.Size(885, 689);
+            this.tb1.Size = new System.Drawing.Size(885, 612);
             this.tb1.TabIndex = 67;
             this.tb1.Tag = "9999";
             // 
@@ -171,7 +171,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 83);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(879, 603);
+            this.groupBox2.Size = new System.Drawing.Size(879, 526);
             this.groupBox2.TabIndex = 902;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "待结账列表";
@@ -217,7 +217,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DG.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.DG.RowTemplate.Height = 23;
-            this.DG.Size = new System.Drawing.Size(873, 583);
+            this.DG.Size = new System.Drawing.Size(873, 506);
             this.DG.TabIndex = 0;
             // 
             // DEPARTMENT
@@ -282,7 +282,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(885, 689);
+            this.ClientSize = new System.Drawing.Size(885, 612);
             this.Controls.Add(this.tb1);
             this.Name = "FrmFinance_Settle_Month";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

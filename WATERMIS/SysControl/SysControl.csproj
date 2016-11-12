@@ -383,6 +383,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{1A522A59-6899-4106-88C9-A6E9D50DC363}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{F1DAC157-5CF0-4ABE-AB30-E1B0EADA5354}</Project>
       <Name>Common</Name>
@@ -390,6 +394,10 @@
     <ProjectReference Include="..\DBinterface\DBinterface.csproj">
       <Project>{1D1E2E75-6B84-446F-A446-0D7BE7A3502D}</Project>
       <Name>DBinterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SYSMANAGE\SYSMANAGE.csproj">
+      <Project>{B7BA0891-D072-4257-964E-88EB62B87A0C}</Project>
+      <Name>SYSMANAGE</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

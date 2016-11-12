@@ -299,7 +299,7 @@ AND MWF.FeeID NOT IN (SELECT FeeID FROM Meter_FeeItmes WHERE IsPrestore=1) AND M
                 {
                     strChargeID = obj.ToString();
                     string strGetSQL = @"SELECT * FROM Meter_WorkResolveFee A INNER JOIN Meter_FeeItmes B
-                                    ON  A.FeeID=B.FeeID AND IsPrestore<>'1' AND IsFinal='0' AND A.[State]='1' AND ChargeID='" + strChargeID + "'";
+                                    ON  A.FeeID=B.FeeID AND IsPrestore<>'1' AND IsFinal='0' AND A.[State]='1' AND FEE>0 AND ChargeID='" + strChargeID + "'";
 
                     //获取待打发票明细
                     DataTable dtFeeDetail = new SqlServerHelper().GetDateTableBySql(strGetSQL);

@@ -57,10 +57,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.CHARGETYPEID = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.Memo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.Memo = new System.Windows.Forms.TextBox();
             this.LB_Title = new System.Windows.Forms.Label();
             this.FP_Items = new System.Windows.Forms.FlowLayoutPanel();
+            this.RECEIPTNO = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.PL_YS.SuspendLayout();
@@ -208,6 +210,8 @@
             // 
             // PL_YS
             // 
+            this.PL_YS.Controls.Add(this.RECEIPTNO);
+            this.PL_YS.Controls.Add(this.label15);
             this.PL_YS.Controls.Add(this.Btn_Charge);
             this.PL_YS.Controls.Add(this.LB_TotalFee);
             this.PL_YS.Controls.Add(this.Btn_Print);
@@ -352,13 +356,6 @@
             this.label23.TabIndex = 134;
             this.label23.Text = "收款方式：";
             // 
-            // Memo
-            // 
-            this.Memo.Location = new System.Drawing.Point(84, 74);
-            this.Memo.Name = "Memo";
-            this.Memo.Size = new System.Drawing.Size(387, 21);
-            this.Memo.TabIndex = 130;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -367,6 +364,13 @@
             this.label3.Size = new System.Drawing.Size(65, 12);
             this.label3.TabIndex = 129;
             this.label3.Text = "备    注：";
+            // 
+            // Memo
+            // 
+            this.Memo.Location = new System.Drawing.Point(84, 74);
+            this.Memo.Name = "Memo";
+            this.Memo.Size = new System.Drawing.Size(387, 21);
+            this.Memo.TabIndex = 130;
             // 
             // LB_Title
             // 
@@ -387,6 +391,23 @@
             this.FP_Items.Name = "FP_Items";
             this.FP_Items.Size = new System.Drawing.Size(486, 58);
             this.FP_Items.TabIndex = 33;
+            // 
+            // RECEIPTNO
+            // 
+            this.RECEIPTNO.Location = new System.Drawing.Point(375, 326);
+            this.RECEIPTNO.Name = "RECEIPTNO";
+            this.RECEIPTNO.Size = new System.Drawing.Size(104, 21);
+            this.RECEIPTNO.TabIndex = 155;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Location = new System.Drawing.Point(328, 332);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(47, 12);
+            this.label15.TabIndex = 154;
+            this.label15.Text = "收据号:";
             // 
             // FrmFinance_Receivable_OP
             // 
@@ -446,5 +467,7 @@
         private System.Windows.Forms.Label LB_Title;
         private System.Windows.Forms.FlowLayoutPanel FP_Items;
         private System.Windows.Forms.Button Btn_Charge;
+        private System.Windows.Forms.TextBox RECEIPTNO;
+        private System.Windows.Forms.Label label15;
     }
 }

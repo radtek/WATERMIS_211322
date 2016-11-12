@@ -30,6 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmFinance_Cancel));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.POSRUNNINGNO = new System.Windows.Forms.TextBox();
+            this.CHARGEWORKERNAME = new System.Windows.Forms.TextBox();
+            this.prestore = new System.Windows.Forms.TextBox();
+            this.CHARGETYPENAME = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.Memo = new System.Windows.Forms.TextBox();
             this.MONTHCHECKWORKERNAME = new System.Windows.Forms.TextBox();
             this.MONTHCHECKDATETIME = new System.Windows.Forms.TextBox();
@@ -37,8 +42,6 @@
             this.InvoiceNO = new System.Windows.Forms.TextBox();
             this.RECEIPTPRINTCOUNT = new System.Windows.Forms.TextBox();
             this.RECEIPTNO = new System.Windows.Forms.TextBox();
-            this.prestore = new System.Windows.Forms.TextBox();
-            this.CHARGETYPENAME = new System.Windows.Forms.TextBox();
             this.CHARGEClASSNAME = new System.Windows.Forms.TextBox();
             this.CHARGEDATETIME = new System.Windows.Forms.TextBox();
             this.TOTALCHARGE = new System.Windows.Forms.TextBox();
@@ -60,8 +63,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.labIsFinal = new System.Windows.Forms.Label();
             this.Btn_Print = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.waterUserId = new System.Windows.Forms.TextBox();
             this.waterUserAddress = new System.Windows.Forms.TextBox();
             this.waterPhone = new System.Windows.Forms.TextBox();
             this.waterUserName = new System.Windows.Forms.TextBox();
@@ -75,11 +80,11 @@
             this.FP = new System.Windows.Forms.FlowLayoutPanel();
             this.uC_ChargeItem1 = new SysControl.UC_ChargeItem();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.CANCELMEMO = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.TB_RECEIPTNO = new System.Windows.Forms.TextBox();
             this.Btn_Cancel = new System.Windows.Forms.Button();
+            this.TB_RECEIPTNO = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.CANCELMEMO = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.FP.SuspendLayout();
@@ -89,6 +94,12 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.POSRUNNINGNO);
+            this.panel1.Controls.Add(this.CHARGEWORKERNAME);
+            this.panel1.Controls.Add(this.prestore);
+            this.panel1.Controls.Add(this.CHARGETYPENAME);
+            this.panel1.Controls.Add(this.label17);
+            this.panel1.Controls.Add(this.labIsFinal);
             this.panel1.Controls.Add(this.Memo);
             this.panel1.Controls.Add(this.MONTHCHECKWORKERNAME);
             this.panel1.Controls.Add(this.MONTHCHECKDATETIME);
@@ -96,8 +107,6 @@
             this.panel1.Controls.Add(this.InvoiceNO);
             this.panel1.Controls.Add(this.RECEIPTPRINTCOUNT);
             this.panel1.Controls.Add(this.RECEIPTNO);
-            this.panel1.Controls.Add(this.prestore);
-            this.panel1.Controls.Add(this.CHARGETYPENAME);
             this.panel1.Controls.Add(this.CHARGEClASSNAME);
             this.panel1.Controls.Add(this.CHARGEDATETIME);
             this.panel1.Controls.Add(this.TOTALCHARGE);
@@ -125,123 +134,166 @@
             this.panel1.Size = new System.Drawing.Size(755, 194);
             this.panel1.TabIndex = 0;
             // 
-            // Memo
+            // POSRUNNINGNO
             // 
-            this.Memo.Enabled = false;
-            this.Memo.Location = new System.Drawing.Point(92, 164);
-            this.Memo.Name = "Memo";
-            this.Memo.Size = new System.Drawing.Size(462, 21);
-            this.Memo.TabIndex = 32;
+            this.POSRUNNINGNO.BackColor = System.Drawing.SystemColors.Window;
+            this.POSRUNNINGNO.Location = new System.Drawing.Point(734, 16);
+            this.POSRUNNINGNO.Name = "POSRUNNINGNO";
+            this.POSRUNNINGNO.ReadOnly = true;
+            this.POSRUNNINGNO.Size = new System.Drawing.Size(10, 21);
+            this.POSRUNNINGNO.TabIndex = 36;
+            this.POSRUNNINGNO.Visible = false;
             // 
-            // MONTHCHECKWORKERNAME
+            // CHARGEWORKERNAME
             // 
-            this.MONTHCHECKWORKERNAME.Enabled = false;
-            this.MONTHCHECKWORKERNAME.Location = new System.Drawing.Point(455, 128);
-            this.MONTHCHECKWORKERNAME.Name = "MONTHCHECKWORKERNAME";
-            this.MONTHCHECKWORKERNAME.Size = new System.Drawing.Size(100, 21);
-            this.MONTHCHECKWORKERNAME.TabIndex = 31;
-            // 
-            // MONTHCHECKDATETIME
-            // 
-            this.MONTHCHECKDATETIME.Enabled = false;
-            this.MONTHCHECKDATETIME.Location = new System.Drawing.Point(269, 127);
-            this.MONTHCHECKDATETIME.Name = "MONTHCHECKDATETIME";
-            this.MONTHCHECKDATETIME.Size = new System.Drawing.Size(100, 21);
-            this.MONTHCHECKDATETIME.TabIndex = 30;
-            // 
-            // MONTHCHECKSTATENAME
-            // 
-            this.MONTHCHECKSTATENAME.Enabled = false;
-            this.MONTHCHECKSTATENAME.Location = new System.Drawing.Point(92, 127);
-            this.MONTHCHECKSTATENAME.Name = "MONTHCHECKSTATENAME";
-            this.MONTHCHECKSTATENAME.Size = new System.Drawing.Size(100, 21);
-            this.MONTHCHECKSTATENAME.TabIndex = 29;
-            // 
-            // InvoiceNO
-            // 
-            this.InvoiceNO.Enabled = false;
-            this.InvoiceNO.Location = new System.Drawing.Point(455, 91);
-            this.InvoiceNO.Name = "InvoiceNO";
-            this.InvoiceNO.Size = new System.Drawing.Size(100, 21);
-            this.InvoiceNO.TabIndex = 28;
-            // 
-            // RECEIPTPRINTCOUNT
-            // 
-            this.RECEIPTPRINTCOUNT.Enabled = false;
-            this.RECEIPTPRINTCOUNT.Location = new System.Drawing.Point(283, 90);
-            this.RECEIPTPRINTCOUNT.Name = "RECEIPTPRINTCOUNT";
-            this.RECEIPTPRINTCOUNT.Size = new System.Drawing.Size(86, 21);
-            this.RECEIPTPRINTCOUNT.TabIndex = 27;
-            // 
-            // RECEIPTNO
-            // 
-            this.RECEIPTNO.Enabled = false;
-            this.RECEIPTNO.Location = new System.Drawing.Point(92, 90);
-            this.RECEIPTNO.Name = "RECEIPTNO";
-            this.RECEIPTNO.Size = new System.Drawing.Size(100, 21);
-            this.RECEIPTNO.TabIndex = 26;
+            this.CHARGEWORKERNAME.BackColor = System.Drawing.SystemColors.Window;
+            this.CHARGEWORKERNAME.Location = new System.Drawing.Point(632, 91);
+            this.CHARGEWORKERNAME.Name = "CHARGEWORKERNAME";
+            this.CHARGEWORKERNAME.ReadOnly = true;
+            this.CHARGEWORKERNAME.Size = new System.Drawing.Size(100, 21);
+            this.CHARGEWORKERNAME.TabIndex = 35;
             // 
             // prestore
             // 
-            this.prestore.Enabled = false;
+            this.prestore.BackColor = System.Drawing.SystemColors.Window;
             this.prestore.Location = new System.Drawing.Point(632, 54);
             this.prestore.Name = "prestore";
+            this.prestore.ReadOnly = true;
             this.prestore.Size = new System.Drawing.Size(100, 21);
             this.prestore.TabIndex = 25;
             // 
             // CHARGETYPENAME
             // 
-            this.CHARGETYPENAME.Enabled = false;
+            this.CHARGETYPENAME.BackColor = System.Drawing.SystemColors.Window;
             this.CHARGETYPENAME.Location = new System.Drawing.Point(632, 17);
             this.CHARGETYPENAME.Name = "CHARGETYPENAME";
+            this.CHARGETYPENAME.ReadOnly = true;
             this.CHARGETYPENAME.Size = new System.Drawing.Size(100, 21);
             this.CHARGETYPENAME.TabIndex = 24;
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(572, 95);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(65, 12);
+            this.label17.TabIndex = 34;
+            this.label17.Text = "收 款 员：";
+            // 
+            // Memo
+            // 
+            this.Memo.BackColor = System.Drawing.SystemColors.Window;
+            this.Memo.Location = new System.Drawing.Point(92, 164);
+            this.Memo.Name = "Memo";
+            this.Memo.ReadOnly = true;
+            this.Memo.Size = new System.Drawing.Size(462, 21);
+            this.Memo.TabIndex = 32;
+            // 
+            // MONTHCHECKWORKERNAME
+            // 
+            this.MONTHCHECKWORKERNAME.BackColor = System.Drawing.SystemColors.Window;
+            this.MONTHCHECKWORKERNAME.Location = new System.Drawing.Point(455, 128);
+            this.MONTHCHECKWORKERNAME.Name = "MONTHCHECKWORKERNAME";
+            this.MONTHCHECKWORKERNAME.ReadOnly = true;
+            this.MONTHCHECKWORKERNAME.Size = new System.Drawing.Size(100, 21);
+            this.MONTHCHECKWORKERNAME.TabIndex = 31;
+            // 
+            // MONTHCHECKDATETIME
+            // 
+            this.MONTHCHECKDATETIME.BackColor = System.Drawing.SystemColors.Window;
+            this.MONTHCHECKDATETIME.Location = new System.Drawing.Point(269, 127);
+            this.MONTHCHECKDATETIME.Name = "MONTHCHECKDATETIME";
+            this.MONTHCHECKDATETIME.ReadOnly = true;
+            this.MONTHCHECKDATETIME.Size = new System.Drawing.Size(100, 21);
+            this.MONTHCHECKDATETIME.TabIndex = 30;
+            // 
+            // MONTHCHECKSTATENAME
+            // 
+            this.MONTHCHECKSTATENAME.BackColor = System.Drawing.SystemColors.Window;
+            this.MONTHCHECKSTATENAME.Location = new System.Drawing.Point(92, 127);
+            this.MONTHCHECKSTATENAME.Name = "MONTHCHECKSTATENAME";
+            this.MONTHCHECKSTATENAME.ReadOnly = true;
+            this.MONTHCHECKSTATENAME.Size = new System.Drawing.Size(100, 21);
+            this.MONTHCHECKSTATENAME.TabIndex = 29;
+            // 
+            // InvoiceNO
+            // 
+            this.InvoiceNO.BackColor = System.Drawing.SystemColors.Window;
+            this.InvoiceNO.Location = new System.Drawing.Point(455, 91);
+            this.InvoiceNO.Name = "InvoiceNO";
+            this.InvoiceNO.ReadOnly = true;
+            this.InvoiceNO.Size = new System.Drawing.Size(100, 21);
+            this.InvoiceNO.TabIndex = 28;
+            // 
+            // RECEIPTPRINTCOUNT
+            // 
+            this.RECEIPTPRINTCOUNT.BackColor = System.Drawing.SystemColors.Window;
+            this.RECEIPTPRINTCOUNT.Location = new System.Drawing.Point(283, 90);
+            this.RECEIPTPRINTCOUNT.Name = "RECEIPTPRINTCOUNT";
+            this.RECEIPTPRINTCOUNT.ReadOnly = true;
+            this.RECEIPTPRINTCOUNT.Size = new System.Drawing.Size(86, 21);
+            this.RECEIPTPRINTCOUNT.TabIndex = 27;
+            // 
+            // RECEIPTNO
+            // 
+            this.RECEIPTNO.BackColor = System.Drawing.SystemColors.Window;
+            this.RECEIPTNO.Location = new System.Drawing.Point(92, 90);
+            this.RECEIPTNO.Name = "RECEIPTNO";
+            this.RECEIPTNO.ReadOnly = true;
+            this.RECEIPTNO.Size = new System.Drawing.Size(100, 21);
+            this.RECEIPTNO.TabIndex = 26;
+            // 
             // CHARGEClASSNAME
             // 
-            this.CHARGEClASSNAME.Enabled = false;
+            this.CHARGEClASSNAME.BackColor = System.Drawing.SystemColors.Window;
             this.CHARGEClASSNAME.Location = new System.Drawing.Point(455, 17);
             this.CHARGEClASSNAME.Name = "CHARGEClASSNAME";
+            this.CHARGEClASSNAME.ReadOnly = true;
             this.CHARGEClASSNAME.Size = new System.Drawing.Size(100, 21);
             this.CHARGEClASSNAME.TabIndex = 23;
             // 
             // CHARGEDATETIME
             // 
-            this.CHARGEDATETIME.Enabled = false;
+            this.CHARGEDATETIME.BackColor = System.Drawing.SystemColors.Window;
             this.CHARGEDATETIME.Location = new System.Drawing.Point(268, 16);
             this.CHARGEDATETIME.Name = "CHARGEDATETIME";
+            this.CHARGEDATETIME.ReadOnly = true;
             this.CHARGEDATETIME.Size = new System.Drawing.Size(100, 21);
             this.CHARGEDATETIME.TabIndex = 22;
             // 
             // TOTALCHARGE
             // 
-            this.TOTALCHARGE.Enabled = false;
+            this.TOTALCHARGE.BackColor = System.Drawing.SystemColors.Window;
             this.TOTALCHARGE.Location = new System.Drawing.Point(455, 54);
             this.TOTALCHARGE.Name = "TOTALCHARGE";
+            this.TOTALCHARGE.ReadOnly = true;
             this.TOTALCHARGE.Size = new System.Drawing.Size(100, 21);
             this.TOTALCHARGE.TabIndex = 21;
             // 
             // CHARGEBCYS
             // 
-            this.CHARGEBCYS.Enabled = false;
+            this.CHARGEBCYS.BackColor = System.Drawing.SystemColors.Window;
             this.CHARGEBCYS.Location = new System.Drawing.Point(268, 55);
             this.CHARGEBCYS.Name = "CHARGEBCYS";
+            this.CHARGEBCYS.ReadOnly = true;
             this.CHARGEBCYS.Size = new System.Drawing.Size(100, 21);
             this.CHARGEBCYS.TabIndex = 20;
             // 
             // CHARGEBCSS
             // 
-            this.CHARGEBCSS.Enabled = false;
+            this.CHARGEBCSS.BackColor = System.Drawing.SystemColors.Window;
             this.CHARGEBCSS.Location = new System.Drawing.Point(92, 53);
             this.CHARGEBCSS.Name = "CHARGEBCSS";
+            this.CHARGEBCSS.ReadOnly = true;
             this.CHARGEBCSS.Size = new System.Drawing.Size(100, 21);
             this.CHARGEBCSS.TabIndex = 19;
             // 
             // CHARGEID
             // 
-            this.CHARGEID.Enabled = false;
+            this.CHARGEID.BackColor = System.Drawing.SystemColors.Window;
             this.CHARGEID.Location = new System.Drawing.Point(92, 16);
             this.CHARGEID.Name = "CHARGEID";
+            this.CHARGEID.ReadOnly = true;
             this.CHARGEID.Size = new System.Drawing.Size(100, 21);
             this.CHARGEID.TabIndex = 18;
             // 
@@ -329,7 +381,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(561, 23);
+            this.label6.Location = new System.Drawing.Point(570, 23);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 12);
             this.label6.TabIndex = 5;
@@ -338,7 +390,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(561, 58);
+            this.label5.Location = new System.Drawing.Point(570, 58);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 12);
             this.label5.TabIndex = 4;
@@ -380,6 +432,18 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "收款流水号：";
             // 
+            // labIsFinal
+            // 
+            this.labIsFinal.AutoSize = true;
+            this.labIsFinal.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labIsFinal.ForeColor = System.Drawing.Color.Red;
+            this.labIsFinal.Location = new System.Drawing.Point(622, 133);
+            this.labIsFinal.Name = "labIsFinal";
+            this.labIsFinal.Size = new System.Drawing.Size(110, 31);
+            this.labIsFinal.TabIndex = 33;
+            this.labIsFinal.Tag = "9999";
+            this.labIsFinal.Text = "预算收费";
+            // 
             // Btn_Print
             // 
             this.Btn_Print.Enabled = false;
@@ -394,6 +458,7 @@
             // panel2
             // 
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
+            this.panel2.Controls.Add(this.waterUserId);
             this.panel2.Controls.Add(this.waterUserAddress);
             this.panel2.Controls.Add(this.waterPhone);
             this.panel2.Controls.Add(this.waterUserName);
@@ -410,8 +475,18 @@
             this.panel2.Size = new System.Drawing.Size(755, 84);
             this.panel2.TabIndex = 3;
             // 
+            // waterUserId
+            // 
+            this.waterUserId.Location = new System.Drawing.Point(632, 51);
+            this.waterUserId.Name = "waterUserId";
+            this.waterUserId.ReadOnly = true;
+            this.waterUserId.Size = new System.Drawing.Size(27, 21);
+            this.waterUserId.TabIndex = 39;
+            this.waterUserId.Visible = false;
+            // 
             // waterUserAddress
             // 
+            this.waterUserAddress.BackColor = System.Drawing.SystemColors.Window;
             this.waterUserAddress.Location = new System.Drawing.Point(281, 51);
             this.waterUserAddress.Name = "waterUserAddress";
             this.waterUserAddress.ReadOnly = true;
@@ -420,6 +495,7 @@
             // 
             // waterPhone
             // 
+            this.waterPhone.BackColor = System.Drawing.SystemColors.Window;
             this.waterPhone.Location = new System.Drawing.Point(92, 51);
             this.waterPhone.Name = "waterPhone";
             this.waterPhone.ReadOnly = true;
@@ -428,6 +504,7 @@
             // 
             // waterUserName
             // 
+            this.waterUserName.BackColor = System.Drawing.SystemColors.Window;
             this.waterUserName.Location = new System.Drawing.Point(454, 16);
             this.waterUserName.Name = "waterUserName";
             this.waterUserName.ReadOnly = true;
@@ -436,6 +513,7 @@
             // 
             // SD
             // 
+            this.SD.BackColor = System.Drawing.SystemColors.Window;
             this.SD.Location = new System.Drawing.Point(281, 16);
             this.SD.Name = "SD";
             this.SD.ReadOnly = true;
@@ -444,9 +522,10 @@
             // 
             // Table_Name_CH
             // 
-            this.Table_Name_CH.Enabled = false;
+            this.Table_Name_CH.BackColor = System.Drawing.SystemColors.Window;
             this.Table_Name_CH.Location = new System.Drawing.Point(92, 16);
             this.Table_Name_CH.Name = "Table_Name_CH";
+            this.Table_Name_CH.ReadOnly = true;
             this.Table_Name_CH.Size = new System.Drawing.Size(100, 21);
             this.Table_Name_CH.TabIndex = 34;
             // 
@@ -532,21 +611,22 @@
             this.panel3.Size = new System.Drawing.Size(755, 86);
             this.panel3.TabIndex = 6;
             // 
-            // label13
+            // Btn_Cancel
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(11, 17);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(89, 12);
-            this.label13.TabIndex = 0;
-            this.label13.Text = "取消收费原因：";
+            this.Btn_Cancel.Location = new System.Drawing.Point(357, 9);
+            this.Btn_Cancel.Name = "Btn_Cancel";
+            this.Btn_Cancel.Size = new System.Drawing.Size(98, 28);
+            this.Btn_Cancel.TabIndex = 4;
+            this.Btn_Cancel.Text = "取消收费";
+            this.Btn_Cancel.UseVisualStyleBackColor = true;
+            this.Btn_Cancel.Click += new System.EventHandler(this.Btn_Cancel_Click);
             // 
-            // CANCELMEMO
+            // TB_RECEIPTNO
             // 
-            this.CANCELMEMO.Location = new System.Drawing.Point(106, 13);
-            this.CANCELMEMO.Name = "CANCELMEMO";
-            this.CANCELMEMO.Size = new System.Drawing.Size(233, 21);
-            this.CANCELMEMO.TabIndex = 1;
+            this.TB_RECEIPTNO.Location = new System.Drawing.Point(106, 51);
+            this.TB_RECEIPTNO.Name = "TB_RECEIPTNO";
+            this.TB_RECEIPTNO.Size = new System.Drawing.Size(137, 21);
+            this.TB_RECEIPTNO.TabIndex = 3;
             // 
             // label14
             // 
@@ -557,22 +637,21 @@
             this.label14.TabIndex = 2;
             this.label14.Text = "收据编号：";
             // 
-            // TB_RECEIPTNO
+            // CANCELMEMO
             // 
-            this.TB_RECEIPTNO.Location = new System.Drawing.Point(106, 51);
-            this.TB_RECEIPTNO.Name = "TB_RECEIPTNO";
-            this.TB_RECEIPTNO.Size = new System.Drawing.Size(137, 21);
-            this.TB_RECEIPTNO.TabIndex = 3;
+            this.CANCELMEMO.Location = new System.Drawing.Point(106, 13);
+            this.CANCELMEMO.Name = "CANCELMEMO";
+            this.CANCELMEMO.Size = new System.Drawing.Size(233, 21);
+            this.CANCELMEMO.TabIndex = 1;
             // 
-            // Btn_Cancel
+            // label13
             // 
-            this.Btn_Cancel.Location = new System.Drawing.Point(357, 9);
-            this.Btn_Cancel.Name = "Btn_Cancel";
-            this.Btn_Cancel.Size = new System.Drawing.Size(98, 28);
-            this.Btn_Cancel.TabIndex = 4;
-            this.Btn_Cancel.Text = "取消收费";
-            this.Btn_Cancel.UseVisualStyleBackColor = true;
-            this.Btn_Cancel.Click += new System.EventHandler(this.Btn_Cancel_Click);
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(11, 17);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(89, 12);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "取消收费原因：";
             // 
             // FrmFinance_Cancel
             // 
@@ -651,5 +730,10 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox TB_RECEIPTNO;
         private System.Windows.Forms.Button Btn_Cancel;
+        private System.Windows.Forms.Label labIsFinal;
+        private System.Windows.Forms.TextBox CHARGEWORKERNAME;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox waterUserId;
+        private System.Windows.Forms.TextBox POSRUNNINGNO;
     }
 }

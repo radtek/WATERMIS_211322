@@ -19,6 +19,7 @@ namespace FinanceOS
         public FrmFinance_Receipted()
         {
             InitializeComponent();
+            cmbChargeType.SelectedIndex = 0;
         }
 
         private void Btn_Search_Click(object sender, EventArgs e)
@@ -29,9 +30,12 @@ namespace FinanceOS
         private void uC_DataGridView_Page1_CellDoubleClickEvents(object sender, DataGridViewCellEventArgs e)
         {
             DataGridView dgList = (DataGridView)sender;
+            
             if (dgList.CurrentRow != null)
             {
                 string _ChargeID = dgList.CurrentRow.Cells["ChargeID"].Value.ToString();
+                if (_ChargeID.Contains("合计"))
+                    return;
                 //string _Loginid = AppDomain.CurrentDomain.GetData("LOGINID").ToString();
                 //string _ChargerID = dgList.CurrentRow.Cells["CHARGEWORKERID"].Value.ToString();
                 //if (_Loginid.Equals(_ChargerID))
@@ -40,6 +44,7 @@ namespace FinanceOS
                 frm.ChargeID = _ChargeID;
                 frm.TaskID = dgList.CurrentRow.Cells["TaskID"].Value.ToString();
                 frm.ChargerID=dgList.CurrentRow.Cells["CHARGEWORKERID"].Value.ToString();
+
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     ShowData();
@@ -91,11 +96,11 @@ FROM View_TaskFee VT  LEFT JOIN View_WorkBase VW ON VT.TaskID=VW.TASKID,Meter_Ta
         {
             //AND VW.[State] IN (1,2,5)
             StringBuilder sb = new StringBuilder();
-            sb.Append(@"SELECT * FROM View_TaskChargeList VT WHERE  VT.States=1");
+            sb.Append(@"SELECT VT.*,MC.CHARGEBCSS FROM View_TaskChargeList VT INNER JOIN Meter_Charge MC ON MC.CHARGEID=VT.ChargeID  WHERE MC.CHARGEBCSS<>0 AND VT.States=1");
 
             if (!CB_ID.SelectedValue.ToString().Equals(""))
             {
-                sb.AppendFormat(" AND VW.TableID='{0}'", CB_ID.SelectedValue);
+                sb.AppendFormat(" AND VT.TableID='{0}'", CB_ID.SelectedValue);
             }
             if (!CB_Month.SelectedValue.ToString().Equals(""))
             {
@@ -117,14 +122,18 @@ FROM View_TaskFee VT  LEFT JOIN View_WorkBase VW ON VT.TaskID=VW.TASKID,Meter_Ta
             {
                 sb.AppendFormat(" AND VT.DepartementID='{0}'", CB_DepartementID.SelectedValue);
             }
-            sb.AppendFormat(" AND VT.IsFinal='{0}'", _IsFinal);
+
+            if (cmbChargeType.SelectedIndex>0)
+            {
+                sb.AppendFormat(" AND VT.IsFinal='{0}'", cmbChargeType.SelectedIndex-1);
+            }
 
 
             uC_DataGridView_Page1.Fields = new string[,] { { "rowNum", "序号" }, 
                                                            { "ChargeID", "收费流水号" }, 
                                                            { "ChargeDate", "收费时间" }, 
                                                            { "CHARGEWORKERNAME", "收费员" }, 
-                                                           { "FEE", "收费金额" },
+                                                           { "CHARGEBCSS", "收费金额" },
                                                            { "Table_Name_CH", "业务类型" }, 
                                                            { "departmentName", "部门" }, 
                                                            { "IsFinalS", "结算类型" }, 
@@ -135,25 +144,12 @@ FROM View_TaskFee VT  LEFT JOIN View_WorkBase VW ON VT.TaskID=VW.TASKID,Meter_Ta
                                                            { "ApplyPhone", "联系电话" },
                                                            { "CreateDate", "申请时间" }
             };
-            uC_DataGridView_Page1.FieldStatis = new string[,] { { "ChargeID", "合计" }, { "FEE", "" } };
+            uC_DataGridView_Page1.FieldStatis = new string[,] { { "ChargeID", "合计" }, { "CHARGEBCSS", "" } };
             uC_DataGridView_Page1.SqlString = sb.ToString();
             uC_DataGridView_Page1.PageOrderField = "ChargeDate";
             uC_DataGridView_Page1.PageOrderType = "DESC";
             uC_DataGridView_Page1.PageIndex = 1;
             uC_DataGridView_Page1.Init();
-
-
-
-        }
-
-        private void RB_IsFinal1_CheckedChanged(object sender, EventArgs e)
-        {
-            _IsFinal = "1";
-        }
-
-        private void RB_IsFinal0_CheckedChanged(object sender, EventArgs e)
-        {
-            _IsFinal = "0";
         }
     }
 }

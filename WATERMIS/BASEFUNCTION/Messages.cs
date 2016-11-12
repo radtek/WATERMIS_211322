@@ -88,5 +88,34 @@ namespace BASEFUNCTION
             //}
             return isProcess;
         }
+        /// <summary>
+        /// 获取文件的版本号
+        /// </summary>
+        /// <param name="filePath">文件的完整路径</param>
+        /// <returns>文件的版本号</returns>
+        public string GetFileVersion(string filePath)
+        {
+            string FileVersions = "";
+
+            try
+            {
+                System.Diagnostics.FileVersionInfo file1 = System.Diagnostics.FileVersionInfo.GetVersionInfo(filePath);
+                FileVersions = file1.FileVersion;
+                if (FileVersions != "")
+                {
+                    string[] strVer = FileVersions.Split('.');
+                    if (strVer.Length == 2)
+                    {
+                        FileVersions = strVer[0] + ".00.0000";
+                    }
+
+                }
+            }
+            catch (Exception)
+            {
+                FileVersions = "";
+            }
+            return FileVersions;
+        }
     }
 }
