@@ -173,6 +173,10 @@
       <Project>{E853B284-A79B-443F-91C6-7FA57D66F62C}</Project>
       <Name>STATISTIALREPORTS</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SysControl\SysControl.csproj">
+      <Project>{10BDADD7-D8EA-4D19-AD9D-A7678BBB5CD8}</Project>
+      <Name>SysControl</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SYSMANAGE\SYSMANAGE.csproj">
       <Project>{B7BA0891-D072-4257-964E-88EB62B87A0C}</Project>
       <Name>SYSMANAGE</Name>
