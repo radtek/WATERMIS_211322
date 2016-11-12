@@ -12,6 +12,7 @@ using DBinterface.IDAL;
 using BASEFUNCTION;
 using BLL;
 using SYSMANAGE;
+using System.Configuration;
 
 namespace SysControl
 {
@@ -20,6 +21,8 @@ namespace SysControl
         BLLMESSAGERECEIVE BLLMESSAGERECEIVE = new BLLMESSAGERECEIVE();
         private PersonalWork_IDAL sysidal = new PersonalWork_DAL();
         private string loginid = "";
+        private Messages Msg = new Messages();
+             
 
         public FrmDefaultPage()
         {
@@ -32,13 +35,27 @@ namespace SysControl
             loginid = AppDomain.CurrentDomain.GetData("LOGINID").ToString();
 
             InitTaskWork();
+
+            LoadPage();
+        }
+
+        private void LoadPage()
+        {
+            string strFilePaht = ConfigurationSettings.AppSettings["FilesPath"];
+            string _url = string.Format("{0}Bar.html", strFilePaht);
+            WB1.Navigate(new Uri(_url));
+
+            _url = string.Format("{0}Pie.html", strFilePaht);
+            WB2.Navigate(new Uri(_url));
         }
 
         #region Tab1
         private void InitTaskWork()
         {
             string sqlstr = string.Format(@"SELECT top 10  ROW_NUMBER() OVER(ORDER BY CreateDate) AS rowNum, MW.TaskName,MW.TaskCode,MWR.DoName,MW.PointTime,MWR.TimeLimit,MW.TaskID,MWR.ResolveID,MWR.PointSort,MWR.PointName,MW.SD,MWR.WorkName,MW.AcceptUser,MW.AcceptDate,MWR.CreateDate,MWR.isPass,loginId
-   FROM Meter_WorkTask MW,Meter_WorkResolve MWR WHERE MW.TaskID=MWR.TaskID AND MW.PointSort=MWR.PointSort AND ','+loginId+',' like '%,'+'{0}'+',%' AND MW.[State]=1 ORDER BY  CreateDate DESC", loginid);
+   FROM Meter_WorkTask MW,Meter_WorkResolve MWR 
+   WHERE MW.TaskID=MWR.TaskID AND MW.PointSort=MWR.PointSort AND ','+loginId+',' like '%,'+'{0}'+',%' AND MW.[State]=1 AND ISNULL(IsPass,'')<>'1'
+   ORDER BY  CreateDate DESC", loginid);
 
             string[,] Fields = new string[,] { { "rowNum", "序号" }, 
                                                            { "WorkName", "审批类型" }, 
@@ -132,7 +149,18 @@ namespace SysControl
 
         private void Btn_Submit_Click(object sender, EventArgs e)
         {
-
+            MsgTitle.CheckInput();
+            MsgContent.CheckInput();
+            Hashtable ht = new SqlServerHelper().GetHashTableByControl(this.P8.Controls);
+            ht["LOGINID"] = loginid;
+            ht["USERNAME"] = AppDomain.CurrentDomain.GetData("USERNAME").ToString();
+            
+            bool result = new SqlServerHelper().Submit_AddOrEdit("User_FeedBack", "MsgID", "", ht);
+            string _info = result ? "提交成功！" : "提交失败！";
+            MsgTitle.Text = "";
+            MsgContent.Text = "";
+            UnsubscribeID.Text = "";
+            Msg.Show(_info);
         }
 
         private void dgNotice_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -200,5 +228,49 @@ namespace SysControl
                 }
             }
         }
+
+        private void pictureBox7_Click(object sender, EventArgs e)
+        {
+            string _UnsubscribeID = string.IsNullOrEmpty(UnsubscribeID.Text) ? Guid.NewGuid().ToString() : UnsubscribeID.Text;
+
+            FrmFileUpload frm = new FrmFileUpload();
+            frm.UnsubscribeID = _UnsubscribeID;
+            frm.ShowName = "问题反馈";
+            frm.TableNames = "User_FeedBack";
+            UnsubscribeID.Text = _UnsubscribeID;
+            frm.ShowDialog();
+        }
+
+        private void UnsubscribeID_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(UnsubscribeID.Text))
+            {
+                FrmFileShowDel frm = new FrmFileShowDel();
+                frm.UnsubscribeID = UnsubscribeID.Text;
+                frm.ShowDialog();
+            }
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            P8.Visible = true;
+            P9.Visible = false;
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            P9.Visible = true;
+            P8.Visible = false;
+
+            ShowUserFeedBack();
+
+        }
+
+        private void ShowUserFeedBack()
+        {
+            DataTable dt = new SqlServerHelper().GetDateTableBySql("SELECT TOP 10 MsgID,MsgTitle,CreateDate FROM User_FeedBack ORDER BY CreateDate DESC");
+            DG3.DataSource = dt;
+        }
+
     }
 }
