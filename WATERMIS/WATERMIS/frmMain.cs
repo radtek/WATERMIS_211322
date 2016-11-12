@@ -25,6 +25,7 @@ using AppManage;
 using WaterBusiness;
 using ApproveCenter;
 using FinanceOS;
+using SysControl;
 
 
 namespace WATERMIS
@@ -64,6 +65,8 @@ namespace WATERMIS
 
             this.dockPanel1.BackgroundImage = Image.FromFile(Application.StartupPath + @"\Images\mainBackground.jpg");
             this.dockPanel1.BackgroundImageLayout = ImageLayout.Stretch;
+
+          
 
             //获取用户ID
             if (AppDomain.CurrentDomain.GetData("LOGINID") != null && AppDomain.CurrentDomain.GetData("LOGINID") != DBNull.Value)
@@ -1063,6 +1066,12 @@ namespace WATERMIS
         {
             FrmHelp frm = new FrmHelp();
             frm.Show();
+        }
+
+        private void frmMain_Shown(object sender, EventArgs e)
+        {
+            FrmDefaultPage frm = new FrmDefaultPage();
+            frm.Show(this.dockPanel1);
         }
     }
 }
