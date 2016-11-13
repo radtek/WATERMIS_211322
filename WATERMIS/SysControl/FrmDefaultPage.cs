@@ -149,8 +149,13 @@ namespace SysControl
 
         private void Btn_Submit_Click(object sender, EventArgs e)
         {
-            MsgTitle.CheckInput();
             MsgContent.CheckInput();
+            MsgTitle.CheckInput();
+            if (!MsgTitle.ValidateState)
+            {
+                return;
+            }
+
             Hashtable ht = new SqlServerHelper().GetHashTableByControl(this.P8.Controls);
             ht["LOGINID"] = loginid;
             ht["USERNAME"] = AppDomain.CurrentDomain.GetData("USERNAME").ToString();
