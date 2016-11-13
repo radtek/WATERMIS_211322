@@ -64,13 +64,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.P9 = new System.Windows.Forms.Panel();
             this.DG3 = new System.Windows.Forms.DataGridView();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MsgID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -345,6 +345,7 @@
             this.WB1.ScrollBarsEnabled = false;
             this.WB1.Size = new System.Drawing.Size(400, 394);
             this.WB1.TabIndex = 0;
+            this.WB1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.WB1_DocumentCompleted);
             // 
             // WB2
             // 
@@ -357,6 +358,7 @@
             this.WB2.ScrollBarsEnabled = false;
             this.WB2.Size = new System.Drawing.Size(396, 394);
             this.WB2.TabIndex = 1;
+            this.WB2.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.WB2_DocumentCompleted);
             // 
             // panel3
             // 
@@ -527,6 +529,30 @@
             this.DG3.Size = new System.Drawing.Size(454, 348);
             this.DG3.TabIndex = 3;
             // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "MsgID";
+            this.Column1.HeaderText = "序号";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "MsgTitle";
+            this.Column2.HeaderText = "标题";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "CreateDate";
+            this.Column3.HeaderText = "时间";
+            this.Column3.Name = "Column3";
+            // 
+            // MsgID
+            // 
+            this.MsgID.HeaderText = "MsgID";
+            this.MsgID.Name = "MsgID";
+            this.MsgID.Visible = false;
+            // 
             // panel7
             // 
             this.panel7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel7.BackgroundImage")));
@@ -563,30 +589,6 @@
             this.pictureBox3.TabIndex = 2;
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "MsgID";
-            this.Column1.HeaderText = "序号";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "MsgTitle";
-            this.Column2.HeaderText = "标题";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "CreateDate";
-            this.Column3.HeaderText = "时间";
-            this.Column3.Name = "Column3";
-            // 
-            // MsgID
-            // 
-            this.MsgID.HeaderText = "MsgID";
-            this.MsgID.Name = "MsgID";
-            this.MsgID.Visible = false;
             // 
             // FrmDefaultPage
             // 

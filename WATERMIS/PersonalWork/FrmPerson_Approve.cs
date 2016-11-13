@@ -24,8 +24,14 @@ namespace PersonalWork
 
         private void SearchData()
         {
-            string sqlstr = string.Format(@"SELECT * FROM  (SELECT MW.TaskName,MW.TaskCode,MWR.DoName,MW.PointTime,MWR.TimeLimit,MW.TaskID,MWR.ResolveID,MWR.PointSort,MWR.PointName,MW.SD,MWR.WorkName,MW.AcceptUser,MW.AcceptDate,MWR.CreateDate,MWR.isPass,loginId
-   FROM Meter_WorkTask MW,Meter_WorkResolve MWR WHERE MW.TaskID=MWR.TaskID AND MW.PointSort=MWR.PointSort AND ','+loginId+',' like '%,'+'{0}'+',%' AND MW.[State]=1) M  ", loginid);
+   //         SELECT * FROM  (SELECT MW.TaskName,MW.TaskCode,MWR.DoName,MW.PointTime,MWR.TimeLimit,MW.TaskID,MWR.ResolveID,MWR.PointSort,MWR.PointName,MW.SD,MWR.WorkName,MW.AcceptUser,MW.AcceptDate,MWR.CreateDate,MWR.isPass,loginId
+   //FROM Meter_WorkTask MW,Meter_WorkResolve MWR WHERE MW.TaskID=MWR.TaskID AND MW.PointSort=MWR.PointSort AND ','+loginId+',' like '%,'+'{0}'+',%' AND MW.[State]=1) M 
+
+            string sqlstr = string.Format(@"SELECT * FROM 
+ (SELECT MW.TaskName,MW.TaskCode,MWR.DoName,MW.PointTime,MWR.TimeLimit,MW.TaskID,MWR.ResolveID,MWR.PointSort,MWR.PointName,
+ MW.SD,MWR.WorkName,MW.AcceptUser,MW.AcceptDate,MWR.CreateDate,MWR.isPass,MWR.loginId,VW.waterUserName,VW.waterPhone,VW.waterUserAddress
+   FROM Meter_WorkTask MW LEFT JOIN View_WorkBase VW ON MW.TaskID=VW.TaskID,Meter_WorkResolve MWR 
+   WHERE MW.TaskID=MWR.TaskID AND MW.PointSort=MWR.PointSort AND ','+MWR.loginId+',' like '%,'+'{0}'+',%' AND MW.[State]=1) M", loginid);
 
             if (!string.IsNullOrEmpty(uC_SearchApprove1.sb.ToString()))
             {
@@ -34,6 +40,10 @@ namespace PersonalWork
             uC_DataGridView_Page1.Fields = new string[,] { { "rowNum", "序号" }, 
                                                            { "WorkName", "审批类型" }, 
                                                            { "SD", "流水号" }, 
+                                                           { "waterUserName", "用户名" }, 
+                                                           { "waterPhone", "联系电话" }, 
+                                                           { "waterUserAddress", "地址" }, 
+                                                           { "PointName", "审批进度" }, 
                                                            { "PointName", "审批进度" }, 
                                                            { "DoName", "审批事项" } ,
                                                            { "PointTime", "处理开始时间" } ,
