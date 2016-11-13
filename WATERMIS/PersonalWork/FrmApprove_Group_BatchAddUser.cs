@@ -118,6 +118,11 @@ namespace PersonalWork
         {
             int intColumnIndex = dgList.CurrentCell.ColumnIndex;
             int intRowIndex = dgList.CurrentCell.RowIndex;
+            if (intColumnIndex < 0 || intRowIndex < 0)
+                return;
+
+            if (dgList.Columns[intColumnIndex].Name == "waterMeterSerialNumber")
+
             if (cmbWaterMeter.SelectedValue != null && cmbWaterMeter.SelectedValue != DBNull.Value)
             {
                 dgList.CurrentCell.Value = cmbWaterMeter.Text;
@@ -897,7 +902,7 @@ namespace PersonalWork
             }
             else
             {
-                mes.Show("检测到当前行水表编号非数字，无法使用自动增长填充功能!");
+                mes.Show("检测到前一行水表编号非数字，无法使用自动增长填充功能!");
                 return;
             }
         }
@@ -988,6 +993,12 @@ namespace PersonalWork
                     mes.Show("第 " + (i + 1) + " 行用水性质不能为空");
                     return;
                 }
+                obj = dgList.Rows[i].Cells["createType"].Value;
+                if (obj == null || obj == DBNull.Value || obj.ToString().Trim() == "")
+                {
+                    mes.Show("第 " + (i + 1) + " 行用建档类型不能为空");
+                    return;
+                }
 
                 DataRow[] dr = dtMeterCanSelected.Select("waterMeterSerialNumber='" + strWaterMeterStartNumber + "'");
                 if (dr.Length == 0)
@@ -1018,7 +1029,7 @@ namespace PersonalWork
             }
             else
             {
-                mes.Show("检测到当前行水表编号非数字，无法使用自动增长填充功能!");
+                mes.Show("检测到前一行顺序号非数字，无法使用自动增长填充功能!");
                 return;
             }
         }

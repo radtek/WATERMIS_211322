@@ -276,8 +276,8 @@ namespace FinanceOS
                     PrintReceipt(TaskID,_LastPointSort);
 
                     //更新预算收据号
-                    string strSQL = string.Format(@"UPDATE Meter_Charge SET RECEIPTPRINTCOUNT=1,ReceiptPrintSign='1',ReceiptPrintTime=GETDATE() WHERE CHARGEID
- IN (SELECT CHARGEID FROM View_TaskFee WHERE TaskID='{0}'", TaskID);
+                    string strSQL = string.Format(@"UPDATE Meter_Charge SET RECEIPTPRINTCOUNT=1,ReceiptPrintSign='1',ReceiptPrintTime=GETDATE(),RECEIPTNO='{1}'
+WHERE CHARGEID IN (SELECT CHARGEID FROM View_TaskFee WHERE TaskID='{0}')", TaskID, RECEIPTNO.Text);
                     count = new SqlServerHelper().ExcuteSql(strSQL);
                     if (count == 0)
                         mes.Show("更新收据单号失败!");

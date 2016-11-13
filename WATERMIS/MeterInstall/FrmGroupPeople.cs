@@ -64,8 +64,10 @@ namespace MeterInstall
             }
             GM.waterMeterTypeId = waterMeterTypeId.SelectedValue.ToString();
             GM.waterMeterType = waterMeterTypeId.Text;
+            GM.waterMeterTypeValue = waterMeterTypeId.Text;
             GM.waterUserTypeId = waterUserTypeId.SelectedValue.ToString();
             GM.waterUserType = waterUserTypeId.Text;
+            GM.waterUserTypeName = waterUserTypeId.Text;
             GM.waterUserHouseTypeID = int.Parse(waterUserHouseTypeID.SelectedValue.ToString());
             GM.waterUserHouseType = waterUserHouseTypeID.Text;
             GM.UserCount_Apply = int.Parse(UserCount_Apply.Text.Trim());

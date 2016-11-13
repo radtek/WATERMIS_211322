@@ -8,8 +8,10 @@ namespace DBinterface.Model
     {
        public Guid GroupPeopleID { get; set; }
        public string waterMeterTypeId { get; set; }
-       public string waterMeterType{ get; set; }
+       public string waterMeterType { get; set; }
+       public string waterMeterTypeValue { get; set; }
        public string waterUserTypeId { get; set; }
+       public string waterUserTypeName { get; set; }
        public string waterUserType { get; set; }
        public int waterUserHouseTypeID { get; set; }
        public string waterUserHouseType { get; set; }

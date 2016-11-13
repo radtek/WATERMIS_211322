@@ -536,6 +536,7 @@
             // 
             // label3
             // 
+            this.label3.BackColor = System.Drawing.Color.LimeGreen;
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -555,7 +556,7 @@
             this.顺序续前行ToolStripMenuItem,
             this.粘贴复制内容ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(214, 98);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(214, 76);
             // 
             // 续前行ToolStripMenuItem
             // 

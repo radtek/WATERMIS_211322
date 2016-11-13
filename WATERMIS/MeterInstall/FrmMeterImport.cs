@@ -55,10 +55,11 @@ namespace MeterInstall
                     }
                     else
                     {
-                        continue;
+                        MessageBox.Show("出厂编号格式不正确,请重新编辑Excel");
+                        return;
                     }
 
-                    DataTable dtSize = new SqlServerHelper().GetDataTable("waterMeterSize", " waterMeterSizeValue='" + dr[1].ToString() + "' ", " waterMeterSizeId ");
+                    DataTable dtSize = new SqlServerHelper().GetDataTable("waterMeterSize", " waterMeterSizeValue LIKE '%" + dr[1].ToString() + "%' ", " waterMeterSizeId ");
                     if (DataTableHelper.IsExistRows(dtSize))
                     {
                         //md.waterMeterSizeId = dtSize.Rows[0][0].ToString();
@@ -66,7 +67,8 @@ namespace MeterInstall
                     }
                     else
                     {
-                        continue;
+                        MessageBox.Show("未检测到口径'" + dr[1].ToString() + "',请重新编辑Excel");
+                        return;
                     }
 
                     int StartNumber = 0;
@@ -77,7 +79,8 @@ namespace MeterInstall
                     }
                     else
                     {
-                        continue;
+                        MessageBox.Show("初始读数格式不正确,请重新编辑Excel");
+                        return;
                     }
 
                     int MaxRange = 0;
@@ -88,7 +91,8 @@ namespace MeterInstall
                     }
                     else
                     {
-                        continue;
+                        MessageBox.Show("最大量程格式不正确,请重新编辑Excel");
+                        return;
                     }
 
                     //md.waterMeterProduct = dr[4].ToString();
@@ -104,7 +108,8 @@ namespace MeterInstall
                     }
                     else
                     {
-                        continue;
+                        MessageBox.Show("鉴定日期格式不正确,请输入例如'2016-11-01'格式数据,请重新编辑Excel");
+                        return;
                     }
 
                     //md.MEMO = dr[8].ToString();
@@ -119,8 +124,8 @@ namespace MeterInstall
 
                     //MM.MeterModelItem.Add(md);
                     Lht.Add(ht);
-                    Btn_Import.Enabled = true;
                 }
+                Btn_Import.Enabled = true;
             }
             // LB_Vaild.Text = MM.MeterModelItem.Count.ToString();
             LB_Vaild.Text = Lht.Count.ToString();

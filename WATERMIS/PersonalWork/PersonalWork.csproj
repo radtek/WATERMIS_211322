@@ -403,6 +403,12 @@
     <Compile Include="FrmUserPeccant_Default.Designer.cs">
       <DependentUpon>FrmUserPeccant_Default.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmApprove_Group_DealPrestore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprove_Group_DealPrestore.Designer.cs">
+      <DependentUpon>FrmApprove_Group_DealPrestore.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmApprove_ChargeAbate.resx">
       <DependentUpon>FrmApprove_ChargeAbate.cs</DependentUpon>
@@ -569,6 +575,9 @@
     <EmbeddedResource Include="FrmUserPeccant_Default.resx">
       <DependentUpon>FrmUserPeccant_Default.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmApprove_Group_DealPrestore.resx">
+      <DependentUpon>FrmApprove_Group_DealPrestore.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -594,6 +603,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmApprove_Peccant_User.resx">
       <DependentUpon>FrmApprove_Peccant_User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmApprove_Group_UserPrestoreDeal.resx">
+      <DependentUpon>FrmApprove_Group_UserPrestoreDeal.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -651,6 +663,12 @@
     <Compile Include="FrmApprove_Peccant_User.Designer.cs">
       <DependentUpon>FrmApprove_Peccant_User.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmApprove_Group_UserPrestoreDeal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprove_Group_UserPrestoreDeal.Designer.cs">
+      <DependentUpon>FrmApprove_Group_UserPrestoreDeal.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">
@@ -668,6 +686,10 @@
     <ProjectReference Include="..\DBUtility\DBUtility.csproj">
       <Project>{80D145CD-0A7C-49FB-BEF5-45DC8D5892A1}</Project>
       <Name>DBUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MODEL\MODEL.csproj">
+      <Project>{714F4432-3D0F-4FEA-B6E8-B2A110427451}</Project>
+      <Name>MODEL</Name>
     </ProjectReference>
     <ProjectReference Include="..\SysControl\SysControl.csproj">
       <Project>{10BDADD7-D8EA-4D19-AD9D-A7678BBB5CD8}</Project>

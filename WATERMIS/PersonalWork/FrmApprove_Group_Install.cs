@@ -220,6 +220,10 @@ DELETE FROM  Meter_Groupeople_Detail  WHERE GroupID='{0}'",_GroupID);
                     hp["waterUserTypeId"] = GM.waterUserTypeId;
                     hp["waterUserHouseTypeID"] = GM.waterUserHouseTypeID;
                     hp["waterMeterTypeId"] = GM.waterMeterTypeId;
+                    hp["waterMeterTypeValue"] = GM.waterMeterType;
+                    hp["waterUserTypeName"] = GM.waterUserType;
+                    hp["IsReverse"] = "0";
+                    hp["createType"] = "正式";
                    
                     new SqlServerHelper().Submit_AddOrEdit("Meter_Groupeople_Detail", "PeopleID", "", hp);
                 }
