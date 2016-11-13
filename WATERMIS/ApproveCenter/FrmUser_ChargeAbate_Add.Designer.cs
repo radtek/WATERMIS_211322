@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.AbateDescribe = new System.Windows.Forms.TextBox();
@@ -63,10 +63,10 @@
             this.dgWaterFeeList = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dtpMonth = new System.Windows.Forms.DateTimePicker();
-            this.chkMonth = new System.Windows.Forms.CheckBox();
             this.txtWaterUser = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.Btn_Search = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
             this.waterUserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waterUserNO1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ordernumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -432,14 +432,14 @@
             // 
             this.dgWaterFeeList.AllowUserToAddRows = false;
             this.dgWaterFeeList.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgWaterFeeList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgWaterFeeList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgWaterFeeList.ColumnHeadersHeight = 25;
             this.dgWaterFeeList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgWaterFeeList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -503,6 +503,7 @@
             this.dgWaterFeeList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgWaterFeeList.Location = new System.Drawing.Point(3, 65);
             this.dgWaterFeeList.Name = "dgWaterFeeList";
+            this.dgWaterFeeList.ReadOnly = true;
             this.dgWaterFeeList.RowHeadersWidth = 45;
             this.dgWaterFeeList.RowTemplate.Height = 30;
             this.dgWaterFeeList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -514,8 +515,8 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.LimeGreen;
+            this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.dtpMonth);
-            this.panel2.Controls.Add(this.chkMonth);
             this.panel2.Controls.Add(this.txtWaterUser);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.Btn_Search);
@@ -529,21 +530,12 @@
             // dtpMonth
             // 
             this.dtpMonth.CustomFormat = "yyyy-MM";
+            this.dtpMonth.Enabled = false;
             this.dtpMonth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpMonth.Location = new System.Drawing.Point(309, 10);
             this.dtpMonth.Name = "dtpMonth";
             this.dtpMonth.Size = new System.Drawing.Size(99, 24);
             this.dtpMonth.TabIndex = 141;
-            // 
-            // chkMonth
-            // 
-            this.chkMonth.AutoSize = true;
-            this.chkMonth.Location = new System.Drawing.Point(219, 13);
-            this.chkMonth.Name = "chkMonth";
-            this.chkMonth.Size = new System.Drawing.Size(94, 19);
-            this.chkMonth.TabIndex = 142;
-            this.chkMonth.Text = "水费月份:";
-            this.chkMonth.UseVisualStyleBackColor = true;
             // 
             // txtWaterUser
             // 
@@ -557,9 +549,9 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(4, 16);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(77, 15);
+            this.label11.Size = new System.Drawing.Size(75, 15);
             this.label11.TabIndex = 5;
-            this.label11.Text = "用    户:";
+            this.label11.Text = "用户编号:";
             // 
             // Btn_Search
             // 
@@ -571,11 +563,21 @@
             this.Btn_Search.UseVisualStyleBackColor = true;
             this.Btn_Search.Click += new System.EventHandler(this.Btn_Search_Click);
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(233, 15);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(75, 15);
+            this.label14.TabIndex = 143;
+            this.label14.Text = "水费月份:";
+            // 
             // waterUserId
             // 
             this.waterUserId.DataPropertyName = "waterUserId";
             this.waterUserId.HeaderText = "waterUserId";
             this.waterUserId.Name = "waterUserId";
+            this.waterUserId.ReadOnly = true;
             this.waterUserId.Visible = false;
             this.waterUserId.Width = 109;
             // 
@@ -584,6 +586,7 @@
             this.waterUserNO1.DataPropertyName = "waterUserNO";
             this.waterUserNO1.HeaderText = "用户号";
             this.waterUserNO1.Name = "waterUserNO1";
+            this.waterUserNO1.ReadOnly = true;
             this.waterUserNO1.Width = 74;
             // 
             // ordernumber
@@ -591,6 +594,7 @@
             this.ordernumber.DataPropertyName = "ordernumber";
             this.ordernumber.HeaderText = "顺序号";
             this.ordernumber.Name = "ordernumber";
+            this.ordernumber.ReadOnly = true;
             this.ordernumber.Visible = false;
             this.ordernumber.Width = 74;
             // 
@@ -599,6 +603,7 @@
             this.waterUserName1.DataPropertyName = "waterUserName";
             this.waterUserName1.HeaderText = "用户名";
             this.waterUserName1.Name = "waterUserName1";
+            this.waterUserName1.ReadOnly = true;
             this.waterUserName1.Width = 150;
             // 
             // waterUserAddress1
@@ -606,22 +611,26 @@
             this.waterUserAddress1.DataPropertyName = "waterUserAddress";
             this.waterUserAddress1.HeaderText = "地址";
             this.waterUserAddress1.Name = "waterUserAddress1";
+            this.waterUserAddress1.ReadOnly = true;
             this.waterUserAddress1.Width = 250;
             // 
             // readMeterRecordYearAndMonth1
             // 
             this.readMeterRecordYearAndMonth1.DataPropertyName = "readMeterRecordYearAndMonth";
-            dataGridViewCellStyle6.Format = "yyyy-MM";
-            dataGridViewCellStyle6.NullValue = null;
-            this.readMeterRecordYearAndMonth1.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Format = "yyyy-MM";
+            dataGridViewCellStyle2.NullValue = null;
+            this.readMeterRecordYearAndMonth1.DefaultCellStyle = dataGridViewCellStyle2;
             this.readMeterRecordYearAndMonth1.HeaderText = "水费月份";
             this.readMeterRecordYearAndMonth1.Name = "readMeterRecordYearAndMonth1";
+            this.readMeterRecordYearAndMonth1.ReadOnly = true;
             // 
             // SUBMETERNUMBER
             // 
             this.SUBMETERNUMBER.DataPropertyName = "SUBMETERNUMBER";
             this.SUBMETERNUMBER.HeaderText = "分表读数";
             this.SUBMETERNUMBER.Name = "SUBMETERNUMBER";
+            this.SUBMETERNUMBER.ReadOnly = true;
+            this.SUBMETERNUMBER.Visible = false;
             this.SUBMETERNUMBER.Width = 88;
             // 
             // waterMeterLastNumber
@@ -629,6 +638,7 @@
             this.waterMeterLastNumber.DataPropertyName = "waterMeterLastNumber";
             this.waterMeterLastNumber.HeaderText = "上期读数";
             this.waterMeterLastNumber.Name = "waterMeterLastNumber";
+            this.waterMeterLastNumber.ReadOnly = true;
             this.waterMeterLastNumber.Width = 88;
             // 
             // waterMeterEndNumber
@@ -636,6 +646,7 @@
             this.waterMeterEndNumber.DataPropertyName = "waterMeterEndNumber";
             this.waterMeterEndNumber.HeaderText = "本期读数";
             this.waterMeterEndNumber.Name = "waterMeterEndNumber";
+            this.waterMeterEndNumber.ReadOnly = true;
             this.waterMeterEndNumber.Width = 88;
             // 
             // totalNumber
@@ -643,6 +654,7 @@
             this.totalNumber.DataPropertyName = "totalNumber";
             this.totalNumber.HeaderText = "用水量";
             this.totalNumber.Name = "totalNumber";
+            this.totalNumber.ReadOnly = true;
             this.totalNumber.Width = 74;
             // 
             // waterTotalCharge
@@ -650,6 +662,7 @@
             this.waterTotalCharge.DataPropertyName = "waterTotalCharge";
             this.waterTotalCharge.HeaderText = "水费";
             this.waterTotalCharge.Name = "waterTotalCharge";
+            this.waterTotalCharge.ReadOnly = true;
             this.waterTotalCharge.Width = 60;
             // 
             // extraCharge1
@@ -657,6 +670,7 @@
             this.extraCharge1.DataPropertyName = "extraCharge1";
             this.extraCharge1.HeaderText = "污水处理费";
             this.extraCharge1.Name = "extraCharge1";
+            this.extraCharge1.ReadOnly = true;
             this.extraCharge1.Width = 120;
             // 
             // extraCharge2
@@ -664,6 +678,7 @@
             this.extraCharge2.DataPropertyName = "extraCharge2";
             this.extraCharge2.HeaderText = "附加费";
             this.extraCharge2.Name = "extraCharge2";
+            this.extraCharge2.ReadOnly = true;
             this.extraCharge2.Width = 81;
             // 
             // OVERDUEEND1
@@ -671,12 +686,14 @@
             this.OVERDUEEND1.DataPropertyName = "OVERDUEEND";
             this.OVERDUEEND1.HeaderText = "滞纳金";
             this.OVERDUEEND1.Name = "OVERDUEEND1";
+            this.OVERDUEEND1.ReadOnly = true;
             // 
             // totalCharge
             // 
             this.totalCharge.DataPropertyName = "totalChargeEND";
             this.totalCharge.HeaderText = "费用合计";
             this.totalCharge.Name = "totalCharge";
+            this.totalCharge.ReadOnly = true;
             this.totalCharge.Width = 88;
             // 
             // dataGridViewTextBoxColumn5
@@ -684,6 +701,7 @@
             this.dataGridViewTextBoxColumn5.DataPropertyName = "waterMeterTypeId";
             this.dataGridViewTextBoxColumn5.HeaderText = "用水性质代码";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
             this.dataGridViewTextBoxColumn5.Visible = false;
             this.dataGridViewTextBoxColumn5.Width = 116;
             // 
@@ -692,6 +710,7 @@
             this.waterMeterTypeName1.DataPropertyName = "waterMeterTypeName";
             this.waterMeterTypeName1.HeaderText = "用水性质";
             this.waterMeterTypeName1.Name = "waterMeterTypeName1";
+            this.waterMeterTypeName1.ReadOnly = true;
             this.waterMeterTypeName1.Width = 88;
             // 
             // pianNO
@@ -699,6 +718,7 @@
             this.pianNO.DataPropertyName = "pianNO";
             this.pianNO.HeaderText = "片号";
             this.pianNO.Name = "pianNO";
+            this.pianNO.ReadOnly = true;
             this.pianNO.Width = 60;
             // 
             // areaNO
@@ -706,6 +726,7 @@
             this.areaNO.DataPropertyName = "areaNO";
             this.areaNO.HeaderText = "区号";
             this.areaNO.Name = "areaNO";
+            this.areaNO.ReadOnly = true;
             this.areaNO.Width = 60;
             // 
             // duanNO
@@ -713,6 +734,7 @@
             this.duanNO.DataPropertyName = "duanNO";
             this.duanNO.HeaderText = "段号";
             this.duanNO.Name = "duanNO";
+            this.duanNO.ReadOnly = true;
             this.duanNO.Width = 60;
             // 
             // COMMUNITYNAME
@@ -720,6 +742,7 @@
             this.COMMUNITYNAME.DataPropertyName = "COMMUNITYNAME";
             this.COMMUNITYNAME.HeaderText = "小区名称";
             this.COMMUNITYNAME.Name = "COMMUNITYNAME";
+            this.COMMUNITYNAME.ReadOnly = true;
             this.COMMUNITYNAME.Width = 88;
             // 
             // buildingNO
@@ -727,6 +750,7 @@
             this.buildingNO.DataPropertyName = "buildingNO";
             this.buildingNO.HeaderText = "楼号";
             this.buildingNO.Name = "buildingNO";
+            this.buildingNO.ReadOnly = true;
             this.buildingNO.Width = 60;
             // 
             // unitNO
@@ -734,6 +758,7 @@
             this.unitNO.DataPropertyName = "unitNO";
             this.unitNO.HeaderText = "单元";
             this.unitNO.Name = "unitNO";
+            this.unitNO.ReadOnly = true;
             this.unitNO.Width = 60;
             // 
             // meterReaderID
@@ -741,6 +766,7 @@
             this.meterReaderID.DataPropertyName = "meterReaderID";
             this.meterReaderID.HeaderText = "meterReaderID";
             this.meterReaderID.Name = "meterReaderID";
+            this.meterReaderID.ReadOnly = true;
             this.meterReaderID.Visible = false;
             this.meterReaderID.Width = 123;
             // 
@@ -749,6 +775,7 @@
             this.meterReaderName.DataPropertyName = "meterReaderName";
             this.meterReaderName.HeaderText = "抄表员";
             this.meterReaderName.Name = "meterReaderName";
+            this.meterReaderName.ReadOnly = true;
             this.meterReaderName.Width = 74;
             // 
             // chargerName
@@ -756,6 +783,7 @@
             this.chargerName.DataPropertyName = "chargerName";
             this.chargerName.HeaderText = "收费员";
             this.chargerName.Name = "chargerName";
+            this.chargerName.ReadOnly = true;
             this.chargerName.Width = 74;
             // 
             // waterPhone1
@@ -763,12 +791,14 @@
             this.waterPhone1.DataPropertyName = "waterPhone";
             this.waterPhone1.HeaderText = "联系方式";
             this.waterPhone1.Name = "waterPhone1";
+            this.waterPhone1.ReadOnly = true;
             // 
             // waterUserHouseType
             // 
             this.waterUserHouseType.DataPropertyName = "waterUserHouseType";
             this.waterUserHouseType.HeaderText = "户型";
             this.waterUserHouseType.Name = "waterUserHouseType";
+            this.waterUserHouseType.ReadOnly = true;
             this.waterUserHouseType.Visible = false;
             this.waterUserHouseType.Width = 60;
             // 
@@ -777,6 +807,7 @@
             this.createType.DataPropertyName = "createType";
             this.createType.HeaderText = "建档类型";
             this.createType.Name = "createType";
+            this.createType.ReadOnly = true;
             this.createType.Visible = false;
             this.createType.Width = 88;
             // 
@@ -785,6 +816,7 @@
             this.waterUserchargeType.DataPropertyName = "waterUserchargeType";
             this.waterUserchargeType.HeaderText = "交费方式";
             this.waterUserchargeType.Name = "waterUserchargeType";
+            this.waterUserchargeType.ReadOnly = true;
             this.waterUserchargeType.Visible = false;
             this.waterUserchargeType.Width = 88;
             // 
@@ -793,6 +825,7 @@
             this.agentsign.DataPropertyName = "agentsign";
             this.agentsign.HeaderText = "银行托收";
             this.agentsign.Name = "agentsign";
+            this.agentsign.ReadOnly = true;
             this.agentsign.Visible = false;
             this.agentsign.Width = 88;
             // 
@@ -801,6 +834,7 @@
             this.dataGridViewTextBoxColumn6.DataPropertyName = "waterUserTypeId";
             this.dataGridViewTextBoxColumn6.HeaderText = "waterUserTypeId";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
             this.dataGridViewTextBoxColumn6.Visible = false;
             this.dataGridViewTextBoxColumn6.Width = 137;
             // 
@@ -809,6 +843,7 @@
             this.waterUserTypeName1.DataPropertyName = "waterUserTypeName";
             this.waterUserTypeName1.HeaderText = "用户类型";
             this.waterUserTypeName1.Name = "waterUserTypeName1";
+            this.waterUserTypeName1.ReadOnly = true;
             this.waterUserTypeName1.Visible = false;
             this.waterUserTypeName1.Width = 88;
             // 
@@ -817,6 +852,7 @@
             this.bankId.DataPropertyName = "bankId";
             this.bankId.HeaderText = "bankId";
             this.bankId.Name = "bankId";
+            this.bankId.ReadOnly = true;
             this.bankId.Visible = false;
             this.bankId.Width = 74;
             // 
@@ -825,6 +861,7 @@
             this.bankName.DataPropertyName = "bankName";
             this.bankName.HeaderText = "托收银行";
             this.bankName.Name = "bankName";
+            this.bankName.ReadOnly = true;
             this.bankName.Visible = false;
             this.bankName.Width = 88;
             // 
@@ -833,6 +870,7 @@
             this.waterUserPeopleCount.DataPropertyName = "waterUserPeopleCount";
             this.waterUserPeopleCount.HeaderText = "waterUserPeopleCount";
             this.waterUserPeopleCount.Name = "waterUserPeopleCount";
+            this.waterUserPeopleCount.ReadOnly = true;
             this.waterUserPeopleCount.Visible = false;
             this.waterUserPeopleCount.Width = 172;
             // 
@@ -841,6 +879,7 @@
             this.isSummaryS.DataPropertyName = "isSummaryS";
             this.isSummaryS.HeaderText = "是否总表";
             this.isSummaryS.Name = "isSummaryS";
+            this.isSummaryS.ReadOnly = true;
             this.isSummaryS.Visible = false;
             this.isSummaryS.Width = 88;
             // 
@@ -849,6 +888,7 @@
             this.waterMeterId.DataPropertyName = "waterMeterId";
             this.waterMeterId.HeaderText = "waterMeterId";
             this.waterMeterId.Name = "waterMeterId";
+            this.waterMeterId.ReadOnly = true;
             this.waterMeterId.Visible = false;
             this.waterMeterId.Width = 116;
             // 
@@ -857,6 +897,7 @@
             this.meterReadingPageNo.DataPropertyName = "meterReadingPageNo";
             this.meterReadingPageNo.HeaderText = "页号";
             this.meterReadingPageNo.Name = "meterReadingPageNo";
+            this.meterReadingPageNo.ReadOnly = true;
             this.meterReadingPageNo.Visible = false;
             this.meterReadingPageNo.Width = 60;
             // 
@@ -864,6 +905,7 @@
             // 
             this.avePriceDescribe.HeaderText = "avePriceDescribe";
             this.avePriceDescribe.Name = "avePriceDescribe";
+            this.avePriceDescribe.ReadOnly = true;
             this.avePriceDescribe.Visible = false;
             this.avePriceDescribe.Width = 144;
             // 
@@ -872,6 +914,7 @@
             this.trapezoidPrice.DataPropertyName = "trapezoidPrice";
             this.trapezoidPrice.HeaderText = "trapezoidPrice";
             this.trapezoidPrice.Name = "trapezoidPrice";
+            this.trapezoidPrice.ReadOnly = true;
             this.trapezoidPrice.Visible = false;
             this.trapezoidPrice.Width = 130;
             // 
@@ -880,6 +923,7 @@
             this.waterMeterPositionId.DataPropertyName = "waterMeterPositionId";
             this.waterMeterPositionId.HeaderText = "水表位置";
             this.waterMeterPositionId.Name = "waterMeterPositionId";
+            this.waterMeterPositionId.ReadOnly = true;
             this.waterMeterPositionId.Visible = false;
             this.waterMeterPositionId.Width = 88;
             // 
@@ -888,6 +932,7 @@
             this.waterMeterPositionName.DataPropertyName = "waterMeterPositionName";
             this.waterMeterPositionName.HeaderText = "水表位置";
             this.waterMeterPositionName.Name = "waterMeterPositionName";
+            this.waterMeterPositionName.ReadOnly = true;
             this.waterMeterPositionName.Width = 88;
             // 
             // waterMeterSizeId
@@ -895,6 +940,7 @@
             this.waterMeterSizeId.DataPropertyName = "waterMeterSizeId";
             this.waterMeterSizeId.HeaderText = "口径ID";
             this.waterMeterSizeId.Name = "waterMeterSizeId";
+            this.waterMeterSizeId.ReadOnly = true;
             this.waterMeterSizeId.Visible = false;
             this.waterMeterSizeId.Width = 74;
             // 
@@ -903,6 +949,7 @@
             this.waterMeterSizeValue.DataPropertyName = "waterMeterSizeValue";
             this.waterMeterSizeValue.HeaderText = "口径";
             this.waterMeterSizeValue.Name = "waterMeterSizeValue";
+            this.waterMeterSizeValue.ReadOnly = true;
             this.waterMeterSizeValue.Visible = false;
             this.waterMeterSizeValue.Width = 60;
             // 
@@ -911,6 +958,7 @@
             this.waterMeterProduct.DataPropertyName = "waterMeterProduct";
             this.waterMeterProduct.HeaderText = "生产厂家";
             this.waterMeterProduct.Name = "waterMeterProduct";
+            this.waterMeterProduct.ReadOnly = true;
             this.waterMeterProduct.Visible = false;
             this.waterMeterProduct.Width = 88;
             // 
@@ -919,6 +967,7 @@
             this.waterMeterSerialNumber.DataPropertyName = "waterMeterSerialNumber";
             this.waterMeterSerialNumber.HeaderText = "出厂编号";
             this.waterMeterSerialNumber.Name = "waterMeterSerialNumber";
+            this.waterMeterSerialNumber.ReadOnly = true;
             this.waterMeterSerialNumber.Visible = false;
             this.waterMeterSerialNumber.Width = 88;
             // 
@@ -927,6 +976,7 @@
             this.waterMeterMode.DataPropertyName = "waterMeterMode";
             this.waterMeterMode.HeaderText = "规格";
             this.waterMeterMode.Name = "waterMeterMode";
+            this.waterMeterMode.ReadOnly = true;
             this.waterMeterMode.Visible = false;
             this.waterMeterMode.Width = 60;
             // 
@@ -935,6 +985,7 @@
             this.waterMeterMagnification.DataPropertyName = "waterMeterMagnification";
             this.waterMeterMagnification.HeaderText = "倍率";
             this.waterMeterMagnification.Name = "waterMeterMagnification";
+            this.waterMeterMagnification.ReadOnly = true;
             this.waterMeterMagnification.Visible = false;
             this.waterMeterMagnification.Width = 60;
             // 
@@ -943,6 +994,7 @@
             this.waterMeterMaxRange.DataPropertyName = "waterMeterMaxRange";
             this.waterMeterMaxRange.HeaderText = "最大量程";
             this.waterMeterMaxRange.Name = "waterMeterMaxRange";
+            this.waterMeterMaxRange.ReadOnly = true;
             this.waterMeterMaxRange.Visible = false;
             this.waterMeterMaxRange.Width = 88;
             // 
@@ -951,6 +1003,7 @@
             this.waterMeterIsSummaryNo.DataPropertyName = "waterMeterParentId";
             this.waterMeterIsSummaryNo.HeaderText = "总表编号";
             this.waterMeterIsSummaryNo.Name = "waterMeterIsSummaryNo";
+            this.waterMeterIsSummaryNo.ReadOnly = true;
             this.waterMeterIsSummaryNo.Visible = false;
             this.waterMeterIsSummaryNo.Width = 88;
             // 
@@ -959,6 +1012,7 @@
             this.WATERFIXVALUE.DataPropertyName = "WATERFIXVALUE";
             this.WATERFIXVALUE.HeaderText = "定量用水";
             this.WATERFIXVALUE.Name = "WATERFIXVALUE";
+            this.WATERFIXVALUE.ReadOnly = true;
             this.WATERFIXVALUE.Width = 88;
             // 
             // IsReverse
@@ -966,6 +1020,7 @@
             this.IsReverse.DataPropertyName = "IsReverse";
             this.IsReverse.HeaderText = "水表倒装";
             this.IsReverse.Name = "IsReverse";
+            this.IsReverse.ReadOnly = true;
             this.IsReverse.Width = 88;
             // 
             // readMeterRecordId1
@@ -973,6 +1028,7 @@
             this.readMeterRecordId1.DataPropertyName = "readMeterRecordId";
             this.readMeterRecordId1.HeaderText = "readMeterReordId";
             this.readMeterRecordId1.Name = "readMeterRecordId1";
+            this.readMeterRecordId1.ReadOnly = true;
             this.readMeterRecordId1.Visible = false;
             this.readMeterRecordId1.Width = 144;
             // 
@@ -981,6 +1037,7 @@
             this.waterUserCreateDate.DataPropertyName = "waterUserCreateDate";
             this.waterUserCreateDate.HeaderText = "waterUserCreateDate";
             this.waterUserCreateDate.Name = "waterUserCreateDate";
+            this.waterUserCreateDate.ReadOnly = true;
             this.waterUserCreateDate.Visible = false;
             this.waterUserCreateDate.Width = 165;
             // 
@@ -989,6 +1046,7 @@
             this.BankAcountNumber.DataPropertyName = "BankAcountNumber";
             this.BankAcountNumber.HeaderText = "BankAcountNumber";
             this.BankAcountNumber.Name = "BankAcountNumber";
+            this.BankAcountNumber.ReadOnly = true;
             this.BankAcountNumber.Visible = false;
             this.BankAcountNumber.Width = 144;
             // 
@@ -997,6 +1055,7 @@
             this.extraCharge.DataPropertyName = "extraCharge";
             this.extraCharge.HeaderText = "extraCharge";
             this.extraCharge.Name = "extraCharge";
+            this.extraCharge.ReadOnly = true;
             this.extraCharge.Visible = false;
             this.extraCharge.Width = 109;
             // 
@@ -1054,11 +1113,11 @@
         private System.Windows.Forms.DateTimePicker dtpMonth;
         public System.Windows.Forms.DataGridView dgWaterFeeList;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.CheckBox chkMonth;
         private System.Windows.Forms.TextBox WaterMeterTypeValue;
         private System.Windows.Forms.TextBox WaterUserTypeName;
         private System.Windows.Forms.TextBox OverDue;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterUserId;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterUserNO1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ordernumber;

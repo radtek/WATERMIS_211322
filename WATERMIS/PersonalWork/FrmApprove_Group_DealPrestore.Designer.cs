@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmApprove_Group_DealPrestore));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.labProgress = new System.Windows.Forms.Label();
             this.prbCharge = new System.Windows.Forms.ProgressBar();
@@ -51,12 +51,18 @@
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgList = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.labYuCunSum_YY = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.labYuCunSum_YK = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.waterUserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waterUserNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waterUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WATERUSERPHONE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waterUserAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WATERUSERPEOPLECOUNT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prestore = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pianNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.areaNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.duanNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,7 +79,6 @@
             this.waterPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waterUserCreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prestore = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TOTALFEE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.USERAREARAGE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WATERUSERTYPEID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,11 +88,6 @@
             this.WATERMETERTYPEVALUE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WATERMETERTYPECLASSID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WATERMETERTYPECLASSNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.labYuCunSum_YY = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.labYuCunSum_YK = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -300,16 +300,16 @@
             // 
             this.dgList.AllowUserToAddRows = false;
             this.dgList.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgList.ColumnHeadersHeight = 25;
             this.dgList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -319,6 +319,7 @@
             this.WATERUSERPHONE,
             this.waterUserAddress,
             this.WATERUSERPEOPLECOUNT,
+            this.prestore,
             this.pianNO,
             this.areaNO,
             this.duanNO,
@@ -335,7 +336,6 @@
             this.waterPhone,
             this.waterUserCreateDate,
             this.createType,
-            this.prestore,
             this.TOTALFEE,
             this.USERAREARAGE,
             this.WATERUSERTYPEID,
@@ -357,6 +357,72 @@
             this.dgList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgWaterUserDebts_CellFormatting);
             this.dgList.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgWaterList_CellPainting);
             this.dgList.SelectionChanged += new System.EventHandler(this.dgWaterUser_SelectionChanged);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.LimeGreen;
+            this.panel1.Controls.Add(this.labYuCunSum_YY);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.labYuCunSum_YK);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(978, 36);
+            this.panel1.TabIndex = 13;
+            this.panel1.Tag = "9999";
+            // 
+            // labYuCunSum_YY
+            // 
+            this.labYuCunSum_YY.AutoSize = true;
+            this.labYuCunSum_YY.BackColor = System.Drawing.Color.Transparent;
+            this.labYuCunSum_YY.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labYuCunSum_YY.ForeColor = System.Drawing.Color.Red;
+            this.labYuCunSum_YY.Location = new System.Drawing.Point(393, 11);
+            this.labYuCunSum_YY.Name = "labYuCunSum_YY";
+            this.labYuCunSum_YY.Size = new System.Drawing.Size(34, 16);
+            this.labYuCunSum_YY.TabIndex = 4;
+            this.labYuCunSum_YY.Tag = "9999";
+            this.labYuCunSum_YY.Text = "0元";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(256, 11);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(136, 16);
+            this.label3.TabIndex = 3;
+            this.label3.Tag = "9999";
+            this.label3.Text = "营业已结转总计:";
+            // 
+            // labYuCunSum_YK
+            // 
+            this.labYuCunSum_YK.AutoSize = true;
+            this.labYuCunSum_YK.BackColor = System.Drawing.Color.Transparent;
+            this.labYuCunSum_YK.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labYuCunSum_YK.ForeColor = System.Drawing.Color.Red;
+            this.labYuCunSum_YK.Location = new System.Drawing.Point(111, 11);
+            this.labYuCunSum_YK.Name = "labYuCunSum_YK";
+            this.labYuCunSum_YK.Size = new System.Drawing.Size(34, 16);
+            this.labYuCunSum_YK.TabIndex = 2;
+            this.labYuCunSum_YK.Tag = "9999";
+            this.labYuCunSum_YK.Text = "0元";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(9, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(102, 16);
+            this.label1.TabIndex = 1;
+            this.label1.Tag = "9999";
+            this.label1.Text = "预存款总计:";
             // 
             // waterUserId
             // 
@@ -407,6 +473,14 @@
             this.WATERUSERPEOPLECOUNT.ReadOnly = true;
             this.WATERUSERPEOPLECOUNT.Visible = false;
             this.WATERUSERPEOPLECOUNT.Width = 172;
+            // 
+            // prestore
+            // 
+            this.prestore.DataPropertyName = "prestore";
+            this.prestore.HeaderText = "余额";
+            this.prestore.Name = "prestore";
+            this.prestore.ReadOnly = true;
+            this.prestore.Width = 60;
             // 
             // pianNO
             // 
@@ -524,9 +598,9 @@
             // waterUserCreateDate
             // 
             this.waterUserCreateDate.DataPropertyName = "waterUserCreateDate";
-            dataGridViewCellStyle6.Format = "f";
-            dataGridViewCellStyle6.NullValue = null;
-            this.waterUserCreateDate.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Format = "f";
+            dataGridViewCellStyle3.NullValue = null;
+            this.waterUserCreateDate.DefaultCellStyle = dataGridViewCellStyle3;
             this.waterUserCreateDate.HeaderText = "建档时间";
             this.waterUserCreateDate.Name = "waterUserCreateDate";
             this.waterUserCreateDate.ReadOnly = true;
@@ -539,14 +613,6 @@
             this.createType.Name = "createType";
             this.createType.ReadOnly = true;
             this.createType.Width = 88;
-            // 
-            // prestore
-            // 
-            this.prestore.DataPropertyName = "prestore";
-            this.prestore.HeaderText = "余额";
-            this.prestore.Name = "prestore";
-            this.prestore.ReadOnly = true;
-            this.prestore.Width = 60;
             // 
             // TOTALFEE
             // 
@@ -619,72 +685,6 @@
             this.WATERMETERTYPECLASSNAME.Name = "WATERMETERTYPECLASSNAME";
             this.WATERMETERTYPECLASSNAME.ReadOnly = true;
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.LimeGreen;
-            this.panel1.Controls.Add(this.labYuCunSum_YY);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.labYuCunSum_YK);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(978, 36);
-            this.panel1.TabIndex = 13;
-            this.panel1.Tag = "9999";
-            // 
-            // labYuCunSum_YY
-            // 
-            this.labYuCunSum_YY.AutoSize = true;
-            this.labYuCunSum_YY.BackColor = System.Drawing.Color.Transparent;
-            this.labYuCunSum_YY.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labYuCunSum_YY.ForeColor = System.Drawing.Color.Red;
-            this.labYuCunSum_YY.Location = new System.Drawing.Point(393, 11);
-            this.labYuCunSum_YY.Name = "labYuCunSum_YY";
-            this.labYuCunSum_YY.Size = new System.Drawing.Size(34, 16);
-            this.labYuCunSum_YY.TabIndex = 4;
-            this.labYuCunSum_YY.Tag = "9999";
-            this.labYuCunSum_YY.Text = "0元";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(256, 11);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(136, 16);
-            this.label3.TabIndex = 3;
-            this.label3.Tag = "9999";
-            this.label3.Text = "营业已结转总计:";
-            // 
-            // labYuCunSum_YK
-            // 
-            this.labYuCunSum_YK.AutoSize = true;
-            this.labYuCunSum_YK.BackColor = System.Drawing.Color.Transparent;
-            this.labYuCunSum_YK.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labYuCunSum_YK.ForeColor = System.Drawing.Color.Red;
-            this.labYuCunSum_YK.Location = new System.Drawing.Point(111, 11);
-            this.labYuCunSum_YK.Name = "labYuCunSum_YK";
-            this.labYuCunSum_YK.Size = new System.Drawing.Size(34, 16);
-            this.labYuCunSum_YK.TabIndex = 2;
-            this.labYuCunSum_YK.Tag = "9999";
-            this.labYuCunSum_YK.Text = "0元";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(9, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(102, 16);
-            this.label1.TabIndex = 1;
-            this.label1.Tag = "9999";
-            this.label1.Text = "预存款总计:";
-            // 
             // FrmApprove_Group_DealPrestore
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -731,12 +731,18 @@
         private System.Windows.Forms.Label labReceiptNO;
         private System.Windows.Forms.TextBox txtMemo;
         private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labYuCunSum_YK;
+        private System.Windows.Forms.Label labYuCunSum_YY;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterUserId;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterUserNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterUserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn WATERUSERPHONE;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterUserAddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn WATERUSERPEOPLECOUNT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prestore;
         private System.Windows.Forms.DataGridViewTextBoxColumn pianNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn areaNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn duanNO;
@@ -753,7 +759,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn waterPhone;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterUserCreateDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn createType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn prestore;
         private System.Windows.Forms.DataGridViewTextBoxColumn TOTALFEE;
         private System.Windows.Forms.DataGridViewTextBoxColumn USERAREARAGE;
         private System.Windows.Forms.DataGridViewTextBoxColumn WATERUSERTYPEID;
@@ -763,10 +768,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn WATERMETERTYPEVALUE;
         private System.Windows.Forms.DataGridViewTextBoxColumn WATERMETERTYPECLASSID;
         private System.Windows.Forms.DataGridViewTextBoxColumn WATERMETERTYPECLASSNAME;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label labYuCunSum_YK;
-        private System.Windows.Forms.Label labYuCunSum_YY;
-        private System.Windows.Forms.Label label3;
     }
 }

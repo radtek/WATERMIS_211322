@@ -90,36 +90,24 @@ namespace ApproveCenter
         private void Btn_Search_Click(object sender, EventArgs e)
         {
             new SqlServerHelper().ClearControls(this.groupBox2.Controls);
-            _WATERUSERNO = "";
-
-            string strFilter = " WHERE chargeState<>'3' ";
-            string strSearch = txtWaterUser.Text;
-            if (txtWaterUser.Text.Trim() != "")
+            if (txtWaterUser.Text.Trim() == "")
             {
-                strFilter += " AND (waterUserNO LIKE '%" + strSearch + "%' OR waterUserName LIKE '%" + strSearch +
-                    "%' OR waterUserAddress LIKE '%" + strSearch + "%') ";
+                mes.Show("请输入用户编号");
+                return;
             }
-            if (chkMonth.Checked)
+            if (!txtWaterUser.Text.Contains("U"))
+                txtWaterUser.Text = "U" + txtWaterUser.Text.Trim();
+
+            _WATERUSERNO = txtWaterUser.Text;
+
+            string strFilter = " WHERE chargeState<>'3' AND waterUserId='" + _WATERUSERNO + "'";
                 strFilter += " AND DATEDIFF(MONTH,readMeterRecordYearAndMonth,'" + dtpMonth.Value.ToString("yyyy-MM-dd") + "')=0 ";
 
-            _WATERUSERNO = WATERUSERNO.Text.Trim();
             string sqlstr = "SELECT TOP 1 * FROM V_YSDETAIL_BYWATERMETER " + strFilter;
             DataTable dt = new SqlServerHelper().GetDateTableBySql(sqlstr);
             if (DataTableHelper.IsExistRows(dt))
             {
                 dgWaterFeeList.DataSource = dt;
-                //Hashtable ht = DataTableHelper.DataTableToHashtable(dt);
-                //if (sysidal.GetUserExistAbate(ht["READMETERRECORDID"].ToString()))
-                //{
-                //    _WATERUSERNO = "";
-                //    MessageBox.Show("该用户申请记录已存在，不要重复申请！");
-                //    return;
-                //}
-                //else
-                //{
-                //    new SqlServerHelper().BindHashTableToForm(ht, this.panel1.Controls);
-                //    LB_Tip.Text = string.Format("含滞纳金{0}元", ht["OVERDUEEND"].ToString());
-                //}
             }
             else
             {

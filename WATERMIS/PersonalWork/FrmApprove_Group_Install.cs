@@ -264,6 +264,7 @@ DELETE FROM  Meter_Groupeople_Detail  WHERE GroupID='{0}'",_GroupID);
         {
             if (SaveGoupPeople() > 0)
             {
+                Btn_Submit.Visible = true;
                 MessageBox.Show("保存成功！");
             } 
         }

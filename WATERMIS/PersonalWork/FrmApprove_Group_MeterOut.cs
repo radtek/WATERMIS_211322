@@ -81,6 +81,7 @@ namespace PersonalWork
         {
             if (SaveGroupMeter() > 0)
             {
+                Btn_Submit.Visible = true;
                 MessageBox.Show("保存成功！");
             } 
         }

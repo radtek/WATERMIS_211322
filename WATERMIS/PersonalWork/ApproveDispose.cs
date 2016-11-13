@@ -88,7 +88,7 @@ namespace PersonalWork
                foreach (DataRow dr in dt.Rows)
                {
                    UC_ChargeItem UC = new UC_ChargeItem();
-                   UC.FeeItem = string.Format("{0}-{1}:{2}元;", dr["PointName"].ToString().Trim(), dr["FeeItem"].ToString().Trim(), dr["Fee"].ToString());
+                   UC.FeeItem = string.Format("{0}:{1}元;",dr["FeeItem"].ToString().Trim(), dr["Fee"].ToString());
 
                    FP_Items.Controls.Add(UC);
                }

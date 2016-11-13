@@ -69,7 +69,7 @@
             this.Btn_Save.BackColor = System.Drawing.Color.SeaGreen;
             this.Btn_Save.FlatAppearance.BorderSize = 0;
             this.Btn_Save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Save.Font = new System.Drawing.Font("微软雅黑 Light", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Btn_Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Btn_Save.ForeColor = System.Drawing.Color.White;
             this.Btn_Save.Location = new System.Drawing.Point(119, 398);
             this.Btn_Save.Name = "Btn_Save";
@@ -105,7 +105,7 @@
             this.Btn_Submit.BackColor = System.Drawing.Color.SeaGreen;
             this.Btn_Submit.FlatAppearance.BorderSize = 0;
             this.Btn_Submit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Submit.Font = new System.Drawing.Font("微软雅黑 Light", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Btn_Submit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Btn_Submit.ForeColor = System.Drawing.Color.White;
             this.Btn_Submit.Location = new System.Drawing.Point(269, 398);
             this.Btn_Submit.Name = "Btn_Submit";
@@ -113,6 +113,7 @@
             this.Btn_Submit.TabIndex = 6;
             this.Btn_Submit.Text = "提交审批";
             this.Btn_Submit.UseVisualStyleBackColor = false;
+            this.Btn_Submit.Visible = false;
             this.Btn_Submit.Click += new System.EventHandler(this.Btn_Submit_Click);
             // 
             // label1

@@ -108,7 +108,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 400F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1266, 803);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1266, 750);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -124,7 +124,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1266, 403);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1266, 350);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // panel2
@@ -135,7 +135,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(636, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(627, 397);
+            this.panel2.Size = new System.Drawing.Size(627, 344);
             this.panel2.TabIndex = 1;
             // 
             // dgNotice
@@ -156,7 +156,7 @@
             this.dgNotice.Name = "dgNotice";
             this.dgNotice.ReadOnly = true;
             this.dgNotice.RowTemplate.Height = 23;
-            this.dgNotice.Size = new System.Drawing.Size(627, 357);
+            this.dgNotice.Size = new System.Drawing.Size(627, 304);
             this.dgNotice.TabIndex = 2;
             this.dgNotice.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgNotice_CellContentDoubleClick);
             this.dgNotice.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgNotice_CellFormatting);
@@ -255,7 +255,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(627, 397);
+            this.panel1.Size = new System.Drawing.Size(627, 344);
             this.panel1.TabIndex = 0;
             // 
             // panel5
@@ -265,18 +265,21 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 40);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(627, 357);
+            this.panel5.Size = new System.Drawing.Size(627, 304);
             this.panel5.TabIndex = 1;
             // 
             // DG
             // 
+            this.DG.AllowUserToAddRows = false;
+            this.DG.AllowUserToDeleteRows = false;
             this.DG.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.DG.ColumnHeadersHeight = 25;
             this.DG.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DG.Location = new System.Drawing.Point(0, 0);
             this.DG.Name = "DG";
+            this.DG.ReadOnly = true;
             this.DG.RowTemplate.Height = 23;
-            this.DG.Size = new System.Drawing.Size(627, 357);
+            this.DG.Size = new System.Drawing.Size(627, 304);
             this.DG.TabIndex = 0;
             this.DG.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
@@ -327,7 +330,7 @@
             this.tableLayoutPanel3.Controls.Add(this.WB2, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.panel3, 2, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 406);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 353);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -593,7 +596,7 @@
             // FrmDefaultPage
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1266, 803);
+            this.ClientSize = new System.Drawing.Size(1266, 750);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "FrmDefaultPage";

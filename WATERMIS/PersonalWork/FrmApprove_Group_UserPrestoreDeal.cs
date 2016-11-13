@@ -68,13 +68,22 @@ namespace PersonalWork
                 /// </summary>
                 decimal decSumYuCun_YK = 0, decSumYuCun_YY = 0;
 
-                string strSQL = string.Format(@"SELECT * FROM V_WATERUSER_CONNECTWATERMETER WHERE waterUserId IN (SELECT waterUserId 
+                string strSQL = string.Format(@"SELECT SUM(PRESTORE) FROM WATERUSER WHERE waterUserId IN (SELECT waterUserId 
                 FROM Meter_Groupeople_Detail WHERE GroupID='{0}')", strGroupID);
                 object obj = new SqlServerHelper().GetFirsRowsValue(strSQL);
                 if (Information.IsNumeric(obj))
                     decSumYuCun_YY = Convert.ToDecimal(obj);
 
-                decSumYuCun_YK = sysidal.GetTotalFeeYuCun(strTaskID, PointSort);
+                string strGetYC = string.Format(@"DECLARE @TaskID NVARCHAR(50)='{0}'
+        DECLARE @LastPoingSort INT=0
+        SELECT TOP 1 @LastPoingSort=PointSort FROM Meter_WorkResolveFee MWF,Meter_WorkResolve MWR 
+        WHERE MWF.ResolveID=MWR.ResolveID AND MWR.TaskID=@TaskID AND PointSort<14 AND MWR.YS=1 ORDER BY PointSort DESC
+        SELECT SUM(Fee) FROM Meter_WorkResolveFee WHERE ResolveID IN 
+        (SELECT ResolveID FROM Meter_WorkResolve WHERE 
+        TaskID=@TaskID AND PointSort=@LastPoingSort) AND FEE>0 AND FeeID IN  (SELECT FeeID FROM Meter_FeeItmes WHERE IsPrestore=1)", strTaskID);
+                obj =new SqlServerHelper().GetFirsRowsValue(strGetYC);
+                if (Information.IsNumeric(obj))
+                    decSumYuCun_YK = Convert.ToDecimal(obj);
 
                 if (decSumYuCun_YK != decSumYuCun_YY)
                 {
