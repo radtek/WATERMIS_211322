@@ -37,6 +37,10 @@ namespace ApproveCenter
         private void FrmUser_ChargeAbate_Add_Load(object sender, EventArgs e)
         {
             dgWaterFeeList.AutoGenerateColumns = false;
+
+            DateTime dtNow = mes.GetDatetimeNow();
+            dtpStart.Value = new DateTime(dtNow.Year, dtNow.Month, 1);
+            dtpEnd.Value = dtpStart.Value.AddMonths(1).AddDays(-1);
             //BindCombox();
         }
 
@@ -59,8 +63,13 @@ namespace ApproveCenter
                 ht["USERNAME"] = UserName.Text;
                 ht["WATERUSERADDRESS"] = waterUserAddress.Text;
                 ht["TOTALCHARGEEND"] = TotalChargeEND.Text;
-                ht["ABATE"] = Abate.Text;
-                ht["ABATEDESCRIBE"] = AbateDescribe.Text;                
+                ht["OldTotalNumber"] =(OldTotalNumber.Text);
+                ht["NewTotalNumber"] = Convert.ToInt32(NewTotalNumber.Text);
+                ht["ABATEDESCRIBE"] = AbateDescribe.Text;
+                ht["waterMeterTypeid"] = waterMeterTypeid.Text;
+                ht["waterUserTypeId"] = waterUserTypeId.Text;
+                ht["WaterMeterTypeValue"] = WaterMeterTypeValue.Text;
+                ht["WaterUserTypeName"] = WaterUserTypeName.Text;           
 
                 ht["ACCEPTID"] = SDNO;
                 ht["LOGINID"] = strLogID;
@@ -100,10 +109,15 @@ namespace ApproveCenter
 
             _WATERUSERNO = txtWaterUser.Text;
 
-            string strFilter = " WHERE chargeState<>'3' AND waterUserId='" + _WATERUSERNO + "'";
-                strFilter += " AND DATEDIFF(MONTH,readMeterRecordYearAndMonth,'" + dtpMonth.Value.ToString("yyyy-MM-dd") + "')=0 ";
+            string strFilter = " WHERE waterUserId='" + _WATERUSERNO + "'";
 
-            string sqlstr = "SELECT TOP 1 * FROM V_YSDETAIL_BYWATERMETER " + strFilter;
+            if (chkYearAndMonth.Checked)
+            {
+                strFilter += " AND readMeterRecordYearAndMonth BETWEEN '" + dtpStart.Text + "' AND '" + dtpEnd.Text + "'";
+            }
+            strFilter += " ORDER BY readMeterRecordYearAndMonth DESC";
+
+            string sqlstr = "SELECT * FROM V_YSDETAIL_BYWATERMETER " + strFilter;
             DataTable dt = new SqlServerHelper().GetDateTableBySql(sqlstr);
             if (DataTableHelper.IsExistRows(dt))
             {
@@ -125,10 +139,10 @@ namespace ApproveCenter
                 return false;
             }
 
-            if (!Information.IsNumeric(Abate.Text.Trim()))
+            if (!Information.IsNumeric(NewTotalNumber.Text.Trim()))
             {
-                mes.Show("请输入正确的减免金额！");
-                Abate.Focus();
+                mes.Show("请输入正确的减免后水量！");
+                NewTotalNumber.Focus();
                 return false;
             }
             if (string.IsNullOrEmpty(AbateDescribe.Text.Trim()))
@@ -152,9 +166,9 @@ namespace ApproveCenter
 
             if (!CkeckAbate())
             {
-                 mes.Show("减免金额不能大于费用合计！");
-                 Abate.Text = "";
-                 Abate.Focus();
+                 mes.Show("减免后水量不能大于原用水量！");
+                 NewTotalNumber.Text = "1";
+                 NewTotalNumber.Focus();
 
                  return false;
             }
@@ -166,7 +180,7 @@ namespace ApproveCenter
         {
             bool result = false; 
             decimal _totalChargeEND = 0m;
-            if (Decimal.TryParse(TotalChargeEND.Text.Trim(), out _totalChargeEND))
+            if (Decimal.TryParse(OldTotalNumber.Text.Trim(), out _totalChargeEND))
             {
                 result = _totalChargeEND>0m?true:false;
             }
@@ -176,7 +190,7 @@ namespace ApproveCenter
             }
 
             decimal _Abage = 0m;
-            if (Decimal.TryParse(Abate.Text.Trim(), out _Abage))
+            if (Decimal.TryParse(NewTotalNumber.Text.Trim(), out _Abage))
             {
                 result =_Abage>0m? true:false;
             }
@@ -194,7 +208,7 @@ namespace ApproveCenter
         {
             if (!CkeckAbate())
             {
-                Abate.Focus();
+                NewTotalNumber.Focus();
             }
         }
 
@@ -235,6 +249,14 @@ namespace ApproveCenter
             if (obj != null && obj != DBNull.Value)
                 UserName.Text = obj.ToString();
 
+            obj = dgWaterFeeList.Rows[e.RowIndex].Cells["waterMeterTypeId1"].Value;
+            if (obj != null && obj != DBNull.Value)
+                waterMeterTypeid.Text = obj.ToString();
+
+            obj = dgWaterFeeList.Rows[e.RowIndex].Cells["waterUserTypeId1"].Value;
+            if (obj != null && obj != DBNull.Value)
+                waterUserTypeId.Text = obj.ToString();
+
             obj = dgWaterFeeList.Rows[e.RowIndex].Cells["waterMeterTypeName1"].Value;
             if (obj != null && obj != DBNull.Value)
                 WaterMeterTypeValue.Text = obj.ToString();
@@ -250,20 +272,103 @@ namespace ApproveCenter
             obj = dgWaterFeeList.Rows[e.RowIndex].Cells["totalCharge"].Value;
             if (Information.IsNumeric(obj))
                 TotalChargeEND.Text = Convert.ToDecimal(obj).ToString("F2");
+
+            obj = dgWaterFeeList.Rows[e.RowIndex].Cells["totalNumber"].Value;
+            if (Information.IsNumeric(obj))
+                OldTotalNumber.Text = Convert.ToInt32(obj).ToString();
         }
 
         private void Abate_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //检测是否已经输入了小数点 
-            bool IsContainsDot = this.Abate.Text.Contains(".");
-            if ((e.KeyChar < 48 || e.KeyChar > 57) && (e.KeyChar != 8) && (e.KeyChar != 46))
+            //如果输入的不是数字键，也不是回车键、Backspace键，则取消该输入
+            if (!(Char.IsNumber(e.KeyChar)) && e.KeyChar != (char)13 && e.KeyChar != (char)8)
             {
                 e.Handled = true;
             }
-            else if (IsContainsDot && (e.KeyChar == 46)) //如果输入了小数点，并且再次输入 
-            {
-                e.Handled = true;
-            }
-        }        
+        }
+        private void btSetMonth_Click(object sender, EventArgs e)
+        {
+            contextMenuStrip1.Show(btSetMonth, 0, btSetMonth.Width + 1);
+        }
+        private void 今天ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DateTime dtNow = mes.GetDatetimeNow();
+
+            DateTime dtMonthStart = new DateTime(dtNow.Year, dtNow.Month, dtNow.Day, 0, 0, 0);
+            dtpStart.Value = dtMonthStart;
+
+            DateTime dtMonthEnd = new DateTime(dtNow.Year, dtNow.Month, dtNow.Day, 23, 59, 59);
+            dtpEnd.Value = dtMonthEnd;
+        }
+
+        private void 本月ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DateTime dtNow = mes.GetDatetimeNow();
+            DateTime dtMonthStart = new DateTime(dtNow.Year, dtNow.Month, 1);
+            dtpStart.Value = dtMonthStart;
+
+            DateTime dtMonthEnd = dtMonthStart.AddMonths(1).AddDays(-1);
+            dtMonthEnd = new DateTime(dtMonthEnd.Year, dtMonthEnd.Month, dtMonthEnd.Day, 23, 59, 59);
+            dtpEnd.Value = dtMonthEnd;
+        }
+
+        private void 上月ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DateTime dtNow = mes.GetDatetimeNow();
+            DateTime dtMonthStart = new DateTime(dtNow.Year, dtNow.Month, 1);
+            DateTime dtLastMonth = dtMonthStart.AddMonths(-1);
+            dtLastMonth = new DateTime(dtLastMonth.Year, dtLastMonth.Month, dtLastMonth.Day, 0, 0, 0);
+            dtpStart.Value = dtLastMonth;
+
+            DateTime dtMonthEnd = dtMonthStart.AddDays(-1);
+            dtMonthEnd = new DateTime(dtMonthEnd.Year, dtMonthEnd.Month, dtMonthEnd.Day, 23, 59, 59);
+            dtpEnd.Value = dtMonthEnd;
+        }
+
+        private void 下月ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DateTime dtNow = mes.GetDatetimeNow();
+            DateTime dtMonthStart = new DateTime(dtNow.Year, dtNow.Month, 1);
+            DateTime dtLastMonth = dtMonthStart.AddMonths(1);
+            dtLastMonth = new DateTime(dtLastMonth.Year, dtLastMonth.Month, dtMonthStart.Day, 0, 0, 0);
+            dtpStart.Value = dtLastMonth;
+
+            DateTime dtMonthEnd = dtMonthStart.AddMonths(2).AddDays(-1);
+            dtMonthEnd = new DateTime(dtMonthEnd.Year, dtMonthEnd.Month, dtMonthEnd.Day, 23, 59, 59);
+            dtpEnd.Value = dtMonthEnd;
+        }
+
+        private void 本年ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DateTime dtNow = mes.GetDatetimeNow();
+            DateTime dtMonthStart = new DateTime(dtNow.Year, 1, 1);
+            DateTime dtLastMonth = new DateTime(dtMonthStart.Year, 1, 1, 0, 0, 0);
+            dtpStart.Value = dtLastMonth;
+
+            DateTime dtMonthEnd = dtMonthStart.AddYears(1).AddDays(-1);
+            dtMonthEnd = new DateTime(dtMonthEnd.Year, dtMonthEnd.Month, dtMonthEnd.Day, 23, 59, 59);
+            dtpEnd.Value = dtMonthEnd;
+        }
+
+        private void 上年ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DateTime dtNow = mes.GetDatetimeNow();
+            DateTime dtMonthStart = new DateTime(dtNow.Year, 1, 1);
+            DateTime dtLastYear = new DateTime(dtMonthStart.AddYears(-1).Year, 1, 1, 0, 0, 0);
+            dtpStart.Value = dtLastYear;
+
+            DateTime dtMonthEnd = dtMonthStart.AddDays(-1);
+            dtMonthEnd = new DateTime(dtMonthEnd.Year, dtMonthEnd.Month, dtMonthEnd.Day, 23, 59, 59);
+            dtpEnd.Value = dtMonthEnd;
+        }
+
+        private void 全部ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DateTime dtLastYear = new DateTime(2000, 1, 1);
+            dtpStart.Value = dtLastYear;
+
+            DateTime dtMonthEnd = new DateTime(3000, 1, 1, 23, 59, 59);
+            dtpEnd.Value = dtMonthEnd;
+        }      
     }
 }
