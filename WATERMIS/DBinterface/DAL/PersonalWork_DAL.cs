@@ -6,6 +6,7 @@ using System.Collections;
 using Common.DotNetData;
 using DBUtility;
 using Common.WinDevices;
+using Microsoft.VisualBasic;
 
 namespace DBinterface.DAL
 {
@@ -1156,6 +1157,67 @@ UPDATE {0} SET prestore=prestore-@FEE WHERE TaskID=@TaskID
 COMMIT TRAN", _tableNmae, CANCELMEMO, loginid, userName);
             int count = new SqlServerHelper().UpdateByHashtable(sqlstr, new SqlParameter[] { new SqlParameter("@TaskID", TaskID), new SqlParameter("@CHARGEID", ChargeID) });
             return count > 0 ? true : false;
+        }
+
+
+        /// <summary>
+        /// 根据用水类别的阶梯水价获取水费组成
+        /// </summary>
+        /// <param name="decTotalNumber">总用水量</param>
+        /// <param name="strTrapePriceString">阶梯水价说明</param>
+        /// <param name="extraCharge">附加费组成</param>
+        /// <param name="intNotReadMonths">未抄月份</param>
+        /// <param name="waterTotalCharge">用户水费</param>
+        /// <param name="extraCharge1">污水处理费</param>
+        /// <param name="extraCharge2">附加费</param>
+        public void GetAvePrice(decimal decTotalNumber, string strTrapePriceString, string extraCharge, int intNotReadMonths, ref decimal waterTotalCharge, ref decimal extraCharge1, ref decimal extraCharge2)
+        {
+            string[] strTrapePrice = strTrapePriceString.Split('|');
+            decimal decWaterSum = 0, decWaterTotalNumber = decTotalNumber;
+            for (int i = strTrapePrice.Length - 1; i >= 0; i--)
+            {
+                string[] strJTAndPrice = strTrapePrice[i].Split(':');
+                string[] strJT = strJTAndPrice[0].Split('-');
+                if (Information.IsNumeric(strJT[0]) && Information.IsNumeric(strJT[1]))
+                {
+                    if (decTotalNumber > (Convert.ToDecimal(strJT[0]) * intNotReadMonths) && decTotalNumber <= (Convert.ToDecimal(strJT[1]) * intNotReadMonths))
+                    {
+                        decWaterSum += (decTotalNumber - (Convert.ToDecimal(strJT[0]) * intNotReadMonths)) * (Convert.ToDecimal(strJTAndPrice[1]));
+                        decTotalNumber = (Convert.ToDecimal(strJT[0]) * intNotReadMonths);
+                    }
+                    else
+                        continue;
+                }
+
+            }
+
+            waterTotalCharge = decWaterSum;
+
+            string[] strExtra = extraCharge.Split('|');
+            for (int i = 0; i < 2; i++)
+            {
+                if (strExtra.Length > i)
+                {
+                    string _extra = strExtra[i];
+                    string[] strExtraFee = _extra.Split(':');
+                    decimal _extraChargeSingle = 0m;
+                    if (i == 0)
+                    {
+                        if (decimal.TryParse(strExtraFee[1], out _extraChargeSingle))
+                        {
+                            extraCharge1 = _extraChargeSingle * decWaterTotalNumber;
+                        }
+                    }
+                    else if (i == 1)
+                    {
+                        if (decimal.TryParse(strExtraFee[1], out _extraChargeSingle))
+                        {
+                            extraCharge2 = _extraChargeSingle * decWaterTotalNumber;
+                        }
+                    }
+                }
+            }
+
         }
 
 

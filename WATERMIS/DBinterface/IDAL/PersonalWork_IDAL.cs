@@ -177,5 +177,7 @@ namespace DBinterface.IDAL
        string GetTableNameByTaskID(string TaskID);
 
        bool CancelCharge(string TaskID, string ChargeID, string CANCELMEMO);
+
+       void GetAvePrice(decimal decTotalNumber, string strTrapePriceString, string extraCharge, int intNotReadMonths, ref decimal waterTotalCharge, ref decimal extraCharge1, ref decimal extraCharge2);
     }
 }
