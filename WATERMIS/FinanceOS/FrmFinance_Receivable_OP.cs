@@ -112,7 +112,7 @@ namespace FinanceOS
             string strSQL = "SELECT TOP 1 RECEIPTNO FROM Meter_Charge WHERE RECEIPTNO<>N'' AND CHARGEWORKERID=@CHARGEWORKERID ORDER BY ReceiptPrintTime DESC";
             object objMax = new SqlServerHelper().GetFirsRowsValue(strSQL, new SqlParameter[] { new SqlParameter("@CHARGEWORKERID", strLogID) });
             if (Information.IsNumeric(objMax))
-                RECEIPTNO.Text = Convert.ToInt32(objMax).ToString().PadLeft(8, '0');
+                RECEIPTNO.Text = (Convert.ToInt32(objMax)+1).ToString().PadLeft(8, '0');
             else
                 RECEIPTNO.Text = "00000001";
         }

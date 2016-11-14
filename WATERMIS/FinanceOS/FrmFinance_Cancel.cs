@@ -72,7 +72,7 @@ namespace FinanceOS
             string strSQL = "SELECT TOP 1 RECEIPTNO FROM Meter_Charge WHERE RECEIPTNO<>N'' AND CHARGEWORKERID=@CHARGEWORKERID ORDER BY ReceiptPrintTime DESC";
             object objMax = new SqlServerHelper().GetFirsRowsValue(strSQL, new SqlParameter[] { new SqlParameter("@CHARGEWORKERID", strLogID) });
             if (Information.IsNumeric(objMax))
-                TB_RECEIPTNO.Text = Convert.ToInt32(objMax).ToString().PadLeft(8, '0');
+                TB_RECEIPTNO.Text = (Convert.ToInt32(objMax)+1).ToString().PadLeft(8, '0');
             else
                 TB_RECEIPTNO.Text = "00000001";
         }
@@ -136,10 +136,11 @@ namespace FinanceOS
             if (_Loginid.Equals(ChargerID))
             {
                 _IsAllow = false;
+                Btn_Print.Enabled = true;
             }
             else
             {
-                Btn_Print.Enabled = true;
+                Btn_Print.Enabled = false;
             }
 
             sqlstr = string.Format(@"SELECT COUNT(*) FROM Meter_WorkTask MW,Meter_WorkResolve MWR WHERE MW.TaskID=MWR.TaskID
