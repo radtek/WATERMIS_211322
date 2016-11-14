@@ -84,6 +84,7 @@ namespace ApproveCenter
                     bool result = new SqlServerHelper().CreateWorkTask(ht["ChargeAbateID"].ToString(), SDNO, "User_ChargeAbate", "ChargeAbateID", "费用减免");
                     if (result)
                     {
+                        Btn_Submit.Enabled = false;
                         mes.Show("任务创建成功！");
                         new SqlServerHelper().ClearControls(panel1.Controls);
                     }

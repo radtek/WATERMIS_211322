@@ -17,7 +17,7 @@ namespace ApproveCenter
 
         private void uC_SearchModule1_BtnEvent(object sender, EventArgs e)
         {
-            string sqlstr = @"SELECT * FROM (SELECT UR.*,SubString(CONVERT(varchar(100),readMeterRecordYearAndMonth,23),0,8) AS YearAndMonth, MWT.Value AS ApproveState,CASE WHEN IsAbate=1 THEN '已减免' ELSE '-' END AS IsAbateState FROM User_ChargeAbate UR,Meter_WorkTaskState MWT WHERE UR.State=MWT.ID) M ";
+            string sqlstr = @"SELECT * FROM  (SELECT UR.*,SubString(CONVERT(varchar(100),readMeterRecordYearAndMonth,23),0,8) AS YearAndMonth, MWT.Value AS ApproveState,CASE WHEN IsAbate=1 THEN '已减免' ELSE '-' END AS IsAbateState FROM User_ChargeAbate UR,Meter_WorkTaskState MWT WHERE UR.State=MWT.ID) M ";
 
             if (!string.IsNullOrEmpty(uC_SearchModule1.sb.ToString()))
             {
@@ -34,13 +34,14 @@ namespace ApproveCenter
                                                            { "waterPhone", "联系电话" }, 
                                                            { "SubmitDate", "申请时间" },
                                                            { "UserName", "抄表员" }, 
-                                                           { "Abate", "减免金额" }, 
+                                                           { "OldTotalNumber", "原用水量" }, 
+                                                           { "NewTotalNumber", "原用水量" }, 
                                                            { "IsAbateState", "减免状态" } ,
                                                            { "CHARGEWORKERDate", "减免时间" } ,
                                                            { "CHARGEWORKERNAME", "操作人" },
                                                            { "Memo", "备注" }   
             };
-            uC_DataGridView_Page1.FieldStatis = new string[,] { { "AcceptID", "合计" }, { "Abate", "" }, { "IsAbate", "" } };
+            uC_DataGridView_Page1.FieldStatis = new string[,] { { "AcceptID", "合计" }, { "OldTotalNumber", "" }, { "NewTotalNumber", "" }, { "IsAbate", "" } };
             uC_DataGridView_Page1.SqlString = sqlstr;
             uC_DataGridView_Page1.PageOrderField = "CreateDate";
             uC_DataGridView_Page1.PageIndex = 1;

@@ -109,10 +109,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BASEFUNCTION\BASEFUNCTION.csproj">
-      <Project>{ACBD9B62-1323-4264-A4D6-B600705D9228}</Project>
-      <Name>BASEFUNCTION</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DBUtility\DBUtility.csproj">
       <Project>{80D145CD-0A7C-49FB-BEF5-45DC8D5892A1}</Project>
       <Name>DBUtility</Name>

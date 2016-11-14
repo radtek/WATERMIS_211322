@@ -12,7 +12,7 @@ using Microsoft.VisualBasic;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.IO;
-using BASEFUNCTION;
+using System.Xml;
 
 namespace UPLOAD
 {
@@ -37,7 +37,7 @@ namespace UPLOAD
         string strConfigPath = "";
 
         Messages mes = new Messages();
-
+        ReadConfig ReadConfig = new ReadConfig();
         private void frmUpload_Load(object sender, EventArgs e)
         {
             dgList.AutoGenerateColumns = false;
@@ -524,6 +524,106 @@ namespace UPLOAD
                 return true;
             else
                 return false;
+        }
+    }
+    public class ReadConfig
+    {
+        private static string strFileName = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + @"WATERMIS.exe.config";
+
+        /// <summary>  
+        /// 获取配置文件的属性  
+        /// </summary>  
+        /// <param name="key"></param>  
+        /// <returns></returns>  
+        public string GetAttributeValue(string key)
+        {
+            string value = string.Empty;
+
+            try
+            {
+                if (File.Exists(strFileName))
+                {
+                    XmlDocument xml = new XmlDocument();
+
+                    xml.Load(strFileName);
+
+                    XmlNode xNode = xml.SelectSingleNode("//appSettings");
+
+                    XmlElement element = (XmlElement)xNode.SelectSingleNode("//add[@key='" + key + "']");
+
+                    value = element.GetAttribute("value").ToString();
+                }
+            }
+            catch { }
+
+            return value;
+        }
+    } 
+
+    class Messages
+    {
+        /// <summary>
+        /// 确定一个按钮的对话框
+        /// </summary>
+        /// <param name="strContent"></param>
+        public void Show(string strContent)
+        {
+            MessageBox.Show(strContent, "自来水MIS系统", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+        }
+        /// <summary>
+        /// OK,NO两个按钮的对话框
+        /// </summary>
+        /// <param name="strContent"></param>
+        /// <returns></returns>
+        public DialogResult ShowQ(string strContent)
+        {
+            return MessageBox.Show(strContent, "自来水MIS系统", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+        }
+        /// <summary>
+        /// 获取服务器时间
+        /// </summary>
+        /// <returns></returns>
+        public DateTime GetDatetimeNow()
+        {
+            DateTime dt = new DateTime();
+            dt = DateTime.Parse(DBUtility.DbHelperSQL.ExecuteScalar("SELECT TOP 1 GETDATE() FROM sysusers").ToString());
+            return dt;
+        }
+
+        public DateTime GetMondayOfTheWeek(DateTime dt)
+        {
+            int WeekToday = Convert.ToInt32(dt.DayOfWeek.ToString("d"));
+            if (WeekToday == 0)
+                WeekToday = 7;
+            DateTime Monday = dt.AddDays((-1) * (WeekToday - 1));
+            DateTime startWeek = dt.AddDays(1 - Convert.ToInt32(dt.DayOfWeek.ToString("d")));
+            return Monday;
+        }
+
+        /// <summary>
+        /// 监测主系统是否在运行
+        /// </summary>
+        public bool TestTheProcess()
+        {
+            bool isProcess = false;
+            Process currentProcess = Process.GetCurrentProcess(); //得到当前进程的ID
+            Process[] procList = Process.GetProcessesByName(currentProcess.ProcessName);//根据进程的名称得到所有进程
+            if (procList.Length > 1)
+            {
+                if (ShowQ("系统检测到另一个程序正在运行,是否再打开一个?") != DialogResult.OK)
+                    isProcess = true;
+            }
+            //foreach (Process proc in procList)
+            //{
+            //    //找到相同进程
+            //    if (proc.Id == currentProcess.Id)
+            //    {
+            //        mes.Show("系统监测到主程序正在运行,请关闭主程序后再执行升级操作!");
+            //        isProcess = true;
+            //        break;
+            //    }
+            //}
+            return isProcess;
         }
     }
     class MODELFILEDOWNLOAD

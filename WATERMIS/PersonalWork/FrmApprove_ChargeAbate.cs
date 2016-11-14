@@ -235,7 +235,7 @@ INSERT INTO [readMeterRecord]([readMeterRecordId],[readMeterRecordIdLast],[water
                             0-WATERTOTALCHARGE,0-EXTRATOTALCHARGE,0-TOTALCHARGE,0-OVERDUEMONEY,CHARGETYPEID,'4',0-CHARGEBCYS,0-CHARGEBCSS,{5},CHARGEBCYS,{5}+CHARGEBCYS,
                         '{6}','{3}','{2}',0,0,'' FROM WATERFEECHARGE WHERE CHARGEID='{7}'
 
-UPDATE WATERUSER SET prestore={5}+{8} WHERE WATERUSERID='{9}'
+UPDATE WATERUSER SET prestore={5}+{8} WHERE WATERUSERID='{9}' 
 
                             INSERT INTO [readMeterRecord]([readMeterRecordId],[readMeterRecordIdLast],[waterMeterId],[waterMeterNo]
                                             ,[lastNumberYearMonth],[waterMeterLastNumber],[waterMeterEndNumber],SUBMETERNUMBER,[totalNumber],[totalNumberDescribe],[avePrice]
@@ -262,7 +262,8 @@ UPDATE WATERUSER SET prestore={5}+{8} WHERE WATERUSERID='{9}'
                                             [waterUserTelphoneNO],areaNO,pianNO,duanNO,communityID,COMMUNITYNAME,buildingNO,unitNO,createType,[waterPhone],[waterUserAddress],[waterUserPeopleCount]
                                             ,[meterReadingID],[meterReadingNO],[meterReadingPageNo],[waterUserTypeId],[waterUserTypeName],[waterUserCreateDate]
                                             ,[waterUserHouseType],[waterUserchargeType],[agentsign],[waterUserState],[bankId],[bankName],[BankAcountNumber],[isSummaryMeter],[waterMeterParentId],[ordernumber] ,NULL
- FROM readMeterRecord WHERE readMeterRecordId='{0}'",
+ FROM readMeterRecord WHERE readMeterRecordId='{1}'
+COMMIT TRAN",
                             strReadMeterRecordID, readMeterRecordId.Text, dtNow, strRealName, ChargeID, decPrestore, strLogID, strChargeID, decTotalChargeEnd, WATERUSERNO.Text,
                             strReadMeterRecordIDNew, intTotalNumber, waterTotalCharge, extraCharge1, extraCharge2);
 
@@ -313,7 +314,6 @@ UPDATE WATERUSER SET prestore={5}+{8} WHERE WATERUSERID='{9}'
                     {
                         MessageBox.Show("水费减免失败！");
                     }
-
                 }
                 else
                 {
@@ -321,7 +321,6 @@ UPDATE WATERUSER SET prestore={5}+{8} WHERE WATERUSERID='{9}'
                     MessageBox.Show("审批成功！");
                     this.Close();
                 }
-
             }
             else
             {
