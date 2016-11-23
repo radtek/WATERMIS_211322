@@ -81,6 +81,18 @@
     <Compile Include="FrmApproveMain.Designer.cs">
       <DependentUpon>FrmApproveMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmUser_AddWater.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUser_AddWater.Designer.cs">
+      <DependentUpon>FrmUser_AddWater.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUser_AddWater_Add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUser_AddWater_Add.Designer.cs">
+      <DependentUpon>FrmUser_AddWater_Add.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmUser_ChargeAbate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +147,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmApproveMain.resx">
       <DependentUpon>FrmApproveMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUser_AddWater.resx">
+      <DependentUpon>FrmUser_AddWater.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUser_AddWater_Add.resx">
+      <DependentUpon>FrmUser_AddWater_Add.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmUser_ChargeAbate.resx">
       <DependentUpon>FrmUser_ChargeAbate.cs</DependentUpon>
