@@ -51,9 +51,9 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BASEFUNCTION, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="BASEFUNCTION, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\WATERMIS\bin\Debug\BASEFUNCTION.dll</HintPath>
+      <HintPath>..\WATERMIS\bin\x86\Debug\BASEFUNCTION.dll</HintPath>
     </Reference>
     <Reference Include="FastReport, Version=2014.4.8.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -106,6 +106,24 @@
     </Compile>
     <Compile Include="FrmMeter_Maintain_Add.Designer.cs">
       <DependentUpon>FrmMeter_Maintain_Add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_BlackList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_BlackList.Designer.cs">
+      <DependentUpon>Frm_BlackList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_BlackList_Add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_BlackList_Add.Designer.cs">
+      <DependentUpon>Frm_BlackList_Add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_BlackList_Cancel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_BlackList_Cancel.Designer.cs">
+      <DependentUpon>Frm_BlackList_Cancel.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm_Meter_Desterilize.cs">
       <SubType>Form</SubType>
@@ -197,6 +215,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMeter_Maintain_Add.resx">
       <DependentUpon>FrmMeter_Maintain_Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_BlackList.resx">
+      <DependentUpon>Frm_BlackList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_BlackList_Add.resx">
+      <DependentUpon>Frm_BlackList_Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_BlackList_Cancel.resx">
+      <DependentUpon>Frm_BlackList_Cancel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Meter_Desterilize.resx">
       <DependentUpon>Frm_Meter_Desterilize.cs</DependentUpon>
