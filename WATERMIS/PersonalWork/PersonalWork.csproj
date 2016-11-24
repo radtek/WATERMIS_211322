@@ -51,10 +51,6 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BASEFUNCTION, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\WATERMIS\bin\Debug\BASEFUNCTION.dll</HintPath>
-    </Reference>
     <Reference Include="FastReport, Version=2014.4.8.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\WATERMIS\bin\x86\Debug\FastReport.dll</HintPath>
@@ -73,6 +69,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApproveDispose.cs" />
+    <Compile Include="FrmApprove_AddWater.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprove_AddWater.Designer.cs">
+      <DependentUpon>FrmApprove_AddWater.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmApprove_ChargeAbate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -410,6 +412,9 @@
       <DependentUpon>FrmApprove_Group_DealPrestore.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmApprove_AddWater.resx">
+      <DependentUpon>FrmApprove_AddWater.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmApprove_ChargeAbate.resx">
       <DependentUpon>FrmApprove_ChargeAbate.cs</DependentUpon>
     </EmbeddedResource>
@@ -671,6 +676,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BASEFUNCTION\BASEFUNCTION.csproj">
+      <Project>{ACBD9B62-1323-4264-A4D6-B600705D9228}</Project>
+      <Name>BASEFUNCTION</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BLL\BLL.csproj">
       <Project>{1A522A59-6899-4106-88C9-A6E9D50DC363}</Project>
       <Name>BLL</Name>

@@ -1220,6 +1220,20 @@ COMMIT TRAN", _tableNmae, CANCELMEMO, loginid, userName);
 
         }
 
+        public void GetWaterFeeByMeterType(string waterMeterTypeId, decimal totalNumber, int intNotReadMonths, ref decimal waterTotalCharge, ref decimal extraCharge1, ref decimal extraCharge2)
+        {
+            if (!string.IsNullOrEmpty(waterMeterTypeId))
+            {
+                DataTable dt = new SqlServerHelper().GetDataTable("waterMeterType", "waterMeterTypeId='" + waterMeterTypeId + "'", "waterMeterTypeId");
+                if (DataTableHelper.IsExistRows(dt))
+                {
+                    string _strTrapePriceString=dt.Rows[0]["trapezoidPrice"].ToString();
+                    string _extraCharge=dt.Rows[0]["extraCharge"].ToString();
 
+                    GetAvePrice(totalNumber, _strTrapePriceString, _extraCharge, intNotReadMonths, ref waterTotalCharge, ref extraCharge1, ref extraCharge2);
+                }
+
+            }
+        }
     }
 }

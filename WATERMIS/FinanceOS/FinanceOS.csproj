@@ -52,8 +52,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FrmFinanceCenter.cs">
+    <Compile Include="FinanceReport.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinanceReport.Designer.cs">
+      <DependentUpon>FinanceReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFinanceCenter.cs">
     </Compile>
     <Compile Include="FrmFinanceCenter.Designer.cs">
       <DependentUpon>FrmFinanceCenter.cs</DependentUpon>
@@ -149,6 +154,9 @@
       <DependentUpon>FrmFinance_Settle_Month.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FinanceReport.resx">
+      <DependentUpon>FinanceReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmFinanceCenter.resx">
       <DependentUpon>FrmFinanceCenter.cs</DependentUpon>
     </EmbeddedResource>

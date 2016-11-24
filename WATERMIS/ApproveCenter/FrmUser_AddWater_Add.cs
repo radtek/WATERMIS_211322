@@ -53,7 +53,7 @@ namespace ApproveCenter
 
                 if (new SqlServerHelper().Submit_AddOrEdit("User_AddWater", "AddID", "", ht))
                 {
-                    bool result = new SqlServerHelper().CreateWorkTask(ht["AddID"].ToString(), SDNO, "User_AddWater", "User_AddWater", "补交水量");
+                    bool result = new SqlServerHelper().CreateWorkTask(ht["AddID"].ToString(), SDNO, "User_AddWater", "AddID", "补交水量");
                     if (result)
                     {
                         Btn_Submit.Enabled = false;
@@ -98,7 +98,7 @@ namespace ApproveCenter
 
             string strFilter = " WHERE waterUserId='" + _WATERUSERNO + "'";
 
-            strFilter += "AND datadiff";
+            strFilter += "AND DATEDIFF(MONTH,readMeterRecordDate,GETDATE())=0 ";
 
             strFilter += " ORDER BY readMeterRecordYearAndMonth DESC";
 
@@ -129,6 +129,35 @@ namespace ApproveCenter
                 totalNumber.Focus();
                 return false;
             }
+            else
+            {
+                int _totalNumber = int.Parse(totalNumber.Text.Trim());
+                if (!(_totalNumber>0))
+                {
+                    mes.Show("请输入正确的补交水量！");
+                }
+
+            }
+            if (string.IsNullOrEmpty(AddDescribe.Text.Trim()))
+            {
+                mes.Show("请填写补交原因！");
+                return false;
+            }
+
+            try
+            {
+                decimal _TotalFee = decimal.Parse(TotalChargeEND.Text);
+                if (!(_TotalFee>0m))
+                {
+                    mes.Show("水费计算错误，请联系管理员！");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
 
             return true;
         }
@@ -149,10 +178,17 @@ namespace ApproveCenter
 
         private void totalNumber_TextChanged(object sender, EventArgs e)
         {
-            int _totalNumber = 0;
-            if (int.TryParse(totalNumber.Text,out _totalNumber))
+            decimal _totalNumber = 0m;
+            if (decimal.TryParse(totalNumber.Text,out _totalNumber))
             {
+                string _waterMeterTypeId = waterMeterTypeid.Text.Trim();
 
+                decimal _waterTotalCharge=0m;
+                decimal _extraCharge1=0m;
+                decimal _extraCharge2=0m;
+
+                sysidal.GetWaterFeeByMeterType(_waterMeterTypeId, _totalNumber, 1, ref _waterTotalCharge, ref _extraCharge1, ref _extraCharge2);
+                TotalChargeEND.Text = _waterTotalCharge.ToString();
             }
             else
             {

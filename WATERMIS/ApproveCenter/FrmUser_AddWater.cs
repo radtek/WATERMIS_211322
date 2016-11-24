@@ -45,7 +45,7 @@ namespace ApproveCenter
                                                            { "CHARGEWORKERNAME", "操作人" },
                                                            { "AddDescribe", "补交原因" }   
             };
-            uC_DataGridView_Page1.FieldStatis = new string[,] { { "AcceptID", "合计" }, { "totalNumber", "" }, { "TotalChargeEND", "" }, { "IsAdd", "" } };
+            uC_DataGridView_Page1.FieldStatis = new string[,] { { "AcceptID", "合计" }, { "totalNumber", "" }, { "TotalChargeEND", "" } };
             uC_DataGridView_Page1.SqlString = sqlstr;
             uC_DataGridView_Page1.PageOrderField = "CreateDate";
             uC_DataGridView_Page1.PageIndex = 1;

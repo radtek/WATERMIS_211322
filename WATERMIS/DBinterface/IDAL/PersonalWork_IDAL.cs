@@ -179,5 +179,7 @@ namespace DBinterface.IDAL
        bool CancelCharge(string TaskID, string ChargeID, string CANCELMEMO);
 
        void GetAvePrice(decimal decTotalNumber, string strTrapePriceString, string extraCharge, int intNotReadMonths, ref decimal waterTotalCharge, ref decimal extraCharge1, ref decimal extraCharge2);
+
+       void GetWaterFeeByMeterType(string waterMeterTypeId, decimal totalNumber, int intNotReadMonths, ref decimal waterTotalCharge, ref decimal extraCharge1, ref decimal extraCharge2);
     }
 }

@@ -87,12 +87,12 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.Btn_Submit);
             this.panel2.Controls.Add(this.waterPhone);
             this.panel2.Controls.Add(this.label80);
             this.panel2.Controls.Add(this.ApplyUser);
             this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.LB_Tips);
-            this.panel2.Controls.Add(this.Btn_Submit);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.flowLayoutPanel1);
             this.panel2.Controls.Add(this.CertificateNO);
@@ -112,7 +112,7 @@
             // 
             // waterPhone
             // 
-            this.waterPhone.Location = new System.Drawing.Point(333, 7);
+            this.waterPhone.Location = new System.Drawing.Point(333, 6);
             this.waterPhone.Name = "waterPhone";
             this.waterPhone.Size = new System.Drawing.Size(161, 21);
             this.waterPhone.TabIndex = 2;
@@ -120,7 +120,7 @@
             // label80
             // 
             this.label80.AutoSize = true;
-            this.label80.Location = new System.Drawing.Point(259, 13);
+            this.label80.Location = new System.Drawing.Point(259, 12);
             this.label80.Name = "label80";
             this.label80.Size = new System.Drawing.Size(71, 12);
             this.label80.TabIndex = 79;
@@ -128,7 +128,7 @@
             // 
             // ApplyUser
             // 
-            this.ApplyUser.Location = new System.Drawing.Point(89, 7);
+            this.ApplyUser.Location = new System.Drawing.Point(89, 6);
             this.ApplyUser.Name = "ApplyUser";
             this.ApplyUser.Size = new System.Drawing.Size(149, 21);
             this.ApplyUser.TabIndex = 1;
@@ -136,7 +136,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(20, 13);
+            this.label13.Location = new System.Drawing.Point(20, 12);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(65, 12);
             this.label13.TabIndex = 76;
@@ -145,7 +145,7 @@
             // LB_Tips
             // 
             this.LB_Tips.AutoSize = true;
-            this.LB_Tips.Location = new System.Drawing.Point(453, 41);
+            this.LB_Tips.Location = new System.Drawing.Point(453, 36);
             this.LB_Tips.Name = "LB_Tips";
             this.LB_Tips.Size = new System.Drawing.Size(41, 12);
             this.LB_Tips.TabIndex = 4;
@@ -157,7 +157,7 @@
             this.Btn_Submit.BackColor = System.Drawing.Color.LimeGreen;
             this.Btn_Submit.Enabled = false;
             this.Btn_Submit.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Btn_Submit.Location = new System.Drawing.Point(210, 236);
+            this.Btn_Submit.Location = new System.Drawing.Point(210, 135);
             this.Btn_Submit.Name = "Btn_Submit";
             this.Btn_Submit.Size = new System.Drawing.Size(108, 37);
             this.Btn_Submit.TabIndex = 7;
@@ -179,15 +179,16 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.White;
+            this.flowLayoutPanel1.Enabled = false;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(91, 165);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(405, 59);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(51, 59);
             this.flowLayoutPanel1.TabIndex = 10;
             this.flowLayoutPanel1.Visible = false;
             // 
             // CertificateNO
             // 
-            this.CertificateNO.Location = new System.Drawing.Point(89, 129);
+            this.CertificateNO.Location = new System.Drawing.Point(89, 109);
             this.CertificateNO.Name = "CertificateNO";
             this.CertificateNO.Size = new System.Drawing.Size(354, 21);
             this.CertificateNO.TabIndex = 6;
@@ -195,7 +196,7 @@
             // CertificateID
             // 
             this.CertificateID.FormattingEnabled = true;
-            this.CertificateID.Location = new System.Drawing.Point(89, 99);
+            this.CertificateID.Location = new System.Drawing.Point(89, 84);
             this.CertificateID.Name = "CertificateID";
             this.CertificateID.Size = new System.Drawing.Size(229, 20);
             this.CertificateID.TabIndex = 5;
@@ -203,7 +204,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(20, 134);
+            this.label8.Location = new System.Drawing.Point(20, 114);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 12);
             this.label8.TabIndex = 7;
@@ -212,7 +213,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(20, 103);
+            this.label5.Location = new System.Drawing.Point(20, 88);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 12);
             this.label5.TabIndex = 6;
@@ -220,14 +221,14 @@
             // 
             // ContractNO
             // 
-            this.ContractNO.Location = new System.Drawing.Point(135, 67);
+            this.ContractNO.Location = new System.Drawing.Point(135, 58);
             this.ContractNO.Name = "ContractNO";
             this.ContractNO.Size = new System.Drawing.Size(361, 21);
             this.ContractNO.TabIndex = 4;
             // 
             // Memo
             // 
-            this.Memo.Location = new System.Drawing.Point(89, 37);
+            this.Memo.Location = new System.Drawing.Point(89, 32);
             this.Memo.Name = "Memo";
             this.Memo.Size = new System.Drawing.Size(354, 21);
             this.Memo.TabIndex = 3;
@@ -235,7 +236,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 72);
+            this.label3.Location = new System.Drawing.Point(20, 63);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(113, 12);
             this.label3.TabIndex = 3;
@@ -254,7 +255,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 41);
+            this.label1.Location = new System.Drawing.Point(16, 36);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 12);
             this.label1.TabIndex = 0;
@@ -267,6 +268,7 @@
             this.uC_UserMeterDetails1.Name = "uC_UserMeterDetails1";
             this.uC_UserMeterDetails1.Size = new System.Drawing.Size(528, 378);
             this.uC_UserMeterDetails1.TabIndex = 6;
+            this.uC_UserMeterDetails1.Tag = "";
             // 
             // uC_UserSearch1
             // 
