@@ -99,8 +99,79 @@ namespace PersonalWork
                 {
                     bool IsChargeAbate = false;
 
-                 //======================================生成一条抄表记录
+                    //======================================生成一条抄表记录
+
+                    #region 生成补交水量记录
+                    string strChargeState = "1", strTrapePriceString = "", strExtraCharge = "", strChargeID = "";
+                    decimal waterTotalCharge = 0, extraCharge1 = 0, extraCharge2 = 0;
                     
+                    DateTime dtNow = mes.GetDatetimeNow();
+
+                    int intTotalNum = Convert.ToInt32(totalNumber.Text);
+
+                    string strSQL = string.Format(@"SELECT trapezoidPrice,extraCharge FROM V_WATERUSER_CONNECTWATERMETER
+WHERE waterUserId='{0}'",WATERUSERNO.Text);
+                        DataTable dtReadMeterRecord = new SqlServerHelper().GetDateTableBySql(strSQL);
+                        if (dtReadMeterRecord.Rows.Count > 0)
+                        {
+                            object obj = dtReadMeterRecord.Rows[0]["trapezoidPrice"];
+                            if (obj != null && obj != DBNull.Value)
+                            {
+                                strTrapePriceString = obj.ToString();
+                            }
+                            obj = dtReadMeterRecord.Rows[0]["extraCharge"];
+                            if (obj != null && obj != DBNull.Value)
+                            {
+                                strExtraCharge = obj.ToString();
+                            }
+                        }
+
+                    //获取水费等信息
+                    sysidal.GetAvePrice(intTotalNum, strTrapePriceString, strExtraCharge, 1, ref waterTotalCharge, ref extraCharge1, ref extraCharge2);
+                    string strReadMeterRecordID = GETTABLEID.GetTableID(strLogID, "READMETERRECORD"); string strSQLExcute = string.Format(@"BEGIN TRAN
+DECLARE @readMeterRecordIdLast varchar(30)
+DECLARE @waterMeterEndNumber INT
+SELECT TOP 1 @readMeterRecordIdLast=readMeterRecordId,@waterMeterEndNumber=waterMeterEndNumber FROM V_READMETERRECORD_LEFT_WATERFEECHARGE WHERE WATERUSERID='{0}' 
+ORDER BY checkDateTime DESC,readMeterRecordDate DESC
+IF @readMeterRecordIdLast IS NULL
+BEGIN
+SELECT @waterMeterEndNumber=waterMeterStartNumber FROM waterMeter WHERE WATERUSERID='{0}'
+SET @readMeterRecordIdLast=NULL
+END
+
+DECLARE @PRESTORE DECIMAL(18,2)=0
+DECLARE @LJQF DECIMAL(18,2)=0
+SELECT @PRESTORE=PRESTORE, @LJQF=TOTALFEE FROM V_WATERUSERAREARAGE WHERE waterUserId='{0}'
+
+INSERT INTO [readMeterRecord]([readMeterRecordId],[readMeterRecordIdLast],[waterMeterId],[waterMeterNo]
+                                            ,[lastNumberYearMonth],[waterMeterLastNumber],[waterMeterEndNumber],SUBMETERNUMBER,[totalNumber],[totalNumberDescribe],[avePrice]
+                                            ,[avePriceDescribe],[waterTotalCharge],[extraChargePrice1],[extraCharge1],[extraChargePrice2],[extraCharge2],
+                                             [extraTotalCharge],[trapezoidPrice],[extraCharge]
+                                            ,[totalCharge],[OVERDUEMONEY],[WATERFIXVALUE],[readMeterRecordYear],[readMeterRecordMonth],
+                                            readMeterRecordYearAndMonth,initialReadMeterMesDateTime,[readMeterRecordDate],[waterMeterPositionName]
+                                            ,[waterMeterSizeId],[waterMeterSizeValue],waterMeterTypeClassID,waterMeterTypeClassName,[waterMeterTypeId],[waterMeterTypeName],[waterMeterProduct],[waterMeterSerialNumber]
+                                            ,[waterMeterMode],[waterMeterMagnification],[waterMeterMaxRange],IsReverse,[chargerID],[chargerName],[meterReaderID],[meterReaderName],[checkState],[checkDateTime]
+                                            ,[checker],[chargeState],[chargeID],[waterUserId],[waterUserNO],[waterUserName],waterUserNameCode,[waterUserTelphoneNO],areaNO,pianNO,duanNO,communityID,COMMUNITYNAME,buildingNO,unitNO,createType,waterPhone,[waterUserAddress],[waterUserPeopleCount]
+                                            ,[meterReadingID],[meterReadingNO],[meterReadingPageNo],[waterUserTypeId],[waterUserTypeName],[waterUserCreateDate]
+                                            ,[waterUserHouseType],[waterUserchargeType],[agentsign],[waterUserState],[bankId],[bankName],[BankAcountNumber],
+[isSummaryMeter],[waterMeterParentId],[ordernumber],[WATERUSERQQYE],[WATERUSERJSYE],[WATERUSERLJQF])
+
+                                            SELECT '{1}',@readMeterRecordIdLast,[waterMeterId],[waterMeterNo]
+                                            ,NULL,@waterMeterEndNumber,@waterMeterEndNumber,0,{2},NULL,NULL
+                                            ,NULL,{3},NULL,{4},NULL,{5},{4}+{5},[trapezoidPrice],[extraCharge]
+                                            ,{3}+{4}+{5},0,[WATERFIXVALUE],NULL,NULL,GETDATE(),GETDATE(),GETDATE(),[waterMeterPositionName]
+                                            ,[waterMeterSizeId],[waterMeterSizeValue],waterMeterTypeClassID,waterMeterTypeClassName,[waterMeterTypeId],[waterMeterTypeValue],
+                                            [waterMeterProduct],[waterMeterSerialNumber],[waterMeterMode],[waterMeterMagnification],[waterMeterMaxRange],IsReverse,[chargerID],[chargerName],[meterReaderID],[meterReaderName],
+                                            1,GETDATE(),'{6}','1',NULL,[waterUserId],[waterUserNO],[waterUserName],waterUserNameCode,
+                                            [waterUserTelphoneNO],areaNO,pianNO,duanNO,communityID,COMMUNITYNAME,buildingNO,unitNO,createType,[waterPhone],[waterUserAddress],[waterUserPeopleCount]
+                                            ,NULL,NULL,NULL,[waterUserTypeId],[waterUserTypeName],[waterUserCreateDate]
+                                            ,[waterUserHouseType],[chargeType],[agentsign],NULL,[bankId],[bankName],[BankAcountNumber],
+[isSummaryMeter],[waterMeterParentId],[ordernumber],@PRESTORE,@PRESTORE-@LJQF-{3}-{4}-{5},@LJQF+{3}+{4}+{5}  
+                                            FROM V_WATERUSER_CONNECTWATERMETER WHERE waterUserId='{0}'
+COMMIT TRAN", WATERUSERNO.Text, strReadMeterRecordID, intTotalNum,waterTotalCharge,extraCharge1,extraCharge2,strRealName);
+
+                    IsChargeAbate = new SqlServerHelper().ExcuteSql(strSQLExcute)>0?true:false;
+                    #endregion
 
                     if (IsChargeAbate)
                     {

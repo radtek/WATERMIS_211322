@@ -30,6 +30,8 @@ namespace WATERFEEMANAGE
         BLLCHARGEINVOICEPRINT BLLCHARGEINVOICEPRINT = new BLLCHARGEINVOICEPRINT();
         BLLPRESTORERUNNINGACCOUNT BLLPRESTORERUNNINGACCOUNT = new BLLPRESTORERUNNINGACCOUNT();
         BLLCHARGETYPE BLLCHARGETYPE = new BLLCHARGETYPE();
+        BLLBASE_LOGIN BLLBASE_LOGIN = new BLLBASE_LOGIN();
+        RMBToCapMoney RMBToCapMoney = new RMBToCapMoney();
 
         GETTABLEID GETTABLEID = new GETTABLEID();
         Messages mes = new Messages();
@@ -394,6 +396,10 @@ namespace WATERFEEMANAGE
                     if (objWaterUser != null && objWaterUser != DBNull.Value)
                     {
                         txtMeterReaderID.Text = objWaterUser.ToString();
+                       DataTable dtLoginID= BLLBASE_LOGIN.QueryUser(" AND loginId='"+objWaterUser.ToString()+"'");
+                       objWaterUser = dtLoginID.Rows[0]["telePhoneNO"];
+                       if (objWaterUser != null && objWaterUser != DBNull.Value)
+                           txtMeterReaderTel.Text = objWaterUser.ToString();
                     }
                     else
                         txtMeterReaderID.Clear();
@@ -432,15 +438,15 @@ namespace WATERFEEMANAGE
                     {
                         txtYSQQYE.Text = Convert.ToDecimal(objWaterUserMes).ToString("F2");
                     }
-                    try
-                    {
-                        DataTable dtWaterMeterCount = BLLwaterMeter.Query(" AND WATERUSERID='" + txtWaterUserID.Text + "' AND waterMeterState='1'");
-                        txtWaterMeterCount.Text = dtWaterMeterCount.Rows.Count + " 块";
-                    }
-                    catch (Exception ex)
-                    {
-                        log.Write(ex.ToString(), MsgType.Error);
-                    }
+                    //try
+                    //{
+                    //    DataTable dtWaterMeterCount = BLLwaterMeter.Query(" AND WATERUSERID='" + txtWaterUserID.Text + "' AND waterMeterState='1'");
+                    //    txtWaterMeterCount.Text = dtWaterMeterCount.Rows.Count + " 块";
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    log.Write(ex.ToString(), MsgType.Error);
+                    //}
 
                     //如果用户是非预存交费用户，则不允许收费
                     object objWaterUserChargeType = dtUserList.Rows[0]["chargeType"];
@@ -466,6 +472,14 @@ namespace WATERFEEMANAGE
                     }
                     else
                         txtWaterFee.Text = "0";
+
+                    object objWaterMeterState = dtUserList.Rows[0]["waterMeterState"];
+                    if(objWaterMeterState!=null&&objWaterMeterState!=DBNull.Value)
+                        if (objWaterMeterState.ToString() != "2")
+                        {
+                            mes.Show("请先走销户审批流程!");
+                            return;
+                        }
 
                     btSearchLS.Enabled = true;
                     btCharge.Enabled = true;
@@ -617,18 +631,31 @@ namespace WATERFEEMANAGE
                                 FastReport.Report report1 = new FastReport.Report();
                                 try
                                 {
-                                    // load the existing report
                                     report1.Load(Application.StartupPath + @"\PRINTModel\收据模板\退费收据模板.frx");
 
-                                    (report1.FindObject("txtJFDatetime") as FastReport.TextObject).Text = MODELWATERFEECHARGE.CHARGEDATETIME.ToString("yyyy-MM-dd HH:mm:ss");
-                                    (report1.FindObject("txtWaterUserNO") as FastReport.TextObject).Text = txtWaterUserNO.Text;
-                                    (report1.FindObject("txtWaterUserName") as FastReport.TextObject).Text = txtWaterUserName.Text;
-                                    (report1.FindObject("txtWaterUserAddress") as FastReport.TextObject).Text = txtWaterUserAddress.Text;
-                                    (report1.FindObject("txtQQYE") as FastReport.TextObject).Text = "前期余额:            " + MODELWATERFEECHARGE.CHARGEYSQQYE.ToString("F2");
+                                    (report1.FindObject("txtDateTime") as FastReport.TextObject).Text = MODELWATERFEECHARGE.CHARGEDATETIME.ToString("yyyy-MM-dd HH:mm:ss");
+                                    //if (cmbChargeType.SelectedValue.ToString() == "2")
+                                    //{
+                                    //    (report1.FindObject("Cell45") as FastReport.Table.TableCell).Text = txtWaterUserNO.Text + "   交易流水号:" + txtJYLSH.Text;
+                                    //}
+                                    //else
+                                    (report1.FindObject("CellWaterUserNO") as FastReport.Table.TableCell).Text = txtWaterUserNO.Text;
+                                    (report1.FindObject("CellWaterUserName") as FastReport.Table.TableCell).Text = txtWaterUserName.Text;
+                                    (report1.FindObject("CellWaterUserAddress") as FastReport.Table.TableCell).Text = txtWaterUserAddress.Text;
 
-                                    (report1.FindObject("txtBCTF") as FastReport.TextObject).Text = "本次退费: " + MODELWATERFEECHARGE.CHARGEYSBCSZ;
-                                    (report1.FindObject("txtJSYE") as FastReport.TextObject).Text = "结算余额:            " + MODELWATERFEECHARGE.CHARGEYSJSYE.ToString("F2");
-                                    (report1.FindObject("txtWorkerName") as FastReport.TextObject).Text = strLoginName;
+                                    (report1.FindObject("txtQQYE") as FastReport.TextObject).Text = "前期余额: " + MODELWATERFEECHARGE.CHARGEYSQQYE.ToString("F2");
+                                    (report1.FindObject("txtBCTF") as FastReport.TextObject).Text = "本次退费:         " + MODELWATERFEECHARGE.CHARGEYSBCSZ;
+                                    (report1.FindObject("txtJSYE") as FastReport.TextObject).Text = "结算余额: " + MODELWATERFEECHARGE.CHARGEYSJSYE.ToString("F2");
+
+                                    //if (cmbChargeType.SelectedValue.ToString() == "2")
+                                    //{
+                                    //    (report1.FindObject("txtPOSRUNNINGNO") as FastReport.TextObject).Text = "交易流水号: " + MODELWATERFEECHARGE.POSRUNNINGNO;
+                                    //}
+                                    (report1.FindObject("txtChargeWorkerName") as FastReport.TextObject).Text = strLoginName;
+                                    (report1.FindObject("txtReceiptNO") as FastReport.TextObject).Text = "NO." + txtReceiptNO.Text;
+
+                                    (report1.FindObject("txtMeterReader") as FastReport.TextObject).Text = txtMeterReader.Text;
+                                    (report1.FindObject("txtMeterReaderTel") as FastReport.TextObject).Text = txtMeterReaderTel.Text;
 
                                     report1.PrintSettings.ShowDialog = false;
                                     report1.Prepare();
@@ -650,6 +677,7 @@ namespace WATERFEEMANAGE
                                     report1.Dispose();
                                 }
                                 #endregion
+
                             }
                         }
                     }

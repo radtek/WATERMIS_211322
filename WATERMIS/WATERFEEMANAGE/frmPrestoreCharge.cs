@@ -706,6 +706,13 @@ namespace WATERFEEMANAGE
                     }
                 }
             }
+            #region 获取实时的用户余额
+            decimal decQQYE = 0;
+            string strWhere = " AND WATERUSERID='"+strWaterUserID+"'";
+            object objPrestore = BLLwaterUser.GetPrestore(strWhere);
+            if (Information.IsNumeric(objPrestore))
+                decQQYE = Convert.ToDecimal(objPrestore);
+            #endregion
 
             try
             {
@@ -718,9 +725,9 @@ namespace WATERFEEMANAGE
                 }
                 MODELWATERFEECHARGE.CHARGEClASS = "2";//收费类型是水费预收
                 MODELWATERFEECHARGE.CHARGEBCSS = Convert.ToDecimal(txtBCYC.Text);
-                MODELWATERFEECHARGE.CHARGEYSQQYE = Convert.ToDecimal(txtYSQQYE.Text);
+                MODELWATERFEECHARGE.CHARGEYSQQYE = decQQYE;
                 MODELWATERFEECHARGE.CHARGEYSBCSZ = Convert.ToDecimal(txtBCYC.Text);
-                MODELWATERFEECHARGE.CHARGEYSJSYE = Convert.ToDecimal(txtJSYE.Text);
+                MODELWATERFEECHARGE.CHARGEYSJSYE = MODELWATERFEECHARGE.CHARGEYSQQYE + MODELWATERFEECHARGE.CHARGEYSBCSZ;
                 MODELWATERFEECHARGE.CHARGEWORKERID = strLoginID;
                 MODELWATERFEECHARGE.CHARGEWORKERNAME = strLoginName;
                 MODELWATERFEECHARGE.CHARGEDATETIME = mes.GetDatetimeNow();

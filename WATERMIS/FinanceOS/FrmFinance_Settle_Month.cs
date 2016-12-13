@@ -480,6 +480,5 @@ INSERT INTO @TableFee SELECT '[总计]',NULL,@FEE,2,@MONTHCHECKSTATES,@MONTHCHEC
                 ShowData();
             }
         }
-
     }
 }

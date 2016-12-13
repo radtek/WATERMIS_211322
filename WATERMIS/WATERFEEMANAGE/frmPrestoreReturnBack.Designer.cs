@@ -126,6 +126,7 @@
             this.CHARGEDATETIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CHARGEClASS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CHARGETYPENAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtMeterReaderTel = new System.Windows.Forms.TextBox();
             this.tb1.SuspendLayout();
             this.gpbWaterFeeMes.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -332,6 +333,8 @@
             // chkReceipt
             // 
             this.chkReceipt.AutoSize = true;
+            this.chkReceipt.Checked = true;
+            this.chkReceipt.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkReceipt.Location = new System.Drawing.Point(376, 59);
             this.chkReceipt.Margin = new System.Windows.Forms.Padding(2);
             this.chkReceipt.Name = "chkReceipt";
@@ -509,6 +512,7 @@
             // 
             // gpbWaterUserMES
             // 
+            this.gpbWaterUserMES.Controls.Add(this.txtMeterReaderTel);
             this.gpbWaterUserMES.Controls.Add(this.txtWaterMeterTypeClassName);
             this.gpbWaterUserMES.Controls.Add(this.txtWaterMeterTypeClassID);
             this.gpbWaterUserMES.Controls.Add(this.txtWaterMeterTypeValue);
@@ -1196,6 +1200,16 @@
             this.CHARGETYPENAME.ReadOnly = true;
             this.CHARGETYPENAME.Width = 97;
             // 
+            // txtMeterReaderTel
+            // 
+            this.txtMeterReaderTel.BackColor = System.Drawing.Color.LightYellow;
+            this.txtMeterReaderTel.Location = new System.Drawing.Point(634, 59);
+            this.txtMeterReaderTel.Name = "txtMeterReaderTel";
+            this.txtMeterReaderTel.ReadOnly = true;
+            this.txtMeterReaderTel.Size = new System.Drawing.Size(11, 26);
+            this.txtMeterReaderTel.TabIndex = 135;
+            this.txtMeterReaderTel.Visible = false;
+            // 
             // frmPrestoreReturnBack
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1322,6 +1336,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CHARGEDATETIME;
         private System.Windows.Forms.DataGridViewTextBoxColumn CHARGEClASS;
         private System.Windows.Forms.DataGridViewTextBoxColumn CHARGETYPENAME;
+        private System.Windows.Forms.TextBox txtMeterReaderTel;
 
     }
 }

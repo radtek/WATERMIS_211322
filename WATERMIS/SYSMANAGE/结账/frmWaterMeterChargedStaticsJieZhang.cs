@@ -431,7 +431,7 @@ namespace SYSMANAGE
                     }
                 }
 
-                string strSQL = "SELECT * FROM WATERUSER WHERE prestore<>0 AND WATERUSERID NOT IN (SELECT WATERUSERID FROM readMeterRecord WHERE DATEDIFF(MONTH,readMeterRecordYearAndMonth,'" + dtpDateTimeSearch.Value.ToShortDateString() + "')=0)";
+                string strSQL = "SELECT * FROM WATERUSER WHERE prestore<>0 AND WATERUSERID NOT IN (SELECT WATERUSERID FROM readMeterRecord WHERE DATEDIFF(MONTH,readMeterRecordYearAndMonth,'" + dtpDateTimeSearch.Value.ToShortDateString() + "')=0 AND WATERMETERNUMBERCHANGESTATE='0')";
                 DataTable dtUnInitial = BLLwaterUser.QuerySQL(strSQL);
                 if (dtUnInitial.Rows.Count > 0)
                 {

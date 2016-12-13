@@ -29,10 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.waterUserTypeId = new System.Windows.Forms.TextBox();
+            this.waterMeterTypeid = new System.Windows.Forms.TextBox();
             this.OldTotalNumber = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.AbateDescribe = new System.Windows.Forms.TextBox();
@@ -84,8 +86,6 @@
             this.上年ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.全部ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.waterMeterTypeid = new System.Windows.Forms.TextBox();
-            this.waterUserTypeId = new System.Windows.Forms.TextBox();
             this.waterUserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waterUserNO1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ordernumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -101,6 +101,7 @@
             this.extraCharge2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OVERDUEEND1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalCharge = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chargeState = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waterMeterTypeId1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waterMeterTypeName1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pianNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -206,6 +207,24 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "减免操作";
             // 
+            // waterUserTypeId
+            // 
+            this.waterUserTypeId.Enabled = false;
+            this.waterUserTypeId.Location = new System.Drawing.Point(419, 125);
+            this.waterUserTypeId.Name = "waterUserTypeId";
+            this.waterUserTypeId.Size = new System.Drawing.Size(21, 23);
+            this.waterUserTypeId.TabIndex = 44;
+            this.waterUserTypeId.Visible = false;
+            // 
+            // waterMeterTypeid
+            // 
+            this.waterMeterTypeid.Enabled = false;
+            this.waterMeterTypeid.Location = new System.Drawing.Point(227, 124);
+            this.waterMeterTypeid.Name = "waterMeterTypeid";
+            this.waterMeterTypeid.Size = new System.Drawing.Size(21, 23);
+            this.waterMeterTypeid.TabIndex = 43;
+            this.waterMeterTypeid.Visible = false;
+            // 
             // OldTotalNumber
             // 
             this.OldTotalNumber.Enabled = false;
@@ -256,10 +275,12 @@
             // 
             // NewTotalNumber
             // 
+            this.NewTotalNumber.BackColor = System.Drawing.Color.LightSalmon;
             this.NewTotalNumber.Location = new System.Drawing.Point(339, 189);
             this.NewTotalNumber.Name = "NewTotalNumber";
             this.NewTotalNumber.Size = new System.Drawing.Size(74, 23);
             this.NewTotalNumber.TabIndex = 6;
+            this.NewTotalNumber.Tag = "9999";
             this.NewTotalNumber.TextChanged += new System.EventHandler(this.Abate_TextChanged);
             this.NewTotalNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Abate_KeyPress);
             // 
@@ -473,14 +494,14 @@
             // 
             this.dgWaterFeeList.AllowUserToAddRows = false;
             this.dgWaterFeeList.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgWaterFeeList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgWaterFeeList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgWaterFeeList.ColumnHeadersHeight = 25;
             this.dgWaterFeeList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgWaterFeeList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -499,6 +520,7 @@
             this.extraCharge2,
             this.OVERDUEEND1,
             this.totalCharge,
+            this.chargeState,
             this.waterMeterTypeId1,
             this.waterMeterTypeName1,
             this.pianNO,
@@ -552,6 +574,7 @@
             this.dgWaterFeeList.TabIndex = 143;
             this.dgWaterFeeList.Tag = "9999";
             this.dgWaterFeeList.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgWaterFeeList_RowEnter);
+            this.dgWaterFeeList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgWaterFeeList_CellFormatting);
             // 
             // panel2
             // 
@@ -627,6 +650,7 @@
             this.txtWaterUser.Name = "txtWaterUser";
             this.txtWaterUser.Size = new System.Drawing.Size(117, 24);
             this.txtWaterUser.TabIndex = 6;
+            this.txtWaterUser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtWaterUser_KeyDown);
             // 
             // label11
             // 
@@ -728,22 +752,6 @@
             this.全部ToolStripMenuItem.Text = "全部";
             this.全部ToolStripMenuItem.Click += new System.EventHandler(this.全部ToolStripMenuItem_Click);
             // 
-            // waterMeterTypeid
-            // 
-            this.waterMeterTypeid.Enabled = false;
-            this.waterMeterTypeid.Location = new System.Drawing.Point(227, 124);
-            this.waterMeterTypeid.Name = "waterMeterTypeid";
-            this.waterMeterTypeid.Size = new System.Drawing.Size(21, 23);
-            this.waterMeterTypeid.TabIndex = 43;
-            // 
-            // waterUserTypeId
-            // 
-            this.waterUserTypeId.Enabled = false;
-            this.waterUserTypeId.Location = new System.Drawing.Point(419, 125);
-            this.waterUserTypeId.Name = "waterUserTypeId";
-            this.waterUserTypeId.Size = new System.Drawing.Size(21, 23);
-            this.waterUserTypeId.TabIndex = 44;
-            // 
             // waterUserId
             // 
             this.waterUserId.DataPropertyName = "waterUserId";
@@ -789,9 +797,9 @@
             // readMeterRecordYearAndMonth1
             // 
             this.readMeterRecordYearAndMonth1.DataPropertyName = "readMeterRecordYearAndMonth";
-            dataGridViewCellStyle2.Format = "yyyy-MM";
-            dataGridViewCellStyle2.NullValue = null;
-            this.readMeterRecordYearAndMonth1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Format = "yyyy-MM";
+            dataGridViewCellStyle8.NullValue = null;
+            this.readMeterRecordYearAndMonth1.DefaultCellStyle = dataGridViewCellStyle8;
             this.readMeterRecordYearAndMonth1.HeaderText = "水费月份";
             this.readMeterRecordYearAndMonth1.Name = "readMeterRecordYearAndMonth1";
             this.readMeterRecordYearAndMonth1.ReadOnly = true;
@@ -867,6 +875,13 @@
             this.totalCharge.Name = "totalCharge";
             this.totalCharge.ReadOnly = true;
             this.totalCharge.Width = 88;
+            // 
+            // chargeState
+            // 
+            this.chargeState.DataPropertyName = "chargeState";
+            this.chargeState.HeaderText = "抄表状态";
+            this.chargeState.Name = "chargeState";
+            this.chargeState.ReadOnly = true;
             // 
             // waterMeterTypeId1
             // 
@@ -1193,6 +1208,7 @@
             this.IsReverse.HeaderText = "水表倒装";
             this.IsReverse.Name = "IsReverse";
             this.IsReverse.ReadOnly = true;
+            this.IsReverse.Visible = false;
             this.IsReverse.Width = 88;
             // 
             // readMeterRecordId1
@@ -1324,6 +1340,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn extraCharge2;
         private System.Windows.Forms.DataGridViewTextBoxColumn OVERDUEEND1;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalCharge;
+        private System.Windows.Forms.DataGridViewTextBoxColumn chargeState;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterMeterTypeId1;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterMeterTypeName1;
         private System.Windows.Forms.DataGridViewTextBoxColumn pianNO;

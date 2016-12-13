@@ -123,6 +123,8 @@ namespace ApproveCenter
             if (DataTableHelper.IsExistRows(dt))
             {
                 dgWaterFeeList.DataSource = dt;
+                Btn_Submit.Enabled = true;
+                NewTotalNumber.Focus();
             }
             else
             {
@@ -370,6 +372,29 @@ namespace ApproveCenter
 
             DateTime dtMonthEnd = new DateTime(3000, 1, 1, 23, 59, 59);
             dtpEnd.Value = dtMonthEnd;
+        }
+
+        private void dgWaterFeeList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+                return;
+            if (dgWaterFeeList.Columns[e.ColumnIndex].Name == "chargeState")
+            {
+                object obj = e.Value;
+                if (obj != null && obj != DBNull.Value)
+                    if (obj.ToString() == "1")
+                        e.Value = "已抄表";
+                    else if (obj.ToString() == "2")
+                        e.Value = "已挂账";
+                    else if (obj.ToString() == "3")
+                        e.Value = "已收费";
+            }
+        }
+
+        private void txtWaterUser_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                Btn_Search_Click(null,null);
         }      
     }
 }

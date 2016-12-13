@@ -499,7 +499,7 @@ namespace WATERFEEMANAGE
                     MODELWATERFEECHARGE.RECEIPTNO = txtReceiptNO.Text;
                 }
                 MODELWATERFEECHARGE.INVOICEPRINTSIGN = "0";
-                MODELWATERFEECHARGE.MEMO = "转款给用户:" + txtWaterUserID1.Text + "(" + txtWaterUserName1.Text+")" + txtMemo.Text;
+                MODELWATERFEECHARGE.MEMO = "转款给用户:" + txtWaterUserID2.Text + "(" + txtWaterUserName2.Text+")" + txtMemo.Text;
                 if (BLLWATERFEECHARGE.Insert(MODELWATERFEECHARGE))
                 {
                     try
@@ -577,7 +577,7 @@ namespace WATERFEEMANAGE
                                     MODELWATERFEECHARGE2.RECEIPTNO = txtReceiptNO.Text;
                                 }
                                 MODELWATERFEECHARGE2.INVOICEPRINTSIGN = "0";
-                                MODELWATERFEECHARGE2.MEMO = "转入款从用户:" + txtWaterUserID2.Text + "(" + txtWaterUserName2.Text +")"+ txtMemo.Text;
+                                MODELWATERFEECHARGE2.MEMO = "转入款从用户:" + txtWaterUserID1.Text + "(" + txtWaterUserName1.Text +")"+ txtMemo.Text;
                                 if (BLLWATERFEECHARGE.Insert(MODELWATERFEECHARGE2))
                                 {
                                     try

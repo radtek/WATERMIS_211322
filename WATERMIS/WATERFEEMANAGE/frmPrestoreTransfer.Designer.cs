@@ -1419,22 +1419,24 @@
             // 
             this.txtMemo.BackColor = System.Drawing.Color.LightYellow;
             this.txtMemo.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtMemo.Location = new System.Drawing.Point(572, 22);
+            this.txtMemo.Location = new System.Drawing.Point(337, 62);
             this.txtMemo.Margin = new System.Windows.Forms.Padding(2);
             this.txtMemo.Name = "txtMemo";
             this.txtMemo.Size = new System.Drawing.Size(157, 26);
             this.txtMemo.TabIndex = 147;
+            this.txtMemo.Visible = false;
             // 
             // label28
             // 
             this.label28.AutoSize = true;
             this.label28.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.label28.Location = new System.Drawing.Point(524, 27);
+            this.label28.Location = new System.Drawing.Point(289, 67);
             this.label28.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(48, 16);
             this.label28.TabIndex = 146;
             this.label28.Text = "备注:";
+            this.label28.Visible = false;
             // 
             // txtReceiptNO
             // 
@@ -1471,7 +1473,7 @@
             // btCharge
             // 
             this.btCharge.Enabled = false;
-            this.btCharge.Location = new System.Drawing.Point(749, 22);
+            this.btCharge.Location = new System.Drawing.Point(530, 18);
             this.btCharge.Margin = new System.Windows.Forms.Padding(2);
             this.btCharge.Name = "btCharge";
             this.btCharge.Size = new System.Drawing.Size(100, 30);

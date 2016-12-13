@@ -302,7 +302,7 @@ namespace STATISTIALREPORTS
         /// <summary>
         /// 查询条件
         /// </summary>
-        string strFilter = "";
+        string strFilter = " AND WATERMETERNUMBERCHANGESTATE='0' ";
         private void LoadData()
         {
             try

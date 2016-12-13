@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgWaterFeeList = new System.Windows.Forms.DataGridView();
             this.waterUserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -119,6 +119,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.totalNumber = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgWaterFeeList)).BeginInit();
             this.panel2.SuspendLayout();
@@ -134,7 +135,7 @@
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 8);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(850, 228);
+            this.groupBox1.Size = new System.Drawing.Size(850, 151);
             this.groupBox1.TabIndex = 37;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "抄表查询";
@@ -143,14 +144,14 @@
             // 
             this.dgWaterFeeList.AllowUserToAddRows = false;
             this.dgWaterFeeList.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgWaterFeeList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgWaterFeeList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgWaterFeeList.ColumnHeadersHeight = 25;
             this.dgWaterFeeList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgWaterFeeList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -218,7 +219,7 @@
             this.dgWaterFeeList.RowHeadersWidth = 45;
             this.dgWaterFeeList.RowTemplate.Height = 30;
             this.dgWaterFeeList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgWaterFeeList.Size = new System.Drawing.Size(844, 160);
+            this.dgWaterFeeList.Size = new System.Drawing.Size(844, 83);
             this.dgWaterFeeList.TabIndex = 143;
             this.dgWaterFeeList.Tag = "9999";
             this.dgWaterFeeList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgWaterFeeList_CellDoubleClick);
@@ -268,9 +269,9 @@
             // readMeterRecordYearAndMonth1
             // 
             this.readMeterRecordYearAndMonth1.DataPropertyName = "readMeterRecordYearAndMonth";
-            dataGridViewCellStyle2.Format = "yyyy-MM";
-            dataGridViewCellStyle2.NullValue = null;
-            this.readMeterRecordYearAndMonth1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Format = "yyyy-MM";
+            dataGridViewCellStyle10.NullValue = null;
+            this.readMeterRecordYearAndMonth1.DefaultCellStyle = dataGridViewCellStyle10;
             this.readMeterRecordYearAndMonth1.HeaderText = "水费月份";
             this.readMeterRecordYearAndMonth1.Name = "readMeterRecordYearAndMonth1";
             this.readMeterRecordYearAndMonth1.ReadOnly = true;
@@ -713,6 +714,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.LimeGreen;
+            this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.txtWaterUser);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.Btn_Search);
@@ -776,12 +778,12 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.totalNumber);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox2.Location = new System.Drawing.Point(0, 228);
+            this.groupBox2.Location = new System.Drawing.Point(0, 151);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 12, 3, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(850, 342);
+            this.groupBox2.Size = new System.Drawing.Size(850, 338);
             this.groupBox2.TabIndex = 38;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "补交信息";
@@ -1008,11 +1010,19 @@
             this.totalNumber.ValidateState = false;
             this.totalNumber.TextChanged += new System.EventHandler(this.totalNumber_TextChanged);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(340, 22);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(112, 15);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "本月抄表记录↓";
+            // 
             // FrmUser_AddWater_Add
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(850, 571);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.ClientSize = new System.Drawing.Size(850, 489);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmUser_AddWater_Add";
@@ -1119,5 +1129,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn BankAcountNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn extraCharge;
         private Common.WinControl.Ryan.RegTextbox.RyanTextBox totalNumber;
+        private System.Windows.Forms.Label label5;
     }
 }
