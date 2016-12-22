@@ -2208,8 +2208,11 @@ namespace WATERFEEMANAGE
             object objJZ = dgHistoryWaterFee.CurrentRow.Cells["SETTLEACCOUNTSSSID"].Value;
             if (objJZ != null && objJZ != DBNull.Value && objJZ.ToString() != "")
             {
-                mes.Show("该单据已月结，无法执行此操作!");
-                return;
+                if (strGroupID != "0001")
+                {
+                    mes.Show("该单据已月结，无法执行此操作!");
+                    return;
+                }
             }
             if (strGroupID != "0001")
             {
