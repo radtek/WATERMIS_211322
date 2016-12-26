@@ -51,6 +51,18 @@ namespace BASEMANAGE
                     txtBankNameAndAccountNO.Text = obj.ToString();
                 else
                     txtBankNameAndAccountNO.Clear();
+
+                obj = dt.Rows[0]["Payee"];
+                if (obj != null && obj != DBNull.Value)
+                    txtPayee.Text = obj.ToString();
+                else
+                    txtPayee.Clear();
+
+                obj = dt.Rows[0]["Checker"];
+                if (obj != null && obj != DBNull.Value)
+                    txtChecker.Text = obj.ToString();
+                else
+                    txtChecker.Clear();
             }
             else
             {
@@ -82,7 +94,7 @@ namespace BASEMANAGE
             }
 
             MODELBASE_DEPARTMENT MODELBASE_DEPARTMENT = new MODELBASE_DEPARTMENT();
-            MODELBASE_DEPARTMENT.DEPARTMENTID = "01";
+            MODELBASE_DEPARTMENT.DEPARTMENTID = strCompany;
             MODELBASE_DEPARTMENT.DEPARTMENTNAME = txtName.Text.Trim();
             MODELBASE_DEPARTMENT.PARENTID = "0";
             MODELBASE_DEPARTMENT.SIMPLECODE = PinYinConvert.GetHeadOfChs(MODELBASE_DEPARTMENT.DEPARTMENTNAME);
