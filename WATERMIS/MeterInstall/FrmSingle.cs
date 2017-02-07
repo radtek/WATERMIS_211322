@@ -50,6 +50,7 @@ namespace MeterInstall
             if (string.IsNullOrEmpty(key))
             {
                 userName.Text = strRealName;
+                toolEdit.Enabled = false;
             }
             else
             {
@@ -59,6 +60,7 @@ namespace MeterInstall
                 Btn_Submit.Enabled = FlowFunction.IsAllowEdit(taskid);
                 waterUserNO.Enabled = false;
                 waterUserNO.ReadOnly = true;
+                toolEdit.Enabled = true;
             }
         }
         private void Btn_Submit_Click(object sender, EventArgs e)
@@ -137,6 +139,41 @@ namespace MeterInstall
             else
             {
                 waterUserNO.Text = "";
+            }
+        }
+
+        private void toolSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolPrint_Click(object sender, EventArgs e)
+        {
+            DataSet ds = new DataSet();
+
+            DataTable dtPrint = new SqlServerHelper().GetDataTable("Meter_Install_Single", "", "");
+
+            dtPrint.TableName = "用户报装申请表";
+            ds.Tables.Add(dtPrint);
+            FastReport.Report report1 = new FastReport.Report();
+            try
+            {
+                // load the existing report
+                report1.Load(Application.StartupPath + @"\PRINTModel\业扩模板\用户报装申请表.frx");
+                // register the dataset
+                report1.RegisterData(ds);
+                report1.GetDataSource("用户报装申请表").Enabled = true;
+                // run the report
+                report1.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // free resources used by report
+                report1.Dispose();
             }
         }
     }

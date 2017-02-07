@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Collections;
+using MeterBusiness;
 
 namespace PersonalWork
 {
@@ -62,6 +63,17 @@ namespace PersonalWork
         {
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void BTN_MeterIN_Click(object sender, EventArgs e)
+        {
+            FrmEntering frm = new FrmEntering();
+            //frm.ShowDialog();
+            if (frm.DialogResult == DialogResult.OK)
+            {
+                waterMeterSerialNumber.Text = frm.Tag.ToString();
+                Btn_Search_Click(sender,e);
+            }
         }
     }
 }

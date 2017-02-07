@@ -37,12 +37,14 @@
             this.Btn_Submit = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.UserOpinion = new System.Windows.Forms.TextBox();
+            this.BTN_MeterIN = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
+            this.panel1.Controls.Add(this.BTN_MeterIN);
             this.panel1.Controls.Add(this.MeterCount);
             this.panel1.Controls.Add(this.Btn_Save);
             this.panel1.Controls.Add(this.FP);
@@ -134,6 +136,16 @@
             this.UserOpinion.Size = new System.Drawing.Size(408, 69);
             this.UserOpinion.TabIndex = 1;
             // 
+            // BTN_MeterIN
+            // 
+            this.BTN_MeterIN.Location = new System.Drawing.Point(177, 87);
+            this.BTN_MeterIN.Name = "BTN_MeterIN";
+            this.BTN_MeterIN.Size = new System.Drawing.Size(71, 23);
+            this.BTN_MeterIN.TabIndex = 107;
+            this.BTN_MeterIN.Text = "水表录入";
+            this.BTN_MeterIN.UseVisualStyleBackColor = true;
+            this.BTN_MeterIN.Click += new System.EventHandler(this.BTN_MeterIN_Click);
+            // 
             // FrmApprove_Group_MeterOut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -160,5 +172,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox UserOpinion;
         private System.Windows.Forms.TextBox MeterCount;
+        private System.Windows.Forms.Button BTN_MeterIN;
     }
 }

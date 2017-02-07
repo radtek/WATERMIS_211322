@@ -52,6 +52,7 @@ namespace MeterBusiness
             if (new SqlServerHelper().Submit_AddOrEdit("Meter", "METERID", key, ht))
             {
                 this.DialogResult = DialogResult.OK;
+                this.Tag = waterMeterSerialNumber.Text;
                 this.Close();
             }
             

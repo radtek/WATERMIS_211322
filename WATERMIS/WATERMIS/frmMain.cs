@@ -1086,5 +1086,11 @@ namespace WATERMIS
             FrmDefaultPage frm = new FrmDefaultPage();
             frm.Show(this.dockPanel1);
         }
+
+        private void 部门费用统计表ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FinanceReport frm = new FinanceReport();
+            GoTo(this, frm, true);
+        }
     }
 }
