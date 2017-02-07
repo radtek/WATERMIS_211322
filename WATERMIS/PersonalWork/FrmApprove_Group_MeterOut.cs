@@ -11,6 +11,7 @@ using System.Collections;
 using Common.DotNetData;
 using DBinterface.Model;
 using System.Data.SqlClient;
+using MeterBusiness;
 
 namespace PersonalWork
 {
@@ -157,6 +158,13 @@ namespace PersonalWork
             sqlstr = "UPDATE Meter_Install_Group SET MeterCount=@MeterCount WHERE TaskID=@TaskID";
             return new SqlServerHelper().UpdateByHashtable(sqlstr, new SqlParameter[] { new SqlParameter("@MeterCount", _meterCount), new SqlParameter("@TaskID", TaskID) });
 
+        }
+
+        private void BTN_MeterIN_Click(object sender, EventArgs e)
+        {
+            FrmEntering frm = new FrmEntering();
+            frm.ShowDialog();
+           
         }
 
 

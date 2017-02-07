@@ -34,6 +34,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Btn_Submit = new System.Windows.Forms.Button();
             this.Btn_Search = new System.Windows.Forms.Button();
+            this.BTN_MeterIN = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TB_MeterInfos
@@ -62,7 +63,7 @@
             // 
             this.waterMeterSerialNumber.Location = new System.Drawing.Point(92, 22);
             this.waterMeterSerialNumber.Name = "waterMeterSerialNumber";
-            this.waterMeterSerialNumber.Size = new System.Drawing.Size(278, 21);
+            this.waterMeterSerialNumber.Size = new System.Drawing.Size(226, 21);
             this.waterMeterSerialNumber.TabIndex = 1;
             this.waterMeterSerialNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.waterMeterSerialNumber_KeyDown);
             // 
@@ -88,19 +89,30 @@
             // 
             // Btn_Search
             // 
-            this.Btn_Search.Location = new System.Drawing.Point(392, 22);
+            this.Btn_Search.Location = new System.Drawing.Point(323, 22);
             this.Btn_Search.Name = "Btn_Search";
-            this.Btn_Search.Size = new System.Drawing.Size(75, 23);
+            this.Btn_Search.Size = new System.Drawing.Size(67, 23);
             this.Btn_Search.TabIndex = 16;
             this.Btn_Search.Text = "查询";
             this.Btn_Search.UseVisualStyleBackColor = true;
             this.Btn_Search.Click += new System.EventHandler(this.Btn_Search_Click);
+            // 
+            // BTN_MeterIN
+            // 
+            this.BTN_MeterIN.Location = new System.Drawing.Point(396, 22);
+            this.BTN_MeterIN.Name = "BTN_MeterIN";
+            this.BTN_MeterIN.Size = new System.Drawing.Size(71, 23);
+            this.BTN_MeterIN.TabIndex = 17;
+            this.BTN_MeterIN.Text = "水表录入";
+            this.BTN_MeterIN.UseVisualStyleBackColor = true;
+            this.BTN_MeterIN.Click += new System.EventHandler(this.BTN_MeterIN_Click);
             // 
             // FrmApprove_MeterSelect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(495, 385);
+            this.Controls.Add(this.BTN_MeterIN);
             this.Controls.Add(this.Btn_Search);
             this.Controls.Add(this.Btn_Submit);
             this.Controls.Add(this.TB_MeterInfos);
@@ -123,5 +135,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button Btn_Submit;
         private System.Windows.Forms.Button Btn_Search;
+        private System.Windows.Forms.Button BTN_MeterIN;
     }
 }

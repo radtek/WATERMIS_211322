@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSingle));
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.Btn_Search = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.waterUserNO = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -59,8 +60,16 @@
             this.label85 = new System.Windows.Forms.Label();
             this.label86 = new System.Windows.Forms.Label();
             this.label87 = new System.Windows.Forms.Label();
-            this.Btn_Search = new System.Windows.Forms.Button();
+            this.toolStripWaterUser = new System.Windows.Forms.ToolStrip();
+            this.toolEdit = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolPrint = new System.Windows.Forms.ToolStripButton();
+            this.toolPrintPreview = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolExcel = new System.Windows.Forms.ToolStripButton();
             this.groupBox6.SuspendLayout();
+            this.toolStripWaterUser.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox6
@@ -97,12 +106,23 @@
             this.groupBox6.Controls.Add(this.label86);
             this.groupBox6.Controls.Add(this.label87);
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox6.Location = new System.Drawing.Point(0, 0);
+            this.groupBox6.Location = new System.Drawing.Point(0, 25);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(555, 322);
+            this.groupBox6.Size = new System.Drawing.Size(555, 335);
             this.groupBox6.TabIndex = 3;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "用户详细信息";
+            // 
+            // Btn_Search
+            // 
+            this.Btn_Search.Location = new System.Drawing.Point(189, 26);
+            this.Btn_Search.Name = "Btn_Search";
+            this.Btn_Search.Size = new System.Drawing.Size(55, 23);
+            this.Btn_Search.TabIndex = 83;
+            this.Btn_Search.Tag = "";
+            this.Btn_Search.Text = "查询";
+            this.Btn_Search.UseVisualStyleBackColor = true;
+            this.Btn_Search.Click += new System.EventHandler(this.Btn_Search_Click);
             // 
             // label3
             // 
@@ -155,7 +175,7 @@
             this.Btn_Submit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Submit.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Btn_Submit.ForeColor = System.Drawing.Color.White;
-            this.Btn_Submit.Location = new System.Drawing.Point(222, 271);
+            this.Btn_Submit.Location = new System.Drawing.Point(205, 269);
             this.Btn_Submit.Name = "Btn_Submit";
             this.Btn_Submit.Size = new System.Drawing.Size(99, 30);
             this.Btn_Submit.TabIndex = 12;
@@ -363,31 +383,92 @@
             this.label87.TabIndex = 28;
             this.label87.Text = "*用户类别：";
             // 
-            // Btn_Search
+            // toolStripWaterUser
             // 
-            this.Btn_Search.Location = new System.Drawing.Point(189, 26);
-            this.Btn_Search.Name = "Btn_Search";
-            this.Btn_Search.Size = new System.Drawing.Size(55, 23);
-            this.Btn_Search.TabIndex = 83;
-            this.Btn_Search.Tag = "";
-            this.Btn_Search.Text = "查询";
-            this.Btn_Search.UseVisualStyleBackColor = true;
-            this.Btn_Search.Click += new System.EventHandler(this.Btn_Search_Click);
+            this.toolStripWaterUser.Font = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.toolStripWaterUser.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStripWaterUser.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolEdit,
+            this.toolStripSeparator6,
+            this.toolStripSeparator2,
+            this.toolPrint,
+            this.toolPrintPreview,
+            this.toolStripSeparator1,
+            this.toolExcel});
+            this.toolStripWaterUser.Location = new System.Drawing.Point(0, 0);
+            this.toolStripWaterUser.Name = "toolStripWaterUser";
+            this.toolStripWaterUser.Size = new System.Drawing.Size(555, 25);
+            this.toolStripWaterUser.TabIndex = 60;
+            this.toolStripWaterUser.Text = "toolStrip2";
+            // 
+            // toolEdit
+            // 
+            this.toolEdit.Enabled = false;
+            this.toolEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolEdit.Name = "toolEdit";
+            this.toolEdit.Size = new System.Drawing.Size(71, 22);
+            this.toolEdit.Text = "修改信息";
+            this.toolEdit.Click += new System.EventHandler(this.toolSearch_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.AutoSize = false;
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(10, 25);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolPrint
+            // 
+            this.toolPrint.Enabled = false;
+            this.toolPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolPrint.Name = "toolPrint";
+            this.toolPrint.Size = new System.Drawing.Size(71, 22);
+            this.toolPrint.Text = "打印工单";
+            this.toolPrint.Click += new System.EventHandler(this.toolPrint_Click);
+            // 
+            // toolPrintPreview
+            // 
+            this.toolPrintPreview.Enabled = false;
+            this.toolPrintPreview.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolPrintPreview.Name = "toolPrintPreview";
+            this.toolPrintPreview.Size = new System.Drawing.Size(71, 22);
+            this.toolPrintPreview.Text = "打印预览";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolExcel
+            // 
+            this.toolExcel.Enabled = false;
+            this.toolExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolExcel.Name = "toolExcel";
+            this.toolExcel.Size = new System.Drawing.Size(81, 22);
+            this.toolExcel.Text = "导出Excel";
             // 
             // FrmSingle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(555, 322);
+            this.ClientSize = new System.Drawing.Size(555, 360);
             this.Controls.Add(this.groupBox6);
+            this.Controls.Add(this.toolStripWaterUser);
             this.Name = "FrmSingle";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "用户报装";
             this.Load += new System.EventHandler(this.FrmSingle_Load);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            this.toolStripWaterUser.ResumeLayout(false);
+            this.toolStripWaterUser.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -424,6 +505,14 @@
         private System.Windows.Forms.TextBox waterUserNO;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button Btn_Search;
+        private System.Windows.Forms.ToolStrip toolStripWaterUser;
+        private System.Windows.Forms.ToolStripButton toolEdit;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton toolPrint;
+        private System.Windows.Forms.ToolStripButton toolPrintPreview;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton toolExcel;
 
 
 
