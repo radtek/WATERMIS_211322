@@ -273,6 +273,30 @@ namespace STATISTIALREPORTS
                 if (cmbIsChecked.SelectedIndex > 0)
                     strFilter += " AND checkstate='" + (cmbIsChecked.SelectedIndex-1).ToString() + "'";
 
+                if (chkPeriod.Checked)
+                {
+                    if (Information.IsNumeric(txtPeriod.Text) && Convert.ToDecimal(txtPeriod.Text)>0)
+                        strFilter += " AND NotReadMonthCount>" + Convert.ToInt32(txtPeriod.Text);
+                    else
+                    {
+                        mes.Show("请输入正确的未抄期数");
+                        return;
+                    }
+                }
+
+                if (chkTotalNum.Checked)
+                {
+                    if (Information.IsNumeric(txtTotalNumStart.Text) && Convert.ToDecimal(txtTotalNumStart.Text) >= 0)
+                        strFilter += " AND totalNumber>" + Convert.ToInt32(txtTotalNumStart.Text);
+                    else
+                    {
+                        mes.Show("请输入正确的起始用水量");
+                        return;
+                    }
+                    if (Information.IsNumeric(txtTotalNumEnd.Text) && Convert.ToDecimal(txtTotalNumEnd.Text) >= 0)
+                        strFilter += " AND totalNumber<=" + Convert.ToInt32(txtTotalNumEnd.Text);
+                }
+
                 //用户余额
                 decimal decWaterUserPreStore = 0, decYCJE = 0, decSFJE=0,decSFZJ = 0,decYSZJ=0,decYSXIAOJI=0, decSJYISHOU = 0, decSJQFJE = 0,
                         decExtraCharge1 = 0, decExtraCharge2 = 0, decWaterTotalFee = 0, decJSYE = 0, decOverDueMoney = 0;
@@ -900,6 +924,15 @@ namespace STATISTIALREPORTS
 
             DateTime dtMonthEnd = new DateTime(3000, 1, 1, 23, 59, 59);
             dtpEnd.Value = dtMonthEnd;
+        }
+
+        private void txtPeriod_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //如果输入的不是数字键，也不是回车键、Backspace键，则取消该输入
+            if (!(Char.IsNumber(e.KeyChar)) && e.KeyChar != (char)13 && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

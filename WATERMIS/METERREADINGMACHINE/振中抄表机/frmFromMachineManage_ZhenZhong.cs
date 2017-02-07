@@ -1568,5 +1568,12 @@ namespace METERREADINGMACHINE
                 e.Handled = true;
             }
         }
+
+        private void btToExcel_Click(object sender, EventArgs e)
+        {
+            string strCaption = "异常抄表用户";
+            ExportExcel ExportExcel = new ExportExcel();
+            ExportExcel.ExportToExcel(strCaption, dgExceptionData);
+        }
     }
 }

@@ -6,10 +6,11 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Configuration;
+using BASEFUNCTION;
 
 namespace FinanceOS
 {
-    public partial class FinanceReport : Form
+    public partial class FinanceReport : DockContentEx
     {
         public FinanceReport()
         {

@@ -168,12 +168,14 @@
             this.查抄率统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.收费率统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.用水用户统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.转户统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.水表统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.应收水费统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.应收欠费统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.实收统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.实收陈欠统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.用水情况一览表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.部门费用统计表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.财务报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.预收账款余额查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.应收全年汇总表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -206,7 +208,7 @@
             this.bgNotice = new System.ComponentModel.BackgroundWorker();
             this.trNotice = new System.Windows.Forms.Timer(this.components);
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.转户统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.工资统计表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -1276,7 +1278,9 @@
             this.应收欠费统计ToolStripMenuItem,
             this.实收统计ToolStripMenuItem,
             this.实收陈欠统计ToolStripMenuItem,
-            this.用水情况一览表ToolStripMenuItem});
+            this.用水情况一览表ToolStripMenuItem,
+            this.部门费用统计表ToolStripMenuItem,
+            this.工资统计表ToolStripMenuItem});
             this.统计与分析ToolStripMenuItem.Name = "统计与分析ToolStripMenuItem";
             this.统计与分析ToolStripMenuItem.Size = new System.Drawing.Size(160, 26);
             this.统计与分析ToolStripMenuItem.Text = "统计与分析";
@@ -1301,6 +1305,13 @@
             this.用水用户统计ToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
             this.用水用户统计ToolStripMenuItem.Text = "用水用户统计";
             this.用水用户统计ToolStripMenuItem.Click += new System.EventHandler(this.用水用户统计ToolStripMenuItem_Click);
+            // 
+            // 转户统计ToolStripMenuItem
+            // 
+            this.转户统计ToolStripMenuItem.Name = "转户统计ToolStripMenuItem";
+            this.转户统计ToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.转户统计ToolStripMenuItem.Text = "转户统计";
+            this.转户统计ToolStripMenuItem.Click += new System.EventHandler(this.转户统计ToolStripMenuItem_Click);
             // 
             // 水表统计ToolStripMenuItem
             // 
@@ -1343,6 +1354,13 @@
             this.用水情况一览表ToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
             this.用水情况一览表ToolStripMenuItem.Text = "用水情况一览表";
             this.用水情况一览表ToolStripMenuItem.Click += new System.EventHandler(this.用水情况一览表ToolStripMenuItem_Click);
+            // 
+            // 部门费用统计表ToolStripMenuItem
+            // 
+            this.部门费用统计表ToolStripMenuItem.Name = "部门费用统计表ToolStripMenuItem";
+            this.部门费用统计表ToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.部门费用统计表ToolStripMenuItem.Text = "部门费用统计表";
+            this.部门费用统计表ToolStripMenuItem.Click += new System.EventHandler(this.部门费用统计表ToolStripMenuItem_Click);
             // 
             // 财务报表ToolStripMenuItem
             // 
@@ -1606,12 +1624,12 @@
             this.dockPanel1.Size = new System.Drawing.Size(1350, 426);
             this.dockPanel1.TabIndex = 5;
             // 
-            // 转户统计ToolStripMenuItem
+            // 工资统计表ToolStripMenuItem
             // 
-            this.转户统计ToolStripMenuItem.Name = "转户统计ToolStripMenuItem";
-            this.转户统计ToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
-            this.转户统计ToolStripMenuItem.Text = "转户统计";
-            this.转户统计ToolStripMenuItem.Click += new System.EventHandler(this.转户统计ToolStripMenuItem_Click);
+            this.工资统计表ToolStripMenuItem.Name = "工资统计表ToolStripMenuItem";
+            this.工资统计表ToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.工资统计表ToolStripMenuItem.Text = "工资统计表";
+            this.工资统计表ToolStripMenuItem.Click += new System.EventHandler(this.工资统计表ToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -1820,6 +1838,8 @@
         private System.Windows.Forms.ToolStripMenuItem 上报工作表ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 转户明细查询ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 转户统计ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 部门费用统计表ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 工资统计表ToolStripMenuItem;
 
     }
 }

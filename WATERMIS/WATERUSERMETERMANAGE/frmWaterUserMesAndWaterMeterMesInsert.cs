@@ -46,11 +46,33 @@ namespace WATERUSERMETERMANAGE
         public DataTable dtCutRows =new DataTable();
 
         public string strAreaNOOld = "", strPianNOOld = "", strDuanNOOld = "";
-       //public DataGridViewRow[] dtCutRows = new DataGridViewRow[]{};
+
+        /// <summary>
+        /// 登陆用户的ID
+        /// </summary>
+        private string strLogID = "";
+
+        /// <summary>
+        /// 登陆用户的姓名
+        /// </summary>
+        private string strLogName = "";
 
         private void frmBatchModifyWaterUserMesAndWaterMeterMes_Load(object sender, EventArgs e)
         {
             dgWaterListBatch.AutoGenerateColumns = false;
+
+            //获取用户ID
+            if (AppDomain.CurrentDomain.GetData("LOGINID") != null && AppDomain.CurrentDomain.GetData("LOGINID") != DBNull.Value)
+                strLogID = AppDomain.CurrentDomain.GetData("LOGINID").ToString();
+            else
+            {
+                mes.Show("操作员ID获取失败!请重新打开该窗体!");
+                this.Close();
+            }
+
+            //获取用户姓名
+            if (AppDomain.CurrentDomain.GetData("USERNAME") != null && AppDomain.CurrentDomain.GetData("USERNAME") != DBNull.Value)
+                strLogName = AppDomain.CurrentDomain.GetData("USERNAME").ToString();
 
             BindAreaNO(cmbAreaNOS, "0");
             BindPianNO(cmbPianNOS, "0");
@@ -339,10 +361,29 @@ namespace WATERUSERMETERMANAGE
             }
             
             //当前选择行的用户名、区号、片号、段号
-            string strWaterUserName="",strAreaNO = "", strPianNO = "", strDuanNO = "";
+            string strWaterUserName = "", strAreaNO = "", strPianNO = "", strDuanNO = "",
+                strMeterReaderID = "", strMeterReaderName = "", strChargerID = "", strChargerName = "";
+
             //当前选择行的用户顺序号、行索引、要移动的行数
             int intOrderNumber = 0, intSelectRowIndex = dgWaterListBatch.SelectedRows[0].Index, intCutRowsCount = dtCutRows.Rows.Count;
 
+            object objMeterReaderID = dgWaterListBatch.SelectedRows[0].Cells["meterReaderID"].Value;
+            if (objMeterReaderID != null && objMeterReaderID != DBNull.Value)
+            {
+                strMeterReaderID = objMeterReaderID.ToString();
+            }
+
+            object objMeterReaderName = dgWaterListBatch.SelectedRows[0].Cells["meterReaderName"].Value;
+            if (objMeterReaderName != null && objMeterReaderName != DBNull.Value)
+            {
+                strMeterReaderName = objMeterReaderName.ToString();
+            }
+            object objChargerID = dgWaterListBatch.SelectedRows[0].Cells["chargerID"].Value;
+            if (objChargerID != null && objChargerID != DBNull.Value)
+                strChargerID = objChargerID.ToString();
+            object objChargerName = dgWaterListBatch.SelectedRows[0].Cells["chargerName"].Value;
+            if (objChargerName != null && objChargerName != DBNull.Value)
+                strChargerName = objChargerName.ToString();
             object objWaterUserName = dgWaterListBatch.SelectedRows[0].Cells["waterUserNameBatch"].Value;
             if (objWaterUserName != null && objWaterUserName != DBNull.Value)
             {
@@ -387,16 +428,62 @@ namespace WATERUSERMETERMANAGE
                         object objWaterUserID = dtCutRows.Rows[j]["waterUserId"];
                         if (objWaterUserID != null && objWaterUserID != DBNull.Value)
                         {
-                            strSQLUpdateOrder = "UPDATE WATERUSER SET ordernumber=" + (intOrderNumber + j).ToString() + ",areaNO='" + strAreaNO
-                                + "',pianNO='" + strPianNO + "',duanNO='" + strDuanNO + "' WHERE WATERUSERID='" + objWaterUserID.ToString() + "'";
-                            //strSQLUpdateOrder = "UPDATE WATERUSER SET ordernumber=" + (intOrderNumber + j).ToString() + " WHERE WATERUSERID='" + objWaterUserID.ToString() + "'";
+                            string strWaterUserIDCut = objWaterUserID.ToString(), strWaterUserNameCut = "", strWaterUserAddressCut = "", strAreaNOCut = "", strPianNOCut = "", strDuanNOCut = "",
+                                strWaterMeterPositionIDCut = "", strWaterMeterPositionNameCut = "", strWaterMeterTypeIDCut = "", strWaterMeterTypeNameCut = "",
+                                strMeterReaderIDCut = "", strMeterReaderNameCut = "";
+
+                            object obj = dtCutRows.Rows[j]["waterUserName"];
+                            if (obj != null && obj != DBNull.Value)
+                                strWaterUserNameCut = obj.ToString();
+                            obj = dtCutRows.Rows[j]["waterUserAddress"];
+                            if (obj != null && obj != DBNull.Value)
+                                strWaterUserAddressCut = obj.ToString();
+                            obj = dtCutRows.Rows[j]["areaNO"];
+                            if (obj != null && obj != DBNull.Value)
+                                strAreaNOCut = obj.ToString();
+                            obj = dtCutRows.Rows[j]["pianNO"];
+                            if (obj != null && obj != DBNull.Value)
+                                strPianNOCut = obj.ToString();
+                            obj = dtCutRows.Rows[j]["duanNO"];
+                            if (obj != null && obj != DBNull.Value)
+                                strDuanNOCut = obj.ToString();
+                            obj = dtCutRows.Rows[j]["waterMeterPositionName"];
+                            if (obj != null && obj != DBNull.Value)
+                                strWaterMeterPositionNameCut = obj.ToString();
+                            obj = dtCutRows.Rows[j]["waterMeterTypeId"];
+                            if (obj != null && obj != DBNull.Value)
+                                strWaterMeterTypeIDCut = obj.ToString();
+                            obj = dtCutRows.Rows[j]["waterMeterTypeValue"];
+                            if (obj != null && obj != DBNull.Value)
+                                strWaterMeterTypeNameCut = obj.ToString();
+                            obj = dtCutRows.Rows[j]["meterReaderID"];
+                            if (obj != null && obj != DBNull.Value)
+                                strMeterReaderIDCut = obj.ToString();
+                            obj = dtCutRows.Rows[j]["meterReaderName"];
+                            if (obj != null && obj != DBNull.Value)
+                                strMeterReaderNameCut = obj.ToString();
+
+                            strSQLUpdateOrder = "BEGIN TRAN \r" +
+                            "UPDATE WATERUSER SET ordernumber=" + (intOrderNumber + j).ToString() + ",areaNO='" + strAreaNO
+                                + "',pianNO='" + strPianNO + "',duanNO='" + strDuanNO + "',meterReaderID='" + strMeterReaderID +
+                                "',meterReaderName='" + strMeterReaderName + "',chargerID='" + strChargerID + "',chargerName='" + 
+                                strChargerName + "' WHERE WATERUSERID='" + objWaterUserID.ToString() + "' \r" +
+                                "INSERT INTO WaterUserMoveRecord(WaterUserID,waterUserName,waterUserAddress,areaNO,pianNO,duanNO,meterReaderID," +
+                                "meterReaderName,waterMeterTypeId,waterMeterTypeValue,waterMeterPositionName,areaNONew,pianNONew,duanNONew," +
+                                "meterReaderIDNew,meterReaderNameNew,Operator,OperateDateTime) VALUES(" +
+                                "'" + strWaterUserIDCut + "','" + strWaterUserNameCut + "','" + strWaterUserAddressCut + "','" + strAreaNOCut + "','"
+                                + strPianNOCut + "','" + strDuanNOCut + "','" + strMeterReaderIDCut + "','" + strMeterReaderNameCut + "','"
+                                + strWaterMeterTypeIDCut + "','" + strWaterMeterTypeNameCut + "','" + strWaterMeterPositionNameCut + "','"+ strAreaNO + "','"
+                                +  strPianNO + "','" + strDuanNO + "','"+ strMeterReaderID + "','" +  strMeterReaderName + "','" +strLogName+"',GETDATE()"+
+                                ") \r" +
+                                "COMMIT TRAN";
                             if (BLLwaterUser.ExcuteSQL(strSQLUpdateOrder) > 0)
                             {
                                 dtWaterUserList.ImportRow(dtCutRows.Rows[j]);
                             }
                             else
                             {
-                                mes.Show("用户ID为'" + objWaterUserID.ToString() + "'的顺序号更新失败，请手动更新!");
+                                mes.Show("用户ID为'" + objWaterUserID.ToString() + "'的用户移动失败，请手动更新!");
                             }
                         }
                     }
@@ -450,10 +537,29 @@ namespace WATERUSERMETERMANAGE
             }
 
             //当前选择行的用户名、区号、片号、段号
-            string strWaterUserName = "", strAreaNO = "", strPianNO = "", strDuanNO = "";
+            string strWaterUserName = "", strAreaNO = "", strPianNO = "", strDuanNO = "",
+                strMeterReaderID = "", strMeterReaderName = "", strChargerID = "", strChargerName = "";
             //当前选择行的用户顺序号、行索引、要移动的行数
             int intOrderNumber = 0, intSelectRowIndex = dgWaterListBatch.SelectedRows[0].Index, intCutRowsCount = dtCutRows.Rows.Count;
 
+
+            object objMeterReaderID = dgWaterListBatch.SelectedRows[0].Cells["meterReaderID"].Value;
+            if (objMeterReaderID != null && objMeterReaderID != DBNull.Value)
+            {
+                strMeterReaderID = objMeterReaderID.ToString();
+            }
+
+            object objMeterReaderName = dgWaterListBatch.SelectedRows[0].Cells["meterReaderName"].Value;
+            if (objMeterReaderName != null && objMeterReaderName != DBNull.Value)
+            {
+                strMeterReaderName = objMeterReaderName.ToString();
+            }
+            object objChargerID = dgWaterListBatch.SelectedRows[0].Cells["chargerID"].Value;
+            if (objChargerID != null && objChargerID != DBNull.Value)
+                strChargerID = objChargerID.ToString();
+            object objChargerName = dgWaterListBatch.SelectedRows[0].Cells["chargerName"].Value;
+            if (objChargerName != null && objChargerName != DBNull.Value)
+                strChargerName = objChargerName.ToString();
             object objWaterUserName = dgWaterListBatch.SelectedRows[0].Cells["waterUserNameBatch"].Value;
             if (objWaterUserName != null && objWaterUserName != DBNull.Value)
             {
@@ -497,15 +603,63 @@ namespace WATERUSERMETERMANAGE
                         object objWaterUserID = dtCutRows.Rows[j]["waterUserId"];
                         if (objWaterUserID != null && objWaterUserID != DBNull.Value)
                         {
-                            strSQLUpdateOrder = "UPDATE WATERUSER SET ordernumber=" + (intOrderNumber+1 + j).ToString() + ",areaNO='" + strAreaNO
-                                + "',pianNO='" + strPianNO + "',duanNO='" + strDuanNO + "' WHERE WATERUSERID='" + objWaterUserID.ToString() + "'";
+                            string strWaterUserIDCut = objWaterUserID.ToString(), strWaterUserNameCut = "", strWaterUserAddressCut = "", strAreaNOCut = "", strPianNOCut = "", strDuanNOCut = "",
+                                strWaterMeterPositionIDCut = "", strWaterMeterPositionNameCut = "", strWaterMeterTypeIDCut = "", strWaterMeterTypeNameCut = "",
+                                strMeterReaderIDCut = "", strMeterReaderNameCut = "";
+
+                            object obj = dtCutRows.Rows[j]["waterUserName"];
+                            if (obj != null && obj != DBNull.Value)
+                                strWaterUserNameCut = obj.ToString();
+                            obj = dtCutRows.Rows[j]["waterUserAddress"];
+                            if (obj != null && obj != DBNull.Value)
+                                strWaterUserAddressCut = obj.ToString();
+                            obj = dtCutRows.Rows[j]["areaNO"];
+                            if (obj != null && obj != DBNull.Value)
+                                strAreaNOCut = obj.ToString();
+                            obj = dtCutRows.Rows[j]["pianNO"];
+                            if (obj != null && obj != DBNull.Value)
+                                strPianNOCut = obj.ToString();
+                            obj = dtCutRows.Rows[j]["duanNO"];
+                            if (obj != null && obj != DBNull.Value)
+                                strDuanNOCut = obj.ToString();
+                            obj = dtCutRows.Rows[j]["waterMeterPositionName"];
+                            if (obj != null && obj != DBNull.Value)
+                                strWaterMeterPositionNameCut = obj.ToString();
+                            obj = dtCutRows.Rows[j]["waterMeterTypeId"];
+                            if (obj != null && obj != DBNull.Value)
+                                strWaterMeterTypeIDCut = obj.ToString();
+                            obj = dtCutRows.Rows[j]["waterMeterTypeValue"];
+                            if (obj != null && obj != DBNull.Value)
+                                strWaterMeterTypeNameCut = obj.ToString();
+                            obj = dtCutRows.Rows[j]["meterReaderID"];
+                            if (obj != null && obj != DBNull.Value)
+                                strMeterReaderIDCut = obj.ToString();
+                            obj = dtCutRows.Rows[j]["meterReaderName"];
+                            if (obj != null && obj != DBNull.Value)
+                                strMeterReaderNameCut = obj.ToString();
+
+                            strSQLUpdateOrder = "BEGIN TRAN \r" +
+                            "UPDATE WATERUSER SET ordernumber=" + (intOrderNumber + j+1).ToString() + ",areaNO='" + strAreaNO
+                                + "',pianNO='" + strPianNO + "',duanNO='" + strDuanNO + "',meterReaderID='" + strMeterReaderID +
+                                "',meterReaderName='" + strMeterReaderName + "',chargerID='" + strChargerID + "',chargerName='" +
+                                strChargerName + "' WHERE WATERUSERID='" + objWaterUserID.ToString() + "' \r" +
+                                "INSERT INTO WaterUserMoveRecord(WaterUserID,waterUserName,waterUserAddress,areaNO,pianNO,duanNO,meterReaderID," +
+                                "meterReaderName,waterMeterTypeId,waterMeterTypeValue,waterMeterPositionName,areaNONew,pianNONew,duanNONew," +
+                                "meterReaderIDNew,meterReaderNameNew,Operator,OperateDateTime) VALUES(" +
+                                "'" + strWaterUserIDCut + "','" + strWaterUserNameCut + "','" + strWaterUserAddressCut + "','" + strAreaNOCut + "','"
+                                + strPianNOCut + "','" + strDuanNOCut + "','" + strMeterReaderIDCut + "','" + strMeterReaderNameCut + "','"
+                                + strWaterMeterTypeIDCut + "','" + strWaterMeterTypeNameCut + "','" + strWaterMeterPositionNameCut + "','" + strAreaNO + "','"
+                                + strPianNO + "','" + strDuanNO + "','" + strMeterReaderID + "','" + strMeterReaderName + "','" + strLogName + "',GETDATE()" +
+                                ") \r" +
+                                "COMMIT TRAN";
+
                             if (BLLwaterUser.ExcuteSQL(strSQLUpdateOrder) > 0)
                             {
                                 dtWaterUserList.ImportRow(dtCutRows.Rows[j]);
                             }
                             else
                             {
-                                mes.Show("用户ID为'" + objWaterUserID.ToString() + "'的顺序号更新失败，请手动更新!");
+                                mes.Show("用户ID为'" + objWaterUserID.ToString() + "'的用户移动失败，请手动更新!");
                             }
                         }
                     }

@@ -65,6 +65,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="STATISTICS\工资统计表\frmSalaryStatics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="STATISTICS\工资统计表\frmSalaryStatics.Designer.cs">
+      <DependentUpon>frmSalaryStatics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="STATISTICS\frmWaterUserMoveStatic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="STATISTICS\frmWaterUserMoveStatic.Designer.cs">
+      <DependentUpon>frmWaterUserMoveStatic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SEARCH\frmWaterUserMoveSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SEARCH\frmWaterUserMoveSearch.Designer.cs">
+      <DependentUpon>frmWaterUserMoveSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="SEARCH\台账一户式查询\frmSingleChargeSelectWaterUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +106,12 @@
     </Compile>
     <Compile Include="STATISTICS\frmWaterFeeSummaryPreview_Year.Designer.cs">
       <DependentUpon>frmWaterFeeSummaryPreview_Year.cs</DependentUpon>
+    </Compile>
+    <Compile Include="STATISTICS\财务报表\财会上报表\frmFinanceSubmitReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="STATISTICS\财务报表\财会上报表\frmFinanceSubmitReport.Designer.cs">
+      <DependentUpon>frmFinanceSubmitReport.cs</DependentUpon>
     </Compile>
     <Compile Include="STATISTICS\用水用户统计\frmWaterUserStatisticsSearch.cs">
       <SubType>Form</SubType>
@@ -363,6 +387,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="STATISTICS\工资统计表\frmSalaryStatics.resx">
+      <DependentUpon>frmSalaryStatics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="STATISTICS\frmWaterUserMoveStatic.resx">
+      <DependentUpon>frmWaterUserMoveStatic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SEARCH\frmWaterUserMoveSearch.resx">
+      <DependentUpon>frmWaterUserMoveSearch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SEARCH\台账一户式查询\frmSingleChargeSelectWaterUser.resx">
       <DependentUpon>frmSingleChargeSelectWaterUser.cs</DependentUpon>
     </EmbeddedResource>
@@ -374,6 +407,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="STATISTICS\frmWaterFeeSummaryPreview_Year.resx">
       <DependentUpon>frmWaterFeeSummaryPreview_Year.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="STATISTICS\财务报表\财会上报表\frmFinanceSubmitReport.resx">
+      <DependentUpon>frmFinanceSubmitReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="STATISTICS\用水用户统计\frmWaterUserStatisticsSearch.resx">
       <DependentUpon>frmWaterUserStatisticsSearch.cs</DependentUpon>

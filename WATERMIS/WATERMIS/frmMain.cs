@@ -1104,5 +1104,16 @@ namespace WATERMIS
             frmWaterUserMoveStatic frm = new frmWaterUserMoveStatic();
             frm.Show(this.dockPanel1);
         }
+        private void 部门费用统计表ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FinanceReport frm = new FinanceReport();
+            frm.Show(this.dockPanel1);
+        }
+
+        private void 工资统计表ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSalaryStatics frm = new frmSalaryStatics();
+            frm.Show(this.dockPanel1);
+        }
     }
 }

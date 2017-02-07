@@ -3734,6 +3734,9 @@ namespace WATERFEEMANAGE
         {
             if (dgHistoryWaterFee.CurrentRow == null)
                 return;
+
+            if (strGroupID != "0001")
+                return;
             object objChargeID = dgHistoryWaterFee.CurrentRow.Cells["CHARGEID"].Value;
             if (objChargeID != null && objChargeID != DBNull.Value)
             {
@@ -3766,6 +3769,8 @@ namespace WATERFEEMANAGE
             if (dgHistoryWaterFee.CurrentRow == null)
                 return;
 
+            if (strGroupID != "0001")
+                return;
             object objJZ = dgHistoryWaterFee.CurrentRow.Cells["SETTLEACCOUNTSSSID"].Value;
             if (objJZ != null && objJZ != DBNull.Value && objJZ.ToString() != "")
             {

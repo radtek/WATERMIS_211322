@@ -1923,5 +1923,12 @@ namespace METERREADINGMACHINE
                     strErrorMes = "传输强制中断!";
                 mes.Show(strErrorMes);
         }
+
+        private void btToExcel_Click(object sender, EventArgs e)
+        {
+            string strCaption = "异常抄表用户";
+            ExportExcel ExportExcel = new ExportExcel();
+            ExportExcel.ExportToExcel(strCaption, dgExceptionData);
+        }
     }
 }

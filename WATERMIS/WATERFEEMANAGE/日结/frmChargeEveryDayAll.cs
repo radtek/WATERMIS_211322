@@ -124,7 +124,7 @@ namespace WATERFEEMANAGE
             labBCSS.Text ="0 元";
 
             #region 获取收费冲减余额及实收明细
-            DataTable dtWaterMeterList = BLLWATERFEECHARGE.SumWaterFeeCharge(strFilter);
+            DataTable dtWaterMeterList = BLLWATERFEECHARGE.SumWaterFeeCharge(strFilter,strLogID);
             if (dtWaterMeterList.Rows.Count > 0)
             {
                 object objYSCOUNT = dtWaterMeterList.Rows[0]["YSCOUNT"];

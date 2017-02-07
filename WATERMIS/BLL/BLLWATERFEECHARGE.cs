@@ -530,7 +530,7 @@ namespace BLL
         /// 统计实收水费总金额、实收预收总金额、冲减收支总计、所有收费总金额
         /// </summary>
         /// <returns></returns>
-        public DataTable SumWaterFeeCharge(string strFilter)
+        public DataTable SumWaterFeeCharge(string strFilter,string strLoginID)
         {
             DataTable dt = new DataTable();
             StringBuilder str = new StringBuilder();
@@ -540,7 +540,8 @@ namespace BLL
             str.Append("SUM(CASE WHEN (CHARGEClASS='1' OR CHARGEClASS='4') AND CHARGETYPEID='2' THEN CHARGEBCSS ELSE 0 END) AS YSBCSSPOS,");
             str.Append("SUM(CASE WHEN (CHARGEClASS='1' OR CHARGEClASS='4') AND CHARGETYPEID='3' THEN CHARGEBCSS ELSE 0 END) AS YSBCSSZHUANZHANG,");
             str.Append("SUM(CASE WHEN  CHARGEClASS='1' OR CHARGEClASS='4' THEN CHARGEYSBCSZ ELSE 0 END) AS YSBCSZ,");
-            str.Append("SUM(CASE WHEN  INVOICEPRINTSIGN='1' THEN 1 ELSE 0 END) AS YSCOUNT,");
+            str.Append("SUM(CASE WHEN  INVOICEPRINTSIGN='1' AND INVOICEPRINTWORKERID='" + strLoginID + "' THEN 1 ELSE 0 END) AS YSCOUNT,");
+            str.Append("SUM(CASE WHEN INVOICEPRINTSIGN='1' AND CHARGEWORKERID<>INVOICEPRINTWORKERID AND INVOICEPRINTWORKERID='" + strLoginID + "' THEN 1 ELSE 0 END) AS FPBDCOUNT,");
             str.Append("COUNT(DISTINCT RECEIPTNO) AS YSRECEIPTNOCOUNT,");
             //str.Append("SUM(CASE WHEN  CHARGEClASS='1' OR CHARGEClASS='4' THEN 1 ELSE 0 END) AS YSCOUNT,");
             str.Append("SUM(CASE WHEN CHARGEClASS='2' OR CHARGEClASS='5' THEN CHARGEYSQQYE ELSE 0 END) AS YCQQYE,");

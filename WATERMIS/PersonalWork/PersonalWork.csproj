@@ -696,6 +696,10 @@
       <Project>{80D145CD-0A7C-49FB-BEF5-45DC8D5892A1}</Project>
       <Name>DBUtility</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MeterBusiness\MeterBusiness.csproj">
+      <Project>{5C49C081-CEED-41BE-9230-1ED058E2D5EF}</Project>
+      <Name>MeterBusiness</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MODEL\MODEL.csproj">
       <Project>{714F4432-3D0F-4FEA-B6E8-B2A110427451}</Project>
       <Name>MODEL</Name>

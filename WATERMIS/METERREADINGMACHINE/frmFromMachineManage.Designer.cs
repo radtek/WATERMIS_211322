@@ -31,9 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFromMachineManage));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFromMachineManage));
             this.btConnect = new System.Windows.Forms.Button();
             this.cmbPort = new System.Windows.Forms.ComboBox();
             this.btClose = new System.Windows.Forms.Button();
@@ -84,25 +84,6 @@
             this.CBRQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.yhdh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.YHDZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.labExcute = new System.Windows.Forms.Label();
-            this.chkSelectAll = new System.Windows.Forms.CheckBox();
-            this.btImport = new System.Windows.Forms.Button();
-            this.btNext = new System.Windows.Forms.Button();
-            this.btPrevious = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.bgWork = new System.ComponentModel.BackgroundWorker();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.置为未抄ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.置为未收ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.导入抄表机ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.置为已导入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.置为未导入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.修改用户信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.修改水表信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bgWorkDownData = new System.ComponentModel.BackgroundWorker();
-            this.bgWorkImportToMachine = new System.ComponentModel.BackgroundWorker();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgExceptionData = new System.Windows.Forms.DataGridView();
@@ -126,6 +107,27 @@
             this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.labExcute = new System.Windows.Forms.Label();
+            this.chkSelectAll = new System.Windows.Forms.CheckBox();
+            this.btImport = new System.Windows.Forms.Button();
+            this.btNext = new System.Windows.Forms.Button();
+            this.btPrevious = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.bgWork = new System.ComponentModel.BackgroundWorker();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.置为未抄ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.置为未收ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.导入抄表机ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.置为已导入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.置为未导入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.修改用户信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.修改水表信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bgWorkDownData = new System.ComponentModel.BackgroundWorker();
+            this.bgWorkImportToMachine = new System.ComponentModel.BackgroundWorker();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btToExcel = new System.Windows.Forms.Button();
             this.tabCHandSet.SuspendLayout();
             this.tbpConnectHandSet.SuspendLayout();
             this.tbpSearchData.SuspendLayout();
@@ -133,12 +135,13 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgList)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgExceptionData)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // btConnect
@@ -691,178 +694,10 @@
             this.YHDZ.ReadOnly = true;
             this.YHDZ.Width = 65;
             // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "folder.ico");
-            this.imageList1.Images.SetKeyName(1, "open.ico");
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.labExcute);
-            this.panel1.Controls.Add(this.chkSelectAll);
-            this.panel1.Controls.Add(this.btImport);
-            this.panel1.Controls.Add(this.btNext);
-            this.panel1.Controls.Add(this.btPrevious);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 520);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(888, 43);
-            this.panel1.TabIndex = 10;
-            // 
-            // labExcute
-            // 
-            this.labExcute.AutoSize = true;
-            this.labExcute.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labExcute.Location = new System.Drawing.Point(426, 18);
-            this.labExcute.Name = "labExcute";
-            this.labExcute.Size = new System.Drawing.Size(0, 14);
-            this.labExcute.TabIndex = 5;
-            // 
-            // chkSelectAll
-            // 
-            this.chkSelectAll.AutoSize = true;
-            this.chkSelectAll.Location = new System.Drawing.Point(8, 14);
-            this.chkSelectAll.Name = "chkSelectAll";
-            this.chkSelectAll.Size = new System.Drawing.Size(59, 20);
-            this.chkSelectAll.TabIndex = 3;
-            this.chkSelectAll.Text = "全选";
-            this.chkSelectAll.UseVisualStyleBackColor = true;
-            this.chkSelectAll.Visible = false;
-            this.chkSelectAll.Click += new System.EventHandler(this.chkSelectAll_Click);
-            // 
-            // btImport
-            // 
-            this.btImport.Location = new System.Drawing.Point(331, 4);
-            this.btImport.Name = "btImport";
-            this.btImport.Size = new System.Drawing.Size(91, 34);
-            this.btImport.TabIndex = 2;
-            this.btImport.Text = "导入系统";
-            this.btImport.UseVisualStyleBackColor = true;
-            this.btImport.Visible = false;
-            this.btImport.Click += new System.EventHandler(this.btImport_Click);
-            // 
-            // btNext
-            // 
-            this.btNext.Location = new System.Drawing.Point(224, 3);
-            this.btNext.Name = "btNext";
-            this.btNext.Size = new System.Drawing.Size(75, 34);
-            this.btNext.TabIndex = 1;
-            this.btNext.Text = "下一步";
-            this.btNext.UseVisualStyleBackColor = true;
-            this.btNext.Click += new System.EventHandler(this.btNext_Click);
-            // 
-            // btPrevious
-            // 
-            this.btPrevious.Location = new System.Drawing.Point(132, 4);
-            this.btPrevious.Name = "btPrevious";
-            this.btPrevious.Size = new System.Drawing.Size(75, 34);
-            this.btPrevious.TabIndex = 0;
-            this.btPrevious.Text = "上一步";
-            this.btPrevious.UseVisualStyleBackColor = true;
-            this.btPrevious.Click += new System.EventHandler(this.btPrevious_Click);
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.tabCHandSet, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 6);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76.8421F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(894, 566);
-            this.tableLayoutPanel1.TabIndex = 11;
-            // 
-            // bgWork
-            // 
-            this.bgWork.WorkerSupportsCancellation = true;
-            this.bgWork.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWork_DoWork);
-            this.bgWork.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWork_RunWorkerCompleted);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.置为未抄ToolStripMenuItem,
-            this.置为未收ToolStripMenuItem,
-            this.导入抄表机ToolStripMenuItem,
-            this.置为已导入ToolStripMenuItem,
-            this.置为未导入ToolStripMenuItem,
-            this.修改用户信息ToolStripMenuItem,
-            this.修改水表信息ToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(149, 158);
-            // 
-            // 置为未抄ToolStripMenuItem
-            // 
-            this.置为未抄ToolStripMenuItem.Name = "置为未抄ToolStripMenuItem";
-            this.置为未抄ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.置为未抄ToolStripMenuItem.Text = "置为未抄";
-            this.置为未抄ToolStripMenuItem.ToolTipText = "将选中行抄表数据置为未抄";
-            this.置为未抄ToolStripMenuItem.Click += new System.EventHandler(this.置为未抄ToolStripMenuItem_Click);
-            // 
-            // 置为未收ToolStripMenuItem
-            // 
-            this.置为未收ToolStripMenuItem.Name = "置为未收ToolStripMenuItem";
-            this.置为未收ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.置为未收ToolStripMenuItem.Text = "置为未收";
-            this.置为未收ToolStripMenuItem.ToolTipText = "将选中行抄表数据置为未收";
-            this.置为未收ToolStripMenuItem.Click += new System.EventHandler(this.置为未收ToolStripMenuItem_Click);
-            // 
-            // 导入抄表机ToolStripMenuItem
-            // 
-            this.导入抄表机ToolStripMenuItem.Name = "导入抄表机ToolStripMenuItem";
-            this.导入抄表机ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.导入抄表机ToolStripMenuItem.Text = "导入抄表机";
-            this.导入抄表机ToolStripMenuItem.Click += new System.EventHandler(this.导入抄表机ToolStripMenuItem_Click);
-            // 
-            // 置为已导入ToolStripMenuItem
-            // 
-            this.置为已导入ToolStripMenuItem.Name = "置为已导入ToolStripMenuItem";
-            this.置为已导入ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.置为已导入ToolStripMenuItem.Text = "置为已导入";
-            this.置为已导入ToolStripMenuItem.Click += new System.EventHandler(this.置为已导入ToolStripMenuItem_Click);
-            // 
-            // 置为未导入ToolStripMenuItem
-            // 
-            this.置为未导入ToolStripMenuItem.Name = "置为未导入ToolStripMenuItem";
-            this.置为未导入ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.置为未导入ToolStripMenuItem.Text = "置为未导入";
-            this.置为未导入ToolStripMenuItem.Click += new System.EventHandler(this.置为未导入ToolStripMenuItem_Click);
-            // 
-            // 修改用户信息ToolStripMenuItem
-            // 
-            this.修改用户信息ToolStripMenuItem.Name = "修改用户信息ToolStripMenuItem";
-            this.修改用户信息ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.修改用户信息ToolStripMenuItem.Text = "修改用户信息";
-            this.修改用户信息ToolStripMenuItem.Click += new System.EventHandler(this.修改用户信息ToolStripMenuItem_Click);
-            // 
-            // 修改水表信息ToolStripMenuItem
-            // 
-            this.修改水表信息ToolStripMenuItem.Name = "修改水表信息ToolStripMenuItem";
-            this.修改水表信息ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.修改水表信息ToolStripMenuItem.Text = "修改水表信息";
-            this.修改水表信息ToolStripMenuItem.Click += new System.EventHandler(this.修改水表信息ToolStripMenuItem_Click);
-            // 
-            // bgWorkDownData
-            // 
-            this.bgWorkDownData.WorkerSupportsCancellation = true;
-            this.bgWorkDownData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkDownData_DoWork);
-            this.bgWorkDownData.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkDownData_RunWorkerCompleted);
-            // 
-            // bgWorkImportToMachine
-            // 
-            this.bgWorkImportToMachine.WorkerSupportsCancellation = true;
-            this.bgWorkImportToMachine.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkImportToMachine_DoWork);
-            this.bgWorkImportToMachine.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkImportToMachine_RunWorkerCompleted);
-            // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.groupBox3);
+            this.tabPage1.Controls.Add(this.groupBox4);
             this.tabPage1.Location = new System.Drawing.Point(4, 26);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Size = new System.Drawing.Size(880, 481);
@@ -874,9 +709,9 @@
             // 
             this.groupBox3.Controls.Add(this.dgExceptionData);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(0, 0);
+            this.groupBox3.Location = new System.Drawing.Point(0, 53);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(880, 481);
+            this.groupBox3.Size = new System.Drawing.Size(880, 428);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "异常数据";
@@ -925,7 +760,7 @@
             this.dgExceptionData.RowHeadersWidth = 45;
             this.dgExceptionData.RowTemplate.Height = 23;
             this.dgExceptionData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgExceptionData.Size = new System.Drawing.Size(874, 456);
+            this.dgExceptionData.Size = new System.Drawing.Size(874, 403);
             this.dgExceptionData.TabIndex = 6;
             this.dgExceptionData.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgExceptionData_CellFormatting);
             this.dgExceptionData.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgList_CellPainting);
@@ -1107,6 +942,197 @@
             this.dataGridViewTextBoxColumn19.ReadOnly = true;
             this.dataGridViewTextBoxColumn19.Width = 65;
             // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "folder.ico");
+            this.imageList1.Images.SetKeyName(1, "open.ico");
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.labExcute);
+            this.panel1.Controls.Add(this.chkSelectAll);
+            this.panel1.Controls.Add(this.btImport);
+            this.panel1.Controls.Add(this.btNext);
+            this.panel1.Controls.Add(this.btPrevious);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 520);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(888, 43);
+            this.panel1.TabIndex = 10;
+            // 
+            // labExcute
+            // 
+            this.labExcute.AutoSize = true;
+            this.labExcute.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labExcute.Location = new System.Drawing.Point(426, 18);
+            this.labExcute.Name = "labExcute";
+            this.labExcute.Size = new System.Drawing.Size(0, 14);
+            this.labExcute.TabIndex = 5;
+            // 
+            // chkSelectAll
+            // 
+            this.chkSelectAll.AutoSize = true;
+            this.chkSelectAll.Location = new System.Drawing.Point(8, 14);
+            this.chkSelectAll.Name = "chkSelectAll";
+            this.chkSelectAll.Size = new System.Drawing.Size(59, 20);
+            this.chkSelectAll.TabIndex = 3;
+            this.chkSelectAll.Text = "全选";
+            this.chkSelectAll.UseVisualStyleBackColor = true;
+            this.chkSelectAll.Visible = false;
+            this.chkSelectAll.Click += new System.EventHandler(this.chkSelectAll_Click);
+            // 
+            // btImport
+            // 
+            this.btImport.Location = new System.Drawing.Point(331, 4);
+            this.btImport.Name = "btImport";
+            this.btImport.Size = new System.Drawing.Size(91, 34);
+            this.btImport.TabIndex = 2;
+            this.btImport.Text = "导入系统";
+            this.btImport.UseVisualStyleBackColor = true;
+            this.btImport.Visible = false;
+            this.btImport.Click += new System.EventHandler(this.btImport_Click);
+            // 
+            // btNext
+            // 
+            this.btNext.Location = new System.Drawing.Point(224, 3);
+            this.btNext.Name = "btNext";
+            this.btNext.Size = new System.Drawing.Size(75, 34);
+            this.btNext.TabIndex = 1;
+            this.btNext.Text = "下一步";
+            this.btNext.UseVisualStyleBackColor = true;
+            this.btNext.Click += new System.EventHandler(this.btNext_Click);
+            // 
+            // btPrevious
+            // 
+            this.btPrevious.Location = new System.Drawing.Point(132, 4);
+            this.btPrevious.Name = "btPrevious";
+            this.btPrevious.Size = new System.Drawing.Size(75, 34);
+            this.btPrevious.TabIndex = 0;
+            this.btPrevious.Text = "上一步";
+            this.btPrevious.UseVisualStyleBackColor = true;
+            this.btPrevious.Click += new System.EventHandler(this.btPrevious_Click);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tabCHandSet, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 6);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76.8421F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(894, 566);
+            this.tableLayoutPanel1.TabIndex = 11;
+            // 
+            // bgWork
+            // 
+            this.bgWork.WorkerSupportsCancellation = true;
+            this.bgWork.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWork_DoWork);
+            this.bgWork.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWork_RunWorkerCompleted);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.置为未抄ToolStripMenuItem,
+            this.置为未收ToolStripMenuItem,
+            this.导入抄表机ToolStripMenuItem,
+            this.置为已导入ToolStripMenuItem,
+            this.置为未导入ToolStripMenuItem,
+            this.修改用户信息ToolStripMenuItem,
+            this.修改水表信息ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(149, 158);
+            // 
+            // 置为未抄ToolStripMenuItem
+            // 
+            this.置为未抄ToolStripMenuItem.Name = "置为未抄ToolStripMenuItem";
+            this.置为未抄ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.置为未抄ToolStripMenuItem.Text = "置为未抄";
+            this.置为未抄ToolStripMenuItem.ToolTipText = "将选中行抄表数据置为未抄";
+            this.置为未抄ToolStripMenuItem.Click += new System.EventHandler(this.置为未抄ToolStripMenuItem_Click);
+            // 
+            // 置为未收ToolStripMenuItem
+            // 
+            this.置为未收ToolStripMenuItem.Name = "置为未收ToolStripMenuItem";
+            this.置为未收ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.置为未收ToolStripMenuItem.Text = "置为未收";
+            this.置为未收ToolStripMenuItem.ToolTipText = "将选中行抄表数据置为未收";
+            this.置为未收ToolStripMenuItem.Click += new System.EventHandler(this.置为未收ToolStripMenuItem_Click);
+            // 
+            // 导入抄表机ToolStripMenuItem
+            // 
+            this.导入抄表机ToolStripMenuItem.Name = "导入抄表机ToolStripMenuItem";
+            this.导入抄表机ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.导入抄表机ToolStripMenuItem.Text = "导入抄表机";
+            this.导入抄表机ToolStripMenuItem.Click += new System.EventHandler(this.导入抄表机ToolStripMenuItem_Click);
+            // 
+            // 置为已导入ToolStripMenuItem
+            // 
+            this.置为已导入ToolStripMenuItem.Name = "置为已导入ToolStripMenuItem";
+            this.置为已导入ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.置为已导入ToolStripMenuItem.Text = "置为已导入";
+            this.置为已导入ToolStripMenuItem.Click += new System.EventHandler(this.置为已导入ToolStripMenuItem_Click);
+            // 
+            // 置为未导入ToolStripMenuItem
+            // 
+            this.置为未导入ToolStripMenuItem.Name = "置为未导入ToolStripMenuItem";
+            this.置为未导入ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.置为未导入ToolStripMenuItem.Text = "置为未导入";
+            this.置为未导入ToolStripMenuItem.Click += new System.EventHandler(this.置为未导入ToolStripMenuItem_Click);
+            // 
+            // 修改用户信息ToolStripMenuItem
+            // 
+            this.修改用户信息ToolStripMenuItem.Name = "修改用户信息ToolStripMenuItem";
+            this.修改用户信息ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.修改用户信息ToolStripMenuItem.Text = "修改用户信息";
+            this.修改用户信息ToolStripMenuItem.Click += new System.EventHandler(this.修改用户信息ToolStripMenuItem_Click);
+            // 
+            // 修改水表信息ToolStripMenuItem
+            // 
+            this.修改水表信息ToolStripMenuItem.Name = "修改水表信息ToolStripMenuItem";
+            this.修改水表信息ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.修改水表信息ToolStripMenuItem.Text = "修改水表信息";
+            this.修改水表信息ToolStripMenuItem.Click += new System.EventHandler(this.修改水表信息ToolStripMenuItem_Click);
+            // 
+            // bgWorkDownData
+            // 
+            this.bgWorkDownData.WorkerSupportsCancellation = true;
+            this.bgWorkDownData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkDownData_DoWork);
+            this.bgWorkDownData.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkDownData_RunWorkerCompleted);
+            // 
+            // bgWorkImportToMachine
+            // 
+            this.bgWorkImportToMachine.WorkerSupportsCancellation = true;
+            this.bgWorkImportToMachine.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkImportToMachine_DoWork);
+            this.bgWorkImportToMachine.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkImportToMachine_RunWorkerCompleted);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.BackColor = System.Drawing.Color.LimeGreen;
+            this.groupBox4.Controls.Add(this.btToExcel);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox4.Location = new System.Drawing.Point(0, 0);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(880, 53);
+            this.groupBox4.TabIndex = 4;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Tag = "9999";
+            // 
+            // btToExcel
+            // 
+            this.btToExcel.Location = new System.Drawing.Point(6, 15);
+            this.btToExcel.Name = "btToExcel";
+            this.btToExcel.Size = new System.Drawing.Size(97, 34);
+            this.btToExcel.TabIndex = 9;
+            this.btToExcel.Text = "导出Excel";
+            this.btToExcel.UseVisualStyleBackColor = true;
+            this.btToExcel.Click += new System.EventHandler(this.btToExcel_Click);
+            // 
             // frmFromMachineManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1134,13 +1160,14 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgList)).EndInit();
+            this.tabPage1.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgExceptionData)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgExceptionData)).EndInit();
+            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1239,5 +1266,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button btToExcel;
     }
 }
