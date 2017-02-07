@@ -150,6 +150,7 @@
             this.查询统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.明细查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.用户明细查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.转户明细查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.一户式查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.台账查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.历史台账查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -177,7 +178,9 @@
             this.预收账款余额查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.应收全年汇总表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.实收全年汇总表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.上报工作表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.窗口ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.打开首页ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
@@ -203,7 +206,7 @@
             this.bgNotice = new System.ComponentModel.BackgroundWorker();
             this.trNotice = new System.Windows.Forms.Timer(this.components);
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.打开首页ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.转户统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -1138,6 +1141,7 @@
             // 
             this.明细查询ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.用户明细查询ToolStripMenuItem,
+            this.转户明细查询ToolStripMenuItem,
             this.一户式查询ToolStripMenuItem,
             this.台账查询ToolStripMenuItem,
             this.历史台账查询ToolStripMenuItem,
@@ -1161,6 +1165,13 @@
             this.用户明细查询ToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
             this.用户明细查询ToolStripMenuItem.Text = "用户明细查询";
             this.用户明细查询ToolStripMenuItem.Click += new System.EventHandler(this.用户明细查询ToolStripMenuItem_Click);
+            // 
+            // 转户明细查询ToolStripMenuItem
+            // 
+            this.转户明细查询ToolStripMenuItem.Name = "转户明细查询ToolStripMenuItem";
+            this.转户明细查询ToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.转户明细查询ToolStripMenuItem.Text = "转户明细查询";
+            this.转户明细查询ToolStripMenuItem.Click += new System.EventHandler(this.转户明细查询ToolStripMenuItem_Click);
             // 
             // 一户式查询ToolStripMenuItem
             // 
@@ -1259,6 +1270,7 @@
             this.查抄率统计ToolStripMenuItem,
             this.收费率统计ToolStripMenuItem,
             this.用水用户统计ToolStripMenuItem,
+            this.转户统计ToolStripMenuItem,
             this.水表统计ToolStripMenuItem,
             this.应收水费统计ToolStripMenuItem,
             this.应收欠费统计ToolStripMenuItem,
@@ -1337,7 +1349,8 @@
             this.财务报表ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.预收账款余额查询ToolStripMenuItem,
             this.应收全年汇总表ToolStripMenuItem,
-            this.实收全年汇总表ToolStripMenuItem});
+            this.实收全年汇总表ToolStripMenuItem,
+            this.上报工作表ToolStripMenuItem});
             this.财务报表ToolStripMenuItem.Name = "财务报表ToolStripMenuItem";
             this.财务报表ToolStripMenuItem.Size = new System.Drawing.Size(160, 26);
             this.财务报表ToolStripMenuItem.Text = "财务报表";
@@ -1363,6 +1376,13 @@
             this.实收全年汇总表ToolStripMenuItem.Text = "实收全年汇总表";
             this.实收全年汇总表ToolStripMenuItem.Click += new System.EventHandler(this.实收全年汇总表ToolStripMenuItem_Click);
             // 
+            // 上报工作表ToolStripMenuItem
+            // 
+            this.上报工作表ToolStripMenuItem.Name = "上报工作表ToolStripMenuItem";
+            this.上报工作表ToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.上报工作表ToolStripMenuItem.Text = "上报工作表";
+            this.上报工作表ToolStripMenuItem.Click += new System.EventHandler(this.上报工作表ToolStripMenuItem_Click);
+            // 
             // 窗口ToolStripMenuItem
             // 
             this.窗口ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1375,6 +1395,13 @@
             this.窗口ToolStripMenuItem.Size = new System.Drawing.Size(86, 25);
             this.窗口ToolStripMenuItem.Tag = "0";
             this.窗口ToolStripMenuItem.Text = "关于系统";
+            // 
+            // 打开首页ToolStripMenuItem
+            // 
+            this.打开首页ToolStripMenuItem.Name = "打开首页ToolStripMenuItem";
+            this.打开首页ToolStripMenuItem.Size = new System.Drawing.Size(149, 26);
+            this.打开首页ToolStripMenuItem.Text = "打开首页";
+            this.打开首页ToolStripMenuItem.Click += new System.EventHandler(this.打开首页ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -1394,7 +1421,7 @@
             this.toolStripMenuItem14,
             this.toolStripMenuItem15});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 26);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 26);
             this.toolStripMenuItem1.Text = "皮肤选择";
             // 
             // toolStripMenuItem6
@@ -1512,7 +1539,7 @@
             // 全部关闭ToolStripMenuItem
             // 
             this.全部关闭ToolStripMenuItem.Name = "全部关闭ToolStripMenuItem";
-            this.全部关闭ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.全部关闭ToolStripMenuItem.Size = new System.Drawing.Size(149, 26);
             this.全部关闭ToolStripMenuItem.Text = "全部关闭";
             this.全部关闭ToolStripMenuItem.Click += new System.EventHandler(this.全部关闭ToolStripMenuItem_Click);
             // 
@@ -1520,14 +1547,14 @@
             // 
             this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
             this.帮助ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F12;
-            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(149, 26);
             this.帮助ToolStripMenuItem.Text = "帮助";
             this.帮助ToolStripMenuItem.Click += new System.EventHandler(this.帮助ToolStripMenuItem_Click);
             // 
             // 关于ToolStripMenuItem
             // 
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(149, 26);
             this.关于ToolStripMenuItem.Text = "关于";
             this.关于ToolStripMenuItem.Click += new System.EventHandler(this.关于ToolStripMenuItem_Click);
             // 
@@ -1579,12 +1606,12 @@
             this.dockPanel1.Size = new System.Drawing.Size(1350, 426);
             this.dockPanel1.TabIndex = 5;
             // 
-            // 打开首页ToolStripMenuItem
+            // 转户统计ToolStripMenuItem
             // 
-            this.打开首页ToolStripMenuItem.Name = "打开首页ToolStripMenuItem";
-            this.打开首页ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
-            this.打开首页ToolStripMenuItem.Text = "打开首页";
-            this.打开首页ToolStripMenuItem.Click += new System.EventHandler(this.打开首页ToolStripMenuItem_Click);
+            this.转户统计ToolStripMenuItem.Name = "转户统计ToolStripMenuItem";
+            this.转户统计ToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.转户统计ToolStripMenuItem.Text = "转户统计";
+            this.转户统计ToolStripMenuItem.Click += new System.EventHandler(this.转户统计ToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -1790,6 +1817,9 @@
         private System.Windows.Forms.ToolStripMenuItem 帮助ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 关于ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 打开首页ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 上报工作表ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 转户明细查询ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 转户统计ToolStripMenuItem;
 
     }
 }

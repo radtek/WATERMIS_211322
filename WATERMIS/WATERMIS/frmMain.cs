@@ -1086,5 +1086,23 @@ namespace WATERMIS
             FrmDefaultPage frm = new FrmDefaultPage();
             frm.Show(this.dockPanel1);
         }
+
+        private void 上报工作表ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmFinanceSubmitReport frm = new frmFinanceSubmitReport();
+            frm.Show(this.dockPanel1);
+        }
+
+        private void 转户明细查询ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmWaterUserMoveSearch frm = new frmWaterUserMoveSearch();
+            frm.Show(this.dockPanel1);
+        }
+
+        private void 转户统计ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmWaterUserMoveStatic frm = new frmWaterUserMoveStatic();
+            frm.Show(this.dockPanel1);
+        }
     }
 }
