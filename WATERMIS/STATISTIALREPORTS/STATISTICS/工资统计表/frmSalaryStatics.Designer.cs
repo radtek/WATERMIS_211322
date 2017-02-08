@@ -450,7 +450,9 @@
             this.dgList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgList.Size = new System.Drawing.Size(1009, 414);
             this.dgList.TabIndex = 402;
+            this.dgList.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgList_CellValueChanged);
             this.dgList.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgList_CellPainting);
+            this.dgList.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgList_EditingControlShowing);
             this.dgList.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgList_DataBindingComplete);
             // 
             // environmentSettings1

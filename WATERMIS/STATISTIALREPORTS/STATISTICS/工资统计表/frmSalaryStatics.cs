@@ -143,7 +143,7 @@ namespace STATISTIALREPORTS
         /// </summary>
         private void BindMeterReader(ComboBox cmb, string strType)
         {
-            DataTable dt = BLLBASE_LOGIN.QueryUser(" AND isMeterReader='1'");
+            DataTable dt = BLLBASE_LOGIN.QueryUser(" AND isMeterReader='1'  ORDER BY USERNAME");
             if (strType == "0")
             {
                 DataRow dr = dt.NewRow();
@@ -552,7 +552,12 @@ namespace STATISTIALREPORTS
                     if (Information.IsNumeric(objJHJS))
                         intJHJS = Convert.ToInt32(objJHJS);
 
-                    dtWaterMeterList.Rows[j]["应收金额"] = ((intJHJS * (intYSL / (intYSHS * 2.0)) * 2.25 + (0.9 * ((double)decJE - intYSL * 2.25) / 2.0))*2).ToString("F2");
+                   decimal decYSPerUser = 0;
+                    object objYSPerUser = dtWaterMeterList.Rows[j]["用水/户/吨"];
+                    if (Information.IsNumeric(objYSPerUser))
+                        decYSPerUser = Convert.ToDecimal(objYSPerUser);
+
+                    dtWaterMeterList.Rows[j]["应收金额"] = ((intJHJS * (double)decYSPerUser * 2.25 + (0.9 * ((double)decJE - intYSL * 2.25) / 2.0)) * 2).ToString("F2");
                 }
                     #endregion
 
@@ -650,9 +655,29 @@ namespace STATISTIALREPORTS
                 if (Information.IsNumeric(obj))
                     dgList.Rows[dgList.Rows.Count - 1].Cells["0.85超阶梯/月"].Value = (Convert.ToDecimal(obj) / (dgList.Rows.Count - 1)).ToString("F2");
 
+                obj = dtWaterMeterList.Compute("SUM([0.90超阶梯/月])", "");
+                if (Information.IsNumeric(obj))
+                    dgList.Rows[dgList.Rows.Count - 1].Cells["0.90超阶梯/月"].Value = (Convert.ToDecimal(obj) / (dgList.Rows.Count - 1)).ToString("F2");
+
+                obj = dtWaterMeterList.Compute("SUM(挑出户)", "");
+                if (Information.IsNumeric(obj))
+                    dgList.Rows[dgList.Rows.Count - 1].Cells["挑出户"].Value = Convert.ToInt32(obj);
+
+                obj = dtWaterMeterList.Compute("SUM(计划件数)", "");
+                if (Information.IsNumeric(obj))
+                    dgList.Rows[dgList.Rows.Count - 1].Cells["计划件数"].Value = Convert.ToInt32(obj);
+
                 obj = dtWaterMeterList.Compute("SUM(查表率)", "");
                 if (Information.IsNumeric(obj))
                     dgList.Rows[dgList.Rows.Count - 1].Cells["查表率"].Value = (Convert.ToDecimal(obj) / (dgList.Rows.Count - 1)).ToString("F2");
+
+                obj = dtWaterMeterList.Compute("SUM(应收金额)", "");
+                if (Information.IsNumeric(obj))
+                    dgList.Rows[dgList.Rows.Count - 1].Cells["应收金额"].Value = Convert.ToDecimal(obj).ToString("F2");
+
+
+                dgList.Rows[dgList.Rows.Count - 1].Cells["周期"].ReadOnly = true;
+                dgList.Rows[dgList.Rows.Count - 1].Cells["挑出户"].ReadOnly = true;
             }
             #endregion
         }
@@ -662,10 +687,10 @@ namespace STATISTIALREPORTS
             string strCaption = "";
             if (GetMonth(dtpStartSearch.Value, dtpEndSearch.Value) > 1)
             {
-                strCaption = dtpStartSearch.Value.Month + "-" + dtpEndSearch.Value.Month + "月份水费应收统计表";
+                strCaption = dtpStartSearch.Value.Month + "-" + dtpEndSearch.Value.Month + "月份工资统计表";
             }
             else
-                strCaption = dtpEndSearch.Value.Month + "月份水费应收统计表";
+                strCaption = dtpEndSearch.Value.Month + "月份工资统计表";
             ExportExcel ExportExcel = new ExportExcel();
             ExportExcel.ExportToExcel(strCaption, dgList);
         }
@@ -850,5 +875,120 @@ namespace STATISTIALREPORTS
             dtpEnd.Value = dtMonthEnd;
         }
 
+        private void dgList_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+                return;
+            if (dgList.Columns[e.ColumnIndex].Name == "周期")
+            {
+                object obj = dgList.Rows[e.RowIndex].Cells["周期"].Value;
+                if (Information.IsNumeric(obj))
+                {
+                    decimal decWCXS = 0;
+                    int intPeriod = Convert.ToInt32(obj);
+
+                    obj = dgList.Rows[e.RowIndex].Cells["完成系数"].Value;
+                    if (Information.IsNumeric(obj) && Convert.ToDecimal(obj) > 0)
+                    {
+                        decWCXS = Convert.ToDecimal(obj);
+                        dgList.Rows[e.RowIndex].Cells["完成系数/月"].Value = (decWCXS / intPeriod).ToString("F2");
+                    }
+
+                    int intYSL = 0, intYSHS = 0;
+
+                    obj = dgList.Rows[e.RowIndex].Cells["用水量"].Value;
+                    if (Information.IsNumeric(obj) && Convert.ToInt32(obj) > 0)
+                        intYSL = Convert.ToInt32(obj);
+
+                    obj = dgList.Rows[e.RowIndex].Cells["用水户数"].Value;
+                    if (Information.IsNumeric(obj) && Convert.ToInt32(obj) > 0)
+                        intYSHS = Convert.ToInt32(obj);
+
+                    if (intYSHS > 0 && intPeriod > 0)
+                        dgList.Rows[e.RowIndex].Cells["用水/户/吨"].Value = (intYSL / (intYSHS * intPeriod * 1.0)).ToString("F2");
+
+                    decimal decJE = 0;
+
+                    obj = dgList.Rows[e.RowIndex].Cells["金额"].Value;
+                    if (Information.IsNumeric(obj) && Convert.ToInt32(obj) > 0)
+                        decJE = Convert.ToDecimal(obj);
+
+                    if (intPeriod > 0)
+                    {
+                        dgList.Rows[e.RowIndex].Cells["超阶梯/月"].Value = (((double)decJE - intYSL * 2.25) / intPeriod).ToString("F2");
+                        dgList.Rows[e.RowIndex].Cells["0.85超阶梯/月"].Value = (((double)decJE - intYSL * 2.25) * 0.85 / intPeriod).ToString("F2");
+                        dgList.Rows[e.RowIndex].Cells["0.90超阶梯/月"].Value = (((double)decJE - intYSL * 2.25) * 0.9 / intPeriod).ToString("F2");
+                    }
+                    dgList_DataBindingComplete(null, null);
+                }
+            }
+           else if (dgList.Columns[e.ColumnIndex].Name == "挑出户")
+            {
+                object obj = dgList.Rows[e.RowIndex].Cells["挑出户"].Value;
+                if (Information.IsNumeric(obj))
+                {
+                    int intTCH = Convert.ToInt32(obj);
+                    int intHS = 0;
+
+                    obj = dgList.Rows[e.RowIndex].Cells["户数"].Value;
+                    if (Information.IsNumeric(obj))
+                    {
+                        intHS = Convert.ToInt32(obj);
+                        dgList.Rows[e.RowIndex].Cells["计划件数"].Value = intHS - intTCH;
+                    }
+
+                    decimal decYSLPerUser = 0;
+
+                    obj = dgList.Rows[e.RowIndex].Cells["用水/户/吨"].Value;
+                    if (Information.IsNumeric(obj))
+                    {
+                        decYSLPerUser = Convert.ToDecimal(obj);
+                    }
+
+                    decimal decCJT90 = 0;
+
+                    obj = dgList.Rows[e.RowIndex].Cells["0.90超阶梯/月"].Value;
+                    if (Information.IsNumeric(obj))
+                    {
+                        decCJT90 = Convert.ToDecimal(obj);
+                    }
+
+                    int intPeriod = 0;
+                    obj = dgList.Rows[e.RowIndex].Cells["周期"].Value;
+                    if (Information.IsNumeric(obj))
+                    {
+                        intPeriod = Convert.ToInt32(obj);
+                    }
+                    dgList.Rows[e.RowIndex].Cells["应收金额"].Value = (((intHS - intTCH) * (double)decYSLPerUser * 2.25 + (double)decCJT90) * intPeriod).ToString("F2");
+                    dgList_DataBindingComplete(null, null);
+                }
+            }
+        }
+        
+        public DataGridViewTextBoxEditingControl CellEdit = null;
+        private void dgList_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            int intColumnIndex = this.dgList.CurrentCellAddress.X;
+            if (dgList.Columns[intColumnIndex].Name == "周期" ||dgList.Columns[intColumnIndex].Name == "挑出户")
+            {
+                CellEdit = (DataGridViewTextBoxEditingControl)e.Control;
+                CellEdit.SelectAll();
+                CellEdit.KeyPress += Cells_KeyPress; //绑定事件
+            }
+        }
+
+        private void Cells_KeyPress(object sender, KeyPressEventArgs e) //自定义事件
+        {
+            int intColumnIndex = this.dgList.CurrentCellAddress.X;
+            if (dgList.Columns[intColumnIndex].Name == "周期" ||
+                dgList.Columns[intColumnIndex].Name == "挑出户")
+            {
+                //如果输入的不是数字键，也不是回车键、Backspace键，则取消该输入
+                if (!(Char.IsNumber(e.KeyChar)) && e.KeyChar != (char)13 && e.KeyChar != (char)8)
+                {
+                    e.Handled = true;
+                }
+            }
+        }
     }
 }
