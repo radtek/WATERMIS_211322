@@ -54,6 +54,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.UserOpinion = new System.Windows.Forms.TextBox();
             this.IsPass = new System.Windows.Forms.CheckBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.LB_YUE = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -61,6 +63,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.LB_YUE);
+            this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.WATERUSERNO);
             this.panel1.Controls.Add(this.CHARGEBCSS_IN);
@@ -318,6 +322,23 @@
             this.IsPass.UseVisualStyleBackColor = false;
             this.IsPass.CheckedChanged += new System.EventHandler(this.IsPass_CheckedChanged);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(226, 50);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(65, 12);
+            this.label9.TabIndex = 31;
+            this.label9.Text = "账户余额：";
+            // 
+            // LB_YUE
+            // 
+            this.LB_YUE.AutoSize = true;
+            this.LB_YUE.Location = new System.Drawing.Point(287, 50);
+            this.LB_YUE.Name = "LB_YUE";
+            this.LB_YUE.Size = new System.Drawing.Size(0, 12);
+            this.LB_YUE.TabIndex = 32;
+            // 
             // FrmApprove_Refund
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -367,5 +388,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox UserOpinion;
         private System.Windows.Forms.CheckBox IsPass;
+        private System.Windows.Forms.Label LB_YUE;
+        private System.Windows.Forms.Label label9;
     }
 }

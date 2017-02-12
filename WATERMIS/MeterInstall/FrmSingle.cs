@@ -11,6 +11,7 @@ using Common.DotNetCode;
 using DBinterface.IDAL;
 using DBinterface.DAL;
 using DBinterface;
+using Common.DotNetData;
 
 
 namespace MeterInstall
@@ -99,7 +100,20 @@ namespace MeterInstall
 
                 if (string.IsNullOrEmpty(key) || state.Equals("0"))
                 {
-                    bool result = new SqlServerHelper().CreateWorkTask(ht["SingleID"].ToString(), SDNO, "Meter_Install_Single", "SingleID", "用户报装");
+                    //根据用水性质来确定审批流程==============================================================================================================
+                    //  SELECT * FROM WaterUserType_Approve WHERE WaterUserTypeId=''===waterUserTypeId
+                    string sqlstr = string.Format("SELECT * FROM WaterUserType_Approve WHERE WaterUserTypeId='{0}'", waterUserTypeId.SelectedValue);
+                    DataTable dt = new SqlServerHelper().GetDateTableBySql(sqlstr);
+                    bool result = false;
+                    if (DataTableHelper.IsExistRows(dt))
+                    {
+                        string taskcode = dt.Rows[0][0].ToString();
+                        result = new SqlServerHelper().CreateWorkTask(ht["SingleID"].ToString(), SDNO, "Meter_Install_Single", "SingleID", "用户报装",taskcode);
+                    }
+                    else
+                    {
+                        result = new SqlServerHelper().CreateWorkTask(ht["SingleID"].ToString(), SDNO, "Meter_Install_Single", "SingleID", "用户报装");
+                    }
                     if (result)
                     {
                         MessageBox.Show("任务创建成功！");
@@ -144,14 +158,38 @@ namespace MeterInstall
 
         private void toolSearch_Click(object sender, EventArgs e)
         {
+            if (!string.IsNullOrEmpty(key))
+            {
+                Hashtable ht = new Hashtable();
 
+                if (string.IsNullOrEmpty(waterUserName.Text) || string.IsNullOrEmpty(waterUserAddress.Text) || string.IsNullOrEmpty(waterPhone.Text))
+                {
+                    MessageBox.Show("信息不完整！");
+                    return;
+                }
+
+                ht["WATERUSERNAME"] = waterUserName.Text.Trim();
+                ht["QUERYKEY"] = QueryKey.Text.Trim();
+                ht["WATERUSERADDRESS"] = waterUserAddress.Text.Trim();
+                ht["WATERPHONE"] = waterPhone.Text.Trim();
+                ht["WATERUSERPEOPLECOUNT"] = waterUserPeopleCount.Text.Trim();
+
+                if (new SqlServerHelper().Submit_AddOrEdit("Meter_Install_Single", "SingleID", key, ht))
+                {
+                    MessageBox.Show("保存成功！");
+                }
+                else
+                {
+                    MessageBox.Show("保存失败！");
+                }
+            }
         }
 
         private void toolPrint_Click(object sender, EventArgs e)
         {
             DataSet ds = new DataSet();
 
-            DataTable dtPrint = new SqlServerHelper().GetDataTable("Meter_Install_Single", "", "");
+            DataTable dtPrint = new SqlServerHelper().GetDataTable("Meter_Install_Single", "SingleID='"+key+"'", "");
 
             dtPrint.TableName = "用户报装申请表";
             ds.Tables.Add(dtPrint);
@@ -175,6 +213,16 @@ namespace MeterInstall
                 // free resources used by report
                 report1.Dispose();
             }
+        }
+
+        private void toolPrintPreview_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void toolExcel_Click(object sender, EventArgs e)
+        {
+            //===================================================================导出
         }
     }
 }

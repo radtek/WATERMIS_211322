@@ -437,6 +437,7 @@
             this.toolPrintPreview.Name = "toolPrintPreview";
             this.toolPrintPreview.Size = new System.Drawing.Size(71, 22);
             this.toolPrintPreview.Text = "打印预览";
+            this.toolPrintPreview.Click += new System.EventHandler(this.toolPrintPreview_Click);
             // 
             // toolStripSeparator1
             // 
@@ -450,6 +451,7 @@
             this.toolExcel.Name = "toolExcel";
             this.toolExcel.Size = new System.Drawing.Size(81, 22);
             this.toolExcel.Text = "导出Excel";
+            this.toolExcel.Click += new System.EventHandler(this.toolExcel_Click);
             // 
             // FrmSingle
             // 
