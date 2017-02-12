@@ -577,7 +577,27 @@ public class SqlServerHelper
         {
             _TableOrder = dt.Rows[0][0].ToString().Trim();
         }
-
+        else
+        {
+            switch (tableName.ToUpper())
+            {
+                case "USER_REFUND":
+                    _TableOrder = "10";
+                    break;
+                case "USER_WATERPRICE":
+                    _TableOrder = "11";
+                    break;
+                case "USER_CHARGEABATE":
+                    _TableOrder = "12";
+                    break;
+                case "USER_ADDWATER":
+                    _TableOrder = "14";
+                    break;
+                default:
+                    _TableOrder = "00";
+                    break;
+            }
+        }
         sqlstr = string.Format("SELECT COUNT(1),MAX({2}) FROM {0} where datediff(dd,{1},GETDATE())=0", tableName, createDate, SDName);
          dt = DbHelperSQL.Query(sqlstr, null).Tables[0];
         if (DataTableHelper.IsExistRows(dt))

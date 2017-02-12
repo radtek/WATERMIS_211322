@@ -10,6 +10,7 @@ using DBinterface.IDAL;
 using DBinterface.DAL;
 using Common.WinDevices;
 using Common.DotNetUI;
+using Common.DotNetData;
 using BASEFUNCTION;
 
 namespace PersonalWork
@@ -317,6 +318,24 @@ COMMIT TRAN
         {
             Hashtable ht = new SqlServerHelper().GetHashtableById("User_Refund", "TaskID", TaskID);
             new SqlServerHelper().BindHashTableToForm(ht, this.panel1.Controls);
+
+            //========================显示账户余额
+            //=======================SELECT (PRESTORE-TOTALFEE) AS USERAREARAGE FROM V_WATERUSERAREARAGE WHERE  waterUserNO='U70001'
+            try
+            {
+                string sqlstr = string.Format("SELECT (PRESTORE-TOTALFEE) AS USERAREARAGE FROM V_WATERUSERAREARAGE WHERE  waterUserNO='{0}'", ht["WATERUSERNO"].ToString());
+                DataTable dt = new SqlServerHelper().GetDateTableBySql(sqlstr);
+                if (DataTableHelper.IsExistRows(dt))
+                {
+                    LB_YUE.Text = dt.Rows[0][0].ToString();
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                
+               
+            }
         }
 
         private void InitView()

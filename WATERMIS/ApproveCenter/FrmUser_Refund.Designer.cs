@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.uC_FlowList1 = new SysControl.UC_FlowList();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.uC_SearchModule1 = new SysControl.UC_SearchModule();
             this.uC_DataGridView_Page1 = new SysControl.UC_DataGridView_Page();
-            this.uC_FlowList1 = new SysControl.UC_FlowList();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -53,6 +53,20 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(884, 301);
             this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // uC_FlowList1
+            // 
+            this.uC_FlowList1.AutoScroll = true;
+            this.uC_FlowList1.AutoSize = true;
+            this.uC_FlowList1.BackColor = System.Drawing.Color.White;
+            this.uC_FlowList1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uC_FlowList1.Location = new System.Drawing.Point(3, 244);
+            this.uC_FlowList1.MinimumSize = new System.Drawing.Size(800, 60);
+            this.uC_FlowList1.Name = "uC_FlowList1";
+            this.uC_FlowList1.Size = new System.Drawing.Size(878, 60);
+            this.uC_FlowList1.TabIndex = 4;
+            this.uC_FlowList1.Tag = "9999";
+            this.uC_FlowList1.TaskId = null;
             // 
             // flowLayoutPanel1
             // 
@@ -88,6 +102,7 @@
             this.uC_DataGridView_Page1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uC_DataGridView_Page1.Fields = null;
             this.uC_DataGridView_Page1.FieldStatis = null;
+            this.uC_DataGridView_Page1.FiledColor = null;
             this.uC_DataGridView_Page1.Location = new System.Drawing.Point(3, 73);
             this.uC_DataGridView_Page1.MinimumSize = new System.Drawing.Size(833, 100);
             this.uC_DataGridView_Page1.Name = "uC_DataGridView_Page1";
@@ -99,20 +114,6 @@
             this.uC_DataGridView_Page1.Tag = "9999";
             this.uC_DataGridView_Page1.Load += new System.EventHandler(this.uC_DataGridView_Page1_Load);
             this.uC_DataGridView_Page1.CellDoubleClickEvents += new SysControl.UC_DataGridView_Page.CellDoubleClickEvent(this.uC_DataGridView_Page1_CellDoubleClickEvents);
-            // 
-            // uC_FlowList1
-            // 
-            this.uC_FlowList1.AutoScroll = true;
-            this.uC_FlowList1.AutoSize = true;
-            this.uC_FlowList1.BackColor = System.Drawing.Color.White;
-            this.uC_FlowList1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uC_FlowList1.Location = new System.Drawing.Point(3, 244);
-            this.uC_FlowList1.MinimumSize = new System.Drawing.Size(800, 60);
-            this.uC_FlowList1.Name = "uC_FlowList1";
-            this.uC_FlowList1.Size = new System.Drawing.Size(878, 60);
-            this.uC_FlowList1.TabIndex = 4;
-            this.uC_FlowList1.Tag = "9999";
-            this.uC_FlowList1.TaskId = null;
             // 
             // FrmUser_Refund
             // 
