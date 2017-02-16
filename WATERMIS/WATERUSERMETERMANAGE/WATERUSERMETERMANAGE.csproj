@@ -161,9 +161,6 @@
     <EmbeddedResource Include="frmBatchAddWaterUserAndMeter.resx">
       <DependentUpon>frmBatchAddWaterUserAndMeter.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmWaterUserAndMeterSingleModify.resx">
-      <DependentUpon>frmWaterUserAndMeterSingleModify.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmWaterUserPrestoreSearch.resx">
       <DependentUpon>frmWaterUserPrestoreSearch.cs</DependentUpon>
     </EmbeddedResource>
@@ -192,12 +189,6 @@
     </Compile>
     <Compile Include="frmBatchAddWaterUserAndMeter.Designer.cs">
       <DependentUpon>frmBatchAddWaterUserAndMeter.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmWaterUserAndMeterSingleModify.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmWaterUserAndMeterSingleModify.Designer.cs">
-      <DependentUpon>frmWaterUserAndMeterSingleModify.cs</DependentUpon>
     </Compile>
     <Compile Include="frmWaterUserPrestoreSearch.cs">
       <SubType>Form</SubType>

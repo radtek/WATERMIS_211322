@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRestoreChargeCancel));
             this.tb1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -93,6 +93,10 @@
             this.METERREADERID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.METERREADERNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btSetMonth = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.反月结ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.反日结ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtWaterUserNameSearch = new System.Windows.Forms.TextBox();
             this.label48 = new System.Windows.Forms.Label();
             this.cmbChargerWorkName = new System.Windows.Forms.ComboBox();
@@ -106,10 +110,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtChargeNO = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.反月结ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.反日结ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btSetMonth = new System.Windows.Forms.Button();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.今天ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -552,16 +552,16 @@
             this.dgHistoryWaterFee.AllowUserToAddRows = false;
             this.dgHistoryWaterFee.AllowUserToDeleteRows = false;
             this.dgHistoryWaterFee.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgHistoryWaterFee.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgHistoryWaterFee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgHistoryWaterFee.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgHistoryWaterFee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgHistoryWaterFee.ColumnHeadersHeight = 25;
             this.dgHistoryWaterFee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgHistoryWaterFee.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -807,6 +807,42 @@
             this.groupBox1.Tag = "9999";
             this.groupBox1.Text = "查询条件";
             // 
+            // btSetMonth
+            // 
+            this.btSetMonth.BackgroundImage = global::WATERFEEMANAGE.Properties.Resources.onebit_20;
+            this.btSetMonth.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btSetMonth.ContextMenuStrip = this.contextMenuStrip1;
+            this.btSetMonth.Enabled = false;
+            this.btSetMonth.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btSetMonth.Location = new System.Drawing.Point(646, 54);
+            this.btSetMonth.Name = "btSetMonth";
+            this.btSetMonth.Size = new System.Drawing.Size(22, 23);
+            this.btSetMonth.TabIndex = 146;
+            this.btSetMonth.UseVisualStyleBackColor = true;
+            this.btSetMonth.Click += new System.EventHandler(this.btSetMonth_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.反月结ToolStripMenuItem,
+            this.反日结ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(113, 48);
+            // 
+            // 反月结ToolStripMenuItem
+            // 
+            this.反月结ToolStripMenuItem.Name = "反月结ToolStripMenuItem";
+            this.反月结ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.反月结ToolStripMenuItem.Text = "反月结";
+            this.反月结ToolStripMenuItem.Click += new System.EventHandler(this.反月结ToolStripMenuItem_Click);
+            // 
+            // 反日结ToolStripMenuItem
+            // 
+            this.反日结ToolStripMenuItem.Name = "反日结ToolStripMenuItem";
+            this.反日结ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.反日结ToolStripMenuItem.Text = "反日结";
+            this.反日结ToolStripMenuItem.Click += new System.EventHandler(this.反日结ToolStripMenuItem_Click);
+            // 
             // txtWaterUserNameSearch
             // 
             this.txtWaterUserNameSearch.BackColor = System.Drawing.SystemColors.Window;
@@ -856,6 +892,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Enabled = false;
             this.label3.Location = new System.Drawing.Point(452, 58);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(24, 16);
@@ -865,6 +902,7 @@
             // dtpEnd
             // 
             this.dtpEnd.CustomFormat = "yyyy-MM-dd HH:mm";
+            this.dtpEnd.Enabled = false;
             this.dtpEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpEnd.Location = new System.Drawing.Point(477, 52);
             this.dtpEnd.Name = "dtpEnd";
@@ -874,6 +912,7 @@
             // dtpStart
             // 
             this.dtpStart.CustomFormat = "yyyy-MM-dd HH:mm";
+            this.dtpStart.Enabled = false;
             this.dtpStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpStart.Location = new System.Drawing.Point(287, 52);
             this.dtpStart.Name = "dtpStart";
@@ -885,6 +924,7 @@
             this.chkChargeDateTime.AutoSize = true;
             this.chkChargeDateTime.Checked = true;
             this.chkChargeDateTime.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkChargeDateTime.Enabled = false;
             this.chkChargeDateTime.Location = new System.Drawing.Point(195, 56);
             this.chkChargeDateTime.Name = "chkChargeDateTime";
             this.chkChargeDateTime.Size = new System.Drawing.Size(99, 20);
@@ -925,41 +965,6 @@
             this.label1.Size = new System.Drawing.Size(80, 16);
             this.label1.TabIndex = 101;
             this.label1.Text = "收费单号:";
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.反月结ToolStripMenuItem,
-            this.反日结ToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(113, 48);
-            // 
-            // 反月结ToolStripMenuItem
-            // 
-            this.反月结ToolStripMenuItem.Name = "反月结ToolStripMenuItem";
-            this.反月结ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
-            this.反月结ToolStripMenuItem.Text = "反月结";
-            this.反月结ToolStripMenuItem.Click += new System.EventHandler(this.反月结ToolStripMenuItem_Click);
-            // 
-            // 反日结ToolStripMenuItem
-            // 
-            this.反日结ToolStripMenuItem.Name = "反日结ToolStripMenuItem";
-            this.反日结ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
-            this.反日结ToolStripMenuItem.Text = "反日结";
-            this.反日结ToolStripMenuItem.Click += new System.EventHandler(this.反日结ToolStripMenuItem_Click);
-            // 
-            // btSetMonth
-            // 
-            this.btSetMonth.BackgroundImage = global::WATERFEEMANAGE.Properties.Resources.onebit_20;
-            this.btSetMonth.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btSetMonth.ContextMenuStrip = this.contextMenuStrip1;
-            this.btSetMonth.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btSetMonth.Location = new System.Drawing.Point(646, 54);
-            this.btSetMonth.Name = "btSetMonth";
-            this.btSetMonth.Size = new System.Drawing.Size(22, 23);
-            this.btSetMonth.TabIndex = 146;
-            this.btSetMonth.UseVisualStyleBackColor = true;
-            this.btSetMonth.Click += new System.EventHandler(this.btSetMonth_Click);
             // 
             // contextMenuStrip2
             // 

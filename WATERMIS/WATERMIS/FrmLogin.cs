@@ -35,7 +35,7 @@ namespace WATERMIS
             //this.Location = new Point(20,(Screen.PrimaryScreen.WorkingArea.Height-this.Height)/2);
             string strName= ConfigurationSettings.AppSettings["USERNAME"];
             txtLogName.Text = strName;
-           // btLogin_Click(null, null);
+            //btLogin_Click(null, null);
         }
 
         Messages mes = new Messages();

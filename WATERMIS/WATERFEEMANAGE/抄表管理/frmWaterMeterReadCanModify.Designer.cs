@@ -1129,6 +1129,7 @@
             this.toolChangeWaterMeterType.Name = "toolChangeWaterMeterType";
             this.toolChangeWaterMeterType.Size = new System.Drawing.Size(89, 24);
             this.toolChangeWaterMeterType.Text = "变更水价";
+            this.toolChangeWaterMeterType.Visible = false;
             this.toolChangeWaterMeterType.Click += new System.EventHandler(this.toolChangeWaterMeterType_Click);
             // 
             // toolStripLabel2

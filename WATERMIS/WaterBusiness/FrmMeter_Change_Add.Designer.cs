@@ -62,7 +62,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(932, 727);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(932, 612);
             this.tableLayoutPanel1.TabIndex = 7;
             // 
             // tableLayoutPanel2
@@ -75,9 +75,9 @@
             this.tableLayoutPanel2.Location = new System.Drawing.Point(403, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 384F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 371F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(526, 721);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(526, 606);
             this.tableLayoutPanel2.TabIndex = 10;
             // 
             // panel1
@@ -95,9 +95,9 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 387);
+            this.panel1.Location = new System.Drawing.Point(3, 374);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(520, 331);
+            this.panel1.Size = new System.Drawing.Size(520, 229);
             this.panel1.TabIndex = 7;
             // 
             // waterPhone
@@ -106,7 +106,7 @@
             this.waterPhone.EmptyMessage = "";
             this.waterPhone.ErrorMessage = "";
             this.waterPhone.InputType = Common.WinControl.Ryan.RegTextbox.RyanTextBox.EMInputTypes.数字;
-            this.waterPhone.Location = new System.Drawing.Point(334, 90);
+            this.waterPhone.Location = new System.Drawing.Point(334, 80);
             this.waterPhone.Name = "waterPhone";
             this.waterPhone.RegexExpression = "";
             this.waterPhone.RemoveSpace = false;
@@ -117,7 +117,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(259, 95);
+            this.label4.Location = new System.Drawing.Point(259, 85);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 12);
             this.label4.TabIndex = 78;
@@ -129,7 +129,7 @@
             this.ChangeDescribe.EmptyMessage = "";
             this.ChangeDescribe.ErrorMessage = "";
             this.ChangeDescribe.InputType = Common.WinControl.Ryan.RegTextbox.RyanTextBox.EMInputTypes.文本;
-            this.ChangeDescribe.Location = new System.Drawing.Point(89, 16);
+            this.ChangeDescribe.Location = new System.Drawing.Point(89, 7);
             this.ChangeDescribe.Multiline = true;
             this.ChangeDescribe.Name = "ChangeDescribe";
             this.ChangeDescribe.RegexExpression = "";
@@ -144,7 +144,7 @@
             this.ApplyUser.EmptyMessage = "";
             this.ApplyUser.ErrorMessage = "";
             this.ApplyUser.InputType = Common.WinControl.Ryan.RegTextbox.RyanTextBox.EMInputTypes.文本;
-            this.ApplyUser.Location = new System.Drawing.Point(89, 90);
+            this.ApplyUser.Location = new System.Drawing.Point(89, 80);
             this.ApplyUser.Name = "ApplyUser";
             this.ApplyUser.RegexExpression = "";
             this.ApplyUser.RemoveSpace = false;
@@ -155,7 +155,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(15, 95);
+            this.label5.Location = new System.Drawing.Point(15, 85);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(71, 12);
             this.label5.TabIndex = 75;
@@ -166,7 +166,7 @@
             this.Btn_Submit.BackColor = System.Drawing.Color.LimeGreen;
             this.Btn_Submit.Enabled = false;
             this.Btn_Submit.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Btn_Submit.Location = new System.Drawing.Point(210, 217);
+            this.Btn_Submit.Location = new System.Drawing.Point(210, 177);
             this.Btn_Submit.Name = "Btn_Submit";
             this.Btn_Submit.Size = new System.Drawing.Size(108, 37);
             this.Btn_Submit.TabIndex = 14;
@@ -177,7 +177,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(32, 175);
+            this.button1.Location = new System.Drawing.Point(32, 135);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(32, 23);
             this.button1.TabIndex = 11;
@@ -188,7 +188,7 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.White;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(91, 151);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(91, 111);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(405, 59);
             this.flowLayoutPanel1.TabIndex = 10;
@@ -196,16 +196,16 @@
             // 
             // waterMeterEndNumber
             // 
-            this.waterMeterEndNumber.Location = new System.Drawing.Point(297, 121);
+            this.waterMeterEndNumber.Location = new System.Drawing.Point(62, 33);
             this.waterMeterEndNumber.Name = "waterMeterEndNumber";
-            this.waterMeterEndNumber.Size = new System.Drawing.Size(117, 21);
+            this.waterMeterEndNumber.Size = new System.Drawing.Size(21, 21);
             this.waterMeterEndNumber.TabIndex = 9;
             this.waterMeterEndNumber.Visible = false;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(228, 126);
+            this.label8.Location = new System.Drawing.Point(5, 36);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 12);
             this.label8.TabIndex = 7;
@@ -215,7 +215,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 151);
+            this.label2.Location = new System.Drawing.Point(20, 111);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 12);
             this.label2.TabIndex = 1;
@@ -225,7 +225,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 18);
+            this.label1.Location = new System.Drawing.Point(16, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 12);
             this.label1.TabIndex = 0;
@@ -236,15 +236,16 @@
             this.uC_UserMeterDetails1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uC_UserMeterDetails1.Location = new System.Drawing.Point(3, 3);
             this.uC_UserMeterDetails1.Name = "uC_UserMeterDetails1";
-            this.uC_UserMeterDetails1.Size = new System.Drawing.Size(520, 378);
+            this.uC_UserMeterDetails1.Size = new System.Drawing.Size(520, 365);
             this.uC_UserMeterDetails1.TabIndex = 6;
+            this.uC_UserMeterDetails1.Tag = "";
             // 
             // uC_UserSearch1
             // 
             this.uC_UserSearch1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uC_UserSearch1.Location = new System.Drawing.Point(3, 3);
             this.uC_UserSearch1.Name = "uC_UserSearch1";
-            this.uC_UserSearch1.Size = new System.Drawing.Size(394, 721);
+            this.uC_UserSearch1.Size = new System.Drawing.Size(394, 606);
             this.uC_UserSearch1.TabIndex = 9;
             this.uC_UserSearch1.BtnSearchEvent += new System.EventHandler(this.uC_UserSearch1_BtnSearchEvent);
             // 
@@ -252,7 +253,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(932, 727);
+            this.ClientSize = new System.Drawing.Size(932, 612);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "FrmMeter_Change_Add";

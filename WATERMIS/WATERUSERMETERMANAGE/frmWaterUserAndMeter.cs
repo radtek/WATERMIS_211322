@@ -683,14 +683,14 @@ namespace WATERUSERMETERMANAGE
                 txtWaterMeterPosition.Visible = false;
                 txtWaterMeterSize.Visible = false;
                 txtWaterMeterState.Visible = false;
-                txtWaterMeterType.Visible = false;
+                //txtWaterMeterType.Visible = false;
+                //txtWaterMeterTypeChange.Visible = false;
                 //txtWaterMeterIsSummary.Visible = false;
                 txtWaterMeterProofDate.Visible = false;
                 txtIsSummary.Visible = false;
                 txtWaterMeterIsSummary.Visible = false;
 
 
-                txtWaterMeterTypeChange.Visible = false;
                 chkUseChange.Enabled = true;
             }
         }

@@ -646,6 +646,7 @@
             this.btBatchAdd.TabIndex = 108;
             this.btBatchAdd.Text = "批量添加";
             this.btBatchAdd.UseVisualStyleBackColor = false;
+            this.btBatchAdd.Visible = false;
             this.btBatchAdd.Click += new System.EventHandler(this.btBatchAdd_Click);
             // 
             // btOK
@@ -700,7 +701,6 @@
             "水表位置",
             "口径",
             "水表状态",
-            "用水性质",
             "初始读数",
             "出厂编号",
             "生产厂家",

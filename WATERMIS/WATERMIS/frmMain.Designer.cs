@@ -128,7 +128,6 @@
             this.预存冲减与发票补打ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.用户退费管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.用户转款ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.水费减免ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
             this.通知单打印ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.预存用户水费结算ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -208,7 +207,6 @@
             this.bgNotice = new System.ComponentModel.BackgroundWorker();
             this.trNotice = new System.Windows.Forms.Timer(this.components);
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -877,8 +875,6 @@
             this.预存冲减与发票补打ToolStripMenuItem,
             this.用户退费管理ToolStripMenuItem,
             this.用户转款ToolStripMenuItem,
-            this.toolStripSeparator7,
-            this.水费减免ToolStripMenuItem,
             this.toolStripSeparator13,
             this.通知单打印ToolStripMenuItem,
             this.预存用户水费结算ToolStripMenuItem,
@@ -1004,13 +1000,6 @@
             this.用户转款ToolStripMenuItem.Size = new System.Drawing.Size(255, 26);
             this.用户转款ToolStripMenuItem.Text = "用户转款";
             this.用户转款ToolStripMenuItem.Click += new System.EventHandler(this.用户转款ToolStripMenuItem_Click);
-            // 
-            // 水费减免ToolStripMenuItem
-            // 
-            this.水费减免ToolStripMenuItem.Name = "水费减免ToolStripMenuItem";
-            this.水费减免ToolStripMenuItem.Size = new System.Drawing.Size(255, 26);
-            this.水费减免ToolStripMenuItem.Text = "水费减免(&J)";
-            this.水费减免ToolStripMenuItem.Click += new System.EventHandler(this.水费减免ToolStripMenuItem_Click);
             // 
             // toolStripSeparator13
             // 
@@ -1626,11 +1615,6 @@
             this.dockPanel1.Size = new System.Drawing.Size(1350, 426);
             this.dockPanel1.TabIndex = 5;
             // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(252, 6);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1696,7 +1680,6 @@
         private System.Windows.Forms.ToolStripMenuItem 预存冲减与发票补打ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 用户余额初始化ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
-        private System.Windows.Forms.ToolStripMenuItem 水费减免ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 水费管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 手工抄表ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 水费审核ToolStripMenuItem;
@@ -1839,7 +1822,6 @@
         private System.Windows.Forms.ToolStripMenuItem 转户统计ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 部门费用统计表ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 工资统计表ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
 
     }
 }

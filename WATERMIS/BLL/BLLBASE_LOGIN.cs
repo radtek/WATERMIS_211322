@@ -104,9 +104,9 @@ namespace BLL
        {
            StringBuilder str = new StringBuilder();
            str.Append("INSERT INTO BASE_LOGIN(LOGINID,LOGINNAME,workNO,USERNAME,LOGINPASSWORD,POSTID,DEPARTMENTID,"+
-               "MEMO,TELEPHONENO,isMeterReader,isCharger,groupID,generateDateTime,userstate,IsCashier) ");
+               "MEMO,TELEPHONENO,isMeterReader,isCharger,groupID,generateDateTime,userstate,IsCashier,Password) ");
            str.Append("VALUES(@LOGINID,@LOGINNAME,@workNO,@USERNAME,@LOGINPASSWORD,@POSTID,@DEPARTMENTID,"+
-               "@MEMO,@TELEPHONENO,@isMeterReader,@isCharger,@groupID,@generateDateTime,@userstate,@IsCashier)");
+               "@MEMO,@TELEPHONENO,@isMeterReader,@isCharger,@groupID,@generateDateTime,@userstate,@IsCashier,@Password)");
            SqlParameter[] para =
            {
                new SqlParameter("@LOGINID",SqlDbType.VarChar,50),
@@ -123,7 +123,8 @@ namespace BLL
                new SqlParameter("@groupID",SqlDbType.VarChar,10),
                new SqlParameter("@generateDateTime",SqlDbType.DateTime),
                new SqlParameter("@userstate",SqlDbType.VarChar,10),
-               new SqlParameter("@IsCashier",SqlDbType.VarChar,10)
+               new SqlParameter("@IsCashier",SqlDbType.VarChar,10),
+               new SqlParameter("@Password",SqlDbType.VarChar,50)
            };
            para[0].Value = MODELBASE_LOGIN.LOGINID;
            para[1].Value = MODELBASE_LOGIN.LOGINNAME;
@@ -140,6 +141,7 @@ namespace BLL
            para[12].Value = MODELBASE_LOGIN.generateDateTime;
            para[13].Value = MODELBASE_LOGIN.userstate;
            para[14].Value = MODELBASE_LOGIN.IsCashier;
+           para[15].Value = MODELBASE_LOGIN.LOGINPASSWORD;
 
            if (DBUtility.DbHelperSQL.ExecuteSql(str.ToString(), para) > 0)
                return true;
