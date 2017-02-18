@@ -108,7 +108,7 @@ namespace MeterInstall
             ht["LOGINID"] = strLogID;
             ht["SD"] = SDNO;
 
-            ht["PeccantInstallType"] = "1";//入口类型 1营业  2监察
+            ht["PeccantInstallType"] = "2";//入口类型 1营业  2监察
 
             string _FlowCode = "Meter_Install_Peccant_2";
 
