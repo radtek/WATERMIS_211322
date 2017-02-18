@@ -46,7 +46,7 @@
             // 
             // LB_Date
             // 
-            this.LB_Date.Font = new System.Drawing.Font("微软雅黑 Light", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LB_Date.Font = new System.Drawing.Font("微软雅黑 Light", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.LB_Date.Location = new System.Drawing.Point(8, 41);
             this.LB_Date.Name = "LB_Date";
             this.LB_Date.Size = new System.Drawing.Size(80, 17);

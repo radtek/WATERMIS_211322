@@ -33,16 +33,19 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.dgWaterMeter = new System.Windows.Forms.DataGridView();
+            this.uC_UserDetails1 = new SysControl.UC_UserDetails();
             this.waterMeterNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waterMeterPositionName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waterMeterSizeValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waterMeterStateS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waterMeterTypeValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waterMeterStartNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.waterMeterLastNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.waterMeterEndNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.readMeterRecordYearAndMonth = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waterMeterSerialNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WATERFIXVALUE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.memoWaterMeter = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uC_UserDetails1 = new SysControl.UC_UserDetails();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgWaterMeter)).BeginInit();
@@ -99,6 +102,9 @@
             this.waterMeterStateS,
             this.waterMeterTypeValue,
             this.waterMeterStartNumber,
+            this.waterMeterLastNumber,
+            this.waterMeterEndNumber,
+            this.readMeterRecordYearAndMonth,
             this.waterMeterSerialNumber,
             this.WATERFIXVALUE,
             this.memoWaterMeter});
@@ -111,6 +117,15 @@
             this.dgWaterMeter.RowTemplate.Height = 23;
             this.dgWaterMeter.Size = new System.Drawing.Size(516, 99);
             this.dgWaterMeter.TabIndex = 1;
+            // 
+            // uC_UserDetails1
+            // 
+            this.uC_UserDetails1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uC_UserDetails1.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uC_UserDetails1.Location = new System.Drawing.Point(3, 3);
+            this.uC_UserDetails1.Name = "uC_UserDetails1";
+            this.uC_UserDetails1.Size = new System.Drawing.Size(522, 231);
+            this.uC_UserDetails1.TabIndex = 5;
             // 
             // waterMeterNo
             // 
@@ -160,6 +175,30 @@
             this.waterMeterStartNumber.ReadOnly = true;
             this.waterMeterStartNumber.Width = 88;
             // 
+            // waterMeterLastNumber
+            // 
+            this.waterMeterLastNumber.DataPropertyName = "waterMeterLastNumber";
+            this.waterMeterLastNumber.HeaderText = "上月读数";
+            this.waterMeterLastNumber.Name = "waterMeterLastNumber";
+            this.waterMeterLastNumber.ReadOnly = true;
+            this.waterMeterLastNumber.Width = 88;
+            // 
+            // waterMeterEndNumber
+            // 
+            this.waterMeterEndNumber.DataPropertyName = "waterMeterEndNumber";
+            this.waterMeterEndNumber.HeaderText = "本月读数";
+            this.waterMeterEndNumber.Name = "waterMeterEndNumber";
+            this.waterMeterEndNumber.ReadOnly = true;
+            this.waterMeterEndNumber.Width = 88;
+            // 
+            // readMeterRecordYearAndMonth
+            // 
+            this.readMeterRecordYearAndMonth.DataPropertyName = "readMeterRecordYearAndMonth";
+            this.readMeterRecordYearAndMonth.HeaderText = "抄表月份";
+            this.readMeterRecordYearAndMonth.Name = "readMeterRecordYearAndMonth";
+            this.readMeterRecordYearAndMonth.ReadOnly = true;
+            this.readMeterRecordYearAndMonth.Width = 88;
+            // 
             // waterMeterSerialNumber
             // 
             this.waterMeterSerialNumber.DataPropertyName = "waterMeterSerialNumber";
@@ -184,15 +223,6 @@
             this.memoWaterMeter.ReadOnly = true;
             this.memoWaterMeter.Width = 60;
             // 
-            // uC_UserDetails1
-            // 
-            this.uC_UserDetails1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uC_UserDetails1.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uC_UserDetails1.Location = new System.Drawing.Point(3, 3);
-            this.uC_UserDetails1.Name = "uC_UserDetails1";
-            this.uC_UserDetails1.Size = new System.Drawing.Size(522, 231);
-            this.uC_UserDetails1.TabIndex = 5;
-            // 
             // UC_UserMeterDetails
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -212,16 +242,19 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.DataGridView dgWaterMeter;
+        public UC_UserDetails uC_UserDetails1;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterMeterNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterMeterPositionName;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterMeterSizeValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterMeterStateS;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterMeterTypeValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterMeterStartNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn waterMeterLastNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn waterMeterEndNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn readMeterRecordYearAndMonth;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterMeterSerialNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn WATERFIXVALUE;
         private System.Windows.Forms.DataGridViewTextBoxColumn memoWaterMeter;
-        public UC_UserDetails uC_UserDetails1;
 
     }
 }

@@ -28,11 +28,25 @@ namespace DBinterface.DAL
                 return null;
             }
         }
-
+        //2017年2月18日 RONG
         public DataTable GetWaterMeterByUserID(string waterUserId)
         {
-           string sqlstr = "SELECT waterMeterNo,waterMeterStartNumber,waterMeterStateS,waterMeterSizeValue,waterMeterTypeValue,waterMeterPositionName,waterMeterSerialNumber,WATERFIXVALUE,MEMO FROM V_WATERMETER WHERE waterUserId='" + waterUserId + "'";
-           return new SqlServerHelper().GetDateTableBySql(sqlstr);
+          // string sqlstr = "SELECT waterMeterNo,waterMeterStartNumber,waterMeterStateS,waterMeterSizeValue,waterMeterTypeValue,waterMeterPositionName,waterMeterSerialNumber,WATERFIXVALUE,MEMO FROM V_WATERMETER WHERE waterUserId='" + waterUserId + "'";
+            string sqlstr =string.Format(@"SELECT waterMeterNo,waterMeterStartNumber,waterMeterStateS,waterMeterSizeValue,waterMeterTypeValue,
+waterMeterPositionName,waterMeterSerialNumber,WATERFIXVALUE,MEMO,
+(select top 1 waterMeterLastNumber from readMeterRecord 
+where waterMeterId=V.waterMeterId
+order by readMeterRecordDate desc) AS waterMeterLastNumber,
+(select top 1 waterMeterEndNumber from readMeterRecord 
+where waterMeterId=V.waterMeterId
+order by readMeterRecordDate desc) AS waterMeterEndNumber,
+(select top 1 readMeterRecordYearAndMonth from readMeterRecord 
+where waterMeterId=V.waterMeterId
+order by readMeterRecordDate desc) AS readMeterRecordYearAndMonth
+FROM V_WATERMETER V WHERE waterUserId='{0}'", waterUserId);
+          
+            
+            return new SqlServerHelper().GetDateTableBySql(sqlstr);
 
         }
 
