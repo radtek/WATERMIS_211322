@@ -291,5 +291,10 @@ namespace SysControl
             WB2.Refresh();
         }
 
+        private void RefreshMSG_Tick(object sender, EventArgs e)
+        {
+            InitTaskWork();
+        }
+
     }
 }
