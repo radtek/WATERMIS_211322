@@ -30,7 +30,7 @@ namespace PersonalWork
             string sqlstr = string.Format(@"SELECT * FROM 
  (SELECT MW.TaskName,MW.TaskCode,MWR.DoName,MW.PointTime,MWR.TimeLimit,MW.TaskID,MWR.ResolveID,MWR.PointSort,MWR.PointName,
  MW.SD,MWR.WorkName,MW.AcceptUser,MW.AcceptDate,MWR.CreateDate,MWR.isPass,MWR.loginId,VW.waterUserName,VW.waterPhone,VW.waterUserAddress
-   FROM Meter_WorkTask MW LEFT JOIN View_WorkBase VW ON MW.TaskID=VW.TaskID,Meter_WorkResolve MWR 
+   FROM Meter_WorkTask MW LEFT JOIN View_TABLEUNION VW ON MW.TaskID=VW.TaskID,Meter_WorkResolve MWR 
    WHERE MW.TaskID=MWR.TaskID AND MW.PointSort=MWR.PointSort AND ','+MWR.loginId+',' like '%,'+'{0}'+',%' AND MW.[State]=1) M", loginid);
 
             if (!string.IsNullOrEmpty(uC_SearchApprove1.sb.ToString()))
@@ -98,6 +98,7 @@ namespace PersonalWork
                         ht["ResolveID"] = ResolveID;
                         ht["PointSort"] = PointSort;
                         ht["TaskID"] = TaskID;
+                        ht["Edit"] = "True";
                         Frm.Tag = ht;
                         Frm.ShowDialog();
                         if (Frm.DialogResult == DialogResult.OK)

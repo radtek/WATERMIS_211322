@@ -45,6 +45,18 @@ namespace PersonalWork
             strTaskID = ht["TaskID"].ToString();
             ResolveID = ht["ResolveID"].ToString();
             PointSort = ht["PointSort"].ToString();
+            #region //2017-2-22 RONG
+            bool IsAllowEdit = false;
+            if (ht.Contains("Edit"))
+            {
+                if (bool.TryParse(ht["Edit"].ToString(), out IsAllowEdit))
+                {
+
+                }
+            }
+            Btn_Submit.Enabled = IsAllowEdit;
+            btAddWaterUserBatch.Enabled = IsAllowEdit;
+            #endregion
             htt = new SqlServerHelper().GetHashtableById("Meter_Install_Group", "TaskID", strTaskID);
             if (htt.Contains("GROUPID"))
             {

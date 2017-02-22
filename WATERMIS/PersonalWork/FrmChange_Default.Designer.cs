@@ -33,6 +33,9 @@
             this.Btn_More = new System.Windows.Forms.Button();
             this.FP_Fee = new System.Windows.Forms.FlowLayoutPanel();
             this.FP_Items = new System.Windows.Forms.FlowLayoutPanel();
+            this.uC_ChargeItem1 = new SysControl.UC_ChargeItem();
+            this.uC_ChargeItem2 = new SysControl.UC_ChargeItem();
+            this.uC_ChargeItem3 = new SysControl.UC_ChargeItem();
             this.Btn_Voided = new System.Windows.Forms.Button();
             this.Btn_Submit = new System.Windows.Forms.Button();
             this.LB_GoPointID = new System.Windows.Forms.Label();
@@ -41,9 +44,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.UserOpinion = new System.Windows.Forms.TextBox();
             this.IsPass = new System.Windows.Forms.CheckBox();
-            this.uC_ChargeItem1 = new SysControl.UC_ChargeItem();
-            this.uC_ChargeItem2 = new SysControl.UC_ChargeItem();
-            this.uC_ChargeItem3 = new SysControl.UC_ChargeItem();
             this.panel1.SuspendLayout();
             this.FP_Items.SuspendLayout();
             this.SuspendLayout();
@@ -99,6 +99,27 @@
             this.FP_Items.Size = new System.Drawing.Size(468, 132);
             this.FP_Items.TabIndex = 13;
             this.FP_Items.Visible = false;
+            // 
+            // uC_ChargeItem1
+            // 
+            this.uC_ChargeItem1.Location = new System.Drawing.Point(3, 3);
+            this.uC_ChargeItem1.Name = "uC_ChargeItem1";
+            this.uC_ChargeItem1.Size = new System.Drawing.Size(142, 27);
+            this.uC_ChargeItem1.TabIndex = 0;
+            // 
+            // uC_ChargeItem2
+            // 
+            this.uC_ChargeItem2.Location = new System.Drawing.Point(151, 3);
+            this.uC_ChargeItem2.Name = "uC_ChargeItem2";
+            this.uC_ChargeItem2.Size = new System.Drawing.Size(142, 27);
+            this.uC_ChargeItem2.TabIndex = 1;
+            // 
+            // uC_ChargeItem3
+            // 
+            this.uC_ChargeItem3.Location = new System.Drawing.Point(299, 3);
+            this.uC_ChargeItem3.Name = "uC_ChargeItem3";
+            this.uC_ChargeItem3.Size = new System.Drawing.Size(142, 27);
+            this.uC_ChargeItem3.TabIndex = 2;
             // 
             // Btn_Voided
             // 
@@ -191,27 +212,6 @@
             this.IsPass.Text = "同意";
             this.IsPass.UseVisualStyleBackColor = false;
             this.IsPass.CheckedChanged += new System.EventHandler(this.IsPass_CheckedChanged);
-            // 
-            // uC_ChargeItem1
-            // 
-            this.uC_ChargeItem1.Location = new System.Drawing.Point(3, 3);
-            this.uC_ChargeItem1.Name = "uC_ChargeItem1";
-            this.uC_ChargeItem1.Size = new System.Drawing.Size(142, 27);
-            this.uC_ChargeItem1.TabIndex = 0;
-            // 
-            // uC_ChargeItem2
-            // 
-            this.uC_ChargeItem2.Location = new System.Drawing.Point(151, 3);
-            this.uC_ChargeItem2.Name = "uC_ChargeItem2";
-            this.uC_ChargeItem2.Size = new System.Drawing.Size(142, 27);
-            this.uC_ChargeItem2.TabIndex = 1;
-            // 
-            // uC_ChargeItem3
-            // 
-            this.uC_ChargeItem3.Location = new System.Drawing.Point(299, 3);
-            this.uC_ChargeItem3.Name = "uC_ChargeItem3";
-            this.uC_ChargeItem3.Size = new System.Drawing.Size(142, 27);
-            this.uC_ChargeItem3.TabIndex = 2;
             // 
             // FrmChange_Default
             // 

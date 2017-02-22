@@ -30,10 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmApprove_ChargeAbate));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.OldTotalNumber = new System.Windows.Forms.TextBox();
+            this.NewTotalNumber = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.readMeterRecordYearAndMonth = new System.Windows.Forms.TextBox();
             this.waterUserTypeId = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.readMeterRecordId = new System.Windows.Forms.TextBox();
-            this.NewTotalNumber = new System.Windows.Forms.TextBox();
             this.totalChargeEND = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -62,9 +65,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.UserOpinion = new System.Windows.Forms.TextBox();
             this.IsPass = new System.Windows.Forms.CheckBox();
-            this.readMeterRecordYearAndMonth = new System.Windows.Forms.TextBox();
-            this.OldTotalNumber = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.LB_Abate = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -73,8 +75,10 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.OldTotalNumber);
+            this.panel1.Controls.Add(this.LB_Abate);
+            this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.NewTotalNumber);
+            this.panel1.Controls.Add(this.OldTotalNumber);
             this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.readMeterRecordYearAndMonth);
             this.panel1.Controls.Add(this.waterUserTypeId);
@@ -101,9 +105,42 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(535, 291);
+            this.panel1.Size = new System.Drawing.Size(547, 291);
             this.panel1.TabIndex = 3;
             this.panel1.Tag = "9999";
+            // 
+            // OldTotalNumber
+            // 
+            this.OldTotalNumber.Enabled = false;
+            this.OldTotalNumber.Location = new System.Drawing.Point(228, 162);
+            this.OldTotalNumber.Name = "OldTotalNumber";
+            this.OldTotalNumber.Size = new System.Drawing.Size(55, 21);
+            this.OldTotalNumber.TabIndex = 44;
+            // 
+            // NewTotalNumber
+            // 
+            this.NewTotalNumber.Enabled = false;
+            this.NewTotalNumber.Location = new System.Drawing.Point(369, 161);
+            this.NewTotalNumber.Name = "NewTotalNumber";
+            this.NewTotalNumber.Size = new System.Drawing.Size(55, 21);
+            this.NewTotalNumber.TabIndex = 6;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(178, 166);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(53, 12);
+            this.label15.TabIndex = 43;
+            this.label15.Text = "用水量：";
+            // 
+            // readMeterRecordYearAndMonth
+            // 
+            this.readMeterRecordYearAndMonth.Enabled = false;
+            this.readMeterRecordYearAndMonth.Location = new System.Drawing.Point(296, 24);
+            this.readMeterRecordYearAndMonth.Name = "readMeterRecordYearAndMonth";
+            this.readMeterRecordYearAndMonth.Size = new System.Drawing.Size(214, 21);
+            this.readMeterRecordYearAndMonth.TabIndex = 34;
             // 
             // waterUserTypeId
             // 
@@ -132,20 +169,12 @@
             this.readMeterRecordId.TabIndex = 31;
             this.readMeterRecordId.Visible = false;
             // 
-            // NewTotalNumber
-            // 
-            this.NewTotalNumber.Enabled = false;
-            this.NewTotalNumber.Location = new System.Drawing.Point(446, 161);
-            this.NewTotalNumber.Name = "NewTotalNumber";
-            this.NewTotalNumber.Size = new System.Drawing.Size(63, 21);
-            this.NewTotalNumber.TabIndex = 6;
-            // 
             // totalChargeEND
             // 
             this.totalChargeEND.Enabled = false;
             this.totalChargeEND.Location = new System.Drawing.Point(103, 161);
             this.totalChargeEND.Name = "totalChargeEND";
-            this.totalChargeEND.Size = new System.Drawing.Size(104, 21);
+            this.totalChargeEND.Size = new System.Drawing.Size(72, 21);
             this.totalChargeEND.TabIndex = 28;
             // 
             // label10
@@ -169,7 +198,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(364, 165);
+            this.label5.Location = new System.Drawing.Point(289, 166);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(83, 12);
             this.label5.TabIndex = 22;
@@ -304,7 +333,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(0, 417);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(535, 71);
+            this.panel3.Size = new System.Drawing.Size(547, 71);
             this.panel3.TabIndex = 5;
             this.panel3.Tag = "9999";
             // 
@@ -346,7 +375,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 291);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(535, 126);
+            this.panel2.Size = new System.Drawing.Size(547, 126);
             this.panel2.TabIndex = 6;
             this.panel2.Tag = "9999";
             // 
@@ -415,36 +444,28 @@
             this.IsPass.Text = "同意";
             this.IsPass.UseVisualStyleBackColor = false;
             // 
-            // readMeterRecordYearAndMonth
+            // label11
             // 
-            this.readMeterRecordYearAndMonth.Enabled = false;
-            this.readMeterRecordYearAndMonth.Location = new System.Drawing.Point(296, 24);
-            this.readMeterRecordYearAndMonth.Name = "readMeterRecordYearAndMonth";
-            this.readMeterRecordYearAndMonth.Size = new System.Drawing.Size(214, 21);
-            this.readMeterRecordYearAndMonth.TabIndex = 34;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(427, 166);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(65, 12);
+            this.label11.TabIndex = 45;
+            this.label11.Text = "减免金额：";
             // 
-            // OldTotalNumber
+            // LB_Abate
             // 
-            this.OldTotalNumber.Enabled = false;
-            this.OldTotalNumber.Location = new System.Drawing.Point(285, 162);
-            this.OldTotalNumber.Name = "OldTotalNumber";
-            this.OldTotalNumber.Size = new System.Drawing.Size(58, 21);
-            this.OldTotalNumber.TabIndex = 44;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(224, 166);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(65, 12);
-            this.label15.TabIndex = 43;
-            this.label15.Text = "用 水 量：";
+            this.LB_Abate.AutoSize = true;
+            this.LB_Abate.Location = new System.Drawing.Point(488, 167);
+            this.LB_Abate.Name = "LB_Abate";
+            this.LB_Abate.Size = new System.Drawing.Size(0, 12);
+            this.LB_Abate.TabIndex = 46;
             // 
             // FrmApprove_ChargeAbate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(535, 488);
+            this.ClientSize = new System.Drawing.Size(547, 488);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
@@ -499,5 +520,7 @@
         private System.Windows.Forms.TextBox readMeterRecordYearAndMonth;
         private System.Windows.Forms.TextBox OldTotalNumber;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label LB_Abate;
     }
 }

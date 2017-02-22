@@ -53,7 +53,18 @@ namespace PersonalWork
             ResolveID = ht["ResolveID"].ToString();
             PointSort = ht["PointSort"].ToString();
             hc["TaskID"] = TaskID;
+            #region //2017-2-22 RONG
+            bool IsAllowEdit = false;
+            if (ht.Contains("Edit"))
+            {
+                if (bool.TryParse(ht["Edit"].ToString(), out IsAllowEdit))
+                {
 
+                }
+            }
+            Btn_Submit.Enabled = IsAllowEdit;
+            Btn_Settle.Enabled = IsAllowEdit;
+            #endregion
             if (AppDomain.CurrentDomain.GetData("LOGINID") != null && AppDomain.CurrentDomain.GetData("LOGINID") != DBNull.Value)
             {
                 strLogID = AppDomain.CurrentDomain.GetData("LOGINID").ToString();

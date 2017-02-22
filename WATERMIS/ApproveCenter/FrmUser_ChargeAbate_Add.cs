@@ -25,6 +25,13 @@ namespace ApproveCenter
         private string strRealName;
         private string _WATERUSERNO = "";
 
+        //2017年1月18日
+        private int OldNum = 0;
+        private decimal OldFee = 0m;
+        private int NewNum = 0;
+        private decimal NewAbate = 0m;
+        private decimal _Abate = 0m;
+
         //引用basefunction及Microsoft.VisualBasic;
         //声明对话框类
         Messages mes = new Messages();
@@ -57,19 +64,19 @@ namespace ApproveCenter
 
                 ht["READMETERRECORDID"] = readMeterRecordId.Text;
                 ht["WATERUSERNO"] = WATERUSERNO.Text;
-                ht["READMETERRECORDYEARANDMONTH"] = readMeterRecordYearAndMonth.Text+"-01";
+                ht["READMETERRECORDYEARANDMONTH"] = readMeterRecordYearAndMonth.Text + "-01";
                 ht["WATERUSERNAME"] = waterUserName.Text;
                 ht["WATERPHONE"] = waterPhone.Text;
                 ht["USERNAME"] = UserName.Text;
                 ht["WATERUSERADDRESS"] = waterUserAddress.Text;
                 ht["TOTALCHARGEEND"] = TotalChargeEND.Text;
-                ht["OldTotalNumber"] =(OldTotalNumber.Text);
+                ht["OldTotalNumber"] = (OldTotalNumber.Text);
                 ht["NewTotalNumber"] = Convert.ToInt32(NewTotalNumber.Text);
                 ht["ABATEDESCRIBE"] = AbateDescribe.Text;
                 ht["waterMeterTypeid"] = waterMeterTypeid.Text;
                 ht["waterUserTypeId"] = waterUserTypeId.Text;
                 ht["WaterMeterTypeValue"] = WaterMeterTypeValue.Text;
-                ht["WaterUserTypeName"] = WaterUserTypeName.Text;           
+                ht["WaterUserTypeName"] = WaterUserTypeName.Text;
 
                 ht["ACCEPTID"] = SDNO;
                 ht["LOGINID"] = strLogID;
@@ -105,6 +112,7 @@ namespace ApproveCenter
                 mes.Show("请输入用户编号");
                 return;
             }
+
             if (!txtWaterUser.Text.Contains("U"))
                 txtWaterUser.Text = "U" + txtWaterUser.Text.Trim();
 
@@ -160,7 +168,7 @@ namespace ApproveCenter
                 mes.Show("获取台账ID失败,请重新查询");
                 return false;
             }
-           
+
             if (!Information.IsNumeric(TotalChargeEND.Text.Trim()))
             {
                 mes.Show("获取欠费金额失败,请重新查询");
@@ -169,23 +177,23 @@ namespace ApproveCenter
 
             if (!CkeckAbate())
             {
-                 mes.Show("减免后水量不能大于原用水量！");
-                 NewTotalNumber.Text = "1";
-                 NewTotalNumber.Focus();
+                mes.Show("减免后水量不能大于原用水量！");
+                NewTotalNumber.Text = "1";
+                NewTotalNumber.Focus();
 
-                 return false;
+                return false;
             }
 
             return true;
         }
 
-       private bool CkeckAbate()
+        private bool CkeckAbate()
         {
-            bool result = false; 
+            bool result = false;
             decimal _totalChargeEND = 0m;
             if (Decimal.TryParse(OldTotalNumber.Text.Trim(), out _totalChargeEND))
             {
-                result = _totalChargeEND>0m?true:false;
+                result = _totalChargeEND > 0m ? true : false;
             }
             else
             {
@@ -195,7 +203,7 @@ namespace ApproveCenter
             decimal _Abage = 0m;
             if (Decimal.TryParse(NewTotalNumber.Text.Trim(), out _Abage))
             {
-                result =_Abage>0m? true:false;
+                result = _Abage > 0m ? true : false;
             }
             else
             {
@@ -234,7 +242,7 @@ namespace ApproveCenter
 
             obj = dgWaterFeeList.Rows[e.RowIndex].Cells["readMeterRecordYearAndMonth1"].Value;
             if (Information.IsDate(obj))
-                readMeterRecordYearAndMonth.Text =Convert.ToDateTime(obj).ToString("yyyy-MM");
+                readMeterRecordYearAndMonth.Text = Convert.ToDateTime(obj).ToString("yyyy-MM");
 
             obj = dgWaterFeeList.Rows[e.RowIndex].Cells["waterUserName1"].Value;
             if (obj != null && obj != DBNull.Value)
@@ -274,11 +282,17 @@ namespace ApproveCenter
 
             obj = dgWaterFeeList.Rows[e.RowIndex].Cells["totalCharge"].Value;
             if (Information.IsNumeric(obj))
+            {
                 TotalChargeEND.Text = Convert.ToDecimal(obj).ToString("F2");
+                OldFee = Convert.ToDecimal(obj);
+            }
 
             obj = dgWaterFeeList.Rows[e.RowIndex].Cells["totalNumber"].Value;
             if (Information.IsNumeric(obj))
+            {
                 OldTotalNumber.Text = Convert.ToInt32(obj).ToString();
+                OldNum = Convert.ToInt32(obj);
+            }
         }
 
         private void Abate_KeyPress(object sender, KeyPressEventArgs e)
@@ -394,7 +408,22 @@ namespace ApproveCenter
         private void txtWaterUser_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-                Btn_Search_Click(null,null);
-        }      
+                Btn_Search_Click(null, null);
+        }
+
+        private void NewTotalNumber_MouseLeave(object sender, EventArgs e)
+        {
+            if (int.TryParse(NewTotalNumber.Text,out NewNum))
+            {
+                if (NewNum>0)
+                {
+                    //NewAbate=
+                }
+                else
+                {
+                    LB_Abate.Text = _Abate.ToString();
+                }
+            }
+        }
     }
 }

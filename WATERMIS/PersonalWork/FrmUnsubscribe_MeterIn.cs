@@ -41,6 +41,17 @@ namespace PersonalWork
             TaskID = ht["TaskID"].ToString();
             ResolveID = ht["ResolveID"].ToString();
             PointSort = ht["PointSort"].ToString();
+            #region //2017-2-22 RONG
+            bool IsAllowEdit = false;
+            if (ht.Contains("Edit"))
+            {
+                if (bool.TryParse(ht["Edit"].ToString(), out IsAllowEdit))
+                {
+
+                }
+            }
+            Btn_Submit.Enabled = IsAllowEdit;
+            #endregion
         }
 
         private void FrmUnsubscribe_MeterIn_Shown(object sender, EventArgs e)

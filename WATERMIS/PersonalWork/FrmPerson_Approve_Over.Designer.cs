@@ -100,7 +100,9 @@
             this.uC_DataGridView_Page1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uC_DataGridView_Page1.Fields = null;
             this.uC_DataGridView_Page1.FieldStatis = null;
+            this.uC_DataGridView_Page1.FiledColor = null;
             this.uC_DataGridView_Page1.Location = new System.Drawing.Point(0, 0);
+            this.uC_DataGridView_Page1.MinimumSize = new System.Drawing.Size(833, 80);
             this.uC_DataGridView_Page1.Name = "uC_DataGridView_Page1";
             this.uC_DataGridView_Page1.PageIndex = 1;
             this.uC_DataGridView_Page1.PageOrderField = null;
@@ -108,6 +110,7 @@
             this.uC_DataGridView_Page1.Size = new System.Drawing.Size(979, 278);
             this.uC_DataGridView_Page1.TabIndex = 0;
             this.uC_DataGridView_Page1.Tag = "9999";
+            this.uC_DataGridView_Page1.CellDoubleClickEvents += new SysControl.UC_DataGridView_Page.CellDoubleClickEvent(this.uC_DataGridView_Page1_CellDoubleClickEvents);
             this.uC_DataGridView_Page1.CellClickEvents += new SysControl.UC_DataGridView_Page.CellClickEvent(this.uC_DataGridView_Page1_CellClickEvents);
             // 
             // FrmPerson_Approve_Over
