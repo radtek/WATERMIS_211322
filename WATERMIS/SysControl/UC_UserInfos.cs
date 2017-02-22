@@ -29,6 +29,12 @@ namespace SysControl
             {
                 Hashtable ht = sysidal.GetWaterUserInfoByWaterUserNO(waterUserNO);
                 new SqlServerHelper().BindHashTableToForm(ht, this.panel2.Controls);
+
+                Hashtable hts = new SqlServerHelper().GetHashtableById("V_WATERMETER", "waterUserId", waterUserNO);
+                if (hts.Contains("WATERMETERSIZEVALUE"))
+                {
+                    TB_WATERMETERSIZEVALUE.Text=hts["WATERMETERSIZEVALUE"].ToString();
+                }
             }
         }
 

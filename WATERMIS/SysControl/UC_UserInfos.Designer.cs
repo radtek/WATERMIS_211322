@@ -53,19 +53,23 @@
             this.label84 = new System.Windows.Forms.Label();
             this.label86 = new System.Windows.Forms.Label();
             this.label87 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.TB_WATERMETERSIZEVALUE = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
             // 
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
+            this.panel2.Controls.Add(this.TB_WATERMETERSIZEVALUE);
+            this.panel2.Controls.Add(this.userName);
+            this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.meterReaderName);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.waterUserHouseTypeS);
             this.panel2.Controls.Add(this.waterUserTypeName);
             this.panel2.Controls.Add(this.waterUserNO);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.userName);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.IsBoost);
             this.panel2.Controls.Add(this.pianNO);
@@ -148,20 +152,20 @@
             // 
             this.userName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.userName.Enabled = false;
-            this.userName.Location = new System.Drawing.Point(252, 132);
+            this.userName.Location = new System.Drawing.Point(384, 132);
             this.userName.Name = "userName";
-            this.userName.Size = new System.Drawing.Size(180, 21);
+            this.userName.Size = new System.Drawing.Size(99, 21);
             this.userName.TabIndex = 105;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(188, 135);
+            this.label2.Location = new System.Drawing.Point(332, 135);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 12);
+            this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 104;
-            this.label2.Text = "受 理 人：";
+            this.label2.Text = "受理人：";
             // 
             // IsBoost
             // 
@@ -310,6 +314,25 @@
             this.label87.TabIndex = 85;
             this.label87.Text = "用户类别：";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Location = new System.Drawing.Point(186, 136);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 12);
+            this.label4.TabIndex = 112;
+            this.label4.Text = "水表型号：";
+            // 
+            // TB_WATERMETERSIZEVALUE
+            // 
+            this.TB_WATERMETERSIZEVALUE.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TB_WATERMETERSIZEVALUE.Enabled = false;
+            this.TB_WATERMETERSIZEVALUE.Location = new System.Drawing.Point(252, 132);
+            this.TB_WATERMETERSIZEVALUE.Name = "TB_WATERMETERSIZEVALUE";
+            this.TB_WATERMETERSIZEVALUE.Size = new System.Drawing.Size(74, 21);
+            this.TB_WATERMETERSIZEVALUE.TabIndex = 113;
+            // 
             // UC_UserInfos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -349,5 +372,7 @@
         private System.Windows.Forms.TextBox waterUserTypeName;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox meterReaderName;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox TB_WATERMETERSIZEVALUE;
     }
 }
