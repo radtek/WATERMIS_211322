@@ -108,7 +108,7 @@ namespace MeterInstall
                     if (DataTableHelper.IsExistRows(dt))
                     {
                         string taskcode = dt.Rows[0][0].ToString();
-                        result = new SqlServerHelper().CreateWorkTask(ht["SingleID"].ToString(), SDNO, "Meter_Install_Single", "SingleID", "用户报装",taskcode);
+                        result = new SqlServerHelper().CreateWorkTask(ht["SingleID"].ToString(), SDNO, "Meter_Install_Single", "SingleID", "用户报装", taskcode);
                     }
                     else
                     {
@@ -189,7 +189,7 @@ namespace MeterInstall
         {
             DataSet ds = new DataSet();
 
-            DataTable dtPrint = new SqlServerHelper().GetDataTable("Meter_Install_Single", "SingleID='"+key+"'", "");
+            DataTable dtPrint = new SqlServerHelper().GetDataTable("Meter_Install_Single", "SingleID='" + key + "'", "");
 
             dtPrint.TableName = "用户报装申请表";
             ds.Tables.Add(dtPrint);
@@ -217,12 +217,25 @@ namespace MeterInstall
 
         private void toolPrintPreview_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void toolExcel_Click(object sender, EventArgs e)
         {
             //===================================================================导出
+        }
+
+        private void waterUserName_MouseLeave(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(waterUserName.Text) && !string.IsNullOrEmpty(waterUserAddress.Text))
+            {
+                string sqlstr = string.Format("SELECT SD,CreateDate FROM Meter_Install_Single WHERE waterUserName='{0}' AND waterUserAddress='{1}' AND State IN (1,2,3)", waterUserName.Text.Trim(), waterUserAddress.Text.Trim());
+                DataTable dt = new SqlServerHelper().GetDateTableBySql(sqlstr);
+                if (DataTableHelper.IsExistRows(dt))
+                {
+                    MessageBox.Show(string.Format("已经存在【{0}】的申请记录，记录编号：{1}，申请时间：{2}。是否要继续？",waterUserName.Text,dt.Rows[0][0].ToString(),dt.Rows[0][1].ToString()));
+                } 
+            }
         }
     }
 }

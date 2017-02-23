@@ -259,6 +259,7 @@
             this.waterUserName.Size = new System.Drawing.Size(236, 21);
             this.waterUserName.TabIndex = 1;
             this.waterUserName.TextChanged += new System.EventHandler(this.waterUserName_TextChanged);
+            this.waterUserName.MouseLeave += new System.EventHandler(this.waterUserName_MouseLeave);
             // 
             // waterUserAddress
             // 
@@ -266,6 +267,7 @@
             this.waterUserAddress.Name = "waterUserAddress";
             this.waterUserAddress.Size = new System.Drawing.Size(236, 21);
             this.waterUserAddress.TabIndex = 2;
+            this.waterUserAddress.MouseLeave += new System.EventHandler(this.waterUserName_MouseLeave);
             // 
             // waterUserTypeId
             // 
