@@ -599,7 +599,10 @@ public class SqlServerHelper
         //    }
         //}
 
-        string dateStr = DateTime.Now.ToString("yyyyMMdd");
+        DateTime dd = new DateTime();
+        dd = DateTime.Parse(DBUtility.DbHelperSQL.ExecuteScalar("SELECT TOP 1 GETDATE() FROM sysusers").ToString());
+
+        string dateStr = dd.ToString("yyyyMMdd");
         int index = 1;
         string sqlstr = "SELECT TableID FROM Meter_Table WHERE Table_Name=@Table_Name";
         string _TableOrder = "00";
