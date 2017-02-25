@@ -753,10 +753,10 @@ AND VV.CHARGEBCSS<=VW.prestore AND CHARGEID=@CHARGEID";
 SELECT TOP 1 @LastPoingSort=PointSort FROM Meter_WorkResolveFee MWF,Meter_WorkResolve MWR WHERE MWF.ResolveID=MWR.ResolveID AND MWR.TaskID=@TaskID AND PointSort<@PointSort ORDER BY PointSort DESC
 SELECT * FROM 
 (SELECT *,
-(SELECT COUNT(1) FROM Meter_WorkResolveFee WHERE ResolveID=T.ResolveID) AS ItemsCount,
-(SELECT SUM(Fee) FROM Meter_WorkResolveFee WHERE ResolveID=T.ResolveID) AS TotalFee,
-(SELECT SUM(State) FROM Meter_WorkResolveFee WHERE ResolveID=T.ResolveID) AS STATE,
-(SELECT TOP 1 IsFinal FROM Meter_WorkResolveFee WHERE ResolveID=T.ResolveID) AS IsFinal
+(SELECT COUNT(1) FROM Meter_WorkResolveFee WHERE ResolveID=T.ResolveID AND Fee<>0) AS ItemsCount,
+(SELECT SUM(Fee) FROM Meter_WorkResolveFee WHERE ResolveID=T.ResolveID AND Fee<>0) AS TotalFee,
+(SELECT SUM(State) FROM Meter_WorkResolveFee WHERE ResolveID=T.ResolveID AND Fee<>0) AS STATE,
+(SELECT TOP 1 IsFinal FROM Meter_WorkResolveFee WHERE ResolveID=T.ResolveID AND Fee<>0) AS IsFinal
 FROM 
 (SELECT DISTINCT MWR.DepartementID,BD.departmentName,MWR.ResolveID,MWR.PointSort AS FeePointSort FROM base_department BD,Meter_WorkResolve MWR WHERE BD.departmentID=MWR.DepartementID AND MWR.TaskID=@TaskID AND PointSort=@LastPoingSort) T) M
 WHERE ItemsCount>0 AND TotalFee>0";
@@ -818,10 +818,10 @@ WHERE ItemsCount>0 AND TotalFee>0";
 SELECT TOP 1 @LastPoingSort=PointSort FROM Meter_WorkResolveFee MWF,Meter_WorkResolve MWR WHERE MWF.ResolveID=MWR.ResolveID AND MWR.TaskID=@TaskID AND PointSort<@PointSort ORDER BY PointSort DESC
 SELECT * FROM 
 (SELECT *,
-(SELECT COUNT(1) FROM Meter_WorkResolveFee WHERE ResolveID=T.ResolveID) AS ItemsCount,
-(SELECT SUM(Fee) FROM Meter_WorkResolveFee WHERE ResolveID=T.ResolveID) AS TotalFee,
-(SELECT SUM(State) FROM Meter_WorkResolveFee WHERE ResolveID=T.ResolveID) AS STATE,
-(SELECT TOP 1 IsFinal FROM Meter_WorkResolveFee WHERE ResolveID=T.ResolveID) AS IsFinal
+(SELECT COUNT(1) FROM Meter_WorkResolveFee WHERE ResolveID=T.ResolveID AND Fee<>0) AS ItemsCount,
+(SELECT SUM(Fee) FROM Meter_WorkResolveFee WHERE ResolveID=T.ResolveID AND Fee<>0) AS TotalFee,
+(SELECT SUM(State) FROM Meter_WorkResolveFee WHERE ResolveID=T.ResolveID AND Fee<>0) AS STATE,
+(SELECT TOP 1 IsFinal FROM Meter_WorkResolveFee WHERE ResolveID=T.ResolveID AND Fee<>0) AS IsFinal
 FROM 
 (SELECT DISTINCT MWR.DepartementID,BD.departmentName,MWR.ResolveID,MWR.PointSort AS LastPointSort FROM base_department BD,Meter_WorkResolve MWR WHERE BD.departmentID=MWR.DepartementID AND MWR.TaskID=@TaskID AND PointSort=@LastPoingSort) T) M
 WHERE ItemsCount>0 AND TotalFee>0";

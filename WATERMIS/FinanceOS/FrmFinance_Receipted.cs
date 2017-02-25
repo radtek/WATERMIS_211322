@@ -140,6 +140,7 @@ FROM View_TaskFee VT  LEFT JOIN View_WorkBase VW ON VT.TaskID=VW.TASKID,Meter_Ta
                                                            { "SD", "业务流水号" }, 
                                                            { "waterUserId", "用户ID" }, 
                                                            { "waterUserName", "户名" }, 
+                                                           { "waterUserAddress", "地址" }, 
                                                            { "ApplyUser", "申请人" },
                                                            { "ApplyPhone", "联系电话" },
                                                            { "CreateDate", "申请时间" }
