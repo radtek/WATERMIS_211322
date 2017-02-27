@@ -134,6 +134,7 @@ namespace SysControl
                         ht["ResolveID"] = ResolveID;
                         ht["PointSort"] = PointSort;
                         ht["TaskID"] = TaskID;
+                        ht["Edit"] = "True";
                         Frm.Tag = ht;
                         Frm.ShowDialog();
                         if (Frm.DialogResult == DialogResult.OK)
