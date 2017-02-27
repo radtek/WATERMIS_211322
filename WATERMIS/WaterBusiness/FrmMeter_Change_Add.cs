@@ -57,49 +57,56 @@ namespace WaterBusiness
                 {
                     if (MessageBox.Show(string.Format("已经存在【{0}】的申请记录，记录编号：{1}，申请时间：{2}。是否要继续？", uC_UserMeterDetails1.uC_UserDetails1.WaterUserName.Text, dt.Rows[0][0].ToString(), dt.Rows[0][1].ToString()), "确定", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        if (ChangeDescribe.ValidateState & ApplyUser.ValidateState & waterPhone.ValidateState)
-                        {
-                            Hashtable ht = new Hashtable();
-                            ht = new SqlServerHelper().GetHashTableByControl(this.panel1.Controls);
 
-                            ht["ChangeID"] = Guid.NewGuid().ToString();
-                            string SDNO = new SqlServerHelper().GetSDByTable("Meter_Change");
-                            ht["ACCEPTID"] = SDNO;
-                            ht["LOGINID"] = strLogID;
-                            ht["SD"] = SDNO;
-                            ht["QueryKey"] = "123456";
-                            ht["userName"] = strRealName;
-                            ht["WaterUserNO"] = waterUserId;
-                            ht["waterUserName"] = uC_UserMeterDetails1.uC_UserDetails1.WaterUserName.Text;
-                            ht["waterUserAddress"] = uC_UserMeterDetails1.uC_UserDetails1.waterUserAddress.Text;
-
-                            if (new SqlServerHelper().Submit_AddOrEdit("Meter_Change", "ChangeID", "", ht))
-                            {
-                                bool result = new SqlServerHelper().CreateWorkTask(ht["ChangeID"].ToString(), SDNO, "Meter_Change", "ChangeID", "用户换表", "Meter_Change1");
-                                if (result)
-                                {
-                                    MessageBox.Show("任务创建成功！");
-                                    waterUserId = "";
-                                    uC_UserMeterDetails1.Clear();
-                                    new SqlServerHelper().ClearControls(panel1.Controls);
-                                }
-                                else
-                                {
-                                    MessageBox.Show("任务创建失败！");
-                                }
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("信息不完整！");
-                            return;
-                        }
-
+                        SaveInfo();
                     }
+                }
+                else
+                {
+                    SaveInfo();
                 }
             }
         }
+        private void SaveInfo()
+        {
+            if (ChangeDescribe.ValidateState & ApplyUser.ValidateState & waterPhone.ValidateState)
+            {
+                Hashtable ht = new Hashtable();
+                ht = new SqlServerHelper().GetHashTableByControl(this.panel1.Controls);
 
+                ht["ChangeID"] = Guid.NewGuid().ToString();
+                string SDNO = new SqlServerHelper().GetSDByTable("Meter_Change");
+                ht["ACCEPTID"] = SDNO;
+                ht["LOGINID"] = strLogID;
+                ht["SD"] = SDNO;
+                ht["QueryKey"] = "123456";
+                ht["userName"] = strRealName;
+                ht["WaterUserNO"] = waterUserId;
+                ht["waterUserName"] = uC_UserMeterDetails1.uC_UserDetails1.WaterUserName.Text;
+                ht["waterUserAddress"] = uC_UserMeterDetails1.uC_UserDetails1.waterUserAddress.Text;
+
+                if (new SqlServerHelper().Submit_AddOrEdit("Meter_Change", "ChangeID", "", ht))
+                {
+                    bool result = new SqlServerHelper().CreateWorkTask(ht["ChangeID"].ToString(), SDNO, "Meter_Change", "ChangeID", "用户换表", "Meter_Change1");
+                    if (result)
+                    {
+                        MessageBox.Show("任务创建成功！");
+                        waterUserId = "";
+                        uC_UserMeterDetails1.Clear();
+                        new SqlServerHelper().ClearControls(panel1.Controls);
+                    }
+                    else
+                    {
+                        MessageBox.Show("任务创建失败！");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("信息不完整！");
+                return;
+            }
+        }
         private void uC_UserSearch1_BtnSearchEvent(object sender, EventArgs e)
         {
             DataGridView dgWaterUser = (DataGridView)sender;
