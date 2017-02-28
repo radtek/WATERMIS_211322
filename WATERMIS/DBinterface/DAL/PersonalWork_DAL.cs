@@ -653,7 +653,7 @@ COMMIT TRAN", Chargeid, CHARGEID, PRESTORERUNNINGACCOUNTID);
                             DECLARE @ISEXIT INT=0
                             SET XACT_ABORT ON
                             BEGIN TRAN
-                            SELECT @waterUserId=waterUserId FROM Meter_Install_Single WHERE TaskID=@TaskID
+                            SELECT @waterUserId=waterUserId FROM Meter_Install_Peccant WHERE TaskID=@TaskID
                             SELECT @ISEXIT=COUNT(1) FROM waterUser WHERE waterUserId=@waterUserId
                             IF(@ISEXIT=0)
                             BEGIN
@@ -675,7 +675,7 @@ COMMIT TRAN", Chargeid, CHARGEID, PRESTORERUNNINGACCOUNTID);
                             waterMeterSizeId,waterMeterTypeId,ISUSECHANGE,CHANGEMONTH,waterMeterTypeIdChange,WATERFIXVALUE,waterMeterProduct,waterMeterSerialNumber,waterMeterMode,
                             waterMeterMaxRange,waterMeterProofreadingDate,waterMeteProofreadingPeriod,waterUserId,isSummaryMeter,waterMeterParentId,
                             STARTUSEDATETIME,MEMO,waterMeterState,IsReverse,WATERMETERLOCKNO FROM Meter WHERE MeterID IN (SELECT MeterID FROM Meter_User WHERE TaskID=@TaskID)
-                            INSERT INTO User_Append (TaskID,waterUserNO,waterUserName) SELECT TaskID,waterUserNO,waterUserName FROM Meter_Install_Single WHERE TaskID=@TaskID
+                            INSERT INTO User_Append (TaskID,waterUserNO,waterUserName) SELECT TaskID,waterUserNO,waterUserName FROM Meter_Install_Peccant WHERE TaskID=@TaskID
                             COMMIT TRAN";
             int count = DbHelperSQL.ExecuteSql(strsql, new SqlParameter[] { new SqlParameter("@TaskID", TaskID) });
             return count > 0 ? true : false;
