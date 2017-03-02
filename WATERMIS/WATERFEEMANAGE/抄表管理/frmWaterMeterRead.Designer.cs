@@ -1802,8 +1802,7 @@
             // 
             // frmWaterMeterRead
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(1008, 579);
             this.Controls.Add(this.btFold);
             this.Controls.Add(this.tb1);

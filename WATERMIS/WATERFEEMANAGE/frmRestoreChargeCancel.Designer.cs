@@ -812,7 +812,6 @@
             this.btSetMonth.BackgroundImage = global::WATERFEEMANAGE.Properties.Resources.onebit_20;
             this.btSetMonth.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btSetMonth.ContextMenuStrip = this.contextMenuStrip1;
-            this.btSetMonth.Enabled = false;
             this.btSetMonth.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btSetMonth.Location = new System.Drawing.Point(646, 54);
             this.btSetMonth.Name = "btSetMonth";
@@ -881,7 +880,7 @@
             // 
             // btSearch
             // 
-            this.btSearch.Location = new System.Drawing.Point(710, 48);
+            this.btSearch.Location = new System.Drawing.Point(674, 44);
             this.btSearch.Name = "btSearch";
             this.btSearch.Size = new System.Drawing.Size(59, 36);
             this.btSearch.TabIndex = 2;
@@ -892,7 +891,6 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Enabled = false;
             this.label3.Location = new System.Drawing.Point(452, 58);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(24, 16);
@@ -902,7 +900,6 @@
             // dtpEnd
             // 
             this.dtpEnd.CustomFormat = "yyyy-MM-dd HH:mm";
-            this.dtpEnd.Enabled = false;
             this.dtpEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpEnd.Location = new System.Drawing.Point(477, 52);
             this.dtpEnd.Name = "dtpEnd";
@@ -912,7 +909,6 @@
             // dtpStart
             // 
             this.dtpStart.CustomFormat = "yyyy-MM-dd HH:mm";
-            this.dtpStart.Enabled = false;
             this.dtpStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpStart.Location = new System.Drawing.Point(287, 52);
             this.dtpStart.Name = "dtpStart";
@@ -924,7 +920,6 @@
             this.chkChargeDateTime.AutoSize = true;
             this.chkChargeDateTime.Checked = true;
             this.chkChargeDateTime.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkChargeDateTime.Enabled = false;
             this.chkChargeDateTime.Location = new System.Drawing.Point(195, 56);
             this.chkChargeDateTime.Name = "chkChargeDateTime";
             this.chkChargeDateTime.Size = new System.Drawing.Size(99, 20);

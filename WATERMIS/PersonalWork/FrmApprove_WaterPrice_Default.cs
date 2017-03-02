@@ -287,8 +287,9 @@ WHERE readMeterRecordId='{13}' ", strWaterMeterRecordTrapePrice[0], strWaterMete
                     }
                     if (IsLong.Checked || ISUSECHANGE.Checked)
                     {
-                        strSQLExcute += string.Format(@"UPDATE waterMeter SET waterMeterTypeId='{0}',ISUSECHANGE='{1}',CHANGEMONTH='{2}',waterMeterTypeIdChange='{3}' ", waterMeterType_New.SelectedValue, ISUSECHANGE.Checked ? "1" : "0", CHANGEMONTH.Text, waterMeterTypeId.SelectedValue);
-
+                        strSQLExcute += string.Format(@"UPDATE waterMeter SET waterMeterTypeId='{0}',ISUSECHANGE='{1}',
+CHANGEMONTH='{2}',waterMeterTypeIdChange='{3}' WHERE WATERUSERID='{4}' ", waterMeterType_New.SelectedValue, 
+ISUSECHANGE.Checked ? "1" : "0", CHANGEMONTH.Text, waterMeterTypeId.SelectedValue,WATERUSERNO.Text);
                     }
 
                     strSQLExcute += "COMMIT TRAN";

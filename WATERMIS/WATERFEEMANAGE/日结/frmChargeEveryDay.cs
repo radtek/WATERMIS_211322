@@ -97,7 +97,7 @@ namespace WATERFEEMANAGE
             decYCBCSZ = 0, decYCBCSZXJ = 0, decYCBCSZPOS = 0, decYCJSYE = 0, decYCBCSZZHUANZHANG = 0, decBCSS = 0;
 
         //发票数量，水费单据数量，预存单据数量
-        int intYSCount = 0,intYSRECEIPRNOCOUNT=0, intYCCount = 0;
+        int intYSCount = 0, intYSRECEIPRNOCOUNT = 0, intYCCount = 0, intFPBDCount=0;
 
         private void toolSearch_Click(object sender, EventArgs e)
         {
@@ -106,18 +106,23 @@ namespace WATERFEEMANAGE
                 = decYCBCSZ = decYCBCSZXJ = decYCBCSZPOS = decYCJSYE = decYCBCSZZHUANZHANG = decBCSS = 0;
 
             //水费单据数量，预存单据数量
-            intYSCount = intYCCount = intYSRECEIPRNOCOUNT = 0;
+            intYSCount =intFPBDCount= intYCCount = intYSRECEIPRNOCOUNT = 0;
 
+            string strChargerID = "";
             string strFilter = " ";
+            string strFilterBDFP = " ";
             if (cmbChargerWorkName.SelectedValue != null && cmbChargerWorkName.SelectedValue != DBNull.Value)
             {
-                strFilter += " AND CHARGEWORKERID='" + cmbChargerWorkName.SelectedValue.ToString() + "'";
+                strChargerID = cmbChargerWorkName.SelectedValue.ToString();
+                strFilter += " AND CHARGEWORKERID='" + strChargerID + "'";
+                strFilterBDFP += " AND CHARGEWORKERID='" + strChargerID + "'";
                 cmbChargerWorkNameSearch.SelectedValue = cmbChargerWorkName.SelectedValue;
             }
             txtWorkerNameSearch.Text = cmbChargerWorkName.Text;
             if (chkChargeDateTime.Checked)
             {
                 strFilter += " AND CHARGEDATETIME BETWEEN '" + dtpStart.Text + "' AND '" + dtpEnd.Text + "'";
+                strFilterBDFP += " AND INVOICEPRINTDATETIME BETWEEN '" + dtpStart.Text + "' AND '" + dtpEnd.Text + "'";
                 dtpStartSearch.Value = dtpStart.Value;
                 dtpEndSearch.Value = dtpEnd.Value;
             }
@@ -127,7 +132,7 @@ namespace WATERFEEMANAGE
             labBCSS.Text = "0 元";
 
             #region 获取收费冲减余额及实收明细
-            DataTable dtWaterMeterList = BLLWATERFEECHARGE.SumWaterFeeCharge(strFilter,strLogID);
+            DataTable dtWaterMeterList = BLLWATERFEECHARGE.SumWaterFeeCharge(strFilter, strChargerID);
             if (dtWaterMeterList.Rows.Count > 0)
             {
                 object objYSCOUNT = dtWaterMeterList.Rows[0]["YSCOUNT"];
@@ -197,18 +202,25 @@ namespace WATERFEEMANAGE
                 if (Information.IsNumeric(objBCSS))
                 {
                     decBCSS = Convert.ToDecimal(objBCSS);
-                    labBCSS.Text = Convert.ToDecimal(objBCSS).ToString("F2") + " 元";
                 }
             }
+            #endregion
 
-            labWaterFeeCharge.Text = "发票:" + intYSCount.ToString() + "张,"+"收据:"+intYSRECEIPRNOCOUNT.ToString()+"张,应收水费:" + decBCYS.ToString("F2") + "元,余额增减:" + decYSBCSZ.ToString("F2") + "元";
+            #region 获取补打发票数量
+            string strBDFPCount = string.Format(@"SELECT DISTINCT INVOICEBATCHID,INVOICENO FROM V_CHARGE WHERE  DATEDIFF(MONTH,CHARGEDATETIME,INVOICEPRINTDATETIME)<>0 {0}", strFilterBDFP);
+            DataTable dtFPBD = BLLWATERFEECHARGE.QueryBySQL(strBDFPCount);
+            intFPBDCount = dtFPBD.Rows.Count;
+            #endregion
+
+            labWaterFeeCharge.Text = "发票:" + intYSCount.ToString() + "张,补打:"+intFPBDCount.ToString()+"张;收据:"+intYSRECEIPRNOCOUNT.ToString()+"张;应收水费:" + decBCYS.ToString("F2") + "元,余额增减:" + decYSBCSZ.ToString("F2") + "元";
             labYSBCSS.Text = "实收金额:" + decYSBCSS.ToString("F2") + "元(现金:" + decYSBCSSXJ.ToString("F2") + "元;POS机收费:" + decYSBCSSPOS.ToString("F2") + "元;转账汇款:"+
                 decYSBCSSZHUANZHANG.ToString("F2")+"元)";
 
-            labYCCharge.Text = "单据数量:" + intYCCount.ToString() + "张,前期余额:" + decYCQQYE.ToString("F2") + "元,结算余额:" + decYCJSYE.ToString("F2") + "元";
+            labYCCharge.Text = "单据数量:" + intYCCount.ToString() + "张;前期余额:" + decYCQQYE.ToString("F2") + "元,结算余额:" + decYCJSYE.ToString("F2") + "元";
             labYCBCSZ.Text = "实收金额:" + decYCBCSZ.ToString("F2") + "元(现金:" + decYCBCSZXJ.ToString("F2") + "元;POS机收费:" + decYCBCSZPOS.ToString("F2") + "元;转账汇款:"+
-                decYCBCSZZHUANZHANG.ToString("F2")+"元)";
-            #endregion
+                decYCBCSZZHUANZHANG.ToString("F2") + "元)";
+
+            labBCSS.Text = decBCSS.ToString("F2") + " 元";
         }
 
         private void toolDayCheck_Click(object sender, EventArgs e)

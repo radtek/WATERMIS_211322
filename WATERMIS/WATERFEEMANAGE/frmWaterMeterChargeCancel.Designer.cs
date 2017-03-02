@@ -1492,7 +1492,6 @@
             this.btSetMonth.BackgroundImage = global::WATERFEEMANAGE.Properties.Resources.onebit_20;
             this.btSetMonth.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btSetMonth.ContextMenuStrip = this.contextMenuStrip1;
-            this.btSetMonth.Enabled = false;
             this.btSetMonth.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btSetMonth.Location = new System.Drawing.Point(459, 84);
             this.btSetMonth.Name = "btSetMonth";
@@ -1632,7 +1631,6 @@
             // dtpStart
             // 
             this.dtpStart.CustomFormat = "yyyy-MM-dd HH:mm";
-            this.dtpStart.Enabled = false;
             this.dtpStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpStart.Location = new System.Drawing.Point(97, 82);
             this.dtpStart.Name = "dtpStart";
@@ -1653,7 +1651,6 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Enabled = false;
             this.label3.Location = new System.Drawing.Point(264, 88);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(24, 16);
@@ -1663,7 +1660,6 @@
             // dtpEnd
             // 
             this.dtpEnd.CustomFormat = "yyyy-MM-dd HH:mm";
-            this.dtpEnd.Enabled = false;
             this.dtpEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpEnd.Location = new System.Drawing.Point(291, 82);
             this.dtpEnd.Name = "dtpEnd";
@@ -1675,7 +1671,6 @@
             this.chkChargeDateTime.AutoSize = true;
             this.chkChargeDateTime.Checked = true;
             this.chkChargeDateTime.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkChargeDateTime.Enabled = false;
             this.chkChargeDateTime.Location = new System.Drawing.Point(6, 86);
             this.chkChargeDateTime.Name = "chkChargeDateTime";
             this.chkChargeDateTime.Size = new System.Drawing.Size(99, 20);
