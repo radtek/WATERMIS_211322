@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrintInvoiceCancel));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -37,11 +36,9 @@
             FastReport.Export.Email.EmailSettings emailSettings1 = new FastReport.Export.Email.EmailSettings();
             FastReport.PreviewSettings previewSettings1 = new FastReport.PreviewSettings();
             FastReport.ReportSettings reportSettings1 = new FastReport.ReportSettings();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrintInvoiceCancel));
             this.toolStripWaterUser = new System.Windows.Forms.ToolStrip();
-            this.toolSearch = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolPrint = new System.Windows.Forms.ToolStripButton();
-            this.toolPrintPreview = new System.Windows.Forms.ToolStripButton();
             this.tb1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cmbInvoiceCancelReason = new System.Windows.Forms.ComboBox();
@@ -89,6 +86,10 @@
             this.extraCharge2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalCharge = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.environmentSettings1 = new FastReport.EnvironmentSettings();
+            this.toolSearch = new System.Windows.Forms.ToolStripButton();
+            this.toolPrint = new System.Windows.Forms.ToolStripButton();
+            this.toolPrintPreview = new System.Windows.Forms.ToolStripButton();
+            this.toolExportToExl = new System.Windows.Forms.ToolStripButton();
             this.toolStripWaterUser.SuspendLayout();
             this.tb1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -105,47 +106,19 @@
             this.toolSearch,
             this.toolStripSeparator6,
             this.toolPrint,
-            this.toolPrintPreview});
+            this.toolPrintPreview,
+            this.toolExportToExl});
             this.toolStripWaterUser.Location = new System.Drawing.Point(0, 0);
             this.toolStripWaterUser.Name = "toolStripWaterUser";
             this.toolStripWaterUser.Size = new System.Drawing.Size(1008, 25);
             this.toolStripWaterUser.TabIndex = 57;
             this.toolStripWaterUser.Text = "toolStrip2";
             // 
-            // toolSearch
-            // 
-            this.toolSearch.Image = global::WATERFEEMANAGE.Properties.Resources.search;
-            this.toolSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolSearch.Name = "toolSearch";
-            this.toolSearch.Size = new System.Drawing.Size(57, 22);
-            this.toolSearch.Text = "查询";
-            this.toolSearch.Click += new System.EventHandler(this.toolSearch_Click);
-            // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.AutoSize = false;
             this.toolStripSeparator6.Name = "toolStripSeparator6";
             this.toolStripSeparator6.Size = new System.Drawing.Size(10, 25);
-            // 
-            // toolPrint
-            // 
-            this.toolPrint.Enabled = false;
-            this.toolPrint.Image = global::WATERFEEMANAGE.Properties.Resources.打印;
-            this.toolPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolPrint.Name = "toolPrint";
-            this.toolPrint.Size = new System.Drawing.Size(57, 22);
-            this.toolPrint.Text = "打印";
-            this.toolPrint.Click += new System.EventHandler(this.toolPrint_Click);
-            // 
-            // toolPrintPreview
-            // 
-            this.toolPrintPreview.Enabled = false;
-            this.toolPrintPreview.Image = ((System.Drawing.Image)(resources.GetObject("toolPrintPreview.Image")));
-            this.toolPrintPreview.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolPrintPreview.Name = "toolPrintPreview";
-            this.toolPrintPreview.Size = new System.Drawing.Size(87, 22);
-            this.toolPrintPreview.Text = "打印预览";
-            this.toolPrintPreview.Click += new System.EventHandler(this.toolPrintPreview_Click);
             // 
             // tb1
             // 
@@ -667,6 +640,45 @@
             this.environmentSettings1.ReportSettings = reportSettings1;
             this.environmentSettings1.UIStyle = FastReport.Utils.UIStyle.Office2007Black;
             // 
+            // toolSearch
+            // 
+            this.toolSearch.Image = global::WATERFEEMANAGE.Properties.Resources.search;
+            this.toolSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolSearch.Name = "toolSearch";
+            this.toolSearch.Size = new System.Drawing.Size(57, 22);
+            this.toolSearch.Text = "查询";
+            this.toolSearch.Click += new System.EventHandler(this.toolSearch_Click);
+            // 
+            // toolPrint
+            // 
+            this.toolPrint.Enabled = false;
+            this.toolPrint.Image = global::WATERFEEMANAGE.Properties.Resources.打印;
+            this.toolPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolPrint.Name = "toolPrint";
+            this.toolPrint.Size = new System.Drawing.Size(57, 22);
+            this.toolPrint.Text = "打印";
+            this.toolPrint.Click += new System.EventHandler(this.toolPrint_Click);
+            // 
+            // toolPrintPreview
+            // 
+            this.toolPrintPreview.Enabled = false;
+            this.toolPrintPreview.Image = ((System.Drawing.Image)(resources.GetObject("toolPrintPreview.Image")));
+            this.toolPrintPreview.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolPrintPreview.Name = "toolPrintPreview";
+            this.toolPrintPreview.Size = new System.Drawing.Size(87, 22);
+            this.toolPrintPreview.Text = "打印预览";
+            this.toolPrintPreview.Click += new System.EventHandler(this.toolPrintPreview_Click);
+            // 
+            // toolExportToExl
+            // 
+            this.toolExportToExl.Enabled = false;
+            this.toolExportToExl.Image = global::WATERFEEMANAGE.Properties.Resources.snap_undo;
+            this.toolExportToExl.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolExportToExl.Name = "toolExportToExl";
+            this.toolExportToExl.Size = new System.Drawing.Size(97, 22);
+            this.toolExportToExl.Text = "导出Excel";
+            this.toolExportToExl.Click += new System.EventHandler(this.toolExportToExl_Click_1);
+            // 
             // frmPrintInvoiceCancel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -748,5 +760,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn extraChargePrice2;
         private System.Windows.Forms.DataGridViewTextBoxColumn extraCharge2;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalCharge;
+        private System.Windows.Forms.ToolStripButton toolExportToExl;
     }
 }

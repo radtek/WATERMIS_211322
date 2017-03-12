@@ -144,6 +144,13 @@ namespace WATERFEEMANAGE.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap snap_undo {
+            get {
+                object obj = ResourceManager.GetObject("snap_undo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap wait {
             get {
                 object obj = ResourceManager.GetObject("wait", resourceCulture);

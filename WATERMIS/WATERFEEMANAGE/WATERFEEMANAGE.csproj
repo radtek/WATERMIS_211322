@@ -546,6 +546,9 @@
     <None Include="Resources\flow.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\snap_undo.ico" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="增值税发票开具\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

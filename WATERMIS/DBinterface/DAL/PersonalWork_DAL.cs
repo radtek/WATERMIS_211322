@@ -671,9 +671,9 @@ COMMIT TRAN", Chargeid, CHARGEID, PRESTORERUNNINGACCOUNTID);
                             waterMeterSizeId,waterMeterTypeId,ISUSECHANGE,CHANGEMONTH,waterMeterTypeIdChange,WATERFIXVALUE,waterMeterProduct,waterMeterSerialNumber,waterMeterMode
                             ,waterMeterMaxRange,waterMeterProofreadingDate,waterMeteProofreadingPeriod,waterUserId,isSummaryMeter,waterMeterParentId,STARTUSEDATETIME,MEMO
                             ,waterMeterState,IsReverse,WATERMETERLOCKNO) 
-                            SELECT waterMeterId,waterMeterNo,waterMeterStartNumber,waterMeterPositionName,waterMeterPositionId,
+                            SELECT @waterUserId+'01',@waterUserId+'01',waterMeterStartNumber,waterMeterPositionName,waterMeterPositionId,
                             waterMeterSizeId,waterMeterTypeId,ISUSECHANGE,CHANGEMONTH,waterMeterTypeIdChange,WATERFIXVALUE,waterMeterProduct,waterMeterSerialNumber,waterMeterMode,
-                            waterMeterMaxRange,waterMeterProofreadingDate,waterMeteProofreadingPeriod,waterUserId,isSummaryMeter,waterMeterParentId,
+                            waterMeterMaxRange,waterMeterProofreadingDate,waterMeteProofreadingPeriod,@waterUserId,isSummaryMeter,waterMeterParentId,
                             STARTUSEDATETIME,MEMO,waterMeterState,IsReverse,WATERMETERLOCKNO FROM Meter WHERE MeterID IN (SELECT MeterID FROM Meter_User WHERE TaskID=@TaskID)
                             INSERT INTO User_Append (TaskID,waterUserNO,waterUserName) SELECT TaskID,waterUserNO,waterUserName FROM Meter_Install_Peccant WHERE TaskID=@TaskID
                             COMMIT TRAN";

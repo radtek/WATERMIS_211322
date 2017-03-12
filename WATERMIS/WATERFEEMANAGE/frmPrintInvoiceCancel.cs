@@ -247,6 +247,7 @@ namespace WATERFEEMANAGE
                     toolPrint.Enabled = true;
                     toolPrintPreview.Enabled = true;
                     btInvoiceCancel.Enabled = true;
+                    toolExportToExl.Enabled = true;
 
                     dtClone = dtWaterMeterList.Clone();
                     DataRow drLast = dtClone.NewRow();
@@ -285,6 +286,7 @@ namespace WATERFEEMANAGE
                     toolPrint.Enabled = false;
                     toolPrintPreview.Enabled = false;
                     btInvoiceCancel.Enabled = false;
+                    toolExportToExl.Enabled = false;
                     dgList.DataSource = null;
                 }
             }
@@ -433,8 +435,7 @@ namespace WATERFEEMANAGE
 
         private void toolExportToExl_Click(object sender, EventArgs e)
         {
-            ExportExcel ExportExcel = new ExportExcel();
-            ExportExcel.ExportToExcel("发票使用明细表", dgList);
+
         }
 
         private void btInvoiceCancel_Click(object sender, EventArgs e)
@@ -499,6 +500,12 @@ namespace WATERFEEMANAGE
                 log.Write(ex.ToString(),MsgType.Error);
                 return;
             }
+        }
+
+        private void toolExportToExl_Click_1(object sender, EventArgs e)
+        {
+            ExportExcel ExportExcel = new ExportExcel();
+            ExportExcel.ExportToExcel("自定额发票使用明细表", dgList);
         }
 
     }
