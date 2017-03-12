@@ -102,7 +102,7 @@ namespace MeterInstall
                 {
                     //根据用水性质来确定审批流程==============================================================================================================
                     //  SELECT * FROM WaterUserType_Approve WHERE WaterUserTypeId=''===waterUserTypeId
-                    string sqlstr = string.Format("SELECT * FROM WaterUserType_Approve WHERE WaterUserTypeId='{0}'", waterUserTypeId.SelectedValue);
+                    string sqlstr = string.Format("SELECT WorkCode FROM WaterUserType_Approve WHERE WaterUserTypeId='{0}'", waterUserTypeId.SelectedValue);
                     DataTable dt = new SqlServerHelper().GetDateTableBySql(sqlstr);
                     bool result = false;
                     if (DataTableHelper.IsExistRows(dt))
