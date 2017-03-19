@@ -90,6 +90,19 @@ namespace PersonalWork
                     LB_Tip.Text = string.Format("用 户 号：{0}；水表编号：{1}", _waterUserId, _waterMeterId);
                 }
             }
+
+            DataTable dtm = new SqlServerHelper().GetDateTableBySql(string.Format("SELECT waterMeterEndNumber FROM Meter_Change WHERE TaskID='{0}'", TaskID));
+            if (DataTableHelper.IsExistRows(dtm))
+            {
+                LB_EndNumber.Text = dtm.Rows[0][0].ToString();
+            }
+
+            DataTable dts = new SqlServerHelper().GetDateTableBySql(string.Format("SELECT TOP 1 waterMeterEndNumber,readMeterRecordYearAndMonth,meterReaderName FROM readMeterRecord WHERE waterMeterId='{0}' ORDER BY readMeterRecordDate DESC", _waterMeterId));
+            if (DataTableHelper.IsExistRows(dts))
+            {
+                LB_S.Text = string.Format("抄表员：{0}，抄表月份：{1}，表底数：{2}",dts.Rows[0][2].ToString(),dts.Rows[0][1].ToString(),dts.Rows[0][0].ToString());
+            }
+
         }
 
         private void Btn_Submit_Click(object sender, EventArgs e)

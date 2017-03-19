@@ -30,17 +30,23 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmChange_MeterInit));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.LB_Tip = new System.Windows.Forms.Label();
             this.Btn_Submit = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.UserOpinion = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.LB_S = new System.Windows.Forms.Label();
+            this.LB_EndNumber = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
+            this.panel1.Controls.Add(this.LB_EndNumber);
+            this.panel1.Controls.Add(this.LB_S);
+            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.LB_Tip);
             this.panel1.Controls.Add(this.Btn_Submit);
@@ -51,6 +57,19 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(500, 370);
             this.panel1.TabIndex = 6;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.ForeColor = System.Drawing.Color.Maroon;
+            this.label2.Location = new System.Drawing.Point(86, 227);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(288, 15);
+            this.label2.TabIndex = 8;
+            this.label2.Tag = "9999";
+            this.label2.Text = "警告：提交后用户表底数将置为【0】。";
             // 
             // LB_Tip
             // 
@@ -95,17 +114,34 @@
             this.UserOpinion.Size = new System.Drawing.Size(408, 69);
             this.UserOpinion.TabIndex = 1;
             // 
-            // label2
+            // label3
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.ForeColor = System.Drawing.Color.Maroon;
-            this.label2.Location = new System.Drawing.Point(75, 190);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(288, 15);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "警告：提交后用户表底数将置为【0】。";
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Location = new System.Drawing.Point(10, 159);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(65, 12);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "表站表数：";
+            // 
+            // LB_S
+            // 
+            this.LB_S.AutoSize = true;
+            this.LB_S.BackColor = System.Drawing.Color.Transparent;
+            this.LB_S.Location = new System.Drawing.Point(16, 191);
+            this.LB_S.Name = "LB_S";
+            this.LB_S.Size = new System.Drawing.Size(0, 12);
+            this.LB_S.TabIndex = 10;
+            // 
+            // LB_EndNumber
+            // 
+            this.LB_EndNumber.AutoSize = true;
+            this.LB_EndNumber.BackColor = System.Drawing.Color.Transparent;
+            this.LB_EndNumber.Location = new System.Drawing.Point(76, 159);
+            this.LB_EndNumber.Name = "LB_EndNumber";
+            this.LB_EndNumber.Size = new System.Drawing.Size(11, 12);
+            this.LB_EndNumber.TabIndex = 11;
+            this.LB_EndNumber.Text = "0";
             // 
             // FrmChange_MeterInit
             // 
@@ -132,5 +168,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox UserOpinion;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label LB_EndNumber;
+        private System.Windows.Forms.Label LB_S;
+        private System.Windows.Forms.Label label3;
     }
 }
