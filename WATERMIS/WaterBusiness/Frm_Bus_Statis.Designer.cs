@@ -34,8 +34,8 @@
             this.uC_DataGridView_Page1 = new SysControl.UC_DataGridView_Page();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.CB_Month = new System.Windows.Forms.ComboBox();
+            this.Btn_Submit = new System.Windows.Forms.Button();
             this.tb1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -102,8 +102,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.Btn_Submit);
+            this.panel1.Controls.Add(this.CB_Month);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 17);
@@ -117,26 +117,27 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(21, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 12);
+            this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 0;
-            this.label1.Text = "年月";
+            this.label1.Text = "选择年月";
             // 
-            // comboBox1
+            // CB_Month
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(68, 23);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 20);
-            this.comboBox1.TabIndex = 1;
+            this.CB_Month.FormattingEnabled = true;
+            this.CB_Month.Location = new System.Drawing.Point(88, 23);
+            this.CB_Month.Name = "CB_Month";
+            this.CB_Month.Size = new System.Drawing.Size(121, 20);
+            this.CB_Month.TabIndex = 1;
             // 
-            // button1
+            // Btn_Submit
             // 
-            this.button1.Location = new System.Drawing.Point(210, 21);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "查询";
-            this.button1.UseVisualStyleBackColor = true;
+            this.Btn_Submit.Location = new System.Drawing.Point(225, 21);
+            this.Btn_Submit.Name = "Btn_Submit";
+            this.Btn_Submit.Size = new System.Drawing.Size(75, 23);
+            this.Btn_Submit.TabIndex = 4;
+            this.Btn_Submit.Text = "查询";
+            this.Btn_Submit.UseVisualStyleBackColor = true;
+            this.Btn_Submit.Click += new System.EventHandler(this.Btn_Submit_Click);
             // 
             // Frm_Bus_Statis
             // 
@@ -165,8 +166,8 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private SysControl.UC_DataGridView_Page uC_DataGridView_Page1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button Btn_Submit;
+        private System.Windows.Forms.ComboBox CB_Month;
         private System.Windows.Forms.Label label1;
 
     }
