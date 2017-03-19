@@ -12,6 +12,13 @@ namespace DBinterface.DAL
 {
     public class PersonalWork_DAL : PersonalWork_IDAL
     {
+        public DateTime GetDatetimeNow()
+        {
+            DateTime dt = new DateTime();
+            dt = DateTime.Parse(DBUtility.DbHelperSQL.ExecuteScalar("SELECT TOP 1 GETDATE() FROM sysusers").ToString());
+            return dt;
+        }
+
         public DataTable GetDataTalbeWorkResolve()
         {
             string loginid = AppDomain.CurrentDomain.GetData("LOGINID").ToString();
@@ -134,27 +141,27 @@ ORDER BY FeeItem, PointName";
 
         public int UpdateApprove_defalut(string tableName, string ResolveID, bool IsPass, string UserOpinion, string ip, string ComputerName, string PointSort, string TaskID)
         {
-
+            //===================================================================================GETDATE()
             string sqlstr = string.Format(@"DECLARE @ISOVER INT=1
 DECLARE @NEXTSORT INT=0
 SELECT  TOP 1 @NEXTSORT=PointSort FROM Meter_WorkResolve WHERE TaskID=@TaskID AND PointSort>@PointSort ORDER BY PointSort
 SET XACT_ABORT ON
 BEGIN TRAN
-UPDATE Meter_WorkResolve SET IsPass=@IsPass,UserOpinion=@UserOpinion,AcceptUserID=@AcceptUserID,AcceptUser=@AcceptUser,AcceptDate=GETDATE(),IP=@IP,ComputerName=@ComputerName WHERE ResolveID=@ResolveID
+UPDATE Meter_WorkResolve SET IsPass=@IsPass,UserOpinion=@UserOpinion,AcceptUserID=@AcceptUserID,AcceptUser=@AcceptUser,AcceptDate='{1}',IP=@IP,ComputerName=@ComputerName WHERE ResolveID=@ResolveID
 SELECT @ISOVER=COUNT(1) FROM Meter_WorkResolve WHERE TaskID=@TaskID AND PointSort=@PointSort AND (IsPass IS NULL OR IsPass<>1)
 if(@ISOVER=0)
 begin
 if(@NEXTSORT=0)
 BEGIN
-UPDATE Meter_WorkTask SET [State]=5, PointSort=PointSort+1,PointTime=GETDATE() WHERE TaskID=@TaskID AND PointSort=@PointSort
+UPDATE Meter_WorkTask SET [State]=5, PointSort=PointSort+1,PointTime='{1}' WHERE TaskID=@TaskID AND PointSort=@PointSort
 UPDATE {0} SET [State]=5 WHERE TaskID=@TaskID
 END
 ELSE
 BEGIN
-UPDATE Meter_WorkTask SET PointSort=@NEXTSORT,PointTime=GETDATE() WHERE TaskID=@TaskID AND PointSort=@PointSort
+UPDATE Meter_WorkTask SET PointSort=@NEXTSORT,PointTime='{1}' WHERE TaskID=@TaskID AND PointSort=@PointSort
 END
 end
-COMMIT TRAN", tableName);
+COMMIT TRAN", tableName, GetDatetimeNow());
 
             SqlParameter[] cmdParms = new SqlParameter[]{
             new SqlParameter("@ResolveID",ResolveID),
@@ -420,7 +427,7 @@ SELECT SUM(CONVERT(decimal,Fee)) FROM Meter_WorkResolveFee MWF,Meter_WorkResolve
         {
             int index = 1;
             string chargeID = string.Format("{0}01{1}SF{2}", DateTime.Now.ToString("yyyyMMdd"), loginid, String.Format("{0:000000}", index));
-            string strSql = "SELECT TOP 1 right(chargeID,6) AS chargeID FROM Meter_Charge WHERE convert(char(10),LEFT(CHARGEID,8),120)=DATEADD(DAY, DATEDIFF(DAY, 0, GETDATE()), 0) AND SUBSTRING(CHARGEID,11,4)=@LOGINID ORDER BY right(chargeID,6) desc";
+            string strSql = string.Format("SELECT TOP 1 right(chargeID,6) AS chargeID FROM Meter_Charge WHERE convert(char(10),LEFT(CHARGEID,8),120)=DATEADD(DAY, DATEDIFF(DAY, 0,'{0}'), 0) AND SUBSTRING(CHARGEID,11,4)=@LOGINID ORDER BY right(chargeID,6) desc", GetDatetimeNow());
 
             DataTable dt = new SqlServerHelper().GetDateTableBySql(strSql, new SqlParameter[] { new SqlParameter("@LOGINID", loginid) });
             if (DataTableHelper.IsExistRows(dt))
@@ -439,10 +446,10 @@ BEGIN TRAN
 INSERT INTO Meter_Charge 
 (CHARGEID,TaskID,CHARGEBCSS,CHARGEBCYS,TOTALCHARGE,Abate,prestore,FeeList,CHARGETYPEID,CHARGEClASS,CHARGEWORKERID,CHARGEWORKERNAME,ReceiptPrintSign,RECEIPTPRINTCOUNT,ReceiptPrintTime,RECEIPTNO,POSRUNNINGNO,Memo) 
 VALUES 
-(@CHARGEID,@TaskID,@CHARGEBCSS,@CHARGEBCYS,@TOTALCHARGE,@Abate,@prestore,@FeeList,@CHARGETYPEID,@CHARGEClASS,@CHARGEWORKERID,@CHARGEWORKERNAME,@ReceiptPrintSign,1,GETDATE(),@RECEIPTNO,@POSRUNNINGNO,@Memo)
-UPDATE Meter_WorkResolveFee SET State=1,CHARGEWORKERID=@CHARGEWORKERID,CHARGEWORKERNAME=@CHARGEWORKERNAME,ChargeDate=GETDATE(),ChargeID=@CHARGEID WHERE ResolveID IN (SELECT ResolveID FROM Meter_WorkResolve WHERE TaskID=@TaskID AND PointSort=@LastPointSort)
+(@CHARGEID,@TaskID,@CHARGEBCSS,@CHARGEBCYS,@TOTALCHARGE,@Abate,@prestore,@FeeList,@CHARGETYPEID,@CHARGEClASS,@CHARGEWORKERID,@CHARGEWORKERNAME,@ReceiptPrintSign,1,'{1}',@RECEIPTNO,@POSRUNNINGNO,@Memo)
+UPDATE Meter_WorkResolveFee SET State=1,CHARGEWORKERID=@CHARGEWORKERID,CHARGEWORKERNAME=@CHARGEWORKERNAME,ChargeDate='{1}',ChargeID=@CHARGEID WHERE ResolveID IN (SELECT ResolveID FROM Meter_WorkResolve WHERE TaskID=@TaskID AND PointSort=@LastPointSort)
 UPDATE {0} SET prestore=@Prestore WHERE TaskID=@TaskID
-COMMIT TRAN", ht["TableName"].ToString());
+COMMIT TRAN", ht["TableName"].ToString(), GetDatetimeNow());
 
             int count = DbHelperSQL.ExecuteSql(strsql,
                  new SqlParameter[] {
@@ -474,10 +481,10 @@ BEGIN TRAN
 INSERT INTO Meter_Charge 
 (CHARGEID,TaskID,CHARGEBCSS,CHARGEBCYS,TOTALCHARGE,Abate,prestore,FeeList,CHARGETYPEID,CHARGEClASS,CHARGEWORKERID,CHARGEWORKERNAME,INVOICEPRINTSIGN,InvoicePrintTime,InvoiceNO,POSRUNNINGNO,Memo) 
 VALUES 
-(@CHARGEID,@TaskID,@CHARGEBCSS,@CHARGEBCYS,@TOTALCHARGE,@Abate,@prestore,@FeeList,@CHARGETYPEID,@CHARGEClASS,@CHARGEWORKERID,@CHARGEWORKERNAME,@INVOICEPRINTSIGN,GETDATE(),@InvoiceNO,@POSRUNNINGNO,@Memo)
-UPDATE Meter_WorkResolveFee SET State=1,CHARGEWORKERID=@CHARGEWORKERID,CHARGEWORKERNAME=@CHARGEWORKERNAME,ChargeDate=GETDATE(),ChargeID=@CHARGEID WHERE ResolveID IN (SELECT ResolveID FROM Meter_WorkResolve WHERE TaskID=@TaskID AND PointSort=@LastPointSort)
+(@CHARGEID,@TaskID,@CHARGEBCSS,@CHARGEBCYS,@TOTALCHARGE,@Abate,@prestore,@FeeList,@CHARGETYPEID,@CHARGEClASS,@CHARGEWORKERID,@CHARGEWORKERNAME,@INVOICEPRINTSIGN,'{1}',@InvoiceNO,@POSRUNNINGNO,@Memo)
+UPDATE Meter_WorkResolveFee SET State=1,CHARGEWORKERID=@CHARGEWORKERID,CHARGEWORKERNAME=@CHARGEWORKERNAME,ChargeDate='{1}',ChargeID=@CHARGEID WHERE ResolveID IN (SELECT ResolveID FROM Meter_WorkResolve WHERE TaskID=@TaskID AND PointSort=@LastPointSort)
 UPDATE {0} SET prestore=@Prestore WHERE TaskID=@TaskID
-COMMIT TRAN", ht["TableName"].ToString());
+COMMIT TRAN", ht["TableName"].ToString(), GetDatetimeNow());
 
             int count = DbHelperSQL.ExecuteSql(strsql,
                  new SqlParameter[] {
@@ -507,8 +514,8 @@ COMMIT TRAN", ht["TableName"].ToString());
             string strsql = string.Format(@"SET XACT_ABORT ON
 BEGIN TRAN
 INSERT INTO Meter_User(TaskID,MeterID,waterMeterSerialNumber,waterMeterEndNumber,Memo) SELECT @TaskID AS TaskID,MeterID,waterMeterSerialNumber,waterMeterStartNumber,@Memo AS Memo FROM Meter WHERE waterMeterSerialNumber IN ({0})
-UPDATE Meter SET MeterState=1,ModifyDate=GETDATE(),ModifyUser=@ModifyUser WHERE waterMeterSerialNumber IN ({0})
-COMMIT TRAN", ht["waterMeterSerialNumber"].ToString());
+UPDATE Meter SET MeterState=1,ModifyDate='{1}',ModifyUser=@ModifyUser WHERE waterMeterSerialNumber IN ({0})
+COMMIT TRAN", ht["waterMeterSerialNumber"].ToString(), GetDatetimeNow());
 
             int count = DbHelperSQL.ExecuteSql(strsql,
                 new SqlParameter[] {
@@ -602,7 +609,7 @@ waterUserPeopleCount,meterReadingID,meterReadingPageNo,waterUserTypeId,waterUser
 bankId,BankAcountNumber,memo,ordernumber,chargeType,pianNO,areaNO,duanNO,communityID,buildingNO,unitNO,createType
 ,meterReaderID,meterReaderName,chargerID,chargerName,operatorName) 
 SELECT waterUserId,waterUserNO,waterUserName,waterPhone,waterUserAddress,
-waterUserPeopleCount,meterReadingID,meterReadingPageNo,waterUserTypeId,GETDATE(),waterUserHouseType,agentsign,
+waterUserPeopleCount,meterReadingID,meterReadingPageNo,waterUserTypeId,'{3}',waterUserHouseType,agentsign,
 bankId,BankAcountNumber,memo,ordernumber,chargeType,(SELECT PIANNAME FROM BASE_PIAN WHERE PIANID=MIS.PIANID) AS pianNO
 ,(SELECT areaName FROM BASE_AREA WHERE areaId=MIS.areaId) AS areaNO
 ,(SELECT DUANNAME FROM BASE_DUAN WHERE DUANID=MIS.DUANID) AS duanNO
@@ -626,17 +633,17 @@ UPDATE Meter_Install_Single SET prestore=0 WHERE TaskID=@TaskID
 UPDATE waterUser SET prestore=prestore+@FEE WHERE waterUserId=@waterUserId
 INSERT INTO Meter_Charge (CHARGEID,TaskID,CHARGEBCSS,CHARGEBCYS,TOTALCHARGE,prestore,FeeList,CHARGETYPEID,CHARGEClASS,CHARGEWORKERID,CHARGEWORKERNAME,CHARGEDATETIME) 
 VALUES 
-('{0}',@TaskID,0-@FEE,0,0,0,'余额转营业','6','17','0092','温国艳',GETDATE())
+('{0}',@TaskID,0-@FEE,0,0,0,'余额转营业','6','17','0092','温国艳','{3}')
 INSERT INTO WATERFEECHARGE (CHARGEID,CHARGETYPEID,CHARGEClASS,CHARGEBCYS,CHARGEBCSS,CHARGEYSQQYE,CHARGEYSBCSZ,CHARGEYSJSYE,CHARGEWORKERID,CHARGEWORKERNAME,CHARGEDATETIME) 
 VALUES 
-('{1}','6','17',0,@FEE,0,@FEE,@FEE,'0092','温国艳',GETDATE())
+('{1}','6','17',0,@FEE,0,@FEE,@FEE,'0092','温国艳','{3}')
 INSERT INTO PRESTORERUNNINGACCOUNT (PRESTORERUNNINGACCOUNTID,CHARGEID,WATERUSERID,WATERUSERNO,WATERUSERNAME,WATERUSERADDRESS,AREANO,PIANNO,DUANNO,ORDERNUMBER,COMMUNITYID,COMMUNITYNAME,
 METERREADERID,METERREADERNAME,CHARGERID,CHARGERNAME,WATERUSERTYPEID,WATERUSERTYPENAME,WATERMETERTYPEID,WATERMETERTYPEVALUE,WATERMETERTYPECLASSID,WATERMETERTYPECLASSNAME,WATERUSERHOUSETYPE,CREATETYPE)
 SELECT '{2}','{1}', WATERUSERID,WATERUSERNO,WATERUSERNAME,WATERUSERADDRESS,AREANO,PIANNO,DUANNO,ORDERNUMBER,COMMUNITYID,COMMUNITYNAME,
 METERREADERID,METERREADERNAME,CHARGERID,CHARGERNAME,WATERUSERTYPEID,WATERUSERTYPENAME,WATERMETERTYPEID,WATERMETERTYPEVALUE,WATERMETERTYPECLASSID,WATERMETERTYPECLASSNAME,WATERUSERHOUSETYPE,CREATETYPE 
 FROM V_WATERUSER_CONNECTWATERMETER
 WHERE waterUserId=@waterUserId
-COMMIT TRAN", Chargeid, CHARGEID, PRESTORERUNNINGACCOUNTID);
+COMMIT TRAN", Chargeid, CHARGEID, PRESTORERUNNINGACCOUNTID, GetDatetimeNow());
             int count = DbHelperSQL.ExecuteSql(strsql, new SqlParameter[] { new SqlParameter("@TaskID", TaskID) });
             return count > 0 ? true : false;
 
@@ -649,7 +656,7 @@ COMMIT TRAN", Chargeid, CHARGEID, PRESTORERUNNINGACCOUNTID);
         /// <returns></returns>
         public bool Approve_Peccant_Append(string TaskID)
         {
-            string strsql = @"DECLARE @waterUserId NVARCHAR(50)=''
+            string strsql =string.Format(@"DECLARE @waterUserId NVARCHAR(50)=''
                             DECLARE @ISEXIT INT=0
                             SET XACT_ABORT ON
                             BEGIN TRAN
@@ -662,7 +669,7 @@ COMMIT TRAN", Chargeid, CHARGEID, PRESTORERUNNINGACCOUNTID);
                             bankId,BankAcountNumber,memo,ordernumber,chargeType,pianNO,areaNO,duanNO,communityID,buildingNO,unitNO,createType
                             ,meterReaderID,meterReaderName,chargerID,chargerName,operatorName) 
                             SELECT waterUserId,waterUserNO,waterUserName,waterPhone,waterUserAddress,
-                            waterUserPeopleCount,waterUserTypeId,GETDATE(),waterUserHouseType,agentsign,
+                            waterUserPeopleCount,waterUserTypeId,'{0}',waterUserHouseType,agentsign,
                             bankId,BankAcountNumber,memo,ordernumber,chargeType,pianNO,areaNO,duanNO,communityID,BuildingNO,UnitNO,
                             (SELECT CreateType FROM Base_Archives WHERE CreateTypeID=MIS.CreateType) AS CreateType
                             ,meterReaderID,meterReaderName,chargerID,chargerName,operatorName FROM Meter_Install_Peccant MIS WHERE TaskID=@TaskID
@@ -676,7 +683,7 @@ COMMIT TRAN", Chargeid, CHARGEID, PRESTORERUNNINGACCOUNTID);
                             waterMeterMaxRange,waterMeterProofreadingDate,waterMeteProofreadingPeriod,@waterUserId,isSummaryMeter,waterMeterParentId,
                             STARTUSEDATETIME,MEMO,waterMeterState,IsReverse,WATERMETERLOCKNO FROM Meter WHERE MeterID IN (SELECT MeterID FROM Meter_User WHERE TaskID=@TaskID)
                             INSERT INTO User_Append (TaskID,waterUserNO,waterUserName) SELECT TaskID,waterUserNO,waterUserName FROM Meter_Install_Peccant WHERE TaskID=@TaskID
-                            COMMIT TRAN";
+                            COMMIT TRAN", GetDatetimeNow());
             int count = DbHelperSQL.ExecuteSql(strsql, new SqlParameter[] { new SqlParameter("@TaskID", TaskID) });
             return count > 0 ? true : false;
 
@@ -920,10 +927,10 @@ BEGIN TRAN
 INSERT INTO Meter_Charge 
 (CHARGEID,TaskID,CHARGEBCSS,CHARGEBCYS,TOTALCHARGE,prestore,FeeList,CHARGETYPEID,CHARGEClASS,CHARGEWORKERID,CHARGEWORKERNAME,ReceiptPrintSign,RECEIPTPRINTCOUNT,ReceiptPrintTime,RECEIPTNO,POSRUNNINGNO,Memo) 
 VALUES 
-(@CHARGEID,@TaskID,@CHARGEBCSS,@CHARGEBCYS,@TOTALCHARGE,@prestore,@FeeList,@CHARGETYPEID,@CHARGEClASS,@CHARGEWORKERID,@CHARGEWORKERNAME,@ReceiptPrintSign,1,GETDATE(),@RECEIPTNO,@POSRUNNINGNO,@Memo)
-UPDATE Meter_WorkResolveFee SET State=1,CHARGEWORKERID=@CHARGEWORKERID,CHARGEWORKERNAME=@CHARGEWORKERNAME,ChargeDate=GETDATE(),ChargeID=@CHARGEID WHERE ResolveID =@ResolveID
+(@CHARGEID,@TaskID,@CHARGEBCSS,@CHARGEBCYS,@TOTALCHARGE,@prestore,@FeeList,@CHARGETYPEID,@CHARGEClASS,@CHARGEWORKERID,@CHARGEWORKERNAME,@ReceiptPrintSign,1,'{1}',@RECEIPTNO,@POSRUNNINGNO,@Memo)
+UPDATE Meter_WorkResolveFee SET State=1,CHARGEWORKERID=@CHARGEWORKERID,CHARGEWORKERNAME=@CHARGEWORKERNAME,ChargeDate='{1}',ChargeID=@CHARGEID WHERE ResolveID =@ResolveID
 UPDATE {0} SET prestore=@Prestore WHERE TaskID=@TaskID
-COMMIT TRAN", ht["TableName"].ToString());
+COMMIT TRAN", ht["TableName"].ToString(), GetDatetimeNow());
 
             int count = DbHelperSQL.ExecuteSql(strsql,
                  new SqlParameter[] {
@@ -955,10 +962,10 @@ BEGIN TRAN
 INSERT INTO Meter_Charge 
 (CHARGEID,TaskID,CHARGEBCSS,CHARGEBCYS,TOTALCHARGE,Abate,prestore,FeeList,CHARGETYPEID,CHARGEClASS,CHARGEWORKERID,CHARGEWORKERNAME,ReceiptPrintSign,RECEIPTPRINTCOUNT,ReceiptPrintTime,RECEIPTNO,POSRUNNINGNO,Memo) 
 VALUES 
-(@CHARGEID,@TaskID,@CHARGEBCSS,@CHARGEBCYS,@TOTALCHARGE,@Abate,@prestore,@FeeList,@CHARGETYPEID,@CHARGEClASS,@CHARGEWORKERID,@CHARGEWORKERNAME,@ReceiptPrintSign,1,GETDATE(),@RECEIPTNO,@POSRUNNINGNO,@Memo)
-UPDATE Meter_WorkResolveFee SET State=1,CHARGEWORKERID=@CHARGEWORKERID,CHARGEWORKERNAME=@CHARGEWORKERNAME,ChargeDate=GETDATE(),ChargeID=@CHARGEID WHERE ResolveID =@ResolveID
+(@CHARGEID,@TaskID,@CHARGEBCSS,@CHARGEBCYS,@TOTALCHARGE,@Abate,@prestore,@FeeList,@CHARGETYPEID,@CHARGEClASS,@CHARGEWORKERID,@CHARGEWORKERNAME,@ReceiptPrintSign,1,'{1}',@RECEIPTNO,@POSRUNNINGNO,@Memo)
+UPDATE Meter_WorkResolveFee SET State=1,CHARGEWORKERID=@CHARGEWORKERID,CHARGEWORKERNAME=@CHARGEWORKERNAME,ChargeDate='{1}',ChargeID=@CHARGEID WHERE ResolveID =@ResolveID
 UPDATE {0} SET prestore=@Prestore WHERE TaskID=@TaskID
-COMMIT TRAN", ht["TableName"].ToString());
+COMMIT TRAN", ht["TableName"].ToString(), GetDatetimeNow());
 
             int count = DbHelperSQL.ExecuteSql(strsql,
                  new SqlParameter[] {
@@ -1113,8 +1120,8 @@ BEGIN TRAN
 UPDATE {2} SET prestore=0 WHERE TaskID=@TaskID
 INSERT INTO Meter_Charge (CHARGEID,TaskID,CHARGEBCSS,CHARGEBCYS,TOTALCHARGE,prestore,FeeList,CHARGETYPEID,CHARGEClASS,CHARGEWORKERID,CHARGEWORKERNAME,CHARGEDATETIME,Memo) 
 VALUES 
-('{0}',@TaskID,0-@FEE,0,0,0,'余额退款','1','17','0092','温国艳',GETDATE(),'{1}')
-COMMIT TRAN", Chargeid, Memo,dt.Rows[0][0].ToString());
+('{0}',@TaskID,0-@FEE,0,0,0,'余额退款','1','17','0092','温国艳','{3}','{1}')
+COMMIT TRAN", Chargeid, Memo, dt.Rows[0][0].ToString(), GetDatetimeNow());
 
                 count = DbHelperSQL.ExecuteSql(strsql, new SqlParameter[] { new SqlParameter("@TaskID", TaskID) });
             }
@@ -1149,12 +1156,12 @@ SET XACT_ABORT ON
 BEGIN TRAN
 --取消收费
 UPDATE Meter_Charge SET CHARGECANCEL=1,CANCELYSQQYE=0,CANCELYSBCSZ=@FEE,CANCELYSJSYE=@FEE,CANCELWORKERID
-='{2}',CANCELWORKERNAME='{3}',CANCELDATETIME=GETDATE(),CANCELMEMO='{1}' WHERE TaskID=@TaskID AND CHARGEID=@CHARGEID AND ISNULL(DAYCHECKSTATE,'')='0'
+='{2}',CANCELWORKERNAME='{3}',CANCELDATETIME='{4}',CANCELMEMO='{1}' WHERE TaskID=@TaskID AND CHARGEID=@CHARGEID AND ISNULL(DAYCHECKSTATE,'')='0'
 --更改收费项目状态
 UPDATE Meter_WorkResolveFee SET [State]=0 WHERE ChargeID=@CHARGEID
 --更改账户余额
 UPDATE {0} SET prestore=prestore-@FEE WHERE TaskID=@TaskID
-COMMIT TRAN", _tableNmae, CANCELMEMO, loginid, userName);
+COMMIT TRAN", _tableNmae, CANCELMEMO, loginid, userName, GetDatetimeNow());
             int count = new SqlServerHelper().UpdateByHashtable(sqlstr, new SqlParameter[] { new SqlParameter("@TaskID", TaskID), new SqlParameter("@CHARGEID", ChargeID) });
             return count > 0 ? true : false;
         }
