@@ -1,6 +1,6 @@
 ﻿namespace WaterBusiness
 {
-    partial class Frm_DepFee
+    partial class Frm_DepFee_AnZhuang
     {
         /// <summary>
         /// Required designer variable.
@@ -36,7 +36,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.部门 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.COLORCODE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.业扩类型 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SORT = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,8 +62,8 @@
             this.tb1.RowCount = 2;
             this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 96F));
             this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tb1.Size = new System.Drawing.Size(1007, 641);
-            this.tb1.TabIndex = 66;
+            this.tb1.Size = new System.Drawing.Size(713, 453);
+            this.tb1.TabIndex = 67;
             // 
             // groupBox1
             // 
@@ -73,7 +72,7 @@
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 7);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1001, 86);
+            this.groupBox1.Size = new System.Drawing.Size(707, 86);
             this.groupBox1.TabIndex = 60;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "查询条件";
@@ -87,7 +86,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 17);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(995, 66);
+            this.panel1.Size = new System.Drawing.Size(701, 66);
             this.panel1.TabIndex = 0;
             this.panel1.Tag = "9999";
             // 
@@ -124,7 +123,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 99);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1001, 539);
+            this.groupBox2.Size = new System.Drawing.Size(707, 351);
             this.groupBox2.TabIndex = 902;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "查询列表";
@@ -133,7 +132,6 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.部门,
             this.COLORCODE,
             this.业扩类型,
             this.SORT,
@@ -145,14 +143,8 @@
             this.dataGridView1.Location = new System.Drawing.Point(3, 17);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(995, 519);
+            this.dataGridView1.Size = new System.Drawing.Size(701, 331);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // 部门
-            // 
-            this.部门.DataPropertyName = "部门";
-            this.部门.HeaderText = "部门";
-            this.部门.Name = "部门";
             // 
             // COLORCODE
             // 
@@ -199,16 +191,15 @@
             this.发票金额.HeaderText = "发票金额";
             this.发票金额.Name = "发票金额";
             // 
-            // Frm_DepFee
+            // Frm_DepFee_AnZhuang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1007, 641);
+            this.ClientSize = new System.Drawing.Size(713, 453);
             this.Controls.Add(this.tb1);
-            this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Name = "Frm_DepFee";
-            this.Text = "部门费用";
-            this.Load += new System.EventHandler(this.Frm_DepFee_Load);
+            this.Name = "Frm_DepFee_AnZhuang";
+            this.Text = "安装处费用";
+            this.Load += new System.EventHandler(this.Frm_DepFee_AnZhuang_Load);
             this.tb1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -229,7 +220,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 部门;
         private System.Windows.Forms.DataGridViewTextBoxColumn COLORCODE;
         private System.Windows.Forms.DataGridViewTextBoxColumn 业扩类型;
         private System.Windows.Forms.DataGridViewTextBoxColumn SORT;
