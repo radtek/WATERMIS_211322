@@ -254,7 +254,7 @@
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(96, 16);
             this.label20.TabIndex = 70;
-            this.label20.Text = "*性质名称：";
+            this.label20.Text = "*所属分类：";
             // 
             // txtPercent
             // 

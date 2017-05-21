@@ -65,16 +65,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="STATISTICS\转户\frmWaterUserMoveSearchDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="STATISTICS\转户\frmWaterUserMoveSearchDetail.Designer.cs">
+      <DependentUpon>frmWaterUserMoveSearchDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="STATISTICS\工资统计表\frmSalaryStatics.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="STATISTICS\工资统计表\frmSalaryStatics.Designer.cs">
       <DependentUpon>frmSalaryStatics.cs</DependentUpon>
     </Compile>
-    <Compile Include="STATISTICS\frmWaterUserMoveStatic.cs">
+    <Compile Include="STATISTICS\转户\frmWaterUserMoveStatic.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="STATISTICS\frmWaterUserMoveStatic.Designer.cs">
+    <Compile Include="STATISTICS\转户\frmWaterUserMoveStatic.Designer.cs">
       <DependentUpon>frmWaterUserMoveStatic.cs</DependentUpon>
     </Compile>
     <Compile Include="SEARCH\frmWaterUserMoveSearch.cs">
@@ -387,10 +393,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="STATISTICS\转户\frmWaterUserMoveSearchDetail.resx">
+      <DependentUpon>frmWaterUserMoveSearchDetail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="STATISTICS\工资统计表\frmSalaryStatics.resx">
       <DependentUpon>frmSalaryStatics.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="STATISTICS\frmWaterUserMoveStatic.resx">
+    <EmbeddedResource Include="STATISTICS\转户\frmWaterUserMoveStatic.resx">
       <DependentUpon>frmWaterUserMoveStatic.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SEARCH\frmWaterUserMoveSearch.resx">
@@ -550,13 +559,7 @@
     <None Include="Resources\打印.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\print-preview.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\preview.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\print-preview1.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\preview.png" />

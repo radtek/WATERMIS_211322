@@ -125,6 +125,30 @@
     <Compile Include="Frm_BlackList_Cancel.Designer.cs">
       <DependentUpon>Frm_BlackList_Cancel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_Bus_Search.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Bus_Search.Designer.cs">
+      <DependentUpon>Frm_Bus_Search.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Bus_Statis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Bus_Statis.Designer.cs">
+      <DependentUpon>Frm_Bus_Statis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_DepFee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_DepFee.designer.cs">
+      <DependentUpon>Frm_DepFee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_DepFee_AnZhuang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_DepFee_AnZhuang.Designer.cs">
+      <DependentUpon>Frm_DepFee_AnZhuang.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_Meter_Desterilize.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -224,6 +248,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_BlackList_Cancel.resx">
       <DependentUpon>Frm_BlackList_Cancel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Bus_Search.resx">
+      <DependentUpon>Frm_Bus_Search.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Bus_Statis.resx">
+      <DependentUpon>Frm_Bus_Statis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_DepFee.resx">
+      <DependentUpon>Frm_DepFee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_DepFee_AnZhuang.resx">
+      <DependentUpon>Frm_DepFee_AnZhuang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Meter_Desterilize.resx">
       <DependentUpon>Frm_Meter_Desterilize.cs</DependentUpon>

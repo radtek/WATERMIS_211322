@@ -30,17 +30,20 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWaterMeterYSStatics_AllYear));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            FastReport.Design.DesignerSettings designerSettings2 = new FastReport.Design.DesignerSettings();
-            FastReport.Design.DesignerRestrictions designerRestrictions2 = new FastReport.Design.DesignerRestrictions();
-            FastReport.Export.Email.EmailSettings emailSettings2 = new FastReport.Export.Email.EmailSettings();
-            FastReport.PreviewSettings previewSettings2 = new FastReport.PreviewSettings();
-            FastReport.ReportSettings reportSettings2 = new FastReport.ReportSettings();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            FastReport.Design.DesignerSettings designerSettings1 = new FastReport.Design.DesignerSettings();
+            FastReport.Design.DesignerRestrictions designerRestrictions1 = new FastReport.Design.DesignerRestrictions();
+            FastReport.Export.Email.EmailSettings emailSettings1 = new FastReport.Export.Email.EmailSettings();
+            FastReport.PreviewSettings previewSettings1 = new FastReport.PreviewSettings();
+            FastReport.ReportSettings reportSettings1 = new FastReport.ReportSettings();
             this.toolStripWaterUser = new System.Windows.Forms.ToolStrip();
             this.toolStatics = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolPrint = new System.Windows.Forms.ToolStripButton();
             this.toolPrintPreview = new System.Windows.Forms.ToolStripButton();
+            this.toolPrintYY = new System.Windows.Forms.ToolStripButton();
+            this.toolPrintPreviewYY = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolExcel = new System.Windows.Forms.ToolStripButton();
             this.toolUpdateAccounts = new System.Windows.Forms.ToolStripButton();
             this.tb1 = new System.Windows.Forms.TableLayoutPanel();
@@ -82,15 +85,15 @@
             this.上年ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.全部ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolPrintYY = new System.Windows.Forms.ToolStripButton();
-            this.toolPrintPreviewYY = new System.Windows.Forms.ToolStripButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.labYYHE = new System.Windows.Forms.Label();
             this.toolStripWaterUser.SuspendLayout();
             this.tb1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgList)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripWaterUser
@@ -148,6 +151,31 @@
             this.toolPrintPreview.Text = "打印预览(财务)";
             this.toolPrintPreview.Click += new System.EventHandler(this.toolPrintPreview_Click);
             // 
+            // toolPrintYY
+            // 
+            this.toolPrintYY.Enabled = false;
+            this.toolPrintYY.Image = global::STATISTIALREPORTS.Properties.Resources.打印;
+            this.toolPrintYY.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolPrintYY.Name = "toolPrintYY";
+            this.toolPrintYY.Size = new System.Drawing.Size(103, 22);
+            this.toolPrintYY.Text = "打印(营业)";
+            this.toolPrintYY.Click += new System.EventHandler(this.toolPrintYY_Click);
+            // 
+            // toolPrintPreviewYY
+            // 
+            this.toolPrintPreviewYY.Enabled = false;
+            this.toolPrintPreviewYY.Image = ((System.Drawing.Image)(resources.GetObject("toolPrintPreviewYY.Image")));
+            this.toolPrintPreviewYY.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolPrintPreviewYY.Name = "toolPrintPreviewYY";
+            this.toolPrintPreviewYY.Size = new System.Drawing.Size(133, 22);
+            this.toolPrintPreviewYY.Text = "打印预览(营业)";
+            this.toolPrintPreviewYY.Click += new System.EventHandler(this.toolPrintPreviewYY_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
             // toolExcel
             // 
             this.toolExcel.Enabled = false;
@@ -173,14 +201,16 @@
             // 
             this.tb1.ColumnCount = 1;
             this.tb1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tb1.Controls.Add(this.panel1, 0, 2);
             this.tb1.Controls.Add(this.groupBox1, 0, 0);
             this.tb1.Controls.Add(this.groupBox2, 0, 1);
             this.tb1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tb1.Location = new System.Drawing.Point(0, 25);
             this.tb1.Name = "tb1";
-            this.tb1.RowCount = 2;
+            this.tb1.RowCount = 3;
             this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 92F));
             this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
             this.tb1.Size = new System.Drawing.Size(1021, 537);
             this.tb1.TabIndex = 58;
             // 
@@ -468,7 +498,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 95);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1015, 439);
+            this.groupBox2.Size = new System.Drawing.Size(1015, 393);
             this.groupBox2.TabIndex = 902;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "应收统计表";
@@ -477,14 +507,14 @@
             // 
             this.dgList.AllowUserToDeleteRows = false;
             this.dgList.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgList.ColumnHeadersHeight = 25;
             this.dgList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgList.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -495,7 +525,7 @@
             this.dgList.RowHeadersWidth = 45;
             this.dgList.RowTemplate.Height = 23;
             this.dgList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgList.Size = new System.Drawing.Size(1009, 414);
+            this.dgList.Size = new System.Drawing.Size(1009, 368);
             this.dgList.TabIndex = 402;
             this.dgList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgList_CellDoubleClick);
             this.dgList.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgList_CellPainting);
@@ -503,27 +533,27 @@
             // 
             // environmentSettings1
             // 
-            designerSettings2.ApplicationConnection = null;
-            designerSettings2.DefaultFont = new System.Drawing.Font("宋体", 9F);
-            designerSettings2.Icon = ((System.Drawing.Icon)(resources.GetObject("designerSettings2.Icon")));
-            designerSettings2.Restrictions = designerRestrictions2;
-            designerSettings2.Text = "";
-            this.environmentSettings1.DesignerSettings = designerSettings2;
-            emailSettings2.Address = "";
-            emailSettings2.Host = "";
-            emailSettings2.MessageTemplate = "";
-            emailSettings2.Name = "";
-            emailSettings2.Password = "";
-            emailSettings2.UserName = "";
-            this.environmentSettings1.EmailSettings = emailSettings2;
-            previewSettings2.Buttons = ((FastReport.PreviewButtons)(((((FastReport.PreviewButtons.Print | FastReport.PreviewButtons.Save)
+            designerSettings1.ApplicationConnection = null;
+            designerSettings1.DefaultFont = new System.Drawing.Font("宋体", 9F);
+            designerSettings1.Icon = ((System.Drawing.Icon)(resources.GetObject("designerSettings1.Icon")));
+            designerSettings1.Restrictions = designerRestrictions1;
+            designerSettings1.Text = "";
+            this.environmentSettings1.DesignerSettings = designerSettings1;
+            emailSettings1.Address = "";
+            emailSettings1.Host = "";
+            emailSettings1.MessageTemplate = "";
+            emailSettings1.Name = "";
+            emailSettings1.Password = "";
+            emailSettings1.UserName = "";
+            this.environmentSettings1.EmailSettings = emailSettings1;
+            previewSettings1.Buttons = ((FastReport.PreviewButtons)(((((FastReport.PreviewButtons.Print | FastReport.PreviewButtons.Save)
                         | FastReport.PreviewButtons.Zoom)
                         | FastReport.PreviewButtons.PageSetup)
                         | FastReport.PreviewButtons.Close)));
-            previewSettings2.Icon = ((System.Drawing.Icon)(resources.GetObject("previewSettings2.Icon")));
-            previewSettings2.Text = "";
-            this.environmentSettings1.PreviewSettings = previewSettings2;
-            this.environmentSettings1.ReportSettings = reportSettings2;
+            previewSettings1.Icon = ((System.Drawing.Icon)(resources.GetObject("previewSettings1.Icon")));
+            previewSettings1.Text = "";
+            this.environmentSettings1.PreviewSettings = previewSettings1;
+            this.environmentSettings1.ReportSettings = reportSettings1;
             this.environmentSettings1.UIStyle = FastReport.Utils.UIStyle.Office2007Black;
             // 
             // contextMenuStrip1
@@ -607,30 +637,25 @@
             this.全部ToolStripMenuItem.Text = "全部";
             this.全部ToolStripMenuItem.Click += new System.EventHandler(this.全部ToolStripMenuItem_Click);
             // 
-            // toolStripSeparator4
+            // panel1
             // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            this.panel1.BackColor = System.Drawing.Color.LimeGreen;
+            this.panel1.Controls.Add(this.labYYHE);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 494);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1015, 40);
+            this.panel1.TabIndex = 904;
+            this.panel1.Tag = "9999";
             // 
-            // toolPrintYY
+            // labYYHE
             // 
-            this.toolPrintYY.Enabled = false;
-            this.toolPrintYY.Image = global::STATISTIALREPORTS.Properties.Resources.打印;
-            this.toolPrintYY.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolPrintYY.Name = "toolPrintYY";
-            this.toolPrintYY.Size = new System.Drawing.Size(103, 22);
-            this.toolPrintYY.Text = "打印(营业)";
-            this.toolPrintYY.Click += new System.EventHandler(this.toolPrintYY_Click);
-            // 
-            // toolPrintPreviewYY
-            // 
-            this.toolPrintPreviewYY.Enabled = false;
-            this.toolPrintPreviewYY.Image = ((System.Drawing.Image)(resources.GetObject("toolPrintPreviewYY.Image")));
-            this.toolPrintPreviewYY.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolPrintPreviewYY.Name = "toolPrintPreviewYY";
-            this.toolPrintPreviewYY.Size = new System.Drawing.Size(133, 22);
-            this.toolPrintPreviewYY.Text = "打印预览(营业)";
-            this.toolPrintPreviewYY.Click += new System.EventHandler(this.toolPrintPreviewYY_Click);
+            this.labYYHE.AutoSize = true;
+            this.labYYHE.Location = new System.Drawing.Point(11, 13);
+            this.labYYHE.Name = "labYYHE";
+            this.labYYHE.Size = new System.Drawing.Size(280, 16);
+            this.labYYHE.TabIndex = 0;
+            this.labYYHE.Text = "用户余额:0.00元    结算余额:0.00元";
             // 
             // frmWaterMeterYSStatics_AllYear
             // 
@@ -653,6 +678,8 @@
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgList)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -709,5 +736,7 @@
         private System.Windows.Forms.ToolStripButton toolPrintPreviewYY;
         private System.Windows.Forms.ToolStripButton toolPrintYY;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label labYYHE;
     }
 }

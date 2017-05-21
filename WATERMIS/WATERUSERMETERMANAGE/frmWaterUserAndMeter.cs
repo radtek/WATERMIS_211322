@@ -3096,6 +3096,7 @@ namespace WATERUSERMETERMANAGE
             string strFilter = strSeniorFilterHidden, strFilterWaterMeter = "";
 
             string strSearch = txtWaterUserNOSearch.Text;
+            if(strSearch!="")
             strFilter += " AND (waterUserNO LIKE '%" + strSearch + "%' OR waterUserName LIKE '%" + strSearch +
                 "%' OR waterUserAddress LIKE '%" + strSearch + "%') ";
 

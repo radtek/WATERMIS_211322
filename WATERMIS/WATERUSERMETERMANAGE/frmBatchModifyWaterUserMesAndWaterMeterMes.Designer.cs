@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBatchModifyWaterUserMesAndWaterMeterMes));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dgWaterListBatch = new System.Windows.Forms.DataGridView();
@@ -125,10 +125,6 @@
             this.label21 = new System.Windows.Forms.Label();
             this.cmbAreaNOS = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtWaterUserAddressS = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtWaterUserNameSearch = new System.Windows.Forms.TextBox();
-            this.label41 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.剪切选中行ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -158,7 +154,7 @@
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox4.Location = new System.Drawing.Point(3, 3);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1002, 411);
+            this.groupBox4.Size = new System.Drawing.Size(1002, 471);
             this.groupBox4.TabIndex = 10;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "水表列表";
@@ -168,14 +164,14 @@
             this.dgWaterListBatch.AllowUserToAddRows = false;
             this.dgWaterListBatch.AllowUserToDeleteRows = false;
             this.dgWaterListBatch.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgWaterListBatch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgWaterListBatch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgWaterListBatch.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.waterUserIdBatch,
             this.waterUserNOBacth,
@@ -230,12 +226,12 @@
             this.WATERFIXVALUEBatch,
             this.IsReverse});
             this.dgWaterListBatch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgWaterListBatch.Location = new System.Drawing.Point(3, 19);
+            this.dgWaterListBatch.Location = new System.Drawing.Point(3, 22);
             this.dgWaterListBatch.Name = "dgWaterListBatch";
             this.dgWaterListBatch.RowHeadersWidth = 35;
             this.dgWaterListBatch.RowTemplate.Height = 30;
             this.dgWaterListBatch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgWaterListBatch.Size = new System.Drawing.Size(996, 389);
+            this.dgWaterListBatch.Size = new System.Drawing.Size(996, 446);
             this.dgWaterListBatch.TabIndex = 2;
             this.dgWaterListBatch.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgWaterListBatch_CellMouseDown);
             this.dgWaterListBatch.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgWaterListBatch_CellFormatting);
@@ -559,9 +555,9 @@
             // waterMeterProofreadingDateBatch
             // 
             this.waterMeterProofreadingDateBatch.DataPropertyName = "waterMeterProofreadingDate";
-            dataGridViewCellStyle2.Format = "D";
-            dataGridViewCellStyle2.NullValue = null;
-            this.waterMeterProofreadingDateBatch.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Format = "D";
+            dataGridViewCellStyle4.NullValue = null;
+            this.waterMeterProofreadingDateBatch.DefaultCellStyle = dataGridViewCellStyle4;
             this.waterMeterProofreadingDateBatch.HeaderText = "鉴定日期";
             this.waterMeterProofreadingDateBatch.Name = "waterMeterProofreadingDateBatch";
             this.waterMeterProofreadingDateBatch.Width = 88;
@@ -614,12 +610,12 @@
             this.tb1.Controls.Add(this.groupBox4, 0, 0);
             this.tb1.Controls.Add(this.panel1, 0, 1);
             this.tb1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tb1.Location = new System.Drawing.Point(0, 114);
+            this.tb1.Location = new System.Drawing.Point(0, 130);
             this.tb1.Name = "tb1";
             this.tb1.RowCount = 2;
             this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
-            this.tb1.Size = new System.Drawing.Size(1008, 465);
+            this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
+            this.tb1.Size = new System.Drawing.Size(1008, 532);
             this.tb1.TabIndex = 11;
             // 
             // panel1
@@ -632,17 +628,17 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 420);
+            this.panel1.Location = new System.Drawing.Point(3, 480);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1002, 42);
+            this.panel1.Size = new System.Drawing.Size(1002, 49);
             this.panel1.TabIndex = 11;
             // 
             // btBatchAdd
             // 
             this.btBatchAdd.BackColor = System.Drawing.Color.LimeGreen;
-            this.btBatchAdd.Location = new System.Drawing.Point(613, 6);
+            this.btBatchAdd.Location = new System.Drawing.Point(701, 7);
             this.btBatchAdd.Name = "btBatchAdd";
-            this.btBatchAdd.Size = new System.Drawing.Size(75, 30);
+            this.btBatchAdd.Size = new System.Drawing.Size(86, 34);
             this.btBatchAdd.TabIndex = 108;
             this.btBatchAdd.Text = "批量添加";
             this.btBatchAdd.UseVisualStyleBackColor = false;
@@ -652,9 +648,9 @@
             // btOK
             // 
             this.btOK.BackColor = System.Drawing.Color.LimeGreen;
-            this.btOK.Location = new System.Drawing.Point(529, 6);
+            this.btOK.Location = new System.Drawing.Point(605, 7);
             this.btOK.Name = "btOK";
-            this.btOK.Size = new System.Drawing.Size(75, 30);
+            this.btOK.Size = new System.Drawing.Size(86, 34);
             this.btOK.TabIndex = 107;
             this.btOK.Text = "修改";
             this.btOK.UseVisualStyleBackColor = false;
@@ -663,18 +659,18 @@
             // dtProofDate
             // 
             this.dtProofDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtProofDate.Location = new System.Drawing.Point(351, 9);
+            this.dtProofDate.Location = new System.Drawing.Point(401, 10);
             this.dtProofDate.Name = "dtProofDate";
-            this.dtProofDate.Size = new System.Drawing.Size(167, 23);
+            this.dtProofDate.Size = new System.Drawing.Size(190, 26);
             this.dtProofDate.TabIndex = 106;
             // 
             // cmbModifyValue
             // 
             this.cmbModifyValue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbModifyValue.FormattingEnabled = true;
-            this.cmbModifyValue.Location = new System.Drawing.Point(350, 9);
+            this.cmbModifyValue.Location = new System.Drawing.Point(400, 10);
             this.cmbModifyValue.Name = "cmbModifyValue";
-            this.cmbModifyValue.Size = new System.Drawing.Size(170, 22);
+            this.cmbModifyValue.Size = new System.Drawing.Size(194, 24);
             this.cmbModifyValue.TabIndex = 104;
             // 
             // cmbLeft
@@ -712,45 +708,45 @@
             "是否总表",
             "所属总表",
             "定量用水"});
-            this.cmbLeft.Location = new System.Drawing.Point(131, 9);
+            this.cmbLeft.Location = new System.Drawing.Point(150, 10);
             this.cmbLeft.Name = "cmbLeft";
-            this.cmbLeft.Size = new System.Drawing.Size(121, 22);
+            this.cmbLeft.Size = new System.Drawing.Size(138, 24);
             this.cmbLeft.TabIndex = 105;
             this.cmbLeft.SelectedIndexChanged += new System.EventHandler(this.cmbLeft_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(269, 13);
+            this.label2.Location = new System.Drawing.Point(307, 15);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 14);
+            this.label2.Size = new System.Drawing.Size(96, 16);
             this.label2.TabIndex = 103;
             this.label2.Text = "全部修改为:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 13);
+            this.label1.Location = new System.Drawing.Point(8, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(126, 14);
+            this.label1.Size = new System.Drawing.Size(144, 16);
             this.label1.TabIndex = 101;
             this.label1.Text = "将列表中所选行的:";
             // 
             // label47
             // 
             this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(315, 88);
+            this.label47.Location = new System.Drawing.Point(360, 101);
             this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(77, 14);
+            this.label47.Size = new System.Drawing.Size(88, 16);
             this.label47.TabIndex = 87;
             this.label47.Text = "排序方式：";
             // 
             // rbWaterUserNO
             // 
             this.rbWaterUserNO.AutoSize = true;
-            this.rbWaterUserNO.Location = new System.Drawing.Point(471, 86);
+            this.rbWaterUserNO.Location = new System.Drawing.Point(538, 98);
             this.rbWaterUserNO.Name = "rbWaterUserNO";
-            this.rbWaterUserNO.Size = new System.Drawing.Size(67, 18);
+            this.rbWaterUserNO.Size = new System.Drawing.Size(74, 20);
             this.rbWaterUserNO.TabIndex = 88;
             this.rbWaterUserNO.Text = "按户号";
             this.rbWaterUserNO.UseVisualStyleBackColor = true;
@@ -758,9 +754,9 @@
             // rbWaterUserName
             // 
             this.rbWaterUserName.AutoSize = true;
-            this.rbWaterUserName.Location = new System.Drawing.Point(541, 86);
+            this.rbWaterUserName.Location = new System.Drawing.Point(618, 98);
             this.rbWaterUserName.Name = "rbWaterUserName";
-            this.rbWaterUserName.Size = new System.Drawing.Size(67, 18);
+            this.rbWaterUserName.Size = new System.Drawing.Size(74, 20);
             this.rbWaterUserName.TabIndex = 89;
             this.rbWaterUserName.Text = "按姓名";
             this.rbWaterUserName.UseVisualStyleBackColor = true;
@@ -768,9 +764,9 @@
             // label57
             // 
             this.label57.AutoSize = true;
-            this.label57.Location = new System.Drawing.Point(315, 57);
+            this.label57.Location = new System.Drawing.Point(360, 65);
             this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(70, 14);
+            this.label57.Size = new System.Drawing.Size(80, 16);
             this.label57.TabIndex = 94;
             this.label57.Text = "水表状态:";
             // 
@@ -789,16 +785,16 @@
             "坏表",
             "待审核",
             "待拆迁"});
-            this.cmbWaterMeterStateBatch.Location = new System.Drawing.Point(383, 53);
+            this.cmbWaterMeterStateBatch.Location = new System.Drawing.Point(438, 61);
             this.cmbWaterMeterStateBatch.Name = "cmbWaterMeterStateBatch";
-            this.cmbWaterMeterStateBatch.Size = new System.Drawing.Size(78, 22);
+            this.cmbWaterMeterStateBatch.Size = new System.Drawing.Size(89, 24);
             this.cmbWaterMeterStateBatch.TabIndex = 93;
             // 
             // btSearch
             // 
-            this.btSearch.Location = new System.Drawing.Point(659, 79);
+            this.btSearch.Location = new System.Drawing.Point(753, 90);
             this.btSearch.Name = "btSearch";
-            this.btSearch.Size = new System.Drawing.Size(75, 30);
+            this.btSearch.Size = new System.Drawing.Size(86, 34);
             this.btSearch.TabIndex = 101;
             this.btSearch.Tag = "9999";
             this.btSearch.Text = "查询";
@@ -832,10 +828,6 @@
             this.groupBox3.Controls.Add(this.label21);
             this.groupBox3.Controls.Add(this.cmbAreaNOS);
             this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Controls.Add(this.txtWaterUserAddressS);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.txtWaterUserNameSearch);
-            this.groupBox3.Controls.Add(this.label41);
             this.groupBox3.Controls.Add(this.btSearch);
             this.groupBox3.Controls.Add(this.cmbWaterMeterStateBatch);
             this.groupBox3.Controls.Add(this.label57);
@@ -843,7 +835,7 @@
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox3.Location = new System.Drawing.Point(0, 0);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1008, 114);
+            this.groupBox3.Size = new System.Drawing.Size(1008, 130);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Tag = "9999";
@@ -853,9 +845,9 @@
             // 
             this.chkManyClass.AutoSize = true;
             this.chkManyClass.Enabled = false;
-            this.chkManyClass.Location = new System.Drawing.Point(235, 87);
+            this.chkManyClass.Location = new System.Drawing.Point(269, 99);
             this.chkManyClass.Name = "chkManyClass";
-            this.chkManyClass.Size = new System.Drawing.Size(68, 18);
+            this.chkManyClass.Size = new System.Drawing.Size(75, 20);
             this.chkManyClass.TabIndex = 127;
             this.chkManyClass.Text = "含多级";
             this.chkManyClass.UseVisualStyleBackColor = true;
@@ -866,54 +858,55 @@
             this.cmbMeterParentName.Items.AddRange(new object[] {
             "楼房",
             "平房"});
-            this.cmbMeterParentName.Location = new System.Drawing.Point(80, 84);
+            this.cmbMeterParentName.Location = new System.Drawing.Point(91, 96);
             this.cmbMeterParentName.Name = "cmbMeterParentName";
-            this.cmbMeterParentName.Size = new System.Drawing.Size(150, 22);
+            this.cmbMeterParentName.Size = new System.Drawing.Size(171, 24);
             this.cmbMeterParentName.TabIndex = 126;
             this.cmbMeterParentName.SelectedValueChanged += new System.EventHandler(this.cmbMeterParentName_SelectedValueChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 88);
+            this.label4.Location = new System.Drawing.Point(14, 101);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(77, 14);
+            this.label4.Size = new System.Drawing.Size(80, 16);
             this.label4.TabIndex = 125;
-            this.label4.Text = "所属总表：";
+            this.label4.Text = "所属总表:";
             // 
             // txtWaterUserNOSearch
             // 
             this.txtWaterUserNOSearch.BackColor = System.Drawing.SystemColors.Window;
-            this.txtWaterUserNOSearch.Location = new System.Drawing.Point(80, 22);
+            this.txtWaterUserNOSearch.Location = new System.Drawing.Point(91, 25);
             this.txtWaterUserNOSearch.Name = "txtWaterUserNOSearch";
-            this.txtWaterUserNOSearch.Size = new System.Drawing.Size(78, 23);
+            this.txtWaterUserNOSearch.Size = new System.Drawing.Size(261, 26);
             this.txtWaterUserNOSearch.TabIndex = 124;
+            this.txtWaterUserNOSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtWaterUserNOSearch_KeyDown);
             // 
             // label49
             // 
             this.label49.AutoSize = true;
             this.label49.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label49.Location = new System.Drawing.Point(9, 27);
+            this.label49.Location = new System.Drawing.Point(19, 31);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(75, 14);
             this.label49.TabIndex = 123;
-            this.label49.Text = "用户编号:";
+            this.label49.Text = "用户信息:";
             // 
             // cmbWaterMeterTypeBatch
             // 
             this.cmbWaterMeterTypeBatch.DropDownWidth = 150;
             this.cmbWaterMeterTypeBatch.FormattingEnabled = true;
-            this.cmbWaterMeterTypeBatch.Location = new System.Drawing.Point(536, 54);
+            this.cmbWaterMeterTypeBatch.Location = new System.Drawing.Point(613, 62);
             this.cmbWaterMeterTypeBatch.Name = "cmbWaterMeterTypeBatch";
-            this.cmbWaterMeterTypeBatch.Size = new System.Drawing.Size(170, 22);
+            this.cmbWaterMeterTypeBatch.Size = new System.Drawing.Size(194, 24);
             this.cmbWaterMeterTypeBatch.TabIndex = 121;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(469, 58);
+            this.label5.Location = new System.Drawing.Point(536, 66);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(77, 14);
+            this.label5.Size = new System.Drawing.Size(88, 16);
             this.label5.TabIndex = 122;
             this.label5.Text = "用水性质：";
             // 
@@ -921,9 +914,9 @@
             // 
             this.rbPQD.AutoSize = true;
             this.rbPQD.Checked = true;
-            this.rbPQD.Location = new System.Drawing.Point(387, 86);
+            this.rbPQD.Location = new System.Drawing.Point(442, 98);
             this.rbPQD.Name = "rbPQD";
-            this.rbPQD.Size = new System.Drawing.Size(81, 18);
+            this.rbPQD.Size = new System.Drawing.Size(90, 20);
             this.rbPQD.TabIndex = 120;
             this.rbPQD.TabStop = true;
             this.rbPQD.Text = "按片区段";
@@ -932,9 +925,9 @@
             // btSenior
             // 
             this.btSenior.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btSenior.Location = new System.Drawing.Point(890, 49);
+            this.btSenior.Location = new System.Drawing.Point(1017, 56);
             this.btSenior.Name = "btSenior";
-            this.btSenior.Size = new System.Drawing.Size(85, 30);
+            this.btSenior.Size = new System.Drawing.Size(97, 34);
             this.btSenior.TabIndex = 119;
             this.btSenior.Tag = "9999";
             this.btSenior.Text = "高级条件";
@@ -944,9 +937,9 @@
             // txtSenior
             // 
             this.txtSenior.BackColor = System.Drawing.SystemColors.Window;
-            this.txtSenior.Location = new System.Drawing.Point(758, 53);
+            this.txtSenior.Location = new System.Drawing.Point(866, 61);
             this.txtSenior.Name = "txtSenior";
-            this.txtSenior.Size = new System.Drawing.Size(126, 23);
+            this.txtSenior.Size = new System.Drawing.Size(143, 26);
             this.txtSenior.TabIndex = 118;
             // 
             // cmbChargerS
@@ -955,9 +948,9 @@
             this.cmbChargerS.Items.AddRange(new object[] {
             "楼房",
             "平房"});
-            this.cmbChargerS.Location = new System.Drawing.Point(232, 53);
+            this.cmbChargerS.Location = new System.Drawing.Point(265, 61);
             this.cmbChargerS.Name = "cmbChargerS";
-            this.cmbChargerS.Size = new System.Drawing.Size(77, 22);
+            this.cmbChargerS.Size = new System.Drawing.Size(87, 24);
             this.cmbChargerS.TabIndex = 117;
             // 
             // cmbMeterReaderS
@@ -966,44 +959,44 @@
             this.cmbMeterReaderS.Items.AddRange(new object[] {
             "楼房",
             "平房"});
-            this.cmbMeterReaderS.Location = new System.Drawing.Point(80, 53);
+            this.cmbMeterReaderS.Location = new System.Drawing.Point(91, 61);
             this.cmbMeterReaderS.Name = "cmbMeterReaderS";
-            this.cmbMeterReaderS.Size = new System.Drawing.Size(78, 22);
+            this.cmbMeterReaderS.Size = new System.Drawing.Size(89, 24);
             this.cmbMeterReaderS.TabIndex = 116;
             // 
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(178, 57);
+            this.label39.Location = new System.Drawing.Point(203, 65);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(63, 14);
+            this.label39.Size = new System.Drawing.Size(72, 16);
             this.label39.TabIndex = 114;
             this.label39.Text = "收费员：";
             // 
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(26, 57);
+            this.label37.Location = new System.Drawing.Point(14, 65);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(63, 14);
+            this.label37.Size = new System.Drawing.Size(80, 16);
             this.label37.TabIndex = 115;
-            this.label37.Text = "抄表员：";
+            this.label37.Text = "抄 表 员:";
             // 
             // cmbCommunityS
             // 
             this.cmbCommunityS.DropDownWidth = 120;
             this.cmbCommunityS.FormattingEnabled = true;
-            this.cmbCommunityS.Location = new System.Drawing.Point(890, 23);
+            this.cmbCommunityS.Location = new System.Drawing.Point(841, 25);
             this.cmbCommunityS.Name = "cmbCommunityS";
-            this.cmbCommunityS.Size = new System.Drawing.Size(107, 22);
+            this.cmbCommunityS.Size = new System.Drawing.Size(122, 24);
             this.cmbCommunityS.TabIndex = 113;
             // 
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(818, 27);
+            this.label36.Location = new System.Drawing.Point(759, 29);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(77, 14);
+            this.label36.Size = new System.Drawing.Size(88, 16);
             this.label36.TabIndex = 112;
             this.label36.Text = "小区名称：";
             // 
@@ -1011,17 +1004,17 @@
             // 
             this.cmbDuanNOS.DropDownWidth = 120;
             this.cmbDuanNOS.FormattingEnabled = true;
-            this.cmbDuanNOS.Location = new System.Drawing.Point(752, 23);
+            this.cmbDuanNOS.Location = new System.Drawing.Point(683, 25);
             this.cmbDuanNOS.Name = "cmbDuanNOS";
-            this.cmbDuanNOS.Size = new System.Drawing.Size(60, 22);
+            this.cmbDuanNOS.Size = new System.Drawing.Size(68, 24);
             this.cmbDuanNOS.TabIndex = 111;
             // 
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(712, 27);
+            this.label35.Location = new System.Drawing.Point(638, 29);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(49, 14);
+            this.label35.Size = new System.Drawing.Size(56, 16);
             this.label35.TabIndex = 110;
             this.label35.Text = "段号：";
             // 
@@ -1029,71 +1022,37 @@
             // 
             this.cmbPianNOS.DropDownWidth = 120;
             this.cmbPianNOS.FormattingEnabled = true;
-            this.cmbPianNOS.Location = new System.Drawing.Point(536, 22);
+            this.cmbPianNOS.Location = new System.Drawing.Point(437, 24);
             this.cmbPianNOS.Name = "cmbPianNOS";
-            this.cmbPianNOS.Size = new System.Drawing.Size(60, 22);
+            this.cmbPianNOS.Size = new System.Drawing.Size(68, 24);
             this.cmbPianNOS.TabIndex = 109;
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(497, 26);
+            this.label21.Location = new System.Drawing.Point(360, 29);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(49, 14);
+            this.label21.Size = new System.Drawing.Size(80, 16);
             this.label21.TabIndex = 108;
-            this.label21.Text = "片号：";
+            this.label21.Text = "片    号:";
             // 
             // cmbAreaNOS
             // 
             this.cmbAreaNOS.DropDownWidth = 120;
             this.cmbAreaNOS.FormattingEnabled = true;
-            this.cmbAreaNOS.Location = new System.Drawing.Point(646, 23);
+            this.cmbAreaNOS.Location = new System.Drawing.Point(562, 25);
             this.cmbAreaNOS.Name = "cmbAreaNOS";
-            this.cmbAreaNOS.Size = new System.Drawing.Size(60, 22);
+            this.cmbAreaNOS.Size = new System.Drawing.Size(68, 24);
             this.cmbAreaNOS.TabIndex = 107;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(606, 27);
+            this.label9.Location = new System.Drawing.Point(517, 29);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(49, 14);
+            this.label9.Size = new System.Drawing.Size(56, 16);
             this.label9.TabIndex = 106;
             this.label9.Text = "区号：";
-            // 
-            // txtWaterUserAddressS
-            // 
-            this.txtWaterUserAddressS.BackColor = System.Drawing.SystemColors.Window;
-            this.txtWaterUserAddressS.Location = new System.Drawing.Point(383, 22);
-            this.txtWaterUserAddressS.Name = "txtWaterUserAddressS";
-            this.txtWaterUserAddressS.Size = new System.Drawing.Size(104, 23);
-            this.txtWaterUserAddressS.TabIndex = 105;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(315, 27);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 14);
-            this.label3.TabIndex = 104;
-            this.label3.Text = "用户地址：";
-            // 
-            // txtWaterUserNameSearch
-            // 
-            this.txtWaterUserNameSearch.BackColor = System.Drawing.SystemColors.Window;
-            this.txtWaterUserNameSearch.Location = new System.Drawing.Point(232, 22);
-            this.txtWaterUserNameSearch.Name = "txtWaterUserNameSearch";
-            this.txtWaterUserNameSearch.Size = new System.Drawing.Size(77, 23);
-            this.txtWaterUserNameSearch.TabIndex = 103;
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(164, 27);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(77, 14);
-            this.label41.TabIndex = 102;
-            this.label41.Text = "用户名称：";
             // 
             // contextMenuStrip1
             // 
@@ -1156,14 +1115,14 @@
             // 
             // frmBatchModifyWaterUserMesAndWaterMeterMes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 579);
+            this.ClientSize = new System.Drawing.Size(1008, 662);
             this.Controls.Add(this.tb1);
             this.Controls.Add(this.groupBox3);
-            this.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "frmBatchModifyWaterUserMesAndWaterMeterMes";
             this.Text = "  批量修改用户及水表信息";
             this.Load += new System.EventHandler(this.frmBatchModifyWaterUserMesAndWaterMeterMes_Load);
@@ -1199,10 +1158,6 @@
         private System.Windows.Forms.ComboBox cmbWaterMeterStateBatch;
         private System.Windows.Forms.Button btSearch;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox txtWaterUserAddressS;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtWaterUserNameSearch;
-        private System.Windows.Forms.Label label41;
         private System.Windows.Forms.ComboBox cmbCommunityS;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.ComboBox cmbDuanNOS;

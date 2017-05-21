@@ -887,10 +887,7 @@ namespace WATERFEEMANAGE
                                                                 if (decExtraCharge2 > 0 && !isZZS)   //如果是增值税用户，不打印附加费
                                                                 {
                                                                     string strFuJiaFei = "附加费";
-                                                                    //byte[] byFujiaFei = Encoding.Unicode.GetBytes("附加费");
                                                                     if (AddMXData(strFuJiaFei, "", strUnit, Convert.ToDouble(intTotalNumber), 0, Convert.ToDouble(decExtraCharge2), 3, 1, 0))
-                                                                    //if (AddMXData(byShuiFei, byNull, byUnit, Convert.ToDouble(intTotalNumber), Convert.ToDouble(decExtraChargePrice2) / 1.03, Convert.ToDouble(intTotalNumber) * Convert.ToDouble(decExtraChargePrice2) / 1.03, 3, 0, Convert.ToDouble(decExtraChargePrice2) * Convert.ToDouble(intTotalNumber)))
-                                                                    //if (AddMXData(byFujiaFei, byNull, byUnit, Convert.ToDouble(intTotalNumber), Convert.ToDouble(decExtraChargePrice2) / 1.03, 0, 3, 0, 0))
                                                                     {
 
                                                                     }
@@ -905,10 +902,7 @@ namespace WATERFEEMANAGE
                                                                 if (decExtraCharge1 > 0 && !isZZS)  //如果是增值税用户，不打印污水费
                                                                 {
                                                                     string strWuShuiChuLiFei = "污水处理费";
-                                                                    //byte[] byWuShuiChuLiFei = Encoding.Unicode.GetBytes("污水处理费");
                                                                     if (AddMXData(strWuShuiChuLiFei, "", strUnit, Convert.ToDouble(intTotalNumber), 0, Convert.ToDouble(decExtraCharge1), 3, 1, 0))
-                                                                    //if (AddMXData(byShuiFei, byNull, byUnit, Convert.ToDouble(intTotalNumber), Convert.ToDouble(decExtraChargePrice1) / 1.03, Convert.ToDouble(intTotalNumber) * Convert.ToDouble(decExtraChargePrice1) / 1.03, 3, 0, Convert.ToDouble(decExtraChargePrice1) * Convert.ToDouble(intTotalNumber)))
-                                                                    //if (AddMXData(byWuShuiChuLiFei, byNull, byUnit, Convert.ToDouble(intTotalNumber), Convert.ToDouble(decExtraChargePrice1) / 1.03, 0, 3, 0, 0))
                                                                     {
                                                                     }
                                                                     else

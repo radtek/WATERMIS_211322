@@ -109,7 +109,7 @@
             this.totalNumberDescribe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.avePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.avePriceDescribe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.waterTotalChargeEND = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.waterTotalCharge = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.extraChargePriceLS1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.extraChargeLS1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.extraChargePriceLS2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -126,7 +126,6 @@
             this.extraChargeLS7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.extraChargePriceLS8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.extraChargeLS8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.extraTotalChargeEND = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OVERDUEEND = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalChargeEND = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waterMeterTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -509,7 +508,7 @@
             this.totalNumberDescribe,
             this.avePrice,
             this.avePriceDescribe,
-            this.waterTotalChargeEND,
+            this.waterTotalCharge,
             this.extraChargePriceLS1,
             this.extraChargeLS1,
             this.extraChargePriceLS2,
@@ -526,7 +525,6 @@
             this.extraChargeLS7,
             this.extraChargePriceLS8,
             this.extraChargeLS8,
-            this.extraTotalChargeEND,
             this.OVERDUEEND,
             this.totalChargeEND,
             this.waterMeterTypeId,
@@ -1029,14 +1027,13 @@
             this.avePriceDescribe.Visible = false;
             this.avePriceDescribe.Width = 161;
             // 
-            // waterTotalChargeEND
+            // waterTotalCharge
             // 
-            this.waterTotalChargeEND.DataPropertyName = "waterTotalChargeEND";
-            this.waterTotalChargeEND.HeaderText = "水费";
-            this.waterTotalChargeEND.Name = "waterTotalChargeEND";
-            this.waterTotalChargeEND.ReadOnly = true;
-            this.waterTotalChargeEND.Visible = false;
-            this.waterTotalChargeEND.Width = 65;
+            this.waterTotalCharge.DataPropertyName = "waterTotalCharge";
+            this.waterTotalCharge.HeaderText = "水费";
+            this.waterTotalCharge.Name = "waterTotalCharge";
+            this.waterTotalCharge.ReadOnly = true;
+            this.waterTotalCharge.Width = 65;
             // 
             // extraChargePriceLS1
             // 
@@ -1165,15 +1162,6 @@
             this.extraChargeLS8.Name = "extraChargeLS8";
             this.extraChargeLS8.ReadOnly = true;
             this.extraChargeLS8.Width = 89;
-            // 
-            // extraTotalChargeEND
-            // 
-            this.extraTotalChargeEND.DataPropertyName = "extraTotalChargeEND";
-            this.extraTotalChargeEND.HeaderText = "附加费小计";
-            this.extraTotalChargeEND.Name = "extraTotalChargeEND";
-            this.extraTotalChargeEND.ReadOnly = true;
-            this.extraTotalChargeEND.Visible = false;
-            this.extraTotalChargeEND.Width = 113;
             // 
             // OVERDUEEND
             // 
@@ -1563,7 +1551,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn totalNumberDescribe;
         private System.Windows.Forms.DataGridViewTextBoxColumn avePrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn avePriceDescribe;
-        private System.Windows.Forms.DataGridViewTextBoxColumn waterTotalChargeEND;
+        private System.Windows.Forms.DataGridViewTextBoxColumn waterTotalCharge;
         private System.Windows.Forms.DataGridViewTextBoxColumn extraChargePriceLS1;
         private System.Windows.Forms.DataGridViewTextBoxColumn extraChargeLS1;
         private System.Windows.Forms.DataGridViewTextBoxColumn extraChargePriceLS2;
@@ -1580,7 +1568,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn extraChargeLS7;
         private System.Windows.Forms.DataGridViewTextBoxColumn extraChargePriceLS8;
         private System.Windows.Forms.DataGridViewTextBoxColumn extraChargeLS8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn extraTotalChargeEND;
         private System.Windows.Forms.DataGridViewTextBoxColumn OVERDUEEND;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalChargeEND;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterMeterTypeId;

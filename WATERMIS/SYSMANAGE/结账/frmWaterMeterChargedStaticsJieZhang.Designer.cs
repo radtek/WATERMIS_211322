@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            FastReport.Design.DesignerSettings designerSettings2 = new FastReport.Design.DesignerSettings();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            FastReport.Design.DesignerSettings designerSettings5 = new FastReport.Design.DesignerSettings();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWaterMeterChargedStaticsJieZhang));
-            FastReport.Design.DesignerRestrictions designerRestrictions2 = new FastReport.Design.DesignerRestrictions();
-            FastReport.Export.Email.EmailSettings emailSettings2 = new FastReport.Export.Email.EmailSettings();
-            FastReport.PreviewSettings previewSettings2 = new FastReport.PreviewSettings();
-            FastReport.ReportSettings reportSettings2 = new FastReport.ReportSettings();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            FastReport.Design.DesignerRestrictions designerRestrictions5 = new FastReport.Design.DesignerRestrictions();
+            FastReport.Export.Email.EmailSettings emailSettings5 = new FastReport.Export.Email.EmailSettings();
+            FastReport.PreviewSettings previewSettings5 = new FastReport.PreviewSettings();
+            FastReport.ReportSettings reportSettings5 = new FastReport.ReportSettings();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStripWaterUser = new System.Windows.Forms.ToolStrip();
             this.toolStatics = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
@@ -53,12 +53,15 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgListDangQi = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dtpDateTimeSearch = new System.Windows.Forms.DateTimePicker();
-            this.dtpStart = new System.Windows.Forms.DateTimePicker();
+            this.dtpDateTimeEndSearch = new System.Windows.Forms.DateTimePicker();
+            this.dtpEnd = new System.Windows.Forms.DateTimePicker();
             this.chkChargeDateTime = new System.Windows.Forms.CheckBox();
             this.environmentSettings1 = new FastReport.EnvironmentSettings();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dtpStart = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dtpDateTimeStartSearch = new System.Windows.Forms.DateTimePicker();
             this.toolStripWaterUser.SuspendLayout();
             this.tb1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -157,14 +160,14 @@
             // 
             this.dgListYingShou.AllowUserToDeleteRows = false;
             this.dgListYingShou.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgListYingShou.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgListYingShou.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.dgListYingShou.ColumnHeadersHeight = 25;
             this.dgListYingShou.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgListYingShou.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -221,14 +224,14 @@
             // 
             this.dgListChenQian.AllowUserToDeleteRows = false;
             this.dgListChenQian.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgListChenQian.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgListChenQian.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.dgListChenQian.ColumnHeadersHeight = 25;
             this.dgListChenQian.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgListChenQian.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -259,14 +262,14 @@
             // 
             this.dgListDangQi.AllowUserToDeleteRows = false;
             this.dgListDangQi.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgListDangQi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgListDangQi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.dgListDangQi.ColumnHeadersHeight = 25;
             this.dgListDangQi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgListDangQi.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -285,8 +288,11 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.LimeGreen;
-            this.groupBox1.Controls.Add(this.dtpDateTimeSearch);
             this.groupBox1.Controls.Add(this.dtpStart);
+            this.groupBox1.Controls.Add(this.dtpEnd);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.dtpDateTimeStartSearch);
+            this.groupBox1.Controls.Add(this.dtpDateTimeEndSearch);
             this.groupBox1.Controls.Add(this.chkChargeDateTime);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
@@ -298,26 +304,26 @@
             this.groupBox1.Tag = "9999";
             this.groupBox1.Text = "统计条件";
             // 
-            // dtpDateTimeSearch
+            // dtpDateTimeEndSearch
             // 
-            this.dtpDateTimeSearch.CustomFormat = "yyyy-MM";
-            this.dtpDateTimeSearch.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDateTimeSearch.Location = new System.Drawing.Point(218, 20);
-            this.dtpDateTimeSearch.Name = "dtpDateTimeSearch";
-            this.dtpDateTimeSearch.ShowUpDown = true;
-            this.dtpDateTimeSearch.Size = new System.Drawing.Size(86, 26);
-            this.dtpDateTimeSearch.TabIndex = 123;
-            this.dtpDateTimeSearch.Visible = false;
+            this.dtpDateTimeEndSearch.CustomFormat = "yyyy-MM-dd 23:59:59";
+            this.dtpDateTimeEndSearch.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpDateTimeEndSearch.Location = new System.Drawing.Point(804, 21);
+            this.dtpDateTimeEndSearch.Name = "dtpDateTimeEndSearch";
+            this.dtpDateTimeEndSearch.ShowUpDown = true;
+            this.dtpDateTimeEndSearch.Size = new System.Drawing.Size(86, 26);
+            this.dtpDateTimeEndSearch.TabIndex = 123;
+            this.dtpDateTimeEndSearch.Visible = false;
             // 
-            // dtpStart
+            // dtpEnd
             // 
-            this.dtpStart.CustomFormat = "yyyy-MM";
-            this.dtpStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpStart.Location = new System.Drawing.Point(111, 20);
-            this.dtpStart.Name = "dtpStart";
-            this.dtpStart.ShowUpDown = true;
-            this.dtpStart.Size = new System.Drawing.Size(86, 26);
-            this.dtpStart.TabIndex = 122;
+            this.dtpEnd.CustomFormat = "yyyy-MM-dd 23:59:59";
+            this.dtpEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpEnd.Location = new System.Drawing.Point(271, 21);
+            this.dtpEnd.Name = "dtpEnd";
+            this.dtpEnd.ShowUpDown = true;
+            this.dtpEnd.Size = new System.Drawing.Size(105, 26);
+            this.dtpEnd.TabIndex = 122;
             // 
             // chkChargeDateTime
             // 
@@ -327,34 +333,34 @@
             this.chkChargeDateTime.Enabled = false;
             this.chkChargeDateTime.Location = new System.Drawing.Point(19, 24);
             this.chkChargeDateTime.Name = "chkChargeDateTime";
-            this.chkChargeDateTime.Size = new System.Drawing.Size(99, 20);
+            this.chkChargeDateTime.Size = new System.Drawing.Size(115, 20);
             this.chkChargeDateTime.TabIndex = 121;
-            this.chkChargeDateTime.Text = "结账月份:";
+            this.chkChargeDateTime.Text = "结账时间段:";
             this.chkChargeDateTime.UseVisualStyleBackColor = true;
             // 
             // environmentSettings1
             // 
-            designerSettings2.ApplicationConnection = null;
-            designerSettings2.DefaultFont = new System.Drawing.Font("宋体", 9F);
-            designerSettings2.Icon = ((System.Drawing.Icon)(resources.GetObject("designerSettings2.Icon")));
-            designerSettings2.Restrictions = designerRestrictions2;
-            designerSettings2.Text = "";
-            this.environmentSettings1.DesignerSettings = designerSettings2;
-            emailSettings2.Address = "";
-            emailSettings2.Host = "";
-            emailSettings2.MessageTemplate = "";
-            emailSettings2.Name = "";
-            emailSettings2.Password = "";
-            emailSettings2.UserName = "";
-            this.environmentSettings1.EmailSettings = emailSettings2;
-            previewSettings2.Buttons = ((FastReport.PreviewButtons)(((((FastReport.PreviewButtons.Print | FastReport.PreviewButtons.Save)
+            designerSettings5.ApplicationConnection = null;
+            designerSettings5.DefaultFont = new System.Drawing.Font("宋体", 9F);
+            designerSettings5.Icon = ((System.Drawing.Icon)(resources.GetObject("designerSettings5.Icon")));
+            designerSettings5.Restrictions = designerRestrictions5;
+            designerSettings5.Text = "";
+            this.environmentSettings1.DesignerSettings = designerSettings5;
+            emailSettings5.Address = "";
+            emailSettings5.Host = "";
+            emailSettings5.MessageTemplate = "";
+            emailSettings5.Name = "";
+            emailSettings5.Password = "";
+            emailSettings5.UserName = "";
+            this.environmentSettings1.EmailSettings = emailSettings5;
+            previewSettings5.Buttons = ((FastReport.PreviewButtons)(((((FastReport.PreviewButtons.Print | FastReport.PreviewButtons.Save)
                         | FastReport.PreviewButtons.Zoom)
                         | FastReport.PreviewButtons.PageSetup)
                         | FastReport.PreviewButtons.Close)));
-            previewSettings2.Icon = ((System.Drawing.Icon)(resources.GetObject("previewSettings2.Icon")));
-            previewSettings2.Text = "";
-            this.environmentSettings1.PreviewSettings = previewSettings2;
-            this.environmentSettings1.ReportSettings = reportSettings2;
+            previewSettings5.Icon = ((System.Drawing.Icon)(resources.GetObject("previewSettings5.Icon")));
+            previewSettings5.Text = "";
+            this.environmentSettings1.PreviewSettings = previewSettings5;
+            this.environmentSettings1.ReportSettings = reportSettings5;
             this.environmentSettings1.UIStyle = FastReport.Utils.UIStyle.Office2007Black;
             // 
             // groupBox3
@@ -372,14 +378,14 @@
             // 
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle20;
             this.dataGridView1.ColumnHeadersHeight = 25;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -392,6 +398,36 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridView1.Size = new System.Drawing.Size(995, 206);
             this.dataGridView1.TabIndex = 402;
+            // 
+            // dtpStart
+            // 
+            this.dtpStart.CustomFormat = "yyyy-MM-dd 00:00:00";
+            this.dtpStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpStart.Location = new System.Drawing.Point(129, 21);
+            this.dtpStart.Name = "dtpStart";
+            this.dtpStart.ShowUpDown = true;
+            this.dtpStart.Size = new System.Drawing.Size(105, 26);
+            this.dtpStart.TabIndex = 122;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(242, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(24, 16);
+            this.label1.TabIndex = 124;
+            this.label1.Text = "至";
+            // 
+            // dtpDateTimeStartSearch
+            // 
+            this.dtpDateTimeStartSearch.CustomFormat = "yyyy-MM-dd 00:00:00";
+            this.dtpDateTimeStartSearch.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpDateTimeStartSearch.Location = new System.Drawing.Point(712, 21);
+            this.dtpDateTimeStartSearch.Name = "dtpDateTimeStartSearch";
+            this.dtpDateTimeStartSearch.ShowUpDown = true;
+            this.dtpDateTimeStartSearch.Size = new System.Drawing.Size(86, 26);
+            this.dtpDateTimeStartSearch.TabIndex = 123;
+            this.dtpDateTimeStartSearch.Visible = false;
             // 
             // frmWaterMeterChargedStaticsJieZhang
             // 
@@ -435,7 +471,7 @@
         private System.Windows.Forms.TableLayoutPanel tb1;
         private System.Windows.Forms.GroupBox groupBox1;
         private FastReport.EnvironmentSettings environmentSettings1;
-        private System.Windows.Forms.DateTimePicker dtpStart;
+        private System.Windows.Forms.DateTimePicker dtpEnd;
         private System.Windows.Forms.CheckBox chkChargeDateTime;
         private System.Windows.Forms.ToolStripButton toolSaveAccounts;
         private System.Windows.Forms.TabControl tabControl1;
@@ -449,6 +485,9 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridView dgListYingShou;
-        private System.Windows.Forms.DateTimePicker dtpDateTimeSearch;
+        private System.Windows.Forms.DateTimePicker dtpDateTimeEndSearch;
+        private System.Windows.Forms.DateTimePicker dtpStart;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker dtpDateTimeStartSearch;
     }
 }

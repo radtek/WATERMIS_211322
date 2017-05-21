@@ -1498,17 +1498,11 @@ namespace WATERUSERMETERMANAGE
         {
             string strFilter = strSeniorFilterHidden;
 
-            if (txtWaterUserNOSearch.Text.Trim() != "")
-            {
-                if (txtWaterUserNOSearch.Text.Length < 6)
-                    strFilter += " AND waterUserNO='U" + txtWaterUserNOSearch.Text.PadLeft(5, '0') + "'";
-                else
-                    strFilter += " AND waterUserNO='" + txtWaterUserNOSearch.Text + "'";
-            }
-            if (txtWaterUserNameSearch.Text != "")
-                strFilter += " AND waterUserName LIKE '%" + txtWaterUserNameSearch.Text + "%'";
-            if (txtWaterUserAddressS.Text != "")
-                strFilter += " AND waterUserAddress LIKE '%" + txtWaterUserAddressS.Text + "%'";
+            string strSearch = txtWaterUserNOSearch.Text;
+            if (strSearch != "")
+                strFilter += " AND (waterUserNO LIKE '%" + strSearch + "%' OR waterUserName LIKE '%" + strSearch +
+                    "%' OR waterUserAddress LIKE '%" + strSearch + "%' OR waterMeterSerialNumber LIKE '%" + strSearch + "%') ";
+
             if (cmbAreaNOS.SelectedIndex > 0)
                 strFilter += " AND areaNO='" + cmbAreaNOS.Text + "'";
             if (cmbPianNOS.SelectedIndex > 0)
@@ -2362,6 +2356,14 @@ namespace WATERUSERMETERMANAGE
                 Clipboard.Clear();
                 //MessageBox.Show("粘贴区域大小不一致");
                 return;
+            }
+        }
+
+        private void txtWaterUserNOSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btSearch_Click(null, null);
             }
         }
     }

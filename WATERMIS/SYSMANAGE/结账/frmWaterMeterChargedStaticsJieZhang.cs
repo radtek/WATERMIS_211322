@@ -90,11 +90,14 @@ namespace SYSMANAGE
             DateTime dtNow = mes.GetDatetimeNow();
             DateTime dtMonthStart = new DateTime(dtNow.Year, dtNow.Month, 1);
             dtpStart.Value = dtMonthStart;
+            DateTime dtMonthEnd = dtMonthStart.AddMonths(1).AddDays(-1);
+            dtpEnd.Value = dtMonthEnd;
         }
         private void toolSearch_Click(object sender, EventArgs e)
         {
             dgListDangQi.DataSource = null;
-            dtpDateTimeSearch.Value = dtpStart.Value;
+            dtpDateTimeStartSearch.Value = dtpStart.Value;
+            dtpDateTimeEndSearch.Value = dtpEnd.Value;
             RefreshData();
         }
 
@@ -157,10 +160,10 @@ namespace SYSMANAGE
             try
             {
                 string strStatisticsDangQi = "", strStatisticsChenQian = "", strStatisticsYingShou = "";
-                strFilter = "";
+                //strFilter = "";
 
-                if (chkChargeDateTime.Checked)
-                    strFilter += " AND CHARGEDATETIME BETWEEN '" + dtpStart.Text + "' AND '" + dtpStart.Text + "'";
+                //if (chkChargeDateTime.Checked)
+                //    strFilter += " AND CHARGEDATETIME BETWEEN '" + dtpStart.Text + "' AND '" + dtpEnd.Text + "'";
 
                 //strStatisticsDangQi = "SELECT WATERMETERTYPECLASSID AS 分类编号,WATERMETERTYPECLASSNAME AS 分类名称,waterMeterTypeId AS 用水性质编号,waterMeterTypeName AS 用水性质" +
                 strStatisticsDangQi = "SELECT WATERMETERTYPECLASSID AS 分类编号,WATERMETERTYPECLASSNAME AS 分类名称" +
@@ -169,7 +172,7 @@ namespace SYSMANAGE
                         "SUM(extraCharge2) AS 附加费,SUM(totalCharge) AS 实收水费小计," +
                         "SUM(OVERDUEEND) AS 滞纳金, SUM(totalChargeEND) AS 实收水费总计," +
                         "SUM(CHARGEYSBCSZ) AS 预存增减,SUM(CHARGEBCSS) AS 实收金额总计 " +
-                        "FROM (SELECT * FROM V_WATERFEEANDPRESTORECHARGE WHERE DATEDIFF(MONTH,CHARGEDATETIME,'" + dtpStart.Value + "')=0" +
+                        "FROM (SELECT * FROM V_WATERFEEANDPRESTORECHARGE WHERE CHARGEDATETIME BETWEEN '" + dtpStart.Text + "' AND '" + dtpEnd.Text + "'" +
                         " AND DATEDIFF(MONTH,CHARGEDATETIME,readMeterRecordYearAndMonth)=0) AS AA" +
                     //" GROUP BY WATERMETERTYPECLASSID,WATERMETERTYPECLASSNAME,waterMeterTypeId,waterMeterTypeName ";
                 " GROUP BY WATERMETERTYPECLASSID,WATERMETERTYPECLASSNAME ";
@@ -181,7 +184,7 @@ namespace SYSMANAGE
                                 "SUM(extraCharge2) AS 附加费,SUM(totalCharge) AS 实收水费小计," +
                                 "SUM(OVERDUEEND) AS 滞纳金, SUM(totalChargeEND) AS 实收水费总计," +
                                 "SUM(CHARGEYSBCSZ) AS 预存增减,SUM(CHARGEBCSS) AS 实收金额总计 " +
-                    "FROM (SELECT * FROM V_WATERFEEANDPRESTORECHARGE WHERE DATEDIFF(MONTH,CHARGEDATETIME,'" + dtpStart.Value + "')=0" +
+                    "FROM (SELECT * FROM V_WATERFEEANDPRESTORECHARGE WHERE CHARGEDATETIME BETWEEN '" + dtpStart.Text + "' AND '" + dtpEnd.Text + "'" +
                     " AND DATEDIFF(MONTH,readMeterRecordYearAndMonth,CHARGEDATETIME)>0) AS AA" +
                     //" GROUP BY WATERMETERTYPECLASSID,WATERMETERTYPECLASSNAME,waterMeterTypeId,waterMeterTypeName ";
                 " GROUP BY WATERMETERTYPECLASSID,WATERMETERTYPECLASSNAME ";
@@ -195,7 +198,7 @@ namespace SYSMANAGE
                                 "SUM(extraCharge2) AS 附加费,SUM(totalCharge) AS 应收小计," +
                     "SUM(OVERDUEEND) AS 滞纳金, SUM(totalCharge+OVERDUEEND) AS 应收总计, " +
                     "SUM(CASE WHEN chargeState='3' THEN 0 ELSE totalCharge END) AS 未收总计,SUM(CASE WHEN chargeState='3' THEN totalCharge+OVERDUEEND ELSE 0 END) AS 已收总计 " +
-                    "FROM (SELECT * FROM V_YSACCOUNTS_READMETERRECORD_CONTAINOVERDUE WHERE DATEDIFF(MONTH,readMeterRecordYearAndMonth,'" + dtpStart.Value + "')=0) AS AA" +
+                    "FROM (SELECT * FROM V_YSACCOUNTS_READMETERRECORD_CONTAINOVERDUE WHERE readMeterRecordYearAndMonth BETWEEN '" + dtpStart.Text + "' AND '" + dtpEnd.Text + "') AS AA" +
                     //" GROUP BY WATERMETERTYPECLASSID,WATERMETERTYPECLASSNAME,waterMeterTypeId,waterMeterTypeName ";
                 " GROUP BY WATERMETERTYPECLASSID,WATERMETERTYPECLASSNAME ";
 
@@ -220,7 +223,7 @@ namespace SYSMANAGE
 
                     decimal deLJQF = 0, decPrestore = 0;
                     DataTable dtYSLeiJI = BLLWATERFEECHARGE.QueryBySQL("SELECT SUM(CASE WHEN chargeState='3' THEN 0 ELSE  totalCharge END) AS YSQIANFEI " +
-                        " FROM V_YSDETAIL_BYWATERMETER WHERE WATERUSERID IN (SELECT WATERUSERID FROM readMeterRecord WHERE DATEDIFF(MONTH,readMeterRecordYearAndMonth,'" + dtpStart.Value + "')=0 "
+                        " FROM V_YSDETAIL_BYWATERMETER WHERE WATERUSERID IN (SELECT WATERUSERID FROM readMeterRecord WHERE readMeterRecordYearAndMonth BETWEEN '" + dtpStart.Text + "' AND '" + dtpEnd.Text + "'"
                         + strFilterTJ + ")");
                     if (dtYSLeiJI.Rows.Count > 0)
                     {
@@ -231,7 +234,7 @@ namespace SYSMANAGE
                     dtWaterMeterListYingShou.Rows[j]["累计欠费"] = deLJQF;
 
                     DataTable dtSumRow = BLLWATERFEECHARGE.QueryBySQL("SELECT SUM(prestore) AS 账户余额 FROM WATERUSER WHERE WATERUSERID IN" +
-                        "(SELECT WATERUSERID FROM readMeterRecord WHERE DATEDIFF(MONTH,readMeterRecordYearAndMonth,'" + dtpStart.Value + "')=0 " + strFilterTJ + ")");
+                        "(SELECT WATERUSERID FROM readMeterRecord WHERE readMeterRecordYearAndMonth BETWEEN '" + dtpStart.Text + "' AND '" + dtpEnd.Text + "'" + strFilterTJ + ")");
                     if (dtSumRow.Rows.Count > 0)
                     {
                         object objSumRow = dtSumRow.Rows[0]["账户余额"];
@@ -431,7 +434,7 @@ namespace SYSMANAGE
                     }
                 }
 
-                string strSQL = "SELECT * FROM WATERUSER WHERE prestore<>0 AND WATERUSERID NOT IN (SELECT WATERUSERID FROM readMeterRecord WHERE DATEDIFF(MONTH,readMeterRecordYearAndMonth,'" + dtpDateTimeSearch.Value.ToShortDateString() + "')=0 AND WATERMETERNUMBERCHANGESTATE='0')";
+                string strSQL = "SELECT * FROM WATERUSER WHERE prestore<>0 AND WATERUSERID NOT IN (SELECT WATERUSERID FROM readMeterRecord WHERE readMeterRecordYearAndMonth BETWEEN '" + dtpDateTimeStartSearch.Value.ToString("yyyy-MM-dd 00:00:00") + "' AND '" + dtpDateTimeEndSearch.Value.ToString("yyyy-MM-dd 23:59:59") + "' AND WATERMETERNUMBERCHANGESTATE='0')";
                 DataTable dtUnInitial = BLLwaterUser.QuerySQL(strSQL);
                 if (dtUnInitial.Rows.Count > 0)
                 {
@@ -542,22 +545,22 @@ namespace SYSMANAGE
             try
             {
                 string strYueJieSign = "0";
-                string strFilter = " AND DATEDIFF(MONTH,ACCOUNTSYEARANDMONTH,'" + dtpDateTimeSearch.Value.ToString("yyyy-MM-dd") + "')=0";
+                string strFilter = " AND DATEDIFF(MONTH,ACCOUNTSYEARANDMONTH,'" + dtpDateTimeEndSearch.Value.ToString("yyyy-MM-dd") + "')=0";
                 DataTable dtYueJieSS = BLLSETTLEACCOUNTSS.Query(strFilter);
                 if (dtYueJieSS.Rows.Count > 0)
                     strYueJieSign = "1";
 
-                strFilter = " AND DATEDIFF(MONTH,ACCOUNTSYEARANDMONTH,'" + dtpDateTimeSearch.Value.ToString("yyyy-MM-dd") + "')=0";
+                strFilter = " AND DATEDIFF(MONTH,ACCOUNTSYEARANDMONTH,'" + dtpDateTimeEndSearch.Value.ToString("yyyy-MM-dd") + "')=0";
                 DataTable dtYueJieYS = BLLSETTLEACCOUNTYS.Query(strFilter);
                 if (dtYueJieYS.Rows.Count > 0)
                     strYueJieSign = "2";
                 if (strYueJieSign != "0")
                     if (mes.ShowQ("存在已经结账数据,确定要重新将本月收费数据结账吗?") == DialogResult.OK)
                     {
-                        string strDeleteYS = "DELETE FROM SETTLEACCOUNTYS WHERE DATEDIFF(MONTH,ACCOUNTSYEARANDMONTH,'" + dtpDateTimeSearch.Value.ToString("yyyy-MM-dd") + "')=0";
+                        string strDeleteYS = "DELETE FROM SETTLEACCOUNTYS WHERE DATEDIFF(MONTH,ACCOUNTSYEARANDMONTH,'" + dtpDateTimeEndSearch.Value.ToString("yyyy-MM-dd") + "')=0";
                         BLLSETTLEACCOUNTYS.ExcuteSQL(strDeleteYS);
 
-                        string strDeleteSS = "DELETE FROM SETTLEACCOUNTSS WHERE DATEDIFF(MONTH,ACCOUNTSYEARANDMONTH,'" + dtpDateTimeSearch.Value.ToString("yyyy-MM-dd") + "')=0";
+                        string strDeleteSS = "DELETE FROM SETTLEACCOUNTSS WHERE DATEDIFF(MONTH,ACCOUNTSYEARANDMONTH,'" + dtpDateTimeEndSearch.Value.ToString("yyyy-MM-dd") + "')=0";
                         BLLSETTLEACCOUNTSS.ExcuteSQL(strDeleteSS);
                     }
                     else
@@ -578,7 +581,7 @@ namespace SYSMANAGE
                     mes.Show("未找到需要结账处理的应收数据,请先查询后再执行结账操作!");
                     return;
                 }
-                if (mes.ShowQ("确定要将'" + dtpDateTimeSearch.Value.ToString("yyyy-MM") + "'月份的数据结账吗?") != DialogResult.OK)
+                if (mes.ShowQ("确定要将'" + dtpDateTimeEndSearch.Value.ToString("yyyy-MM") + "'月份的数据结账吗?") != DialogResult.OK)
                 {
                     return;
                 }
@@ -597,7 +600,7 @@ namespace SYSMANAGE
                     #region 生成MODEL并更新台账
                     MODELSETTLEACCOUNTYS MODELSETTLEACCOUNTYS = new MODELSETTLEACCOUNTYS();
                     MODELSETTLEACCOUNTYS.SETTLEACCOUNTSYSID = GETTABLEID.GetTableID("", "SETTLEACCOUNTYS");
-                    MODELSETTLEACCOUNTYS.ACCOUNTSYEARANDMONTH = dtpDateTimeSearch.Value;
+                    MODELSETTLEACCOUNTYS.ACCOUNTSYEARANDMONTH = dtpDateTimeEndSearch.Value;
                     MODELSETTLEACCOUNTYS.ACCOUNTSDATETIME = dtNow;
                     MODELSETTLEACCOUNTYS.ACCOUNTSWORKERID = strLogID;
                     MODELSETTLEACCOUNTYS.ACCOUNTSWORKERNAME = strUserName;
@@ -676,7 +679,7 @@ namespace SYSMANAGE
                         try
                         {
                             string strSQLUpdateRecord = "UPDATE readMeterRecord SET SETTLEACCOUNTSYSID='" + MODELSETTLEACCOUNTYS.SETTLEACCOUNTSYSID + "'" +
-                                " WHERE DATEDIFF(MONTH,readMeterRecordYearAndMonth,'" + dtpDateTimeSearch.Value + "')=0 " + strFilterTJ;
+                                " WHERE readMeterRecordYearAndMonth BETWEEN '" + dtpDateTimeStartSearch.Value.ToString("yyyy-MM-dd 00:00:00") + "' AND '" + dtpDateTimeEndSearch.Value.ToString("yyyy-MM-dd 23:59:59") + "'" + strFilterTJ;
                             BLLSETTLEACCOUNTYS.ExcuteSQL(strSQLUpdateRecord);
                             dgListYingShou.Rows[i].DefaultCellStyle.ForeColor = Color.Green;
                         }
@@ -706,7 +709,7 @@ namespace SYSMANAGE
                     #region 生成MODEL并更新台账
                     MODELSETTLEACCOUNTSS MODELSETTLEACCOUNTSS = new MODELSETTLEACCOUNTSS();
                     MODELSETTLEACCOUNTSS.SETTLEACCOUNTSSSID = GETTABLEID.GetTableID("", "SETTLEACCOUNTSS");
-                    MODELSETTLEACCOUNTSS.ACCOUNTSYEARANDMONTH = dtpDateTimeSearch.Value;
+                    MODELSETTLEACCOUNTSS.ACCOUNTSYEARANDMONTH = dtpDateTimeEndSearch.Value;
                     MODELSETTLEACCOUNTSS.ACCOUNTSDATETIME = dtNow;
                     MODELSETTLEACCOUNTSS.ACCOUNTSWORKERID = strLogID;
                     MODELSETTLEACCOUNTSS.ACCOUNTSWORKERNAME = strUserName;
@@ -780,7 +783,7 @@ namespace SYSMANAGE
                         {
                             string strSQLUpdateRecord = "UPDATE WATERFEECHARGE SET SETTLEACCOUNTSSSID='" + MODELSETTLEACCOUNTSS.SETTLEACCOUNTSSSID + "'" +
                                 " WHERE CHARGEID IN " +
-                                "(SELECT CHARGEID FROM V_WATERFEEANDPRESTORECHARGE WHERE DATEDIFF(MONTH,CHARGEDATETIME,'" + dtpDateTimeSearch.Value + "')=0" +
+                                "(SELECT CHARGEID FROM V_WATERFEEANDPRESTORECHARGE WHERE CHARGEDATETIME BETWEEN '" + dtpStart.Text + "' AND '" + dtpEnd.Text + "'" +
                                 " AND DATEDIFF(MONTH,CHARGEDATETIME,readMeterRecordYearAndMonth)=0 " + strFilterTJ + ")";
                             BLLSETTLEACCOUNTSS.ExcuteSQL(strSQLUpdateRecord);
                             dgListDangQi.Rows[i].DefaultCellStyle.ForeColor = Color.Green;
@@ -810,7 +813,7 @@ namespace SYSMANAGE
                     #region 生成MODEL并更新台账
                     MODELSETTLEACCOUNTSS MODELSETTLEACCOUNTSS = new MODELSETTLEACCOUNTSS();
                     MODELSETTLEACCOUNTSS.SETTLEACCOUNTSSSID = GETTABLEID.GetTableID("", "SETTLEACCOUNTSS");
-                    MODELSETTLEACCOUNTSS.ACCOUNTSYEARANDMONTH = dtpDateTimeSearch.Value;
+                    MODELSETTLEACCOUNTSS.ACCOUNTSYEARANDMONTH = dtpDateTimeEndSearch.Value;
                     MODELSETTLEACCOUNTSS.ACCOUNTSDATETIME = dtNow;
                     MODELSETTLEACCOUNTSS.ACCOUNTSWORKERID = strLogID;
                     MODELSETTLEACCOUNTSS.ACCOUNTSWORKERNAME = strUserName;
@@ -884,7 +887,7 @@ namespace SYSMANAGE
                         {
                             string strSQLUpdateRecord = "UPDATE WATERFEECHARGE SET SETTLEACCOUNTSSSID='" + MODELSETTLEACCOUNTSS.SETTLEACCOUNTSSSID + "'" +
                                 " WHERE CHARGEID IN " +
-                                "(SELECT CHARGEID FROM V_WATERFEEANDPRESTORECHARGE WHERE DATEDIFF(MONTH,CHARGEDATETIME,'" + dtpDateTimeSearch.Value + "')=0" +
+                                "(SELECT CHARGEID FROM V_WATERFEEANDPRESTORECHARGE WHERE CHARGEDATETIME BETWEEN '" + dtpStart.Text + "' AND '" + dtpEnd.Text + "'" +
                                 " AND DATEDIFF(MONTH,readMeterRecordYearAndMonth,CHARGEDATETIME)>0 " + strFilterTJ + ")";
                             BLLSETTLEACCOUNTSS.ExcuteSQL(strSQLUpdateRecord);
                             dgListChenQian.Rows[i].DefaultCellStyle.ForeColor = Color.Green;
@@ -932,12 +935,12 @@ namespace SYSMANAGE
         private void toolExcel_Click(object sender, EventArgs e)
         {
             string strCaption = "";
-            if (GetMonth(dtpStart.Value, dtpStart.Value) > 1)
+            if (GetMonth(dtpEnd.Value, dtpEnd.Value) > 1)
             {
-                strCaption = dtpStart.Value.Month + "-" + dtpStart.Value.Month + "月份水费实收统计表";
+                strCaption = dtpEnd.Value.Month + "-" + dtpEnd.Value.Month + "月份水费实收统计表";
             }
             else
-                strCaption = dtpStart.Value.Month + "月份水费实收统计表";
+                strCaption = dtpEnd.Value.Month + "月份水费实收统计表";
             ExportExcel ExportExcel = new ExportExcel();
             ExportExcel.ExportToExcel(strCaption, dgListDangQi);
         }

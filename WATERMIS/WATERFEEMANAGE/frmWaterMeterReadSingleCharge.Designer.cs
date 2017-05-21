@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWaterMeterReadSingleCharge));
             this.gpbWaterFeeMes = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -101,6 +101,7 @@
             this.WATERFIXVALUE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.readMeterRecordId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtWaterFee = new System.Windows.Forms.TextBox();
             this.rbInvoiceBatchPrint = new System.Windows.Forms.RadioButton();
             this.rbInvoiceSinglePrint = new System.Windows.Forms.RadioButton();
             this.rbPrintReceipt = new System.Windows.Forms.RadioButton();
@@ -126,7 +127,6 @@
             this.txtYSJSYE = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.txtYSQQYE = new System.Windows.Forms.TextBox();
-            this.txtWaterFee = new System.Windows.Forms.TextBox();
             this.cmbChargeType = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
             this.btCharge = new System.Windows.Forms.Button();
@@ -269,18 +269,18 @@
             // 
             this.dgWaterList.AllowUserToAddRows = false;
             this.dgWaterList.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgWaterList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgWaterList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgWaterList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgWaterList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgWaterList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgWaterList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgWaterList.ColumnHeadersHeight = 25;
             this.dgWaterList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgWaterList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -442,8 +442,8 @@
             // readMeterRecordYearAndMonth
             // 
             this.readMeterRecordYearAndMonth.DataPropertyName = "readMeterRecordYearAndMonth";
-            dataGridViewCellStyle15.NullValue = "\'\'";
-            this.readMeterRecordYearAndMonth.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.NullValue = "\'\'";
+            this.readMeterRecordYearAndMonth.DefaultCellStyle = dataGridViewCellStyle3;
             this.readMeterRecordYearAndMonth.HeaderText = "水费月份";
             this.readMeterRecordYearAndMonth.Name = "readMeterRecordYearAndMonth";
             this.readMeterRecordYearAndMonth.Width = 88;
@@ -662,9 +662,9 @@
             // readMeterRecordDate
             // 
             this.readMeterRecordDate.DataPropertyName = "readMeterRecordDate";
-            dataGridViewCellStyle16.Format = "d";
-            dataGridViewCellStyle16.NullValue = null;
-            this.readMeterRecordDate.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle4.Format = "d";
+            dataGridViewCellStyle4.NullValue = null;
+            this.readMeterRecordDate.DefaultCellStyle = dataGridViewCellStyle4;
             this.readMeterRecordDate.HeaderText = "抄表日期";
             this.readMeterRecordDate.Name = "readMeterRecordDate";
             this.readMeterRecordDate.Width = 88;
@@ -884,6 +884,16 @@
             this.groupBox1.Tag = "9999";
             this.groupBox1.Text = "本次结算(单位:元)";
             // 
+            // txtWaterFee
+            // 
+            this.txtWaterFee.BackColor = System.Drawing.Color.LightYellow;
+            this.txtWaterFee.Location = new System.Drawing.Point(160, 22);
+            this.txtWaterFee.Name = "txtWaterFee";
+            this.txtWaterFee.ReadOnly = true;
+            this.txtWaterFee.Size = new System.Drawing.Size(67, 23);
+            this.txtWaterFee.TabIndex = 73;
+            this.txtWaterFee.Text = "0";
+            // 
             // rbInvoiceBatchPrint
             // 
             this.rbInvoiceBatchPrint.AutoSize = true;
@@ -893,6 +903,7 @@
             this.rbInvoiceBatchPrint.TabIndex = 153;
             this.rbInvoiceBatchPrint.Text = "合打发票";
             this.rbInvoiceBatchPrint.UseVisualStyleBackColor = true;
+            this.rbInvoiceBatchPrint.Visible = false;
             this.rbInvoiceBatchPrint.CheckedChanged += new System.EventHandler(this.rbInvoiceBatchPrint_CheckedChanged);
             // 
             // rbInvoiceSinglePrint
@@ -1151,16 +1162,6 @@
             this.txtYSQQYE.Size = new System.Drawing.Size(67, 23);
             this.txtYSQQYE.TabIndex = 75;
             this.txtYSQQYE.Text = "0";
-            // 
-            // txtWaterFee
-            // 
-            this.txtWaterFee.BackColor = System.Drawing.Color.LightYellow;
-            this.txtWaterFee.Location = new System.Drawing.Point(160, 22);
-            this.txtWaterFee.Name = "txtWaterFee";
-            this.txtWaterFee.ReadOnly = true;
-            this.txtWaterFee.Size = new System.Drawing.Size(67, 23);
-            this.txtWaterFee.TabIndex = 73;
-            this.txtWaterFee.Text = "0";
             // 
             // cmbChargeType
             // 
@@ -1790,18 +1791,18 @@
             // 
             this.dgHistoryYC.AllowUserToAddRows = false;
             this.dgHistoryYC.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgHistoryYC.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgHistoryYC.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgHistoryYC.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgHistoryYC.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgHistoryYC.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgHistoryYC.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgHistoryYC.ColumnHeadersHeight = 25;
             this.dgHistoryYC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgHistoryYC.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {

@@ -68,15 +68,6 @@
             this.label40 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgList = new System.Windows.Forms.DataGridView();
-            this.meterReaderName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.areaNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.duanNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.waterMeterPositionName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.waterMeterTypeValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.meterReaderNameNew = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.areaNONew = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.duanNONew = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.environmentSettings1 = new FastReport.EnvironmentSettings();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.今天ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -89,6 +80,17 @@
             this.上年ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.全部ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.meterReaderName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.areaNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.duanNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.waterMeterPositionName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.waterMeterTypeValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.meterReaderNameNew = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.areaNONew = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.duanNONew = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.meterReaderID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.waterMeterTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStripWaterUser.SuspendLayout();
             this.tb1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -438,7 +440,9 @@
             this.meterReaderNameNew,
             this.areaNONew,
             this.duanNONew,
-            this.UserCount});
+            this.UserCount,
+            this.meterReaderID,
+            this.waterMeterTypeId});
             this.dgList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgList.Location = new System.Drawing.Point(3, 22);
             this.dgList.MultiSelect = false;
@@ -449,80 +453,9 @@
             this.dgList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgList.Size = new System.Drawing.Size(996, 575);
             this.dgList.TabIndex = 901;
+            this.dgList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgList_CellDoubleClick);
             this.dgList.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgList_CellPainting);
             this.dgList.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgList_DataBindingComplete);
-            // 
-            // meterReaderName
-            // 
-            this.meterReaderName.DataPropertyName = "meterReaderName";
-            this.meterReaderName.HeaderText = "抄表员(出)";
-            this.meterReaderName.Name = "meterReaderName";
-            this.meterReaderName.ReadOnly = true;
-            this.meterReaderName.Width = 113;
-            // 
-            // areaNO
-            // 
-            this.areaNO.DataPropertyName = "areaNO";
-            this.areaNO.HeaderText = "区号(出)";
-            this.areaNO.Name = "areaNO";
-            this.areaNO.ReadOnly = true;
-            this.areaNO.Width = 97;
-            // 
-            // duanNO
-            // 
-            this.duanNO.DataPropertyName = "duanNO";
-            this.duanNO.HeaderText = "原段号(出)";
-            this.duanNO.Name = "duanNO";
-            this.duanNO.ReadOnly = true;
-            this.duanNO.Width = 113;
-            // 
-            // waterMeterPositionName
-            // 
-            this.waterMeterPositionName.DataPropertyName = "waterMeterPositionName";
-            this.waterMeterPositionName.HeaderText = "水表位置";
-            this.waterMeterPositionName.Name = "waterMeterPositionName";
-            this.waterMeterPositionName.ReadOnly = true;
-            this.waterMeterPositionName.Width = 97;
-            // 
-            // waterMeterTypeValue
-            // 
-            this.waterMeterTypeValue.DataPropertyName = "waterMeterTypeValue";
-            this.waterMeterTypeValue.HeaderText = "用水性质";
-            this.waterMeterTypeValue.Name = "waterMeterTypeValue";
-            this.waterMeterTypeValue.ReadOnly = true;
-            this.waterMeterTypeValue.Width = 97;
-            // 
-            // meterReaderNameNew
-            // 
-            this.meterReaderNameNew.DataPropertyName = "meterReaderNameNew";
-            this.meterReaderNameNew.HeaderText = "抄表员(入)";
-            this.meterReaderNameNew.Name = "meterReaderNameNew";
-            this.meterReaderNameNew.ReadOnly = true;
-            this.meterReaderNameNew.Width = 113;
-            // 
-            // areaNONew
-            // 
-            this.areaNONew.DataPropertyName = "areaNONew";
-            this.areaNONew.HeaderText = "区号(入)";
-            this.areaNONew.Name = "areaNONew";
-            this.areaNONew.ReadOnly = true;
-            this.areaNONew.Width = 97;
-            // 
-            // duanNONew
-            // 
-            this.duanNONew.DataPropertyName = "duanNONew";
-            this.duanNONew.HeaderText = "段号(入)";
-            this.duanNONew.Name = "duanNONew";
-            this.duanNONew.ReadOnly = true;
-            this.duanNONew.Width = 97;
-            // 
-            // UserCount
-            // 
-            this.UserCount.DataPropertyName = "UserCount";
-            this.UserCount.HeaderText = "户数";
-            this.UserCount.Name = "UserCount";
-            this.UserCount.ReadOnly = true;
-            this.UserCount.Width = 65;
             // 
             // environmentSettings1
             // 
@@ -631,6 +564,96 @@
             this.全部ToolStripMenuItem.Text = "全部";
             this.全部ToolStripMenuItem.Click += new System.EventHandler(this.全部ToolStripMenuItem_Click);
             // 
+            // meterReaderName
+            // 
+            this.meterReaderName.DataPropertyName = "meterReaderName";
+            this.meterReaderName.HeaderText = "抄表员(出)";
+            this.meterReaderName.Name = "meterReaderName";
+            this.meterReaderName.ReadOnly = true;
+            this.meterReaderName.Width = 113;
+            // 
+            // areaNO
+            // 
+            this.areaNO.DataPropertyName = "areaNO";
+            this.areaNO.HeaderText = "区号(出)";
+            this.areaNO.Name = "areaNO";
+            this.areaNO.ReadOnly = true;
+            this.areaNO.Width = 97;
+            // 
+            // duanNO
+            // 
+            this.duanNO.DataPropertyName = "duanNO";
+            this.duanNO.HeaderText = "原段号(出)";
+            this.duanNO.Name = "duanNO";
+            this.duanNO.ReadOnly = true;
+            this.duanNO.Width = 113;
+            // 
+            // waterMeterPositionName
+            // 
+            this.waterMeterPositionName.DataPropertyName = "waterMeterPositionName";
+            this.waterMeterPositionName.HeaderText = "水表位置";
+            this.waterMeterPositionName.Name = "waterMeterPositionName";
+            this.waterMeterPositionName.ReadOnly = true;
+            this.waterMeterPositionName.Width = 97;
+            // 
+            // waterMeterTypeValue
+            // 
+            this.waterMeterTypeValue.DataPropertyName = "waterMeterTypeValue";
+            this.waterMeterTypeValue.HeaderText = "用水性质";
+            this.waterMeterTypeValue.Name = "waterMeterTypeValue";
+            this.waterMeterTypeValue.ReadOnly = true;
+            this.waterMeterTypeValue.Width = 97;
+            // 
+            // meterReaderNameNew
+            // 
+            this.meterReaderNameNew.DataPropertyName = "meterReaderNameNew";
+            this.meterReaderNameNew.HeaderText = "抄表员(入)";
+            this.meterReaderNameNew.Name = "meterReaderNameNew";
+            this.meterReaderNameNew.ReadOnly = true;
+            this.meterReaderNameNew.Width = 113;
+            // 
+            // areaNONew
+            // 
+            this.areaNONew.DataPropertyName = "areaNONew";
+            this.areaNONew.HeaderText = "区号(入)";
+            this.areaNONew.Name = "areaNONew";
+            this.areaNONew.ReadOnly = true;
+            this.areaNONew.Width = 97;
+            // 
+            // duanNONew
+            // 
+            this.duanNONew.DataPropertyName = "duanNONew";
+            this.duanNONew.HeaderText = "段号(入)";
+            this.duanNONew.Name = "duanNONew";
+            this.duanNONew.ReadOnly = true;
+            this.duanNONew.Width = 97;
+            // 
+            // UserCount
+            // 
+            this.UserCount.DataPropertyName = "UserCount";
+            this.UserCount.HeaderText = "户数";
+            this.UserCount.Name = "UserCount";
+            this.UserCount.ReadOnly = true;
+            this.UserCount.Width = 65;
+            // 
+            // meterReaderID
+            // 
+            this.meterReaderID.DataPropertyName = "meterReaderID";
+            this.meterReaderID.HeaderText = "meterReaderID";
+            this.meterReaderID.Name = "meterReaderID";
+            this.meterReaderID.ReadOnly = true;
+            this.meterReaderID.Visible = false;
+            this.meterReaderID.Width = 137;
+            // 
+            // waterMeterTypeId
+            // 
+            this.waterMeterTypeId.DataPropertyName = "waterMeterTypeId";
+            this.waterMeterTypeId.HeaderText = "waterMeterTypeId";
+            this.waterMeterTypeId.Name = "waterMeterTypeId";
+            this.waterMeterTypeId.ReadOnly = true;
+            this.waterMeterTypeId.Visible = false;
+            this.waterMeterTypeId.Width = 161;
+            // 
             // frmWaterUserMoveStatic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -711,5 +734,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn areaNONew;
         private System.Windows.Forms.DataGridViewTextBoxColumn duanNONew;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserCount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn meterReaderID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn waterMeterTypeId;
     }
 }

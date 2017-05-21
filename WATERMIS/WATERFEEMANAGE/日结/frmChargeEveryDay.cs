@@ -115,7 +115,7 @@ namespace WATERFEEMANAGE
             {
                 strChargerID = cmbChargerWorkName.SelectedValue.ToString();
                 strFilter += " AND CHARGEWORKERID='" + strChargerID + "'";
-                strFilterBDFP += " AND CHARGEWORKERID='" + strChargerID + "'";
+                strFilterBDFP += " AND INVOICEPRINTWORKERID='" + strChargerID + "' AND CHARGEWORKERID<>'" + strChargerID + "'";
                 cmbChargerWorkNameSearch.SelectedValue = cmbChargerWorkName.SelectedValue;
             }
             txtWorkerNameSearch.Text = cmbChargerWorkName.Text;
@@ -207,7 +207,8 @@ namespace WATERFEEMANAGE
             #endregion
 
             #region 获取补打发票数量
-            string strBDFPCount = string.Format(@"SELECT DISTINCT INVOICEBATCHID,INVOICENO FROM V_CHARGE WHERE  DATEDIFF(MONTH,CHARGEDATETIME,INVOICEPRINTDATETIME)<>0 {0}", strFilterBDFP);
+            //string strBDFPCount = string.Format(@"SELECT DISTINCT INVOICEBATCHID,INVOICENO FROM V_CHARGE WHERE  DATEDIFF(MONTH,CHARGEDATETIME,INVOICEPRINTDATETIME)<>0 {0}", strFilterBDFP);
+            string strBDFPCount = string.Format(@"SELECT DISTINCT INVOICEBATCHID,INVOICENO FROM V_CHARGE WHERE 1=1  {0}", strFilterBDFP);
             DataTable dtFPBD = BLLWATERFEECHARGE.QueryBySQL(strBDFPCount);
             intFPBDCount = dtFPBD.Rows.Count;
             #endregion

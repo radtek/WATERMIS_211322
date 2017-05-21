@@ -315,14 +315,24 @@ namespace WATERFEEMANAGE
         Thread TD;
         private void RefreshData(string[] strNodeID)
         {
-            TD = new Thread(showwaitfrm);
-            TD.Start();
-            LoadData(strNodeID);
-            Thread.Sleep(1000);   //此行可以不需要，主要用于等待主窗体填充数据
-
-            if (!waitfrm.IsDisposed)
+            try
             {
-                waitfrm.Close();
+                TD = new Thread(showwaitfrm);
+                TD.Start();
+                LoadData(strNodeID);
+                Thread.Sleep(1000);   //此行可以不需要，主要用于等待主窗体填充数据
+            }
+            catch (Exception ex)
+            {
+                log.Write(ex.ToString(),MsgType.Error);
+                mes.Show(ex.Message);
+            }
+            finally
+            {
+                if (!waitfrm.IsDisposed)
+                {
+                    waitfrm.Close();
+                }
             }
             //TD.Abort(); //主窗体加载完成数据后，线程结束，关闭等待窗体。
         }

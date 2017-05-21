@@ -1135,11 +1135,11 @@ namespace STATISTIALREPORTS
         {
             try
             {
-                if (GetMonth(dtpStartSearch.Value, dtpEndSearch.Value) > 1)
-                {
-                    mes.Show("预收账款的保存只能为某月份!");
-                    return;
-                }
+                //if (GetMonth(dtpStartSearch.Value, dtpEndSearch.Value) > 1)
+                //{
+                //    mes.Show("预收账款的保存只能为某月份!");
+                //    return;
+                //}
                 decimal decBusinessMoneyLast = 0, decFinanceMoneyLast = 0, decYSMoney = 0, decSum = 0, decOverDueMoney = 0,
                     decBCSZ = 0, decYSXiaoJi = 0, decBusinessMoney = 0, decFinanceMoney = 0;
                 DataTable dtAccount = BLLACCOUNTSRUNNING.Query(" AND DATEDIFF(MONTH,ACCOUNTSYEARANDMONTH,'" + dtpEndSearch.Value + "')=0");

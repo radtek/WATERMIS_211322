@@ -60,6 +60,13 @@ namespace WATERUSERMETERMANAGE.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap information {
+            get {
+                object obj = ResourceManager.GetObject("information", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap onebit_02 {
             get {
                 object obj = ResourceManager.GetObject("onebit_02", resourceCulture);

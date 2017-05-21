@@ -314,7 +314,7 @@ namespace STATISTIALREPORTS
                     strFilter += " AND chargerID='" + cmbCharger.SelectedValue.ToString() + "'";
 
                 if (chkChargeDateTime.Checked)
-                    strFilter += " AND readMeterRecordYearAndMonth BETWEEN '" + new DateTime(dtpStart.Value.Year, dtpStart.Value.Month, 1) + "' AND '" + new DateTime(dtpEnd.Value.Year, dtpEnd.Value.Month, 1,23,59,59).AddMonths(1).AddDays(-1) + "'";
+                    strFilter += " AND readMeterRecordYearAndMonth BETWEEN '" + new DateTime(dtpStart.Value.Year, dtpStart.Value.Month, 1) + "' AND '" + new DateTime(dtpEnd.Value.Year, dtpEnd.Value.Month, 1, 23, 59, 59).AddMonths(1).AddDays(-1) + "'";
 
                 if (cmbIsTotalNumber.SelectedIndex > 0)
                     if (cmbIsTotalNumber.SelectedIndex == 1)
@@ -446,9 +446,9 @@ namespace STATISTIALREPORTS
                     //strStatisticsGroupBy = " GROUP BY " + strStatisticsGroupBy;
                     strStatisticsGroupBy = " GROUP BY " + strStatisticsGroupBy + " ORDER BY " + strStatisticsGroupBy;
                     strStatisticsContent = "SELECT " + strStatisticsContent +
-                        ",COUNT(DISTINCT WATERUSERID) AS 总户数"+
-                        ",SUM(CASE WHEN chargeState<>'0' AND checkState='1' AND totalNumber>0  THEN 1 ELSE 0 END) AS 用水户数,"+
-                        "0.00 AS 账户余额,0.00 AS 累计欠费,0.00 AS 结算余额,"+
+                        ",COUNT(DISTINCT WATERUSERID) AS 总户数" +
+                        ",SUM(CASE WHEN chargeState<>'0' AND checkState='1' AND totalNumber>0  THEN 1 ELSE 0 END) AS 用水户数," +
+                        //"0.00 AS 账户余额,0.00 AS 累计欠费,0.00 AS 结算余额,0.00 AS 累计欠费," +
                         "SUM(totalNumber) AS 用水量," +
                         "SUM(totalNumber/(CASE NotReadMonthCount WHEN 0 THEN 1 ELSE NotReadMonthCount END)) AS [均用水量/月]," +
                         "0.00 AS [均用水量/月/户]," +
@@ -463,8 +463,9 @@ namespace STATISTIALREPORTS
                 {
                     strStatisticsContent = "SELECT " +
                         " COUNT(DISTINCT WATERUSERID) AS 总户数," +
-                        "SUM(CASE WHEN chargeState<>'0' AND checkState='1' AND totalNumber>0  THEN 1 ELSE 0 END) AS 用水户数,"+
-                        "0.00 AS 账户余额,0.00 AS 累计欠费,0.00 AS 结算余额,SUM(totalNumber) AS 用水量," +
+                        "SUM(CASE WHEN chargeState<>'0' AND checkState='1' AND totalNumber>0  THEN 1 ELSE 0 END) AS 用水户数," +
+                        //"0.00 AS 账户余额,0.00 AS 累计欠费,0.00 AS 结算余额,SUM(totalNumber) AS 用水量,0.00 AS 累计欠费," +
+                        "SUM(totalNumber) AS 用水量," +
                         "SUM(totalNumber/(CASE NotReadMonthCount WHEN 0 THEN 1 ELSE NotReadMonthCount END)) AS [均用水量/月]," +
                         "0.00 AS [均用水量/月/户]," +
                                     "SUM(waterTotalChargeEND) AS 水费,SUM(extraCharge1) AS 污水处理费," +
@@ -474,9 +475,9 @@ namespace STATISTIALREPORTS
                         "FROM (SELECT * FROM V_YSACCOUNTS_READMETERRECORD_CONTAINOVERDUE WHERE 1=1 " + strFilter + ") AS AA";
                 }
 
-                    dtWaterMeterList = BLLWATERFEECHARGE.QueryBySQL(strStatisticsContent);
-                    #region 填充用户余额
-                    for (int j = 0; j < dtWaterMeterList.Rows.Count; j++)
+                dtWaterMeterList = BLLWATERFEECHARGE.QueryBySQL(strStatisticsContent);
+                #region 填充用户余额
+                for (int j = 0; j < dtWaterMeterList.Rows.Count; j++)
                 {
                     string strFilterTJ = "";
                     for (int i = 0; i < dtWaterMeterList.Columns.Count; i++)
@@ -576,93 +577,69 @@ namespace STATISTIALREPORTS
                         }
                     }
 
-                    decimal deLJQF = 0, decPrestore = 0;
-                    DataTable dtYSLeiJI = BLLWATERFEECHARGE.QueryBySQL("SELECT SUM(CASE WHEN chargeState='3' THEN 0 ELSE  totalCharge END) AS YSQIANFEI " +
-                        " FROM V_YSDETAIL_BYWATERMETER WHERE WATERUSERID IN (SELECT WATERUSERID FROM readMeterRecord WHERE 1=1" +strFilterTJ+
-                       strFilter + ")");
-                    if (dtYSLeiJI.Rows.Count > 0)
-                    {
-                        object obj = dtYSLeiJI.Rows[0]["YSQIANFEI"];
-                        if (Information.IsNumeric(obj))
-                            deLJQF = Convert.ToDecimal(obj);
-                    }
-                    dtWaterMeterList.Rows[j]["累计欠费"] = deLJQF;
-                
-                    DataTable dtSumRow = BLLWATERFEECHARGE.QueryBySQL("SELECT SUM(prestore) AS 账户余额 FROM WATERUSER WHERE WATERUSERID IN"+
-                        "(SELECT WATERUSERID FROM readMeterRecord WHERE 1=1 "+strFilterTJ+strFilter+")");
-                    if(dtSumRow.Rows.Count>0)
-                    {
-                        object objSumRow = dtSumRow.Rows[0]["账户余额"];
-                        if (Information.IsNumeric(objSumRow))
-                        {
-                            dtWaterMeterList.Rows[j]["账户余额"] = objSumRow;
-                            decPrestore = Convert.ToDecimal(objSumRow);
-                        }
+                    //decimal deLJQF = 0;
+                    //DataTable dtYSLeiJI = BLLWATERFEECHARGE.QueryBySQL("SELECT SUM(CASE WHEN chargeState='3' THEN 0 ELSE  totalCharge END) AS YSQIANFEI " +
+                    //    " FROM V_YSDETAIL_BYWATERMETER WHERE WATERUSERID IN (SELECT WATERUSERID FROM readMeterRecord WHERE 1=1" + strFilterTJ +
+                    //   strFilter + ")");
+                    //if (dtYSLeiJI.Rows.Count > 0)
+                    //{
+                    //    object obj = dtYSLeiJI.Rows[0]["YSQIANFEI"];
+                    //    if (Information.IsNumeric(obj))
+                    //        deLJQF = Convert.ToDecimal(obj);
+                    //}
+                    //dtWaterMeterList.Rows[j]["累计欠费"] = deLJQF;
 
-                        //object objWEISHOU = dtWaterMeterList.Rows[j]["未收总计"];
-                        //if (Information.IsNumeric(objWEISHOU))
-                    }
-                    dtWaterMeterList.Rows[j]["结算余额"] = decPrestore - deLJQF;
+                    //DataTable dtSumRow = BLLWATERFEECHARGE.QueryBySQL("SELECT SUM(prestore) AS 账户余额 FROM WATERUSER WHERE WATERUSERID IN"+
+                    //    "(SELECT WATERUSERID FROM readMeterRecord WHERE 1=1 "+strFilterTJ+strFilter+")");
+                    //if(dtSumRow.Rows.Count>0)
+                    //{
+                    //    object objSumRow = dtSumRow.Rows[0]["账户余额"];
+                    //    if (Information.IsNumeric(objSumRow))
+                    //    {
+                    //        dtWaterMeterList.Rows[j]["账户余额"] = objSumRow;
+                    //        decPrestore = Convert.ToDecimal(objSumRow);
+                    //    }
+
+                    //    //object objWEISHOU = dtWaterMeterList.Rows[j]["未收总计"];
+                    //    //if (Information.IsNumeric(objWEISHOU))
+                    //}
+                    //dtWaterMeterList.Rows[j]["结算余额"] = decPrestore - deLJQF;
 
 
-                        int intYSHS=0,intZYSL=0;
-                        object objYSHS=dtWaterMeterList.Rows[j]["用水户数"];
-                        if(Information.IsNumeric(objYSHS))
-                            intYSHS=Convert.ToInt32(objYSHS);
+                    int intYSHS = 0, intZYSL = 0;
+                    object objYSHS = dtWaterMeterList.Rows[j]["用水户数"];
+                    if (Information.IsNumeric(objYSHS))
+                        intYSHS = Convert.ToInt32(objYSHS);
 
-                        object objZYSL = dtWaterMeterList.Rows[j]["均用水量/月"];
-                        if(Information.IsNumeric(objZYSL))
-                            intZYSL=Convert.ToInt32(objZYSL);
-                        dtWaterMeterList.Rows[j]["均用水量/月/户"] = (Convert.ToDecimal(intZYSL) / Convert.ToDecimal(intYSHS == 0 ? 1 : intYSHS)).ToString("F2");                        
+                    object objZYSL = dtWaterMeterList.Rows[j]["均用水量/月"];
+                    if (Information.IsNumeric(objZYSL))
+                        intZYSL = Convert.ToInt32(objZYSL);
+                    dtWaterMeterList.Rows[j]["均用水量/月/户"] = (Convert.ToDecimal(intZYSL) / Convert.ToDecimal(intYSHS == 0 ? 1 : intYSHS)).ToString("F2");
                 }
-                    #endregion
+                #endregion
 
-                    #region 合计行
-                    //DataRow dr = dtWaterMeterList.NewRow();
-                //object obj = dtWaterMeterList.Compute("SUM(户数)", "");
-                //if (Information.IsNumeric(obj))
-                //    dr["户数"] = Convert.ToInt32(obj);
-
-                //obj = dtWaterMeterList.Compute("SUM(用水量)", "");
-                //if (Information.IsNumeric(obj))
-                //    dr["用水量"] = Convert.ToInt32(obj);
-
-                //obj = dtWaterMeterList.Compute("SUM(水费)", "");
-                //if (Information.IsNumeric(obj))
-                //    dr["水费"] = Convert.ToDecimal(obj);
-
-                //obj = dtWaterMeterList.Compute("SUM(污水处理费)", "");
-                //if (Information.IsNumeric(obj))
-                //    dr["污水处理费"] = Convert.ToDecimal(obj);
-
-                //obj = dtWaterMeterList.Compute("SUM(附加费)", "");
-                //if (Information.IsNumeric(obj))
-                //    dr["附加费"] = Convert.ToDecimal(obj);
-
-                //obj = dtWaterMeterList.Compute("SUM(小计)", "");
-                //if (Information.IsNumeric(obj))
-                //    dr["小计"] = Convert.ToDecimal(obj);
-
-                //obj = dtWaterMeterList.Compute("SUM(滞纳金)", "");
-                //if (Information.IsNumeric(obj))
-                //    dr["滞纳金"] = Convert.ToDecimal(obj);
-
-                //obj = dtWaterMeterList.Compute("SUM(水费总计)", "");
-                //if (Information.IsNumeric(obj))
-                //    dr["水费总计"] = Convert.ToDecimal(obj);
-
-                //obj = dtWaterMeterList.Compute("SUM(预存增减)", "");
-                //if (Information.IsNumeric(obj))
-                //    dr["预存增减"] = Convert.ToDecimal(obj);
-
-                //obj = dtWaterMeterList.Compute("SUM(实收金额)", "");
-                //if (Information.IsNumeric(obj))
-                //    dr["实收金额"] = Convert.ToDecimal(obj);
-                //dtWaterMeterList.Rows.Add(dr);
+                decimal decPresotre = 0, decLJQF = 0;
+                DataTable dtSumRow = BLLWATERFEECHARGE.QueryBySQL("SELECT SUM(prestore) AS 账户余额,SUM(TOTALFEE) AS 累计欠费 FROM V_WATERUSERAREARAGE WHERE WATERUSERID IN" +
+                    "(SELECT WATERUSERID FROM readMeterRecord WHERE 1=1 " + strFilter + ")");
+                if (dtSumRow.Rows.Count > 0)
+                {
+                    object objSumRow = dtSumRow.Rows[0]["账户余额"];
+                    if (Information.IsNumeric(objSumRow))
+                    {
+                        decPresotre = Convert.ToDecimal(objSumRow);
+                    }
+                    objSumRow = dtSumRow.Rows[0]["累计欠费"];
+                    if (Information.IsNumeric(objSumRow))
+                    {
+                        decLJQF = Convert.ToDecimal(objSumRow);
+                    }
+                }
+                string strShowMes = "用户余额:{0}元    累计欠费:{1}元    结算余额:{2}元";
+                strShowMes = string.Format(strShowMes, decPresotre.ToString("F2"), decLJQF.ToString("F2"), (decPresotre - decLJQF).ToString("F2"));
+                labYYHE.Text = strShowMes;
                 dgList.DataSource = dtWaterMeterList;
                 dgList.Columns["均用水量/月"].Visible = false;
                 dgList.Columns["均用水量/月/户"].Width = 140;
-                #endregion
 
                 if (chkRecordMonth.Checked)
                     dgList.Columns["水费月份"].DefaultCellStyle.Format = "yyyy-MM";
@@ -1236,17 +1213,17 @@ namespace STATISTIALREPORTS
             if (Information.IsNumeric(obj))
                 dgList.Rows[dgList.Rows.Count - 1].Cells["未收总计"].Value = Convert.ToDecimal(obj);
 
-            obj = dtWaterMeterList.Compute("SUM(账户余额)", "");
-            if (Information.IsNumeric(obj))
-                dgList.Rows[dgList.Rows.Count - 1].Cells["账户余额"].Value = Convert.ToDecimal(obj);
+            //obj = dtWaterMeterList.Compute("SUM(账户余额)", "");
+            //if (Information.IsNumeric(obj))
+            //    dgList.Rows[dgList.Rows.Count - 1].Cells["账户余额"].Value = Convert.ToDecimal(obj);
 
-            obj = dtWaterMeterList.Compute("SUM(累计欠费)", "");
-            if (Information.IsNumeric(obj))
-                dgList.Rows[dgList.Rows.Count - 1].Cells["累计欠费"].Value = Convert.ToDecimal(obj);
+            //obj = dtWaterMeterList.Compute("SUM(累计欠费)", "");
+            //if (Information.IsNumeric(obj))
+            //    dgList.Rows[dgList.Rows.Count - 1].Cells["累计欠费"].Value = Convert.ToDecimal(obj);
 
-            obj = dtWaterMeterList.Compute("SUM(结算余额)", "");
-            if (Information.IsNumeric(obj))
-                dgList.Rows[dgList.Rows.Count - 1].Cells["结算余额"].Value = Convert.ToDecimal(obj);
+            //obj = dtWaterMeterList.Compute("SUM(结算余额)", "");
+            //if (Information.IsNumeric(obj))
+            //    dgList.Rows[dgList.Rows.Count - 1].Cells["结算余额"].Value = Convert.ToDecimal(obj);
 
             //obj = dtWaterMeterList.Compute("SUM(实收金额)", "");
             //if (Information.IsNumeric(obj))
@@ -1274,11 +1251,11 @@ namespace STATISTIALREPORTS
         {
             try
             {
-                if (GetMonth(dtpStartSearch.Value, dtpEndSearch.Value) > 1)
-                {
-                    mes.Show("预收账款的更新只能为某月份!");
-                    return;
-                }
+                //if (GetMonth(dtpStartSearch.Value, dtpEndSearch.Value) > 1)
+                //{
+                //    mes.Show("预收账款的更新只能为某月份!");
+                //    return;
+                //}
                 decimal decSum = 0;//本期应收账款
                 //object objSum = dgList.Rows[dgList.Rows.Count - 1].Cells["应收总计"].Value;
                 object objSum = dgList.Rows[dgList.Rows.Count - 1].Cells["应收小计"].Value;

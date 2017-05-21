@@ -505,7 +505,7 @@ namespace FinanceOS
             #region 打印发票
             try
             {
-                if (AddFPData(strWaterUserName, txtWaterUserFPTaxNO.Text, txtWaterUserBankAccount.Text, txtWaterUserAddress.Text, strCompanyBankNameAndAccountNO,
+                if (AddFPData(txtWaterUserName.Text, txtWaterUserFPTaxNO.Text, txtWaterUserBankAccount.Text, txtWaterUserAddress.Text, strCompanyBankNameAndAccountNO,
                                 strCompanyAddressAndTel, txtMemo.Text, strLoginName, strCompanyChecker, strCompanyPayee, null, 2, 0))
                 {
                     if (MXInfoInit())

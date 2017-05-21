@@ -1869,7 +1869,7 @@ namespace WATERFEEMANAGE
                                 }
 
                                 //水表编号
-                                string strWaterMeterNO = "", strPianNO = "";
+                                string strWaterMeterNO = "", strPianNO = "", strWaterUserTel = "", strWaterUserTaxNO = "", strWaterUserBankAccountNO = "";
                                 //用水量
                                 int intWaterTotalNumber = 0, intLastNumber = 0, intEndNumber = 0;
                                 //水费小计，污水处理费，附加费，污水处理费总计，滞纳金，水费合计
@@ -2102,6 +2102,31 @@ namespace WATERFEEMANAGE
                                                                         mes.Show("获取税控系统发票号失败,请重试!");
                                                                         return;
                                                                     }
+                                                                } 
+                                                                
+                                                                DataTable dtWaterUserMes = BLLwaterUser.QueryUser(" AND WATERUSERID='" + txtWaterUserID.Text + "'");
+                                                                if (dtWaterUserMes.Rows.Count > 0)
+                                                                {
+                                                                    object objWaterUserMes = dtWaterUserMes.Rows[0]["waterPhone"];
+                                                                    if (objWaterUserMes != null && objWaterUserMes != DBNull.Value)
+                                                                    {
+                                                                        strWaterUserTel = objWaterUserMes.ToString();
+                                                                    }
+                                                                    objWaterUserMes = dtWaterUserMes.Rows[0]["FPTaxNO"];
+                                                                    if (objWaterUserMes != null && objWaterUserMes != DBNull.Value)
+                                                                    {
+                                                                        strWaterUserTaxNO = objWaterUserMes.ToString();
+                                                                    }
+                                                                    objWaterUserMes = dtWaterUserMes.Rows[0]["FPBankNameAndAccountNO"];
+                                                                    if (objWaterUserMes != null && objWaterUserMes != DBNull.Value)
+                                                                    {
+                                                                        strWaterUserBankAccountNO = objWaterUserMes.ToString();
+                                                                    }
+                                                                    objWaterUserMes = dtWaterUserMes.Rows[0]["prestore"];
+                                                                    if (Information.IsNumeric(objWaterUserMes))
+                                                                    {
+                                                                        decQQYE = Convert.ToDecimal(objWaterUserMes);
+                                                                    }
                                                                 }
                                                                 MODELCHARGEINVOICEPRINT MODELCHARGEINVOICEPRINTNEW = new MODELCHARGEINVOICEPRINT();
                                                                 MODELCHARGEINVOICEPRINTNEW.CHARGEINVOICEPRINTID = GETTABLEID.GetTableID(strLogID, "CHARGEINVOICEPRINT");
@@ -2147,7 +2172,7 @@ namespace WATERFEEMANAGE
                                                                         ";上期读数:" + intLastNumber + ";本期读数:" + intEndNumber +
                                                                          (txtMeterReaderTel.Text == "" ? "" : Environment.NewLine + "抄表员电话:" + txtMeterReaderTel.Text);
 
-                                                                    if (AddFPData(txtWaterUserName.Text, "", "", txtWaterUserAddress.Text + txtWaterUserPhone.Text, strAccountNO, strCompanyAddressAndTel, strMemo, strUserName, null, null, null, 2, 0))
+                                                                    if (AddFPData(txtWaterUserName.Text, strWaterUserTaxNO, strWaterUserBankAccountNO, txtWaterUserAddress.Text + strWaterUserTel, strAccountNO, strCompanyAddressAndTel, strMemo, strUserName, null, null, null, 2, 0))
                                                                     {
                                                                         if (MXInfoInit())
                                                                         {

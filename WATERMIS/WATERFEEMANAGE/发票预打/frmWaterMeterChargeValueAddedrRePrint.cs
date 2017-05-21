@@ -49,9 +49,12 @@ namespace WATERFEEMANAGE
         /// <param name="InvQDState">0：正常开具清单 1：不足8条开具清单</param>
         /// <returns></returns>
         [DllImport("InvKey.dll", CharSet = CharSet.Unicode, SetLastError = true)]
-        private static extern bool AddFPData(string FPClientName, string FPClientTaxCode, string FPClientBankAccount, string FPClientAddressTel,
-            string FPSellerBankAccount, string FPSellerAddressTel, string FPNotes, string FPInvoicer, string FPChecker, string FPCashier,
-            string FPListName, int FPState, int InvQDState);
+        private static extern bool AddFPData([MarshalAs(UnmanagedType.LPTStr)] string FPClientName, [MarshalAs(UnmanagedType.LPTStr)] string FPClientTaxCode,
+           [MarshalAs(UnmanagedType.LPTStr)] string FPClientBankAccount, [MarshalAs(UnmanagedType.LPTStr)] string FPClientAddressTel,
+           [MarshalAs(UnmanagedType.LPTStr)] string FPSellerBankAccount, [MarshalAs(UnmanagedType.LPTStr)] string FPSellerAddressTel,
+           [MarshalAs(UnmanagedType.LPTStr)] string FPNotes, [MarshalAs(UnmanagedType.LPTStr)] string FPInvoicer,
+           [MarshalAs(UnmanagedType.LPTStr)] string FPChecker, [MarshalAs(UnmanagedType.LPTStr)] string FPCashier,
+           [MarshalAs(UnmanagedType.LPTStr)] string FPListName, int FPState, int InvQDState);
 
         /// <summary>
         /// 初始化明细信息,如果要保证总金额不变，传入含税总金额，单价传入0，MXPriceKind传入1，开票软件上显示的是单价（含税）和金额（含税）就可以了
@@ -74,7 +77,8 @@ namespace WATERFEEMANAGE
         /// <param name="MXTaxAmount">税额 可以不传，由开票软件计算，如传入应符合计算关系</param>
         /// <returns></returns>
         [DllImport("InvKey.dll", CharSet = CharSet.Unicode, SetLastError = true)]
-        private static extern bool AddMXData(byte[] MXGoodsName, byte[] MXStandard, byte[] MXUnit, double MXNumber,
+        private static extern bool AddMXData([MarshalAs(UnmanagedType.LPTStr)] string MXGoodsName, [MarshalAs(UnmanagedType.LPTStr)] string MXStandard,
+           [MarshalAs(UnmanagedType.LPTStr)] string MXUnit, double MXNumber,
             double MXPrice, double MXAmount, int MXTaxRate, int MXPriceKind, double MXTaxAmount);
 
         /// <summary>
@@ -680,7 +684,7 @@ namespace WATERFEEMANAGE
                     if (intTotalNumber == 0)
                         continue;
                 }
-                obj = dgHistoryWaterFee.Rows[i].Cells["waterTotalChargeEND"].Value;
+                obj = dgHistoryWaterFee.Rows[i].Cells["WATERTOTALCHARGECHARGE"].Value;
                 if (Information.IsNumeric(obj))
                 {
                     decWaterTotalCharge = Convert.ToDecimal(obj);
@@ -807,89 +811,6 @@ namespace WATERFEEMANAGE
                     if (objWaterUserTypeID.ToString() == "0004")//如果是增值税用水，户名、地址、开票信息从基础信息里取出来。
                     {
                         isZZS = true;
-
-                        //frmSelectFeeType frm=new frmSelectFeeType();
-                        //if (frm.ShowDialog() == DialogResult.Cancel)
-                        //{
-                        //    //打印污水费和附加费
-                        //    #region 打印发票
-                        //    try
-                        //    {
-                        //        byte[] byNull = Encoding.Unicode.GetBytes("");
-                        //        //string strMemo = "本次实收:" + decBCSS.ToString() + ";前期余额:" + decQQYE.ToString() +
-                        //        //    ";结算余额:" + decJSYE.ToString() + ";滞纳金:" + decOverDue.ToString() + Environment.NewLine + "用户编号:" + strWaterUserNO +
-                        //        //     ";上期读数:" + intWaterMeterLastNumber.ToString() + ";本期读数:" + intWaterMeterEndNumber.ToString() +
-                        //        //     (strMeterReaderTel == "" ? "" : "" + Environment.NewLine + "抄表员电话:" + strMeterReaderTel);
-
-                        //        string strMemo = "用户编号:" + strWaterUserNO;
-
-                        //        if (AddFPData(strwaterUserName, strWaterUserTaxNO, strWaterUserBankAccountNO, strWaterUserAddress + strWaterUserTel, strCompanyBankNameAndAccountNO, strCompanyAddressAndTel, strMemo, strLoginName, null, null, null, 2, 0))
-                        //        {
-                        //            if (MXInfoInit())
-                        //            {
-                        //                byte[] byUnit = Encoding.Unicode.GetBytes("吨");
-                        //                if (decExtraCharge2 > 0)
-                        //                {
-                        //                    byte[] byFujiaFei = Encoding.Unicode.GetBytes("附加费");
-                        //                    if (AddMXData(byFujiaFei, byNull, byUnit, Convert.ToDouble(intTotalNumber), 0, Convert.ToDouble(decExtraCharge2), 3, 1, 0))
-                        //                    //if (AddMXData(byShuiFei, byNull, byUnit, Convert.ToDouble(intTotalNumber), Convert.ToDouble(decExtraChargePrice2) / 1.03, Convert.ToDouble(intTotalNumber) * Convert.ToDouble(decExtraChargePrice2) / 1.03, 3, 0, Convert.ToDouble(decExtraChargePrice2) * Convert.ToDouble(intTotalNumber)))
-                        //                    //if (AddMXData(byFujiaFei, byNull, byUnit, Convert.ToDouble(intTotalNumber), Convert.ToDouble(decExtraChargePrice2) / 1.03, 0, 3, 0, 0))
-                        //                    {
-
-                        //                    }
-                        //                    else
-                        //                    {
-                        //                        mes.Show("添加发票明细'附加费'错误,请重试!");
-                        //                        return;
-                        //                    }
-                        //                }
-                        //                if (decExtraCharge1 > 0)
-                        //                {
-                        //                    byte[] byWuShuiChuLiFei = Encoding.Unicode.GetBytes("污水处理费");
-                        //                    if (AddMXData(byWuShuiChuLiFei, byNull, byUnit, Convert.ToDouble(intTotalNumber), 0, Convert.ToDouble(decExtraCharge1), 3, 1, 0))
-                        //                    //if (AddMXData(byShuiFei, byNull, byUnit, Convert.ToDouble(intTotalNumber), Convert.ToDouble(decExtraChargePrice1) / 1.03, Convert.ToDouble(intTotalNumber) * Convert.ToDouble(decExtraChargePrice1) / 1.03, 3, 0, Convert.ToDouble(decExtraChargePrice1) * Convert.ToDouble(intTotalNumber)))
-                        //                    //if (AddMXData(byWuShuiChuLiFei, byNull, byUnit, Convert.ToDouble(intTotalNumber), Convert.ToDouble(decExtraChargePrice1) / 1.03, 0, 3, 0, 0))
-                        //                    {
-                        //                    }
-                        //                    else
-                        //                    {
-                        //                        mes.Show("添加发票明细'污水处理费'错误,请重试!");
-                        //                        return;
-                        //                    }
-                        //                }
-                        //                StringBuilder strInvTypeCode = new StringBuilder();
-                        //                StringBuilder strInvNumber = new StringBuilder();
-                        //                if (!FPInvoice(strInvTypeCode, strInvNumber))
-                        //                {
-                        //                    mes.Show("发票填开错误,请从税控软件里手动打印号码为'" + txtInvoiceNO + "'的发票!");
-                        //                    return;
-                        //                }
-                        //            }
-                        //            else
-                        //            {
-                        //                mes.Show("发票明细初始化错误,请重试!");
-                        //                return;
-                        //            }
-                        //        }
-                        //        else
-                        //        {
-                        //            mes.Show("发票添加错误,请重试!");
-                        //            return;
-                        //        }
-                        //    }
-                        //    catch (Exception ex)
-                        //    {
-                        //        mes.Show("打印第'" + (i + 1).ToString() + "'行发票时失败,请使用'补打发票'功能打印此行发票。\n原因:" + ex.ToString());
-                        //        log.Write(ex.ToString(), MsgType.Error);
-                        //        return;
-                        //    }
-                        //    #endregion
-
-                        //    //获取新的发票号码
-                        //    strStartInvoiceNO = (Convert.ToInt32(strStartInvoiceNO) + 1).ToString().PadLeft(8, '0');
-                        //    txtInvoiceNO.Text = strStartInvoiceNO;
-                        //    continue;
-                        //}
                     }
                 }
 
@@ -961,11 +882,9 @@ namespace WATERFEEMANAGE
                                     {
                                         if (MXInfoInit())
                                         {
-                                            byte[] byShuiFei = Encoding.Unicode.GetBytes("水费");
-                                            byte[] byUnit = Encoding.Unicode.GetBytes("吨");
-                                            //if (AddMXData(byShuiFei, byNull, byUnit, Convert.ToDouble(intTotalNumber), Convert.ToDouble(decAvePrice) / 1.03, Convert.ToDouble(intTotalNumber) * Convert.ToDouble(decAvePrice) / 1.03, 3, 0, Convert.ToDouble(decAvePrice) * Convert.ToDouble(intTotalNumber)))
-                                            //if (decWaterTotalCharge > 0)  //如果水费为空，但是附加费或者污水处理费不能空，可以单独打印污水处理费。
-                                            if (AddMXData(byShuiFei, byNull, byUnit, Convert.ToDouble(intTotalNumber), 0, Convert.ToDouble(decWaterTotalCharge), 3, 1, 0))
+                                            string strShuiFei = "水费";
+                                            string strUnit = "吨";
+                                            if (AddMXData(strShuiFei, "", strUnit, Convert.ToDouble(intTotalNumber), 0, Convert.ToDouble(decWaterTotalCharge), 3, 1, 0))
                                             {
 
                                             }
@@ -976,12 +895,10 @@ namespace WATERFEEMANAGE
                                                 BLLCHARGEINVOICEPRINT.Delete(MODELCHARGEINVOICEPRINTNEW.CHARGEID);
                                                 return;
                                             }
-                                            if (decExtraCharge2 > 0)
+                                            if (decExtraCharge2 > 0 && !isZZS)   //如果是增值税用户，不打印附加费
                                             {
-                                                byte[] byFujiaFei = Encoding.Unicode.GetBytes("附加费");
-                                                if (AddMXData(byFujiaFei, byNull, byUnit, Convert.ToDouble(intTotalNumber), 0, Convert.ToDouble(decExtraCharge2), 3, 1, 0))
-                                                //if (AddMXData(byShuiFei, byNull, byUnit, Convert.ToDouble(intTotalNumber), Convert.ToDouble(decExtraChargePrice2) / 1.03, Convert.ToDouble(intTotalNumber) * Convert.ToDouble(decExtraChargePrice2) / 1.03, 3, 0, Convert.ToDouble(decExtraChargePrice2) * Convert.ToDouble(intTotalNumber)))
-                                                //if (AddMXData(byFujiaFei, byNull, byUnit, Convert.ToDouble(intTotalNumber), Convert.ToDouble(decExtraChargePrice2) / 1.03, 0, 3, 0, 0))
+                                                string strFuJiaFei = "附加费";
+                                                if (AddMXData(strFuJiaFei, "", strUnit, Convert.ToDouble(intTotalNumber), 0, Convert.ToDouble(decExtraCharge2), 3, 1, 0))
                                                 {
 
                                                 }
@@ -993,12 +910,10 @@ namespace WATERFEEMANAGE
                                                     return;
                                                 }
                                             }
-                                            if (decExtraCharge1 > 0)
+                                            if (decExtraCharge1 > 0 && !isZZS)  //如果是增值税用户，不打印污水费
                                             {
-                                                byte[] byWuShuiChuLiFei = Encoding.Unicode.GetBytes("污水处理费");
-                                                if (AddMXData(byWuShuiChuLiFei, byNull, byUnit, Convert.ToDouble(intTotalNumber), 0, Convert.ToDouble(decExtraCharge1), 3, 1, 0))
-                                                //if (AddMXData(byShuiFei, byNull, byUnit, Convert.ToDouble(intTotalNumber), Convert.ToDouble(decExtraChargePrice1) / 1.03, Convert.ToDouble(intTotalNumber) * Convert.ToDouble(decExtraChargePrice1) / 1.03, 3, 0, Convert.ToDouble(decExtraChargePrice1) * Convert.ToDouble(intTotalNumber)))
-                                                //if (AddMXData(byWuShuiChuLiFei, byNull, byUnit, Convert.ToDouble(intTotalNumber), Convert.ToDouble(decExtraChargePrice1) / 1.03, 0, 3, 0, 0))
+                                                string strWuShuiChuLiFei = "污水处理费";
+                                                if (AddMXData(strWuShuiChuLiFei, "", strUnit, Convert.ToDouble(intTotalNumber), 0, Convert.ToDouble(decExtraCharge1), 3, 1, 0))
                                                 {
                                                 }
                                                 else
@@ -2815,7 +2730,7 @@ namespace WATERFEEMANAGE
                     if (intTotalNumber == 0)
                         continue;
                 }
-                obj = dgHistoryWaterFee.Rows[i].Cells["waterTotalChargeEND"].Value;
+                obj = dgHistoryWaterFee.Rows[i].Cells["waterTotalCharge"].Value;
                 if (Information.IsNumeric(obj))
                 {
                     decWaterTotalCharge = Convert.ToDecimal(obj);
@@ -2991,11 +2906,11 @@ namespace WATERFEEMANAGE
                                     {
                                         if (MXInfoInit())
                                         {
-                                            byte[] byUnit = Encoding.Unicode.GetBytes("吨");
+                                            string strUnit = "吨";
                                             if (decExtraCharge2 > 0)
                                             {
-                                                byte[] byFujiaFei = Encoding.Unicode.GetBytes("附加费");
-                                                if (AddMXData(byFujiaFei, byNull, byUnit, Convert.ToDouble(intTotalNumber), 0, Convert.ToDouble(decExtraCharge2), 3, 1, 0))
+                                                string strFuJiaFei = "附加费";
+                                                if (AddMXData(strFuJiaFei, "", strUnit, Convert.ToDouble(intTotalNumber), 0, Convert.ToDouble(decExtraCharge2), 3, 1, 0))
                                                 //if (AddMXData(byShuiFei, byNull, byUnit, Convert.ToDouble(intTotalNumber), Convert.ToDouble(decExtraChargePrice2) / 1.03, Convert.ToDouble(intTotalNumber) * Convert.ToDouble(decExtraChargePrice2) / 1.03, 3, 0, Convert.ToDouble(decExtraChargePrice2) * Convert.ToDouble(intTotalNumber)))
                                                 //if (AddMXData(byFujiaFei, byNull, byUnit, Convert.ToDouble(intTotalNumber), Convert.ToDouble(decExtraChargePrice2) / 1.03, 0, 3, 0, 0))
                                                 {
@@ -3011,8 +2926,8 @@ namespace WATERFEEMANAGE
                                             }
                                             if (decExtraCharge1 > 0)
                                             {
-                                                byte[] byWuShuiChuLiFei = Encoding.Unicode.GetBytes("污水处理费");
-                                                if (AddMXData(byWuShuiChuLiFei, byNull, byUnit, Convert.ToDouble(intTotalNumber), 0, Convert.ToDouble(decExtraCharge1), 3, 1, 0))
+                                                string strWuShuiChuLiFei = "污水处理费";
+                                                if (AddMXData(strWuShuiChuLiFei, "", strUnit, Convert.ToDouble(intTotalNumber), 0, Convert.ToDouble(decExtraCharge1), 3, 1, 0))
                                                 //if (AddMXData(byShuiFei, byNull, byUnit, Convert.ToDouble(intTotalNumber), Convert.ToDouble(decExtraChargePrice1) / 1.03, Convert.ToDouble(intTotalNumber) * Convert.ToDouble(decExtraChargePrice1) / 1.03, 3, 0, Convert.ToDouble(decExtraChargePrice1) * Convert.ToDouble(intTotalNumber)))
                                                 //if (AddMXData(byWuShuiChuLiFei, byNull, byUnit, Convert.ToDouble(intTotalNumber), Convert.ToDouble(decExtraChargePrice1) / 1.03, 0, 3, 0, 0))
                                                 {

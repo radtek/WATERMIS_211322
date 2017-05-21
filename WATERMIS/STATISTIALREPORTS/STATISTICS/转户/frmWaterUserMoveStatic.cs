@@ -13,9 +13,9 @@ using FastReport;
 
 namespace STATISTIALREPORTS
 {
-    public partial class frmWaterUserMoveSearch : DockContentEx
+    public partial class frmWaterUserMoveStatic : DockContentEx
     {
-        public frmWaterUserMoveSearch()
+        public frmWaterUserMoveStatic()
         {
             InitializeComponent();
             tb1.GetType().GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(tb1, true, null);
@@ -140,6 +140,11 @@ namespace STATISTIALREPORTS
             cmb.AutoCompleteSource = AutoCompleteSource.ListItems;   //设置自动完成的源 
             cmb.AutoCompleteMode = AutoCompleteMode.SuggestAppend;    //设置自动完成的的形式 
         }
+
+        /// <summary>
+        /// 保存统计条件,用作双击打开明细用
+        /// </summary>
+        string strFilterTJ = "";
         private void toolSearch_Click(object sender, EventArgs e)
         {
             RefreshData();
@@ -195,7 +200,6 @@ namespace STATISTIALREPORTS
 
         private void LoadData()
         {
-            //string strFilter = "select *,(select COUNT(*) from dbo.V_WATERMETER A WHERE A.waterUserId=B.waterUserId) AS METERCOUNT  from dbo.V_WATERUSER_BYMETERREADING B WHERE 1=1 ";
             string strFilter = "";
             if (txtWaterUserNOSearch.Text.Trim() != "")
                 if(txtWaterUserNOSearch.Text.Length<6)
@@ -225,21 +229,16 @@ namespace STATISTIALREPORTS
             if (chkDateTime.Checked)
                 strFilter += " AND OperateDateTime BETWEEN '" + dtpStart.Value.ToShortDateString() + " 00:00:00' AND '" + dtpEnd.Value.ToShortDateString() + " 23:59:59'";
 
+            strFilterTJ = strFilter;
 
-            strFilter += " ORDER BY OperateDateTime";
-            //if (rbWaterUserName.Checked)
-            //    strFilter += " ORDER BY waterUserName";
-            //if (rbWaterUserNO.Checked)
-            //    strFilter += " ORDER BY waterUserNO";
-
-            string strSQL = "SELECT * FROM WaterUserMoveRecord WHERE DeleteSign='0' ";
-            dtWaterUserList = BLLwaterUser.QuerySQL(strSQL+strFilter);
+            string strSQL = @"SELECT COUNT(*) AS UserCount,meterReaderID,meterReaderName,areaNO,duanNO,waterMeterTypeId,waterMeterTypeValue,
+            waterMeterPositionName,areaNONew,duanNONew,meterReaderIDNew,meterReaderNameNew FROM (SELECT * FROM WaterUserMoveRecord 
+            WHERE DeleteSign='0' " + strFilter + ") AS AA GROUP BY meterReaderID,meterReaderName,areaNO,duanNO,waterMeterTypeId,waterMeterTypeValue," +
+            "waterMeterPositionName,areaNONew,duanNONew,meterReaderIDNew,meterReaderNameNew";
+            dtWaterUserList = BLLwaterUser.QuerySQL(strSQL);
 
             if (dtWaterUserList.Rows.Count > 0)
             {
-
-                //dtClone.Rows.Add(drLast);
-                //ucPageSetUp1.InitialUC(this.dgList, dtWaterUserList, dtClone);
                 dgList.DataSource = dtWaterUserList;
 
                 toolPrint.Enabled = true;
@@ -255,6 +254,32 @@ namespace STATISTIALREPORTS
             }
         }
 
+        //获取所有总表编号
+        string strMeterParentID = "";
+
+        /// <summary>
+        /// 获取总表下的所有级联分表
+        /// </summary>
+        /// <param name="strID"></param>
+        private string GetMeterParentID(string strID)
+        {
+            if (strMeterParentID != "")
+                strMeterParentID += ",'" + strID + "'";
+            else
+                strMeterParentID = "'" + strID + "'";
+
+            DataTable dtAll = BLLwaterMeter.QuerySummary(" AND waterMeterParentId='" + strID + "'");
+            for (int i = 0; i < dtAll.Rows.Count; i++)
+            {
+                object objID = dtAll.Rows[i]["waterMeterId"];
+                if (objID != null && objID != DBNull.Value)
+                {
+                    string strChildID = objID.ToString();
+                    GetMeterParentID(strChildID);
+                }
+            }
+            return strMeterParentID;
+        }
         private void toolPrintPreview_Click(object sender, EventArgs e)
         {
             if (dtWaterUserList.Rows.Count == 0)
@@ -269,16 +294,16 @@ namespace STATISTIALREPORTS
             //DataTable dt = (DataTable)dgList.DataSource;
             DataTable dtPrint = GetDgvToTable(dgList);
 
-            dtPrint.TableName = "转户明细表";
+            dtPrint.TableName = "用水用户明细表";
             ds.Tables.Add(dtPrint);
             FastReport.Report report1 = new FastReport.Report();
             try
             {
                 // load the existing report
-                report1.Load(Application.StartupPath + @"\PRINTModel\转户明细表.frx");
+                report1.Load(Application.StartupPath + @"\PRINTModel\用水用户明细表.frx");
                 // register the dataset
                 report1.RegisterData(ds);
-                report1.GetDataSource("转户明细表").Enabled = true;
+                report1.GetDataSource("用水用户明细表").Enabled = true;
                 // run the report
                 report1.Show();
             }
@@ -330,16 +355,16 @@ namespace STATISTIALREPORTS
 
             DataSet ds = new DataSet();
             DataTable dtPrint = GetDgvToTable(dgList);
-            dtPrint.TableName = "转户明细表";
+            dtPrint.TableName = "用水用户明细表";
             ds.Tables.Add(dtPrint);
             FastReport.Report report1 = new FastReport.Report();
             try
             {
                 // load the existing report
-                report1.Load(Application.StartupPath + @"\PRINTModel\转户明细表.frx");
+                report1.Load(Application.StartupPath + @"\PRINTModel\用水用户明细表.frx");
                 // register the dataset
                 report1.RegisterData(ds);
-                report1.GetDataSource("转户明细表").Enabled = true;
+                report1.GetDataSource("用水用户明细表").Enabled = true;
                 report1.Prepare();
                 report1.PrintSettings.ShowDialog = false;
                 report1.Print();
@@ -469,9 +494,75 @@ namespace STATISTIALREPORTS
 
         private void toolExcel_Click(object sender, EventArgs e)
         {
-           string strCaption ="转户明细表";
+           string strCaption ="转户统计表";
             ExportExcel ExportExcel = new ExportExcel();
             ExportExcel.ExportToExcel(strCaption, dgList);
+        }
+
+        private void dgList_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            int intWaterUserListCount = dtWaterUserList.Rows.Count;
+            dgList.Rows[dgList.Rows.Count - 1].Cells["meterReaderName"].Value = "合计:";
+            object obj = dtWaterUserList.Compute("SUM(UserCount)", "");
+            if (Information.IsNumeric(obj))
+            dgList.Rows[dgList.Rows.Count - 1].Cells["UserCount"].Value = Convert.ToInt32(obj);
+        }
+
+        private void dgList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+                return;
+
+            if (e.RowIndex == dgList.Rows.Count - 1)
+                return;
+
+            string strFilter = "";
+            object obj = dgList.Rows[e.RowIndex].Cells["meterReaderID"].Value;
+            if (obj != null && obj != DBNull.Value)
+            {
+                strFilter += " AND meterReaderID='"+obj.ToString()+"'";
+            }
+            obj = dgList.Rows[e.RowIndex].Cells["areaNO"].Value;
+            if (obj != null && obj != DBNull.Value)
+            {
+                strFilter += " AND areaNO='" + obj.ToString() + "'";
+            }
+            obj = dgList.Rows[e.RowIndex].Cells["duanNO"].Value;
+            if (obj != null && obj != DBNull.Value)
+            {
+                strFilter += " AND duanNO='" + obj.ToString() + "'";
+            }
+            obj = dgList.Rows[e.RowIndex].Cells["waterMeterTypeId"].Value;
+            if (obj != null && obj != DBNull.Value)
+            {
+                strFilter += " AND waterMeterTypeId='" + obj.ToString() + "'";
+            }
+            obj = dgList.Rows[e.RowIndex].Cells["waterMeterPositionName"].Value;
+            if (obj != null && obj != DBNull.Value)
+            {
+                strFilter += " AND waterMeterPositionName='" + obj.ToString() + "'";
+            }
+            obj = dgList.Rows[e.RowIndex].Cells["areaNONew"].Value;
+            if (obj != null && obj != DBNull.Value)
+            {
+                strFilter += " AND areaNONew='" + obj.ToString() + "'";
+            }
+            obj = dgList.Rows[e.RowIndex].Cells["duanNONew"].Value;
+            if (obj != null && obj != DBNull.Value)
+            {
+                strFilter += " AND duanNONew='" + obj.ToString() + "'";
+            }
+            obj = dgList.Rows[e.RowIndex].Cells["meterReaderNameNew"].Value;
+            if (obj != null && obj != DBNull.Value)
+            {
+                strFilter += " AND meterReaderNameNew='" + obj.ToString() + "'";
+
+            }
+            string strSQLQuery = "SELECT * FROM WaterUserMoveRecord WHERE DeleteSign='0' "+strFilter+strFilterTJ;
+            DataTable dtList = BLLwaterUser.QuerySQL(strSQLQuery);
+            frmWaterUserMoveSearchDetail frm = new frmWaterUserMoveSearchDetail();
+            frm.dtList = dtList;
+            frm.ShowDialog();
         }      
     }
 }
