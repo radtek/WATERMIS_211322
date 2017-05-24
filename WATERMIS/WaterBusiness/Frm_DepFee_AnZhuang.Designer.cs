@@ -31,6 +31,7 @@
             this.tb1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Btn_Export = new System.Windows.Forms.Button();
             this.Btn_Submit = new System.Windows.Forms.Button();
             this.CB_Month = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -80,6 +81,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.Btn_Export);
             this.panel1.Controls.Add(this.Btn_Submit);
             this.panel1.Controls.Add(this.CB_Month);
             this.panel1.Controls.Add(this.label1);
@@ -89,6 +91,16 @@
             this.panel1.Size = new System.Drawing.Size(701, 66);
             this.panel1.TabIndex = 0;
             this.panel1.Tag = "9999";
+            // 
+            // Btn_Export
+            // 
+            this.Btn_Export.Location = new System.Drawing.Point(313, 22);
+            this.Btn_Export.Name = "Btn_Export";
+            this.Btn_Export.Size = new System.Drawing.Size(75, 23);
+            this.Btn_Export.TabIndex = 69;
+            this.Btn_Export.Text = "导出";
+            this.Btn_Export.UseVisualStyleBackColor = true;
+            this.Btn_Export.Click += new System.EventHandler(this.Btn_Export_Click);
             // 
             // Btn_Submit
             // 
@@ -130,6 +142,8 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.COLORCODE,
@@ -142,6 +156,7 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 17);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(701, 331);
             this.dataGridView1.TabIndex = 0;
@@ -197,6 +212,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(713, 453);
             this.Controls.Add(this.tb1);
+            this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "Frm_DepFee_AnZhuang";
             this.Text = "安装处费用";
             this.Load += new System.EventHandler(this.Frm_DepFee_AnZhuang_Load);
@@ -227,5 +243,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MONTHCHECKSTATE;
         private System.Windows.Forms.DataGridViewTextBoxColumn 户数;
         private System.Windows.Forms.DataGridViewTextBoxColumn 发票金额;
+        private System.Windows.Forms.Button Btn_Export;
     }
 }

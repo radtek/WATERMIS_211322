@@ -33,9 +33,9 @@ namespace SysControl
 
             DataTable dtList = new SqlServerHelper().GetDateTableBySql(sqlstr);
             dgList.DataSource = dtList;
+            GB1.Height = (dgList.Rows.Count+1)*25+40;
 
-
-            sqlstr = "  SELECT PointSort,userName,CreateDate,UserOpinion,Matter FROM ApproveLog WHERE TaskID =@TaskID ORDER BY CreateDate ASC";
+            sqlstr = "  SELECT PointSort AS 审批节点,userName AS 审批人员,CreateDate AS 审批时间,case IsPass when 1 then '通过' when 0 then '未通过' else '未审批' end AS 审批状态, UserOpinion AS 审批意见,Matter AS 备注 FROM ApproveLog WHERE TaskID =@TaskID ORDER BY CreateDate ASC";
             DataTable dt = new SqlServerHelper().GetDateTableBySql(sqlstr, new SqlParameter[] { new SqlParameter("@TaskID", TaskID) });
 
             DV.DataSource = dt;

@@ -36,6 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.uC_DataGridView_Page1 = new SysControl.UC_DataGridView_Page();
+            this.button1 = new System.Windows.Forms.Button();
             this.tb1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -50,7 +51,7 @@
             this.tb1.Controls.Add(this.groupBox2, 0, 1);
             this.tb1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tb1.Location = new System.Drawing.Point(0, 0);
-            this.tb1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tb1.Margin = new System.Windows.Forms.Padding(4);
             this.tb1.Name = "tb1";
             this.tb1.RowCount = 2;
             this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 88F));
@@ -65,7 +66,7 @@
             this.groupBox1.Location = new System.Drawing.Point(4, 4);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 9);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(1000, 75);
             this.groupBox1.TabIndex = 60;
             this.groupBox1.TabStop = false;
@@ -74,12 +75,13 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.Btn_Submit);
             this.panel1.Controls.Add(this.CB_Month);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(4, 23);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(992, 48);
             this.panel1.TabIndex = 0;
@@ -88,7 +90,7 @@
             // Btn_Submit
             // 
             this.Btn_Submit.Location = new System.Drawing.Point(232, 10);
-            this.Btn_Submit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Btn_Submit.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_Submit.Name = "Btn_Submit";
             this.Btn_Submit.Size = new System.Drawing.Size(100, 31);
             this.Btn_Submit.TabIndex = 4;
@@ -100,7 +102,7 @@
             // 
             this.CB_Month.FormattingEnabled = true;
             this.CB_Month.Location = new System.Drawing.Point(108, 14);
-            this.CB_Month.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CB_Month.Margin = new System.Windows.Forms.Padding(4);
             this.CB_Month.Name = "CB_Month";
             this.CB_Month.Size = new System.Drawing.Size(116, 24);
             this.CB_Month.TabIndex = 1;
@@ -120,9 +122,9 @@
             this.groupBox2.Controls.Add(this.uC_DataGridView_Page1);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(4, 92);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(1000, 654);
             this.groupBox2.TabIndex = 902;
             this.groupBox2.TabStop = false;
@@ -138,7 +140,7 @@
             this.uC_DataGridView_Page1.FieldStatis = null;
             this.uC_DataGridView_Page1.FiledColor = null;
             this.uC_DataGridView_Page1.Location = new System.Drawing.Point(4, 23);
-            this.uC_DataGridView_Page1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.uC_DataGridView_Page1.Margin = new System.Windows.Forms.Padding(4);
             this.uC_DataGridView_Page1.MinimumSize = new System.Drawing.Size(1111, 440);
             this.uC_DataGridView_Page1.Name = "uC_DataGridView_Page1";
             this.uC_DataGridView_Page1.PageIndex = 1;
@@ -148,6 +150,15 @@
             this.uC_DataGridView_Page1.TabIndex = 906;
             this.uC_DataGridView_Page1.Tag = "9999";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(339, 10);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 31);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "导出";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Frm_Bus_Statis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -155,7 +166,7 @@
             this.ClientSize = new System.Drawing.Size(1008, 750);
             this.Controls.Add(this.tb1);
             this.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Frm_Bus_Statis";
             this.Text = "统计报表";
             this.Load += new System.EventHandler(this.Frm_Bus_Statis_Load);
@@ -179,6 +190,7 @@
         private System.Windows.Forms.Button Btn_Submit;
         private System.Windows.Forms.ComboBox CB_Month;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
 
     }
 }

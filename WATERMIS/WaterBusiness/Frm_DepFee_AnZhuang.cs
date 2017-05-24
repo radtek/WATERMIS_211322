@@ -49,5 +49,10 @@ namespace WaterBusiness
             }
         }
 
+        private void Btn_Export_Click(object sender, EventArgs e)
+        {
+            DataToExcel.DataGridViewToExcel(this.dataGridView1, string.Format("安装处{0}月报表", CB_Month.Text.Trim()));
+        }
+
     }
 }

@@ -38,6 +38,8 @@
             this.Btn_Cancel = new System.Windows.Forms.Button();
             this.LB_Table_Name_CH = new System.Windows.Forms.Label();
             this.LB_SD = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.UserOpinion = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -90,17 +92,17 @@
             // 
             // Btn_Goto
             // 
-            this.Btn_Goto.Location = new System.Drawing.Point(284, 177);
+            this.Btn_Goto.Location = new System.Drawing.Point(118, 335);
             this.Btn_Goto.Name = "Btn_Goto";
             this.Btn_Goto.Size = new System.Drawing.Size(75, 23);
             this.Btn_Goto.TabIndex = 7;
-            this.Btn_Goto.Text = "确定跳转";
+            this.Btn_Goto.Text = "流程跳转";
             this.Btn_Goto.UseVisualStyleBackColor = true;
             this.Btn_Goto.Click += new System.EventHandler(this.Btn_Goto_Click);
             // 
             // Btn_Scrap
             // 
-            this.Btn_Scrap.Location = new System.Drawing.Point(105, 238);
+            this.Btn_Scrap.Location = new System.Drawing.Point(296, 335);
             this.Btn_Scrap.Name = "Btn_Scrap";
             this.Btn_Scrap.Size = new System.Drawing.Size(75, 23);
             this.Btn_Scrap.TabIndex = 8;
@@ -110,7 +112,7 @@
             // 
             // Btn_Cancel
             // 
-            this.Btn_Cancel.Location = new System.Drawing.Point(202, 238);
+            this.Btn_Cancel.Location = new System.Drawing.Point(207, 335);
             this.Btn_Cancel.Name = "Btn_Cancel";
             this.Btn_Cancel.Size = new System.Drawing.Size(75, 23);
             this.Btn_Cancel.TabIndex = 9;
@@ -134,11 +136,30 @@
             this.LB_SD.Size = new System.Drawing.Size(0, 12);
             this.LB_SD.TabIndex = 11;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(45, 216);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 12);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "备注说明：";
+            // 
+            // UserOpinion
+            // 
+            this.UserOpinion.Location = new System.Drawing.Point(116, 216);
+            this.UserOpinion.Multiline = true;
+            this.UserOpinion.Name = "UserOpinion";
+            this.UserOpinion.Size = new System.Drawing.Size(256, 95);
+            this.UserOpinion.TabIndex = 13;
+            // 
             // FrmWorkTask_Goto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(407, 286);
+            this.ClientSize = new System.Drawing.Size(425, 389);
+            this.Controls.Add(this.UserOpinion);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.LB_SD);
             this.Controls.Add(this.LB_Table_Name_CH);
             this.Controls.Add(this.Btn_Cancel);
@@ -172,5 +193,7 @@
         private System.Windows.Forms.Button Btn_Cancel;
         private System.Windows.Forms.Label LB_Table_Name_CH;
         private System.Windows.Forms.Label LB_SD;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox UserOpinion;
     }
 }

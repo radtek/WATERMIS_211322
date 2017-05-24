@@ -48,7 +48,7 @@
             this.tb1.Controls.Add(this.uC_FlowList1, 0, 2);
             this.tb1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tb1.Location = new System.Drawing.Point(0, 0);
-            this.tb1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tb1.Margin = new System.Windows.Forms.Padding(4);
             this.tb1.Name = "tb1";
             this.tb1.RowCount = 3;
             this.tb1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 102F));
@@ -64,7 +64,7 @@
             this.groupBox1.Location = new System.Drawing.Point(4, 4);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 9);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(1000, 89);
             this.groupBox1.TabIndex = 60;
             this.groupBox1.TabStop = false;
@@ -91,9 +91,9 @@
             this.groupBox2.Controls.Add(this.uC_DataGridView_Page1);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(4, 106);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(1000, 418);
             this.groupBox2.TabIndex = 902;
             this.groupBox2.TabStop = false;
@@ -109,7 +109,7 @@
             this.uC_DataGridView_Page1.FieldStatis = null;
             this.uC_DataGridView_Page1.FiledColor = null;
             this.uC_DataGridView_Page1.Location = new System.Drawing.Point(4, 23);
-            this.uC_DataGridView_Page1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.uC_DataGridView_Page1.Margin = new System.Windows.Forms.Padding(4);
             this.uC_DataGridView_Page1.MinimumSize = new System.Drawing.Size(1111, 440);
             this.uC_DataGridView_Page1.Name = "uC_DataGridView_Page1";
             this.uC_DataGridView_Page1.PageIndex = 1;
@@ -126,7 +126,7 @@
             this.uC_FlowList1.AutoSize = true;
             this.uC_FlowList1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uC_FlowList1.Location = new System.Drawing.Point(4, 532);
-            this.uC_FlowList1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.uC_FlowList1.Margin = new System.Windows.Forms.Padding(4);
             this.uC_FlowList1.MinimumSize = new System.Drawing.Size(1200, 113);
             this.uC_FlowList1.Name = "uC_FlowList1";
             this.uC_FlowList1.Size = new System.Drawing.Size(1200, 113);
@@ -141,7 +141,7 @@
             this.ClientSize = new System.Drawing.Size(1008, 612);
             this.Controls.Add(this.tb1);
             this.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Frm_Bus_Search";
             this.Text = "综合查询";
             this.tb1.ResumeLayout(false);
