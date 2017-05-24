@@ -94,7 +94,7 @@ namespace PersonalWork
                 HL["MEMO"] = TaskID;
                 new SqlServerHelper().Submit_AddOrEdit("OPERATORLOG", "LOGID", "", HL);
 
-                int count = sysidal.UpdateApprove_defalut("Meter_Desterilize", ResolveID, true, UserOpinion.Text.Trim(), PointSort, TaskID);
+                int count = sysidal.UpdateApprove_defalut("Meter_Desterilize", ResolveID, true, UserOpinion.Text.Trim(), PointSort, TaskID, "【用户启用】：" + _waterUserId + "");
 
                 if (count > 0)
                 {

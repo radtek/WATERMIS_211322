@@ -200,7 +200,7 @@ namespace PersonalWork
             {
                 MessageBox.Show("收费完成！");
                 Btn_Submit.Enabled = false;
-                sysidal.UpdateApprove_defalut("Meter_Install_Group", ResolveID, true, "已收费", PointSort, TaskID);
+                sysidal.UpdateApprove_defalut("Meter_Install_Group", ResolveID, true, "已收费", PointSort, TaskID, "收费完成");
 
             }
             else

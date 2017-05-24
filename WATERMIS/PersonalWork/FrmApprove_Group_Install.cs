@@ -185,7 +185,10 @@ namespace PersonalWork
         private void Btn_Submit_Click(object sender, EventArgs e)
         {
             Btn_Submit.Enabled = false;
-            int count = sysidal.UpdateApprove_defalut("Meter_Install_Group", ResolveID, true, UserOpinion.Text.Trim(), PointSort, TaskID);
+
+            string Matter = string.Format("报装数量：{0}", waterUserPeopleCount.Text);
+
+            int count = sysidal.UpdateApprove_defalut("Meter_Install_Group", ResolveID, true, UserOpinion.Text.Trim(), PointSort, TaskID, Matter);
 
             if (count > 0)
             {

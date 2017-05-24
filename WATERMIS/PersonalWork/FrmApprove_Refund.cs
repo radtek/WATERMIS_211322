@@ -78,8 +78,10 @@ namespace PersonalWork
         }
         private void Btn_Submit_Click(object sender, EventArgs e)
         {
+            string Matter = string.Format("【退款审批】-用户号：{0}；用户名：{1}；退款金额：{2}；退款原因：{3}", WATERUSERNO.Text, ApplyUser.Text, CHARGEBCSS_IN.Text, RefundDescribe.Text);
+
             Btn_Submit.Enabled = false;
-            int count = sysidal.UpdateApprove_Refund_defalut(ResolveID, IsPass.Checked, UserOpinion.Text.Trim(), PointSort, TaskID);
+            int count = sysidal.UpdateApprove_Refund_defalut(ResolveID, IsPass.Checked, UserOpinion.Text.Trim(), PointSort, TaskID,Matter);
             if (count > 0)
             {
                 if (sysidal.IsWorkTaskOver("User_Refund", TaskID))//获取审批状态，如果是Meter_WorkTask.state=5 和User_Refund.state=5,说明审批流程走完

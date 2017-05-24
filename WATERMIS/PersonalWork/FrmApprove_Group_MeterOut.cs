@@ -35,6 +35,8 @@ namespace PersonalWork
         private int _meterCount = 0;
         public List<string> SMeters=new List<string>();
 
+        private StringBuilder sb = new StringBuilder();
+
         public int MeterCount1
         {
             get { return _meterCount; }
@@ -75,8 +77,11 @@ namespace PersonalWork
 
         private void Btn_Submit_Click(object sender, EventArgs e)
         {
+            sb.AppendFormat("水表数量：{0}", MeterCount1);
+            sb.Append(string.Join(",", SMeters.ToArray()));
+
             Btn_Submit.Enabled = false;
-            int count = sysidal.UpdateApprove_defalut("Meter_Install_Group", ResolveID, true, UserOpinion.Text.Trim(), PointSort, TaskID);
+            int count = sysidal.UpdateApprove_defalut("Meter_Install_Group", ResolveID, true, UserOpinion.Text.Trim(), PointSort, TaskID, sb.ToString());
 
             if (count > 0)
             {

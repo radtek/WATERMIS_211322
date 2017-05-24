@@ -269,7 +269,7 @@ namespace FinanceOS
 
                 Btn_Print.Enabled = false;
 
-                int count = sysidal.UpdateApprove_defalut(TableName, ResolveID, true, "收费完成", PointSort, TaskID);
+                int count = sysidal.UpdateApprove_defalut(TableName, ResolveID, true, "收费完成", PointSort, TaskID,"收费完成");
 
                 if (count > 0)
                 {

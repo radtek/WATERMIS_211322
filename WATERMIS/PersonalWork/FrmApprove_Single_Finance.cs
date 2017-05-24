@@ -318,7 +318,7 @@ namespace PersonalWork
 
                 MessageBox.Show("收费成功！");
                 Btn_Submit.Enabled = false;
-                sysidal.UpdateApprove_Single_defalut(ResolveID, true, "已收费", ip, ComputerName, PointSort, TaskID);
+                sysidal.UpdateApprove_Single_defalut(ResolveID, true, "已收费", ip, ComputerName, PointSort, TaskID,"收费成功");
             }
         }
 
@@ -337,7 +337,7 @@ namespace PersonalWork
             ComputerName = new Computer().ComputerName;
             ip = new Computer().IpAddress;
 
-            int count = sysidal.UpdateApprove_Single_defalut(ResolveID, true, "收费金额为0", ip, ComputerName, PointSort, TaskID);
+            int count = sysidal.UpdateApprove_Single_defalut(ResolveID, true, "收费金额为0", ip, ComputerName, PointSort, TaskID,"收费金额为0");
 
             if (count > 0)
             {

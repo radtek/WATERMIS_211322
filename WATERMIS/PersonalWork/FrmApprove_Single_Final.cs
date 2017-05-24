@@ -294,7 +294,7 @@ namespace PersonalWork
             {
                 MessageBox.Show("收费完成！");
                 Btn_Submit.Enabled = false;
-                sysidal.UpdateApprove_Single_defalut(ResolveID, true, "已收费", ip, ComputerName, PointSort, TaskID);
+                sysidal.UpdateApprove_Single_defalut(ResolveID, true, "已收费", ip, ComputerName, PointSort, TaskID,"已收费");
             }
             else
             {

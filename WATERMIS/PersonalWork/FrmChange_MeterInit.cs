@@ -124,7 +124,7 @@ namespace PersonalWork
                     new SqlServerHelper().Submit_AddOrEdit("OPERATORLOG", "LOGID", "", HL);
                     //======================================
 
-                    int count = sysidal.UpdateApprove_defalut("Meter_Change", ResolveID, true, UserOpinion.Text.Trim(), PointSort, TaskID);
+                    int count = sysidal.UpdateApprove_defalut("Meter_Change", ResolveID, true, UserOpinion.Text.Trim(), PointSort, TaskID, "【换表确认】：用户号：" + _waterUserId + "；水表号：" + _waterMeterId + "");
 
                     if (count > 0)
                     {

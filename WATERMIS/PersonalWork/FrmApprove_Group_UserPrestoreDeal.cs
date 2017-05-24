@@ -27,8 +27,8 @@ namespace PersonalWork
         public string ResolveID = string.Empty;
         public string PointSort = string.Empty;
 
-        private string ComputerName = "";
-        private string ip = "";
+        //private string ComputerName = "";
+        //private string ip = "";
 
         private PersonalWork_IDAL sysidal = new PersonalWork_DAL();
 
@@ -104,9 +104,9 @@ namespace PersonalWork
                         return;
                 }
                 //处理审批操作；
-                ComputerName = new Computer().ComputerName;
-                ip = new Computer().IpAddress;
-                int count = sysidal.UpdateApprove_defalut("Meter_Install_Group", ResolveID, true, "预存款结转", PointSort, strTaskID);
+                //ComputerName = new Computer().ComputerName;
+                //ip = new Computer().IpAddress;
+                int count = sysidal.UpdateApprove_defalut("Meter_Install_Group", ResolveID, true, "预存款结转", PointSort, strTaskID, "预存款结转-》批量预存");
 
                 if (count > 0)
                 {

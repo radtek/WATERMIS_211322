@@ -154,9 +154,17 @@ namespace PersonalWork
         private void Btn_Submit_Click(object sender, EventArgs e)
         {
             Btn_Submit.Enabled = false;
-            ComputerName = new Computer().ComputerName;
-            ip = new Computer().IpAddress;
-            int count = sysidal.UpdateApprove_Single_defalut(ResolveID, IsPass.Checked, UserOpinion.Text.Trim(), ip, ComputerName, PointSort, TaskID);
+            ip = AppDomain.CurrentDomain.GetData("IP").ToString();
+            ComputerName = AppDomain.CurrentDomain.GetData("COMPUTERNAME").ToString();
+
+            string Matter = string.Empty;
+
+            if (this.FP_Fee.Controls.Count>0)
+            {
+                 Matter = string.Format("费用明细：{1}", UserOpinion.Text.Trim(), ApproveDispose.GetFeeItem(this.FP_Fee));
+            }
+
+            int count = sysidal.UpdateApprove_Single_defalut(ResolveID, IsPass.Checked, UserOpinion.Text.Trim(), ip, ComputerName, PointSort, TaskID, Matter);
 
             if (count > 0)
             {
@@ -207,8 +215,9 @@ namespace PersonalWork
         {
             Btn_Submit.Enabled = false;
             Btn_Voided.Enabled = false;
-            ComputerName = new Computer().ComputerName;
-            ip = new Computer().IpAddress;
+            ComputerName = AppDomain.CurrentDomain.GetData("COMPUTERNAME").ToString();
+            ip = AppDomain.CurrentDomain.GetData("IP").ToString();
+
             int count = sysidal.UpdateApprove_Voided(ResolveID, UserOpinion.Text.Trim(), ip, ComputerName, TaskID);
 
             if (count > 0)

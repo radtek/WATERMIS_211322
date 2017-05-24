@@ -136,7 +136,8 @@ namespace PersonalWork
         private void Btn_Submit_Click(object sender, EventArgs e)
         {
             Btn_Submit.Enabled = false;
-            int count = sysidal.UpdateApprove_defalut("User_WaterPrice", ResolveID, IsPass.Checked, UserOpinion.Text.Trim(), PointSort, TaskID);
+            string Matter = string.Format("【变更用水性质】-用户名：{0}；户号：{1}；{2}--》{3}；变更原因：{4}", waterUserName.Text, WATERUSERNO.Text, waterMeterTypeId.Text, waterMeterType_New.Text, WaterPriceDescribe.Text);
+            int count = sysidal.UpdateApprove_defalut("User_WaterPrice", ResolveID, IsPass.Checked, UserOpinion.Text.Trim(), PointSort, TaskID, Matter);
             if (count > 0)
             {
 

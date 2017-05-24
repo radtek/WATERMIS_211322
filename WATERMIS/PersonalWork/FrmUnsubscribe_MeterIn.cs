@@ -117,7 +117,8 @@ FROM waterMeter WHERE waterMeterId=@waterMeterId";
                 HL["MEMO"] = TaskID;
                 new SqlServerHelper().Submit_AddOrEdit("OPERATORLOG", "LOGID", "", HL);
 
-                int count = sysidal.UpdateApprove_defalut("User_Unsubscribe", ResolveID, true, UserOpinion.Text.Trim(), PointSort, TaskID);
+                string Matter = string.Format("【水表入库】-水表读数：{0}；用户号：{1}；水表号：{2}；审批意见：{3}", WaterMeterNum.Text, _waterUserId, _waterMeterId, UserOpinion.Text.Trim());
+                int count = sysidal.UpdateApprove_defalut("User_Unsubscribe", ResolveID, true, UserOpinion.Text.Trim(), PointSort, TaskID,Matter);
 
                 if (count > 0)
                 {

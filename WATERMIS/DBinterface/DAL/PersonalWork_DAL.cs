@@ -7,6 +7,7 @@ using Common.DotNetData;
 using DBUtility;
 using Common.WinDevices;
 using Microsoft.VisualBasic;
+using DBinterface.Model;
 
 namespace DBinterface.DAL
 {
@@ -139,15 +140,16 @@ ORDER BY FeeItem, PointName";
             return new SqlServerHelper().GetDateTableBySql(sqlstr, new SqlParameter[] { new SqlParameter("@TaskID", TaskID), new SqlParameter("@PointSort", PointSort) });
         }
 
-        public int UpdateApprove_defalut(string tableName, string ResolveID, bool IsPass, string UserOpinion, string ip, string ComputerName, string PointSort, string TaskID)
+        public int UpdateApprove_defalut(string tableName, string ResolveID, bool IsPass, string UserOpinion, string ip, string ComputerName, string PointSort, string TaskID, string Matter)
         {
-            //===================================================================================GETDATE()
             string sqlstr = string.Format(@"DECLARE @ISOVER INT=1
 DECLARE @NEXTSORT INT=0
 SELECT  TOP 1 @NEXTSORT=PointSort FROM Meter_WorkResolve WHERE TaskID=@TaskID AND PointSort>@PointSort ORDER BY PointSort
 SET XACT_ABORT ON
 BEGIN TRAN
 UPDATE Meter_WorkResolve SET IsPass=@IsPass,UserOpinion=@UserOpinion,AcceptUserID=@AcceptUserID,AcceptUser=@AcceptUser,AcceptDate='{1}',IP=@IP,ComputerName=@ComputerName WHERE ResolveID=@ResolveID
+INSERT INTO ApproveLog (TaskID,PointSort,loginId,userName,State,UserOpinion,IsPass,IsGoBack,IP,ComputerName,Matter) VALUES (@TaskID,@PointSort,@AcceptUserID,@AcceptUser,1,@UserOpinion,1,0,@IP,@ComputerName,@Matter)
+
 SELECT @ISOVER=COUNT(1) FROM Meter_WorkResolve WHERE TaskID=@TaskID AND PointSort=@PointSort AND (IsPass IS NULL OR IsPass<>1)
 if(@ISOVER=0)
 begin
@@ -159,6 +161,7 @@ END
 ELSE
 BEGIN
 UPDATE Meter_WorkTask SET PointSort=@NEXTSORT,PointTime='{1}' WHERE TaskID=@TaskID AND PointSort=@PointSort
+
 END
 end
 COMMIT TRAN", tableName, GetDatetimeNow());
@@ -172,23 +175,25 @@ COMMIT TRAN", tableName, GetDatetimeNow());
             new SqlParameter("@IP",ip),
             new SqlParameter("@ComputerName",ComputerName),
             new SqlParameter("@PointSort",PointSort),
-            new SqlParameter("@TaskID",TaskID)
+            new SqlParameter("@TaskID",TaskID),
+            new SqlParameter("@Matter",Matter)
             };
 
             return DbHelperSQL.ExecuteSql(sqlstr, cmdParms);
         }
 
-        public int UpdateApprove_defalut(string tableName, string ResolveID, bool IsPass, string UserOpinion, string PointSort, string TaskID)
+        public int UpdateApprove_defalut(string tableName, string ResolveID, bool IsPass, string UserOpinion, string PointSort, string TaskID, string Matter)
         {
-            string ComputerName = new Computer().ComputerName;
-            string ip = new Computer().IpAddress;
-            return UpdateApprove_defalut(tableName, ResolveID, IsPass, UserOpinion, ip, ComputerName, PointSort, TaskID);
+            string ComputerName = AppDomain.CurrentDomain.GetData("COMPUTERNAME").ToString();
+            string ip = AppDomain.CurrentDomain.GetData("IP").ToString();
+
+            return UpdateApprove_defalut(tableName, ResolveID, IsPass, UserOpinion, ip, ComputerName, PointSort, TaskID, Matter);
 
         }
 
-        public int UpdateApprove_Single_defalut(string ResolveID, bool IsPass, string UserOpinion, string ip, string ComputerName, string PointSort, string TaskID)
+        public int UpdateApprove_Single_defalut(string ResolveID, bool IsPass, string UserOpinion, string ip, string ComputerName, string PointSort, string TaskID, string Matter)
         {
-            return UpdateApprove_defalut("Meter_Install_Single", ResolveID, IsPass, UserOpinion, ip, ComputerName, PointSort, TaskID);
+            return UpdateApprove_defalut("Meter_Install_Single", ResolveID, IsPass, UserOpinion, ip, ComputerName, PointSort, TaskID, Matter);
             //            string sqlstr = @"DECLARE @ISOVER INT=1
             //DECLARE @NEXTSORT INT=0
             //SELECT  TOP 1 @NEXTSORT=PointSort FROM Meter_WorkResolve WHERE TaskID=@TaskID AND PointSort>@PointSort ORDER BY PointSort
@@ -235,9 +240,9 @@ COMMIT TRAN", tableName, GetDatetimeNow());
         /// <param name="PointSort"></param>
         /// <param name="TaskID"></param>
         /// <returns></returns>
-        public int UpdateApprove_Peccant_defalut(string ResolveID, bool IsPass, string UserOpinion, string ip, string ComputerName, string PointSort, string TaskID)
+        public int UpdateApprove_Peccant_defalut(string ResolveID, bool IsPass, string UserOpinion, string ip, string ComputerName, string PointSort, string TaskID, string Matter)
         {
-            return UpdateApprove_defalut("Meter_Install_Peccant", ResolveID, IsPass, UserOpinion, ip, ComputerName, PointSort, TaskID);
+            return UpdateApprove_defalut("Meter_Install_Peccant", ResolveID, IsPass, UserOpinion, ip, ComputerName, PointSort, TaskID, Matter);
         }
 
         public int UpdateApprove_Voided_ByTableName(string tableName, string ResolveID, string UserOpinion, string ip, string ComputerName, string TaskID)
@@ -247,6 +252,8 @@ BEGIN TRAN
 UPDATE Meter_WorkTask SET State=4 WHERE TaskID=@TaskID
 UPDATE {0} SET State=4 WHERE TaskID=@TaskID
 UPDATE Meter_WorkResolve SET MakeVoided=1,IsPass=0,UserOpinion=@UserOpinion,AcceptUserID=@AcceptUserID,AcceptUser=@AcceptUser,IP=@IP,ComputerName=@ComputerName WHERE ResolveID=@ResolveID
+INSERT INTO ApproveLog (TaskID,ResolveID,loginId,userName,State,UserOpinion,IsPass,IsGoBack,IP,ComputerName,Matter) VALUES 
+(@TaskID,@ResolveID,@AcceptUserID,@AcceptUser,4,@UserOpinion,0,0,@IP,@ComputerName,@Matter)
 COMMIT TRAN", tableName);
 
             SqlParameter[] cmdParms = new SqlParameter[]{
@@ -256,7 +263,8 @@ COMMIT TRAN", tableName);
             new SqlParameter("@AcceptUser",AppDomain.CurrentDomain.GetData("USERNAME").ToString()),
             new SqlParameter("@IP",ip),
             new SqlParameter("@ComputerName",ComputerName),
-            new SqlParameter("@TaskID",TaskID)
+            new SqlParameter("@TaskID",TaskID),
+            new SqlParameter("@Matter",UserOpinion)
             };
 
             return DbHelperSQL.ExecuteSql(sqlstr, cmdParms);
@@ -264,8 +272,8 @@ COMMIT TRAN", tableName);
 
         public int UpdateApprove_Voided_ByTableName(string tableName, string ResolveID, string UserOpinion, string TaskID)
         {
-            string ComputerName = new Computer().ComputerName;
-            string ip = new Computer().IpAddress;
+            string ComputerName = AppDomain.CurrentDomain.GetData("COMPUTERNAME").ToString();
+            string ip = AppDomain.CurrentDomain.GetData("IP").ToString();
             return UpdateApprove_Voided_ByTableName(tableName, ResolveID, UserOpinion, ip, ComputerName, TaskID);
         }
 
@@ -716,17 +724,17 @@ AND VV.CHARGEBCSS<=VW.prestore AND CHARGEID=@CHARGEID";
             return result;
         }
 
-        public int UpdateApprove_Refund_defalut(string ResolveID, bool IsPass, string UserOpinion, string PointSort, string TaskID)
+        public int UpdateApprove_Refund_defalut(string ResolveID, bool IsPass, string UserOpinion, string PointSort, string TaskID, string Matter)
         {
-            string ComputerName = new Computer().ComputerName;
-            string ip = new Computer().IpAddress;
-            return UpdateApprove_defalut("User_Refund", ResolveID, IsPass, UserOpinion, ip, ComputerName, PointSort, TaskID);
+            string ComputerName = AppDomain.CurrentDomain.GetData("COMPUTERNAME").ToString();
+            string ip = AppDomain.CurrentDomain.GetData("IP").ToString();
+            return UpdateApprove_defalut("User_Refund", ResolveID, IsPass, UserOpinion, ip, ComputerName, PointSort, TaskID, Matter);
         }
 
         public int UpdateApprove_Refund_Voided(string ResolveID, string UserOpinion, string TaskID)
         {
-            string ComputerName = new Computer().ComputerName;
-            string ip = new Computer().IpAddress;
+            string ComputerName = AppDomain.CurrentDomain.GetData("COMPUTERNAME").ToString();
+            string ip = AppDomain.CurrentDomain.GetData("IP").ToString();
             return UpdateApprove_Voided_ByTableName("User_Refund", ResolveID, UserOpinion, ip, ComputerName, TaskID);
 
         }
@@ -1242,5 +1250,44 @@ COMMIT TRAN", _tableNmae, CANCELMEMO, loginid, userName, GetDatetimeNow());
 
             }
         }
+
+        public bool LogWrite(string TaskID, string ResolveID, int PointSort, string loginId, string userName, int State, string UserOpinion, bool IsPass, bool IsGoBack, string IP, string ComputerName, string Matter)
+        {
+            string sqlstr = @"INSERT INTO ApproveLog (TaskID,ResolveID,PointSort,loginId,userName,State,UserOpinion,IsPass,IsGoBack,IP,ComputerName,Matter) VALUES 
+(@TaskID,@ResolveID,@PointSort,@loginId,@userName,@State,@UserOpinion,@IsPass,@IsGoBack,@IP,@ComputerName,@Matter)";
+
+               int count = DbHelperSQL.ExecuteSql(sqlstr,
+                 new SqlParameter[] {
+                new SqlParameter("@TaskID",TaskID),
+              new SqlParameter("@ResolveID",ResolveID),
+              new SqlParameter("@PointSort",PointSort),
+              new SqlParameter("@loginId",loginId),
+              new SqlParameter("@userName",userName),
+              new SqlParameter("@State",State),
+              new SqlParameter("@UserOpinion",UserOpinion),
+              new SqlParameter("@IsPass",IsPass),
+              new SqlParameter("@IsGoBack",IsGoBack),
+              new SqlParameter("@IP",IP),
+              new SqlParameter("@ComputerName",ComputerName),
+                new SqlParameter("@Matter",Matter)
+                });
+            return count > 0 ? true : false;
+        }
+
+        public bool LogWrite(string TaskID, string ResolveID, int PointSort, int State, string UserOpinion, bool IsPass, bool IsGoBack, string Matter)
+        {
+            string loginId = AppDomain.CurrentDomain.GetData("LOGINID").ToString();
+            string userName = AppDomain.CurrentDomain.GetData("USERNAME").ToString();
+            string IP = AppDomain.CurrentDomain.GetData("IP").ToString();
+            string ComputerName = AppDomain.CurrentDomain.GetData("COMPUTERNAME").ToString();
+
+            return LogWrite(TaskID, ResolveID, PointSort, loginId, userName, State, UserOpinion, IsPass, false, IP, ComputerName, Matter);
+        }
+
+        public bool LogWrite(Log_Model LM)
+        {
+            return LogWrite(LM.TaskID, LM.ResolveID, LM.PointSort, LM.State, LM.UserOpinion,LM.IsPass,LM.IsGoBack,LM.Matter);
+        }
+
     }
 }

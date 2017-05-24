@@ -241,8 +241,11 @@ namespace PersonalWork
             }
 
 
-            ComputerName = new Computer().ComputerName;
-            ip = new Computer().IpAddress;
+            //ComputerName = new Computer().ComputerName;
+            //ip = new Computer().IpAddress;
+
+            ip = AppDomain.CurrentDomain.GetData("IP").ToString();
+            ComputerName = AppDomain.CurrentDomain.GetData("COMPUTERNAME").ToString();
 
             Hashtable hs = new Hashtable();
             hs["ModifyUser"] = AppDomain.CurrentDomain.GetData("USERNAME").ToString();
@@ -322,7 +325,8 @@ namespace PersonalWork
 
                 if (sysidal.Approve_Peccant_Append(TaskID))
                 {
-                    int count = sysidal.UpdateApprove_Peccant_defalut(ResolveID, true, "新增用户（水表）", ip, ComputerName, PointSort, TaskID);
+                    string Matter = string.Format("【增户】-片：{0}；区：{1}；段：{2}；用水性质：{3}", PIANID.Text, areaId.Text, DUANID.Text, waterMeterTypeId.Text);
+                    int count = sysidal.UpdateApprove_Peccant_defalut(ResolveID, true, "新增用户（水表）", ip, ComputerName, PointSort, TaskID,Matter);
 
                     if (count > 0)
                     {

@@ -114,7 +114,7 @@ namespace PersonalWork
         private void Btn_Submit_Click(object sender, EventArgs e)
         {
             Btn_Submit.Enabled = false;
-            int count = sysidal.UpdateApprove_defalut("Meter_Disuse", ResolveID, IsPass.Checked, UserOpinion.Text.Trim(), PointSort, TaskID);
+            int count = sysidal.UpdateApprove_defalut("Meter_Disuse", ResolveID, IsPass.Checked, UserOpinion.Text.Trim(), PointSort, TaskID, UserOpinion.Text);
 
             if (count > 0)
             {

@@ -169,7 +169,7 @@ namespace PersonalWork
         private void Btn_Submit_Click(object sender, EventArgs e)
         {
             Btn_Submit.Enabled = false;
-            int count = sysidal.UpdateApprove_defalut("Meter_Install_Group", ResolveID, IsPass.Checked, UserOpinion.Text.Trim(), PointSort, TaskID);
+            int count = sysidal.UpdateApprove_defalut("Meter_Install_Group", ResolveID, IsPass.Checked, UserOpinion.Text.Trim(), PointSort, TaskID,"");
 
             if (count > 0)
             {

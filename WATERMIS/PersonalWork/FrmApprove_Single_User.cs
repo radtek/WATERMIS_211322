@@ -69,9 +69,11 @@ namespace PersonalWork
 
             dt = new SqlServerHelper().GetDataTable("User_Agentsign", "", "Agentsign");
             ControlBindHelper.BindComboBoxData(this.agentsign, dt, "Agent", "Agentsign");
+            this.agentsign.SelectedIndex = 1;
 
             dt = new SqlServerHelper().GetDataTable("User_ChargeType", "", "ChargeType");
             ControlBindHelper.BindComboBoxData(this.chargeType, dt, "Charge", "ChargeType");
+            this.chargeType.SelectedIndex = 1;
 
             dt = new SqlServerHelper().GetDataTable("BASE_PIAN", "PARENTID<>'0'", "PIANID");
             ControlBindHelper.BindComboBoxData(this.PIANID, dt, "PIANNAME", "PIANID");
@@ -160,7 +162,8 @@ namespace PersonalWork
 
                 if (sysidal.Approve_Single_Append(TaskID, CHARGEID, PRESTORERUNNINGACCOUNTID))
                 {
-                    int count = sysidal.UpdateApprove_Single_defalut(ResolveID, true, "新增用户（水表）", ip, ComputerName, PointSort, TaskID);
+                    string Matter = string.Format("【增户】-片号：{0}；区号：{1}；段号：{2}；", PIANID.Text, areaId.Text, DUANID.Text);
+                    int count = sysidal.UpdateApprove_Single_defalut(ResolveID, true, "新增用户（水表）", ip, ComputerName, PointSort, TaskID, Matter);
                     
                     if (count > 0)
                     {

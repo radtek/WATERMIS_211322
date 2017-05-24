@@ -344,7 +344,7 @@ namespace DBinterface.DAL
             StringBuilder strSql = new StringBuilder();
            // strSql.Append("select MeterID,waterMeterStartNumber,MeterState,waterUserId,waterMeterPositionName,waterMeterPositionId,waterMeterSizeId,waterMeterTypeId,WATERFIXVALUE,waterMeterProduct,waterMeterSerialNumber,waterMeterMode,isSummaryMeter,waterMeterParentId,waterMeterMagnification,waterMeterMaxRange,waterMeterProofreadingDate,waterMeteProofreadingPeriod,STARTUSEDATETIME,MEMO ");
            // strSql.Append("select MeterID,waterMeterStartNumber,MeterState,waterMeterSizeId,waterMeterProduct,waterMeterSerialNumber,waterMeterMode,waterMeterProofreadingDate,waterMeteProofreadingPeriod,STARTUSEDATETIME,MEMO ");
-            strSql.Append("SELECT MeterID,waterMeterStartNumber,waterMeterProduct,waterMeterSerialNumber,waterMeterMode,waterMeterProofreadingDate,waterMeteProofreadingPeriod,STARTUSEDATETIME,Meter.MEMO, waterMeterSize.waterMeterSizeValue, MeterState.StateDescribe FROM Meter LEFT OUTER JOIN MeterState ON Meter.MeterState = MeterState.ID LEFT OUTER JOIN waterMeterSize ON Meter.waterMeterSizeId = waterMeterSize.waterMeterSizeId");
+            strSql.Append("SELECT MeterID,waterMeterStartNumber,waterMeterProduct,waterMeterSerialNumber,waterMeterMode,waterMeterProofreadingDate,waterMeteProofreadingPeriod,STARTUSEDATETIME,Meter.MEMO,Meter.waterMeterId, waterMeterSize.waterMeterSizeValue, MeterState.StateDescribe FROM Meter LEFT OUTER JOIN MeterState ON Meter.MeterState = MeterState.ID LEFT OUTER JOIN waterMeterSize ON Meter.waterMeterSizeId = waterMeterSize.waterMeterSizeId");
             if (strWhere.Trim() != "")
             {
                 strSql.Append(" where " + strWhere);

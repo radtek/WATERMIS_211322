@@ -177,7 +177,9 @@ namespace PersonalWork
         private void Btn_Submit_Click(object sender, EventArgs e)
         {
             Btn_Submit.Enabled = false;
-            int count = sysidal.UpdateApprove_defalut("User_Unsubscribe", ResolveID, IsPass.Checked, UserOpinion.Text.Trim(), PointSort, TaskID);
+
+            string Matter = string.Format("【销户】-审批意见：{0}；费用明细：{1}", UserOpinion.Text.Trim(), ApproveDispose.GetFeeItem(this.FP_Fee));
+            int count = sysidal.UpdateApprove_defalut("User_Unsubscribe", ResolveID, IsPass.Checked, UserOpinion.Text.Trim(), PointSort, TaskID, Matter);
 
             if (count > 0)
             {

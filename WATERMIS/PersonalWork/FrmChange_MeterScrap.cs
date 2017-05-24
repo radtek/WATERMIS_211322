@@ -147,8 +147,8 @@ namespace PersonalWork
                 HL["OPERATORNAME"] = AppDomain.CurrentDomain.GetData("USERNAME").ToString();
                 HL["MEMO"] = TaskID;
                 new SqlServerHelper().Submit_AddOrEdit("OPERATORLOG", "LOGID", "", HL);
-
-                int count = sysidal.UpdateApprove_defalut("Meter_Change", ResolveID, true, UserOpinion.Text.Trim(), PointSort, TaskID);
+                string Matter = string.Format("【更换水表】-旧表读数：{0}；旧表编号：{1}；新表编号：{2}；铅封号：{3}；表锁号：{4}", waterMeterEndNumber.Text, waterMeterId.Text, waterMeterSerialNumber.Text, waterMeterMode.Text, WATERMETERLOCKNO.Text);
+                int count = sysidal.UpdateApprove_defalut("Meter_Change", ResolveID, true, UserOpinion.Text.Trim(), PointSort, TaskID,Matter);
 
                 if (count > 0)
                 {

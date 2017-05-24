@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data;
 using System.Collections;
+using DBinterface.Model;
 
 namespace DBinterface.IDAL
 {
@@ -26,24 +27,13 @@ namespace DBinterface.IDAL
 
        DataTable GetDataTableLastApproveFee(string TaskID, string PointSort);
 
-       int UpdateApprove_defalut(string tableName, string ResolveID, bool IsPass, string UserOpinion, string ip, string ComputerName, string PointSort, string TaskID);
+       int UpdateApprove_defalut(string tableName, string ResolveID, bool IsPass, string UserOpinion, string ip, string ComputerName, string PointSort, string TaskID, string Matter);
 
-       int UpdateApprove_defalut(string tableName, string ResolveID, bool IsPass, string UserOpinion, string PointSort, string TaskID);
+       int UpdateApprove_defalut(string tableName, string ResolveID, bool IsPass, string UserOpinion, string PointSort, string TaskID, string Matter);
 
-       int UpdateApprove_Single_defalut(string ResolveID, bool IsPass, string UserOpinion, string ip, string ComputerName, string PointSort, string TaskID);
+       int UpdateApprove_Single_defalut(string ResolveID, bool IsPass, string UserOpinion, string ip, string ComputerName, string PointSort, string TaskID, string Matter);
 
-       /// <summary>
-       /// 违章报装审批函数
-       /// </summary>
-       /// <param name="ResolveID"></param>
-       /// <param name="IsPass"></param>
-       /// <param name="UserOpinion"></param>
-       /// <param name="ip"></param>
-       /// <param name="ComputerName"></param>
-       /// <param name="PointSort"></param>
-       /// <param name="TaskID"></param>
-       /// <returns></returns>
-       int UpdateApprove_Peccant_defalut(string ResolveID, bool IsPass, string UserOpinion, string ip, string ComputerName, string PointSort, string TaskID);
+       int UpdateApprove_Peccant_defalut(string ResolveID, bool IsPass, string UserOpinion, string ip, string ComputerName, string PointSort, string TaskID, string Matter);
 
        int UpdateApprove_Voided_ByTableName(string tableName, string ResolveID, string UserOpinion, string ip, string ComputerName, string TaskID);
 
@@ -51,15 +41,6 @@ namespace DBinterface.IDAL
 
        int UpdateApprove_Voided(string ResolveID, string UserOpinion, string ip, string ComputerName, string TaskID);
 
-       /// <summary>
-       /// 违章报装审批单作废函数
-       /// </summary>
-       /// <param name="ResolveID"></param>
-       /// <param name="UserOpinion"></param>
-       /// <param name="ip"></param>
-       /// <param name="ComputerName"></param>
-       /// <param name="TaskID"></param>
-       /// <returns></returns>
        int UpdateApprove_Peccant_Voided(string ResolveID, string UserOpinion, string ip, string ComputerName, string TaskID);
 
        DataTable GetFeeItems(string ResolveID);
@@ -96,7 +77,7 @@ namespace DBinterface.IDAL
 
        bool GetUserExistRefund(string CHARGEID);
 
-       int UpdateApprove_Refund_defalut(string ResolveID, bool IsPass, string UserOpinion, string PointSort, string TaskID);
+       int UpdateApprove_Refund_defalut(string ResolveID, bool IsPass, string UserOpinion, string PointSort, string TaskID, string Matter);
 
        int UpdateApprove_Refund_Voided(string ResolveID, string UserOpinion, string TaskID);
 
@@ -134,13 +115,11 @@ namespace DBinterface.IDAL
 
        bool ApproveFinalPrestore(Hashtable ht);
 
-        //2016-10-03 RONG--Begin
        DataTable GetMaintainType();
 
        Hashtable GetMaintainByTaskID(string TaskID);
 
        Hashtable GetWaterUserInfoByWaterUserNO(string waterUserNO);
-        //2016-10-03 RONG--End
 
        Hashtable GetMeter_Install_GroupInfos(string TaskID);
 
@@ -181,5 +160,11 @@ namespace DBinterface.IDAL
        void GetAvePrice(decimal decTotalNumber, string strTrapePriceString, string extraCharge, int intNotReadMonths, ref decimal waterTotalCharge, ref decimal extraCharge1, ref decimal extraCharge2);
 
        void GetWaterFeeByMeterType(string waterMeterTypeId, decimal totalNumber, int intNotReadMonths, ref decimal waterTotalCharge, ref decimal extraCharge1, ref decimal extraCharge2);
+
+       bool LogWrite(string TaskID, string ResolveID, int PointSort, string loginId, string userName, int State, string UserOpinion, bool IsPass, bool IsGoBack, string IP, string ComputerName, string Matter);
+
+       bool LogWrite(string TaskID, string ResolveID, int PointSort, int State, string UserOpinion, bool IsPass, bool IsGoBack, string Matter);
+
+       bool LogWrite(Log_Model LM);
     }
 }

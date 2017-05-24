@@ -108,7 +108,7 @@ namespace PersonalWork
             Btn_Submit.Enabled = false;
             ComputerName = new Computer().ComputerName;
             ip = new Computer().IpAddress;
-            int count = sysidal.UpdateApprove_Single_defalut(ResolveID, IsPass.Checked, UserOpinion.Text.Trim(), ip, ComputerName, PointSort, TaskID);
+            int count = sysidal.UpdateApprove_Single_defalut(ResolveID, IsPass.Checked, UserOpinion.Text.Trim(), ip, ComputerName, PointSort, TaskID, UserOpinion.Text);
 
             if (count > 0)
             {

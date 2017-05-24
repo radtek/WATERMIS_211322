@@ -108,7 +108,9 @@ namespace PersonalWork
                 }
             }
 
-            int count = sysidal.UpdateApprove_Single_defalut(ResolveID, true, "用户信息审核完成", ip, ComputerName, PointSort, TaskID);
+            string Matter = string.Format("【用户信息审核】-用户名：{0}；地址：{1}；联系方式：{2}", waterUserName.Text, waterUserAddress.Text, waterPhone.Text);
+
+            int count = sysidal.UpdateApprove_Single_defalut(ResolveID, true, "用户信息审核完成", ip, ComputerName, PointSort, TaskID, Matter);
 
             if (count > 0)
             {

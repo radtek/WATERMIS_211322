@@ -42,6 +42,30 @@ namespace PersonalWork
            return count > 0 ? true : false;
        }
 
+       public static string GetFeeItem(Control FP_Fee)
+       {
+           StringBuilder sb = new StringBuilder();
+           
+           foreach (Control c in FP_Fee.Controls)
+           {
+               if (c is UC_ChargeInput)
+               {
+                   UC_ChargeInput UC = (UC_ChargeInput)c;
+                   int feeid = 0;
+
+                   if (int.TryParse(UC.FeeID, out feeid))
+                   {
+                       sb.AppendLine(string.Format("{0}：{1}X{2}={3}；", UC.FeeItem, UC.Price,UC.Quantity, UC.Fee));
+                   }
+               }
+           }
+          
+
+          // int count = DbHelperSQL.ExecuteSql(sb.ToString(), new SqlParameter[] { new SqlParameter("@ResolveID", ResolveID) });
+
+           return sb.ToString();
+       }
+
        public static void BindFeeItemTextBox(Control FP_Fee, string ResolveID)
        {
            //string sqlstr = "SELECT FeeID,FeeItem,Fee,DefaultValue,IsFinal  FROM Meter_WorkResolveFee WHERE ResolveID=@ResolveID ORDER BY Sort";

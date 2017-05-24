@@ -82,9 +82,9 @@ namespace PersonalWork
                 else
                 {
                     //处理审批操作；
-                    ComputerName = new Computer().ComputerName;
-                    ip = new Computer().IpAddress;
-                    int count = sysidal.UpdateApprove_defalut("Meter_Install_Group", ResolveID, true, "新增用户", PointSort, strTaskID);
+                    ComputerName = AppDomain.CurrentDomain.GetData("COMPUTERNAME").ToString();
+                    ip = AppDomain.CurrentDomain.GetData("IP").ToString();
+                    int count = sysidal.UpdateApprove_defalut("Meter_Install_Group", ResolveID, true, "新增用户", PointSort, strTaskID, "批量增户");
 
                     if (count > 0)
                     {

@@ -75,7 +75,8 @@ namespace PersonalWork
 
         private void UpdateApprove()
         {
-            int count = sysidal.UpdateApprove_Peccant_defalut(ResolveID, true, UserOpinion.Text.Trim(), ip, ComputerName, PointSort, TaskID);
+
+            int count = sysidal.UpdateApprove_Peccant_defalut(ResolveID, true, UserOpinion.Text.Trim(), ip, ComputerName, PointSort, TaskID, "水表编号：" + waterMeterSerialNumber.Text);
 
             if (count > 0)
             {

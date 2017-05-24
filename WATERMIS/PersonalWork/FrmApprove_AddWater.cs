@@ -104,7 +104,8 @@ namespace PersonalWork
         private void Btn_Submit_Click(object sender, EventArgs e)
         {
             Btn_Submit.Enabled = false;
-            int count = sysidal.UpdateApprove_defalut("User_AddWater", ResolveID, IsPass.Checked, UserOpinion.Text.Trim(), PointSort, TaskID);
+            string Matter = string.Format("【补交水量】-审批意见：{0}", UserOpinion.Text.Trim());
+            int count = sysidal.UpdateApprove_defalut("User_AddWater", ResolveID, IsPass.Checked, UserOpinion.Text.Trim(), PointSort, TaskID, Matter);
             if (count > 0)
             {
                 if (sysidal.IsWorkTaskOver("User_AddWater", TaskID))//获取审批状态，如果是Meter_WorkTask.state=5 和User_WaterPrice.state=5,说明审批流程走完

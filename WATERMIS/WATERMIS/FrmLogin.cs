@@ -98,6 +98,8 @@ namespace WATERMIS
                         AppDomain.CurrentDomain.SetData("POSTID", strPostID);
                         AppDomain.CurrentDomain.SetData("GROUPID", strGroupID);
                         AppDomain.CurrentDomain.SetData("GROUPNAME", strGroupName);
+                        AppDomain.CurrentDomain.SetData("IP", GetAddressIP());
+                        AppDomain.CurrentDomain.SetData("COMPUTERNAME", System.Environment.GetEnvironmentVariable("ComputerName"));
 
             //Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             //AppSettingsSection app = config.AppSettings; //app.Settings.Add("x", "this is X"); 

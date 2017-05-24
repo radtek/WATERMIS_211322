@@ -39,7 +39,11 @@
             this.PointTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsSkip = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GoPoint = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.DV = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgList)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DV)).BeginInit();
             this.SuspendLayout();
             // 
             // dgList
@@ -56,11 +60,11 @@
             this.PointTime,
             this.IsSkip,
             this.GoPoint});
-            this.dgList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgList.Dock = System.Windows.Forms.DockStyle.Top;
             this.dgList.Location = new System.Drawing.Point(0, 0);
             this.dgList.Name = "dgList";
             this.dgList.RowTemplate.Height = 23;
-            this.dgList.Size = new System.Drawing.Size(1058, 530);
+            this.dgList.Size = new System.Drawing.Size(1058, 118);
             this.dgList.TabIndex = 0;
             // 
             // PointName
@@ -123,17 +127,39 @@
             this.GoPoint.HeaderText = "跳转节点";
             this.GoPoint.Name = "GoPoint";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.DV);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 118);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1058, 412);
+            this.panel1.TabIndex = 1;
+            // 
+            // DV
+            // 
+            this.DV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DV.Location = new System.Drawing.Point(0, 0);
+            this.DV.Name = "DV";
+            this.DV.RowTemplate.Height = 23;
+            this.DV.Size = new System.Drawing.Size(1058, 412);
+            this.DV.TabIndex = 0;
+            // 
             // FrmWorkPoint_Show
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1058, 530);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgList);
             this.Name = "FrmWorkPoint_Show";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "审批明细";
             this.Load += new System.EventHandler(this.FrmWorkPoint_Show_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgList)).EndInit();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DV)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -151,5 +177,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PointTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn IsSkip;
         private System.Windows.Forms.DataGridViewTextBoxColumn GoPoint;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridView DV;
     }
 }

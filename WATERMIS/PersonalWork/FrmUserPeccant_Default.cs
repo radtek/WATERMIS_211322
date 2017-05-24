@@ -194,9 +194,10 @@ namespace PersonalWork
         private void Btn_Submit_Click(object sender, EventArgs e)
         {
             Btn_Submit.Enabled = false;
-            ComputerName = new Computer().ComputerName;
-            ip = new Computer().IpAddress;
-            int count = sysidal.UpdateApprove_defalut("User_Peccant", ResolveID, IsPass.Checked, UserOpinion.Text.Trim(), ip, ComputerName, PointSort, TaskID);
+            ip = AppDomain.CurrentDomain.GetData("IP").ToString();
+            ComputerName = AppDomain.CurrentDomain.GetData("COMPUTERNAME").ToString();
+            string Matter = string.Format("【违章报装】-审批意见：{0}；费用明细：{1}", UserOpinion.Text.Trim(), ApproveDispose.GetFeeItem(this.FP_Fee));
+            int count = sysidal.UpdateApprove_defalut("User_Peccant", ResolveID, IsPass.Checked, UserOpinion.Text.Trim(), ip, ComputerName, PointSort, TaskID,Matter);
 
             if (count > 0)
             {

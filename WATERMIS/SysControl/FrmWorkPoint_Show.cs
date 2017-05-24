@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace SysControl
 {
@@ -32,6 +33,14 @@ namespace SysControl
 
             DataTable dtList = new SqlServerHelper().GetDateTableBySql(sqlstr);
             dgList.DataSource = dtList;
+
+
+            sqlstr = "  SELECT PointSort,userName,CreateDate,UserOpinion,Matter FROM ApproveLog WHERE TaskID =@TaskID ORDER BY CreateDate ASC";
+            DataTable dt = new SqlServerHelper().GetDateTableBySql(sqlstr, new SqlParameter[] { new SqlParameter("@TaskID", TaskID) });
+
+            DV.DataSource = dt;
+
+
         }
     }
 }

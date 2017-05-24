@@ -490,7 +490,7 @@ namespace FinanceOS
             {
                 MessageBox.Show("收费完成！");
                 Btn_Submit.Enabled = false;
-                sysidal.UpdateApprove_defalut(TableName, ResolveID, true, "已收费", ip, ComputerName, PointSort, TaskID);
+                sysidal.UpdateApprove_defalut(TableName, ResolveID, true, "已收费", ip, ComputerName, PointSort, TaskID,"已收费");
             }
             else
             {

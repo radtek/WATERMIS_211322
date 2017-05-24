@@ -659,7 +659,8 @@ public class SqlServerHelper
         {
             string strLogID = AppDomain.CurrentDomain.GetData("LOGINID").ToString();
             string strRealName = AppDomain.CurrentDomain.GetData("USERNAME").ToString();
-
+            string IP = AppDomain.CurrentDomain.GetData("IP").ToString();
+            string ComputerName = AppDomain.CurrentDomain.GetData("COMPUTERNAME").ToString();
             string sqlstr = string.Format(@"DECLARE @ExceID NVARCHAR(50)='{0}'
 DECLARE @WorkCode NVARCHAR(50)='{7}'
 DECLARE @TaskName NVARCHAR(50)='{6}-{1}'
@@ -672,6 +673,8 @@ DECLARE @WORKFLOWID NVARCHAR(50)=''
 --DECLARE @TaskCode NVARCHAR(50)=''
 DECLARE @UserOpinion NVARCHAR(50)='系统提交'
 DECLARE @NEXTSORT INT
+DECLARE @ResolveID NVARCHAR(50)= NEWID()
+DECLARE @Matter NVARCHAR(MAX)=''
 SELECT @WORKFLOWID=WorkFlowID FROM Meter_WorkFlow WHERE WorkCode=@WorkCode
 if(@WORKFLOWID<>'')
 begin
@@ -692,7 +695,10 @@ and PointSort=@PointSort and ','+loginId+',' like '%,'+@AcceptUserID+',%'
 UPDATE Meter_WorkTask SET PointSort=@NEXTSORT,PointTime=GETDATE() WHERE TaskID=@TaskID
 INSERT INTO Meter_WorkResolveFee (FeeID,FeeItem,DefaultValue,Sort,ResolveID,IsFinal) SELECT MF.FeeID, MF.FeeItem, MF.DefaultValue, MF.Sort,MWR.ResolveID,MWF.IsFinal FROM Meter_WorkDoFee MWF INNER JOIN Meter_FeeItmes MF ON MWF.FeeID = MF.FeeID INNER JOIN Meter_WorkResolve MWR ON MWF.DoID = MWR.DoID WHERE (MF.State = 1) AND (MWR.TaskID = @TaskID)
 COMMIT TRAN
-end", ExcePkValue, AcceptID, strLogID, strRealName, ExceTableName, ExcePkName, FlowDesc, FlowCode);
+SELECT @Matter='提交信息：业务类型：'+Table_Name_CH+'；用户名：'+waterUserName+'；电话：'+waterPhone+'；地址：'+waterUserAddress+'' FROM View_TABLEUNION WHERE SD=@SD
+INSERT INTO ApproveLog (TaskID,PointSort,loginId,userName,State,UserOpinion,IsPass,IsGoBack,IP,ComputerName,Matter) VALUES 
+(@TaskID,@PointSort,@AcceptUserID,@AcceptUser,1,@UserOpinion,1,0,'{8}','{9}',@Matter)
+end", ExcePkValue, AcceptID, strLogID, strRealName, ExceTableName, ExcePkName, FlowDesc, FlowCode,IP,ComputerName);
             DbHelperSQL.ExecuteSql(sqlstr);
         }
         catch (Exception ex)
