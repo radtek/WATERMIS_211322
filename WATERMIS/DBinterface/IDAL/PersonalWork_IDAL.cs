@@ -166,5 +166,17 @@ namespace DBinterface.IDAL
        bool LogWrite(string TaskID, string ResolveID, int PointSort, int State, string UserOpinion, bool IsPass, bool IsGoBack, string Matter);
 
        bool LogWrite(Log_Model LM);
+
+       bool CheckIsAbate(string readMeterRecordId);
+
+       string GetWorkCodeByUserType(string TableID, string waterMeterTypeClassID);
+
+       bool CheckIsWaterPrice(string WATERUSERNO);
+
+       bool IsExistWorkFlow(string TableID, string WaterMeterTypeClassID);
+
+       //bool InsertWorkFlowSelect(Hashtable ht);
+
+       //bool UpdateWorkFlowSelect(Hashtable ht);
     }
 }

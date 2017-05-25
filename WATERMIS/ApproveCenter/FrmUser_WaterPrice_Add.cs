@@ -44,6 +44,16 @@ namespace ApproveCenter
         }
         private void Btn_Submit_Click(object sender, EventArgs e)
         {
+            //判断重复提交===============================
+
+
+            if (sysidal.CheckIsWaterPrice(WATERUSERNO.Text))
+            {
+                mes.Show("已经存在审批中的记录，如果需要重新申请，需要作废掉已经提交的申请！");
+                return;
+            }
+
+
             if (CheckForm())
             {
                 Hashtable ht = new Hashtable();
@@ -63,7 +73,7 @@ namespace ApproveCenter
                 //ht["WATERPHONE"] = waterPhone.Text;
 
                 ht = new SqlServerHelper().GetHashTableByControl(this.panel1.Controls);
-
+                ht.Remove("WATERMETERTYPECLASSID");
                 ht["waterMeterTypeIdChange"] = waterMeterTypeId.SelectedValue;
 
                 string SDNO = new SqlServerHelper().GetSDByTable("User_WaterPrice");
@@ -81,7 +91,10 @@ namespace ApproveCenter
 
                 if (new SqlServerHelper().Submit_AddOrEdit("User_WaterPrice", "WaterPriceID", "", ht))
                 {
-                    bool result = new SqlServerHelper().CreateWorkTask(ht["WaterPriceID"].ToString(), SDNO, "User_WaterPrice", "WaterPriceID", "用水性质变更");
+                    string FlowCode = sysidal.GetWorkCodeByUserType("11", waterMeterTypeClassID.Text);
+                    FlowCode = string.IsNullOrEmpty(FlowCode) ? "User_WaterPrice" : FlowCode;
+
+                    bool result = new SqlServerHelper().CreateWorkTask(ht["WaterPriceID"].ToString(), SDNO, "User_WaterPrice", "WaterPriceID", "用水性质变更", FlowCode);
                     if (result)
                     {
                         mes.Show("任务创建成功！");
@@ -97,6 +110,11 @@ namespace ApproveCenter
 
         private void Btn_Search_Click(object sender, EventArgs e)
         {
+
+            if (!WATERUSERNO.Text.Contains("U"))
+                WATERUSERNO.Text = "U" + WATERUSERNO.Text.Trim();
+
+
             _WATERUSERNO = WATERUSERNO.Text.Trim();
             new SqlServerHelper().ClearControls(this.panel1.Controls);
             if (!string.IsNullOrEmpty(_WATERUSERNO))

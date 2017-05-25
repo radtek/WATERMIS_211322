@@ -28,6 +28,13 @@ namespace MeterBusiness
         {
             button1.Enabled = false;
             //Meter_Model model = new Meter_Model();
+
+            if (waterMeterSerialNumber.Text.Trim().Length<5)
+            {
+                MessageBox.Show("输入正确的【出厂编号】！");
+                return;
+            }
+
             Hashtable ht = new Hashtable();
 
             ht = new SqlServerHelper().GetHashTableByControl(this.Controls);

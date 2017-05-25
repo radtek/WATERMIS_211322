@@ -34,13 +34,15 @@ namespace WorkFlow
 
         private void BindData()
         {
-            ControlBindHelper.BindComboBoxData(this.CB_ID, fdal.GetTableList(), "Table_Name_CH", "TableID", true);
-
             DataTable dt = new DataTable();
-            string sqlstr = "SELECT DISTINCT CreateMonth,CreateMonth AS CreateMonthVALUE FROM View_WorkBase";
+            string sqlstr = "SELECT DISTINCT Table_Name_CH,TableID FROM View_TABLEUNION";
+            dt = new SqlServerHelper().GetDateTableBySql(sqlstr);
+            ControlBindHelper.BindComboBoxData(this.CB_ID, dt, "Table_Name_CH", "TableID", true);
+
+            sqlstr = "SELECT DISTINCT CreateMonth,CreateMonth AS CreateMonthVALUE FROM View_TABLEUNION";
             dt = new SqlServerHelper().GetDateTableBySql(sqlstr);
             ControlBindHelper.BindComboBoxData(this.CB_Month, dt, "CreateMonthVALUE", "CreateMonth", true);
-            sqlstr = "SELECT DISTINCT CreateDay,CreateDay AS CreateDayVALUE FROM View_WorkBase";
+            sqlstr = "SELECT DISTINCT CreateDay,CreateDay AS CreateDayVALUE FROM View_TABLEUNION";
             dt = new SqlServerHelper().GetDateTableBySql(sqlstr);
             ControlBindHelper.BindComboBoxData(this.CB_Day, fdal.GetChargeDay(), "CreateDayVALUE", "CreateDay", true);
 
@@ -50,7 +52,7 @@ namespace WorkFlow
         private void ShowData()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append(" SELECT MW.*,VW.waterUserId,VW.waterUserName,VW.CreateDate,VW.waterPhone,VW.ApplyUser,VW.waterUserAddress,VW.prestore,VW.TableID,VW.TableName,VW.Table_Name_CH,(SELECT Value FROM Meter_WorkTaskState WHERE ID=MW.[STATE]) AS STATES  FROM Meter_WorkTask MW , View_WorkBase VW WHERE MW.TaskID=VW.TaskID ");
+            sb.Append(" SELECT MW.*,VW.waterUserId,VW.waterUserName,VW.CreateDate,VW.waterPhone,VW.waterUserAddress,VW.TableID,VW.TableName,VW.Table_Name_CH,(SELECT Value FROM Meter_WorkTaskState WHERE ID=MW.[STATE]) AS STATES  FROM Meter_WorkTask MW , View_TABLEUNION VW WHERE MW.TaskID=VW.TaskID ");
 
             if (!CB_ID.SelectedValue.ToString().Equals(""))
             {
@@ -74,15 +76,13 @@ namespace WorkFlow
                                                            { "SD", "流水号" }, 
                                                            { "waterUserId", "用户ID" }, 
                                                            { "waterUserName", "户名" }, 
-                                                           { "ApplyUser", "申请人" },
                                                            { "waterUserAddress", "地址" },
-                                                           { "prestore", "账户余额" },
                                                            { "ApplyPhone", "联系电话" },
                                                            { "AcceptUser", "受理人" },
                                                            { "STATES", "审批状态" },
                                                            { "CreateDate", "申请时间" }
             };
-            uC_DataGridView_Page1.FieldStatis = new string[,] { { "Table_Name_CH", "合计" }, { "prestore", "" } };
+           // uC_DataGridView_Page1.FieldStatis = new string[,] { { "Table_Name_CH", "合计" }, { "prestore", "" } };
             uC_DataGridView_Page1.SqlString = sb.ToString();
             uC_DataGridView_Page1.PageOrderField = "CreateDate";
             uC_DataGridView_Page1.PageOrderType = "DESC";

@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.WaterPriceDescribe = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
+            this.meterReaderName = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.CHANGEMONTH = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
+            this.ISUSECHANGE = new System.Windows.Forms.CheckBox();
             this.readMeterRecordId = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.waterMeterTypeId = new System.Windows.Forms.ComboBox();
@@ -48,18 +54,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.ISUSECHANGE = new System.Windows.Forms.CheckBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.meterReaderName = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
-            this.CHANGEMONTH = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
-            this.WaterPriceDescribe = new Common.WinControl.Ryan.RegTextbox.RyanTextBox();
+            this.waterMeterTypeClassID = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.waterMeterTypeClassID);
             this.panel1.Controls.Add(this.WaterPriceDescribe);
             this.panel1.Controls.Add(this.meterReaderName);
             this.panel1.Controls.Add(this.label10);
@@ -91,6 +93,78 @@
             this.panel1.Size = new System.Drawing.Size(490, 514);
             this.panel1.TabIndex = 1;
             this.panel1.Tag = "9999";
+            // 
+            // WaterPriceDescribe
+            // 
+            this.WaterPriceDescribe.AllowEmpty = false;
+            this.WaterPriceDescribe.EmptyMessage = "";
+            this.WaterPriceDescribe.ErrorMessage = "";
+            this.WaterPriceDescribe.InputType = Common.WinControl.Ryan.RegTextbox.RyanTextBox.EMInputTypes.文本;
+            this.WaterPriceDescribe.Location = new System.Drawing.Point(136, 313);
+            this.WaterPriceDescribe.Multiline = true;
+            this.WaterPriceDescribe.Name = "WaterPriceDescribe";
+            this.WaterPriceDescribe.RegexExpression = "";
+            this.WaterPriceDescribe.RemoveSpace = false;
+            this.WaterPriceDescribe.Size = new System.Drawing.Size(316, 80);
+            this.WaterPriceDescribe.TabIndex = 28;
+            this.WaterPriceDescribe.ValidateState = false;
+            // 
+            // meterReaderName
+            // 
+            this.meterReaderName.AllowEmpty = false;
+            this.meterReaderName.EmptyMessage = "";
+            this.meterReaderName.ErrorMessage = "";
+            this.meterReaderName.InputType = Common.WinControl.Ryan.RegTextbox.RyanTextBox.EMInputTypes.文本;
+            this.meterReaderName.Location = new System.Drawing.Point(136, 93);
+            this.meterReaderName.Name = "meterReaderName";
+            this.meterReaderName.RegexExpression = "";
+            this.meterReaderName.RemoveSpace = false;
+            this.meterReaderName.Size = new System.Drawing.Size(117, 21);
+            this.meterReaderName.TabIndex = 27;
+            this.meterReaderName.ValidateState = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(150, 251);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(299, 12);
+            this.label10.TabIndex = 26;
+            this.label10.Text = "示例说明：到2017年9月用水性质恢复为【原用水性质】";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(304, 225);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(101, 12);
+            this.label9.TabIndex = 25;
+            this.label9.Text = "示例：【201709】";
+            // 
+            // CHANGEMONTH
+            // 
+            this.CHANGEMONTH.AllowEmpty = true;
+            this.CHANGEMONTH.EmptyMessage = "";
+            this.CHANGEMONTH.ErrorMessage = "";
+            this.CHANGEMONTH.InputType = Common.WinControl.Ryan.RegTextbox.RyanTextBox.EMInputTypes.数字;
+            this.CHANGEMONTH.Location = new System.Drawing.Point(201, 220);
+            this.CHANGEMONTH.Name = "CHANGEMONTH";
+            this.CHANGEMONTH.RegexExpression = "";
+            this.CHANGEMONTH.RemoveSpace = false;
+            this.CHANGEMONTH.Size = new System.Drawing.Size(96, 21);
+            this.CHANGEMONTH.TabIndex = 24;
+            this.CHANGEMONTH.ValidateState = false;
+            // 
+            // ISUSECHANGE
+            // 
+            this.ISUSECHANGE.AutoSize = true;
+            this.ISUSECHANGE.Location = new System.Drawing.Point(136, 223);
+            this.ISUSECHANGE.Name = "ISUSECHANGE";
+            this.ISUSECHANGE.Size = new System.Drawing.Size(60, 16);
+            this.ISUSECHANGE.TabIndex = 23;
+            this.ISUSECHANGE.Text = "变更至";
+            this.ISUSECHANGE.UseVisualStyleBackColor = true;
+            this.ISUSECHANGE.CheckedChanged += new System.EventHandler(this.ISUSECHANGE_CheckedChanged);
             // 
             // readMeterRecordId
             // 
@@ -263,77 +337,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "*用 户 号：";
             // 
-            // ISUSECHANGE
+            // waterMeterTypeClassID
             // 
-            this.ISUSECHANGE.AutoSize = true;
-            this.ISUSECHANGE.Location = new System.Drawing.Point(136, 223);
-            this.ISUSECHANGE.Name = "ISUSECHANGE";
-            this.ISUSECHANGE.Size = new System.Drawing.Size(60, 16);
-            this.ISUSECHANGE.TabIndex = 23;
-            this.ISUSECHANGE.Text = "变更至";
-            this.ISUSECHANGE.UseVisualStyleBackColor = true;
-            this.ISUSECHANGE.CheckedChanged += new System.EventHandler(this.ISUSECHANGE_CheckedChanged);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(304, 225);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(101, 12);
-            this.label9.TabIndex = 25;
-            this.label9.Text = "示例：【201709】";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(150, 251);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(299, 12);
-            this.label10.TabIndex = 26;
-            this.label10.Text = "示例说明：到2017年9月用水性质恢复为【原用水性质】";
-            // 
-            // meterReaderName
-            // 
-            this.meterReaderName.AllowEmpty = false;
-            this.meterReaderName.EmptyMessage = "";
-            this.meterReaderName.ErrorMessage = "";
-            this.meterReaderName.InputType = Common.WinControl.Ryan.RegTextbox.RyanTextBox.EMInputTypes.文本;
-            this.meterReaderName.Location = new System.Drawing.Point(136, 93);
-            this.meterReaderName.Name = "meterReaderName";
-            this.meterReaderName.RegexExpression = "";
-            this.meterReaderName.RemoveSpace = false;
-            this.meterReaderName.Size = new System.Drawing.Size(117, 21);
-            this.meterReaderName.TabIndex = 27;
-            this.meterReaderName.ValidateState = false;
-            // 
-            // CHANGEMONTH
-            // 
-            this.CHANGEMONTH.AllowEmpty = true;
-            this.CHANGEMONTH.EmptyMessage = "";
-            this.CHANGEMONTH.ErrorMessage = "";
-            this.CHANGEMONTH.InputType = Common.WinControl.Ryan.RegTextbox.RyanTextBox.EMInputTypes.数字;
-            this.CHANGEMONTH.Location = new System.Drawing.Point(201, 220);
-            this.CHANGEMONTH.Name = "CHANGEMONTH";
-            this.CHANGEMONTH.RegexExpression = "";
-            this.CHANGEMONTH.RemoveSpace = false;
-            this.CHANGEMONTH.Size = new System.Drawing.Size(96, 21);
-            this.CHANGEMONTH.TabIndex = 24;
-            this.CHANGEMONTH.ValidateState = false;
-            // 
-            // WaterPriceDescribe
-            // 
-            this.WaterPriceDescribe.AllowEmpty = false;
-            this.WaterPriceDescribe.EmptyMessage = "";
-            this.WaterPriceDescribe.ErrorMessage = "";
-            this.WaterPriceDescribe.InputType = Common.WinControl.Ryan.RegTextbox.RyanTextBox.EMInputTypes.文本;
-            this.WaterPriceDescribe.Location = new System.Drawing.Point(136, 313);
-            this.WaterPriceDescribe.Multiline = true;
-            this.WaterPriceDescribe.Name = "WaterPriceDescribe";
-            this.WaterPriceDescribe.RegexExpression = "";
-            this.WaterPriceDescribe.RemoveSpace = false;
-            this.WaterPriceDescribe.Size = new System.Drawing.Size(316, 80);
-            this.WaterPriceDescribe.TabIndex = 28;
-            this.WaterPriceDescribe.ValidateState = false;
+            this.waterMeterTypeClassID.Enabled = false;
+            this.waterMeterTypeClassID.Location = new System.Drawing.Point(335, 163);
+            this.waterMeterTypeClassID.Name = "waterMeterTypeClassID";
+            this.waterMeterTypeClassID.Size = new System.Drawing.Size(43, 21);
+            this.waterMeterTypeClassID.TabIndex = 48;
+            this.waterMeterTypeClassID.Visible = false;
             // 
             // FrmUser_WaterPrice_Add
             // 
@@ -378,5 +389,6 @@
         private System.Windows.Forms.CheckBox ISUSECHANGE;
         private Common.WinControl.Ryan.RegTextbox.RyanTextBox meterReaderName;
         private Common.WinControl.Ryan.RegTextbox.RyanTextBox WaterPriceDescribe;
+        private System.Windows.Forms.TextBox waterMeterTypeClassID;
     }
 }

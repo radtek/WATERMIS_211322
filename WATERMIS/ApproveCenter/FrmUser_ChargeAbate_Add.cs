@@ -53,6 +53,14 @@ namespace ApproveCenter
 
         private void Btn_Submit_Click(object sender, EventArgs e)
         {
+            //判断是否已经有减免
+            //readMeterRecordId
+            if (sysidal.CheckIsAbate(readMeterRecordId.Text))
+            {
+                mes.Show("已经申请过减免，不要重复申请！");
+                return;
+            }
+
             if (CheckForm())
             {
                 Hashtable ht = new Hashtable();
@@ -88,7 +96,13 @@ namespace ApproveCenter
 
                 if (new SqlServerHelper().Submit_AddOrEdit("User_ChargeAbate", "ChargeAbateID", "", ht))
                 {
-                    bool result = new SqlServerHelper().CreateWorkTask(ht["ChargeAbateID"].ToString(), SDNO, "User_ChargeAbate", "ChargeAbateID", "费用减免");
+                    //判断用水性质，然后确定流程
+
+                    string FlowCode = sysidal.GetWorkCodeByUserType("12", waterMeterTypeClassID.Text);
+                    FlowCode = string.IsNullOrEmpty(FlowCode) ? "User_ChargeAbate" : FlowCode;
+                    // bool CreateWorkTask(string ExcePkValue, string AcceptID, string ExceTableName, string ExcePkName, string FlowDesc,string FlowCode)
+                    bool result = new SqlServerHelper().CreateWorkTask(ht["ChargeAbateID"].ToString(), SDNO,"User_ChargeAbate", "ChargeAbateID", "费用减免",FlowCode);
+                    
                     if (result)
                     {
                         Btn_Submit.Enabled = false;
@@ -217,10 +231,14 @@ namespace ApproveCenter
 
         private void Abate_TextChanged(object sender, EventArgs e)
         {
-            if (!CkeckAbate())
-            {
-                NewTotalNumber.Focus();
-            }
+            //if (!CkeckAbate())
+            //{
+            //    NewTotalNumber.Focus();
+            //}
+            //else
+            //{
+            //    LB_Abate.Text = "";
+            //}
         }
 
         private void dgWaterFeeList_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -285,6 +303,7 @@ namespace ApproveCenter
             {
                 TotalChargeEND.Text = Convert.ToDecimal(obj).ToString("F2");
                 OldFee = Convert.ToDecimal(obj);
+                
             }
 
             obj = dgWaterFeeList.Rows[e.RowIndex].Cells["totalNumber"].Value;
@@ -293,6 +312,10 @@ namespace ApproveCenter
                 OldTotalNumber.Text = Convert.ToInt32(obj).ToString();
                 OldNum = Convert.ToInt32(obj);
             }
+            obj = dgWaterFeeList.Rows[e.RowIndex].Cells["CwaterMeterTypeClassID"].Value;
+            if (obj != null && obj != DBNull.Value)
+                waterMeterTypeClassID.Text = obj.ToString();
+
         }
 
         private void Abate_KeyPress(object sender, KeyPressEventArgs e)
@@ -417,11 +440,13 @@ namespace ApproveCenter
             {
                 if (NewNum>0)
                 {
-                    //NewAbate=
+                    
+
+
                 }
                 else
                 {
-                    LB_Abate.Text = _Abate.ToString();
+                    LB_Abate.Text = OldFee.ToString();
                 }
             }
         }

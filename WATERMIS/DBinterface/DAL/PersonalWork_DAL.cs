@@ -1289,5 +1289,93 @@ COMMIT TRAN", _tableNmae, CANCELMEMO, loginid, userName, GetDatetimeNow());
             return LogWrite(LM.TaskID, LM.ResolveID, LM.PointSort, LM.State, LM.UserOpinion,LM.IsPass,LM.IsGoBack,LM.Matter);
         }
 
+        public bool CheckIsAbate(string readMeterRecordId)
+        {
+            string sqlstr = @"SELECT SD FROM User_ChargeAbate WHERE readMeterRecordId=@readMeterRecordId AND State<>4";
+
+            DataTable dt = new SqlServerHelper().GetDateTableBySql(sqlstr,
+              new SqlParameter[] {
+                new SqlParameter("@readMeterRecordId",readMeterRecordId)
+                });
+
+            return DataTableHelper.IsExistRows(dt) ? true : false;
+        }
+
+        public string GetWorkCodeByUserType(string TableID, string waterMeterTypeClassID)
+        {
+            string sqlstr = "SELECT WorkCode FROM WaterUserType_Approve WHERE TableID=@TableID AND waterMeterTypeClassID=@waterMeterTypeClassID AND State=1";
+
+            DataTable dt = new SqlServerHelper().GetDateTableBySql(sqlstr,
+              new SqlParameter[] {
+                new SqlParameter("@TableID",TableID),
+                 new SqlParameter("@waterMeterTypeClassID",waterMeterTypeClassID)
+                });
+
+            if (DataTableHelper.IsExistRows(dt))
+            {
+                return dt.Rows[0][0].ToString();
+            }
+            else
+            {
+                return "";
+            }
+
+        }
+
+        public bool CheckIsWaterPrice(string WATERUSERNO)
+        {
+            string sqlstr = @"SELECT SD FROM User_WaterPrice WHERE WATERUSERNO=@WATERUSERNO AND State IN (1,2)";
+
+            DataTable dt = new SqlServerHelper().GetDateTableBySql(sqlstr,
+              new SqlParameter[] {
+                new SqlParameter("@WATERUSERNO",WATERUSERNO)
+                });
+
+            return DataTableHelper.IsExistRows(dt) ? true : false;
+        }
+
+        public bool IsExistWorkFlow(string TableID, string WaterMeterTypeClassID)
+        {
+            string sqlstr = @"SELECT WorkCode FROM WaterUserType_Approve WHERE TableID=@TableID AND WaterMeterTypeClassID=@WaterMeterTypeClassID";
+
+            DataTable dt = new SqlServerHelper().GetDateTableBySql(sqlstr,
+              new SqlParameter[] {
+                new SqlParameter("@TableID",TableID),
+                new SqlParameter("@WaterMeterTypeClassID",WaterMeterTypeClassID)
+                });
+
+            return DataTableHelper.IsExistRows(dt) ? true : false;
+        }
+
+        //public bool InsertWorkFlowSelect(Hashtable ht)
+        //{
+        //    string strsql = "INSERT INTO WaterUserType_Approve (TableID,WaterMeterTypeClassID,WorkCode) VALUES (@TableID,@WaterMeterTypeClassID,@WorkCode)";
+
+        //    int count = DbHelperSQL.ExecuteSql(strsql,
+        //        new SqlParameter[] {
+        //        new SqlParameter("@TableID",ht["TableID"].ToString()),
+        //        new SqlParameter("@WaterMeterTypeClassID",ht["WaterMeterTypeClassID"].ToString()),
+        //        new SqlParameter("@WorkCode",ht["WorkCode"].ToString())               
+        //        });
+
+        //    return count > 0 ? true : false;
+        //}
+
+        //public bool UpdateWorkFlowSelect(Hashtable ht)
+        //{
+        //    string strsql = "UPDATE WaterUserType_Approve SET TableID=@TableID,WaterMeterTypeClassID=@WaterMeterTypeClassID,WorkCode=@WorkCode WHERE ApproveID=@ApproveID";
+
+        //    int count = DbHelperSQL.ExecuteSql(strsql,
+        //        new SqlParameter[] {
+        //        new SqlParameter("@TableID",ht["TableID"].ToString()),
+        //        new SqlParameter("@WaterMeterTypeClassID",ht["WaterMeterTypeClassID"].ToString()),
+        //        new SqlParameter("@WorkCode",ht["WorkCode"].ToString()),
+        //        new SqlParameter("@ApproveID",ht["ApproveID"].ToString())
+        //        });
+
+        //    return count > 0 ? true : false;
+        //}
+
+
     }
 }

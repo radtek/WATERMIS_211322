@@ -46,7 +46,7 @@ ORDER BY MWR.PointSort";
             else
             {
                 Btn_Goto.Enabled = false;
-                Btn_Scrap.Enabled = false;
+                //Btn_Scrap.Enabled = false;
             }
 
         }

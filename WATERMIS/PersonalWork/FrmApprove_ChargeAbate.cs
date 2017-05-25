@@ -136,7 +136,8 @@ namespace PersonalWork
         private void Btn_Submit_Click(object sender, EventArgs e)
         {
             Btn_Submit.Enabled = false;
-            string Matter = string.Format("【费用减免】-用户名：{0}；用户号：{1}；地址：{2}；减免月份：{3}；减免金额：{4}；减免原因：{5}", waterUserName.Text, WATERUSERNO.Text, waterUserAddress.Text, readMeterRecordYearAndMonth.Text, AbateDescribe.Text);
+
+            string Matter = string.Format("【费用减免】-用户名：{0}；用户号：{1}；地址：{2}；减免月份：{3}；原水量：{6}；新水量：{7}；减免金额：{4}；减免原因：{5}", waterUserName.Text, WATERUSERNO.Text, waterUserAddress.Text, readMeterRecordYearAndMonth.Text, AbateDescribe.Text, LB_Abate.Text, OldTotalNumber.Text, NewTotalNumber.Text);
             int count = sysidal.UpdateApprove_defalut("User_ChargeAbate", ResolveID, IsPass.Checked, UserOpinion.Text.Trim(), PointSort, TaskID, Matter);
             if (count > 0)
             {

@@ -35,7 +35,7 @@ namespace ApproveCenter
                                                            { "SubmitDate", "申请时间" },
                                                            { "UserName", "抄表员" }, 
                                                            { "OldTotalNumber", "原用水量" }, 
-                                                           { "NewTotalNumber", "原用水量" }, 
+                                                           { "NewTotalNumber", "新用水量" }, 
                                                            { "IsAbateState", "减免状态" } ,
                                                            { "CHARGEWORKERDate", "减免时间" } ,
                                                            { "CHARGEWORKERNAME", "操作人" },

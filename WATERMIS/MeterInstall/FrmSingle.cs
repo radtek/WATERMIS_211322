@@ -102,18 +102,18 @@ namespace MeterInstall
                 {
                     //根据用水性质来确定审批流程==============================================================================================================
                     //  SELECT * FROM WaterUserType_Approve WHERE WaterUserTypeId=''===waterUserTypeId
-                    string sqlstr = string.Format("SELECT WorkCode FROM WaterUserType_Approve WHERE WaterUserTypeId='{0}'", waterUserTypeId.SelectedValue);
-                    DataTable dt = new SqlServerHelper().GetDateTableBySql(sqlstr);
-                    bool result = false;
-                    if (DataTableHelper.IsExistRows(dt))
-                    {
-                        string taskcode = dt.Rows[0][0].ToString();
-                        result = new SqlServerHelper().CreateWorkTask(ht["SingleID"].ToString(), SDNO, "Meter_Install_Single", "SingleID", "用户报装", taskcode);
-                    }
-                    else
-                    {
-                        result = new SqlServerHelper().CreateWorkTask(ht["SingleID"].ToString(), SDNO, "Meter_Install_Single", "SingleID", "用户报装");
-                    }
+                    //string sqlstr = string.Format("SELECT WorkCode FROM WaterUserType_Approve WHERE WaterUserTypeId='{0}'", waterUserTypeId.SelectedValue);
+                    //DataTable dt = new SqlServerHelper().GetDateTableBySql(sqlstr);
+                    //bool result = false;
+                    //if (DataTableHelper.IsExistRows(dt))
+                    //{
+                    //    string taskcode = dt.Rows[0][0].ToString();
+                    //    result = new SqlServerHelper().CreateWorkTask(ht["SingleID"].ToString(), SDNO, "Meter_Install_Single", "SingleID", "用户报装", taskcode);
+                    //}
+                    //else
+                    //{
+                    bool result = new SqlServerHelper().CreateWorkTask(ht["SingleID"].ToString(), SDNO, "Meter_Install_Single", "SingleID", "用户报装");
+                   // }
                     if (result)
                     {
                         MessageBox.Show("任务创建成功！");

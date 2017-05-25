@@ -31,12 +31,12 @@
             this.tb1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.Btn_Submit = new System.Windows.Forms.Button();
             this.CB_Month = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.uC_DataGridView_Page1 = new SysControl.UC_DataGridView_Page();
-            this.button1 = new System.Windows.Forms.Button();
             this.tb1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -86,6 +86,15 @@
             this.panel1.Size = new System.Drawing.Size(992, 48);
             this.panel1.TabIndex = 0;
             this.panel1.Tag = "9999";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(339, 10);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 31);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "导出";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // Btn_Submit
             // 
@@ -149,15 +158,6 @@
             this.uC_DataGridView_Page1.Size = new System.Drawing.Size(1111, 627);
             this.uC_DataGridView_Page1.TabIndex = 906;
             this.uC_DataGridView_Page1.Tag = "9999";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(339, 10);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 31);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "导出";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // Frm_Bus_Statis
             // 

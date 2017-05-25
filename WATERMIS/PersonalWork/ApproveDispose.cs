@@ -55,7 +55,7 @@ namespace PersonalWork
 
                    if (int.TryParse(UC.FeeID, out feeid))
                    {
-                       sb.AppendLine(string.Format("{0}：{1}X{2}={3}；", UC.FeeItem, UC.Price,UC.Quantity, UC.Fee));
+                       sb.AppendLine(string.Format("{0}：{1}*{2}={3}；", UC.FeeItem, UC.Price,UC.Quantity, UC.Fee));
                    }
                }
            }
