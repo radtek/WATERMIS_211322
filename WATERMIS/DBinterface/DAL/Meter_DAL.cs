@@ -472,5 +472,39 @@ namespace DBinterface.DAL
 		#region  ExtensionMethod
 
 		#endregion  ExtensionMethod
+
+        #region
+        public bool MeterLogWrite(string MeterID, string State, string Memo)
+        {
+            string sqlstr = "INSERT INTO MeterLog (MeterID,loginId,username,[State],Memo) VALUES (@MeterID,@loginId,@username,@State,@Memo)";
+
+            SqlParameter[] para = new SqlParameter[] {
+                new SqlParameter("@MeterID",MeterID),
+                new SqlParameter("@State",State),
+                new SqlParameter("@loginId",AppDomain.CurrentDomain.GetData("LOGINID").ToString()),
+                new SqlParameter("@username",AppDomain.CurrentDomain.GetData("USERNAME").ToString()),
+                new SqlParameter("@Memo",Memo)               
+                };
+
+            return DbHelperSQL.ExecuteSql(sqlstr, para) > 0 ? true : false;
+        }
+
+        public void MeterLogWrite2(string waterMeterSerialNumber, string State, string Memo)
+        {
+            string sqlstr = "INSERT INTO MeterLog (MeterID,loginId,username,[State],Memo) VALUES ((SELECT TOP 1 MeterID FROM Meter WHERE waterMeterSerialNumber=@waterMeterSerialNumber),@loginId,@username,@State,@Memo)";
+
+            SqlParameter[] para = new SqlParameter[] {
+                new SqlParameter("@waterMeterSerialNumber",waterMeterSerialNumber),
+                new SqlParameter("@State",State),
+                new SqlParameter("@loginId",AppDomain.CurrentDomain.GetData("LOGINID").ToString()),
+                new SqlParameter("@username",AppDomain.CurrentDomain.GetData("USERNAME").ToString()),
+                new SqlParameter("@Memo",Memo)               
+                };
+
+            DbHelperSQL.ExecuteSql(sqlstr, para);
+        }
+
+
+        #endregion
 	}
 }

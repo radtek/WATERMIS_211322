@@ -25,7 +25,7 @@ namespace PersonalWork
         private string _waterMeterId;
         private bool _MeterAllow = false;
         private string _waterMeterSerialNumber = string.Empty;
-
+        private Meter_IDAL mdal = new Meter_DAL();
         public FrmChange_MeterScrap()
         {
             InitializeComponent();
@@ -89,9 +89,14 @@ namespace PersonalWork
                     Btn_Submit.Enabled = true;
                     return;
                 }
+
+                mdal.MeterLogWrite2(waterMeterSerialNumber.Text.Trim(), "1", "【水表出库】-表号：" + waterMeterSerialNumber.Text.Trim());
+
                 //报废水表
-                string sqlstr = "UPDATE Meter SET MeterState=2 WHERE waterMeterId =@waterMeterId";
+                string sqlstr = "UPDATE Meter SET MeterState=2,MEMO='换表报废：用户号'+waterMeterId,ModifyDate=GETDATE() WHERE waterMeterId =@waterMeterId";
                 new SqlServerHelper().UpdateByHashtable(sqlstr, new SqlParameter[] { new SqlParameter("@waterMeterId", _waterMeterId) });
+
+                mdal.MeterLogWrite2(waterMeterSerialNumber.Text.Trim(), "2", "【水表报废】-表号：" + waterMeterSerialNumber.Text.Trim());
 
                 //其次更新Meter_Change
                 //Meter_Change

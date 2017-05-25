@@ -18,6 +18,7 @@ namespace MeterInstall
     public partial class FrmEntering : Form
     {
         public string key;
+        private  Meter_IDAL  mdal=new Meter_DAL();
         public FrmEntering()
         {
             InitializeComponent();
@@ -65,6 +66,12 @@ namespace MeterInstall
                 return;
             }
 
+            if (waterMeterSerialNumber.Text.Trim().Length < 5)
+            {
+                MessageBox.Show("输入正确的【出厂编号】！");
+                return;
+            }
+
             Btn_Submit.Enabled = false;
             Hashtable ht = new Hashtable();
 
@@ -72,14 +79,26 @@ namespace MeterInstall
 
             if (string.IsNullOrEmpty(key))
             {
+                if (new SqlServerHelper().IsExist("Meter", "waterMeterSerialNumber", waterMeterSerialNumber.Text.Trim(), "1=1"))
+                {
+                    MessageBox.Show("【出厂编号】已存在！");
+                    return;
+                }
                 ht["METERID"] = Guid.NewGuid().ToString();
             }
             else
             {
+                if (new SqlServerHelper().IsExist("Meter", "waterMeterSerialNumber", waterMeterSerialNumber.Text.Trim(), "METERID NOT IN ('"+key+"')"))
+                {
+                    MessageBox.Show("【出厂编号】已存在！");
+                    return;
+                }
+
                 ht["METERID"] = key;
             }
             if (new SqlServerHelper().Submit_AddOrEdit("Meter", "METERID", key, ht))
             {
+                mdal.MeterLogWrite(ht["METERID"].ToString(), "0", "【水表入库】-表号：" + waterMeterSerialNumber.Text.Trim() + "；口径：" + waterMeterSizeId.Text);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }

@@ -33,15 +33,12 @@
             this.cmbInvoiceCancelReason = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.Btn_Scrap = new System.Windows.Forms.Button();
-            this.TB_waterMeterSerialNumber_2 = new System.Windows.Forms.MaskedTextBox();
-            this.TB_waterMeterSerialNumber_1 = new System.Windows.Forms.MaskedTextBox();
+            this.TB_SearchKey = new System.Windows.Forms.MaskedTextBox();
             this.CB_waterMeterProduct = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.DT_waterMeterProofreadingDate_2 = new System.Windows.Forms.DateTimePicker();
             this.DT_waterMeterProofreadingDate_1 = new System.Windows.Forms.DateTimePicker();
             this.CHK_waterMeterProofreadingDate = new System.Windows.Forms.CheckBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.CHK_waterMeterSerialNumber = new System.Windows.Forms.CheckBox();
             this.CB_waterMeterSize = new System.Windows.Forms.ComboBox();
             this.label56 = new System.Windows.Forms.Label();
             this.CB_MeterState = new System.Windows.Forms.ComboBox();
@@ -59,6 +56,7 @@
             this.toolPrintPreview = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolExcel = new System.Windows.Forms.ToolStripButton();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tb1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -76,19 +74,17 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.cmbInvoiceCancelReason);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.Btn_Scrap);
-            this.groupBox1.Controls.Add(this.TB_waterMeterSerialNumber_2);
-            this.groupBox1.Controls.Add(this.TB_waterMeterSerialNumber_1);
+            this.groupBox1.Controls.Add(this.TB_SearchKey);
             this.groupBox1.Controls.Add(this.CB_waterMeterProduct);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.DT_waterMeterProofreadingDate_2);
             this.groupBox1.Controls.Add(this.DT_waterMeterProofreadingDate_1);
             this.groupBox1.Controls.Add(this.CHK_waterMeterProofreadingDate);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.CHK_waterMeterSerialNumber);
             this.groupBox1.Controls.Add(this.CB_waterMeterSize);
             this.groupBox1.Controls.Add(this.label56);
             this.groupBox1.Controls.Add(this.CB_MeterState);
@@ -137,19 +133,13 @@
             this.Btn_Scrap.UseVisualStyleBackColor = true;
             this.Btn_Scrap.Visible = false;
             // 
-            // TB_waterMeterSerialNumber_2
+            // TB_SearchKey
             // 
-            this.TB_waterMeterSerialNumber_2.Location = new System.Drawing.Point(558, 19);
-            this.TB_waterMeterSerialNumber_2.Name = "TB_waterMeterSerialNumber_2";
-            this.TB_waterMeterSerialNumber_2.Size = new System.Drawing.Size(100, 21);
-            this.TB_waterMeterSerialNumber_2.TabIndex = 149;
-            // 
-            // TB_waterMeterSerialNumber_1
-            // 
-            this.TB_waterMeterSerialNumber_1.Location = new System.Drawing.Point(431, 19);
-            this.TB_waterMeterSerialNumber_1.Name = "TB_waterMeterSerialNumber_1";
-            this.TB_waterMeterSerialNumber_1.Size = new System.Drawing.Size(100, 21);
-            this.TB_waterMeterSerialNumber_1.TabIndex = 148;
+            this.TB_SearchKey.Location = new System.Drawing.Point(431, 19);
+            this.TB_SearchKey.Name = "TB_SearchKey";
+            this.TB_SearchKey.Size = new System.Drawing.Size(193, 21);
+            this.TB_SearchKey.TabIndex = 148;
+            this.TB_SearchKey.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.TB_waterMeterSerialNumber_1_MaskInputRejected);
             // 
             // CB_waterMeterProduct
             // 
@@ -201,25 +191,6 @@
             this.CHK_waterMeterProofreadingDate.Text = "鉴定日期:";
             this.CHK_waterMeterProofreadingDate.UseVisualStyleBackColor = true;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(536, 24);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(17, 12);
-            this.label4.TabIndex = 138;
-            this.label4.Text = "至";
-            // 
-            // CHK_waterMeterSerialNumber
-            // 
-            this.CHK_waterMeterSerialNumber.AutoSize = true;
-            this.CHK_waterMeterSerialNumber.Location = new System.Drawing.Point(348, 22);
-            this.CHK_waterMeterSerialNumber.Name = "CHK_waterMeterSerialNumber";
-            this.CHK_waterMeterSerialNumber.Size = new System.Drawing.Size(78, 16);
-            this.CHK_waterMeterSerialNumber.TabIndex = 140;
-            this.CHK_waterMeterSerialNumber.Text = "出厂编号:";
-            this.CHK_waterMeterSerialNumber.UseVisualStyleBackColor = true;
-            // 
             // CB_waterMeterSize
             // 
             this.CB_waterMeterSize.DropDownHeight = 130;
@@ -234,7 +205,7 @@
             "报废"});
             this.CB_waterMeterSize.Location = new System.Drawing.Point(501, 49);
             this.CB_waterMeterSize.Name = "CB_waterMeterSize";
-            this.CB_waterMeterSize.Size = new System.Drawing.Size(157, 20);
+            this.CB_waterMeterSize.Size = new System.Drawing.Size(123, 20);
             this.CB_waterMeterSize.TabIndex = 133;
             // 
             // label56
@@ -407,6 +378,15 @@
             this.toolExcel.Visible = false;
             this.toolExcel.Click += new System.EventHandler(this.toolExcel_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(360, 24);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 12);
+            this.label5.TabIndex = 915;
+            this.label5.Text = "关键词：";
+            // 
             // FrmMeterManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -437,8 +417,6 @@
         private System.Windows.Forms.DateTimePicker DT_waterMeterProofreadingDate_2;
         private System.Windows.Forms.DateTimePicker DT_waterMeterProofreadingDate_1;
         private System.Windows.Forms.CheckBox CHK_waterMeterProofreadingDate;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.CheckBox CHK_waterMeterSerialNumber;
         private System.Windows.Forms.ComboBox CB_waterMeterSize;
         private System.Windows.Forms.Label label56;
         private System.Windows.Forms.ComboBox CB_MeterState;
@@ -454,8 +432,7 @@
         private System.Windows.Forms.ToolStripButton toolBatch;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox CB_waterMeterProduct;
-        private System.Windows.Forms.MaskedTextBox TB_waterMeterSerialNumber_2;
-        private System.Windows.Forms.MaskedTextBox TB_waterMeterSerialNumber_1;
+        private System.Windows.Forms.MaskedTextBox TB_SearchKey;
         private System.Windows.Forms.ComboBox cmbInvoiceCancelReason;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button Btn_Scrap;
@@ -463,6 +440,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton toolExcel;
+        private System.Windows.Forms.Label label5;
 
     }
 }

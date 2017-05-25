@@ -48,5 +48,8 @@ namespace DBinterface.IDAL
 		#region  MethodEx
 
 		#endregion  MethodEx
+        bool MeterLogWrite(string MeterID, string State, string Memo);
+
+        void MeterLogWrite2(string waterMeterSerialNumber, string State, string Memo);
 	} 
 }

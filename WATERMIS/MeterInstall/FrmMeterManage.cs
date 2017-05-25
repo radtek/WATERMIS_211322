@@ -46,8 +46,6 @@ namespace MeterInstall
             dtList = new DataTable();
             StringBuilder sb = new StringBuilder();
 
-            bool isfirst = true;
-
             if (CHK_waterMeterProofreadingDate.Checked)
             {
                 DateTime dt1;
@@ -75,105 +73,30 @@ namespace MeterInstall
                     //{
                     dt2 = dt2.AddDays(1);
                     // }
-                    isfirst = false;
-                    sb.AppendFormat(" waterMeterProofreadingDate >'{0}' and waterMeterProofreadingDate < '{1}'", dt1, dt2);
+                    sb.AppendFormat(" AND waterMeterProofreadingDate >'{0}' and waterMeterProofreadingDate < '{1}'", dt1, dt2);
 
-                }
-
-            }
-            if (CHK_waterMeterSerialNumber.Checked)
-            {
-                int No1 = 0;
-                int No2 = 0;
-
-                if (!ValidateUtil.IsValidInt(TB_waterMeterSerialNumber_1.Text))
-                {
-                    MessageBox.Show("请重新输入出厂编号！");
-                    return;
-                }
-                No1 = int.Parse(TB_waterMeterSerialNumber_1.Text);
-
-                if (!ValidateUtil.IsValidInt(TB_waterMeterSerialNumber_2.Text))
-                {
-                    //MessageBox.Show("请重新输入出厂编号！");
-                    //return;
-                    TB_waterMeterSerialNumber_2.Text = "";
-                }
-                else
-                {
-                    No2 = int.Parse(TB_waterMeterSerialNumber_2.Text);
-                }
-
-                if (No2 < No1)
-                {
-                    MessageBox.Show("请重新输入出厂编号！");
-                    return;
-                }
-                else if (No2 == No1)
-                {
-                    if (isfirst)
-                    {
-                        sb.AppendFormat(" waterMeterSerialNumber={0}", No1, No2);
-                    }
-                    else
-                    {
-                        sb.AppendFormat(" and waterMeterSerialNumber={0}", No1, No2);
-                    }
-                    isfirst = false;
-                }
-                else
-                {
-                    if (isfirst)
-                    {
-                        sb.AppendFormat(" waterMeterSerialNumber<>'' and waterMeterSerialNumber >{0} and waterMeterSerialNumber < {1} ", No1, No2);
-                    }
-                    else
-                    {
-                        sb.AppendFormat(" and waterMeterSerialNumber<>'' and waterMeterSerialNumber >{0} and waterMeterSerialNumber < {1}", No1, No2);
-                    }
-                    isfirst = false;
                 }
 
             }
 
             if (!string.IsNullOrEmpty(CB_waterMeterProduct.Text) && !CB_waterMeterProduct.Text.Equals("全部"))
             {
-                if (isfirst)
-                {
-                    sb.AppendFormat(" waterMeterProduct= '{0}'", CB_waterMeterProduct.Text);
-                }
-                else
-                {
                     sb.AppendFormat(" and waterMeterProduct= '{0}'", CB_waterMeterProduct.Text);
-                }
-                isfirst = false;
             }
             if (!string.IsNullOrEmpty(CB_MeterState.SelectedValue.ToString()))
             {
-                if (isfirst)
-                {
-                    sb.AppendFormat(" MeterState= '{0}'", CB_MeterState.SelectedValue);
-                }
-                else
-                {
                     sb.AppendFormat(" and MeterState= '{0}'", CB_MeterState.SelectedValue);
-                }
-                isfirst = false;
             }
 
             if (!string.IsNullOrEmpty(CB_waterMeterSize.SelectedValue.ToString()))
             {
-                if (isfirst)
-                {
-                    sb.AppendFormat(" Meter.waterMeterSizeId= '{0}'", CB_waterMeterSize.SelectedValue);
-                }
-                else
-                {
                     sb.AppendFormat(" and Meter.waterMeterSizeId= '{0}'", CB_waterMeterSize.SelectedValue);
-                }
-                isfirst = false;
             }
 
+            if (!string.IsNullOrEmpty(TB_SearchKey.Text.Trim()))
+            {
+                sb.AppendFormat(" and (Meter.waterMeterNo LIKE '%{0}%' OR Meter.waterMeterSerialNumber LIKE '%{0}%' OR Meter.MEMO LIKE '%{0}%')", TB_SearchKey.Text.Trim());
+            }
 
             uC_DataGridView_Page1.Fields = new string[,] { { "rowNum", "序号" }, 
                                                            { "waterMeterSerialNumber", "出厂编号" }, 
@@ -181,6 +104,8 @@ namespace MeterInstall
                                                            { "StateDescribe", "水表状态" }, 
                                                            { "waterMeterSizeValue", "口径" }, 
                                                            { "waterMeterStartNumber", "初始读数" },
+                                                           { "waterUserId", "用户号" },
+                                                           { "waterUserName", "用户名" },
                                                            { "waterMeterProofreadingDate", "鉴定日期" }, 
                                                            { "waterMeteProofreadingPeriod", "鉴定周期" } ,
                                                            { "STARTUSEDATETIME", "启用时间" } ,
@@ -188,10 +113,10 @@ namespace MeterInstall
             };
 
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("SELECT MeterID,waterMeterStartNumber,waterMeterProduct,waterMeterSerialNumber,waterMeterMode,waterMeterProofreadingDate,waterMeteProofreadingPeriod,STARTUSEDATETIME,Meter.MEMO, waterMeterSize.waterMeterSizeValue, MeterState.StateDescribe,CreateDate FROM Meter LEFT OUTER JOIN MeterState ON Meter.MeterState = MeterState.ID LEFT OUTER JOIN waterMeterSize ON Meter.waterMeterSizeId = waterMeterSize.waterMeterSizeId");
+            strSql.Append("SELECT MeterID,waterMeterStartNumber,waterMeterProduct,waterUserId,(SELECT TOP 1 waterUserName FROM waterUser WHERE waterUserId=Meter.waterUserId) AS waterUserName,waterMeterSerialNumber,waterMeterMode,waterMeterProofreadingDate,waterMeteProofreadingPeriod,STARTUSEDATETIME,Meter.MEMO, waterMeterSize.waterMeterSizeValue, MeterState.StateDescribe,CreateDate FROM Meter LEFT OUTER JOIN MeterState ON Meter.MeterState = MeterState.ID LEFT OUTER JOIN waterMeterSize ON Meter.waterMeterSizeId = waterMeterSize.waterMeterSizeId");
             if (sb.ToString().Trim() != "")
             {
-                strSql.Append(" where " + sb.ToString());
+                strSql.Append(" where 1=1 " + sb.ToString());
             }
             uC_DataGridView_Page1.SqlString = strSql.ToString();
             uC_DataGridView_Page1.PageOrderField = "CreateDate";
@@ -323,6 +248,11 @@ namespace MeterInstall
             //ExportExcel ExportExcel = new ExportExcel();
             //ExcelHelper.ExportExcel(dtList,"1");
             //ExportExcel.ExportToExcel(strCaption, dgList);
+        }
+
+        private void TB_waterMeterSerialNumber_1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
         }
 
     }
