@@ -70,6 +70,7 @@
             this.水表口径管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.附加费管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.用水性质管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.用水性质分类管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.未抄表情况说明管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.流程设计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.流程管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,6 +78,8 @@
             this.审批项目管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.收费项目管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.审批任务管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem20 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem19 = new System.Windows.Forms.ToolStripMenuItem();
             this.用水用户管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.用户管理ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.用户开票信息管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -86,6 +89,10 @@
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.用户余额初始化ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.用户余额初始化ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.转户管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.转户申请单编制ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.转户申请单审批ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.转户申请单查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.发票管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.发票批次管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.发票库存录入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -162,6 +169,7 @@
             this.预存冲减明细查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.水费减免明细查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.发票使用明细查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.业扩审批业务综合查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.统计与分析ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查抄率统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.收费率统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -173,8 +181,10 @@
             this.实收统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.实收陈欠统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.用水情况一览表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.部门费用统计表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.部门费用统计安装处ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工资统计表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.业扩审批业务统计表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.业扩部门费用统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.财务报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.预收账款余额查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.应收全年汇总表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -439,6 +449,7 @@
             this.水表口径管理ToolStripMenuItem,
             this.附加费管理ToolStripMenuItem,
             this.用水性质管理ToolStripMenuItem,
+            this.用水性质分类管理ToolStripMenuItem,
             this.未抄表情况说明管理ToolStripMenuItem,
             this.流程设计ToolStripMenuItem});
             this.基础设置ToolStripMenuItem.Name = "基础设置ToolStripMenuItem";
@@ -541,6 +552,13 @@
             this.用水性质管理ToolStripMenuItem.Text = "用水性质管理(&T)";
             this.用水性质管理ToolStripMenuItem.Click += new System.EventHandler(this.用水性质管理ToolStripMenuItem_Click);
             // 
+            // 用水性质分类管理ToolStripMenuItem
+            // 
+            this.用水性质分类管理ToolStripMenuItem.Name = "用水性质分类管理ToolStripMenuItem";
+            this.用水性质分类管理ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.用水性质分类管理ToolStripMenuItem.Text = "用水性质分类管理";
+            this.用水性质分类管理ToolStripMenuItem.Click += new System.EventHandler(this.用水性质分类管理ToolStripMenuItem_Click);
+            // 
             // 未抄表情况说明管理ToolStripMenuItem
             // 
             this.未抄表情况说明管理ToolStripMenuItem.Name = "未抄表情况说明管理ToolStripMenuItem";
@@ -555,7 +573,9 @@
             this.节点管理ToolStripMenuItem,
             this.审批项目管理ToolStripMenuItem,
             this.收费项目管理ToolStripMenuItem,
-            this.审批任务管理ToolStripMenuItem});
+            this.审批任务管理ToolStripMenuItem,
+            this.toolStripMenuItem20,
+            this.toolStripMenuItem19});
             this.流程设计ToolStripMenuItem.Name = "流程设计ToolStripMenuItem";
             this.流程设计ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.流程设计ToolStripMenuItem.Text = "流程设计";
@@ -595,6 +615,20 @@
             this.审批任务管理ToolStripMenuItem.Text = "审批任务管理";
             this.审批任务管理ToolStripMenuItem.Click += new System.EventHandler(this.审批任务管理ToolStripMenuItem_Click);
             // 
+            // toolStripMenuItem20
+            // 
+            this.toolStripMenuItem20.Name = "toolStripMenuItem20";
+            this.toolStripMenuItem20.Size = new System.Drawing.Size(176, 26);
+            this.toolStripMenuItem20.Text = "工作流设置";
+            this.toolStripMenuItem20.Click += new System.EventHandler(this.toolStripMenuItem20_Click);
+            // 
+            // toolStripMenuItem19
+            // 
+            this.toolStripMenuItem19.Name = "toolStripMenuItem19";
+            this.toolStripMenuItem19.Size = new System.Drawing.Size(176, 26);
+            this.toolStripMenuItem19.Text = "审批日志";
+            this.toolStripMenuItem19.Click += new System.EventHandler(this.toolStripMenuItem19_Click);
+            // 
             // 用水用户管理ToolStripMenuItem
             // 
             this.用水用户管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -605,7 +639,8 @@
             this.抄表收费员互换ToolStripMenuItem,
             this.toolStripSeparator6,
             this.用户余额初始化ToolStripMenuItem,
-            this.用户余额初始化ToolStripMenuItem1});
+            this.用户余额初始化ToolStripMenuItem1,
+            this.转户管理ToolStripMenuItem});
             this.用水用户管理ToolStripMenuItem.Name = "用水用户管理ToolStripMenuItem";
             this.用水用户管理ToolStripMenuItem.Size = new System.Drawing.Size(140, 25);
             this.用水用户管理ToolStripMenuItem.Text = "用水用户管理(&U)";
@@ -662,6 +697,37 @@
             this.用户余额初始化ToolStripMenuItem1.Size = new System.Drawing.Size(276, 26);
             this.用户余额初始化ToolStripMenuItem1.Text = "用户余额初始化";
             this.用户余额初始化ToolStripMenuItem1.Click += new System.EventHandler(this.用户余额初始化ToolStripMenuItem1_Click);
+            // 
+            // 转户管理ToolStripMenuItem
+            // 
+            this.转户管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.转户申请单编制ToolStripMenuItem,
+            this.转户申请单审批ToolStripMenuItem,
+            this.转户申请单查询ToolStripMenuItem});
+            this.转户管理ToolStripMenuItem.Name = "转户管理ToolStripMenuItem";
+            this.转户管理ToolStripMenuItem.Size = new System.Drawing.Size(276, 26);
+            this.转户管理ToolStripMenuItem.Text = "转户管理";
+            // 
+            // 转户申请单编制ToolStripMenuItem
+            // 
+            this.转户申请单编制ToolStripMenuItem.Name = "转户申请单编制ToolStripMenuItem";
+            this.转户申请单编制ToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.转户申请单编制ToolStripMenuItem.Text = "转户申请单编制";
+            this.转户申请单编制ToolStripMenuItem.Click += new System.EventHandler(this.转户申请单编制ToolStripMenuItem_Click);
+            // 
+            // 转户申请单审批ToolStripMenuItem
+            // 
+            this.转户申请单审批ToolStripMenuItem.Name = "转户申请单审批ToolStripMenuItem";
+            this.转户申请单审批ToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.转户申请单审批ToolStripMenuItem.Text = "转户申请单审批";
+            this.转户申请单审批ToolStripMenuItem.Click += new System.EventHandler(this.转户申请单审批ToolStripMenuItem_Click);
+            // 
+            // 转户申请单查询ToolStripMenuItem
+            // 
+            this.转户申请单查询ToolStripMenuItem.Name = "转户申请单查询ToolStripMenuItem";
+            this.转户申请单查询ToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.转户申请单查询ToolStripMenuItem.Text = "转户申请单查询";
+            this.转户申请单查询ToolStripMenuItem.Click += new System.EventHandler(this.转户申请单查询ToolStripMenuItem_Click);
             // 
             // 发票管理ToolStripMenuItem
             // 
@@ -1140,7 +1206,8 @@
             this.预存明细查询ToolStripMenuItem,
             this.预存冲减明细查询ToolStripMenuItem,
             this.水费减免明细查询ToolStripMenuItem,
-            this.发票使用明细查询ToolStripMenuItem});
+            this.发票使用明细查询ToolStripMenuItem,
+            this.业扩审批业务综合查询ToolStripMenuItem});
             this.明细查询ToolStripMenuItem.Name = "明细查询ToolStripMenuItem";
             this.明细查询ToolStripMenuItem.Size = new System.Drawing.Size(160, 26);
             this.明细查询ToolStripMenuItem.Text = "明细查询";
@@ -1148,107 +1215,114 @@
             // 用户明细查询ToolStripMenuItem
             // 
             this.用户明细查询ToolStripMenuItem.Name = "用户明细查询ToolStripMenuItem";
-            this.用户明细查询ToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.用户明细查询ToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
             this.用户明细查询ToolStripMenuItem.Text = "用户明细查询";
             this.用户明细查询ToolStripMenuItem.Click += new System.EventHandler(this.用户明细查询ToolStripMenuItem_Click);
             // 
             // 转户明细查询ToolStripMenuItem
             // 
             this.转户明细查询ToolStripMenuItem.Name = "转户明细查询ToolStripMenuItem";
-            this.转户明细查询ToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.转户明细查询ToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
             this.转户明细查询ToolStripMenuItem.Text = "转户明细查询";
             this.转户明细查询ToolStripMenuItem.Click += new System.EventHandler(this.转户明细查询ToolStripMenuItem_Click);
             // 
             // 一户式查询ToolStripMenuItem
             // 
             this.一户式查询ToolStripMenuItem.Name = "一户式查询ToolStripMenuItem";
-            this.一户式查询ToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.一户式查询ToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
             this.一户式查询ToolStripMenuItem.Text = "一户式查询";
             this.一户式查询ToolStripMenuItem.Click += new System.EventHandler(this.一户式查询ToolStripMenuItem_Click);
             // 
             // 台账查询ToolStripMenuItem
             // 
             this.台账查询ToolStripMenuItem.Name = "台账查询ToolStripMenuItem";
-            this.台账查询ToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.台账查询ToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
             this.台账查询ToolStripMenuItem.Text = "台账查询";
             this.台账查询ToolStripMenuItem.Click += new System.EventHandler(this.台账查询ToolStripMenuItem_Click);
             // 
             // 历史台账查询ToolStripMenuItem
             // 
             this.历史台账查询ToolStripMenuItem.Name = "历史台账查询ToolStripMenuItem";
-            this.历史台账查询ToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.历史台账查询ToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
             this.历史台账查询ToolStripMenuItem.Text = "历史台账查询";
             this.历史台账查询ToolStripMenuItem.Click += new System.EventHandler(this.历史台账查询ToolStripMenuItem_Click);
             // 
             // 水表抄表情况查询ToolStripMenuItem
             // 
             this.水表抄表情况查询ToolStripMenuItem.Name = "水表抄表情况查询ToolStripMenuItem";
-            this.水表抄表情况查询ToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.水表抄表情况查询ToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
             this.水表抄表情况查询ToolStripMenuItem.Text = "水表抄表情况查询";
             this.水表抄表情况查询ToolStripMenuItem.Click += new System.EventHandler(this.水表抄表情况查询ToolStripMenuItem_Click);
             // 
             // 水表应收明细查询ToolStripMenuItem
             // 
             this.水表应收明细查询ToolStripMenuItem.Name = "水表应收明细查询ToolStripMenuItem";
-            this.水表应收明细查询ToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.水表应收明细查询ToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
             this.水表应收明细查询ToolStripMenuItem.Text = "水表应收明细查询";
             this.水表应收明细查询ToolStripMenuItem.Click += new System.EventHandler(this.水表应收明细查询ToolStripMenuItem_Click);
             // 
             // 实收明细查询ToolStripMenuItem
             // 
             this.实收明细查询ToolStripMenuItem.Name = "实收明细查询ToolStripMenuItem";
-            this.实收明细查询ToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.实收明细查询ToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
             this.实收明细查询ToolStripMenuItem.Text = "实收明细查询";
             this.实收明细查询ToolStripMenuItem.Click += new System.EventHandler(this.实收明细查询ToolStripMenuItem_Click);
             // 
             // 未收情况明细查询ToolStripMenuItem
             // 
             this.未收情况明细查询ToolStripMenuItem.Name = "未收情况明细查询ToolStripMenuItem";
-            this.未收情况明细查询ToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.未收情况明细查询ToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
             this.未收情况明细查询ToolStripMenuItem.Text = "未收情况明细查询";
             this.未收情况明细查询ToolStripMenuItem.Click += new System.EventHandler(this.未收情况明细查询ToolStripMenuItem_Click);
             // 
             // 收费明细查询ToolStripMenuItem
             // 
             this.收费明细查询ToolStripMenuItem.Name = "收费明细查询ToolStripMenuItem";
-            this.收费明细查询ToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.收费明细查询ToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
             this.收费明细查询ToolStripMenuItem.Text = "收费明细查询";
             this.收费明细查询ToolStripMenuItem.Click += new System.EventHandler(this.收费明细查询ToolStripMenuItem_Click);
             // 
             // 收费冲减明细查询ToolStripMenuItem
             // 
             this.收费冲减明细查询ToolStripMenuItem.Name = "收费冲减明细查询ToolStripMenuItem";
-            this.收费冲减明细查询ToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.收费冲减明细查询ToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
             this.收费冲减明细查询ToolStripMenuItem.Text = "收费冲减明细查询";
             this.收费冲减明细查询ToolStripMenuItem.Click += new System.EventHandler(this.收费冲减明细查询ToolStripMenuItem_Click);
             // 
             // 预存明细查询ToolStripMenuItem
             // 
             this.预存明细查询ToolStripMenuItem.Name = "预存明细查询ToolStripMenuItem";
-            this.预存明细查询ToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.预存明细查询ToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
             this.预存明细查询ToolStripMenuItem.Text = "预存明细查询";
             this.预存明细查询ToolStripMenuItem.Click += new System.EventHandler(this.预存明细查询ToolStripMenuItem_Click);
             // 
             // 预存冲减明细查询ToolStripMenuItem
             // 
             this.预存冲减明细查询ToolStripMenuItem.Name = "预存冲减明细查询ToolStripMenuItem";
-            this.预存冲减明细查询ToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.预存冲减明细查询ToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
             this.预存冲减明细查询ToolStripMenuItem.Text = "预存冲减明细查询";
             this.预存冲减明细查询ToolStripMenuItem.Click += new System.EventHandler(this.预存冲减明细查询ToolStripMenuItem_Click);
             // 
             // 水费减免明细查询ToolStripMenuItem
             // 
             this.水费减免明细查询ToolStripMenuItem.Name = "水费减免明细查询ToolStripMenuItem";
-            this.水费减免明细查询ToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.水费减免明细查询ToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
             this.水费减免明细查询ToolStripMenuItem.Text = "水费减免明细查询";
             this.水费减免明细查询ToolStripMenuItem.Click += new System.EventHandler(this.水费减免明细查询ToolStripMenuItem_Click);
             // 
             // 发票使用明细查询ToolStripMenuItem
             // 
             this.发票使用明细查询ToolStripMenuItem.Name = "发票使用明细查询ToolStripMenuItem";
-            this.发票使用明细查询ToolStripMenuItem.Size = new System.Drawing.Size(208, 26);
+            this.发票使用明细查询ToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
             this.发票使用明细查询ToolStripMenuItem.Text = "发票使用明细查询";
             this.发票使用明细查询ToolStripMenuItem.Click += new System.EventHandler(this.发票使用明细查询ToolStripMenuItem_Click);
+            // 
+            // 业扩审批业务综合查询ToolStripMenuItem
+            // 
+            this.业扩审批业务综合查询ToolStripMenuItem.Name = "业扩审批业务综合查询ToolStripMenuItem";
+            this.业扩审批业务综合查询ToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
+            this.业扩审批业务综合查询ToolStripMenuItem.Text = "业扩审批业务综合查询";
+            this.业扩审批业务综合查询ToolStripMenuItem.Click += new System.EventHandler(this.业扩审批业务综合查询ToolStripMenuItem_Click);
             // 
             // 统计与分析ToolStripMenuItem
             // 
@@ -1263,8 +1337,10 @@
             this.实收统计ToolStripMenuItem,
             this.实收陈欠统计ToolStripMenuItem,
             this.用水情况一览表ToolStripMenuItem,
-            this.部门费用统计表ToolStripMenuItem,
-            this.工资统计表ToolStripMenuItem});
+            this.部门费用统计安装处ToolStripMenuItem,
+            this.工资统计表ToolStripMenuItem,
+            this.业扩审批业务统计表ToolStripMenuItem,
+            this.业扩部门费用统计ToolStripMenuItem});
             this.统计与分析ToolStripMenuItem.Name = "统计与分析ToolStripMenuItem";
             this.统计与分析ToolStripMenuItem.Size = new System.Drawing.Size(160, 26);
             this.统计与分析ToolStripMenuItem.Text = "统计与分析";
@@ -1272,86 +1348,100 @@
             // 查抄率统计ToolStripMenuItem
             // 
             this.查抄率统计ToolStripMenuItem.Name = "查抄率统计ToolStripMenuItem";
-            this.查抄率统计ToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.查抄率统计ToolStripMenuItem.Size = new System.Drawing.Size(231, 26);
             this.查抄率统计ToolStripMenuItem.Text = "查抄率统计";
             this.查抄率统计ToolStripMenuItem.Click += new System.EventHandler(this.查抄率统计ToolStripMenuItem_Click);
             // 
             // 收费率统计ToolStripMenuItem
             // 
             this.收费率统计ToolStripMenuItem.Name = "收费率统计ToolStripMenuItem";
-            this.收费率统计ToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.收费率统计ToolStripMenuItem.Size = new System.Drawing.Size(231, 26);
             this.收费率统计ToolStripMenuItem.Text = "收费率统计";
             this.收费率统计ToolStripMenuItem.Click += new System.EventHandler(this.收费率统计ToolStripMenuItem_Click);
             // 
             // 用水用户统计ToolStripMenuItem
             // 
             this.用水用户统计ToolStripMenuItem.Name = "用水用户统计ToolStripMenuItem";
-            this.用水用户统计ToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.用水用户统计ToolStripMenuItem.Size = new System.Drawing.Size(231, 26);
             this.用水用户统计ToolStripMenuItem.Text = "用水用户统计";
             this.用水用户统计ToolStripMenuItem.Click += new System.EventHandler(this.用水用户统计ToolStripMenuItem_Click);
             // 
             // 转户统计ToolStripMenuItem
             // 
             this.转户统计ToolStripMenuItem.Name = "转户统计ToolStripMenuItem";
-            this.转户统计ToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.转户统计ToolStripMenuItem.Size = new System.Drawing.Size(231, 26);
             this.转户统计ToolStripMenuItem.Text = "转户统计";
             this.转户统计ToolStripMenuItem.Click += new System.EventHandler(this.转户统计ToolStripMenuItem_Click);
             // 
             // 水表统计ToolStripMenuItem
             // 
             this.水表统计ToolStripMenuItem.Name = "水表统计ToolStripMenuItem";
-            this.水表统计ToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.水表统计ToolStripMenuItem.Size = new System.Drawing.Size(231, 26);
             this.水表统计ToolStripMenuItem.Text = "水表统计";
             this.水表统计ToolStripMenuItem.Click += new System.EventHandler(this.水表统计ToolStripMenuItem_Click);
             // 
             // 应收水费统计ToolStripMenuItem
             // 
             this.应收水费统计ToolStripMenuItem.Name = "应收水费统计ToolStripMenuItem";
-            this.应收水费统计ToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.应收水费统计ToolStripMenuItem.Size = new System.Drawing.Size(231, 26);
             this.应收水费统计ToolStripMenuItem.Text = "应收水费统计";
             this.应收水费统计ToolStripMenuItem.Click += new System.EventHandler(this.应收水费统计ToolStripMenuItem_Click);
             // 
             // 应收欠费统计ToolStripMenuItem
             // 
             this.应收欠费统计ToolStripMenuItem.Name = "应收欠费统计ToolStripMenuItem";
-            this.应收欠费统计ToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.应收欠费统计ToolStripMenuItem.Size = new System.Drawing.Size(231, 26);
             this.应收欠费统计ToolStripMenuItem.Text = "应收-欠费统计";
             this.应收欠费统计ToolStripMenuItem.Click += new System.EventHandler(this.应收欠费统计ToolStripMenuItem_Click);
             // 
             // 实收统计ToolStripMenuItem
             // 
             this.实收统计ToolStripMenuItem.Name = "实收统计ToolStripMenuItem";
-            this.实收统计ToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.实收统计ToolStripMenuItem.Size = new System.Drawing.Size(231, 26);
             this.实收统计ToolStripMenuItem.Text = "实收统计";
             this.实收统计ToolStripMenuItem.Click += new System.EventHandler(this.实收统计ToolStripMenuItem_Click);
             // 
             // 实收陈欠统计ToolStripMenuItem
             // 
             this.实收陈欠统计ToolStripMenuItem.Name = "实收陈欠统计ToolStripMenuItem";
-            this.实收陈欠统计ToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.实收陈欠统计ToolStripMenuItem.Size = new System.Drawing.Size(231, 26);
             this.实收陈欠统计ToolStripMenuItem.Text = "实收-陈欠统计";
             this.实收陈欠统计ToolStripMenuItem.Click += new System.EventHandler(this.实收陈欠统计ToolStripMenuItem_Click);
             // 
             // 用水情况一览表ToolStripMenuItem
             // 
             this.用水情况一览表ToolStripMenuItem.Name = "用水情况一览表ToolStripMenuItem";
-            this.用水情况一览表ToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.用水情况一览表ToolStripMenuItem.Size = new System.Drawing.Size(231, 26);
             this.用水情况一览表ToolStripMenuItem.Text = "用水情况一览表";
             this.用水情况一览表ToolStripMenuItem.Click += new System.EventHandler(this.用水情况一览表ToolStripMenuItem_Click);
             // 
-            // 部门费用统计表ToolStripMenuItem
+            // 部门费用统计安装处ToolStripMenuItem
             // 
-            this.部门费用统计表ToolStripMenuItem.Name = "部门费用统计表ToolStripMenuItem";
-            this.部门费用统计表ToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
-            this.部门费用统计表ToolStripMenuItem.Text = "部门费用统计表";
-            this.部门费用统计表ToolStripMenuItem.Click += new System.EventHandler(this.部门费用统计表ToolStripMenuItem_Click);
+            this.部门费用统计安装处ToolStripMenuItem.Name = "部门费用统计安装处ToolStripMenuItem";
+            this.部门费用统计安装处ToolStripMenuItem.Size = new System.Drawing.Size(231, 26);
+            this.部门费用统计安装处ToolStripMenuItem.Text = "部门费用统计-安装处";
+            this.部门费用统计安装处ToolStripMenuItem.Click += new System.EventHandler(this.部门费用统计安装处ToolStripMenuItem_Click);
             // 
             // 工资统计表ToolStripMenuItem
             // 
             this.工资统计表ToolStripMenuItem.Name = "工资统计表ToolStripMenuItem";
-            this.工资统计表ToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
+            this.工资统计表ToolStripMenuItem.Size = new System.Drawing.Size(231, 26);
             this.工资统计表ToolStripMenuItem.Text = "工资统计表";
             this.工资统计表ToolStripMenuItem.Click += new System.EventHandler(this.工资统计表ToolStripMenuItem_Click);
+            // 
+            // 业扩审批业务统计表ToolStripMenuItem
+            // 
+            this.业扩审批业务统计表ToolStripMenuItem.Name = "业扩审批业务统计表ToolStripMenuItem";
+            this.业扩审批业务统计表ToolStripMenuItem.Size = new System.Drawing.Size(231, 26);
+            this.业扩审批业务统计表ToolStripMenuItem.Text = "业扩审批业务统计表";
+            this.业扩审批业务统计表ToolStripMenuItem.Click += new System.EventHandler(this.业扩审批业务统计表ToolStripMenuItem_Click);
+            // 
+            // 业扩部门费用统计ToolStripMenuItem
+            // 
+            this.业扩部门费用统计ToolStripMenuItem.Name = "业扩部门费用统计ToolStripMenuItem";
+            this.业扩部门费用统计ToolStripMenuItem.Size = new System.Drawing.Size(231, 26);
+            this.业扩部门费用统计ToolStripMenuItem.Text = "业扩部门费用统计";
+            this.业扩部门费用统计ToolStripMenuItem.Click += new System.EventHandler(this.业扩部门费用统计ToolStripMenuItem_Click);
             // 
             // 财务报表ToolStripMenuItem
             // 
@@ -1820,8 +1910,18 @@
         private System.Windows.Forms.ToolStripMenuItem 上报工作表ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 转户明细查询ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 转户统计ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 部门费用统计表ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 工资统计表ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 业扩审批业务综合查询ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 业扩审批业务统计表ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 用水性质分类管理ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 业扩部门费用统计ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 转户管理ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 转户申请单编制ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 转户申请单审批ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 转户申请单查询ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 部门费用统计安装处ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem20;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem19;
 
     }
 }

@@ -1104,15 +1104,70 @@ namespace WATERMIS
             frmWaterUserMoveStatic frm = new frmWaterUserMoveStatic();
             frm.Show(this.dockPanel1);
         }
-        private void 部门费用统计表ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FinanceReport frm = new FinanceReport();
-            frm.Show(this.dockPanel1);
-        }
 
         private void 工资统计表ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmSalaryStatics frm = new frmSalaryStatics();
+            frm.Show(this.dockPanel1);
+        }
+
+        private void 业扩审批业务综合查询ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Bus_Search frm = new Frm_Bus_Search();
+            frm.Show(this.dockPanel1);
+        }
+
+        private void 业扩审批业务统计表ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Bus_Statis frm = new Frm_Bus_Statis();
+            frm.Show(this.dockPanel1);
+        }
+
+        private void 用水性质分类管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmWaterMeterTypeClass frm = new frmWaterMeterTypeClass();
+            frm.Show(this.dockPanel1);
+        }
+
+        private void 业扩部门费用统计ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_DepFee frm = new Frm_DepFee();
+            frm.Show(this.dockPanel1);
+        }
+
+        private void 转户申请单编制ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmWaterUserTransfer frm = new frmWaterUserTransfer();
+            frm.Show(this.dockPanel1);
+        }
+
+        private void 转户申请单审批ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmWaterUserTransferExamine frm = new frmWaterUserTransferExamine();
+            frm.Show(this.dockPanel1);
+        }
+
+        private void 转户申请单查询ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmWaterUserTransferSearch frm = new frmWaterUserTransferSearch();
+            frm.Show(this.dockPanel1);
+        }
+
+        private void 部门费用统计安装处ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_DepFee_AnZhuang frm = new Frm_DepFee_AnZhuang();
+            frm.Show(this.dockPanel1);
+        }
+
+        private void toolStripMenuItem20_Click(object sender, EventArgs e)
+        {
+            FrmFlowSelect frm = new FrmFlowSelect();
+            frm.Show(this.dockPanel1);
+        }
+
+        private void toolStripMenuItem19_Click(object sender, EventArgs e)
+        {
+            FrmApproveLog frm = new FrmApproveLog();
             frm.Show(this.dockPanel1);
         }
     }
