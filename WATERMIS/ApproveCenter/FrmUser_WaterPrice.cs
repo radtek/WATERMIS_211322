@@ -15,9 +15,30 @@ namespace ApproveCenter
             InitializeComponent();
         }
 
-        private void uC_SearchModule1_BtnEvent(object sender, EventArgs e)
+        private void uC_DataGridView_Page1_CellDoubleClickEvents(object sender, DataGridViewCellEventArgs e)
         {
+            DataGridView dgList = (DataGridView)sender;
+            if (dgList != null)
+            {
+                if (dgList.CurrentRow != null)
+                {
+                    string taskid = dgList.CurrentRow.Cells["TaskID"].Value.ToString();
+                    uC_FlowList1.TaskId = taskid;
+                    uC_FlowList1.DataBind();
 
+                }
+            }
+        }
+
+        private void uC_SearchBase1_Load(object sender, EventArgs e)
+        {
+            uC_SearchBase1.WorkCode = "User_WaterPrice";
+            uC_SearchBase1.PkName = new string[] { "AcceptID", "waterUserName", "waterUserNO", "waterPhone", "Memo" };
+            uC_SearchBase1.Init();
+        }
+
+        private void uC_SearchBase1_BtnEvent(object sender, EventArgs e)
+        {
             string sqlstr = @"SELECT * FROM 
 (SELECT UW.*
 ,(SELECT waterMeterTypeValue FROM waterMeterType WHERE waterMeterTypeId=UW.waterMeterTypeId) AS waterMeterType_CurrentName
@@ -25,11 +46,12 @@ namespace ApproveCenter
 ,CASE WHEN OPState=1 THEN '变更完成' ELSE '-' END AS OPStateName
 ,CASE WHEN IsLong=1 THEN '是' ELSE '-' END AS IsLongName
 ,CASE WHEN IsMonth=1 THEN '是' ELSE '-' END AS IsMonthName
-,MWT.Value AS FLOWSTATE FROM User_WaterPrice UW,Meter_WorkTaskState MWT WHERE UW.State=MWT.ID) P";
+,MW.PointSort,MWT.Value AS FLOWSTATE FROM 
+User_WaterPrice UW left join Meter_WorkTask MW on UW.TaskID=MW.TaskID,Meter_WorkTaskState MWT WHERE UW.State=MWT.ID) P";
 
-            if (!string.IsNullOrEmpty(uC_SearchModule1.sb.ToString()))
+            if (!string.IsNullOrEmpty(uC_SearchBase1.sb.ToString()))
             {
-                sqlstr += " WHERE " + uC_SearchModule1.sb.ToString();
+                sqlstr += " WHERE " + uC_SearchBase1.sb.ToString();
             }
             uC_DataGridView_Page1.Fields = new string[,] { { "rowNum", "序号" }, 
                                                            { "AcceptID", "受理编号" }, 
@@ -54,26 +76,6 @@ namespace ApproveCenter
             uC_DataGridView_Page1.PageOrderField = "CreateDate";
             uC_DataGridView_Page1.PageIndex = 1;
             uC_DataGridView_Page1.Init();
-        }
-
-        private void uC_SearchModule1_Load(object sender, EventArgs e)
-        {
-            uC_SearchModule1.Init();
-        }
-
-        private void uC_DataGridView_Page1_CellDoubleClickEvents(object sender, DataGridViewCellEventArgs e)
-        {
-            DataGridView dgList = (DataGridView)sender;
-            if (dgList != null)
-            {
-                if (dgList.CurrentRow != null)
-                {
-                    string taskid = dgList.CurrentRow.Cells["TaskID"].Value.ToString();
-                    uC_FlowList1.TaskId = taskid;
-                    uC_FlowList1.DataBind();
-
-                }
-            }
         }
     }
 }

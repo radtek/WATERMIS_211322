@@ -20,15 +20,31 @@ namespace ApproveCenter
 
         }
 
-        private void uC_SearchModule1_BtnEvent(object sender, EventArgs e)
+        private void uC_DataGridView_Page1_CellClickEvents(object sender, DataGridViewCellEventArgs e)
         {
-            string sqlstr = @"SELECT * FROM  (SELECT UA.*,MWT.Value AS ApproveState,CASE WHEN IsAdd=1 THEN '已交费' ELSE '-' END AS IsAddState 
- FROM User_AddWater UA,Meter_WorkTaskState MWT WHERE UA.State=MWT.ID) M ";
-
-            if (!string.IsNullOrEmpty(uC_SearchModule1.sb.ToString()))
+            DataGridView dgList = (DataGridView)sender;
+            if (dgList != null)
             {
-                sqlstr += " WHERE " + uC_SearchModule1.sb.ToString();
+                if (dgList.CurrentRow != null)
+                {
+                    string taskid = dgList.CurrentRow.Cells["TaskID"].Value.ToString();
+                    uC_FlowList1.TaskId = taskid;
+                    uC_FlowList1.DataBind();
+
+                }
             }
+        }
+
+        private void uC_SearchBase1_BtnEvent(object sender, EventArgs e)
+        {
+            string sqlstr = @"SELECT * FROM  (SELECT UA.*,MWT.Value AS ApproveState,CASE WHEN IsAdd=1 THEN '已交费' ELSE '-' END AS IsAddState,MW.PointSort
+ FROM User_AddWater UA left join Meter_WorkTask MW on UA.TaskID=MW.TaskID ,Meter_WorkTaskState MWT WHERE UA.State=MWT.ID) M ";
+
+            if (!string.IsNullOrEmpty(uC_SearchBase1.sb.ToString()))
+            {
+                sqlstr += " WHERE " + uC_SearchBase1.sb.ToString();
+            }
+
             uC_DataGridView_Page1.Fields = new string[,] { { "rowNum", "序号" }, 
                                                            { "AcceptID", "受理编号" }, 
                                                            { "ApproveState", "审批状态" }, 
@@ -52,24 +68,11 @@ namespace ApproveCenter
             uC_DataGridView_Page1.Init();
         }
 
-        private void uC_SearchModule1_Load(object sender, EventArgs e)
+        private void uC_SearchBase1_Load(object sender, EventArgs e)
         {
-            uC_SearchModule1.Init();
-        }
-
-        private void uC_DataGridView_Page1_CellClickEvents(object sender, DataGridViewCellEventArgs e)
-        {
-            DataGridView dgList = (DataGridView)sender;
-            if (dgList != null)
-            {
-                if (dgList.CurrentRow != null)
-                {
-                    string taskid = dgList.CurrentRow.Cells["TaskID"].Value.ToString();
-                    uC_FlowList1.TaskId = taskid;
-                    uC_FlowList1.DataBind();
-
-                }
-            }
+            uC_SearchBase1.WorkCode = "User_AddWater";
+            uC_SearchBase1.PkName = new string[] { "AcceptID", "waterUserName", "waterUserNO", "waterPhone", "AddDescribe" };
+            uC_SearchBase1.Init();
         }
     }
 }

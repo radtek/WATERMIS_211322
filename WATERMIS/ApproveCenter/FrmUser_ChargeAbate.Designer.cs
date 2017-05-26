@@ -30,8 +30,8 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.uC_FlowList1 = new SysControl.UC_FlowList();
-            this.uC_SearchModule1 = new SysControl.UC_SearchModule();
             this.uC_DataGridView_Page1 = new SysControl.UC_DataGridView_Page();
+            this.uC_SearchBase1 = new SysControl.UC_SearchBase();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -40,16 +40,17 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.uC_FlowList1, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.uC_SearchModule1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.uC_DataGridView_Page1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.uC_SearchBase1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(885, 259);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 93F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1352, 687);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // uC_FlowList1
@@ -58,29 +59,14 @@
             this.uC_FlowList1.AutoSize = true;
             this.uC_FlowList1.BackColor = System.Drawing.Color.White;
             this.uC_FlowList1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uC_FlowList1.Location = new System.Drawing.Point(3, 192);
-            this.uC_FlowList1.MinimumSize = new System.Drawing.Size(900, 60);
+            this.uC_FlowList1.Location = new System.Drawing.Point(4, 598);
+            this.uC_FlowList1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.uC_FlowList1.MinimumSize = new System.Drawing.Size(1200, 80);
             this.uC_FlowList1.Name = "uC_FlowList1";
-            this.uC_FlowList1.Size = new System.Drawing.Size(900, 64);
+            this.uC_FlowList1.Size = new System.Drawing.Size(1344, 85);
             this.uC_FlowList1.TabIndex = 2;
             this.uC_FlowList1.Tag = "9999";
             this.uC_FlowList1.TaskId = null;
-            // 
-            // uC_SearchModule1
-            // 
-            this.uC_SearchModule1.AutoSize = true;
-            this.uC_SearchModule1.BackColor = System.Drawing.Color.White;
-            this.uC_SearchModule1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uC_SearchModule1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uC_SearchModule1.Location = new System.Drawing.Point(0, 0);
-            this.uC_SearchModule1.Margin = new System.Windows.Forms.Padding(0);
-            this.uC_SearchModule1.MinimumSize = new System.Drawing.Size(890, 70);
-            this.uC_SearchModule1.Name = "uC_SearchModule1";
-            this.uC_SearchModule1.Size = new System.Drawing.Size(890, 70);
-            this.uC_SearchModule1.TabIndex = 1;
-            this.uC_SearchModule1.Tag = "9999";
-            this.uC_SearchModule1.Load += new System.EventHandler(this.uC_SearchModule1_Load);
-            this.uC_SearchModule1.BtnEvent += new System.EventHandler(this.uC_SearchModule1_BtnEvent);
             // 
             // uC_DataGridView_Page1
             // 
@@ -92,23 +78,39 @@
             this.uC_DataGridView_Page1.Fields = null;
             this.uC_DataGridView_Page1.FieldStatis = null;
             this.uC_DataGridView_Page1.FiledColor = null;
-            this.uC_DataGridView_Page1.Location = new System.Drawing.Point(3, 73);
-            this.uC_DataGridView_Page1.MinimumSize = new System.Drawing.Size(833, 100);
+            this.uC_DataGridView_Page1.Location = new System.Drawing.Point(4, 84);
+            this.uC_DataGridView_Page1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.uC_DataGridView_Page1.MinimumSize = new System.Drawing.Size(1111, 133);
             this.uC_DataGridView_Page1.Name = "uC_DataGridView_Page1";
             this.uC_DataGridView_Page1.PageIndex = 1;
             this.uC_DataGridView_Page1.PageOrderField = null;
             this.uC_DataGridView_Page1.PageSize = 100;
-            this.uC_DataGridView_Page1.Size = new System.Drawing.Size(879, 113);
+            this.uC_DataGridView_Page1.Size = new System.Drawing.Size(1344, 506);
             this.uC_DataGridView_Page1.TabIndex = 0;
             this.uC_DataGridView_Page1.Tag = "9999";
             this.uC_DataGridView_Page1.CellDoubleClickEvents += new SysControl.UC_DataGridView_Page.CellDoubleClickEvent(this.uC_DataGridView_Page1_CellDoubleClickEvents);
             // 
+            // uC_SearchBase1
+            // 
+            this.uC_SearchBase1.BackColor = System.Drawing.Color.Transparent;
+            this.uC_SearchBase1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uC_SearchBase1.Location = new System.Drawing.Point(4, 4);
+            this.uC_SearchBase1.Margin = new System.Windows.Forms.Padding(4);
+            this.uC_SearchBase1.Name = "uC_SearchBase1";
+            this.uC_SearchBase1.Size = new System.Drawing.Size(819, 72);
+            this.uC_SearchBase1.TabIndex = 3;
+            this.uC_SearchBase1.Tag = "9999";
+            this.uC_SearchBase1.Load += new System.EventHandler(this.uC_SearchBase1_Load);
+            this.uC_SearchBase1.BtnEvent += new System.EventHandler(this.uC_SearchBase1_BtnEvent);
+            // 
             // FrmUser_ChargeAbate
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(885, 259);
+            this.ClientSize = new System.Drawing.Size(1352, 687);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmUser_ChargeAbate";
             this.Text = "费用减免申请记录";
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -120,8 +122,8 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private SysControl.UC_SearchModule uC_SearchModule1;
         private SysControl.UC_FlowList uC_FlowList1;
         private SysControl.UC_DataGridView_Page uC_DataGridView_Page1;
+        private SysControl.UC_SearchBase uC_SearchBase1;
     }
 }

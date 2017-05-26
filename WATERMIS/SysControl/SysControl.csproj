@@ -219,6 +219,12 @@
     <Compile Include="UC_SearchApprove.Designer.cs">
       <DependentUpon>UC_SearchApprove.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC_SearchBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_SearchBase.Designer.cs">
+      <DependentUpon>UC_SearchBase.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC_SearchCharge.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -352,6 +358,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UC_SearchApprove.resx">
       <DependentUpon>UC_SearchApprove.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_SearchBase.resx">
+      <DependentUpon>UC_SearchBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_SearchCharge.resx">
       <DependentUpon>UC_SearchCharge.cs</DependentUpon>

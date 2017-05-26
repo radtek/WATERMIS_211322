@@ -308,7 +308,7 @@
             this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "FrmGroup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "单位用户报装";
+            this.Text = "多位用户报装";
             this.Load += new System.EventHandler(this.FrmGroup_Load);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();

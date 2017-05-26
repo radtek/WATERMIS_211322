@@ -507,6 +507,30 @@ public class SqlServerHelper
         return result;
     }
 
+    public bool GetSqlWhereByControlCombox(Control.ControlCollection Controls, ref string sqlWhere)
+    {
+        bool result = false;
+        StringBuilder sb = new StringBuilder();
+        foreach (Control c in Controls)
+        {
+            if (c is ComboBox)
+            {
+                ComboBox txt4 = (ComboBox)c;
+                if (txt4.SelectedValue == null)
+                {
+                    continue;
+                }
+                if (!string.IsNullOrEmpty(txt4.SelectedValue.ToString()))
+                {
+                    result = true;
+                        sb.AppendFormat(" AND {0} = '{1}'", txt4.Name.Substring(3, txt4.Name.Length - 3), txt4.SelectedValue);
+                }
+            }
+        }
+        sqlWhere = sb.ToString();
+        return result;
+    }
+
     public DataTable GetPageList(string sql, SqlParameter[] param, string orderField, string orderType, int pageIndex, int pageSize, ref int count)
     {
         StringBuilder sb = new StringBuilder();

@@ -15,20 +15,32 @@ namespace WaterBusiness
             InitializeComponent();
         }
 
-        private void uC_SearchModule1_Load(object sender, EventArgs e)
+
+        private void uC_DataGridView_Page1_CellClickEvents(object sender, DataGridViewCellEventArgs e)
         {
-            uC_SearchModule1.Init();
+            DataGridView dgList = (DataGridView)sender;
+            if (dgList.CurrentRow != null)
+            {
+                string taskid = dgList.CurrentRow.Cells["TaskID"].Value.ToString();
+                if (!string.IsNullOrEmpty(taskid))
+                {
+                    uC_FlowList1.TaskId = taskid;
+                    uC_FlowList1.DataBind();
+                }
+            }
         }
 
-        private void uC_SearchModule1_BtnEvent(object sender, EventArgs e)
+        private void uC_SearchBase1_BtnEvent(object sender, EventArgs e)
         {
-            string sqlstr = @"SELECT MD.DesterilizeID,MD.AcceptID,MD.QueryKey,MD.WaterUserNO,MD.waterUserName,MD.waterUserAddress,MD.ApplyUser,
-MD.ApplyPhone,MD.SubmitDate,MWT.Value AS State,MD.TaskID,MD.Memo,MD.DesterilizeDescribe,
+            string sqlstr = @"SELECT * FROM 
+(SELECT MD.DesterilizeID,MD.AcceptID,MD.QueryKey,MD.WaterUserNO,MD.waterUserName,MD.waterUserAddress,MD.ApplyUser,
+MD.ApplyPhone,MD.SubmitDate,MWT.Value AS State,MD.TaskID,MD.Memo,MD.DesterilizeDescribe,MW.PointSort,MD.loginId,
 CreateDate,contractNO
-FROM Meter_Desterilize MD LEFT JOIN Meter_WorkTaskState MWT ON MD.State=MWT.ID ";
-            if (!string.IsNullOrEmpty(uC_SearchModule1.sb.ToString()))
+FROM Meter_Desterilize MD LEFT JOIN Meter_WorkTaskState MWT ON MD.State=MWT.ID left join Meter_WorkTask MW on MD.TaskID=MW.TaskID) T";
+
+            if (!string.IsNullOrEmpty(uC_SearchBase1.sb.ToString()))
             {
-                sqlstr += " WHERE " + uC_SearchModule1.sb.ToString();
+                sqlstr += " WHERE " + uC_SearchBase1.sb.ToString();
             }
 
             uC_DataGridView_Page1.Fields = new string[,] { { "rowNum", "序号" }, 
@@ -51,18 +63,11 @@ FROM Meter_Desterilize MD LEFT JOIN Meter_WorkTaskState MWT ON MD.State=MWT.ID "
             uC_DataGridView_Page1.Init();
         }
 
-        private void uC_DataGridView_Page1_CellClickEvents(object sender, DataGridViewCellEventArgs e)
+        private void uC_SearchBase1_Load(object sender, EventArgs e)
         {
-            DataGridView dgList = (DataGridView)sender;
-            if (dgList.CurrentRow != null)
-            {
-                string taskid = dgList.CurrentRow.Cells["TaskID"].Value.ToString();
-                if (!string.IsNullOrEmpty(taskid))
-                {
-                    uC_FlowList1.TaskId = taskid;
-                    uC_FlowList1.DataBind();
-                }
-            }
+            uC_SearchBase1.WorkCode = "Meter_Desterilize";
+            uC_SearchBase1.PkName = new string[] { "AcceptID", "waterUserName", "WaterUserNO", "ApplyPhone", "DesterilizeDescribe", "Memo" };
+            uC_SearchBase1.Init();
         }
     }
 }
