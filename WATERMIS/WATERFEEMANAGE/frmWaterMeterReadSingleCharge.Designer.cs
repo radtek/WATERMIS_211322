@@ -1701,7 +1701,7 @@
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(77, 14);
             this.label20.TabIndex = 70;
-            this.label20.Text = "用户电话：";
+            this.label20.Text = "手 机 号：";
             // 
             // label7
             // 

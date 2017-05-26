@@ -618,78 +618,6 @@ namespace WATERFEEMANAGE
             prb.Minimum = 0;
             prb.Value = 0;
             labProgress.Text = "进度:0/0";
-            
-
-            // DataTable dtAllListTemp = dtAllList.Copy();
-
-            // //显示所有需要初始化的用户
-            //DataView dvAllListTemp_AllMeterUser = dtAllListTemp.DefaultView;
-            //dgList.DataSource = dvAllListTemp_AllMeterUser.ToTable(true, "waterUserId", "waterUserNO", "waterUserName", "waterUserAddress", "waterUserStateS");
-            // for (int i = 0; i < dgList.Rows.Count; i++)
-            // {
-            //     object objWaterUserID = dgList.Rows[i].Cells["waterUserId"].Value;
-            //     if (objWaterUserID != null && objWaterUserID != DBNull.Value)
-            //     {
-            //         DataTable dtWaterUser_MeterCount = dtAllList.Copy();
-            //         DataView dvWaterUser_MeterCount = dtWaterUser_MeterCount.DefaultView;
-            //         dvWaterUser_MeterCount.RowFilter = " waterUserId='" + objWaterUserID.ToString() + "' AND waterUserState='1'";
-            //         dgList.Rows[i].Cells["WATERMETERCOUNT"].Value = dvWaterUser_MeterCount.Count;
-            //     }
-            // }
-
-            // //获取有表用户的水表数
-            // DataView dvAllListTemp_WaterMeterCount = dtAllListTemp.DefaultView;
-            // dvAllListTemp_WaterMeterCount.RowFilter = "waterUserState='1'";
-            // intAllList_WaterMeterCount = dvAllListTemp_WaterMeterCount.Count;
-
-            // //获取有水表用户表
-            // DataTable dtAllList_WaterUser_WaterMeterUse_Temp = dvAllListTemp_WaterMeterCount.ToTable(true, "waterUserId");
-            // intAllList_WaterUser_WaterMeterUseCount = dtAllList_WaterUser_WaterMeterUse_Temp.Rows.Count;
-
-            // DataTable dtAllListTemp_WaterUser_WaterMeterNone = dtAllList.Copy();
-            // //获取无表用户数
-            // DataView dvAllListTemp_WaterUser_WaterMeterNone = dtAllListTemp_WaterUser_WaterMeterNone.DefaultView;
-            //dvAllListTemp_WaterUser_WaterMeterNone.RowFilter = "waterUserState='2'";
-            //intAllList_WaterUser_WaterMeterNoneCount = dvAllListTemp_WaterUser_WaterMeterNone.Count;
-
-            // //显示本次检索到需要初始化的用户及水表数量
-            // labTip.Text = "用户数:" + (intAllList_WaterUser_WaterMeterUseCount + intAllList_WaterUser_WaterMeterNoneCount) + "户(有表" + intAllList_WaterUser_WaterMeterUseCount + "户无表" + intAllList_WaterUser_WaterMeterNoneCount + "户)，水表数:" + intAllList_WaterMeterCount + "只";
-
-            // //查询所有的抄表员
-            // DataTable dtWaterMeterReader=BLLBASE_LOGIN.QueryUser(" AND isMeterReader='1'");
-            // for (int i = 0; i < dtWaterMeterReader.Rows.Count; i++)
-            // {
-            //     //抄表员的ID和姓名
-            //     string strLoginID = "", strUserName = "";
-
-            //     object obj = dtWaterMeterReader.Rows[i]["LOGINID"];
-            //     if (obj != null && obj != DBNull.Value)
-            //     {
-            //         strLoginID = obj.ToString();
-            //         object objName = dtWaterMeterReader.Rows[i]["USERNAME"];
-            //         if (objName != null && objName != DBNull.Value)
-            //         {
-            //             strUserName = objName.ToString();
-            //         }
-
-            //         DataTable dtAllListTemp_WaterMeterCount_ByReader = dtAllList.Copy();
-            //         //获取有表用户的水表数
-            //         DataView dvAllListTemp_WaterMeterCount_ByReader = dtAllListTemp_WaterMeterCount_ByReader.DefaultView;
-            //         dvAllListTemp_WaterMeterCount_ByReader.RowFilter = "waterUserState='1' AND LOGINID='"+strLoginID+"'";
-
-            //         //获取有水表用户表
-            //         DataTable dtAllList_WaterUser_WaterMeterUse_ByReader_Temp = dvAllListTemp_WaterMeterCount_ByReader.ToTable(true, "waterUserId");
-
-            //         DataTable dtAllListTemp_WaterUser_WaterMeterNone_ByReader = dtAllList.Copy();
-            //         //获取无表用户数
-            //         DataView dvAllListTemp_WaterUser_WaterMeterNone_ByReader = dtAllListTemp_WaterUser_WaterMeterNone_ByReader.DefaultView;
-            //         dvAllListTemp_WaterUser_WaterMeterNone_ByReader.RowFilter = "waterUserState='2' AND LOGINID='" + strLoginID + "'";
-
-            //         string strItemName = "抄表员:" + strUserName + "—" + (dtAllList_WaterUser_WaterMeterUse_ByReader_Temp.Rows.Count + dvAllListTemp_WaterUser_WaterMeterNone_ByReader.Count) + "户(有表" + dtAllList_WaterUser_WaterMeterUse_ByReader_Temp.Rows.Count + "户无表" + dvAllListTemp_WaterUser_WaterMeterNone_ByReader.Count + "户),水表" + dvAllListTemp_WaterMeterCount_ByReader.Count + "只";
-            //         ListItem lst = new ListItem(strItemName, strLoginID);
-            //         lsbMeterReader.Items.Add(lst);
-            //     }
-            // }
         }
 
         private void cmbWaterUserTypeSearch_SelectionChangeCommitted(object sender, EventArgs e)
@@ -970,6 +898,10 @@ namespace WATERFEEMANAGE
                     if (objWaterMeterRead != null && objWaterMeterRead != DBNull.Value)
                         MODELreadMeterRecord.waterMeterProduct = objWaterMeterRead.ToString();
 
+                    objWaterMeterRead = dtAllList.Rows[i]["ChannelNO"];
+                    if (objWaterMeterRead != null && objWaterMeterRead != DBNull.Value)
+                        MODELreadMeterRecord.ChannelNO = objWaterMeterRead.ToString();
+
                     objWaterMeterRead = dtAllList.Rows[i]["waterMeterSerialNumber"];
                     if (objWaterMeterRead != null && objWaterMeterRead != DBNull.Value)
                         MODELreadMeterRecord.waterMeterSerialNumber = objWaterMeterRead.ToString();
@@ -1097,7 +1029,17 @@ namespace WATERFEEMANAGE
 
                     objWaterMeterRead = dtAllList.Rows[i]["isSummaryMeter"];
                     if (objWaterMeterRead != null && objWaterMeterRead != DBNull.Value)
+                    {
                         MODELreadMeterRecord.isSummaryMeter = objWaterMeterRead.ToString();
+                        if (MODELreadMeterRecord.isSummaryMeter == "2")
+                        {
+                            objWaterMeterRead = dtAllList.Rows[i]["SummaryMeterClass"];
+                            if (objWaterMeterRead != null && objWaterMeterRead != DBNull.Value)
+                                MODELreadMeterRecord.SummaryMeterClass = objWaterMeterRead.ToString();
+                            else
+                                MODELreadMeterRecord.SummaryMeterClass = null;
+                        }
+                    }
                     else
                         MODELreadMeterRecord.isSummaryMeter = "1";//默认分表
 

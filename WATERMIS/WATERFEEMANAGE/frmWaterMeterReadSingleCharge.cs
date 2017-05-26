@@ -2758,7 +2758,7 @@ namespace WATERFEEMANAGE
             {
                 if (txtWaterUserID.Text != "")
                 {
-                    string strUpdateSQL = "UPDATE WATERUSER SET waterUserTelphoneNO='" + txtWaterUserPhone.Text + "',waterPhone=null WHERE WATERUSERID='" + txtWaterUserID.Text + "'";
+                    string strUpdateSQL = "UPDATE WATERUSER SET waterUserTelphoneNO='" + txtWaterUserPhone.Text + "' WHERE WATERUSERID='" + txtWaterUserID.Text + "'";
                     if (BLLwaterUser.ExcuteSQL(strUpdateSQL) == 0)
                     {
                         mes.Show("更新用户电话信息失败，请重试!");

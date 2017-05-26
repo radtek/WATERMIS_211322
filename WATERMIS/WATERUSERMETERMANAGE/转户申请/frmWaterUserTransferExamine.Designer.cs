@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            FastReport.Design.DesignerSettings designerSettings1 = new FastReport.Design.DesignerSettings();
-            FastReport.Design.DesignerRestrictions designerRestrictions1 = new FastReport.Design.DesignerRestrictions();
-            FastReport.Export.Email.EmailSettings emailSettings1 = new FastReport.Export.Email.EmailSettings();
-            FastReport.PreviewSettings previewSettings1 = new FastReport.PreviewSettings();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            FastReport.Design.DesignerSettings designerSettings3 = new FastReport.Design.DesignerSettings();
+            FastReport.Design.DesignerRestrictions designerRestrictions3 = new FastReport.Design.DesignerRestrictions();
+            FastReport.Export.Email.EmailSettings emailSettings3 = new FastReport.Export.Email.EmailSettings();
+            FastReport.PreviewSettings previewSettings3 = new FastReport.PreviewSettings();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWaterUserTransferExamine));
-            FastReport.ReportSettings reportSettings1 = new FastReport.ReportSettings();
+            FastReport.ReportSettings reportSettings3 = new FastReport.ReportSettings();
             this.toolStripWaterUser = new System.Windows.Forms.ToolStrip();
             this.toolSearch = new System.Windows.Forms.ToolStripButton();
             this.toolExamine = new System.Windows.Forms.ToolStripButton();
@@ -64,18 +64,6 @@
             this.label40 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgList = new System.Windows.Forms.DataGridView();
-            this.environmentSettings1 = new FastReport.EnvironmentSettings();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.今天ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.本月ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.上月ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.下月ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.本年ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.上年ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.全部ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.WaterUserTransferID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ApplierName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ApplyDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -103,6 +91,19 @@
             this.ExaminerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ExamineMemo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ExamineDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.environmentSettings1 = new FastReport.EnvironmentSettings();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.今天ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.本月ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.上月ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.下月ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.本年ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.上年ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.全部ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolExcel = new System.Windows.Forms.ToolStripButton();
             this.toolStripWaterUser.SuspendLayout();
             this.tb1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -120,6 +121,7 @@
             this.toolExamine,
             this.toolNot,
             this.toolStripSeparator4,
+            this.toolExcel,
             this.toolStripButton1});
             this.toolStripWaterUser.Location = new System.Drawing.Point(0, 0);
             this.toolStripWaterUser.Name = "toolStripWaterUser";
@@ -400,17 +402,17 @@
             this.dgList.AllowUserToAddRows = false;
             this.dgList.AllowUserToDeleteRows = false;
             this.dgList.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgList.ColumnHeadersHeight = 25;
             this.dgList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.WaterUserTransferID,
@@ -451,113 +453,6 @@
             this.dgList.TabIndex = 902;
             this.dgList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgList_CellFormatting);
             this.dgList.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgList_CellPainting);
-            // 
-            // environmentSettings1
-            // 
-            designerSettings1.ApplicationConnection = null;
-            designerSettings1.DefaultFont = new System.Drawing.Font("宋体", 9F);
-            designerSettings1.Icon = null;
-            designerSettings1.Restrictions = designerRestrictions1;
-            designerSettings1.Text = "";
-            this.environmentSettings1.DesignerSettings = designerSettings1;
-            emailSettings1.Address = "";
-            emailSettings1.Host = "";
-            emailSettings1.MessageTemplate = "";
-            emailSettings1.Name = "";
-            emailSettings1.Password = "";
-            emailSettings1.UserName = "";
-            this.environmentSettings1.EmailSettings = emailSettings1;
-            previewSettings1.Buttons = ((FastReport.PreviewButtons)(((((FastReport.PreviewButtons.Print | FastReport.PreviewButtons.Save)
-                        | FastReport.PreviewButtons.Zoom)
-                        | FastReport.PreviewButtons.PageSetup)
-                        | FastReport.PreviewButtons.Close)));
-            previewSettings1.Icon = ((System.Drawing.Icon)(resources.GetObject("previewSettings1.Icon")));
-            previewSettings1.Text = "";
-            this.environmentSettings1.PreviewSettings = previewSettings1;
-            this.environmentSettings1.ReportSettings = reportSettings1;
-            this.environmentSettings1.UIStyle = FastReport.Utils.UIStyle.Office2003;
-            this.environmentSettings1.UseOffice2007Form = false;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Font = new System.Drawing.Font("微软雅黑", 11F);
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.今天ToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.本月ToolStripMenuItem,
-            this.上月ToolStripMenuItem,
-            this.下月ToolStripMenuItem,
-            this.toolStripSeparator2,
-            this.本年ToolStripMenuItem,
-            this.上年ToolStripMenuItem,
-            this.toolStripSeparator3,
-            this.全部ToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(109, 190);
-            // 
-            // 今天ToolStripMenuItem
-            // 
-            this.今天ToolStripMenuItem.Name = "今天ToolStripMenuItem";
-            this.今天ToolStripMenuItem.Size = new System.Drawing.Size(108, 24);
-            this.今天ToolStripMenuItem.Text = "今天";
-            this.今天ToolStripMenuItem.Click += new System.EventHandler(this.今天ToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(105, 6);
-            // 
-            // 本月ToolStripMenuItem
-            // 
-            this.本月ToolStripMenuItem.Name = "本月ToolStripMenuItem";
-            this.本月ToolStripMenuItem.Size = new System.Drawing.Size(108, 24);
-            this.本月ToolStripMenuItem.Text = "本月";
-            this.本月ToolStripMenuItem.Click += new System.EventHandler(this.本月ToolStripMenuItem_Click);
-            // 
-            // 上月ToolStripMenuItem
-            // 
-            this.上月ToolStripMenuItem.Name = "上月ToolStripMenuItem";
-            this.上月ToolStripMenuItem.Size = new System.Drawing.Size(108, 24);
-            this.上月ToolStripMenuItem.Text = "上月";
-            this.上月ToolStripMenuItem.Click += new System.EventHandler(this.上月ToolStripMenuItem_Click);
-            // 
-            // 下月ToolStripMenuItem
-            // 
-            this.下月ToolStripMenuItem.Name = "下月ToolStripMenuItem";
-            this.下月ToolStripMenuItem.Size = new System.Drawing.Size(108, 24);
-            this.下月ToolStripMenuItem.Text = "下月";
-            this.下月ToolStripMenuItem.Click += new System.EventHandler(this.下月ToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(105, 6);
-            // 
-            // 本年ToolStripMenuItem
-            // 
-            this.本年ToolStripMenuItem.Name = "本年ToolStripMenuItem";
-            this.本年ToolStripMenuItem.Size = new System.Drawing.Size(108, 24);
-            this.本年ToolStripMenuItem.Text = "本年";
-            this.本年ToolStripMenuItem.Click += new System.EventHandler(this.本年ToolStripMenuItem_Click);
-            // 
-            // 上年ToolStripMenuItem
-            // 
-            this.上年ToolStripMenuItem.Name = "上年ToolStripMenuItem";
-            this.上年ToolStripMenuItem.Size = new System.Drawing.Size(108, 24);
-            this.上年ToolStripMenuItem.Text = "上年";
-            this.上年ToolStripMenuItem.Click += new System.EventHandler(this.上年ToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(105, 6);
-            // 
-            // 全部ToolStripMenuItem
-            // 
-            this.全部ToolStripMenuItem.Name = "全部ToolStripMenuItem";
-            this.全部ToolStripMenuItem.Size = new System.Drawing.Size(108, 24);
-            this.全部ToolStripMenuItem.Text = "全部";
-            this.全部ToolStripMenuItem.Click += new System.EventHandler(this.全部ToolStripMenuItem_Click);
             // 
             // WaterUserTransferID
             // 
@@ -777,6 +672,122 @@
             this.ExamineDateTime.ReadOnly = true;
             this.ExamineDateTime.Width = 97;
             // 
+            // environmentSettings1
+            // 
+            designerSettings3.ApplicationConnection = null;
+            designerSettings3.DefaultFont = new System.Drawing.Font("宋体", 9F);
+            designerSettings3.Icon = null;
+            designerSettings3.Restrictions = designerRestrictions3;
+            designerSettings3.Text = "";
+            this.environmentSettings1.DesignerSettings = designerSettings3;
+            emailSettings3.Address = "";
+            emailSettings3.Host = "";
+            emailSettings3.MessageTemplate = "";
+            emailSettings3.Name = "";
+            emailSettings3.Password = "";
+            emailSettings3.UserName = "";
+            this.environmentSettings1.EmailSettings = emailSettings3;
+            previewSettings3.Buttons = ((FastReport.PreviewButtons)(((((FastReport.PreviewButtons.Print | FastReport.PreviewButtons.Save)
+                        | FastReport.PreviewButtons.Zoom)
+                        | FastReport.PreviewButtons.PageSetup)
+                        | FastReport.PreviewButtons.Close)));
+            previewSettings3.Icon = ((System.Drawing.Icon)(resources.GetObject("previewSettings3.Icon")));
+            previewSettings3.Text = "";
+            this.environmentSettings1.PreviewSettings = previewSettings3;
+            this.environmentSettings1.ReportSettings = reportSettings3;
+            this.environmentSettings1.UIStyle = FastReport.Utils.UIStyle.Office2003;
+            this.environmentSettings1.UseOffice2007Form = false;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Font = new System.Drawing.Font("微软雅黑", 11F);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.今天ToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.本月ToolStripMenuItem,
+            this.上月ToolStripMenuItem,
+            this.下月ToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.本年ToolStripMenuItem,
+            this.上年ToolStripMenuItem,
+            this.toolStripSeparator3,
+            this.全部ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(109, 190);
+            // 
+            // 今天ToolStripMenuItem
+            // 
+            this.今天ToolStripMenuItem.Name = "今天ToolStripMenuItem";
+            this.今天ToolStripMenuItem.Size = new System.Drawing.Size(108, 24);
+            this.今天ToolStripMenuItem.Text = "今天";
+            this.今天ToolStripMenuItem.Click += new System.EventHandler(this.今天ToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(105, 6);
+            // 
+            // 本月ToolStripMenuItem
+            // 
+            this.本月ToolStripMenuItem.Name = "本月ToolStripMenuItem";
+            this.本月ToolStripMenuItem.Size = new System.Drawing.Size(108, 24);
+            this.本月ToolStripMenuItem.Text = "本月";
+            this.本月ToolStripMenuItem.Click += new System.EventHandler(this.本月ToolStripMenuItem_Click);
+            // 
+            // 上月ToolStripMenuItem
+            // 
+            this.上月ToolStripMenuItem.Name = "上月ToolStripMenuItem";
+            this.上月ToolStripMenuItem.Size = new System.Drawing.Size(108, 24);
+            this.上月ToolStripMenuItem.Text = "上月";
+            this.上月ToolStripMenuItem.Click += new System.EventHandler(this.上月ToolStripMenuItem_Click);
+            // 
+            // 下月ToolStripMenuItem
+            // 
+            this.下月ToolStripMenuItem.Name = "下月ToolStripMenuItem";
+            this.下月ToolStripMenuItem.Size = new System.Drawing.Size(108, 24);
+            this.下月ToolStripMenuItem.Text = "下月";
+            this.下月ToolStripMenuItem.Click += new System.EventHandler(this.下月ToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(105, 6);
+            // 
+            // 本年ToolStripMenuItem
+            // 
+            this.本年ToolStripMenuItem.Name = "本年ToolStripMenuItem";
+            this.本年ToolStripMenuItem.Size = new System.Drawing.Size(108, 24);
+            this.本年ToolStripMenuItem.Text = "本年";
+            this.本年ToolStripMenuItem.Click += new System.EventHandler(this.本年ToolStripMenuItem_Click);
+            // 
+            // 上年ToolStripMenuItem
+            // 
+            this.上年ToolStripMenuItem.Name = "上年ToolStripMenuItem";
+            this.上年ToolStripMenuItem.Size = new System.Drawing.Size(108, 24);
+            this.上年ToolStripMenuItem.Text = "上年";
+            this.上年ToolStripMenuItem.Click += new System.EventHandler(this.上年ToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(105, 6);
+            // 
+            // 全部ToolStripMenuItem
+            // 
+            this.全部ToolStripMenuItem.Name = "全部ToolStripMenuItem";
+            this.全部ToolStripMenuItem.Size = new System.Drawing.Size(108, 24);
+            this.全部ToolStripMenuItem.Text = "全部";
+            this.全部ToolStripMenuItem.Click += new System.EventHandler(this.全部ToolStripMenuItem_Click);
+            // 
+            // toolExcel
+            // 
+            this.toolExcel.Image = global::WATERUSERMETERMANAGE.Properties.Resources.snap_undo;
+            this.toolExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolExcel.Name = "toolExcel";
+            this.toolExcel.Size = new System.Drawing.Size(97, 22);
+            this.toolExcel.Text = "导出Excel";
+            this.toolExcel.Click += new System.EventHandler(this.toolExcel_Click_1);
+            // 
             // frmWaterUserTransferExamine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -871,5 +882,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ExaminerName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ExamineMemo;
         private System.Windows.Forms.DataGridViewTextBoxColumn ExamineDateTime;
+        private System.Windows.Forms.ToolStripButton toolExcel;
     }
 }

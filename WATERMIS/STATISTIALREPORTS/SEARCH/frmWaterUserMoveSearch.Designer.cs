@@ -460,6 +460,7 @@
             this.dgList.Size = new System.Drawing.Size(996, 577);
             this.dgList.TabIndex = 901;
             this.dgList.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgList_CellPainting);
+            this.dgList.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgList_DataBindingComplete);
             // 
             // RecordID
             // 

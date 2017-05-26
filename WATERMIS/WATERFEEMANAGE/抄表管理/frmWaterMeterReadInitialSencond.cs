@@ -888,6 +888,10 @@ namespace WATERFEEMANAGE
                     if (objWaterMeterRead != null && objWaterMeterRead != DBNull.Value)
                         MODELreadMeterRecord.waterMeterProduct = objWaterMeterRead.ToString();
 
+                    objWaterMeterRead = dtAllList.Rows[i]["ChannelNO"];
+                    if (objWaterMeterRead != null && objWaterMeterRead != DBNull.Value)
+                        MODELreadMeterRecord.ChannelNO = objWaterMeterRead.ToString();
+
                     objWaterMeterRead = dtAllList.Rows[i]["waterMeterSerialNumber"];
                     if (objWaterMeterRead != null && objWaterMeterRead != DBNull.Value)
                         MODELreadMeterRecord.waterMeterSerialNumber = objWaterMeterRead.ToString();
@@ -977,18 +981,6 @@ namespace WATERFEEMANAGE
                     if (objWaterMeterRead != null && objWaterMeterRead != DBNull.Value)
                         MODELreadMeterRecord.waterUserPeopleCount = Convert.ToInt16(objWaterMeterRead);
 
-                    //objWaterMeterRead = dtAllList.Rows[i]["meterReadingPageNo"];
-                    //if (objWaterMeterRead != null && objWaterMeterRead != DBNull.Value)
-                    //    MODELreadMeterRecord.meterReadingPageNo = objWaterMeterRead.ToString();
-
-                    //objWaterMeterRead = dtAllList.Rows[i]["meterReadingID"];
-                    //if (objWaterMeterRead != null && objWaterMeterRead != DBNull.Value)
-                    //    MODELreadMeterRecord.meterReadingID = objWaterMeterRead.ToString();
-
-                    //objWaterMeterRead = dtAllList.Rows[i]["meterReadingNO"];
-                    //if (objWaterMeterRead != null && objWaterMeterRead != DBNull.Value)
-                    //    MODELreadMeterRecord.meterReadingNO = objWaterMeterRead.ToString();
-
                     objWaterMeterRead = dtAllList.Rows[i]["waterUserTypeId"];
                     if (objWaterMeterRead != null && objWaterMeterRead != DBNull.Value)
                         MODELreadMeterRecord.waterUserTypeId = objWaterMeterRead.ToString();
@@ -1027,7 +1019,17 @@ namespace WATERFEEMANAGE
 
                     objWaterMeterRead = dtAllList.Rows[i]["isSummaryMeter"];
                     if (objWaterMeterRead != null && objWaterMeterRead != DBNull.Value)
+                    {
                         MODELreadMeterRecord.isSummaryMeter = objWaterMeterRead.ToString();
+                        if (MODELreadMeterRecord.isSummaryMeter == "2")
+                        {
+                            objWaterMeterRead = dtAllList.Rows[i]["SummaryMeterClass"];
+                            if (objWaterMeterRead != null && objWaterMeterRead != DBNull.Value)
+                                MODELreadMeterRecord.SummaryMeterClass = objWaterMeterRead.ToString();
+                            else
+                                MODELreadMeterRecord.SummaryMeterClass = null;
+                        }
+                    }
                     else
                         MODELreadMeterRecord.isSummaryMeter = "1";//默认分表
 

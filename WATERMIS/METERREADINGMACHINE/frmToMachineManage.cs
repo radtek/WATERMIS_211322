@@ -1113,22 +1113,29 @@ namespace METERREADINGMACHINE
                         if (strPhone.Length > 28)
                             strPhone = strPhone.Substring(0, 28);
 
+                        MODELreadMeterRecord.ChannelNO = "";
+                        objRecordData = dgList.Rows[i].Cells["ChannelNO"].Value;
+                        if (objRecordData != null && objRecordData != DBNull.Value)
+                        {
+                            MODELreadMeterRecord.ChannelNO = objRecordData.ToString();
+                        }
+
                         MODELreadMeterRecord.waterMeterSerialNumber = "";
                         objRecordData = dgList.Rows[i].Cells["waterMeterSerialNumber"].Value;
                         if (objRecordData != null && objRecordData != DBNull.Value)
                         {
                             MODELreadMeterRecord.waterMeterSerialNumber = objRecordData.ToString();
                         }
-                        string[] strWaterMeterSerialNumber = MODELreadMeterRecord.waterMeterSerialNumber.Split('/');
-                        strWaterMeterSerialNumber[0] = strWaterMeterSerialNumber[0].Replace(" ", "");
-                        if (strWaterMeterSerialNumber[0].Length > 12)
-                            strWaterMeterSerialNumber[0] = strWaterMeterSerialNumber[0].Substring(0, 12);
-                        if (strWaterMeterSerialNumber.Length > 1)
-                        {
-                            strWaterMeterSerialNumber[1] = strWaterMeterSerialNumber[1].Replace(" ", "");
-                            if (strWaterMeterSerialNumber[1].Length > 12)
-                                strWaterMeterSerialNumber[1] = strWaterMeterSerialNumber[1].Substring(0, 12);
-                        }
+                        //string[] strWaterMeterSerialNumber = MODELreadMeterRecord.waterMeterSerialNumber.Split('/');
+                        //strWaterMeterSerialNumber[0] = strWaterMeterSerialNumber[0].Replace(" ", "");
+                        //if (strWaterMeterSerialNumber[0].Length > 12)
+                        //    strWaterMeterSerialNumber[0] = strWaterMeterSerialNumber[0].Substring(0, 12);
+                        //if (strWaterMeterSerialNumber.Length > 1)
+                        //{
+                        //    strWaterMeterSerialNumber[1] = strWaterMeterSerialNumber[1].Replace(" ", "");
+                        //    if (strWaterMeterSerialNumber[1].Length > 12)
+                        //        strWaterMeterSerialNumber[1] = strWaterMeterSerialNumber[1].Substring(0, 12);
+                        //}
 
                         MODELreadMeterRecord.IsReverse = "0";
                         objRecordData = dgList.Rows[i].Cells["IsReverse"].Value;
@@ -1290,8 +1297,8 @@ namespace METERREADINGMACHINE
                             MODELreadMeterRecord.avePrice + "','0','" + MODELreadMeterRecord.extraChargePrice1 + "','" + MODELreadMeterRecord.extraChargePrice2 + "','" +
                             MODELreadMeterRecord.TrapeZoid1 + "','" + MODELreadMeterRecord.TrapeZoid2 + "','" + MODELreadMeterRecord.TrapeZoid3 + "','" +
                             MODELreadMeterRecord.TrapeZoidPrice1 + "','" + MODELreadMeterRecord.TrapeZoidPrice2 + "','" + MODELreadMeterRecord.TrapeZoidPrice3 +
-                            "',0,0,0,'" + MODELreadMeterRecord.isTrapeZoid + "','0','" + (strWaterMeterSerialNumber.Length > 0 ? strWaterMeterSerialNumber[0] : "") + "','" +
-                            MODELreadMeterRecord.waterMeterLastNumber + "','" + MODELreadMeterRecord.waterMeterEndNumber + "','0','" + (strWaterMeterSerialNumber.Length > 1 ? strWaterMeterSerialNumber[1] : "") + "','" +
+                            "',0,0,0,'" + MODELreadMeterRecord.isTrapeZoid + "','0','" + MODELreadMeterRecord.ChannelNO + "','" +
+                            MODELreadMeterRecord.waterMeterLastNumber + "','" + MODELreadMeterRecord.waterMeterEndNumber + "','0','" + MODELreadMeterRecord.waterMeterSerialNumber+ "','" +
                            MODELreadMeterRecord.IsReverse + "','0',0,'" +
                            MODELreadMeterRecord.WATERUSERJSYE.ToString("F2") + "',0,0,0,'" + MODELreadMeterRecord.meterReaderName +
                             "',0,'" + MODELreadMeterRecord.WATERUSERLJQF.ToString("F2") + "',0,'" + MODELreadMeterRecord.WCYS + "','" + MODELreadMeterRecord.readMeterRecordDate.ToString("yyyy-MM-dd") + "')";

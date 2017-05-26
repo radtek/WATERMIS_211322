@@ -352,9 +352,7 @@ namespace WATERUSERMETERMANAGE
 
         private void toolExcel_Click(object sender, EventArgs e)
         {
-            string strCaption = "转户申请表";
-            ExportExcel ExportExcel = new ExportExcel();
-            ExportExcel.ExportToExcel(strCaption, dgList);
+
         }
 
         private void toolExamine_Click(object sender, EventArgs e)
@@ -448,6 +446,13 @@ ExamineDateTime=GETDATE() WHERE WaterUserTransferID IN (" + strWaterUserTransfer
             int intCount = BLLwaterUser.ExcuteSQL(strSQL);
             if (intCount > 0)
                 toolSearch_Click(null, null);
+        }
+
+        private void toolExcel_Click_1(object sender, EventArgs e)
+        {
+            string strCaption = "转户申请单明细表";
+            ExportExcel ExportExcel = new ExportExcel();
+            ExportExcel.ExportToExcel(strCaption, dgList);
         }
     }
 }

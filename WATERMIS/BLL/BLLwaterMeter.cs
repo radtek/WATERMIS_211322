@@ -390,7 +390,8 @@ namespace BLL
                "waterMeterProduct=@waterMeterProduct,waterMeterSerialNumber=@waterMeterSerialNumber,waterMeterMode=@waterMeterMode," +
                "waterMeterMagnification=@waterMeterMagnification,waterMeterMaxRange=@waterMeterMaxRange,waterMeterProofreadingDate=@waterMeterProofreadingDate," +
                "waterMeteProofreadingPeriod=@waterMeteProofreadingPeriod,waterUserId=@waterUserId,waterMeterParentId=@waterMeterParentId,MEMO=@MEMO,isSummaryMeter=@isSummaryMeter,"+
-               "ISUSECHANGE=@ISUSECHANGE,CHANGEMONTH=@CHANGEMONTH,waterMeterTypeIdChange=@waterMeterTypeIdChange,IsReverse=@IsReverse,WATERMETERLOCKNO=@WATERMETERLOCKNO ");
+               "ISUSECHANGE=@ISUSECHANGE,CHANGEMONTH=@CHANGEMONTH,waterMeterTypeIdChange=@waterMeterTypeIdChange,IsReverse=@IsReverse,WATERMETERLOCKNO=@WATERMETERLOCKNO,"+
+               "ChannelNO=@ChannelNO,SummaryMeterClass=@SummaryMeterClass ");
            str.Append("WHERE waterMeterId=@waterMeterId");
            SqlParameter[] para =
            {
@@ -417,6 +418,8 @@ namespace BLL
                new SqlParameter("@waterMeterTypeIdChange",SqlDbType.VarChar,30),
                new SqlParameter("@IsReverse",SqlDbType.VarChar,30),
                new SqlParameter("@WATERMETERLOCKNO",SqlDbType.VarChar,50),
+               new SqlParameter("@ChannelNO",SqlDbType.VarChar,30),
+               new SqlParameter("@SummaryMeterClass",SqlDbType.VarChar,10),
                new SqlParameter("@waterMeterId",SqlDbType.VarChar,30)
            };
            para[0].Value = MODELwaterMeter.waterMeterNo;
@@ -453,7 +456,9 @@ namespace BLL
            }
            para[21].Value = MODELwaterMeter.IsReverse;
            para[22].Value = MODELwaterMeter.WATERMETERLOCKNO;
-           para[23].Value = MODELwaterMeter.waterMeterId;
+           para[23].Value = MODELwaterMeter.ChannelNO;
+           para[24].Value = MODELwaterMeter.SummaryMeterClass;
+           para[25].Value = MODELwaterMeter.waterMeterId;
 
            if (DBUtility.DbHelperSQL.ExecuteSql(str.ToString(), para) > 0)
                return true;
@@ -489,13 +494,13 @@ namespace BLL
            str.Append("INSERT INTO waterMeter(waterMeterId,waterMeterNo,waterMeterStartNumber,waterMeterPositionName,waterMeterState,"+
                "waterMeterSizeId,waterMeterTypeId,WATERFIXVALUE,waterMeterProduct,waterMeterSerialNumber,waterMeterMode,"+
                "waterMeterMagnification,waterMeterMaxRange,waterMeterProofreadingDate,waterMeteProofreadingPeriod,waterUserId,"+
-               "waterMeterParentId,memo,STARTUSEDATETIME,isSummaryMeter,ISUSECHANGE,CHANGEMONTH,waterMeterTypeIdChange,IsReverse,WATERMETERLOCKNO) ");
+               "waterMeterParentId,memo,STARTUSEDATETIME,isSummaryMeter,ISUSECHANGE,CHANGEMONTH,waterMeterTypeIdChange,IsReverse,WATERMETERLOCKNO,SummaryMeterClass,ChannelNO) ");
 
            str.Append("VALUES(@waterMeterId,@waterMeterNo,@waterMeterStartNumber,@waterMeterPositionName,@waterMeterState,"+
                "@waterMeterSizeId,@waterMeterTypeId,@WATERFIXVALUE,@waterMeterProduct,@waterMeterSerialNumber,@waterMeterMode,"+
                "@waterMeterMagnification,@waterMeterMaxRange,@waterMeterProofreadingDate,"+
                "@waterMeteProofreadingPeriod,@waterUserId,@waterMeterParentId,@memo,@STARTUSEDATETIME,@isSummaryMeter,"+
-               "@ISUSECHANGE,@CHANGEMONTH,@waterMeterTypeIdChange,@IsReverse,@WATERMETERLOCKNO)");
+               "@ISUSECHANGE,@CHANGEMONTH,@waterMeterTypeIdChange,@IsReverse,@WATERMETERLOCKNO,@SummaryMeterClass,@ChannelNO)");
            SqlParameter[] para =
            {
                new SqlParameter("@waterMeterId",SqlDbType.VarChar,30),
@@ -522,7 +527,9 @@ namespace BLL
                new SqlParameter("@CHANGEMONTH",SqlDbType.VarChar,30),
                new SqlParameter("@waterMeterTypeIdChange",SqlDbType.VarChar,30),
                new SqlParameter("@IsReverse",SqlDbType.VarChar,30),
-               new SqlParameter("@WATERMETERLOCKNO",SqlDbType.VarChar,50)
+               new SqlParameter("@WATERMETERLOCKNO",SqlDbType.VarChar,50),
+               new SqlParameter("@SummaryMeterClass",SqlDbType.VarChar,10),
+               new SqlParameter("@ChannelNO",SqlDbType.VarChar,30)
            };
            para[0].Value = MODELwaterMeter.waterMeterId;
            para[1].Value = MODELwaterMeter.waterMeterNo;
@@ -563,6 +570,8 @@ namespace BLL
            }
            para[23].Value = MODELwaterMeter.IsReverse;
            para[24].Value = MODELwaterMeter.WATERMETERLOCKNO;
+           para[25].Value = MODELwaterMeter.SummaryMeterClass;
+           para[26].Value = MODELwaterMeter.ChannelNO;
 
            if (DBUtility.DbHelperSQL.ExecuteSql(str.ToString(), para) > 0)
                return true;

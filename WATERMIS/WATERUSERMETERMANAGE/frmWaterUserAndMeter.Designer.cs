@@ -140,6 +140,7 @@
             this.waterMeterTypeValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waterMeterStartNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waterMeterProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ChannelNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waterMeterSerialNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waterMeterMode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WATERMETERLOCKNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -149,6 +150,7 @@
             this.waterMeteProofreadingPeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waterUserIdWaterMeter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.isSummaryMeterS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SummaryMeterClass = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waterMeterParentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waterMeterParentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WATERFIXVALUE = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -178,13 +180,16 @@
             this.txtWaterMeterMaxRange = new System.Windows.Forms.TextBox();
             this.txtWaterMeterMagnification = new System.Windows.Forms.TextBox();
             this.txtLockNO = new System.Windows.Forms.TextBox();
+            this.txtChannelNO = new System.Windows.Forms.TextBox();
             this.txtWaterMeterSerialNum = new System.Windows.Forms.TextBox();
             this.txtWaterMeterProductor = new System.Windows.Forms.TextBox();
             this.txtWaterMeterStartNum = new System.Windows.Forms.TextBox();
             this.txtWaterMeterType = new System.Windows.Forms.TextBox();
             this.txtWaterMeterState = new System.Windows.Forms.TextBox();
+            this.txtSummaryMeterClass = new System.Windows.Forms.TextBox();
             this.txtIsSummary = new System.Windows.Forms.TextBox();
             this.txtWaterMeterSize = new System.Windows.Forms.TextBox();
+            this.cmbSummaryMeterClass = new System.Windows.Forms.ComboBox();
             this.txtWaterMeterPosition = new System.Windows.Forms.TextBox();
             this.cmbIsSummary = new System.Windows.Forms.ComboBox();
             this.txtWaterMeterNO = new System.Windows.Forms.TextBox();
@@ -195,9 +200,11 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label58 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
             this.toolStripWaterMeter = new System.Windows.Forms.ToolStrip();
             this.toolAddWaterMeter = new System.Windows.Forms.ToolStripButton();
             this.toolModifyWaterMeter = new System.Windows.Forms.ToolStripButton();
@@ -529,7 +536,6 @@
             // 
             // cmbCommunity
             // 
-            this.cmbCommunity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCommunity.DropDownWidth = 150;
             this.cmbCommunity.FormattingEnabled = true;
             this.cmbCommunity.Location = new System.Drawing.Point(92, 277);
@@ -1172,7 +1178,7 @@
             this.tbWaterMeter.Location = new System.Drawing.Point(3, 3);
             this.tbWaterMeter.Name = "tbWaterMeter";
             this.tbWaterMeter.RowCount = 2;
-            this.tbWaterMeter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 447F));
+            this.tbWaterMeter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 446F));
             this.tbWaterMeter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tbWaterMeter.Size = new System.Drawing.Size(456, 626);
             this.tbWaterMeter.TabIndex = 3;
@@ -1181,9 +1187,9 @@
             // 
             this.groupBox5.Controls.Add(this.dgWaterMeter);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox5.Location = new System.Drawing.Point(3, 450);
+            this.groupBox5.Location = new System.Drawing.Point(3, 449);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(450, 173);
+            this.groupBox5.Size = new System.Drawing.Size(450, 174);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "水表列表";
@@ -1216,6 +1222,7 @@
             this.waterMeterTypeValue,
             this.waterMeterStartNumber,
             this.waterMeterProduct,
+            this.ChannelNO,
             this.waterMeterSerialNumber,
             this.waterMeterMode,
             this.WATERMETERLOCKNO,
@@ -1225,6 +1232,7 @@
             this.waterMeteProofreadingPeriod,
             this.waterUserIdWaterMeter,
             this.isSummaryMeterS,
+            this.SummaryMeterClass,
             this.waterMeterParentId,
             this.waterMeterParentName,
             this.WATERFIXVALUE,
@@ -1242,9 +1250,10 @@
             this.dgWaterMeter.ReadOnly = true;
             this.dgWaterMeter.RowHeadersWidth = 25;
             this.dgWaterMeter.RowTemplate.Height = 23;
-            this.dgWaterMeter.Size = new System.Drawing.Size(444, 148);
+            this.dgWaterMeter.Size = new System.Drawing.Size(444, 149);
             this.dgWaterMeter.TabIndex = 1;
             this.dgWaterMeter.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgWaterMeter_RowEnter);
+            this.dgWaterMeter.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgWaterMeter_CellFormatting);
             this.dgWaterMeter.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgWaterMeter_CellPainting);
             // 
             // waterMeterNo
@@ -1330,6 +1339,14 @@
             this.waterMeterProduct.ReadOnly = true;
             this.waterMeterProduct.Width = 97;
             // 
+            // ChannelNO
+            // 
+            this.ChannelNO.DataPropertyName = "ChannelNO";
+            this.ChannelNO.HeaderText = "通道号";
+            this.ChannelNO.Name = "ChannelNO";
+            this.ChannelNO.ReadOnly = true;
+            this.ChannelNO.Width = 81;
+            // 
             // waterMeterSerialNumber
             // 
             this.waterMeterSerialNumber.DataPropertyName = "waterMeterSerialNumber";
@@ -1405,6 +1422,14 @@
             this.isSummaryMeterS.Name = "isSummaryMeterS";
             this.isSummaryMeterS.ReadOnly = true;
             this.isSummaryMeterS.Width = 81;
+            // 
+            // SummaryMeterClass
+            // 
+            this.SummaryMeterClass.DataPropertyName = "SummaryMeterClass";
+            this.SummaryMeterClass.HeaderText = "总表级别";
+            this.SummaryMeterClass.Name = "SummaryMeterClass";
+            this.SummaryMeterClass.ReadOnly = true;
+            this.SummaryMeterClass.Width = 97;
             // 
             // waterMeterParentId
             // 
@@ -1511,13 +1536,16 @@
             this.gbWaterMeter.Controls.Add(this.txtWaterMeterMaxRange);
             this.gbWaterMeter.Controls.Add(this.txtWaterMeterMagnification);
             this.gbWaterMeter.Controls.Add(this.txtLockNO);
+            this.gbWaterMeter.Controls.Add(this.txtChannelNO);
             this.gbWaterMeter.Controls.Add(this.txtWaterMeterSerialNum);
             this.gbWaterMeter.Controls.Add(this.txtWaterMeterProductor);
             this.gbWaterMeter.Controls.Add(this.txtWaterMeterStartNum);
             this.gbWaterMeter.Controls.Add(this.txtWaterMeterType);
             this.gbWaterMeter.Controls.Add(this.txtWaterMeterState);
+            this.gbWaterMeter.Controls.Add(this.txtSummaryMeterClass);
             this.gbWaterMeter.Controls.Add(this.txtIsSummary);
             this.gbWaterMeter.Controls.Add(this.txtWaterMeterSize);
+            this.gbWaterMeter.Controls.Add(this.cmbSummaryMeterClass);
             this.gbWaterMeter.Controls.Add(this.txtWaterMeterPosition);
             this.gbWaterMeter.Controls.Add(this.cmbIsSummary);
             this.gbWaterMeter.Controls.Add(this.txtWaterMeterNO);
@@ -1528,9 +1556,11 @@
             this.gbWaterMeter.Controls.Add(this.label13);
             this.gbWaterMeter.Controls.Add(this.label58);
             this.gbWaterMeter.Controls.Add(this.label16);
+            this.gbWaterMeter.Controls.Add(this.label41);
             this.gbWaterMeter.Controls.Add(this.label14);
             this.gbWaterMeter.Controls.Add(this.label15);
             this.gbWaterMeter.Controls.Add(this.label27);
+            this.gbWaterMeter.Controls.Add(this.label42);
             this.gbWaterMeter.Controls.Add(this.toolStripWaterMeter);
             this.gbWaterMeter.Controls.Add(this.label25);
             this.gbWaterMeter.Controls.Add(this.label29);
@@ -1547,7 +1577,7 @@
             this.gbWaterMeter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbWaterMeter.Location = new System.Drawing.Point(3, 3);
             this.gbWaterMeter.Name = "gbWaterMeter";
-            this.gbWaterMeter.Size = new System.Drawing.Size(450, 441);
+            this.gbWaterMeter.Size = new System.Drawing.Size(450, 440);
             this.gbWaterMeter.TabIndex = 0;
             this.gbWaterMeter.TabStop = false;
             // 
@@ -1688,10 +1718,11 @@
             // 
             // txtWaterMeterMagnification
             // 
-            this.txtWaterMeterMagnification.Location = new System.Drawing.Point(87, 339);
+            this.txtWaterMeterMagnification.Location = new System.Drawing.Point(433, 301);
             this.txtWaterMeterMagnification.Name = "txtWaterMeterMagnification";
-            this.txtWaterMeterMagnification.Size = new System.Drawing.Size(88, 26);
+            this.txtWaterMeterMagnification.Size = new System.Drawing.Size(12, 26);
             this.txtWaterMeterMagnification.TabIndex = 68;
+            this.txtWaterMeterMagnification.Visible = false;
             this.txtWaterMeterMagnification.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtWaterUserCount_KeyPress);
             // 
             // txtLockNO
@@ -1701,16 +1732,23 @@
             this.txtLockNO.Size = new System.Drawing.Size(88, 26);
             this.txtLockNO.TabIndex = 66;
             // 
+            // txtChannelNO
+            // 
+            this.txtChannelNO.Location = new System.Drawing.Point(87, 272);
+            this.txtChannelNO.Name = "txtChannelNO";
+            this.txtChannelNO.Size = new System.Drawing.Size(89, 26);
+            this.txtChannelNO.TabIndex = 66;
+            // 
             // txtWaterMeterSerialNum
             // 
-            this.txtWaterMeterSerialNum.Location = new System.Drawing.Point(87, 272);
+            this.txtWaterMeterSerialNum.Location = new System.Drawing.Point(269, 272);
             this.txtWaterMeterSerialNum.Name = "txtWaterMeterSerialNum";
-            this.txtWaterMeterSerialNum.Size = new System.Drawing.Size(271, 26);
+            this.txtWaterMeterSerialNum.Size = new System.Drawing.Size(89, 26);
             this.txtWaterMeterSerialNum.TabIndex = 66;
             // 
             // txtWaterMeterProductor
             // 
-            this.txtWaterMeterProductor.Location = new System.Drawing.Point(270, 205);
+            this.txtWaterMeterProductor.Location = new System.Drawing.Point(87, 339);
             this.txtWaterMeterProductor.Name = "txtWaterMeterProductor";
             this.txtWaterMeterProductor.Size = new System.Drawing.Size(88, 26);
             this.txtWaterMeterProductor.TabIndex = 65;
@@ -1737,6 +1775,13 @@
             this.txtWaterMeterState.Size = new System.Drawing.Size(88, 26);
             this.txtWaterMeterState.TabIndex = 62;
             // 
+            // txtSummaryMeterClass
+            // 
+            this.txtSummaryMeterClass.Location = new System.Drawing.Point(270, 205);
+            this.txtSummaryMeterClass.Name = "txtSummaryMeterClass";
+            this.txtSummaryMeterClass.Size = new System.Drawing.Size(88, 26);
+            this.txtSummaryMeterClass.TabIndex = 38;
+            // 
             // txtIsSummary
             // 
             this.txtIsSummary.Location = new System.Drawing.Point(87, 205);
@@ -1750,6 +1795,23 @@
             this.txtWaterMeterSize.Name = "txtWaterMeterSize";
             this.txtWaterMeterSize.Size = new System.Drawing.Size(89, 26);
             this.txtWaterMeterSize.TabIndex = 61;
+            // 
+            // cmbSummaryMeterClass
+            // 
+            this.cmbSummaryMeterClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSummaryMeterClass.FormattingEnabled = true;
+            this.cmbSummaryMeterClass.Items.AddRange(new object[] {
+            "一级",
+            "二级",
+            "三级",
+            "四级",
+            "五级",
+            "六级",
+            "七级"});
+            this.cmbSummaryMeterClass.Location = new System.Drawing.Point(270, 207);
+            this.cmbSummaryMeterClass.Name = "cmbSummaryMeterClass";
+            this.cmbSummaryMeterClass.Size = new System.Drawing.Size(88, 24);
+            this.cmbSummaryMeterClass.TabIndex = 47;
             // 
             // txtWaterMeterPosition
             // 
@@ -1837,16 +1899,26 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(2, 344);
+            this.label16.Location = new System.Drawing.Point(380, 306);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(96, 16);
+            this.label16.Size = new System.Drawing.Size(64, 16);
             this.label16.TabIndex = 66;
-            this.label16.Text = "*倍    率：";
+            this.label16.Text = "*倍率：";
+            this.label16.Visible = false;
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(10, 277);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(88, 16);
+            this.label41.TabIndex = 64;
+            this.label41.Text = "通 道 号：";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(9, 276);
+            this.label14.Location = new System.Drawing.Point(192, 277);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(88, 16);
             this.label14.TabIndex = 64;
@@ -1855,7 +1927,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(193, 209);
+            this.label15.Location = new System.Drawing.Point(10, 344);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(88, 16);
             this.label15.TabIndex = 66;
@@ -1869,6 +1941,15 @@
             this.label27.Size = new System.Drawing.Size(96, 16);
             this.label27.TabIndex = 61;
             this.label27.Text = "*口    径：";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(193, 210);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(88, 16);
+            this.label42.TabIndex = 50;
+            this.label42.Text = "总表级别：";
             // 
             // toolStripWaterMeter
             // 
@@ -1964,7 +2045,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(10, 209);
+            this.label25.Location = new System.Drawing.Point(10, 210);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(88, 16);
             this.label25.TabIndex = 50;
@@ -2653,7 +2734,7 @@
             // 
             // cmbCommunityS
             // 
-            this.cmbCommunityS.DropDownWidth = 120;
+            this.cmbCommunityS.DropDownWidth = 150;
             this.cmbCommunityS.FormattingEnabled = true;
             this.cmbCommunityS.Location = new System.Drawing.Point(73, 75);
             this.cmbCommunityS.Name = "cmbCommunityS";
@@ -3029,6 +3110,12 @@
         private System.Windows.Forms.TextBox txtLockNO;
         private System.Windows.Forms.Label label58;
         private System.Windows.Forms.ComboBox cmbMeterParentName;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.TextBox txtChannelNO;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.TextBox txtSummaryMeterClass;
+        private System.Windows.Forms.ComboBox cmbSummaryMeterClass;
+        private System.Windows.Forms.Label label42;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterMeterNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterMeterPositionId;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterMeterPositionName;
@@ -3039,6 +3126,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn waterMeterTypeValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterMeterStartNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterMeterProduct;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ChannelNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterMeterSerialNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterMeterMode;
         private System.Windows.Forms.DataGridViewTextBoxColumn WATERMETERLOCKNO;
@@ -3048,6 +3136,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn waterMeteProofreadingPeriod;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterUserIdWaterMeter;
         private System.Windows.Forms.DataGridViewTextBoxColumn isSummaryMeterS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SummaryMeterClass;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterMeterParentId;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterMeterParentName;
         private System.Windows.Forms.DataGridViewTextBoxColumn WATERFIXVALUE;
@@ -3058,7 +3147,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ChANGEMONTH;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterMeterTypeIdChange;
         private System.Windows.Forms.DataGridViewTextBoxColumn ISUSECHANGE;
-        private System.Windows.Forms.ToolTip toolTip1;
 
     }
 }

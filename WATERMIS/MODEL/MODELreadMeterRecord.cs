@@ -59,6 +59,7 @@ namespace MODEL
        private int _WATERFIXVALUE;
        private string _waterMeterProduct;
        private string _waterMeterSerialNumber;
+       private string _ChannelNO;
        private string _waterMeterMode;
        private int _waterMeterMagnification;
        private int _waterMeterMaxRange;
@@ -102,6 +103,7 @@ namespace MODEL
        private string _BankAcountNumber;
        private string _waterMeterParentId;
        private string _isSummaryMeter;
+       private string _SummaryMeterClass;
        private string _MEMO;
        private string _WATERMETERNUMBERCHANGESTATE;
        private int _ordernumber;
@@ -725,6 +727,17 @@ namespace MODEL
                _waterMeterSerialNumber = value;
            }
        }
+       public string ChannelNO
+       {
+           get
+           {
+               return _ChannelNO;
+           }
+           set
+           {
+               _ChannelNO = value;
+           }
+       }
        public string waterMeterMode
        {
            get
@@ -1190,6 +1203,17 @@ namespace MODEL
            set
            {
                _isSummaryMeter = value;
+           }
+       }
+       public string SummaryMeterClass
+       {
+           get
+           {
+               return _SummaryMeterClass;
+           }
+           set
+           {
+               _SummaryMeterClass = value;
            }
        }
        public string waterMeterParentId

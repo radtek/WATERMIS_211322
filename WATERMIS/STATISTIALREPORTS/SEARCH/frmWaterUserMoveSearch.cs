@@ -188,11 +188,6 @@ namespace STATISTIALREPORTS
         /// </summary>
         DataTable dtWaterUserList = new DataTable();
 
-        /// <summary>
-        /// 存储统计行信息
-        /// </summary>
-        DataTable dtClone = new DataTable();
-
         private void LoadData()
         {
             //string strFilter = "select *,(select COUNT(*) from dbo.V_WATERMETER A WHERE A.waterUserId=B.waterUserId) AS METERCOUNT  from dbo.V_WATERUSER_BYMETERREADING B WHERE 1=1 ";
@@ -472,6 +467,15 @@ namespace STATISTIALREPORTS
            string strCaption ="转户明细表";
             ExportExcel ExportExcel = new ExportExcel();
             ExportExcel.ExportToExcel(strCaption, dgList);
+        }
+
+        private void dgList_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            if (dgList.Rows.Count > 0)
+            {
+                dgList.Rows[dgList.Rows.Count - 1].Cells["waterUserId"].Value = "合计:";
+                dgList.Rows[dgList.Rows.Count - 1].Cells["waterUserName"].Value = dtWaterUserList.Rows.Count ;
+            }
         }      
     }
 }

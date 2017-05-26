@@ -1508,7 +1508,7 @@ namespace BLL
                "bankName,BankAcountNumber,memo,initialReadMeterMesDateTime,avePriceDescribe,meterReadingNO,waterMeterParentId,totalNumberDescribe,"+
                "waterUserHouseType,waterMeterTypeId,waterUserState,waterMeterSizeId,ordernumber,extraCharge,lastNumberYearMonth,isSummaryMeter,waterUserchargeType,"+
                "IsReverse,areaNO,pianNO,duanNO,communityID,COMMUNITYNAME,buildingNO,unitNO,createType,waterUserTelphoneNO,waterUserNameCode,"+
-               "readMeterRecordYearAndMonth,waterMeterTypeClassID,waterMeterTypeClassName,WATERMETERNUMBERCHANGESTATE,WATERUSERQQYE,WATERUSERJSYE,WATERUSERLJQF,NotReadMonthCount) ");
+               "readMeterRecordYearAndMonth,waterMeterTypeClassID,waterMeterTypeClassName,WATERMETERNUMBERCHANGESTATE,WATERUSERQQYE,WATERUSERJSYE,WATERUSERLJQF,NotReadMonthCount,ChannelNO,SummaryMeterClass) ");
            str.Append("VALUES(@readMeterRecordId,@readMeterRecordIdLast,@waterMeterId,@waterMeterNo,@waterMeterLastNumber,@waterMeterEndNumber," +
                "@totalNumber,@avePrice,@waterTotalCharge,@extraChargePrice1,@extraChargePrice2,@extraChargePrice3,@extraChargePrice4,@extraChargePrice5,"+
                "@extraChargePrice6,@extraChargePrice7,@extraChargePrice8,@extraCharge1,@extraCharge2,@extraCharge3,@extraCharge4,@extraCharge5,@extraCharge6,"+
@@ -1520,7 +1520,7 @@ namespace BLL
                "@bankName,@BankAcountNumber,@memo,@initialReadMeterMesDateTime,@avePriceDescribe,@meterReadingNO,@waterMeterParentId,@totalNumberDescribe,"+
                "@waterUserHouseType,@waterMeterTypeId,@waterUserState,@waterMeterSizeId,@ordernumber,@extraCharge,@lastNumberYearMonth,@isSummaryMeter,@waterUserchargeType,"+
                "@IsReverse,@areaNO,@pianNO,@duanNO,@communityID,@COMMUNITYNAME,@buildingNO,@unitNO,@createType,@waterUserTelphoneNO,@waterUserNameCode,"+
-               "@readMeterRecordYearAndMonth,@waterMeterTypeClassID,@waterMeterTypeClassName,@WATERMETERNUMBERCHANGESTATE,@WATERUSERQQYE,@WATERUSERJSYE,@WATERUSERLJQF,@NotReadMonthCount) ");
+               "@readMeterRecordYearAndMonth,@waterMeterTypeClassID,@waterMeterTypeClassName,@WATERMETERNUMBERCHANGESTATE,@WATERUSERQQYE,@WATERUSERJSYE,@WATERUSERLJQF,@NotReadMonthCount,@ChannelNO,@SummaryMeterClass) ");
            SqlParameter[] para =
            {
                new SqlParameter("@readMeterRecordId",SqlDbType.VarChar,30),
@@ -1615,7 +1615,9 @@ namespace BLL
                new SqlParameter("@WATERUSERQQYE",SqlDbType.Decimal),
                new SqlParameter("@WATERUSERJSYE",SqlDbType.Decimal),
                new SqlParameter("@WATERUSERLJQF",SqlDbType.Decimal),
-               new SqlParameter("@NotReadMonthCount",SqlDbType.Int)
+               new SqlParameter("@NotReadMonthCount",SqlDbType.Int),
+               new SqlParameter("@ChannelNO",SqlDbType.VarChar,30),
+               new SqlParameter("@SummaryMeterClass",SqlDbType.VarChar,10)
            };
 
            para[0].Value = MODELreadMeterRecord.readMeterRecordId;
@@ -1713,6 +1715,8 @@ namespace BLL
            para[90].Value = MODELreadMeterRecord.WATERUSERJSYE;
            para[91].Value = MODELreadMeterRecord.WATERUSERLJQF;
            para[92].Value = MODELreadMeterRecord.NotReadMonthCount;
+           para[93].Value = MODELreadMeterRecord.ChannelNO;
+           para[94].Value = MODELreadMeterRecord.SummaryMeterClass;
 
            if (DBUtility.DbHelperSQL.ExecuteSql(str.ToString(), para) > 0)
                return true;

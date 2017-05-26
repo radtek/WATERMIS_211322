@@ -195,12 +195,8 @@ namespace WATERUSERMETERMANAGE
             cmb.DataSource = dt;
             cmb.DisplayMember = "COMMUNITYNAME";
             cmb.ValueMember = "COMMUNITYID";
-
-            if (strType == "0")
-            {
                 cmb.AutoCompleteSource = AutoCompleteSource.ListItems;   //设置自动完成的源 
                 cmb.AutoCompleteMode = AutoCompleteMode.SuggestAppend;    //设置自动完成的的形式 
-            }
         }
         /// <summary>
         /// 绑定用水类别
@@ -683,13 +679,10 @@ namespace WATERUSERMETERMANAGE
                 txtWaterMeterPosition.Visible = false;
                 txtWaterMeterSize.Visible = false;
                 txtWaterMeterState.Visible = false;
-                //txtWaterMeterType.Visible = false;
-                //txtWaterMeterTypeChange.Visible = false;
-                //txtWaterMeterIsSummary.Visible = false;
                 txtWaterMeterProofDate.Visible = false;
                 txtIsSummary.Visible = false;
                 txtWaterMeterIsSummary.Visible = false;
-
+                txtSummaryMeterClass.Visible = false;
 
                 chkUseChange.Enabled = true;
             }
@@ -742,6 +735,7 @@ namespace WATERUSERMETERMANAGE
                 txtWaterMeterProofDate.Visible = true;
                 txtIsSummary.Visible = true;
                 txtWaterMeterIsSummary.Visible = true;
+                txtSummaryMeterClass.Visible = true;
 
                 txtWaterMeterTypeChange.Visible = true;
                 chkUseChange.Enabled = false;
@@ -1876,12 +1870,6 @@ namespace WATERUSERMETERMANAGE
         {
             try
             {
-                //if (cmbWaterMeterPosition.SelectedValue == null || cmbWaterMeterPosition.SelectedValue == DBNull.Value)
-                //{
-                //    mes.Show("请选择水表位置!");
-                //    cmbWaterMeterPosition.Focus();
-                //    return;
-                //}
                 if (cmbWaterMeterSize.SelectedValue == null || cmbWaterMeterSize.SelectedValue == DBNull.Value)
                 {
                     mes.Show("请选择水表口径!");
@@ -1936,6 +1924,18 @@ namespace WATERUSERMETERMANAGE
                     cmbIsSummary.Focus();
                     return;
                 }
+                else
+                {
+                    if (cmbIsSummary.SelectedIndex > 0)
+                    {
+                        if (cmbSummaryMeterClass.SelectedIndex < 0)
+                        {
+                            mes.Show("请选择总表级别!");
+                            cmbSummaryMeterClass.Focus();
+                            return;
+                        }
+                    }
+                }
 
                 if (chkUseChange.Checked)
                 {
@@ -1978,20 +1978,10 @@ namespace WATERUSERMETERMANAGE
                     txtWaterMeterMagnification.Text = "1";
                 if (txtWaterMeterFixedValue.Text.Trim() == "")
                     txtWaterMeterFixedValue.Text = "0";
+
                 MODELwaterMeter MODELwaterMeter = new MODELwaterMeter();
-                //if(cmbWaterMeterPosition.SelectedValue!=null&&cmbWaterMeterPosition.SelectedValue!=DBNull.Value)
-                //    MODELwaterMeter.waterMeterPositionId = cmbWaterMeterPosition.SelectedValue.ToString();
                 MODELwaterMeter.waterMeterPositionName = cmbWaterMeterPosition.Text;
                 MODELwaterMeter.waterMeterSizeId = cmbWaterMeterSize.SelectedValue.ToString();
-                //if (cmbWaterMeterState.Text == "正常")
-                //{
-                //    MODELwaterMeter.waterMeterState = "1";
-                //    //MODELwaterMeter.STARTUSEDATETIME = mes.GetDatetimeNow();
-                //}
-                //if (cmbWaterMeterState.Text == "停水")
-                //    MODELwaterMeter.waterMeterState = "2";
-                //if (cmbWaterMeterState.Text == "报废")
-                //    MODELwaterMeter.waterMeterState = "3";
                 MODELwaterMeter.waterMeterState = (cmbWaterMeterState.SelectedIndex + 1).ToString();
 
                 MODELwaterMeter.waterMeterTypeId = cmbWaterType.SelectedValue.ToString();
@@ -2008,16 +1998,19 @@ namespace WATERUSERMETERMANAGE
                 MODELwaterMeter.waterMeterStartNumber = Convert.ToInt32(txtWaterMeterStartNum.Text);
                 MODELwaterMeter.waterMeterProduct = txtWaterMeterProductor.Text;
                 MODELwaterMeter.waterMeterSerialNumber = txtWaterMeterSerialNum.Text;
+                MODELwaterMeter.ChannelNO = txtChannelNO.Text;
                 MODELwaterMeter.waterMeterMode = txtWaterMeterModel.Text;
                 MODELwaterMeter.WATERMETERLOCKNO = txtLockNO.Text;
                 MODELwaterMeter.waterMeterMaxRange = Convert.ToInt32(txtWaterMeterMaxRange.Text);
-                //if (Information.IsDate(txtWaterMeterProofDate.Text))
-                //    MODELwaterMeter.waterMeterProofreadingDate = Convert.ToDateTime(txtWaterMeterProofDate.Text);
                 MODELwaterMeter.waterMeterProofreadingDate = dtpProofDate.Value;
                 MODELwaterMeter.waterMeteProofreadingPeriod = Convert.ToInt32(txtProofreadingPeriod.Text);
                 MODELwaterMeter.waterMeterMagnification = Convert.ToInt32(txtWaterMeterMagnification.Text);
                 MODELwaterMeter.waterUserId = txtWaterUserID.Text;
                 MODELwaterMeter.isSummaryMeter = (cmbIsSummary.SelectedIndex + 1).ToString();//分表为1  总表为2
+                if (MODELwaterMeter.isSummaryMeter=="2")
+                MODELwaterMeter.SummaryMeterClass = (cmbSummaryMeterClass.SelectedIndex + 1).ToString();//总表级别
+                else
+                    MODELwaterMeter.SummaryMeterClass =null;//总表级别
 
                 if (cmbMeterParentName.SelectedValue != null && cmbMeterParentName.SelectedValue != DBNull.Value)
                     MODELwaterMeter.waterMeterParentId = cmbMeterParentName.SelectedValue.ToString();
@@ -2289,17 +2282,6 @@ namespace WATERUSERMETERMANAGE
                 txtWaterMeterStartNum.Text = obj.ToString();
                 MODELwaterMeterOld.waterMeterStartNumber = Convert.ToInt32(obj);
             }
-            //obj = dgWaterMeter.Rows[e.RowIndex].Cells["waterMeterPositionId"].Value;
-            //if (obj != null && obj != DBNull.Value)
-            //{
-            //    cmbWaterMeterPosition.SelectedValue = obj;
-            //    obj = dgWaterMeter.Rows[e.RowIndex].Cells["waterMeterPositionName"].Value;
-            //    if (obj != null && obj != DBNull.Value)
-            //    {
-            //        txtWaterMeterPosition.Text = obj.ToString();
-            //        MODELwaterMeterOld.waterMeterPositionName = obj.ToString();
-            //    }
-            //}
             obj = dgWaterMeter.Rows[e.RowIndex].Cells["waterMeterPositionName"].Value;
             if (obj != null && obj != DBNull.Value)
             {
@@ -2342,15 +2324,6 @@ namespace WATERUSERMETERMANAGE
                 else if (obj.ToString() == "待拆迁")
                     MODELwaterMeterOld.waterMeterState = "9";
             }
-
-//            正常
-//注销
-//换表
-//未启用
-//欠费停水
-//违章停水
-//坏表
-//待审核
             obj = dgWaterMeter.Rows[e.RowIndex].Cells["IsReverse"].Value;
             if (obj != null && obj != DBNull.Value)
             {
@@ -2420,6 +2393,13 @@ namespace WATERUSERMETERMANAGE
 
                 MODELwaterMeterOld.waterMeterSerialNumber = obj.ToString();
             }
+            obj = dgWaterMeter.Rows[e.RowIndex].Cells["ChannelNO"].Value;
+            if (obj != null && obj != DBNull.Value)
+            {
+                txtChannelNO.Text = obj.ToString();
+
+                MODELwaterMeterOld.ChannelNO = obj.ToString();
+            }
             obj = dgWaterMeter.Rows[e.RowIndex].Cells["waterMeterMode"].Value;
             if (obj != null && obj != DBNull.Value)
             {
@@ -2466,11 +2446,6 @@ namespace WATERUSERMETERMANAGE
 
                 MODELwaterMeterOld.waterMeteProofreadingPeriod = Convert.ToInt32(obj);
             }
-            //obj = dgWaterMeter.Rows[e.RowIndex].Cells["waterMeterNoParent"].Value;
-            //if (obj != null && obj != DBNull.Value)
-            //{
-            //    txtWaterMeterIsSummary.Text = obj.ToString();
-            //}
             obj = dgWaterMeter.Rows[e.RowIndex].Cells["waterMeterParentId"].Value;
             if (obj != null && obj != DBNull.Value)
             {
@@ -2500,10 +2475,26 @@ namespace WATERUSERMETERMANAGE
                 txtIsSummary.Text = obj.ToString();
                 cmbIsSummary.Text = obj.ToString();
 
-                if (obj.ToString()=="分表")
-                MODELwaterMeterOld.isSummaryMeter ="1";
+                if (obj.ToString() == "分表")
+                {
+                    MODELwaterMeterOld.isSummaryMeter = "1";
+                }
                 else
+                {
                     MODELwaterMeterOld.isSummaryMeter = "2";
+
+                    obj = dgWaterMeter.Rows[e.RowIndex].Cells["SummaryMeterClass"].FormattedValue;
+                    if (obj != null && obj != DBNull.Value)
+                    {
+                        txtSummaryMeterClass.Text = obj.ToString();
+
+                        obj = dgWaterMeter.Rows[e.RowIndex].Cells["SummaryMeterClass"].Value;
+                        if (Information.IsNumeric(obj))
+                            cmbSummaryMeterClass.SelectedIndex = Convert.ToInt32(obj) - 1;
+
+                        MODELwaterMeterOld.SummaryMeterClass = obj.ToString();
+                    }
+                }
             }
             else
                 cmbIsSummary.SelectedValue = DBNull.Value;
@@ -3335,6 +3326,31 @@ namespace WATERUSERMETERMANAGE
         private void txtChangeMonth_MouseEnter(object sender, EventArgs e)
         {
             toolTipMonth.Show("请输入6位年月，例如201602", txtChangeMonth,5000);
+        }
+
+        private void dgWaterMeter_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+                return;
+            if (dgWaterMeter.Columns[e.ColumnIndex].Name == "SummaryMeterClass")
+            {
+                object obj = e.Value;
+                if (obj != null && obj != DBNull.Value)
+                    if (obj.ToString() == "1")
+                        e.Value = "一级";
+                    else if (obj.ToString() == "2")
+                        e.Value = "二级";
+                    else if (obj.ToString() == "3")
+                        e.Value = "三级";
+                    else if (obj.ToString() == "4")
+                        e.Value = "四级";
+                    else if (obj.ToString() == "5")
+                        e.Value = "五级";
+                    else if (obj.ToString() == "6")
+                        e.Value = "六级";
+                    else if (obj.ToString() == "7")
+                        e.Value = "七级";
+            }
         }
         ///// <summary>
         ///// 获取一串汉字的拼音声母

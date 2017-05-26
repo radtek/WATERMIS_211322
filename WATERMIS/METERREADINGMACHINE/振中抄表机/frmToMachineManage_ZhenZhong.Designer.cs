@@ -39,6 +39,36 @@
             this.trMeterReading = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.dgList = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.labTip = new System.Windows.Forms.Label();
+            this.txtWaterUserNOSearch = new System.Windows.Forms.TextBox();
+            this.label48 = new System.Windows.Forms.Label();
+            this.cmbDuanNOS = new System.Windows.Forms.ComboBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.cmbPianNOS = new System.Windows.Forms.ComboBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.cmbAreaNOS = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btSearch = new System.Windows.Forms.Button();
+            this.txtSenior = new System.Windows.Forms.TextBox();
+            this.btSenior = new System.Windows.Forms.Button();
+            this.btRight = new System.Windows.Forms.Button();
+            this.btLeft = new System.Windows.Forms.Button();
+            this.txtYearAndMonth = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbpConnectHandSet = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btImportFile = new System.Windows.Forms.Button();
+            this.btImportReason = new System.Windows.Forms.Button();
+            this.cmbChargerWorkName = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.labExcute = new System.Windows.Forms.Label();
+            this.btImport = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btNext = new System.Windows.Forms.Button();
+            this.btPrevious = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.bgWork = new System.ComponentModel.BackgroundWorker();
             this.meterReaderID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.meterReaderName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pianNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -88,6 +118,7 @@
             this.waterMeterTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waterMeterTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waterMeterProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ChannelNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waterMeterSerialNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waterMeterMode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.waterMeterMagnification = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -96,36 +127,6 @@
             this.WATERFIXVALUE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsReverse = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.readMeterRecordId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.labTip = new System.Windows.Forms.Label();
-            this.txtWaterUserNOSearch = new System.Windows.Forms.TextBox();
-            this.label48 = new System.Windows.Forms.Label();
-            this.cmbDuanNOS = new System.Windows.Forms.ComboBox();
-            this.label35 = new System.Windows.Forms.Label();
-            this.cmbPianNOS = new System.Windows.Forms.ComboBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.cmbAreaNOS = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.btSearch = new System.Windows.Forms.Button();
-            this.txtSenior = new System.Windows.Forms.TextBox();
-            this.btSenior = new System.Windows.Forms.Button();
-            this.btRight = new System.Windows.Forms.Button();
-            this.btLeft = new System.Windows.Forms.Button();
-            this.txtYearAndMonth = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tbpConnectHandSet = new System.Windows.Forms.TabPage();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btImportFile = new System.Windows.Forms.Button();
-            this.btImportReason = new System.Windows.Forms.Button();
-            this.cmbChargerWorkName = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.labExcute = new System.Windows.Forms.Label();
-            this.btImport = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btNext = new System.Windows.Forms.Button();
-            this.btPrevious = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.bgWork = new System.ComponentModel.BackgroundWorker();
             this.tabCHandSet.SuspendLayout();
             this.tbpSearchData.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -280,6 +281,7 @@
             this.waterMeterTypeId,
             this.waterMeterTypeName,
             this.waterMeterProduct,
+            this.ChannelNO,
             this.waterMeterSerialNumber,
             this.waterMeterMode,
             this.waterMeterMagnification,
@@ -299,6 +301,325 @@
             this.dgList.TabIndex = 5;
             this.dgList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgList_CellFormatting);
             this.dgList.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgList_CellPainting);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.LimeGreen;
+            this.panel2.Controls.Add(this.labTip);
+            this.panel2.Controls.Add(this.txtWaterUserNOSearch);
+            this.panel2.Controls.Add(this.label48);
+            this.panel2.Controls.Add(this.cmbDuanNOS);
+            this.panel2.Controls.Add(this.label35);
+            this.panel2.Controls.Add(this.cmbPianNOS);
+            this.panel2.Controls.Add(this.label21);
+            this.panel2.Controls.Add(this.cmbAreaNOS);
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.btSearch);
+            this.panel2.Controls.Add(this.txtSenior);
+            this.panel2.Controls.Add(this.btSenior);
+            this.panel2.Controls.Add(this.btRight);
+            this.panel2.Controls.Add(this.btLeft);
+            this.panel2.Controls.Add(this.txtYearAndMonth);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(992, 38);
+            this.panel2.TabIndex = 2;
+            this.panel2.Tag = "9999";
+            // 
+            // labTip
+            // 
+            this.labTip.AutoSize = true;
+            this.labTip.ForeColor = System.Drawing.Color.Red;
+            this.labTip.Location = new System.Drawing.Point(832, 14);
+            this.labTip.Name = "labTip";
+            this.labTip.Size = new System.Drawing.Size(80, 16);
+            this.labTip.TabIndex = 194;
+            this.labTip.Tag = "9999";
+            this.labTip.Text = "共0条数据";
+            // 
+            // txtWaterUserNOSearch
+            // 
+            this.txtWaterUserNOSearch.BackColor = System.Drawing.SystemColors.Window;
+            this.txtWaterUserNOSearch.Location = new System.Drawing.Point(302, 5);
+            this.txtWaterUserNOSearch.Name = "txtWaterUserNOSearch";
+            this.txtWaterUserNOSearch.Size = new System.Drawing.Size(78, 26);
+            this.txtWaterUserNOSearch.TabIndex = 192;
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(239, 11);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(64, 16);
+            this.label48.TabIndex = 193;
+            this.label48.Text = "用户号:";
+            // 
+            // cmbDuanNOS
+            // 
+            this.cmbDuanNOS.DropDownWidth = 120;
+            this.cmbDuanNOS.FormattingEnabled = true;
+            this.cmbDuanNOS.Location = new System.Drawing.Point(674, 7);
+            this.cmbDuanNOS.Name = "cmbDuanNOS";
+            this.cmbDuanNOS.Size = new System.Drawing.Size(78, 24);
+            this.cmbDuanNOS.TabIndex = 191;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(627, 11);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(48, 16);
+            this.label35.TabIndex = 190;
+            this.label35.Text = "段号:";
+            // 
+            // cmbPianNOS
+            // 
+            this.cmbPianNOS.DropDownWidth = 120;
+            this.cmbPianNOS.FormattingEnabled = true;
+            this.cmbPianNOS.Location = new System.Drawing.Point(434, 7);
+            this.cmbPianNOS.Name = "cmbPianNOS";
+            this.cmbPianNOS.Size = new System.Drawing.Size(68, 24);
+            this.cmbPianNOS.TabIndex = 189;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(392, 11);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(56, 16);
+            this.label21.TabIndex = 188;
+            this.label21.Text = "片号：";
+            // 
+            // cmbAreaNOS
+            // 
+            this.cmbAreaNOS.DropDownWidth = 120;
+            this.cmbAreaNOS.FormattingEnabled = true;
+            this.cmbAreaNOS.Location = new System.Drawing.Point(551, 7);
+            this.cmbAreaNOS.Name = "cmbAreaNOS";
+            this.cmbAreaNOS.Size = new System.Drawing.Size(70, 24);
+            this.cmbAreaNOS.TabIndex = 187;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(508, 11);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(56, 16);
+            this.label9.TabIndex = 186;
+            this.label9.Text = "区号：";
+            // 
+            // btSearch
+            // 
+            this.btSearch.Location = new System.Drawing.Point(767, 4);
+            this.btSearch.Name = "btSearch";
+            this.btSearch.Size = new System.Drawing.Size(62, 30);
+            this.btSearch.TabIndex = 177;
+            this.btSearch.Text = "查询";
+            this.btSearch.UseVisualStyleBackColor = true;
+            this.btSearch.Click += new System.EventHandler(this.btSearch_Click);
+            // 
+            // txtSenior
+            // 
+            this.txtSenior.BackColor = System.Drawing.Color.White;
+            this.txtSenior.Location = new System.Drawing.Point(968, 6);
+            this.txtSenior.Multiline = true;
+            this.txtSenior.Name = "txtSenior";
+            this.txtSenior.ReadOnly = true;
+            this.txtSenior.Size = new System.Drawing.Size(19, 26);
+            this.txtSenior.TabIndex = 176;
+            this.txtSenior.Visible = false;
+            // 
+            // btSenior
+            // 
+            this.btSenior.Location = new System.Drawing.Point(955, 4);
+            this.btSenior.Name = "btSenior";
+            this.btSenior.Size = new System.Drawing.Size(17, 30);
+            this.btSenior.TabIndex = 175;
+            this.btSenior.Text = "高级条件";
+            this.btSenior.UseVisualStyleBackColor = true;
+            this.btSenior.Visible = false;
+            this.btSenior.Click += new System.EventHandler(this.btSenior_Click);
+            // 
+            // btRight
+            // 
+            this.btRight.Location = new System.Drawing.Point(206, 7);
+            this.btRight.Name = "btRight";
+            this.btRight.Size = new System.Drawing.Size(27, 24);
+            this.btRight.TabIndex = 50;
+            this.btRight.Text = ">";
+            this.btRight.UseVisualStyleBackColor = true;
+            this.btRight.Click += new System.EventHandler(this.btRight_Click);
+            // 
+            // btLeft
+            // 
+            this.btLeft.Location = new System.Drawing.Point(179, 7);
+            this.btLeft.Name = "btLeft";
+            this.btLeft.Size = new System.Drawing.Size(27, 24);
+            this.btLeft.TabIndex = 51;
+            this.btLeft.Text = "<";
+            this.btLeft.UseVisualStyleBackColor = true;
+            this.btLeft.Click += new System.EventHandler(this.btLeft_Click);
+            // 
+            // txtYearAndMonth
+            // 
+            this.txtYearAndMonth.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtYearAndMonth.Location = new System.Drawing.Point(87, 6);
+            this.txtYearAndMonth.Name = "txtYearAndMonth";
+            this.txtYearAndMonth.ReadOnly = true;
+            this.txtYearAndMonth.Size = new System.Drawing.Size(87, 26);
+            this.txtYearAndMonth.TabIndex = 2;
+            this.txtYearAndMonth.TextChanged += new System.EventHandler(this.txtYearAndMonth_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(5, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(80, 16);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "应抄月份:";
+            // 
+            // tbpConnectHandSet
+            // 
+            this.tbpConnectHandSet.Controls.Add(this.label2);
+            this.tbpConnectHandSet.Controls.Add(this.btImportFile);
+            this.tbpConnectHandSet.Controls.Add(this.btImportReason);
+            this.tbpConnectHandSet.Controls.Add(this.cmbChargerWorkName);
+            this.tbpConnectHandSet.Controls.Add(this.label7);
+            this.tbpConnectHandSet.Controls.Add(this.labExcute);
+            this.tbpConnectHandSet.Controls.Add(this.btImport);
+            this.tbpConnectHandSet.Controls.Add(this.btSetDateTime);
+            this.tbpConnectHandSet.Location = new System.Drawing.Point(4, 26);
+            this.tbpConnectHandSet.Name = "tbpConnectHandSet";
+            this.tbpConnectHandSet.Padding = new System.Windows.Forms.Padding(3);
+            this.tbpConnectHandSet.Size = new System.Drawing.Size(998, 481);
+            this.tbpConnectHandSet.TabIndex = 0;
+            this.tbpConnectHandSet.Text = "二、连接抄表机";
+            this.tbpConnectHandSet.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Location = new System.Drawing.Point(155, 88);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 14);
+            this.label2.TabIndex = 125;
+            // 
+            // btImportFile
+            // 
+            this.btImportFile.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btImportFile.Location = new System.Drawing.Point(26, 123);
+            this.btImportFile.Name = "btImportFile";
+            this.btImportFile.Size = new System.Drawing.Size(116, 34);
+            this.btImportFile.TabIndex = 124;
+            this.btImportFile.Text = "导入数据文件";
+            this.btImportFile.UseVisualStyleBackColor = true;
+            this.btImportFile.Click += new System.EventHandler(this.btImportFile_Click);
+            // 
+            // btImportReason
+            // 
+            this.btImportReason.Location = new System.Drawing.Point(158, 21);
+            this.btImportReason.Name = "btImportReason";
+            this.btImportReason.Size = new System.Drawing.Size(116, 34);
+            this.btImportReason.TabIndex = 123;
+            this.btImportReason.Text = "同步未抄原因";
+            this.btImportReason.UseVisualStyleBackColor = true;
+            this.btImportReason.Click += new System.EventHandler(this.btImportReason_Click);
+            // 
+            // cmbChargerWorkName
+            // 
+            this.cmbChargerWorkName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbChargerWorkName.FormattingEnabled = true;
+            this.cmbChargerWorkName.Location = new System.Drawing.Point(511, 26);
+            this.cmbChargerWorkName.Name = "cmbChargerWorkName";
+            this.cmbChargerWorkName.Size = new System.Drawing.Size(88, 24);
+            this.cmbChargerWorkName.TabIndex = 121;
+            this.cmbChargerWorkName.Visible = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(447, 30);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(64, 16);
+            this.label7.TabIndex = 122;
+            this.label7.Text = "收费员:";
+            this.label7.Visible = false;
+            // 
+            // labExcute
+            // 
+            this.labExcute.AutoSize = true;
+            this.labExcute.Font = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labExcute.Location = new System.Drawing.Point(27, 175);
+            this.labExcute.Name = "labExcute";
+            this.labExcute.Size = new System.Drawing.Size(67, 15);
+            this.labExcute.TabIndex = 5;
+            this.labExcute.Text = "导入状态";
+            // 
+            // btImport
+            // 
+            this.btImport.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btImport.Location = new System.Drawing.Point(26, 72);
+            this.btImport.Name = "btImport";
+            this.btImport.Size = new System.Drawing.Size(116, 34);
+            this.btImport.TabIndex = 2;
+            this.btImport.Text = "生成并导入数据";
+            this.btImport.UseVisualStyleBackColor = true;
+            this.btImport.Click += new System.EventHandler(this.btImport_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btNext);
+            this.panel1.Controls.Add(this.btPrevious);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 520);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1006, 43);
+            this.panel1.TabIndex = 10;
+            // 
+            // btNext
+            // 
+            this.btNext.Location = new System.Drawing.Point(427, 4);
+            this.btNext.Name = "btNext";
+            this.btNext.Size = new System.Drawing.Size(75, 34);
+            this.btNext.TabIndex = 1;
+            this.btNext.Text = "下一步";
+            this.btNext.UseVisualStyleBackColor = true;
+            this.btNext.Click += new System.EventHandler(this.btNext_Click);
+            // 
+            // btPrevious
+            // 
+            this.btPrevious.Location = new System.Drawing.Point(317, 5);
+            this.btPrevious.Name = "btPrevious";
+            this.btPrevious.Size = new System.Drawing.Size(75, 34);
+            this.btPrevious.TabIndex = 0;
+            this.btPrevious.Text = "上一步";
+            this.btPrevious.UseVisualStyleBackColor = true;
+            this.btPrevious.Click += new System.EventHandler(this.btPrevious_Click);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tabCHandSet, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 6);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76.8421F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1012, 566);
+            this.tableLayoutPanel1.TabIndex = 11;
+            // 
+            // bgWork
+            // 
+            this.bgWork.WorkerSupportsCancellation = true;
+            this.bgWork.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWork_DoWork);
+            this.bgWork.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWork_RunWorkerCompleted);
             // 
             // meterReaderID
             // 
@@ -708,6 +1029,13 @@
             this.waterMeterProduct.ReadOnly = true;
             this.waterMeterProduct.Width = 97;
             // 
+            // ChannelNO
+            // 
+            this.ChannelNO.DataPropertyName = "ChannelNO";
+            this.ChannelNO.HeaderText = "通道号";
+            this.ChannelNO.Name = "ChannelNO";
+            this.ChannelNO.ReadOnly = true;
+            // 
             // waterMeterSerialNumber
             // 
             this.waterMeterSerialNumber.DataPropertyName = "waterMeterSerialNumber";
@@ -771,325 +1099,6 @@
             this.readMeterRecordId.ReadOnly = true;
             this.readMeterRecordId.Visible = false;
             this.readMeterRecordId.Width = 161;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.LimeGreen;
-            this.panel2.Controls.Add(this.labTip);
-            this.panel2.Controls.Add(this.txtWaterUserNOSearch);
-            this.panel2.Controls.Add(this.label48);
-            this.panel2.Controls.Add(this.cmbDuanNOS);
-            this.panel2.Controls.Add(this.label35);
-            this.panel2.Controls.Add(this.cmbPianNOS);
-            this.panel2.Controls.Add(this.label21);
-            this.panel2.Controls.Add(this.cmbAreaNOS);
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.btSearch);
-            this.panel2.Controls.Add(this.txtSenior);
-            this.panel2.Controls.Add(this.btSenior);
-            this.panel2.Controls.Add(this.btRight);
-            this.panel2.Controls.Add(this.btLeft);
-            this.panel2.Controls.Add(this.txtYearAndMonth);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(992, 38);
-            this.panel2.TabIndex = 2;
-            this.panel2.Tag = "9999";
-            // 
-            // labTip
-            // 
-            this.labTip.AutoSize = true;
-            this.labTip.ForeColor = System.Drawing.Color.Red;
-            this.labTip.Location = new System.Drawing.Point(832, 14);
-            this.labTip.Name = "labTip";
-            this.labTip.Size = new System.Drawing.Size(80, 16);
-            this.labTip.TabIndex = 194;
-            this.labTip.Tag = "9999";
-            this.labTip.Text = "共0条数据";
-            // 
-            // txtWaterUserNOSearch
-            // 
-            this.txtWaterUserNOSearch.BackColor = System.Drawing.SystemColors.Window;
-            this.txtWaterUserNOSearch.Location = new System.Drawing.Point(302, 5);
-            this.txtWaterUserNOSearch.Name = "txtWaterUserNOSearch";
-            this.txtWaterUserNOSearch.Size = new System.Drawing.Size(78, 26);
-            this.txtWaterUserNOSearch.TabIndex = 192;
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(239, 11);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(64, 16);
-            this.label48.TabIndex = 193;
-            this.label48.Text = "用户号:";
-            // 
-            // cmbDuanNOS
-            // 
-            this.cmbDuanNOS.DropDownWidth = 120;
-            this.cmbDuanNOS.FormattingEnabled = true;
-            this.cmbDuanNOS.Location = new System.Drawing.Point(674, 7);
-            this.cmbDuanNOS.Name = "cmbDuanNOS";
-            this.cmbDuanNOS.Size = new System.Drawing.Size(78, 24);
-            this.cmbDuanNOS.TabIndex = 191;
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(627, 11);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(48, 16);
-            this.label35.TabIndex = 190;
-            this.label35.Text = "段号:";
-            // 
-            // cmbPianNOS
-            // 
-            this.cmbPianNOS.DropDownWidth = 120;
-            this.cmbPianNOS.FormattingEnabled = true;
-            this.cmbPianNOS.Location = new System.Drawing.Point(434, 7);
-            this.cmbPianNOS.Name = "cmbPianNOS";
-            this.cmbPianNOS.Size = new System.Drawing.Size(68, 24);
-            this.cmbPianNOS.TabIndex = 189;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(392, 11);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(56, 16);
-            this.label21.TabIndex = 188;
-            this.label21.Text = "片号：";
-            // 
-            // cmbAreaNOS
-            // 
-            this.cmbAreaNOS.DropDownWidth = 120;
-            this.cmbAreaNOS.FormattingEnabled = true;
-            this.cmbAreaNOS.Location = new System.Drawing.Point(551, 7);
-            this.cmbAreaNOS.Name = "cmbAreaNOS";
-            this.cmbAreaNOS.Size = new System.Drawing.Size(70, 24);
-            this.cmbAreaNOS.TabIndex = 187;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(508, 11);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(56, 16);
-            this.label9.TabIndex = 186;
-            this.label9.Text = "区号：";
-            // 
-            // btSearch
-            // 
-            this.btSearch.Location = new System.Drawing.Point(767, 4);
-            this.btSearch.Name = "btSearch";
-            this.btSearch.Size = new System.Drawing.Size(62, 30);
-            this.btSearch.TabIndex = 177;
-            this.btSearch.Text = "查询";
-            this.btSearch.UseVisualStyleBackColor = true;
-            this.btSearch.Click += new System.EventHandler(this.btSearch_Click);
-            // 
-            // txtSenior
-            // 
-            this.txtSenior.BackColor = System.Drawing.Color.White;
-            this.txtSenior.Location = new System.Drawing.Point(968, 6);
-            this.txtSenior.Multiline = true;
-            this.txtSenior.Name = "txtSenior";
-            this.txtSenior.ReadOnly = true;
-            this.txtSenior.Size = new System.Drawing.Size(19, 26);
-            this.txtSenior.TabIndex = 176;
-            this.txtSenior.Visible = false;
-            // 
-            // btSenior
-            // 
-            this.btSenior.Location = new System.Drawing.Point(955, 4);
-            this.btSenior.Name = "btSenior";
-            this.btSenior.Size = new System.Drawing.Size(17, 30);
-            this.btSenior.TabIndex = 175;
-            this.btSenior.Text = "高级条件";
-            this.btSenior.UseVisualStyleBackColor = true;
-            this.btSenior.Visible = false;
-            this.btSenior.Click += new System.EventHandler(this.btSenior_Click);
-            // 
-            // btRight
-            // 
-            this.btRight.Location = new System.Drawing.Point(206, 7);
-            this.btRight.Name = "btRight";
-            this.btRight.Size = new System.Drawing.Size(27, 24);
-            this.btRight.TabIndex = 50;
-            this.btRight.Text = ">";
-            this.btRight.UseVisualStyleBackColor = true;
-            this.btRight.Click += new System.EventHandler(this.btRight_Click);
-            // 
-            // btLeft
-            // 
-            this.btLeft.Location = new System.Drawing.Point(179, 7);
-            this.btLeft.Name = "btLeft";
-            this.btLeft.Size = new System.Drawing.Size(27, 24);
-            this.btLeft.TabIndex = 51;
-            this.btLeft.Text = "<";
-            this.btLeft.UseVisualStyleBackColor = true;
-            this.btLeft.Click += new System.EventHandler(this.btLeft_Click);
-            // 
-            // txtYearAndMonth
-            // 
-            this.txtYearAndMonth.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtYearAndMonth.Location = new System.Drawing.Point(87, 6);
-            this.txtYearAndMonth.Name = "txtYearAndMonth";
-            this.txtYearAndMonth.ReadOnly = true;
-            this.txtYearAndMonth.Size = new System.Drawing.Size(87, 26);
-            this.txtYearAndMonth.TabIndex = 2;
-            this.txtYearAndMonth.TextChanged += new System.EventHandler(this.txtYearAndMonth_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 16);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "应抄月份:";
-            // 
-            // tbpConnectHandSet
-            // 
-            this.tbpConnectHandSet.Controls.Add(this.label2);
-            this.tbpConnectHandSet.Controls.Add(this.btImportFile);
-            this.tbpConnectHandSet.Controls.Add(this.btImportReason);
-            this.tbpConnectHandSet.Controls.Add(this.cmbChargerWorkName);
-            this.tbpConnectHandSet.Controls.Add(this.label7);
-            this.tbpConnectHandSet.Controls.Add(this.labExcute);
-            this.tbpConnectHandSet.Controls.Add(this.btImport);
-            this.tbpConnectHandSet.Controls.Add(this.btSetDateTime);
-            this.tbpConnectHandSet.Location = new System.Drawing.Point(4, 26);
-            this.tbpConnectHandSet.Name = "tbpConnectHandSet";
-            this.tbpConnectHandSet.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpConnectHandSet.Size = new System.Drawing.Size(998, 481);
-            this.tbpConnectHandSet.TabIndex = 0;
-            this.tbpConnectHandSet.Text = "二、连接抄表机";
-            this.tbpConnectHandSet.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(155, 88);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 14);
-            this.label2.TabIndex = 125;
-            // 
-            // btImportFile
-            // 
-            this.btImportFile.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btImportFile.Location = new System.Drawing.Point(26, 123);
-            this.btImportFile.Name = "btImportFile";
-            this.btImportFile.Size = new System.Drawing.Size(116, 34);
-            this.btImportFile.TabIndex = 124;
-            this.btImportFile.Text = "导入数据文件";
-            this.btImportFile.UseVisualStyleBackColor = true;
-            this.btImportFile.Click += new System.EventHandler(this.btImportFile_Click);
-            // 
-            // btImportReason
-            // 
-            this.btImportReason.Location = new System.Drawing.Point(158, 21);
-            this.btImportReason.Name = "btImportReason";
-            this.btImportReason.Size = new System.Drawing.Size(116, 34);
-            this.btImportReason.TabIndex = 123;
-            this.btImportReason.Text = "同步未抄原因";
-            this.btImportReason.UseVisualStyleBackColor = true;
-            this.btImportReason.Click += new System.EventHandler(this.btImportReason_Click);
-            // 
-            // cmbChargerWorkName
-            // 
-            this.cmbChargerWorkName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbChargerWorkName.FormattingEnabled = true;
-            this.cmbChargerWorkName.Location = new System.Drawing.Point(511, 26);
-            this.cmbChargerWorkName.Name = "cmbChargerWorkName";
-            this.cmbChargerWorkName.Size = new System.Drawing.Size(88, 24);
-            this.cmbChargerWorkName.TabIndex = 121;
-            this.cmbChargerWorkName.Visible = false;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(447, 30);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(64, 16);
-            this.label7.TabIndex = 122;
-            this.label7.Text = "收费员:";
-            this.label7.Visible = false;
-            // 
-            // labExcute
-            // 
-            this.labExcute.AutoSize = true;
-            this.labExcute.Font = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labExcute.Location = new System.Drawing.Point(27, 175);
-            this.labExcute.Name = "labExcute";
-            this.labExcute.Size = new System.Drawing.Size(67, 15);
-            this.labExcute.TabIndex = 5;
-            this.labExcute.Text = "导入状态";
-            // 
-            // btImport
-            // 
-            this.btImport.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btImport.Location = new System.Drawing.Point(26, 72);
-            this.btImport.Name = "btImport";
-            this.btImport.Size = new System.Drawing.Size(116, 34);
-            this.btImport.TabIndex = 2;
-            this.btImport.Text = "生成并导入数据";
-            this.btImport.UseVisualStyleBackColor = true;
-            this.btImport.Click += new System.EventHandler(this.btImport_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btNext);
-            this.panel1.Controls.Add(this.btPrevious);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 520);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1006, 43);
-            this.panel1.TabIndex = 10;
-            // 
-            // btNext
-            // 
-            this.btNext.Location = new System.Drawing.Point(427, 4);
-            this.btNext.Name = "btNext";
-            this.btNext.Size = new System.Drawing.Size(75, 34);
-            this.btNext.TabIndex = 1;
-            this.btNext.Text = "下一步";
-            this.btNext.UseVisualStyleBackColor = true;
-            this.btNext.Click += new System.EventHandler(this.btNext_Click);
-            // 
-            // btPrevious
-            // 
-            this.btPrevious.Location = new System.Drawing.Point(317, 5);
-            this.btPrevious.Name = "btPrevious";
-            this.btPrevious.Size = new System.Drawing.Size(75, 34);
-            this.btPrevious.TabIndex = 0;
-            this.btPrevious.Text = "上一步";
-            this.btPrevious.UseVisualStyleBackColor = true;
-            this.btPrevious.Click += new System.EventHandler(this.btPrevious_Click);
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.tabCHandSet, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 6);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76.8421F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1012, 566);
-            this.tableLayoutPanel1.TabIndex = 11;
-            // 
-            // bgWork
-            // 
-            this.bgWork.WorkerSupportsCancellation = true;
-            this.bgWork.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWork_DoWork);
-            this.bgWork.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWork_RunWorkerCompleted);
             // 
             // frmToMachineManage_ZhenZhong
             // 
@@ -1161,6 +1170,9 @@
         private System.Windows.Forms.ComboBox cmbAreaNOS;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label labTip;
+        private System.Windows.Forms.Button btImportReason;
+        private System.Windows.Forms.Button btImportFile;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn meterReaderID;
         private System.Windows.Forms.DataGridViewTextBoxColumn meterReaderName;
         private System.Windows.Forms.DataGridViewTextBoxColumn pianNO;
@@ -1210,6 +1222,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn waterMeterTypeId;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterMeterTypeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterMeterProduct;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ChannelNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterMeterSerialNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterMeterMode;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterMeterMagnification;
@@ -1218,8 +1231,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn WATERFIXVALUE;
         private System.Windows.Forms.DataGridViewTextBoxColumn IsReverse;
         private System.Windows.Forms.DataGridViewTextBoxColumn readMeterRecordId;
-        private System.Windows.Forms.Button btImportReason;
-        private System.Windows.Forms.Button btImportFile;
-        private System.Windows.Forms.Label label2;
     }
 }
