@@ -1380,6 +1380,17 @@ COMMIT TRAN", _tableNmae, CANCELMEMO, loginid, userName, GetDatetimeNow());
         //    return count > 0 ? true : false;
         //}
 
+        public string GetWaterMeterTypeIdByWaterMeterId(string waterMeterId)
+        {
+            string sqlstr = @"SELECT TOP 1 waterMeterTypeid FROM waterMeter where waterMeterId=@waterMeterId";
+
+            DataTable dt = new SqlServerHelper().GetDateTableBySql(sqlstr,
+              new SqlParameter[] {
+                new SqlParameter("@waterMeterId",waterMeterId)
+                });
+
+            return DataTableHelper.IsExistRows(dt) ? dt.Rows[0][0].ToString() : "";
+        }
 
     }
 }

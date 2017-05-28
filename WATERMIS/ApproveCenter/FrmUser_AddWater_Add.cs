@@ -188,7 +188,7 @@ namespace ApproveCenter
                 decimal _extraCharge2=0m;
 
                 sysidal.GetWaterFeeByMeterType(_waterMeterTypeId, _totalNumber, 1, ref _waterTotalCharge, ref _extraCharge1, ref _extraCharge2);
-                TotalChargeEND.Text = _waterTotalCharge.ToString();
+                TotalChargeEND.Text =( _waterTotalCharge+_extraCharge1+_extraCharge2).ToString();
             }
             else
             {

@@ -178,5 +178,7 @@ namespace DBinterface.IDAL
        //bool InsertWorkFlowSelect(Hashtable ht);
 
        //bool UpdateWorkFlowSelect(Hashtable ht);
+
+       string GetWaterMeterTypeIdByWaterMeterId(string waterMeterId);
     }
 }
