@@ -68,7 +68,7 @@ namespace WorkFlow
             }
             if (!TB_Keys.Text.Equals(""))
             {
-                sb.AppendFormat(" AND (waterUserName LIKE '%{0}%' OR ApplyUser LIKE '%{0}%' OR waterPhone LIKE '%{0}%' OR waterUserId LIKE '%{0}%' OR VW.SD LIKE '%{0}%')", TB_Keys.Text.Trim());
+                sb.AppendFormat(" AND (waterUserName LIKE '%{0}%' OR waterPhone LIKE '%{0}%' OR waterPhone LIKE '%{0}%' OR waterUserId LIKE '%{0}%' OR VW.SD LIKE '%{0}%')", TB_Keys.Text.Trim());
             }
 
             uC_DataGridView_Page1.Fields = new string[,] { { "rowNum", "序号" }, 
@@ -77,7 +77,7 @@ namespace WorkFlow
                                                            { "waterUserId", "用户ID" }, 
                                                            { "waterUserName", "户名" }, 
                                                            { "waterUserAddress", "地址" },
-                                                           { "ApplyPhone", "联系电话" },
+                                                           { "waterPhone", "联系电话" },
                                                            { "AcceptUser", "受理人" },
                                                            { "STATES", "审批状态" },
                                                            { "CreateDate", "申请时间" }

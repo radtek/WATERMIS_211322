@@ -109,8 +109,7 @@ namespace PersonalWork
             new SqlServerHelper().Submit_AddOrEdit("Meter_Install_Single", "TaskID", TaskID, ht);
 
             Btn_Submit.Enabled = false;
-            //ComputerName = new Computer().ComputerName;
-            //ip = new Computer().IpAddress;
+            
 
             string Matter = string.Format("【技术说明】-水表数量：{0}；水表型号：{1}；水表位置：{2}；技术说明：{3}；费用明细：{4}", MeterCount.Text, waterMeterSizeMemo.Text, waterMeterPositionMemo.Text, UserOpinion.Text, ApproveDispose.GetFeeItem(this.FP_Fee));
 
@@ -168,8 +167,8 @@ namespace PersonalWork
         {
             Btn_Submit.Enabled = false;
             Btn_Voided.Enabled = false;
-            ComputerName = new Computer().ComputerName;
-            ip = new Computer().IpAddress;
+            ComputerName = AppDomain.CurrentDomain.GetData("COMPUTERNAME").ToString();
+            ip = AppDomain.CurrentDomain.GetData("IP").ToString();
             int count = sysidal.UpdateApprove_Voided(ResolveID, UserOpinion.Text.Trim(), ip, ComputerName, TaskID);
 
             if (count > 0)

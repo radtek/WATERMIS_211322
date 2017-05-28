@@ -67,7 +67,7 @@ namespace MeterInstall
         {
             string sqlstr = @"SELECT * FROM (SELECT MIS.TaskID,SingleID,AcceptID,waterUserName,ApplyUser,waterPhone,MIS.waterUserTypeId,WT.waterUserTypeName,WUH.waterUserHouseType,
 CASE IsBoost WHEN '1' THEN '√' ELSE '' END AS IsBoost,waterUserPeopleCount,QueryKey,MW.[State],MWS.Value as FlowState,MW.PointSort,MIS.loginId,
-SubmitDate,waterUserAddress,MIS.Memo,CreateDate,,MIS.waterUserNO 
+SubmitDate,waterUserAddress,MIS.Memo,CreateDate,MIS.waterUserNO 
 FROM Meter_Install_Single MIS left join  waterUserType WT 
 on MIS.waterUserTypeId=WT.waterUserTypeId left join waterUserHouseType WUH 
 on mis.waterUserHouseType=WUH.waterUserHouseTypeID left join Meter_WorkTaskState MWS on MIS.State=MWS.ID 

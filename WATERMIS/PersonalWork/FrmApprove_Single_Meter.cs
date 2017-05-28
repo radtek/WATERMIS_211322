@@ -60,8 +60,8 @@ namespace PersonalWork
         private void Btn_Submit_Click(object sender, EventArgs e)
         {
             Btn_Submit.Enabled = false;
-            ComputerName = new Computer().ComputerName;
-            ip = new Computer().IpAddress;
+            ComputerName = AppDomain.CurrentDomain.GetData("COMPUTERNAME").ToString();
+            ip = AppDomain.CurrentDomain.GetData("IP").ToString();
             MeterOut();
         }
 

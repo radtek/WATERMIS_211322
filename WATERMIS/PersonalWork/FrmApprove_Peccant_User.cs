@@ -73,9 +73,11 @@ namespace PersonalWork
 
             dt = new SqlServerHelper().GetDataTable("User_Agentsign", "", "Agentsign");
             ControlBindHelper.BindComboBoxData(this.agentsign, dt, "Agent", "Agentsign");
+            this.agentsign.SelectedIndex = 1;
 
             dt = new SqlServerHelper().GetDataTable("User_ChargeType", "", "ChargeType");
             ControlBindHelper.BindComboBoxData(this.chargeType, dt, "Charge", "ChargeType");
+            this.chargeType.SelectedIndex = 1;
 
             dt = new SqlServerHelper().GetDataTable("BASE_PIAN", "PARENTID<>'0'", "PIANID");
             ControlBindHelper.BindComboBoxData(this.PIANID, dt, "PIANNAME", "PIANID");
@@ -240,9 +242,6 @@ namespace PersonalWork
                 return;
             }
 
-
-            //ComputerName = new Computer().ComputerName;
-            //ip = new Computer().IpAddress;
 
             ip = AppDomain.CurrentDomain.GetData("IP").ToString();
             ComputerName = AppDomain.CurrentDomain.GetData("COMPUTERNAME").ToString();

@@ -179,8 +179,8 @@ namespace PersonalWork
         {
             Btn_Submit.Enabled = false;
             Btn_Voided.Enabled = false;
-            ComputerName = new Computer().ComputerName;
-            ip = new Computer().IpAddress;
+            ComputerName = AppDomain.CurrentDomain.GetData("COMPUTERNAME").ToString();
+            ip = AppDomain.CurrentDomain.GetData("IP").ToString();
             int count = sysidal.UpdateApprove_Voided_ByTableName("Meter_Change", ResolveID, UserOpinion.Text.Trim(), ip, ComputerName, TaskID);
 
             if (count > 0)

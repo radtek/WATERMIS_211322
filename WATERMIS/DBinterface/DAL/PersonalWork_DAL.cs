@@ -626,14 +626,17 @@ bankId,BankAcountNumber,memo,ordernumber,chargeType,(SELECT PIANNAME FROM BASE_P
 ,chargerID,(SELECT userName FROM base_login WHERE loginId=MIS.chargerID) AS chargerName
 ,operatorName FROM Meter_Install_Single MIS WHERE TaskID=@TaskID
 END
-INSERT INTO waterMeter (waterMeterId,waterMeterNo,waterMeterStartNumber,waterMeterPositionName,waterMeterPositionId,
+INSERT INTO waterMeter 
+(waterMeterId,waterMeterNo,waterMeterStartNumber,waterMeterPositionName,waterMeterPositionId,
 waterMeterSizeId,waterMeterTypeId,ISUSECHANGE,CHANGEMONTH,waterMeterTypeIdChange,WATERFIXVALUE,waterMeterProduct,waterMeterSerialNumber,waterMeterMode,
 waterMeterMagnification,waterMeterMaxRange,waterMeterProofreadingDate,waterMeteProofreadingPeriod,waterUserId,isSummaryMeter,waterMeterParentId,STARTUSEDATETIME,MEMO
-,waterMeterState,IsReverse,WATERMETERLOCKNO) 
-SELECT waterMeterId,waterMeterNo,waterMeterStartNumber,waterMeterPositionName,waterMeterPositionId,
+,waterMeterState,IsReverse,WATERMETERLOCKNO,waterMeterTypeClassID) 
+SELECT 
+waterMeterId,waterMeterNo,waterMeterStartNumber,waterMeterPositionName,waterMeterPositionId,
 waterMeterSizeId,waterMeterTypeId,ISUSECHANGE,CHANGEMONTH,waterMeterTypeIdChange,WATERFIXVALUE,waterMeterProduct,waterMeterSerialNumber,waterMeterMode,
-waterMeterMagnification,waterMeterMaxRange,waterMeterProofreadingDate,waterMeteProofreadingPeriod,waterUserId,isSummaryMeter,waterMeterParentId,
-STARTUSEDATETIME,MEMO,waterMeterState,IsReverse,WATERMETERLOCKNO FROM Meter WHERE MeterID IN (SELECT MeterID FROM Meter_User WHERE TaskID=@TaskID)
+waterMeterMagnification,waterMeterMaxRange,waterMeterProofreadingDate,waterMeteProofreadingPeriod,waterUserId,isSummaryMeter,waterMeterParentId,STARTUSEDATETIME,MEMO,
+waterMeterState,IsReverse,WATERMETERLOCKNO,(SELECT TOP 1 WATERMETERTYPECLASSID FROM waterMeterType WHERE waterMeterTypeId=Meter.waterMeterTypeId)
+FROM Meter WHERE MeterID IN (SELECT MeterID FROM Meter_User WHERE TaskID=@TaskID)
 INSERT INTO User_Append (TaskID,waterUserNO,waterUserName) SELECT TaskID,waterUserNO,waterUserName FROM Meter_Install_Single WHERE TaskID=@TaskID
 
 SELECT @FEE=prestore FROM Meter_Install_Single WHERE TaskID=@TaskID

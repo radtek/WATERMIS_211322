@@ -103,9 +103,7 @@ namespace PersonalWork
                     if (mes.ShowQ(strTip) != DialogResult.OK)
                         return;
                 }
-                //处理审批操作；
-                //ComputerName = new Computer().ComputerName;
-                //ip = new Computer().IpAddress;
+               
                 int count = sysidal.UpdateApprove_defalut("Meter_Install_Group", ResolveID, true, "预存款结转", PointSort, strTaskID, "预存款结转-》批量预存");
 
                 if (count > 0)

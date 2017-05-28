@@ -719,7 +719,7 @@ and PointSort=@PointSort and ','+loginId+',' like '%,'+@AcceptUserID+',%'
 UPDATE Meter_WorkTask SET PointSort=@NEXTSORT,PointTime=GETDATE() WHERE TaskID=@TaskID
 INSERT INTO Meter_WorkResolveFee (FeeID,FeeItem,DefaultValue,Sort,ResolveID,IsFinal) SELECT MF.FeeID, MF.FeeItem, MF.DefaultValue, MF.Sort,MWR.ResolveID,MWF.IsFinal FROM Meter_WorkDoFee MWF INNER JOIN Meter_FeeItmes MF ON MWF.FeeID = MF.FeeID INNER JOIN Meter_WorkResolve MWR ON MWF.DoID = MWR.DoID WHERE (MF.State = 1) AND (MWR.TaskID = @TaskID)
 COMMIT TRAN
-SELECT @Matter='提交信息：业务类型：'+Table_Name_CH+'；用户名：'+waterUserName+'；电话：'+waterPhone+'；地址：'+waterUserAddress+'' FROM View_TABLEUNION WHERE SD=@SD
+SELECT @Matter='【提交信息】业务类型：'+Table_Name_CH+'；用户名：'+waterUserName+'；电话：'+waterPhone+'；地址：'+waterUserAddress+'' FROM View_TABLEUNION WHERE SD=@SD
 INSERT INTO ApproveLog (TaskID,PointSort,loginId,userName,State,UserOpinion,IsPass,IsGoBack,IP,ComputerName,Matter) VALUES 
 (@TaskID,@PointSort,@AcceptUserID,@AcceptUser,1,@UserOpinion,1,0,'{8}','{9}',@Matter)
 end", ExcePkValue, AcceptID, strLogID, strRealName, ExceTableName, ExcePkName, FlowDesc, FlowCode,IP,ComputerName);

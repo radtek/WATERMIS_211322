@@ -125,8 +125,8 @@ namespace PersonalWork
                 return;
             }
 
-            ComputerName = new Computer().ComputerName;
-            ip = new Computer().IpAddress;
+            ComputerName = AppDomain.CurrentDomain.GetData("COMPUTERNAME").ToString();
+            ip = AppDomain.CurrentDomain.GetData("IP").ToString();
 
             Hashtable hs = new SqlServerHelper().GetHashTableByControl(this.PL.Controls);
             hs["ModifyUser"] = AppDomain.CurrentDomain.GetData("USERNAME").ToString();

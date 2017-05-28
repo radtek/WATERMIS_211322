@@ -135,7 +135,7 @@ namespace PersonalWork
 
             string Matter = string.Format("【故障报修】-审批意见：{0}；费用明细：{1}", UserOpinion.Text.Trim(), ApproveDispose.GetFeeItem(this.FP_Fee));
 
-            int count = sysidal.UpdateApprove_defalut("Meter_Maintain", ResolveID, IsPass.Checked, UserOpinion.Text.Trim(), PointSort, TaskID,Matter);
+            int count = sysidal.UpdateApprove_defalut("Meter_Maintain", ResolveID, IsPass.Checked, UserOpinion.Text.Trim(), PointSort, TaskID, Matter);
 
             if (count > 0)
             {
@@ -186,8 +186,8 @@ namespace PersonalWork
         {
             Btn_Submit.Enabled = false;
             Btn_Voided.Enabled = false;
-            string ComputerName = new Computer().ComputerName;
-            string ip = new Computer().IpAddress;
+            string ComputerName = AppDomain.CurrentDomain.GetData("COMPUTERNAME").ToString();
+            string ip = AppDomain.CurrentDomain.GetData("IP").ToString();
             int count = sysidal.UpdateApprove_Voided_ByTableName("Meter_Maintain", ResolveID, UserOpinion.Text.Trim(), ip, ComputerName, TaskID);
 
             if (count > 0)

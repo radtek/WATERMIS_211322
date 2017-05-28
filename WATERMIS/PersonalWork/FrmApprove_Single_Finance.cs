@@ -334,8 +334,8 @@ namespace PersonalWork
         private void Approve_NoFinance()
         {
             Btn_Submit.Enabled = false;
-            ComputerName = new Computer().ComputerName;
-            ip = new Computer().IpAddress;
+            ComputerName = AppDomain.CurrentDomain.GetData("COMPUTERNAME").ToString();
+            ip = AppDomain.CurrentDomain.GetData("IP").ToString();
 
             int count = sysidal.UpdateApprove_Single_defalut(ResolveID, true, "收费金额为0", ip, ComputerName, PointSort, TaskID,"收费金额为0");
 
