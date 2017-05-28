@@ -25,44 +25,6 @@ namespace MeterInstall
         {
         }
 
-        private void uC_SearchModule1_BtnEvent(object sender, EventArgs e)
-        {
-            string sqlstr = @"SELECT * FROM (SELECT TaskID,SingleID,AcceptID,waterUserName,ApplyUser,waterPhone,MIS.waterUserTypeId,WT.waterUserTypeName,
-WUH.waterUserHouseType,waterUserPeopleCount,QueryKey,[State],PeccantMemo,MWS.Value as FlowState,SubmitDate,waterUserAddress,MIS.Memo,CreateDate,
-(CASE PeccantInstallType WHEN '1' THEN '营业入口' ELSE '监察入口' END) AS PeccantInstallType
-FROM Meter_Install_Peccant MIS left join  waterUserType WT on MIS.waterUserTypeId=WT.waterUserTypeId left join waterUserHouseType WUH 
-on mis.waterUserHouseType=WUH.waterUserHouseTypeID left join Meter_WorkTaskState MWS on MIS.State=MWS.ID) M ";
-
-            if (!string.IsNullOrEmpty(uC_SearchModule1.sb.ToString()))
-            {
-                sqlstr += " WHERE " + uC_SearchModule1.sb.ToString();
-            }
-            uC_DataGridView_Page1.Fields = new string[,] { { "rowNum", "序号" }, 
-                                                           { "AcceptID", "受理编号" }, 
-                                                           { "waterUserName", "户名" }, 
-                                                           { "ApplyUser", "申请人" }, 
-                                                           { "waterPhone", "联系电话" }, 
-                                                           { "waterUserTypeName", "用户类型" } ,
-                                                           { "waterUserHouseType", "户型" } ,
-                                                           { "waterUserPeopleCount", "用水人数" } ,
-                                                           { "QueryKey", "查询密码" }, 
-                                                           { "FlowState", "状态" } ,
-                                                           { "SubmitDate", "申请时间" },
-                                                           { "waterUserAddress", "地址" }, 
-                                                           { "PeccantMemo", "违章说明" },  
-                                                           { "PeccantInstallType", "入口类型" }  
-            };
-            uC_DataGridView_Page1.SqlString = sqlstr;
-            uC_DataGridView_Page1.PageOrderField = "CreateDate";
-            uC_DataGridView_Page1.PageIndex = 1;
-            uC_DataGridView_Page1.Init();
-        }
-
-        private void uC_SearchModule1_Load(object sender, EventArgs e)
-        {
-            uC_SearchModule1.Init();
-        }
-
         private void uC_DataGridView_Page1_CellClickEvents(object sender, DataGridViewCellEventArgs e)
         {
             DataGridView dgList = (DataGridView)sender;
@@ -91,7 +53,7 @@ on mis.waterUserHouseType=WUH.waterUserHouseTypeID left join Meter_WorkTaskState
 
                         if (frm.ShowDialog() == DialogResult.OK)
                         {
-                            uC_SearchModule1_BtnEvent(null, null);
+                            uC_SearchBase1_BtnEvent(null, null);
                         }
                     }
                     else
@@ -103,10 +65,53 @@ on mis.waterUserHouseType=WUH.waterUserHouseTypeID left join Meter_WorkTaskState
 
                         if (frm.ShowDialog() == DialogResult.OK)
                         {
-                            uC_SearchModule1_BtnEvent(null, null);
+                            uC_SearchBase1_BtnEvent(null, null);
                         }
                     }
             }
+        }
+
+        private void uC_SearchBase1_BtnEvent(object sender, EventArgs e)
+        {
+            string sqlstr = @"SELECT * FROM (SELECT MIS.TaskID,SingleID,AcceptID,waterUserNO,waterUserName,ApplyUser,waterPhone,MIS.waterUserTypeId,WT.waterUserTypeName,
+WUH.waterUserHouseType,waterUserPeopleCount,QueryKey,MIS.[State],PeccantMemo,MWS.Value as FlowState,SubmitDate,waterUserAddress,MIS.Memo,CreateDate,
+(CASE PeccantInstallType WHEN '1' THEN '营业入口' ELSE '监察入口' END) AS PeccantInstallType,MW.PointSort,MIS.loginId
+FROM Meter_Install_Peccant MIS left join  waterUserType WT on MIS.waterUserTypeId=WT.waterUserTypeId left join waterUserHouseType WUH 
+on mis.waterUserHouseType=WUH.waterUserHouseTypeID left join Meter_WorkTaskState MWS on MIS.State=MWS.ID
+left join Meter_WorkTask MW on MIS.TaskID=MW.TaskID) M ";
+
+            if (!string.IsNullOrEmpty(uC_SearchBase1.sb.ToString()))
+            {
+                sqlstr += " WHERE " + uC_SearchBase1.sb.ToString();
+            }
+
+            uC_DataGridView_Page1.Fields = new string[,] { { "rowNum", "序号" }, 
+                                                           { "AcceptID", "受理编号" }, 
+                                                           { "waterUserNO", "户号" }, 
+                                                           { "waterUserName", "户名" }, 
+                                                           { "ApplyUser", "申请人" }, 
+                                                           { "waterPhone", "联系电话" }, 
+                                                           { "waterUserTypeName", "用户类型" } ,
+                                                           { "waterUserHouseType", "户型" } ,
+                                                           { "waterUserPeopleCount", "用水人数" } ,
+                                                           { "QueryKey", "查询密码" }, 
+                                                           { "FlowState", "状态" } ,
+                                                           { "SubmitDate", "申请时间" },
+                                                           { "waterUserAddress", "地址" }, 
+                                                           { "PeccantMemo", "违章说明" },  
+                                                           { "PeccantInstallType", "入口类型" }  
+            };
+            uC_DataGridView_Page1.SqlString = sqlstr;
+            uC_DataGridView_Page1.PageOrderField = "CreateDate";
+            uC_DataGridView_Page1.PageIndex = 1;
+            uC_DataGridView_Page1.Init();
+        }
+
+        private void uC_SearchBase1_Load(object sender, EventArgs e)
+        {
+            uC_SearchBase1.WorkCode = "Meter_Install_Peccant_1";
+            uC_SearchBase1.PkName = new string[] { "AcceptID", "waterUserName", "ApplyUser", "waterUserNO", "waterPhone", "waterUserAddress", "PeccantMemo" };
+            uC_SearchBase1.Init();
         }
 
        

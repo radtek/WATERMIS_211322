@@ -283,40 +283,41 @@ namespace PersonalWork
                 //取该用户下最大的水表顺序号
                 DataTable dd = new SqlServerHelper().GetDateTableBySql(string.Format("SELECT RIGHT(MAX(waterMeterNo),2) FROM waterMeter WHERE waterUserId='{0}'", _waterUserId));
                 int MeterCount = string.IsNullOrEmpty(dd.Rows[0][0].ToString()) ? 0 : int.Parse(dd.Rows[0][0].ToString());
-                MeterCount++;
+               // MeterCount++;
 
-                //string NewMeterID = _waterUserId + (MeterCount + 1).ToString().PadLeft(2, '0');
-                //Hashtable hnb = new Hashtable();
-                //hnb["waterMeterId"] = NewMeterID;
-                //hnb["waterMeterNo"] = NewMeterID;
-                //hnb["waterUserId"] = _waterUserId;
-                //hnb["waterMeterPositionName"] = waterMeterPositionName.Text;
-                //hnb["waterMeterPositionId"] = waterMeterPositionName.SelectedValue;
-                //hnb["waterMeterSizeId"] = waterMeterSizeId.SelectedValue;
-                //hnb["waterMeterStartNumber"] = waterMeterStartNumber.Text;
-                //hnb["waterMeterTypeId"] = waterMeterTypeId.SelectedValue;
-                //hnb["waterMeterParentId"] = waterMeterParentId.SelectedValue;
-                //hnb["waterMeterState"] = waterMeterState.SelectedValue;
-                //hnb["IsReverse"] = IsReverse.Checked?'1':'0';
-                //hnb["WATERFIXVALUE"] = WATERFIXVALUE.Text;
-                //hnb["waterMeterMode"] = waterMeterMode.Text;
-                //hnb["WATERMETERLOCKNO"] = WATERMETERLOCKNO.Text;
+                string NewMeterID = _waterUserId + (MeterCount + 1).ToString().PadLeft(2, '0');
+                Hashtable hnb = new Hashtable();
+                hnb["waterMeterId"] = NewMeterID;
+                hnb["waterMeterNo"] = NewMeterID;
+                hnb["waterUserId"] = _waterUserId;
+                hnb["waterMeterPositionName"] = waterMeterPositionName.Text;
+                hnb["waterMeterPositionId"] = waterMeterPositionName.SelectedValue;
+                hnb["waterMeterSizeId"] = waterMeterSizeId.SelectedValue;
+                hnb["waterMeterStartNumber"] = waterMeterStartNumber.Text;
+                hnb["waterMeterTypeId"] = waterMeterTypeId.SelectedValue;
+                hnb["waterMeterParentId"] = waterMeterParentId.SelectedValue;
+                hnb["waterMeterState"] = waterMeterState.SelectedValue;
+                hnb["IsReverse"] = IsReverse.Checked ? '1' : '0';
+                hnb["WATERFIXVALUE"] = WATERFIXVALUE.Text;
+                hnb["waterMeterMode"] = waterMeterMode.Text;
+                hnb["WATERMETERLOCKNO"] = WATERMETERLOCKNO.Text;
 
-                //new SqlServerHelper().Submit_AddOrEdit("Meter", "MeterID", strWaterMeterID, hnb);
+                new SqlServerHelper().Submit_AddOrEdit("Meter", "MeterID", strWaterMeterID, hnb);
 
                 #region
-                if (_MeterList.Count > 0)
-                {
-                    for (int i = 0; i < _MeterList.Count; i++)
-                    {
-                        string NewMeterID = _waterUserId + (MeterCount + i).ToString().PadLeft(2, '0');
-                        Hashtable hnb = new Hashtable();
-                        hnb["waterMeterId"] = NewMeterID;
-                        hnb["waterMeterNo"] = NewMeterID;
-                        hnb["waterUserId"] = _waterUserId;
-                        new SqlServerHelper().Submit_AddOrEdit("Meter", "MeterID", _MeterList[i], hnb);
-                    }
-                }
+                //if (_MeterList.Count > 0)
+                //{
+                //    for (int i = 0; i < _MeterList.Count; i++)
+                //    {
+                //        string NewMeterID = _waterUserId + (MeterCount + i).ToString().PadLeft(2, '0');
+                //        Hashtable hnb = new Hashtable();
+                //        hnb["waterMeterId"] = NewMeterID;
+                //        hnb["waterMeterNo"] = NewMeterID;
+                //        hnb["waterUserId"] = _waterUserId;
+                //        hnb["waterMeterTypeId"] = waterMeterTypeId.SelectedValue;
+                //        new SqlServerHelper().Submit_AddOrEdit("Meter", "MeterID", _MeterList[i], hnb);
+                //    }
+                //}
                 string CHARGEID = GETTABLEID.GetTableID("0092", "WATERFEECHARGE");
                 string PRESTORERUNNINGACCOUNTID = GETTABLEID.GetTableID("0092", "PRESTORERUNNINGACCOUNT");
                 #endregion

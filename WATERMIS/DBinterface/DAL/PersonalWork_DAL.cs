@@ -688,11 +688,12 @@ COMMIT TRAN", Chargeid, CHARGEID, PRESTORERUNNINGACCOUNTID, GetDatetimeNow());
                             INSERT INTO waterMeter (waterMeterId,waterMeterNo,waterMeterStartNumber,waterMeterPositionName,waterMeterPositionId,
                             waterMeterSizeId,waterMeterTypeId,ISUSECHANGE,CHANGEMONTH,waterMeterTypeIdChange,WATERFIXVALUE,waterMeterProduct,waterMeterSerialNumber,waterMeterMode
                             ,waterMeterMaxRange,waterMeterProofreadingDate,waterMeteProofreadingPeriod,waterUserId,isSummaryMeter,waterMeterParentId,STARTUSEDATETIME,MEMO
-                            ,waterMeterState,IsReverse,WATERMETERLOCKNO) 
+                            ,waterMeterState,IsReverse,WATERMETERLOCKNO,waterMeterTypeClassID) 
                             SELECT @waterUserId+'01',@waterUserId+'01',waterMeterStartNumber,waterMeterPositionName,waterMeterPositionId,
                             waterMeterSizeId,waterMeterTypeId,ISUSECHANGE,CHANGEMONTH,waterMeterTypeIdChange,WATERFIXVALUE,waterMeterProduct,waterMeterSerialNumber,waterMeterMode,
                             waterMeterMaxRange,waterMeterProofreadingDate,waterMeteProofreadingPeriod,@waterUserId,isSummaryMeter,waterMeterParentId,
-                            STARTUSEDATETIME,MEMO,waterMeterState,IsReverse,WATERMETERLOCKNO FROM Meter WHERE MeterID IN (SELECT MeterID FROM Meter_User WHERE TaskID=@TaskID)
+                            STARTUSEDATETIME,MEMO,waterMeterState,IsReverse,WATERMETERLOCKNO,(SELECT TOP 1 WATERMETERTYPECLASSID FROM waterMeterType WHERE waterMeterTypeId=Meter.waterMeterTypeId)
+                            FROM Meter WHERE MeterID IN (SELECT MeterID FROM Meter_User WHERE TaskID=@TaskID)
                             INSERT INTO User_Append (TaskID,waterUserNO,waterUserName) SELECT TaskID,waterUserNO,waterUserName FROM Meter_Install_Peccant WHERE TaskID=@TaskID
                             COMMIT TRAN", GetDatetimeNow());
             int count = DbHelperSQL.ExecuteSql(strsql, new SqlParameter[] { new SqlParameter("@TaskID", TaskID) });
