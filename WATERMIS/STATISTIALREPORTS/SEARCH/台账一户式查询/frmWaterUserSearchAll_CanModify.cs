@@ -79,7 +79,7 @@ namespace STATISTIALREPORTS
                     || dgList.Columns[i].Name == "waterMeterLastNumber" || dgList.Columns[i].Name == "SUBMETERNUMBER" ||dgList.Columns[i].Name == "totalNumber"
                     || dgList.Columns[i].Name == "waterTotalCharge" || dgList.Columns[i].Name == "extraCharge1" || dgList.Columns[i].Name == "extraCharge2"
                     || dgList.Columns[i].Name == "totalCharge" || dgList.Columns[i].Name == "OVERDUEMONEY" || dgList.Columns[i].Name == "CHARGEBCYS"
-                    || dgList.Columns[i].Name == "CHARGEYSQQYE" || dgList.Columns[i].Name == "CHARGEYSBCSZ" || dgList.Columns[i].Name == "CHARGEYSJSYE"
+                    || dgList.Columns[i].Name == "CHARGEYSQQYE" || dgList.Columns[i].Name == "CHARGEYSBCSZ" || dgList.Columns[i].Name == "CHARGEYSJSYE" || dgList.Columns[i].Name == "WATERUSERLJQF"
                     || dgList.Columns[i].Name == "RECEIPTNO" || dgList.Columns[i].Name == "INVOICENO" || dgList.Columns[i].Name == "CHARGEBCSS")
                 {
                     //本月读数可编辑

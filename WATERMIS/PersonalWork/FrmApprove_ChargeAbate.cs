@@ -246,7 +246,7 @@ INSERT INTO [readMeterRecord]([readMeterRecordId],[readMeterRecordIdLast],[water
                                             [waterUserTelphoneNO],areaNO,pianNO,duanNO,communityID,COMMUNITYNAME,buildingNO,unitNO,createType,[waterPhone],[waterUserAddress],[waterUserPeopleCount]
                                             ,[meterReadingID],[meterReadingNO],[meterReadingPageNo],[waterUserTypeId],[waterUserTypeName],[waterUserCreateDate]
                                             ,[waterUserHouseType],[waterUserchargeType],[agentsign],[waterUserState],[bankId],[bankName],[BankAcountNumber],
-[isSummaryMeter],[waterMeterParentId],[ordernumber] ,'红冲台账:{1}',{5}-{15},{5}-{15}+[totalCharge] 
+[isSummaryMeter],[waterMeterParentId],[ordernumber] ,'红冲台账:{1}',{5}-{15},{5}-{15}+{8} 
                                             FROM readMeterRecord WHERE readMeterRecordId='{1}'
 
                                             INSERT INTO WATERFEECHARGE(CHARGEID,TOTALNUMBERCHARGE,EXTRACHARGECHARGE1,EXTRACHARGECHARGE2,
@@ -254,7 +254,7 @@ INSERT INTO [readMeterRecord]([readMeterRecordId],[readMeterRecordIdLast],[water
                             CHARGEYSBCSZ,CHARGEYSJSYE,CHARGEWORKERID,CHARGEWORKERNAME,CHARGEDATETIME,INVOICEPRINTSIGN,RECEIPTPRINTCOUNT,MEMO)
                             SELECT '{4}',0-TOTALNUMBERCHARGE,0-EXTRACHARGECHARGE1,0-EXTRACHARGECHARGE2,
                             0-WATERTOTALCHARGE,0-EXTRATOTALCHARGE,0-TOTALCHARGE,0-OVERDUEMONEY,CHARGETYPEID,'4',0-CHARGEBCYS,0,{5},CHARGEBCYS,{5}+CHARGEBCYS,
-                       CHARGEWORKERID,CHARGEWORKERNAME,'{2}',0,0,NULL FROM WATERFEECHARGE WHERE CHARGEID='{7}'
+                       CHARGEWORKERID,CHARGEWORKERNAME,DATEADD(SECOND,1,GETDATE()),0,0,NULL FROM WATERFEECHARGE WHERE CHARGEID='{7}'
 
 UPDATE WATERUSER SET prestore={5}+{8} WHERE WATERUSERID='{9}' 
 
@@ -276,10 +276,10 @@ UPDATE WATERUSER SET prestore={5}+{8} WHERE WATERUSERID='{9}'
                                             ,NULL,{12},[extraChargePrice1],{13},[extraChargePrice2],{14},[extraChargePrice3]
                                             ,[extraCharge3],[extraChargePrice4],[extraCharge4],[extraChargePrice5],[extraCharge5],[extraChargePrice6],[extraCharge6]
                                             ,[extraChargePrice7],[extraCharge7],[extraChargePrice8],[extraCharge8],{13}+{14},[trapezoidPrice],[extraCharge]
-                                            ,{12}+{13}+{14},0,[WATERFIXVALUE],'{2}',NULL,'{2}',[waterMeterPositionName]
+                                            ,{12}+{13}+{14},0,[WATERFIXVALUE],DATEADD(SECOND,2,GETDATE()),NULL,DATEADD(SECOND,2,GETDATE()),[waterMeterPositionName]
                                             ,[waterMeterSizeId],[waterMeterSizeValue],waterMeterTypeClassID,waterMeterTypeClassName,[waterMeterTypeId],[waterMeterTypeName],
                                             [waterMeterProduct],[waterMeterSerialNumber],[waterMeterMode],[waterMeterMagnification],[waterMeterMaxRange],IsReverse,[chargerID],[chargerName],[meterReaderID],[meterReaderName],
-                                            '1',GETDATE(),'{3}','1',NULL,[waterUserId],[waterUserNO],[waterUserName],waterUserNameCode,
+                                            '1',DATEADD(SECOND,2,GETDATE()),'{3}','1',NULL,[waterUserId],[waterUserNO],[waterUserName],waterUserNameCode,
                                             [waterUserTelphoneNO],areaNO,pianNO,duanNO,communityID,COMMUNITYNAME,buildingNO,unitNO,createType,[waterPhone],[waterUserAddress],[waterUserPeopleCount]
                                             ,[meterReadingID],[meterReadingNO],[meterReadingPageNo],[waterUserTypeId],[waterUserTypeName],[waterUserCreateDate]
                                             ,[waterUserHouseType],[waterUserchargeType],[agentsign],[waterUserState],[bankId],[bankName],[BankAcountNumber],
@@ -321,7 +321,7 @@ DECLARE @totalCharge DECIMAL(18,2)=0
 DECLARE @Prestore DECIMAL(18,2)=0
 DECLARE @QFZJ DECIMAL(18,2)=0
 
-SELECT @Prestore=Prestore FROM waterUser WHERE waterUserId='{0}'
+SELECT @Prestore=Prestore,@QFZJ=TOTALFEE FROM V_WATERUSERAREARAGE WHERE waterUserId='{0}'
 
 SELECT @waterTotalCharge=waterTotalCharge,@extraCharge1=extraCharge1,
 @extraCharge2=extraCharge2,@extraTotalCharge=extraTotalCharge,
@@ -350,22 +350,22 @@ INSERT INTO [readMeterRecord]([readMeterRecordId],[readMeterRecordIdLast],[water
 ,unitNO,createType,waterPhone,[waterUserAddress],[waterUserPeopleCount]
 ,[meterReadingID],[meterReadingNO],[meterReadingPageNo],[waterUserTypeId],[waterUserTypeName],[waterUserCreateDate]
 ,[waterUserHouseType],[waterUserchargeType],[agentsign],[waterUserState],[bankId],[bankName],[BankAcountNumber],
-[isSummaryMeter],[waterMeterParentId],[ordernumber] ,[memo]) 
+[isSummaryMeter],[waterMeterParentId],[ordernumber] ,[memo],WATERUSERQQYE,WATERUSERJSYE,WATERUSERLJQF) 
 
 SELECT '{5}','',[waterMeterId],[waterMeterNo]
 ,[lastNumberYearMonth],[waterMeterEndNumber],[waterMeterLastNumber],0,0-[totalNumber],NULL,[avePrice]
 ,NULL,0-[waterTotalCharge],[extraChargePrice1],0-[extraCharge1],[extraChargePrice2],0-[extraCharge2]
 ,0-[extraTotalCharge],[trapezoidPrice],[extraCharge]
-,0-[totalCharge],0,[WATERFIXVALUE],GETDATE(),GETDATE(),GETDATE(),[waterMeterPositionName]
+,0-[totalCharge],0,[WATERFIXVALUE],DATEADD(SECOND,1,GETDATE()),DATEADD(SECOND,1,GETDATE()),DATEADD(SECOND,1,GETDATE()),[waterMeterPositionName]
 ,[waterMeterSizeId],[waterMeterSizeValue],waterMeterTypeClassID,waterMeterTypeClassName,[waterMeterTypeId],[waterMeterTypeName]
 ,[waterMeterProduct],[waterMeterSerialNumber]
 ,[waterMeterMode],[waterMeterMagnification],[waterMeterMaxRange],IsReverse,[chargerID],[chargerName],[meterReaderID],[meterReaderName]
-,'1',GETDATE(),'{4}','3','{6}',[waterUserId],[waterUserNO],[waterUserName]
+,'1',DATEADD(SECOND,1,GETDATE()),'{4}','3','{6}',[waterUserId],[waterUserNO],[waterUserName]
 ,waterUserNameCode,[waterUserTelphoneNO],areaNO,pianNO,duanNO,communityID,COMMUNITYNAME,buildingNO
 ,unitNO,createType,[waterPhone],[waterUserAddress],[waterUserPeopleCount]
 ,[meterReadingID],[meterReadingNO],[meterReadingPageNo],[waterUserTypeId],[waterUserTypeName],[waterUserCreateDate]
 ,[waterUserHouseType],[waterUserchargeType],[agentsign],[waterUserState],[bankId],[bankName],[BankAcountNumber],
-[isSummaryMeter],[waterMeterParentId],[ordernumber] ,NULL
+[isSummaryMeter],[waterMeterParentId],[ordernumber] ,NULL,@Prestore-@QFZJ,@Prestore-@QFZJ+totalCharge,@QFZJ-totalCharge
  FROM readMeterRecord WHERE readMeterRecordId='{1}'
  
  INSERT INTO  WATERFEECHARGE(CHARGEID,TOTALNUMBERCHARGE,EXTRACHARGECHARGE1,
@@ -374,9 +374,9 @@ CHARGEClASS,CHARGEBCYS,CHARGEBCSS,CHARGEYSQQYE,CHARGEYSBCSZ,CHARGEYSJSYE,
 CHARGEWORKERID,CHARGEWORKERNAME,CHARGEDATETIME)
 SELECT '{6}',0-@TotalNumber,0-@waterTotalCharge,0-@extraCharge1,0-@extraCharge2,
 0-@extraTotalCharge,0-@totalCharge,'1','4',0-@totalCharge,0,@Prestore,0,@Prestore,
-'{3}','{4}',GETDATE()
+'{3}','{4}',DATEADD(SECOND,2,GETDATE())
 
-SELECT @QFZJ=TOTALFEE FROM V_WATERUSERAREARAGE WHERE WATERUSERID='{0}'
+SELECT @Prestore=Prestore,@QFZJ=TOTALFEE FROM V_WATERUSERAREARAGE WHERE waterUserId='{0}'
 
 INSERT INTO [readMeterRecord]([readMeterRecordId],[readMeterRecordIdLast],[waterMeterId],[waterMeterNo]
 ,[lastNumberYearMonth],[waterMeterLastNumber],[waterMeterEndNumber],SUBMETERNUMBER,[totalNumber],[totalNumberDescribe],[avePrice]
@@ -397,11 +397,11 @@ SELECT '{7}','',[waterMeterId],[waterMeterNo]
 ,[lastNumberYearMonth],[waterMeterEndNumber]-{11},[waterMeterEndNumber],0,{11},NULL,[avePrice]
 ,NULL,{8},[extraChargePrice1],{9},[extraChargePrice2],{10}
 ,{9}+{10},[trapezoidPrice],[extraCharge]
-,{8}+{9}+{10},0,[WATERFIXVALUE],GETDATE(),GETDATE()+0.0001,GETDATE(),[waterMeterPositionName]
+,{8}+{9}+{10},0,[WATERFIXVALUE],DATEADD(SECOND,3,GETDATE()),DATEADD(SECOND,3,GETDATE()),DATEADD(SECOND,3,GETDATE()),[waterMeterPositionName]
 ,[waterMeterSizeId],[waterMeterSizeValue],waterMeterTypeClassID,waterMeterTypeClassName,[waterMeterTypeId],[waterMeterTypeName]
 ,[waterMeterProduct],[waterMeterSerialNumber]
 ,[waterMeterMode],[waterMeterMagnification],[waterMeterMaxRange],IsReverse,[chargerID],[chargerName],[meterReaderID],[meterReaderName]
-,'1',GETDATE()+0.0001,'{4}','1',NULL,[waterUserId],[waterUserNO],[waterUserName]
+,'1',DATEADD(SECOND,3,GETDATE()),'{4}','1',NULL,[waterUserId],[waterUserNO],[waterUserName]
 ,waterUserNameCode,[waterUserTelphoneNO],areaNO,pianNO,duanNO,communityID,COMMUNITYNAME,buildingNO
 ,unitNO,createType,[waterPhone],[waterUserAddress],[waterUserPeopleCount]
 ,[meterReadingID],[meterReadingNO],[meterReadingPageNo],[waterUserTypeId],[waterUserTypeName],[waterUserCreateDate]

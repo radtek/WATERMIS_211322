@@ -265,6 +265,16 @@ WHERE readMeterRecordId='{13}' ", strWaterMeterRecordTrapePrice[0], strWaterMete
                               decExtraChargePrice1, decExtraChargePrice2, decExtraCharge1, decExtraCharge2, decExtraCharge, decTotalFee,
                               strWaterMeterTypeClassID, strWaterMeterTypeClassName, strWaterMeterTypeID, strWaterMeterTypeName, strReadMeterRecordID
                                );
+
+                                    strSQLExcute += string.Format(@"
+DECLARE @PRESTORE DECIMAL(18,2)
+DECLARE @JSYE DECIMAL(18,2)
+DECLARE @QFYE DECIMAL(18,2)
+SELECT @PRESTORE=prestore,@JSYE=prestore-TOTALFEE,@QFYE=TOTALFEE FROM V_WATERUSERAREARAGE WHERE waterUserId='{0}'
+
+UPDATE readMeterRecord SET WATERUSERQQYE=@JSYE+{1},WATERUSERJSYE=@JSYE,WATERUSERLJQF=@QFYE 
+WHERE readMeterRecordId='{2}' ", WATERUSERNO.Text, decTotalFee, strReadMeterRecordID
+                               );
                                 }
                                 else
                                 {

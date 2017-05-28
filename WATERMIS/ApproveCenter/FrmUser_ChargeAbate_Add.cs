@@ -80,6 +80,7 @@ namespace ApproveCenter
                 ht["TOTALCHARGEEND"] = TotalChargeEND.Text;
                 ht["OldTotalNumber"] = (OldTotalNumber.Text);
                 ht["NewTotalNumber"] = Convert.ToInt32(NewTotalNumber.Text);
+                ht["Abate"] = Abate.Text.Replace("元","");
                 ht["ABATEDESCRIBE"] = AbateDescribe.Text;
                 ht["waterMeterTypeid"] = waterMeterTypeid.Text;
                 ht["waterUserTypeId"] = waterUserTypeId.Text;
@@ -231,14 +232,40 @@ namespace ApproveCenter
 
         private void Abate_TextChanged(object sender, EventArgs e)
         {
-            //if (!CkeckAbate())
-            //{
-            //    NewTotalNumber.Focus();
-            //}
-            //else
-            //{
-            //    LB_Abate.Text = "";
-            //}
+            if (!Information.IsNumeric(NewTotalNumber.Text))
+                return;
+
+            if (!Information.IsNumeric(TotalChargeEND.Text))
+                return;
+            
+            string strTrapePriceString = "", strExtraCharge = "";
+            decimal waterTotalCharge = 0, extraCharge1 = 0, extraCharge2 = 0;
+            int intNotReadMonths = 1, intTotalNumber = Convert.ToInt32(NewTotalNumber.Text);
+
+            string strSQL = string.Format(@"SELECT trapezoidPrice,extraCharge,NotReadMonthCount FROM readMeterRecord WHERE readMeterRecordId='{0}'", readMeterRecordId.Text);
+            DataTable dtReadMeterRecord = new SqlServerHelper().GetDateTableBySql(strSQL);
+            if (dtReadMeterRecord.Rows.Count > 0)
+            {
+                object obj = dtReadMeterRecord.Rows[0]["trapezoidPrice"];
+                if (obj != null && obj != DBNull.Value)
+                {
+                    strTrapePriceString = obj.ToString();
+                }
+                obj = dtReadMeterRecord.Rows[0]["extraCharge"];
+                if (obj != null && obj != DBNull.Value)
+                {
+                    strExtraCharge = obj.ToString();
+                }
+                obj = dtReadMeterRecord.Rows[0]["NotReadMonthCount"];
+                if (Information.IsNumeric(obj))
+                {
+                    intNotReadMonths = Convert.ToInt16(obj);
+                }
+
+                //获取水费等信息
+                sysidal.GetAvePrice(intTotalNumber, strTrapePriceString, strExtraCharge, intNotReadMonths, ref waterTotalCharge, ref extraCharge1, ref extraCharge2);
+                Abate.Text = (Convert.ToDecimal(TotalChargeEND.Text) - waterTotalCharge- extraCharge1-extraCharge2).ToString("F2") + "元";
+            }
         }
 
         private void dgWaterFeeList_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -432,23 +459,6 @@ namespace ApproveCenter
         {
             if (e.KeyCode == Keys.Enter)
                 Btn_Search_Click(null, null);
-        }
-
-        private void NewTotalNumber_MouseLeave(object sender, EventArgs e)
-        {
-            if (int.TryParse(NewTotalNumber.Text,out NewNum))
-            {
-                if (NewNum>0)
-                {
-                    
-
-
-                }
-                else
-                {
-                    LB_Abate.Text = OldFee.ToString();
-                }
-            }
         }
     }
 }
