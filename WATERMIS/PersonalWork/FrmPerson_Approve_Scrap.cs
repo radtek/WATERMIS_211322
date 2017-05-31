@@ -22,10 +22,14 @@ namespace PersonalWork
 
         private void SearchData()
         {
+//            string sqlstr = string.Format(@"SELECT * FROM  
+//(SELECT MW.TaskName,WorkName,MW.TaskCode,MWR.DoName,MW.PointTime,MW.TaskID,MWR.ResolveID,MWR.PointName,MW.SD,loginId,userName,MW.AcceptUser,MW.AcceptDate,UserOpinion,CreateDate
+//  FROM Meter_WorkTask MW,Meter_WorkResolve MWR WHERE MW.TaskID=MWR.TaskID AND MWR.MakeVoided=1  
+// AND ','+loginId+',' like '%,'+'{0}'+',%' 
+//AND MW.[State]=4) M ", loginid);
             string sqlstr = string.Format(@"SELECT * FROM  
 (SELECT MW.TaskName,WorkName,MW.TaskCode,MWR.DoName,MW.PointTime,MW.TaskID,MWR.ResolveID,MWR.PointName,MW.SD,loginId,userName,MW.AcceptUser,MW.AcceptDate,UserOpinion,CreateDate
   FROM Meter_WorkTask MW,Meter_WorkResolve MWR WHERE MW.TaskID=MWR.TaskID AND MWR.MakeVoided=1  
- AND ','+loginId+',' like '%,'+'{0}'+',%' 
 AND MW.[State]=4) M ", loginid);
 
             if (!string.IsNullOrEmpty(uC_SearchApprove1.sb.ToString()))

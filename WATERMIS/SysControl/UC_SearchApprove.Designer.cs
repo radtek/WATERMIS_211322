@@ -30,7 +30,7 @@
         {
             this.label4 = new System.Windows.Forms.Label();
             this.Btn_Search = new System.Windows.Forms.Button();
-            this.TB_SD = new System.Windows.Forms.TextBox();
+            this.TB_Key = new System.Windows.Forms.TextBox();
             this.CB_loginId = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -49,8 +49,7 @@
             this.label4.Size = new System.Drawing.Size(65, 12);
             this.label4.TabIndex = 191;
             this.label4.Tag = "9999";
-            this.label4.Text = "受理编号：";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.label4.Text = "关 键 词：";
             // 
             // Btn_Search
             // 
@@ -64,15 +63,15 @@
             this.Btn_Search.UseVisualStyleBackColor = true;
             this.Btn_Search.Click += new System.EventHandler(this.Btn_Search_Click);
             // 
-            // TB_SD
+            // TB_Key
             // 
-            this.TB_SD.BackColor = System.Drawing.SystemColors.Window;
-            this.TB_SD.Location = new System.Drawing.Point(98, 40);
-            this.TB_SD.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.TB_SD.Name = "TB_SD";
-            this.TB_SD.Size = new System.Drawing.Size(249, 21);
-            this.TB_SD.TabIndex = 183;
-            this.TB_SD.Tag = "9999";
+            this.TB_Key.BackColor = System.Drawing.SystemColors.Window;
+            this.TB_Key.Location = new System.Drawing.Point(98, 40);
+            this.TB_Key.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TB_Key.Name = "TB_Key";
+            this.TB_Key.Size = new System.Drawing.Size(249, 21);
+            this.TB_Key.TabIndex = 183;
+            this.TB_Key.Tag = "9999";
             // 
             // CB_loginId
             // 
@@ -171,7 +170,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.label4);
             this.Controls.Add(this.Btn_Search);
-            this.Controls.Add(this.TB_SD);
+            this.Controls.Add(this.TB_Key);
             this.Controls.Add(this.CB_loginId);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -193,7 +192,7 @@
 
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button Btn_Search;
-        private System.Windows.Forms.TextBox TB_SD;
+        private System.Windows.Forms.TextBox TB_Key;
         private System.Windows.Forms.ComboBox CB_loginId;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;

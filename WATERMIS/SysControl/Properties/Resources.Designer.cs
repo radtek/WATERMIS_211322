@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WaterBusiness.Properties {
+namespace SysControl.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace WaterBusiness.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WaterBusiness.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SysControl.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -259,6 +259,13 @@ namespace WaterBusiness.Properties {
         internal static System.Drawing.Bitmap _9 {
             get {
                 object obj = ResourceManager.GetObject("_9", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap onebit_20 {
+            get {
+                object obj = ResourceManager.GetObject("onebit_20", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
