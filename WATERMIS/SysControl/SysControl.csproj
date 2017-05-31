@@ -159,6 +159,12 @@
     <Compile Include="UC_DataGridView_Page.Designer.cs">
       <DependentUpon>UC_DataGridView_Page.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC_DateSelect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_DateSelect.Designer.cs">
+      <DependentUpon>UC_DateSelect.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC_DepartmentFee.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -329,6 +335,9 @@
     <EmbeddedResource Include="UC_DataGridView_Page.resx">
       <DependentUpon>UC_DataGridView_Page.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UC_DateSelect.resx">
+      <DependentUpon>UC_DateSelect.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UC_DepartmentFee.resx">
       <DependentUpon>UC_DepartmentFee.cs</DependentUpon>
     </EmbeddedResource>
@@ -495,6 +504,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\onebit_20.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\" />

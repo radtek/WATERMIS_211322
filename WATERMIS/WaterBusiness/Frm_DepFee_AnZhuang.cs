@@ -19,30 +19,20 @@ namespace WaterBusiness
 
         private void Frm_DepFee_AnZhuang_Load(object sender, EventArgs e)
         {
-            Init();
-        }
-        public void Init()
-        {
-            //DataTable dt = new SqlServerHelper().GetDateTableBySql("SELECT DISTINCT CreateMonth,CreateMonth AS CMonth FROM View_TaskStat ORDER BY CreateMonth DESC ");
-            //ControlBindHelper.BindComboBoxData(this.CB_Month, dt, "CMonth", "CreateMonth");
-            DataTable dt = new SqlServerHelper().GetDateTableBySql("SELECT DISTINCT CreateMonth,CreateMonth AS CMonth FROM View_Report_Invoice ORDER BY CreateMonth DESC ");
-            ControlBindHelper.BindComboBoxData(this.CB_Month, dt, "CMonth", "CreateMonth");
         }
 
         private void Btn_Submit_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(CB_Month.Text))
-            {
-                string sqlstr = string.Format(@"SELECT COUNT(1) AS '户数',SUM(TOTALmONEY) AS '金额',TABLE_nAME_ch AS '业扩类型',FEEITEM AS '收费项目'
+            string sqlstr = string.Format(@"DECLARE @StartDate NVARCHAR(50)='{0}'
+DECLARE @EndDate Nvarchar(50)='{1}'
+SELECT COUNT(1) AS '户数',SUM(TOTALmONEY) AS '金额',TABLE_nAME_ch AS '业扩类型',FEEITEM AS '收费项目'
   FROM [WATERMIS].[dbo].[View_Report_Invoice]
   WHERE FeeItemInvoiceTitle='工程款'
-  AND CREATEmONTH='{0}'
-  GROUP BY TABLE_nAME_ch,FEEITEM", CB_Month.Text.Trim());
+  AND InvoicePrintDateTime BETWEEN  @StartDate AND @EndDate
+  GROUP BY TABLE_nAME_ch,FEEITEM", uC_DateSelect1.DayStart, uC_DateSelect1.DayEnd);
 
                 DataTable dt = new SqlServerHelper().GetDateTableBySql(sqlstr);
-
                 dgList.DataSource = dt;
-            }
         }
 
         private void Btn_Export_Click(object sender, EventArgs e)

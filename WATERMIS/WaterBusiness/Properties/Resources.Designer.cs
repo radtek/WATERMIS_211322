@@ -59,5 +59,12 @@ namespace WaterBusiness.Properties {
                 resourceCulture = value;
             }
         }
+        
+        internal static System.Drawing.Bitmap onebit_20 {
+            get {
+                object obj = ResourceManager.GetObject("onebit_20", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
