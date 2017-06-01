@@ -83,7 +83,7 @@ SELECT CASE MWR.IsPass WHEN '1' THEN '√' WHEN '0' THEN '×' ELSE '-' END AS Is
         {
             loginid = AppDomain.CurrentDomain.GetData("LOGINID").ToString();
             uC_SearchApprove1.Init(loginid);
-            SearchData();
+            //SearchData();
         }
 
         private void uC_SearchApprove1_BtnEvent(object sender, EventArgs e)
