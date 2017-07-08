@@ -247,5 +247,38 @@ namespace MeterInstall
 
             BindGroupUser();
         }
+
+        private void toolPrint_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(taskid))
+            {
+                DataSet ds = new DataSet();
+
+                DataTable dtPrint = new SqlServerHelper().GetDataTable("View_GroupInfo", "taskid='" + taskid + "'", "");
+
+                dtPrint.TableName = "用户报装申请表";
+                ds.Tables.Add(dtPrint.Copy());
+                FastReport.Report report1 = new FastReport.Report();
+                try
+                {
+                    // load the existing report
+                    report1.Load(Application.StartupPath + @"\PRINTModel\业扩模板\多用户报装申请表.frx");
+                    // register the dataset
+                    report1.RegisterData(ds);
+                    report1.GetDataSource("用户报装申请表").Enabled = true;
+                    // run the report
+                    report1.Show();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    // free resources used by report
+                    report1.Dispose();
+                }
+            }
+        }
     }
 }

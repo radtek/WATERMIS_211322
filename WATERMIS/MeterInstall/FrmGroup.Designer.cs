@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGroup));
+            this.toolStripWaterUser = new System.Windows.Forms.ToolStrip();
+            this.toolPrint = new System.Windows.Forms.ToolStripButton();
+            this.toolPrintPreview = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.FP = new System.Windows.Forms.FlowLayoutPanel();
@@ -54,8 +58,43 @@
             this.label83 = new System.Windows.Forms.Label();
             this.label84 = new System.Windows.Forms.Label();
             this.label85 = new System.Windows.Forms.Label();
+            this.toolStripWaterUser.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // toolStripWaterUser
+            // 
+            this.toolStripWaterUser.Font = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.toolStripWaterUser.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStripWaterUser.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolPrint,
+            this.toolPrintPreview,
+            this.toolStripSeparator1});
+            this.toolStripWaterUser.Location = new System.Drawing.Point(0, 0);
+            this.toolStripWaterUser.Name = "toolStripWaterUser";
+            this.toolStripWaterUser.Size = new System.Drawing.Size(640, 25);
+            this.toolStripWaterUser.TabIndex = 61;
+            this.toolStripWaterUser.Text = "toolStrip2";
+            // 
+            // toolPrint
+            // 
+            this.toolPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolPrint.Name = "toolPrint";
+            this.toolPrint.Size = new System.Drawing.Size(71, 22);
+            this.toolPrint.Text = "打印工单";
+            this.toolPrint.Click += new System.EventHandler(this.toolPrint_Click);
+            // 
+            // toolPrintPreview
+            // 
+            this.toolPrintPreview.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolPrintPreview.Name = "toolPrintPreview";
+            this.toolPrintPreview.Size = new System.Drawing.Size(71, 22);
+            this.toolPrintPreview.Text = "打印预览";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // groupBox6
             // 
@@ -84,10 +123,10 @@
             this.groupBox6.Controls.Add(this.label84);
             this.groupBox6.Controls.Add(this.label85);
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox6.Location = new System.Drawing.Point(0, 0);
+            this.groupBox6.Location = new System.Drawing.Point(0, 25);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(640, 515);
-            this.groupBox6.TabIndex = 3;
+            this.groupBox6.Size = new System.Drawing.Size(640, 517);
+            this.groupBox6.TabIndex = 62;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "用户详细信息";
             // 
@@ -108,7 +147,6 @@
             this.FP.Name = "FP";
             this.FP.Size = new System.Drawing.Size(529, 247);
             this.FP.TabIndex = 85;
-            this.FP.Click += new System.EventHandler(this.FP_Click);
             // 
             // label4
             // 
@@ -303,22 +341,31 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 515);
+            this.ClientSize = new System.Drawing.Size(640, 542);
             this.Controls.Add(this.groupBox6);
+            this.Controls.Add(this.toolStripWaterUser);
             this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "FrmGroup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "多位用户报装";
             this.Load += new System.EventHandler(this.FrmGroup_Load);
+            this.toolStripWaterUser.ResumeLayout(false);
+            this.toolStripWaterUser.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
+        private System.Windows.Forms.ToolStrip toolStripWaterUser;
+        private System.Windows.Forms.ToolStripButton toolPrint;
+        private System.Windows.Forms.ToolStripButton toolPrintPreview;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FlowLayoutPanel FP;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox userName;
@@ -342,7 +389,6 @@
         private System.Windows.Forms.Label label83;
         private System.Windows.Forms.Label label84;
         private System.Windows.Forms.Label label85;
-        private System.Windows.Forms.Label label1;
 
 
     }

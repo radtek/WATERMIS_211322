@@ -108,32 +108,32 @@ namespace ApproveCenter
             }
         }
 
-        private void Btn_Search_Click(object sender, EventArgs e)
-        {
+        //private void Btn_Search_Click(object sender, EventArgs e)
+        //{
 
-            if (!WATERUSERNO.Text.Contains("U"))
-                WATERUSERNO.Text = "U" + WATERUSERNO.Text.Trim();
+        //    if (!WATERUSERNO.Text.Contains("U"))
+        //        WATERUSERNO.Text = "U" + WATERUSERNO.Text.Trim();
 
 
-            _WATERUSERNO = WATERUSERNO.Text.Trim();
-            new SqlServerHelper().ClearControls(this.panel1.Controls);
-            if (!string.IsNullOrEmpty(_WATERUSERNO))
-            {
-                Hashtable ht = new SqlServerHelper().GetHashtableById("V_WATERUSER_CONNECTWATERMETER", "waterUserNO", _WATERUSERNO);
+        //    _WATERUSERNO = WATERUSERNO.Text.Trim();
+        //    new SqlServerHelper().ClearControls(this.panel1.Controls);
+        //    if (!string.IsNullOrEmpty(_WATERUSERNO))
+        //    {
+        //        Hashtable ht = new SqlServerHelper().GetHashtableById("V_WATERUSER_CONNECTWATERMETER", "waterUserNO", _WATERUSERNO);
 
-                if (ht.Count == 0)
-                {
-                    mes.Show("未查到用户信息,请输入完整的用户号!");
-                    return;
-                }
-                if (sysidal.IsExitWaterPriceNO(_WATERUSERNO))
-                    if (mes.ShowQ("该用户存在申请记录，确定要再次申请吗?") != DialogResult.OK)
-                        return;
+        //        if (ht.Count == 0)
+        //        {
+        //            mes.Show("未查到用户信息,请输入完整的用户号!");
+        //            return;
+        //        }
+        //        if (sysidal.IsExitWaterPriceNO(_WATERUSERNO))
+        //            if (mes.ShowQ("该用户存在申请记录，确定要再次申请吗?") != DialogResult.OK)
+        //                return;
 
-                    new SqlServerHelper().BindHashTableToForm(ht, this.panel1.Controls);
-                    CheckMonthChange();
-            }
-        }
+        //            new SqlServerHelper().BindHashTableToForm(ht, this.panel1.Controls);
+        //            CheckMonthChange();
+        //    }
+        //}
 
         private bool CheckForm()
         {
@@ -208,28 +208,28 @@ namespace ApproveCenter
             return true;
         }
 
-        private void IsMonth_CheckedChanged(object sender, EventArgs e)
-        {
-            CheckMonthChange();
+        //private void IsMonth_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    CheckMonthChange();
            
-        }
-        private void CheckMonthChange()
-        {
-            if (!string.IsNullOrEmpty(WATERUSERNO.Text.Trim()) && IsMonth.Checked)
-            {
-                string sqlstr = "SELECT readMeterRecordId FROM V_YSDETAIL_BYWATERMETER WHERE waterUserNO=@waterUserNO AND chargeState<>3 AND DATEDIFF(MONTH,readMeterRecordYearAndMonth,GETDATE())=0";
-                DataTable dt = new SqlServerHelper().GetDateTableBySql(sqlstr, new SqlParameter[] { new SqlParameter("@waterUserNO", WATERUSERNO.Text.Trim()) });
-                if (DataTableHelper.IsExistRows(dt))
-                {
-                    readMeterRecordId.Text = dt.Rows[0][0].ToString();
-                }
-                else
-                {
-                    mes.Show("未查到该用户本月可变更的台账信息！");
-                    IsMonth.Checked = false;
-                }
-            }
-        }
+        //}
+        //private void CheckMonthChange()
+        //{
+        //    if (!string.IsNullOrEmpty(WATERUSERNO.Text.Trim()) && IsMonth.Checked)
+        //    {
+        //        string sqlstr = "SELECT readMeterRecordId FROM V_YSDETAIL_BYWATERMETER WHERE waterUserNO=@waterUserNO AND chargeState<>3 AND DATEDIFF(MONTH,readMeterRecordYearAndMonth,GETDATE())=0";
+        //        DataTable dt = new SqlServerHelper().GetDateTableBySql(sqlstr, new SqlParameter[] { new SqlParameter("@waterUserNO", WATERUSERNO.Text.Trim()) });
+        //        if (DataTableHelper.IsExistRows(dt))
+        //        {
+        //            readMeterRecordId.Text = dt.Rows[0][0].ToString();
+        //        }
+        //        else
+        //        {
+        //            mes.Show("未查到该用户本月可变更的台账信息！");
+        //            IsMonth.Checked = false;
+        //        }
+        //    }
+        //}
 
         private void IsLong_CheckedChanged(object sender, EventArgs e)
         {
@@ -248,5 +248,89 @@ namespace ApproveCenter
                 CHANGEMONTH.Enabled = ISUSECHANGE.Checked;
             }
         }
+
+       
+        private void button1_Click(object sender, EventArgs e)
+        {
+            new SqlServerHelper().ClearControls(this.groupBox2.Controls);
+            if (txtWaterUser.Text.Trim() == "")
+            {
+                mes.Show("请输入用户编号");
+                return;
+            }
+
+            if (!txtWaterUser.Text.Contains("U"))
+                txtWaterUser.Text = "U" + txtWaterUser.Text.Trim();
+
+            _WATERUSERNO = txtWaterUser.Text;
+
+            string strFilter = " WHERE waterUserId='" + _WATERUSERNO + "'";
+
+            if (chkYearAndMonth.Checked)
+            {
+                strFilter += " AND chargeState<>3 AND DATEDIFF(MONTH,readMeterRecordYearAndMonth,GETDATE())=0 ";
+            }
+            strFilter += " ORDER BY readMeterRecordYearAndMonth DESC";
+
+            string sqlstr = "SELECT * FROM V_YSDETAIL_BYWATERMETER " + strFilter;
+            DataTable dt = new SqlServerHelper().GetDateTableBySql(sqlstr);
+            if (DataTableHelper.IsExistRows(dt))
+            {
+                dgWaterFeeList.DataSource = dt;
+                Btn_Submit.Enabled = true;
+            }
+            else
+            {
+                dgWaterFeeList.DataSource = null;
+                mes.Show("该用户不存在抄表记录！");
+            }
+        }
+
+        private void dgWaterFeeList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+                return;
+            if (dgWaterFeeList.Columns[e.ColumnIndex].Name == "chargeState")
+            {
+                object obj = e.Value;
+                if (obj != null && obj != DBNull.Value)
+                    if (obj.ToString() == "1")
+                        e.Value = "已抄表";
+                    else if (obj.ToString() == "2")
+                        e.Value = "已挂账";
+                    else if (obj.ToString() == "3")
+                        e.Value = "已收费";
+            }
+        }
+
+        private void dgWaterFeeList_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0)
+                return;
+            object obj = dgWaterFeeList.Rows[e.RowIndex].Cells["readMeterRecordId1"].Value;
+            if (obj != null && obj != DBNull.Value)
+            {
+                readMeterRecordId.Text = obj.ToString();
+
+                new SqlServerHelper().ClearControls(this.panel1.Controls);
+                if (!string.IsNullOrEmpty(_WATERUSERNO))
+                {
+                    Hashtable ht = new SqlServerHelper().GetHashtableById("V_YSDETAIL_BYWATERMETER", "readMeterRecordId", obj.ToString());
+
+                    if (ht.Count == 0)
+                    {
+                        mes.Show("未查到用户信息,请输入完整的用户号!");
+                        return;
+                    }
+                    //if (sysidal.IsExitWaterPriceNO(_WATERUSERNO))
+                    //    if (mes.ShowQ("该用户存在申请记录，确定要再次申请吗?") != DialogResult.OK)
+                    //        return;
+
+                    new SqlServerHelper().BindHashTableToForm(ht, this.panel1.Controls);
+                }
+            }
+        }
+
+        
     }
 }

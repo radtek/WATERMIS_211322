@@ -33,7 +33,7 @@ namespace PersonalWork
 SELECT N.*,VT.waterUserId,VT.waterUserName,waterPhone,waterUserAddress,TableID,TableName,Table_Name_CH,CreateDay,CreateMonth FROM  (
 SELECT CASE MWR.IsPass WHEN '1' THEN '√' WHEN '0' THEN '×' ELSE '-' END AS IsPass,(SELECT VALUE FROM Meter_WorkTaskState WHERE ID=MW.STATE) AS STATE,MWR.UserOpinion,MW.TaskName,MW.TaskCode,MWR.DoName,MW.PointTime,MWR.TimeLimit,MW.TaskID,MWR.ResolveID,MWR.PointSort,MWR.PointName,MW.SD,loginId,CreateDate
   FROM Meter_WorkTask MW,Meter_WorkResolve MWR WHERE MW.TaskID=MWR.TaskID AND MW.PointSort>MWR.PointSort
-  AND MWR.IsPass IS NOT NULL
+  AND ','+loginId+',' like '%,'+'{0}'+',%' AND MWR.IsPass IS NOT NULL
   ) N  LEFT JOIN  View_TABLEUNION VT ON N.TaskID= VT.TASKID) M ", loginid);
 
             if (!string.IsNullOrEmpty(uC_SearchApprove1.sb.ToString()))
@@ -83,7 +83,7 @@ SELECT CASE MWR.IsPass WHEN '1' THEN '√' WHEN '0' THEN '×' ELSE '-' END AS Is
         {
             loginid = AppDomain.CurrentDomain.GetData("LOGINID").ToString();
             uC_SearchApprove1.Init(loginid);
-            //SearchData();
+            SearchData();
         }
 
         private void uC_SearchApprove1_BtnEvent(object sender, EventArgs e)

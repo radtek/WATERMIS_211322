@@ -95,7 +95,7 @@ namespace WaterBusiness
 
                     string FlowCode = peridal.GetWorkCodeByUserType("09", htu["WATERMETERTYPECLASSID"].ToString());
 
-                    FlowCode = string.IsNullOrEmpty(FlowCode) ? "User_WaterPrice" : FlowCode;
+                    FlowCode = string.IsNullOrEmpty(FlowCode) ? "Meter_Change" : FlowCode;
 
                     bool result = new SqlServerHelper().CreateWorkTask(ht["ChangeID"].ToString(), SDNO, "Meter_Change", "ChangeID", "用户换表", FlowCode);
                     if (result)

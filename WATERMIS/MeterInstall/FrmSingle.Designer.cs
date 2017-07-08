@@ -425,7 +425,6 @@
             // 
             // toolPrint
             // 
-            this.toolPrint.Enabled = false;
             this.toolPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolPrint.Name = "toolPrint";
             this.toolPrint.Size = new System.Drawing.Size(71, 22);
@@ -434,7 +433,6 @@
             // 
             // toolPrintPreview
             // 
-            this.toolPrintPreview.Enabled = false;
             this.toolPrintPreview.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolPrintPreview.Name = "toolPrintPreview";
             this.toolPrintPreview.Size = new System.Drawing.Size(71, 22);
@@ -451,8 +449,8 @@
             this.toolExcel.Enabled = false;
             this.toolExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolExcel.Name = "toolExcel";
-            this.toolExcel.Size = new System.Drawing.Size(81, 22);
-            this.toolExcel.Text = "导出Excel";
+            this.toolExcel.Size = new System.Drawing.Size(41, 22);
+            this.toolExcel.Text = "导出";
             this.toolExcel.Click += new System.EventHandler(this.toolExcel_Click);
             // 
             // FrmSingle

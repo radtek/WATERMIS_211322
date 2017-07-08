@@ -187,32 +187,36 @@ namespace MeterInstall
 
         private void toolPrint_Click(object sender, EventArgs e)
         {
-            DataSet ds = new DataSet();
+            if (!string.IsNullOrEmpty(taskid))
+            {
+                DataSet ds = new DataSet();
 
-            DataTable dtPrint = new SqlServerHelper().GetDataTable("Meter_Install_Single", "SingleID='" + key + "'", "");
+                DataTable dtPrint = new SqlServerHelper().GetDataTable("View_SingleInfo", "taskid='" + taskid + "'", "");
 
-            dtPrint.TableName = "用户报装申请表";
-            ds.Tables.Add(dtPrint);
-            FastReport.Report report1 = new FastReport.Report();
-            try
-            {
-                // load the existing report
-                report1.Load(Application.StartupPath + @"\PRINTModel\业扩模板\用户报装申请表.frx");
-                // register the dataset
-                report1.RegisterData(ds);
-                report1.GetDataSource("用户报装申请表").Enabled = true;
-                // run the report
-                report1.Show();
+                dtPrint.TableName = "用户报装申请表";
+                ds.Tables.Add(dtPrint.Copy());
+                FastReport.Report report1 = new FastReport.Report();
+                try
+                {
+                    // load the existing report
+                    report1.Load(Application.StartupPath + @"\PRINTModel\业扩模板\单用户报装申请表.frx");
+                    // register the dataset
+                    report1.RegisterData(ds);
+                    report1.GetDataSource("用户报装申请表").Enabled = true;
+                    // run the report
+                    report1.Show();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    // free resources used by report
+                    report1.Dispose();
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                // free resources used by report
-                report1.Dispose();
-            }
+            
         }
 
         private void toolPrintPreview_Click(object sender, EventArgs e)
@@ -227,7 +231,7 @@ namespace MeterInstall
 
         private void waterUserName_MouseLeave(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(waterUserName.Text) && !string.IsNullOrEmpty(waterUserAddress.Text))
+            if (!string.IsNullOrEmpty(waterUserName.Text) && !string.IsNullOrEmpty(waterUserAddress.Text) && string.IsNullOrEmpty(key))
             {
                 string sqlstr = string.Format("SELECT SD,CreateDate FROM Meter_Install_Single WHERE waterUserName='{0}' AND waterUserAddress='{1}' AND State IN (1,2,3)", waterUserName.Text.Trim(), waterUserAddress.Text.Trim());
                 DataTable dt = new SqlServerHelper().GetDateTableBySql(sqlstr);

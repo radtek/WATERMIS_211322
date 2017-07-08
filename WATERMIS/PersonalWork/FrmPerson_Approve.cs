@@ -119,7 +119,7 @@ namespace PersonalWork
         {
             loginid = AppDomain.CurrentDomain.GetData("LOGINID").ToString();
             uC_SearchApprove1.Init(loginid);
-           // SearchData();
+           SearchData();
         }
 
         private void uC_SearchApprove1_BtnEvent(object sender, EventArgs e)
