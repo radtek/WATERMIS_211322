@@ -69,7 +69,7 @@ namespace MeterInstall
 
                 if (string.IsNullOrEmpty(key) || state.Equals("0"))
                 {
-                    bool result = new SqlServerHelper().CreateWorkTask(ht["SingleID"].ToString(), SDNO, "Meter_Install_Single1", "SingleID", "用户报装");
+                    bool result = new SqlServerHelper().CreateWorkTask(ht["SingleID"].ToString(), SDNO, "Meter_Install_Single", "SingleID", "用户报装", "Meter_Install_Single1");
                     if (result)
                     {
                         MessageBox.Show("任务创建成功！");
