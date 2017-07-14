@@ -49,10 +49,6 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BASEFUNCTION, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\x86\Debug\BASEFUNCTION.dll</HintPath>
-    </Reference>
     <Reference Include="FastReport, Version=2014.4.8.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\WATERMIS\bin\x86\Debug\FastReport.dll</HintPath>
@@ -103,6 +99,12 @@
     </Compile>
     <Compile Include="FrmMeterManage.Designer.cs">
       <DependentUpon>FrmMeterManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmOtherSingle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmOtherSingle.Designer.cs">
+      <DependentUpon>FrmOtherSingle.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmRecords.cs">
       <SubType>Form</SubType>
@@ -202,6 +204,9 @@
     <EmbeddedResource Include="FrmMeterManage.resx">
       <DependentUpon>FrmMeterManage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmOtherSingle.resx">
+      <DependentUpon>FrmOtherSingle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmRecords.resx">
       <DependentUpon>FrmRecords.cs</DependentUpon>
     </EmbeddedResource>
@@ -300,6 +305,10 @@
     <None Include="Resources\add.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BASEFUNCTION\BASEFUNCTION.csproj">
+      <Project>{ACBD9B62-1323-4264-A4D6-B600705D9228}</Project>
+      <Name>BASEFUNCTION</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{F1DAC157-5CF0-4ABE-AB30-E1B0EADA5354}</Project>
       <Name>Common</Name>
